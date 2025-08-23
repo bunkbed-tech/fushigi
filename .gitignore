@@ -1,25 +1,38 @@
-# build and temporary dev stuff
+# python
 .venv/
-target/
-postgres_data/
-*.sqlx/
 __pycache__/
 *.egg-info/
-build/
 
-# dotenv environment variable files
+# rust
+target/
+*.sqlx/
+
+# secrets
 .env*
-!.envrc
 
-# finder (MacOS) folder config -- argh!
+# system
 .DS_Store
 
-# Devenv
+# development shell
 .devenv*
 devenv.local.nix
-
-# direnv
+!.envrc
 .direnv
-
-# pre-commit
 .pre-commit-config.yaml
+
+# android
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/.android/

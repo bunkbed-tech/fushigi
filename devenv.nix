@@ -183,5 +183,22 @@
         export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
       '';
     })
+    {
+      # Android
+      android.enable = true;
+      android.android-studio.enable = true;
+      android.platforms.version = ["36"];
+      android.buildTools.version = ["35.0.0"];
+      languages.java.enable = true;
+      languages.java.jdk.package = pkgs.openjdk17;
+      languages.kotlin.enable = true;
+      git-hooks.hooks.ktlint = {
+        enable = true;
+        name = "ktlint";
+        description = "Anti-bikeshedding Kotlin linter";
+        files = "\\.kts?$";
+        entry = "${pkgs.ktlint}/bin/ktlint --format";
+      };
+    }
   ];
 }
