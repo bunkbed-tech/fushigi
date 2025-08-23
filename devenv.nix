@@ -7,6 +7,7 @@
   config = lib.mkMerge [
     {
       # Defaults
+      packages = [pkgs.gitleaks];
       git-hooks.default_stages = ["pre-push" "manual"];
       git-hooks.hooks = {
         commitizen.enable = true;
@@ -18,7 +19,14 @@
         };
         lychee.enable = true;
         lychee.settings.configPath = builtins.toString ((pkgs.formats.toml {}).generate "lychee.toml" {
-          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000" "http://backend:8000"];
+          exclude = [
+            "localhost"
+            "file://"
+            "https://shadcn-svelte.com/registry"
+            "http://192.168.11.5:8000"
+            "http://backend:8000"
+            "http://schemas.android.com"
+          ];
         });
         markdownlint.enable = true;
         markdownlint.settings.configuration.MD013.line_length = -1;
@@ -183,7 +191,14 @@
         export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
       '';
     })
-    {
+    (let
+      version = "0.4.27";
+      compose-rules = pkgs.fetchurl {
+        url = "https" + "://github.com/mrmans0n/compose-rules/releases/download/v${version}/ktlint-compose-${version}-all.jar";
+        hash = "sha256-sUzAq6sC0qa3vG/R/o9avjADU6l6Hq655cSElSAWbzc=";
+      };
+      ktlint = pkgs.writeShellScriptBin "ktlint" "${pkgs.ktlint}/bin/ktlint --ruleset ${compose-rules} \"$@\"";
+    in {
       # Android
       android.enable = true;
       android.android-studio.enable = true;
@@ -192,13 +207,14 @@
       languages.java.enable = true;
       languages.java.jdk.package = pkgs.openjdk17;
       languages.kotlin.enable = true;
+      packages = [ktlint];
       git-hooks.hooks.ktlint = {
         enable = true;
         name = "ktlint";
         description = "Anti-bikeshedding Kotlin linter";
         files = "\\.kts?$";
-        entry = "${pkgs.ktlint}/bin/ktlint --format";
+        entry = "${ktlint}/bin/ktlint --format";
       };
-    }
+    })
   ];
 }
