@@ -198,11 +198,16 @@
         hash = "sha256-sUzAq6sC0qa3vG/R/o9avjADU6l6Hq655cSElSAWbzc=";
       };
       ktlint = pkgs.writeShellScriptBin "ktlint" "${pkgs.ktlint}/bin/ktlint --ruleset ${compose-rules} \"$@\"";
+      avdSystem =
+        if pkgs.stdenv.isAarch64
+        then "arm64-v8a"
+        else "x86_64";
+      platform = "36";
     in {
       # Android
       android.enable = true;
       android.android-studio.enable = true;
-      android.platforms.version = ["36"];
+      android.platforms.version = [platform];
       android.buildTools.version = ["35.0.0"];
       languages.java.enable = true;
       languages.java.jdk.package = pkgs.openjdk17;
@@ -215,6 +220,12 @@
         files = "\\.kts?$";
         entry = "${ktlint}/bin/ktlint --format";
       };
+      processes.avd.exec = ''
+        avdmanager create avd --force --name fushigi \
+          --package 'system-images;android-${platform};google_apis_playstore;${avdSystem}'
+        emulator -avd fushigi
+      '';
+      scripts.android.exec = "gradle installDebug && adb shell am start -n tech.bunkbed.fushigi/.MainActivity";
     })
   ];
 }
