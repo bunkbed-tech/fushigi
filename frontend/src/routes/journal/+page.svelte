@@ -1,63 +1,26 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { Button } from "$lib/components/ui/button/index.js";
-
-  let title = '';
-  let content = '';
-  let result = '';
-  let isPrivate = false;
-
-  async function submitJournal() {
-    if (!title.trim() || !content.trim()) {
-      result = 'Please fill out all fields.';
-      return;
-    }
-
-    try {
-      const API_BASE = import.meta.env.VITE_API_BASE;
-      const res = await fetch(`${API_BASE}/api/journal`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, content, private: isPrivate }),
-      });
-
-      if (!res.ok) throw new Error('Failed to save journal entry');
-      const id = await res.json();
-      console.log(id.id);
-      result = `Journal saved (ID: ${id.id})`;
-
-      // Reset form
-      title = '';
-      content = '';
-      isPrivate = false;
-    } catch (e) {
-      result = `Error: ${e.message}`;
-    }
-  }
+  let { form } = $props();
 </script>
 
-<form on:submit|preventDefault={submitJournal} class="space-y-4">
+<form method="POST" class="space-y-4">
   <div>
-    <label class="block text-sm font-medium">Title</label>
-    <input type="text" bind:value={title} class="w-full border rounded p-2" required />
+    <label class="block text-sm font-medium" for="title">Title</label>
+    <input id="title" name="title" type="text" class="w-full border rounded p-2" required />
   </div>
 
   <div>
-    <label class="block text-sm font-medium">Content</label>
-    <textarea bind:value={content} class="w-full border rounded p-2 h-32" required></textarea>
+    <label class="block text-sm font-medium" for="content">Content</label>
+    <textarea id="content" name="content" class="w-full border rounded p-2 h-32" required></textarea>
   </div>
 
   <div>
-    <input type="checkbox" id="private" bind:checked={isPrivate} />
+    <input type="checkbox" id="private" name="private" />
     <label for="private">Private</label>
   </div>
 
-  <Button type="submit">
-    Save
-  </Button>
-
+  <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Save</button>
 </form>
 
-{#if result}
-  <p class="mt-4 text-green-600">{result}</p>
+{#if form?.message}
+  <p class="mt-4 text-green-600">{form.message}</p>
 {/if}

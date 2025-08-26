@@ -71,11 +71,17 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
+    environment:
+      VITE_API_BASE: "http://backend:8000"
     ports:
       - 5173:5173
     volumes:
-      - ./frontend:/app:cached
-      - /app/node_modules
+      - ./frontend/src:/app/src:cached
+      - ./frontend/static:/app/static:cached
+      - ./frontend/components.json:/app/components.json:cached
+      - ./frontend/svelte.config.js:/app/svelte.config.js:cached
+      - ./frontend/vite.config.ts:/app/vite.config.ts:cached
+      - ./frontend/tsconfig.json:/app/tsconfig.json:cached
 
   adminer:
     image: adminer

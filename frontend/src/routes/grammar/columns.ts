@@ -4,7 +4,7 @@ import DataTableActions from "./data-table-actions.svelte";
 
 export type GrammarPoint = {
 	id: number;
-	level: string;
+	context: string;
 	usage: string;
 	meaning: string;
 	tags: string[];

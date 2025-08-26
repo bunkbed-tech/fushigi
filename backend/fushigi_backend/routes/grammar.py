@@ -20,14 +20,14 @@ async def list_grammar(
     params: dict = {}
     if limit:
         query = f"""
-                SELECT id, usage, meaning, level, tags, notes, examples, enhanced_notes
+                SELECT id, usage, meaning, context, tags, notes, nuance, examples
                 FROM grammar
                 ORDER BY RANDOM()
                 LIMIT 5
             """  # noqa: F541
     else:
         query = f"""
-            SELECT id, usage, meaning, level, tags, notes, examples, enhanced_notes
+            SELECT id, usage, meaning, context, tags, notes, nuance, examples
             FROM grammar
             ORDER BY id
         """  # noqa: F541

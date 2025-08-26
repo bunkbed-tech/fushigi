@@ -1,6 +1,7 @@
-export async function load() {
-	const API_BASE = import.meta.env.VITE_API_BASE;
-	const res = await fetch(`${API_BASE}/api/grammar`);
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async ({ fetch }) => {
+	const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/grammar`);
 	if (!res.ok) {
 		throw new Error(`Failed to fetch grammar points: ${res.status}`);
 	}
@@ -8,4 +9,4 @@ export async function load() {
 	return {
 		grammarPoints,
 	};
-}
+};

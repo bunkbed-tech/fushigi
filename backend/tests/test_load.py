@@ -15,27 +15,20 @@ def test_load_defaults_reads_real_file(tmp_path: Path) -> None:
             {
                 "usage": "いらっしゃいます",
                 "meaning": "replacement for 行く, 来る, and いる",
-                "level": "",
+                "context": "Used in formal settings and business contexts; inappropriate for casual conversation.",
                 "tags": ["greeting", "respectful-honorific"],
-                "notes": "",
+                "notes": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness. Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
+                "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",
                 "examples": [
                     {
                         "japanese": "「」はいらっしゃいますか",
-                        "romaji": "[name/person] wa irasshaimasu ka",
                         "english": "Is [name/person] there?",
                     },
                     {
                         "japanese": "今週末どこへいらっしゃいますか",
-                        "romaji": "Konshūmatsu doko e irasshaimasuka",
                         "english": "Where are you going this weekend?",
                     },
-                ],
-                "enhanced_notes": {
-                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",  # noqa: E501
-                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",  # noqa: E501
-                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
-                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",  # noqa: E501
-                },
+                ]
             }
         ]
     }
@@ -59,27 +52,20 @@ def test_load_defaults_parses_mocked_data_correctly() -> None:
             {
                 "usage": "いらっしゃいます",
                 "meaning": "replacement for 行く, 来る, and いる",
-                "level": "",
+                "context": "Used in formal settings and business contexts; inappropriate for casual conversation.",
                 "tags": ["greeting", "respectful-honorific"],
-                "notes": "",
+                "notes": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness. Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
+                "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",
                 "examples": [
                     {
                         "japanese": "「」はいらっしゃいますか",
-                        "romaji": "[name/person] wa irasshaimasu ka",
                         "english": "Is [name/person] there?",
                     },
                     {
                         "japanese": "今週末どこへいらっしゃいますか",
-                        "romaji": "Konshūmatsu doko e irasshaimasuka",
                         "english": "Where are you going this weekend?",
                     },
-                ],
-                "enhanced_notes": {
-                    "nuance": "Denotes respect, often to express modesty about one’s own actions or to speak humbly about someone else's actions.",  # noqa: E501
-                    "usage_tips": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",  # noqa: E501
-                    "common_mistakes": "Frequently confused with います (for animate objects) and あります (for inanimate objects); not interchangeable.",  # noqa: E501
-                    "situation": "Used in formal settings and business contexts; inappropriate for casual conversation.",  # noqa: E501
-                },
+                ]
             }
         ]
     }

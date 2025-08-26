@@ -6,6 +6,8 @@ from psycopg.errors import DatabaseError
 from psycopg.rows import dict_row
 from pydantic import BaseModel
 
+import uuid
+
 from ..data.models import (
     JournalEntry,
     JournalEntryInDB,
@@ -16,7 +18,7 @@ from ..db.connect import get_connection
 router = APIRouter(prefix="/api/journal", tags=["journal"])
 
 class ResponseID(BaseModel):
-    id: int
+    id: uuid.UUID
 
 @router.post("", response_model=ResponseID)
 async def create_journal_entry(
@@ -35,7 +37,7 @@ async def create_journal_entry(
                 RETURNING id
                 """,
                 {
-                    "user_id": 1,  # temporary
+                    "user_id": '431a6bca-0e1b-4820-96cc-8f63b32fdcaf',  # temporary
                     "title": entry.title,
                     "content": entry.content,
                     "private": entry.private,
@@ -56,12 +58,12 @@ async def create_journal_entry(
 async def list_journal_entries(
     conn: AsyncConnection = Depends(get_connection),
 ) -> List[JournalEntryInDB]:
-    params = {"uid": 1}
+    params = {"uuid": '431a6bca-0e1b-4820-96cc-8f63b32fdcaf'}
 
     query = f"""
         SELECT id, user_id, title, content, created_at, private
         FROM journal_entry
-        WHERE user_id = %(uid)s
+        WHERE user_id = %(uuid)s
         ORDER BY created_at DESC
     """  # noqa: F541
 

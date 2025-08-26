@@ -18,7 +18,7 @@
         };
         lychee.enable = true;
         lychee.settings.configPath = builtins.toString ((pkgs.formats.toml {}).generate "lychee.toml" {
-          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000"];
+          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000" "http://backend:8000"];
         });
         markdownlint.enable = true;
         markdownlint.settings.configuration.MD013.line_length = -1;

@@ -12,20 +12,21 @@ async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> Non
             await cur.execute(
                 """
                 INSERT INTO grammar
-                    (usage, meaning, level, tags, notes, examples, enhanced_notes)
+                    (language_id, usage, meaning, context, tags, notes, nuance, examples)
                 VALUES
-                    (%s, %s, %s, %s, %s, %s, %s)
+                    (%s, %s, %s, %s, %s, %s, %s, %s)
                 """,
                 (
+                    1,  # hardcoded for now to Japanese
                     g.usage,
                     g.meaning,
-                    g.level,
+                    g.context,
                     g.tags,
                     g.notes,
+                    g.nuance,
                     Json(
                         [e.model_dump() for e in g.examples]
-                    ),  # like json dumps for jsonb type in db
-                    Json(g.enhanced_notes.model_dump()),  # same
+                    )  # like json dumps for jsonb type in db
                 ),
             )
         await conn.commit()
