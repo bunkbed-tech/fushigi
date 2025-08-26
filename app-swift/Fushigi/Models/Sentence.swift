@@ -27,10 +27,9 @@ struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case id, content
         case journalEntryId = "journal_entry_id"
         case grammarId = "grammar_id"
-        case content
         case createdAt = "created_at"
     }
 }
@@ -40,13 +39,19 @@ struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
 /// Sentence model for local SwiftData storage
 @Model
 final class SentenceLocal {
-    @Attribute(.unique) var id: UUID
-    var journalEntryId: UUID
-    var grammarId: UUID
-    var content: String
-    var createdAt: Date
+    @Attribute var id: UUID = UUID()
+    var journalEntryId: UUID = UUID()
+    var grammarId: UUID = UUID()
+    var content: String = ""
+    var createdAt: Date = Date()
 
-    init(id: UUID, journalEntryId: UUID, grammarId: UUID, content: String, createdAt: Date) {
+    init(
+        id: UUID = UUID(),
+        journalEntryId: UUID = UUID(),
+        grammarId: UUID = UUID(),
+        content: String = "",
+        createdAt: Date = Date(),
+    ) {
         self.id = id
         self.journalEntryId = journalEntryId
         self.grammarId = grammarId

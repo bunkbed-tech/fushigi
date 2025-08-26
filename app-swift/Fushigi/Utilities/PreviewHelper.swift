@@ -22,7 +22,7 @@ enum PreviewHelper {
         do {
             // for previews, we only want the data store to only live in memory while testing
             let container = try ModelContainer(
-                for: Schema([GrammarPointLocal.self, JournalEntryLocal.self]),
+                for: Schema([GrammarPointLocal.self, JournalEntryLocal.self, SentenceLocal.self]),
                 configurations: [ModelConfiguration(isStoredInMemoryOnly: true)],
             )
             let grammarStore = GrammarStore(modelContext: container.mainContext)

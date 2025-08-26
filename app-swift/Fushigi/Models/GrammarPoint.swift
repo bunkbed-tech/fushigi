@@ -32,13 +32,13 @@ struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable {
 /// Grammar point model for local SwiftData storage
 @Model
 final class GrammarPointLocal {
-    @Attribute(.unique) var id: UUID
-    var context: String
-    var usage: String
-    var meaning: String
-    var tags: [String]
+    @Attribute var id: UUID = UUID()
+    var context: String = ""
+    var usage: String = ""
+    var meaning: String = ""
+    var tags: [String] = []
 
-    init(id: UUID, context: String, usage: String, meaning: String, tags: [String] = []) {
+    init(id: UUID = UUID(), context: String = "", usage: String = "", meaning: String = "", tags: [String] = []) {
         self.id = id
         self.context = context
         self.usage = usage

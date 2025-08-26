@@ -14,28 +14,29 @@ import TipKit
 /// Main app entry point for Fushigi language learning app
 @main
 struct FushigiApp: App {
-    // MARK: - Shared Container
+    /// Current login state of user
+    @State private var userSession: UserSession?
 
-    /// Shared SwiftData container for persistent storage
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            GrammarPointLocal.self,
-            JournalEntryLocal.self,
-            SentenceLocal.self,
-            // SettingsLocal.self
-        ])
-
-        // For a real app, the data store should not only live in memory
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+    var body: some Scene {
+        WindowGroup {
+            if let session = userSession {
+                // User is authenticated - show main app
+                AuthenticatedAppView(userSession: session)
+            } else {
+                // Show login screen
+                LoginPage { session in
+                    userSession = session
+                }
+            }
         }
-    }()
+    }
+}
 
-    // MARK: - Stores and Init
+// MARK: - Authenticated App View
+
+struct AuthenticatedAppView: View {
+    /// Current login state of user
+    @ObservedObject var userSession: UserSession
 
     /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var grammarStore: GrammarStore
@@ -46,11 +47,37 @@ struct FushigiApp: App {
     // Tag store of all user created tags linking journals to grammar
     @StateObject private var sentenceStore: SentenceStore
 
-    // Settings store of all user settings
-    // @StateObject private var settingsStore: SettingsStore
+    /// Shared SwiftData container for persistent storage
+    private let sharedModelContainer: ModelContainer
 
     /// Initialize app data stores
-    init() {
+    init(userSession: UserSession) {
+        self.userSession = userSession
+
+        // Create container once
+        let schema = Schema([
+            GrammarPointLocal.self,
+            JournalEntryLocal.self,
+            SentenceLocal.self,
+        ])
+
+        let modelConfiguration = ModelConfiguration(
+            isStoredInMemoryOnly: false,
+            allowsSave: true,
+            groupContainer: .none,
+            cloudKitDatabase: .private("iCloud.tech.bunkbed.fushigi"),
+        )
+//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            sharedModelContainer = try ModelContainer(
+                for: schema,
+                configurations: [modelConfiguration],
+            )
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+
         #if DEBUG
             // Comment out kill switch to wipe
             // wipeSwiftData(container: sharedModelContainer)
@@ -60,41 +87,34 @@ struct FushigiApp: App {
         _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
         _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
         _sentenceStore = StateObject(wrappedValue: SentenceStore(modelContext: context))
-        // _settingsStore = StateObject(wrappedValue: SettingsStore(modelContext: context))
+    }
+
+    var body: some View {
+        ContentView()
+            .modelContainer(sharedModelContainer)
+            .environmentObject(userSession)
+            .environmentObject(grammarStore)
+            .environmentObject(journalStore)
+            .environmentObject(sentenceStore)
+            .tint(.mint)
+            .task {
+                await configureTips()
+                await grammarStore.refresh()
+                await journalStore.refresh()
+                await sentenceStore.refresh()
+            }
     }
 
     /// Configure TipKit for user onboarding -- currently none
     func configureTips() async {
         do {
             try Tips.configure([
-                // .cloudKitContainer(.named("iCloud.com.apple.Fushigi.tips")),
+                // .cloudKitContainer(.named("iCloud.tech.bunkbed.Fushigi.tips")),
                 .displayFrequency(.immediate),
             ])
         } catch {
             print("Unable to configure tips: \(error)")
         }
-    }
-
-    // MARK: - App Body
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .tint(.mint)
-                .environmentObject(grammarStore)
-                .environmentObject(journalStore)
-                .environmentObject(sentenceStore)
-                // .environmentObject(settingsStore)
-                .task {
-                    await configureTips()
-                    await grammarStore.refresh()
-                    await journalStore.refresh()
-                    await sentenceStore.refresh()
-
-                    // TODO: Load sentences
-                }
-        }
-        .modelContainer(sharedModelContainer)
     }
 }
 
@@ -121,7 +141,8 @@ func wipeSwiftData(container: ModelContainer) {
 
 // MARK: - Preview
 
-#Preview {
-    ContentView()
-        .withPreviewStores()
+#Preview("Login Page") {
+    LoginPage { session in
+        print("Preview login: \(session.providerUserId)")
+    }
 }
