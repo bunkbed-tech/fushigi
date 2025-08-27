@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - UI Constants
-
 /// Common UI spacing and sizing constants
 enum UIConstants {
     enum Spacing {

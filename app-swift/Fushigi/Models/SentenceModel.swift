@@ -1,5 +1,5 @@
 //
-//  Sentence.swift
+//  SentenceModel.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/13.
@@ -7,8 +7,6 @@
 
 import Foundation
 import SwiftData
-
-// MARK: - Remote Postgres model
 
 /// Sentence model for remote PostgreSQL database
 struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
@@ -33,8 +31,6 @@ struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
         case createdAt = "created_at"
     }
 }
-
-// MARK: - Local/iCloud model
 
 /// Sentence model for local SwiftData storage
 @Model

@@ -1,5 +1,5 @@
 //
-//  GrammarPoint.swift
+//  GrammarPointModel.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -7,8 +7,6 @@
 
 import Foundation
 import SwiftData
-
-// MARK: - Remote Postgres model
 
 /// Grammar point model for remote PostgreSQL database
 struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable {
@@ -25,9 +23,15 @@ struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable {
         meaning = model.meaning
         tags = model.tags
     }
-}
 
-// MARK: - Local/iCloud model
+    init(id: UUID, context: String, usage: String, meaning: String, tags: [String]) {
+        self.id = id
+        self.context = context
+        self.usage = usage
+        self.meaning = meaning
+        self.tags = tags
+    }
+}
 
 /// Grammar point model for local SwiftData storage
 @Model

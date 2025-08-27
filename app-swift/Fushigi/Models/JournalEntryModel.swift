@@ -1,5 +1,5 @@
 //
-//  JournalEntry.swift
+//  JournalEntryModel.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -7,8 +7,6 @@
 
 import Foundation
 import SwiftData
-
-// MARK: - Remote Postgres models
 
 /// Journal entry for model for simple submission to backend
 struct JournalEntryCreate: Codable {
@@ -39,8 +37,6 @@ struct JournalEntryRemote: Identifiable, Decodable {
         // case userId = "user_id"
     }
 }
-
-// MARK: - Local/iCloud model
 
 /// Grammar point model for local SwiftData storage
 @Model

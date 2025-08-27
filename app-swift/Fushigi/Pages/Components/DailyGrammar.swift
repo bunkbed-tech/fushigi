@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Daily Grammar
-
 /// Daily grammar section displaying curated grammar points for practice sessions
 struct DailyGrammar: View {
     /// Centralized grammar data store

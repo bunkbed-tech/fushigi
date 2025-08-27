@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: Grammar Table
-
 /// Responsive table component for displaying grammar points with adaptive layouts
 struct GrammarTable: View {
     /// Centralized grammar data repository with synchronization capabilities

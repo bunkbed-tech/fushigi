@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  NavigationView.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -8,10 +8,10 @@
 import SwiftData
 import SwiftUI
 
-// MARK: - Content View Wrapper
+// MARK: - Navigation View Wrapper
 
 /// Main navigation container with adaptive layout for tabs and split view
-struct ContentView: View {
+struct NavigationView: View {
     /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
@@ -171,26 +171,26 @@ struct ContentView: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    ContentView()
+    NavigationView()
         .withPreviewStores()
 }
 
 #Preview("Empty Data State") {
-    ContentView()
+    NavigationView()
         .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Sync Error State") {
-    ContentView()
+    NavigationView()
         .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("Load State") {
-    ContentView()
+    NavigationView()
         .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("PostgreSQL Connection State") {
-    ContentView()
+    NavigationView()
         .withPreviewStores(systemHealth: .postgresError)
 }

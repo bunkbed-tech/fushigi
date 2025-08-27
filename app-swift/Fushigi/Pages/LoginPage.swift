@@ -140,7 +140,7 @@ struct LoginPage: View {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Authorization Actions
 
     /// Handle Apple Sign-In authentication
     private func handleAppleSignIn(_ result: Result<ASAuthorization, Error>) {
@@ -235,6 +235,8 @@ struct LoginPage: View {
         }
     }
 }
+
+// MARK: - Previews
 
 #Preview("Login Page") {
     LoginPage { session in

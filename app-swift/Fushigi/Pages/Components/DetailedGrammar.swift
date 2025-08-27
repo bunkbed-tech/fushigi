@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - DetailedGrammar
-
 /// Detailed view displaying comprehensive grammar point information
 struct DetailedGrammar: View {
     /// Controls view presentation state

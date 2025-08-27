@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Grammar Settings
-
 /// Settings interface for configuring grammar point selection and filtering
 struct GrammarSettings: View {
     /// Politeness level filter selection
