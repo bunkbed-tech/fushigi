@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Extensions
-
 extension JSONDecoder {
     /// JSONDecoder configured for ISO8601 dates with fractional seconds from timestamptz
     static var iso8601withFractionalSeconds: JSONDecoder {

@@ -18,7 +18,9 @@
 			"layers": [
 				{
 					"blend-mode": "normal",
-					"fill": "automatic",
+					"fill": {
+						"solid": "extended-srgb:0.00000,0.78431,0.70196,1.00000"
+					},
 					"glass": true,
 					"hidden": false,
 					"image-name": "fushigi-text.svg",
@@ -29,7 +31,10 @@
 					}
 				},
 				{
-					"fill": "automatic",
+					"blend-mode": "normal",
+					"fill": {
+						"solid": "srgb:0.25069,0.01139,0.30744,1.00000"
+					},
 					"glass-specializations": [
 						{
 							"value": true

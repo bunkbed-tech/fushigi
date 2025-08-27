@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Taggable Grammar Row
-
 /// Display row for grammar points with tagging functionality
 struct TaggableGrammarRow: View {
     /// Grammar point model containing usage patterns and meanings

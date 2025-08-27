@@ -16,12 +16,15 @@ dependencies = [
   "uvicorn",       # server
   "python-dotenv", # load environment variables
   "openai",        # use for grading and helping auto generate grammar source for testing
+  "authlib",       # user authorization
+  "httpx",         # make async HTTP requests for authorization
 ]
 
 [dependency-groups]
 dev = [
-  "pytest",     # tests
-  "pytest-cov", # ensure all code covered by tests
-  "ruff",       # replaces black, flake8, isort
-  "mypy",       # type checking
+  "pytest",        # tests
+  "pytest-cov",    # ensure all code covered by tests
+  "ruff",          # replaces black, flake8, isort
+  "mypy",          # type checking
+  "types-Authlib", # typing for authlib
 ]

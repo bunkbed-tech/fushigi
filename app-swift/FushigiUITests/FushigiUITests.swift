@@ -39,4 +39,35 @@ final class FushigiUITests: XCTestCase {
             XCUIApplication().launch()
         }
     }
+
+    @MainActor
+    func testLoginFlowWithTestCredentials() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        // Should show login page initially
+        XCTAssertTrue(app.textFields["Email"].exists)
+
+        // Fill in test credentials
+        app.textFields["Email"].tap()
+        app.textFields["Email"].typeText("tester@example.com")
+
+        app.secureTextFields["Password"].tap()
+        app.secureTextFields["Password"].typeText("test123")
+
+        app.buttons["Sign In (Test)"].tap()
+
+        // Should navigate to main app
+        // (You'll need to add accessibility identifiers to your ContentView)
+        XCTAssertTrue(app.navigationBars.firstMatch.waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    func testAppleSignInButtonExists() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        // Apple Sign In button should be present
+        XCTAssertTrue(app.buttons["Sign in with Apple"].exists)
+    }
 }

@@ -40,18 +40,35 @@ class GrammarStore: ObservableObject {
     /// Last algorithmic subset update date
     private var lastAlgorithmicUpdate: Date?
 
-    /// SwiftData database session for local persistence
-    let modelContext: ModelContext
+    /// In production, this will call the real API backend
+    private let remoteService: RemoteGrammarDataServiceProtocol
 
+    /// SwiftData database session for local persistence
+    let modelContext: ModelContext?
+
+    /// Production initializer
     init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+        remoteService = ProductionRemoteGrammarDataService()
+    }
+
+//    /// Testing initializer
+//    init(remoteService: RemoteGrammarDataServiceProtocol) {
+//        self.modelContext = nil
+//        self.remoteService = remoteService
+//    }
+
+    /// Testing initializer with modelContext too
+    init(remoteService: RemoteGrammarDataServiceProtocol, modelContext: ModelContext?) {
+        self.remoteService = remoteService
         self.modelContext = modelContext
     }
 
     // MARK: - Helper Functions
 
     /// Get subset of 5 grammar points depending on what UI SourceMode is selected
-    func getGrammarPoints(for: SourceMode) -> [GrammarPointLocal] {
-        switch `for` {
+    func getGrammarPoints(for mode: SourceMode) -> [GrammarPointLocal] {
+        switch mode {
         case .random:
             randomGrammarItems
         case .srs:
@@ -60,15 +77,15 @@ class GrammarStore: ObservableObject {
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags
-    func filterGrammarPoints(containing searchText: String? = nil) -> [GrammarPointLocal] {
+    func filterGrammarPoints(containing term: String? = nil) -> [GrammarPointLocal] {
         var filtered = grammarItems
 
-        if let searchText, !searchText.isEmpty {
+        if let term, !term.isEmpty {
             filtered = filtered.filter {
-                $0.usage.localizedCaseInsensitiveContains(searchText) ||
-                    $0.meaning.localizedCaseInsensitiveContains(searchText) ||
-                    $0.context.localizedCaseInsensitiveContains(searchText) ||
-                    $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
+                $0.usage.localizedCaseInsensitiveContains(term) ||
+                    $0.meaning.localizedCaseInsensitiveContains(term) ||
+                    $0.context.localizedCaseInsensitiveContains(term) ||
+                    $0.tags.contains { $0.localizedCaseInsensitiveContains(term) }
             }
         }
 
@@ -95,6 +112,7 @@ class GrammarStore: ObservableObject {
 
     /// Load grammar points from local SwiftData storage
     func loadLocal() async {
+        guard let modelContext else { return }
         do {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
             print("LOG: Loaded \(grammarItems.count) grammar points from SwiftData")
@@ -108,7 +126,7 @@ class GrammarStore: ObservableObject {
     func syncWithRemote() async {
         setLoading()
 
-        let result = await fetchGrammarPoints()
+        let result = await remoteService.fetchGrammarPoints()
         switch result {
         case let .success(remotePoints):
             await processRemotePoints(remotePoints)
@@ -121,7 +139,8 @@ class GrammarStore: ObservableObject {
     }
 
     /// Process remote grammar points and update local storage
-    private func processRemotePoints(_ remotePoints: [GrammarPointRemote]) async {
+    func processRemotePoints(_ remotePoints: [GrammarPointRemote]) async {
+        guard let modelContext else { return } // skip load when testing
         for remote in remotePoints {
             // Check if exists locally by checking postgres id and swift id
             if let existing = grammarItems.first(where: { $0.id == remote.id }) {

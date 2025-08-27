@@ -7,6 +7,6 @@ CREATE TABLE sentence (
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_sentence_by_user ON journal_entry(user_id);
+CREATE INDEX idx_sentence_by_user ON sentence(user_id);
 CREATE INDEX idx_sentence_by_journal ON sentence(journal_entry_id);
-CREATE INDEX idx_sentence_by_grammar ON tagged_sentence(grammar_id);
+CREATE INDEX idx_sentence_by_grammar ON sentence(grammar_id);

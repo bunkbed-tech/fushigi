@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-// MARK: - Journal Store
-
 /// Observable store managing journal entries with local SwiftData storage and remote PostgreSQL sync
 @MainActor
 class JournalStore: ObservableObject {
@@ -122,8 +120,6 @@ extension JournalStore: SyncableStore {
     typealias DataType = JournalEntryLocal
     var items: [JournalEntryLocal] { journalEntries }
 }
-
-// MARK: - Preview Helpers
 
 /// Preview and testing helpers
 extension JournalStore {

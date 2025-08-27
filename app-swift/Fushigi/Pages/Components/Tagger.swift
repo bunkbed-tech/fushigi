@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Tagger
-
 /// Interface for creating links between selected text and grammar concepts
 struct Tagger: View {
     /// Centralized grammar data store

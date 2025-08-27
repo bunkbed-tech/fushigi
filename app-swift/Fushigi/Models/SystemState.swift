@@ -7,66 +7,8 @@
 
 import SwiftUI
 
-// MARK: - Data Availability
-
-/// Represents whether the app has usable data for the user
-enum DataAvailability {
-    /// Loading data...
-    case loading
-
-    /// Data ready
-    case available
-
-    /// No data available
-    case empty
-
-    /// User friendly description of data availability
-    var description: String {
-        switch self {
-        case .loading:
-            "Loading data..."
-        case .available:
-            "Data ready"
-        case .empty:
-            "No data available"
-        }
-    }
-}
-
-// MARK: - System Health
-
-/// Represents the health of our data sources
-enum SystemHealth {
-    /// All systems operational
-    case healthy
-
-    /// Local SwiftData corruption/failure
-    case swiftDataError
-
-    /// Unable to establish connection to PostgreSQL database
-    case postgresError
-
-    /// User friendly description of data availability
-    var description: String {
-        switch self {
-        case .healthy:
-            "All systems operational"
-        case .swiftDataError:
-            "Local SwiftData corruption/failure"
-        case .postgresError:
-            "Unable to establish connection to PostgreSQL database"
-        }
-    }
-
-    var hasError: Bool {
-        self != .healthy
-    }
-}
-
-// MARK: - System State
-
 /// The main state that drives UI rendering decisions
-enum SystemState {
+enum SystemState: Equatable {
     /// Currently loading locally from SwiftData and fetching remotely from PostgreSQL
     case loading
 
@@ -97,6 +39,8 @@ enum SystemState {
             "Critical error: \(error)"
         }
     }
+
+    // MARK: - View Builders
 
     /// Returns the appropriate ContentUnavailableView for the current state
     @ViewBuilder
@@ -204,64 +148,5 @@ enum SystemState {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
-
-// MARK: - Define Store Protocol
-
-/// Protocol that any store with sync functionality can adopt
-@MainActor
-protocol SyncableStore: ObservableObject {
-    associatedtype DataType
-
-    var items: [DataType] { get }
-    var dataAvailability: DataAvailability { get set }
-    var systemHealth: SystemHealth { get set }
-}
-
-/// Define shared attributes of all stores with sync
-extension SyncableStore {
-    /// Computed priority state for UI rendering decisions
-    var systemState: SystemState {
-        switch (dataAvailability, systemHealth) {
-        case (.loading, _):
-            .loading
-        case (.empty, .healthy):
-            .emptyData
-        case (.empty, .swiftDataError), (.empty, .postgresError):
-            .criticalError(systemHealth.description)
-        case (.available, .healthy):
-            .normal
-        case (.available, .swiftDataError), (.available, .postgresError):
-            .degradedOperation(systemHealth.description)
-        }
-    }
-
-    /// Mark as loading
-    func setLoading() {
-        dataAvailability = .loading
-    }
-
-    /// Handle local load failure
-    func handleLocalLoadFailure() {
-        systemHealth = .swiftDataError
-        dataAvailability = items.isEmpty ? .empty : .available
-    }
-
-    /// Handle remote sync failure
-    func handleRemoteSyncFailure() {
-        systemHealth = .postgresError
-        dataAvailability = items.isEmpty ? .empty : .available
-    }
-
-    /// Handle successful sync
-    func handleSyncSuccess() {
-        // Successful sync means PostgreSQL is working - clear postgres errors
-        // But keep SwiftData errors since remote sync doesn't fix local storage
-        if systemHealth == .postgresError {
-            systemHealth = .healthy
-        }
-
-        dataAvailability = items.isEmpty ? .empty : .available
     }
 }

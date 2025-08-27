@@ -5,8 +5,6 @@
 //  Created by Tahoe Schrader on 2025/08/19.
 //
 
-// MARK: - Journal Entry Form
-
 import SwiftUI
 
 /// Journal entry form with title, content, and save functionality
