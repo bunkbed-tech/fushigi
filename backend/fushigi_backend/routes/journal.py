@@ -1,80 +1,56 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from psycopg import AsyncConnection
-from psycopg.errors import DatabaseError
-from psycopg.rows import dict_row
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-import uuid
+from ..data.models import JournalEntry, JournalEntryInDB, UserInDB
+from ..db.connect import pb_client
+from ..db.authenticate import get_current_user_required
 
-from ..data.models import (
-    JournalEntry,
-    JournalEntryInDB,
-)
-from ..db.connect import get_connection
+class ResponseID(BaseModel):
+    id: str
 
+class JournalService:
+    def __init__(self, pb_client):
+        self.pb_client = pb_client
+
+    # TODO: not sure if this is valid to pass JournalEntry instead of json dict.
+    async def post_journal_entry(self, user_id: str, entry: JournalEntry):
+        """Add user journal to database"""
+        print("ENTRY TYPE:", type(entry))
+        print("ENTRY FIELDS:", entry.model_dump())
+
+        result = await self.pb_client.create_record("journal_entry", entry)
+
+        return ResponseID(id=result["id"])
+
+    async def fetch_journal_entries(self, user_id: str) -> List[dict]:
+        """List all journal entries"""
+        params = {}
+
+        params["filter"] = f"user_id = '{user_id}'"
+
+        result = await self.pb_client.get_records("journal_entry", params)
+        return result["items"]
+
+journal_service = JournalService(pb_client)
 
 router = APIRouter(prefix="/api/journal", tags=["journal"])
 
-class ResponseID(BaseModel):
-    id: uuid.UUID
 
-@router.post("", response_model=ResponseID)
-async def create_journal_entry(
+@router.post("", response_model=ResponseID)  # Fixed response model
+async def post_journal_entry(
     entry: JournalEntry,
-    conn: AsyncConnection = Depends(get_connection),
+    user: UserInDB = Depends(get_current_user_required),
 ):
-    print("ENTRY TYPE:", type(entry))
-    print("ENTRY FIELDS:", entry.model_dump())
-    async with conn.transaction():
-        async with conn.cursor(row_factory=dict_row) as cur:
-            print(entry)
-            await cur.execute(
-                """
-                INSERT INTO journal_entry (user_id, title, content, private)
-                VALUES (%(user_id)s, %(title)s, %(content)s, %(private)s)
-                RETURNING id
-                """,
-                {
-                    "user_id": '431a6bca-0e1b-4820-96cc-8f63b32fdcaf',  # temporary
-                    "title": entry.title,
-                    "content": entry.content,
-                    "private": entry.private,
-                },
-            )
-            row = await cur.fetchone()
-            if row is None:
-                raise HTTPException(
-                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    detail="Failed to insert journal entry and get ID",
-                )
-            entry_id = row["id"]
-
-    return ResponseID(id=entry_id)
-
+    """Post user Journal Entry"""
+    result = await journal_service.post_journal_entry(user_id=user.id, entry=entry)
+    return result
 
 @router.get("", response_model=List[JournalEntryInDB])
-async def list_journal_entries(
-    conn: AsyncConnection = Depends(get_connection),
-) -> List[JournalEntryInDB]:
-    params = {"uuid": '431a6bca-0e1b-4820-96cc-8f63b32fdcaf'}
-
-    query = f"""
-        SELECT id, user_id, title, content, created_at, private
-        FROM journal_entry
-        WHERE user_id = %(uuid)s
-        ORDER BY created_at DESC
-    """  # noqa: F541
-
-    try:
-        async with conn.cursor(row_factory=dict_row) as cur:
-            await cur.execute(query, params)
-            rows = await cur.fetchall()
-    except DatabaseError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Database error: {e}",
-        )
-
-    return [JournalEntryInDB.model_validate(row) for row in rows]
+async def fetch_journal_entries(
+    user: UserInDB = Depends(get_current_user_required),
+):
+    """List journal entries accessible to the user"""
+    records = await journal_service.fetch_journal_entries(user_id=user.id)
+    return [JournalEntryInDB.model_validate(record) for record in records]

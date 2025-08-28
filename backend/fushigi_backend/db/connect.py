@@ -1,27 +1,53 @@
-import os
-from typing import AsyncGenerator, Optional
+import httpx
+from typing import Optional, Any
+from fastapi import HTTPException, status
 
-from psycopg import AsyncConnection
-from psycopg.rows import dict_row
-from psycopg_pool import AsyncConnectionPool
+class PocketBaseClient:
+    def __init__(self, base_url: str = "http://db:8080"):
+        self.base_url = base_url
+        self.client = httpx.AsyncClient()
 
-DATABASE_URL = os.environ["DATABASE_URL"]
-_pool: Optional[AsyncConnectionPool] = None
+    async def get_records(self, collection: str, params: Optional[dict] = None) -> dict:
+        """Generic method to fetch records from any collection"""
+        response = await self.client.get(
+            f"{self.base_url}/api/collections/{collection}/records",
+            params=params or {}
+        )
 
+        if response.status_code != 200:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"PocketBase error: {response.text}"
+            )
+        return response.json()
 
-def get_pool() -> AsyncConnectionPool:
-    global _pool
-    if _pool is None:
-        _pool = AsyncConnectionPool(DATABASE_URL)
-    return _pool
+    # TODO: is there a smarter way than to type data as Any?
+    async def create_record(self, collection: str, data: Any) -> dict:
+        """Generic method to create records in any collection"""
+        response = await self.client.post(
+            f"{self.base_url}/api/collections/{collection}/records",
+            json=data
+        )
 
+        if response.status_code != 200:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"PocketBase error: {response.text}"
+            )
+        return response.json()
 
-async def connect_to_db() -> AsyncConnection:
-    return await AsyncConnection.connect(DATABASE_URL)
+    async def verify_token(self, token: str) -> dict:
+        """Verify and refresh a user token, returning user data"""
+        headers = {"Authorization": f"Bearer {token}"}
+        response = await self.client.post(
+            f"{self.base_url}/api/collections/users/auth-refresh",
+            headers=headers
+        )
+        if response.status_code != 200:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid or expired token"
+            )
+        return response.json()
 
-
-async def get_connection() -> AsyncGenerator[AsyncConnection, None]:
-    pool = get_pool()
-    async with pool.connection() as conn:
-        conn.row_factory = dict_row  # type: ignore[assignment]
-        yield conn
+pb_client = PocketBaseClient()

@@ -1,9 +1,9 @@
 CREATE TABLE journal_entry (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES users(id),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    private BOOLEAN NOT NULL,
+    private BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 

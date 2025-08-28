@@ -8,7 +8,7 @@ CREATE TABLE grammar (
     notes TEXT,
     nuance TEXT,
     examples JSONB NOT NULL,
-    created_by UUID NULL REFERENCES users(id), -- NULL for official points
+    created_by UUID NULL REFERENCES users(id) ON DELETE CASCADE, -- NULL for official points
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );

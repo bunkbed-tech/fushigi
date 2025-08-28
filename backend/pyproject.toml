@@ -9,15 +9,15 @@ description = "API for storing and querying user submitted Japanese journal entr
 authors = [{ name = "Tahoe Schrader", email = "tahoeschrader@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = [
-  "fastapi",       # create endpoints for database # define data model with ORM tool built for FastAPI
-  "psycopg",       # connect to postgres
-  "psycopg_pool",  # some extra pool stuff
-  "pydantic",      # working with data model
-  "uvicorn",       # server
-  "python-dotenv", # load environment variables
-  "openai",        # use for grading and helping auto generate grammar source for testing
-  "authlib",       # user authorization
-  "httpx",         # make async HTTP requests for authorization
+  "fastapi",         # create endpoints for database # define data model with ORM tool built for FastAPI
+  "psycopg",         # connect to postgres
+  "psycopg_pool",    # some extra pool stuff
+  "pydantic[email]", # working with data model
+  "uvicorn",         # server
+  "python-dotenv",   # load environment variables
+  "openai",          # use for grading and helping auto generate grammar source for testing
+  "authlib",         # user authorization
+  "httpx",           # make async HTTP requests for authorization
 ]
 
 [dependency-groups]

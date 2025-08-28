@@ -1,32 +1,36 @@
-from typing import List
-
-from psycopg import AsyncConnection
-from psycopg.types.json import Json
-
-from ..data.models import Grammar
+import httpx
 
 
-async def generate_db(conn: AsyncConnection, grammar_data: List[Grammar]) -> None:
-    async with conn.cursor() as cur:
-        for g in grammar_data:
-            await cur.execute(
-                """
-                INSERT INTO grammar
-                    (language_id, usage, meaning, context, tags, notes, nuance, examples)
-                VALUES
-                    (%s, %s, %s, %s, %s, %s, %s, %s)
-                """,
-                (
-                    1,  # hardcoded for now to Japanese
-                    g.usage,
-                    g.meaning,
-                    g.context,
-                    g.tags,
-                    g.notes,
-                    g.nuance,
-                    Json(
-                        [e.model_dump() for e in g.examples]
-                    )  # like json dumps for jsonb type in db
-                ),
-            )
-        await conn.commit()
+def seed_pocketbase(grammar_data, base_url="http://db:8080/api"):
+    # Auth against _superusers collection
+    auth_response = httpx.post(f"{base_url}/collections/_superusers/auth-with-password", json={
+        "identity": "tester@example.com",
+        "password": "password123"
+    })
+    token = auth_response.json()["token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    # Create Japanese language
+    lang_response = httpx.post(f"{base_url}/collections/languages/records",
+                              json={"name": "Japanese"},
+                              headers=headers)
+    language_id = lang_response.json()["id"]
+
+    # Seed grammar data
+    for grammar in grammar_data:
+        payload = {
+            "language_id": language_id,
+            "usage": grammar.usage,
+            "meaning": grammar.meaning,
+            "context": grammar.context,
+            "notes": grammar.notes,
+            "nuance": grammar.nuance,
+            "tags": grammar.tags,
+            "examples": [ex.dict() for ex in grammar.examples] if grammar.examples else []
+        }
+        grammar_response = httpx.post(f"{base_url}/collections/grammar/records",
+                             json=payload, headers=headers)
+        if grammar_response.status_code != 200:
+            print(f"Grammar creation failed: {grammar_response.text}")
+
+    print("Seeding completed!")
