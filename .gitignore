@@ -6,6 +6,7 @@ postgres_data/
 __pycache__/
 *.egg-info/
 build/
+pb_data/
 
 # dotenv environment variable files
 .env*

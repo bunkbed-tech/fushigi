@@ -63,51 +63,30 @@
       };
     }
     {
-      # Backend
-      languages.python = {
-        enable = true;
-        directory = "./backend";
-        uv.enable = true;
-        uv.sync.enable = true;
-      };
-      services.postgres = {
-        enable = true;
-        listen_addresses = "localhost";
-        initialDatabases = lib.toList {
-          name = "postgres";
-          user = "postgres";
-          pass = "postgres";
-          schema = ./backend/sql;
+      # Pocketbase database + backend as a service
+      languages.go.enable = true;
+      processes.backend = {
+        exec = "go run . serve --dev --http=0.0.0.0:8080";
+        process-compose = {
+          working_dir = "./pocketbase";
+          readiness_probe = {
+            http_get = {
+              host = "127.0.0.1";
+              port = 8080;
+              path = "/api/health";
+            };
+            initial_delay_seconds = 5;
+            period_seconds = 2;
+            timeout_seconds = 5;
+            success_threshold = 1;
+            failure_threshold = 30;
+          };
         };
       };
-      services.adminer.enable = true;
-      processes.adminer.process-compose.depends_on.postgres.condition = "process_healthy";
-      processes.generate-default-db.exec = "uv run python -m fushigi_backend.tools_main";
-      processes.generate-default-db.process-compose = {
-        environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
-        depends_on.postgres.condition = "process_healthy";
-        working_dir = "./backend";
-      };
-      processes.backend.exec = "uv run uvicorn fushigi_backend.main:app --reload --host 0.0.0.0";
-      processes.backend.process-compose = {
-        environment = ["DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"];
-        depends_on.postgres.condition = "process_healthy";
-        depends_on.generate-default-db.condition = "process_completed_successfully";
-        working_dir = "./backend";
-      };
-      git-hooks.excludes = [".*srs.py"];
       git-hooks.hooks = {
-        mypy = {
-          enable = true;
-          entry = "uv run mypy";
-        };
-        ruff.enable = true;
-        taplo.enable = true;
-
-        check-builtin-literals.enable = true;
-        check-docstring-first.enable = true;
-        check-python.enable = true;
-        python-debug-statements.enable = true;
+        gofmt.enable = true;
+        golangci-lint.enable = true;
+        govet.enable = true;
       };
     }
     {
@@ -122,7 +101,7 @@
           then pkgs.iproute2mac
           else throw "${pkgs.stdenv.system} not supported";
       in ''
-        export VITE_API_BASE="http://$(${getIpCmd pkg}):8000"
+        export VITE_API_BASE="http://$(${getIpCmd pkg}):8080"
         bun --bun run dev --open
       '';
       processes.frontend.process-compose.working_dir = "./frontend";
