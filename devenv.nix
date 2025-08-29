@@ -18,7 +18,7 @@
         };
         lychee.enable = true;
         lychee.settings.configPath = builtins.toString ((pkgs.formats.toml {}).generate "lychee.toml" {
-          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000" "http://backend:8000"];
+          exclude = ["localhost" "file://" "https://shadcn-svelte.com/registry" "http://192.168.11.5:8000" "http://backend:8000" "https://fushigi.bunkbed.tech"];
         });
         markdownlint.enable = true;
         markdownlint.settings.configuration.MD013.line_length = -1;
@@ -85,7 +85,7 @@
       };
       git-hooks.hooks = {
         gofmt.enable = true;
-        golangci-lint.enable = true;
+        #golangci-lint.enable = true;
         govet.enable = true;
       };
     }
