@@ -1,0 +1,59 @@
+---
+services:
+
+  pocketbase:
+    build:
+      context: ./pocketbase
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, wget, --spider, -q, http://localhost:8090/api/health]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    volumes:
+      - pb_data:/pb/pb_data
+    labels:
+      - traefik.http.routers.pocketbase.rule=Host(`pocketbase.localhost`)
+      - traefik.http.services.pocketbase.loadbalancer.server.port=8090
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      pocketbase:
+        condition: service_healthy
+    environment:
+      VITE_API_BASE: http://pocketbase.localhost
+    volumes:
+      - ./frontend/src:/app/src:cached
+      - ./frontend/static:/app/static:cached
+      - ./frontend/components.json:/app/components.json:cached
+      - ./frontend/svelte.config.js:/app/svelte.config.js:cached
+      - ./frontend/vite.config.ts:/app/vite.config.ts:cached
+      - ./frontend/tsconfig.json:/app/tsconfig.json:cached
+    labels:
+      - traefik.http.routers.fushigi.rule=Host(`fushigi.localhost`)
+      - traefik.http.services.frontend.loadbalancer.server.port=5173
+
+  traefik:
+    image: traefik:v3.5
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  whoami:
+    image: traefik/whoami
+    labels:
+      - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
+
+volumes:
+  pb_data:
