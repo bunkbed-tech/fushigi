@@ -67,6 +67,7 @@ services:
     image: traefik:v3.5
     labels:
       # Extra security features from ai
+      - traefik.enable=true
       - traefik.http.middlewares.security.headers.referrerPolicy=strict-origin-when-cross-origin
       - traefik.http.middlewares.security.headers.frameDeny=true
       - traefik.http.middlewares.security.headers.contentTypeNosniff=true
