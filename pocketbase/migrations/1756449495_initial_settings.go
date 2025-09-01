@@ -26,7 +26,7 @@ func init() {
 		settings.SMTP.Enabled = true
 		settings.SMTP.Host = "smtp.gmail.com"
 		settings.SMTP.Port = 587
-		settings.SMTP.Username = os.Getenv("SMTP_USERNAME")
+		settings.SMTP.Username = os.Getenv("SMTP_EMAIL")
 		settings.SMTP.Password = os.Getenv("SMTP_PASSWORD")
 		settings.SMTP.TLS = true
 

@@ -15,7 +15,7 @@ services:
     environment:
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_USERNAME: ${SMTP_EMAIL}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://fushigi.bunkbed.tech
@@ -46,7 +46,7 @@ services:
     environment:
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_USERNAME: ${SMTP_EMAIL}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://demo.fushigi.bunkbed.tech
