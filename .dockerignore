@@ -1,10 +1,22 @@
-__pycache__/
-*.pyc
-.venv/
-*.db
-.env*
-.git
+# build
+target/
 build/
-*.egg-info/
+node_modules/
+pb_data/
+*.db
+
+# dev folders
+.git/
+.venv/
+.devenv*
+devenv.local.nix
+.direnv
+.pre-commit-config.yaml
+
+# dotenv environment variable files
+.env*
+!.envrc
+!.env.example
+
+# finder (MacOS) folder config -- argh!
 .DS_Store
-*/node_modules/

@@ -1,7 +1,7 @@
 ---
 services:
 
-  pocketbase:
+  db:
     build:
       context: ./pocketbase
       dockerfile: Dockerfile
@@ -12,21 +12,28 @@ services:
       retries: 5
       start_period: 30s
       timeout: 5s
+    environment:
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
+    ports:
+      - 8090:8090
     volumes:
       - pb_data:/pb/pb_data
-    labels:
-      - traefik.http.routers.pocketbase.rule=Host(`pocketbase.localhost`)
-      - traefik.http.services.pocketbase.loadbalancer.server.port=8090
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     depends_on:
-      pocketbase:
+      db:
         condition: service_healthy
     environment:
-      VITE_API_BASE: http://pocketbase.localhost
+      VITE_API_BASE: http://localhost:8090
+    ports:
+      - 5173:5173
     volumes:
       - ./frontend/src:/app/src:cached
       - ./frontend/static:/app/static:cached
@@ -34,26 +41,6 @@ services:
       - ./frontend/svelte.config.js:/app/svelte.config.js:cached
       - ./frontend/vite.config.ts:/app/vite.config.ts:cached
       - ./frontend/tsconfig.json:/app/tsconfig.json:cached
-    labels:
-      - traefik.http.routers.fushigi.rule=Host(`fushigi.localhost`)
-      - traefik.http.services.frontend.loadbalancer.server.port=5173
-
-  traefik:
-    image: traefik:v3.5
-    command:
-      - --api.insecure=true
-      - --providers.docker=true
-      - --entrypoints.web.address=:80
-    ports:
-      - 80:80
-      - 8080:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
-  whoami:
-    image: traefik/whoami
-    labels:
-      - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
 
 volumes:
   pb_data:
