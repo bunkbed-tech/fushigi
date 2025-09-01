@@ -2,77 +2,33 @@
 services:
 
   db:
-    image: postgres:17
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: password
+    build:
+      context: ./pocketbase
+      dockerfile: Dockerfile
+    restart: unless-stopped
     healthcheck:
-      test: [CMD, pg_isready, -U, postgres, -d, postgres, -q]
+      test: [CMD, wget, --spider, -q, http://localhost:8090/api/health]
       interval: 10s
       retries: 5
       start_period: 30s
       timeout: 5s
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-      - ./backend/sql:/docker-entrypoint-initdb.d
-
-  test-db-tools:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    volumes:
-      - ./backend:/app/backend
-    working_dir: /app/backend
-    command: uv run pytest
-
-  generate-default-db:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    volumes:
-      - ./backend:/app/backend
-    working_dir: /app/backend
-    command: uv run python -m fushigi_backend.tools_main
-    restart: "no"
-    depends_on:
-      db:
-        condition: service_healthy
-      test-db-tools:
-        condition: service_completed_successfully
-
-  backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    volumes:
-      - ./backend:/app/backend
-    command:
-      - uv
-      - run
-      - uvicorn
-      - fushigi_backend.main:app
-      - --host
-      - 0.0.0.0
-      - --port
-      - "8000"
-      - --reload
-    working_dir: /app/backend
+    environment:
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SMTP_USERNAME: ${SMTP_EMAIL}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
     ports:
-      - 8000:8000
-    depends_on:
-      db:
-        condition: service_healthy
+      - 8090:8090
+    volumes:
+      - pb_data:/pb/pb_data
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    depends_on:
-      - backend
     environment:
-      VITE_API_BASE: "http://backend:8000"
+      VITE_API_BASE: http://localhost:8090
     ports:
       - 5173:5173
     volumes:
@@ -83,14 +39,5 @@ services:
       - ./frontend/vite.config.ts:/app/vite.config.ts:cached
       - ./frontend/tsconfig.json:/app/tsconfig.json:cached
 
-  adminer:
-    image: adminer
-    restart: always
-    depends_on:
-      db:
-        condition: service_healthy
-    ports:
-      - 8080:8080
-
 volumes:
-  pg_data:
+  pb_data:

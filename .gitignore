@@ -1,25 +1,38 @@
-# build and temporary dev stuff
-.venv/
+# build
 target/
-postgres_data/
-*.sqlx/
-__pycache__/
-*.egg-info/
 build/
+pb_data/
+node_modules/
+
+# dev folders
+.venv/
+.devenv*
+devenv.local.nix
+.direnv
+.pre-commit-config.yaml
 
 # dotenv environment variable files
-.env*
-!.envrc
+.env
+.env.*
+!.env.example
+!.env.test
 
 # finder (MacOS) folder config -- argh!
 .DS_Store
+Thumbs.db
 
-# Devenv
-.devenv*
-devenv.local.nix
+# other potential frontend related output files
+.output
+.vercel
+.netlify
+.wrangler
+.svelte-kit
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
 
-# direnv
-.direnv
-
-# pre-commit
-.pre-commit-config.yaml
+# swift development related settings files
+*.xcworkspace
+xcuserdata/
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcuserstate

@@ -1,0 +1,104 @@
+---
+services:
+
+  db:
+    build:
+      context: .
+      dockerfile: pocketbase/Dockerfile.prod
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, wget, --spider, -q, http://localhost:8090/api/health]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    environment:
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SMTP_USERNAME: ${SMTP_EMAIL}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
+      VITE_API_BASE: https://fushigi.bunkbed.tech
+      IS_PROD: true
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.db.rule=Host(`fushigi.bunkbed.tech`)
+      - traefik.http.services.db.loadbalancer.server.port=8090
+      - traefik.http.routers.db.entrypoints=websecure
+      - traefik.http.routers.db.tls.certresolver=myresolver
+      - traefik.http.routers.db.middlewares=security
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+  demo:
+    build:
+      context: .
+      dockerfile: pocketbase/Dockerfile.prod
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, wget, --spider, -q, http://localhost:8090/api/health]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    environment:
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      SMTP_USERNAME: ${SMTP_EMAIL}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
+      VITE_API_BASE: https://demo.fushigi.bunkbed.tech
+      IS_PROD: false
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.demo.rule=Host(`demo.fushigi.bunkbed.tech`)
+      - traefik.http.services.demo.loadbalancer.server.port=8090
+      - traefik.http.routers.demo.entrypoints=websecure
+      - traefik.http.routers.demo.tls.certresolver=myresolver
+      - traefik.http.routers.demo.middlewares=security
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: 1
+
+  traefik:
+    image: traefik:v3.5
+    labels:
+      # Extra security features from ai
+      - traefik.enable=true
+      - traefik.http.middlewares.security.headers.referrerPolicy=strict-origin-when-cross-origin
+      - traefik.http.middlewares.security.headers.frameDeny=true
+      - traefik.http.middlewares.security.headers.contentTypeNosniff=true
+      - traefik.http.middlewares.security.headers.browserXssFilter=true
+    command:
+      # - --log.level=DEBUG
+      # - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entryPoints.websecure.address=:443
+      # Force to always use https (TODO: is the middleware better?)
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.web.http.redirections.entryPoint.permanent=true
+      # Issue certificates with Let's Encrypt
+      - --certificatesresolvers.myresolver.acme.httpchallenge=true
+      - --certificatesresolvers.myresolver.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesresolvers.myresolver.acme.email=webmaster@bunkbed.tech
+      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3

@@ -1,0 +1,42 @@
+# ---
+# Layer 1: Build frontend
+FROM oven/bun:1.1 AS frontend-build
+
+WORKDIR /app
+
+COPY frontend/package.json frontend/bun.lock ./
+
+RUN bun install
+
+COPY frontend/src ./src
+COPY frontend/static ./static
+COPY frontend/vite.config.ts frontend/tsconfig.json frontend/svelte.config.js frontend/components.json ./
+
+RUN bun run build
+
+# ---
+# Layer 2: Build PocketBase binary with defaults
+FROM golang:1.24.5-alpine AS backend-build
+
+WORKDIR /app
+
+COPY pocketbase/go.mod pocketbase/go.sum ./
+RUN go mod download
+
+COPY pocketbase/*.go ./
+COPY pocketbase/migrations ./migrations
+
+RUN go build -o pocketbase main.go
+
+# ---
+# Layer 3: Serve backend + frontend
+FROM alpine:3.20
+
+WORKDIR /pb
+
+COPY --from=backend-build /app/pocketbase /pb/pocketbase
+COPY --from=frontend-build /app/build /pb/pb_public
+
+EXPOSE 8090
+
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090", "--encryptionEnv=PB_ENCRYPTION_KEY"]

@@ -28,23 +28,7 @@ class SentenceStore: ObservableObject {
         self.modelContext = modelContext
     }
 
-//    func linkGrammar(_ grammarID: UUID, to journalID: UUID){
-//        // TODO
-//    }
-//
-//    func removeLink(sentenceID: UUID) {
-//        // TODO
-//    }
-//
-//    func getLinkedGrammar(for journalID: UUID) -> [SentenceLocal] {
-//        // TODO
-//    }
-//
-//    func getLinkedJournals(for grammarID: UUID) -> [SentenceLocal] {
-//        // TODO
-//    }
-
-    // MARK: - Internal sync logic
+    // MARK: - Sync Boilerplate
 
     /// Load sentence tags from local SwiftData storage
     func loadLocal() async {
@@ -120,8 +104,6 @@ extension SentenceStore: SyncableStore {
     typealias DataType = SentenceLocal
     var items: [SentenceLocal] { sentences }
 }
-
-// MARK: - Preview Helpers
 
 /// Preview and testing helpers
 extension SentenceStore {

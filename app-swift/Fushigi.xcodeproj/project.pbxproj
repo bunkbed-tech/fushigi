@@ -14,19 +14,11 @@
 			remoteGlobalIDString = F23724C32E3C9E7B001DF544;
 			remoteInfo = fushigi;
 		};
-		F23724E02E3C9E7C001DF544 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F23724BC2E3C9E7B001DF544 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F23724C32E3C9E7B001DF544;
-			remoteInfo = fushigi;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F28AB34A2E41FE5200D7B19C /* Fushigi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fushigi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28AB34B2E41FE5200D7B19C /* FushigiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FushigiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F28AB34C2E41FE5200D7B19C /* FushigiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FushigiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,11 +48,6 @@
 			path = FushigiTests;
 			sourceTree = "<group>";
 		};
-		F23724E22E3C9E7C001DF544 /* FushigiUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FushigiUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +65,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F23724DC2E3C9E7C001DF544 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -93,10 +73,8 @@
 			children = (
 				F23724C62E3C9E7B001DF544 /* Fushigi */,
 				F23724D82E3C9E7C001DF544 /* FushigiTests */,
-				F23724E22E3C9E7C001DF544 /* FushigiUITests */,
 				F28AB34A2E41FE5200D7B19C /* Fushigi.app */,
 				F28AB34B2E41FE5200D7B19C /* FushigiTests.xctest */,
-				F28AB34C2E41FE5200D7B19C /* FushigiUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,29 +126,6 @@
 			productReference = F28AB34B2E41FE5200D7B19C /* FushigiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F23724DE2E3C9E7C001DF544 /* FushigiUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F23724F02E3C9E7C001DF544 /* Build configuration list for PBXNativeTarget "FushigiUITests" */;
-			buildPhases = (
-				F23724DB2E3C9E7C001DF544 /* Sources */,
-				F23724DC2E3C9E7C001DF544 /* Frameworks */,
-				F23724DD2E3C9E7C001DF544 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F23724E12E3C9E7C001DF544 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F23724E22E3C9E7C001DF544 /* FushigiUITests */,
-			);
-			name = FushigiUITests;
-			packageProductDependencies = (
-			);
-			productName = fushigiUITests;
-			productReference = F28AB34C2E41FE5200D7B19C /* FushigiUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,10 +143,6 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = F23724C32E3C9E7B001DF544;
 					};
-					F23724DE2E3C9E7C001DF544 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = F23724C32E3C9E7B001DF544;
-					};
 				};
 			};
 			buildConfigurationList = F23724BF2E3C9E7B001DF544 /* Build configuration list for PBXProject "Fushigi" */;
@@ -200,6 +151,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = F23724BB2E3C9E7B001DF544;
 			minimizedProjectReferenceProxies = 1;
@@ -210,7 +162,6 @@
 			targets = (
 				F23724C32E3C9E7B001DF544 /* Fushigi */,
 				F23724D42E3C9E7C001DF544 /* FushigiTests */,
-				F23724DE2E3C9E7C001DF544 /* FushigiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,13 +175,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F23724D32E3C9E7C001DF544 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F23724DD2E3C9E7C001DF544 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,13 +198,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F23724DB2E3C9E7C001DF544 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -268,11 +205,6 @@
 			isa = PBXTargetDependency;
 			target = F23724C32E3C9E7B001DF544 /* Fushigi */;
 			targetProxy = F23724D62E3C9E7C001DF544 /* PBXContainerItemProxy */;
-		};
-		F23724E12E3C9E7C001DF544 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F23724C32E3C9E7B001DF544 /* Fushigi */;
-			targetProxy = F23724E02E3C9E7C001DF544 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -285,15 +217,23 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = fushigi/fushigiDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W8HGPB4WWH;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fushigi/Info.plist;
@@ -309,12 +249,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigi;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.bunkbed.fushigi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
@@ -359,12 +299,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigi;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.bunkbed.fushigi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
@@ -507,8 +447,8 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W8HGPB4WWH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -531,8 +471,8 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W8HGPB4WWH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,52 +482,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fushigi.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fushigi";
-				XROS_DEPLOYMENT_TARGET = 2.4;
-			};
-			name = Release;
-		};
-		F23724F12E3C9E7C001DF544 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W8HGPB4WWH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigiUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = fushigi;
-				XROS_DEPLOYMENT_TARGET = 2.4;
-			};
-			name = Debug;
-		};
-		F23724F22E3C9E7C001DF544 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W8HGPB4WWH;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bunkbed.fushigiUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = fushigi;
 				XROS_DEPLOYMENT_TARGET = 2.4;
 			};
 			name = Release;
@@ -618,15 +512,6 @@
 			buildConfigurations = (
 				F23724EE2E3C9E7C001DF544 /* Debug */,
 				F23724EF2E3C9E7C001DF544 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F23724F02E3C9E7C001DF544 /* Build configuration list for PBXNativeTarget "FushigiUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F23724F12E3C9E7C001DF544 /* Debug */,
-				F23724F22E3C9E7C001DF544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
