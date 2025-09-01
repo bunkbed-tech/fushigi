@@ -176,7 +176,7 @@ struct LoginPage: View {
 
     /// Handle test credentials authentication
     private func authenticateWithEmail() {
-        guard !email.isEmpty && !password.isEmpty else { return }
+        guard !email.isEmpty, !password.isEmpty else { return }
 
         isAuthenticating = true
         errorMessage = nil
@@ -186,7 +186,7 @@ struct LoginPage: View {
                 provider: "email",
                 identityToken: password,
                 providerUserId: email,
-                email: email
+                email: email,
             )
 
             let result = await postAuthRequest(request)
@@ -198,7 +198,7 @@ struct LoginPage: View {
                         id: response.user.id,
                         provider: "email",
                         providerUserId: response.user.providerUserId,
-                        email: response.user.email
+                        email: response.user.email,
                     )
                     storeToken(response.token)
                     onLogin(session)
