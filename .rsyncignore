@@ -1,0 +1,9 @@
+.git
+.devenv
+.venv
+.DS_Store
+Thumbs.db
+node_modules
+target
+build
+*.log

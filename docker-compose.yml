@@ -27,9 +27,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       VITE_API_BASE: http://localhost:8090
     ports:
