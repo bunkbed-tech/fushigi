@@ -10,12 +10,17 @@ import Foundation
 /// Fetch all journal entries from FastAPI backend
 @MainActor
 func fetchJournalEntries() async -> Result<[JournalEntryRemote], Error> {
-    guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
+    guard let url = URL(string: "https://demo.fushigi.bunkbed.tech/api/collections/journal") else {
         return .failure(URLError(.badURL))
     }
 
     do {
-        let (data, _) = try await URLSession.shared.data(from: url)
+        var request = URLRequest(url: url)
+        if let token = KeychainHelper.shared.load(forKey: "pbToken") {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        let (data, _) = try await URLSession.shared.data(for: request)
         let entries = try JSONDecoder.iso8601withFractionalSeconds.decode([JournalEntryRemote].self, from: data)
         return .success(entries)
     } catch {
@@ -45,14 +50,17 @@ func submitJournalEntry(
 
     let journalEntry = JournalEntryCreate(title: trimmedTitle, content: trimmedContent, private: isPrivate)
 
-    guard let url = URL(string: "http://192.168.11.5:8000/api/journal") else {
+    guard let url = URL(string: "https://demo.fushigi.bunkbed.tech/api/collections/journal") else {
         return .failure(URLError(.badURL))
     }
 
     do {
         var request = URLRequest(url: url)
+        if let token = KeychainHelper.shared.load(forKey: "pbToken") {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(journalEntry)
 
         let (data, _) = try await URLSession.shared.data(for: request)

@@ -8,6 +8,13 @@
 import AuthenticationServices
 import SwiftUI
 
+// MARK: - Store Auth in Keychain
+
+@MainActor
+func storeToken(_ token: String) {
+    KeychainHelper.shared.save(token, forKey: "pbToken")
+}
+
 // MARK: - Login Page
 
 /// Simple barebones login page stub, eventually gate data load behind this and authorization
@@ -16,7 +23,7 @@ struct LoginPage: View {
     @State private var email = "tester@example.com"
 
     /// Placeholder for logging in with password, eventually want auth
-    @State private var password = "test123"
+    @State private var password = "password123"
 
     /// Flag to show loading animation during user authentication
     @State private var isAuthenticating = false
@@ -89,7 +96,7 @@ struct LoginPage: View {
                     }
 
                     Button {
-                        authenticateWithTestCredentials()
+                        authenticateWithEmail()
                     } label: {
                         HStack {
                             if isAuthenticating {
@@ -153,7 +160,7 @@ struct LoginPage: View {
                 print("LOG: Email: \(credential.email ?? "No email")")
 
                 Task {
-                    await verifyWithBackend(
+                    await authenticateWithAppleID(
                         identityToken: credential.identityToken,
                         user: credential.user,
                         email: credential.email,
@@ -168,29 +175,44 @@ struct LoginPage: View {
     }
 
     /// Handle test credentials authentication
-    private func authenticateWithTestCredentials() {
+    private func authenticateWithEmail() {
+        guard !email.isEmpty && !password.isEmpty else { return }
+
         isAuthenticating = true
         errorMessage = nil
 
-        // Simulate API call
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            // Check against hardcoded test user
-            if email == "tester@example.com", password == "test123" {
-                let testSession = UserSession(
-                    id: UUID(uuidString: "431a6bca-0e1b-4820-96cc-8f63b32fdcaf")!,
-                    provider: "hardcoded",
-                    providerUserId: "tester123",
-                    email: "tester@example.com",
-                )
-                onLogin(testSession)
-            } else {
-                errorMessage = "Invalid credentials. Use 'tester@example.com' and 'test123'"
+        Task {
+            let request = AuthRequest(
+                provider: "email",
+                identityToken: password,
+                providerUserId: email,
+                email: email
+            )
+
+            let result = await postAuthRequest(request)
+
+            await MainActor.run {
+                switch result {
+                case let .success(response):
+                    let session = UserSession(
+                        id: response.user.id,
+                        provider: "email",
+                        providerUserId: response.user.providerUserId,
+                        email: response.user.email
+                    )
+                    storeToken(response.token)
+                    onLogin(session)
+
+                case let .failure(error):
+                    errorMessage = "Login failed: \(error.localizedDescription)"
+                }
+                isAuthenticating = false
             }
-            isAuthenticating = false
         }
     }
 
-    private func verifyWithBackend(identityToken: Data?, user: String, email: String?) async {
+    /// Call pocketbase auth with apple token
+    private func authenticateWithAppleID(identityToken: Data?, user: String, email: String?) async {
         guard let identityToken else {
             await MainActor.run {
                 errorMessage = "Missing identity token"
@@ -225,6 +247,7 @@ struct LoginPage: View {
                     providerUserId: response.user.providerUserId,
                     email: response.user.email,
                 )
+                storeToken(response.token)
                 isAuthenticating = false
                 onLogin(session)
 

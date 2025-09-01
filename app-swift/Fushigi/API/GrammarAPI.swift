@@ -43,12 +43,17 @@ class MockRemoteGrammarDataService: RemoteGrammarDataServiceProtocol {
 /// Fetch all grammar points from FastAPI backend
 @MainActor
 func fetchGrammarOnAPI() async -> Result<[GrammarPointRemote], Error> {
-    guard let url = URL(string: "http://192.168.11.5:8000/api/grammar") else {
+    guard let url = URL(string: "https://demo.fushigi.bunkbed.tech/api/collections/grammar") else {
         return .failure(URLError(.badURL))
     }
 
     do {
-        let (data, _) = try await URLSession.shared.data(from: url)
+        var request = URLRequest(url: url)
+        if let token = KeychainHelper.shared.load(forKey: "pbToken") {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        let (data, _) = try await URLSession.shared.data(for: request)
         let points = try JSONDecoder().decode([GrammarPointRemote].self, from: data)
         return .success(points)
     } catch {

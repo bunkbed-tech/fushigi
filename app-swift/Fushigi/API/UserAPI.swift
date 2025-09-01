@@ -9,7 +9,17 @@ import Foundation
 
 @MainActor
 func postAuthRequest(_ login: AuthRequest) async -> Result<AuthResponse, Error> {
-    guard let url = URL(string: "http://192.168.11.5:8000/auth/oauth") else {
+    let endpoint: String
+    switch login.provider.lowercased() {
+    case "apple":
+        endpoint = "https://demo.fushigi.bunkbed.tech/api/collections/users/auth-with-oauth2"
+    case "email":
+        endpoint = "https://demo.fushigi.bunkbed.tech/api/collections/users/auth-with-password"
+    default:
+        return .failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unsupported provider"]))
+    }
+
+    guard let url = URL(string: endpoint) else {
         return .failure(URLError(.badURL))
     }
 
