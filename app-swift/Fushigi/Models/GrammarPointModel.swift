@@ -8,6 +8,14 @@
 import Foundation
 import SwiftData
 
+/// Grammar for model for simple submission to backend
+struct GrammarPointCreate: Codable {
+    let context: String
+    let usage: String
+    let meaning: String
+    let tags: [String]
+}
+
 /// Grammar point model for remote PostgreSQL database
 struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable, Encodable {
     let id: UUID

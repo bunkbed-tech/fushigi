@@ -11,8 +11,8 @@ import SwiftUI
 // MARK: - Store Auth in Keychain
 
 struct LoginPage: View {
-    @State private var email = ""
-    @State private var password = ""
+    @State private var email = "tester@example.com" // for now, hardcode
+    @State private var password = "password123" // same
     @State private var isAuthenticating = false
     @State private var errorMessage: String?
 

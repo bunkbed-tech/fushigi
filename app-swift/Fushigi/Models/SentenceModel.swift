@@ -8,6 +8,11 @@
 import Foundation
 import SwiftData
 
+/// Sentence for model for simple submission to backend
+struct SentenceCreate: Codable {
+    let content: String
+}
+
 /// Sentence model for remote PostgreSQL database
 struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable, Encodable {
     let id: UUID

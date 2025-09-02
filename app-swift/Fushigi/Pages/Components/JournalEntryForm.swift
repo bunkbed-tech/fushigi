@@ -27,6 +27,9 @@ struct JournalEntryForm: View {
     /// Saving state to disable UI during operations
     @Binding var isSaving: Bool
 
+    /// Centralized journal repository with synchronization capabilities
+    @EnvironmentObject var journalStore: JournalStore
+
     /// Focus state for title field
     @FocusState private var isTitleFocused: Bool
 
@@ -133,11 +136,8 @@ struct JournalEntryForm: View {
         statusMessage = nil
         defer { isSaving = false }
 
-        let result = await submitJournalEntry(
-            title: entryTitle,
-            content: entryContent,
-            isPrivate: isPrivateEntry,
-        )
+        let newItem = JournalEntryCreate(title: entryTitle, content: entryContent, private: isPrivateEntry)
+        let result = await journalStore.service.postItem(newItem)
 
         switch result {
         case let .success(message):

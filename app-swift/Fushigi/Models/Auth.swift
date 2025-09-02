@@ -37,7 +37,7 @@ struct AppleAuthRequest: Codable {
         provider = "apple"
         code = identityToken
         codeVerifier = userID
-        redirectURL = "http://demo.fushigi.bunkbed.tech/api/oauth2-redirect"
+        redirectURL = "\(APIConfig.currentBaseURL)/api/oauth2-redirect"
     }
 }
 

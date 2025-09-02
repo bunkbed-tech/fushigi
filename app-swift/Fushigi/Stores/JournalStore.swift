@@ -27,9 +27,15 @@ class JournalStore: ObservableObject {
 
     let authManager: AuthManager
 
-    init(modelContext: ModelContext, authManager: AuthManager) {
+    let service: ProdRemoteService<JournalEntryRemote, JournalEntryCreate>
+
+    init(
+        modelContext: ModelContext,
+        authManager: AuthManager,
+    ) {
         self.modelContext = modelContext
         self.authManager = authManager
+        self.service = ProdRemoteService(endpoint: "journal", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags
@@ -48,7 +54,6 @@ class JournalStore: ObservableObject {
 
     // MARK: - Sync Boilerplate
 
-    /// Load grammar points from local SwiftData storage
     func loadLocal() async {
         guard let modelContext else { return }
         do {
@@ -60,35 +65,30 @@ class JournalStore: ObservableObject {
         }
     }
 
-    /// Sync journal entries from remote PostgreSQL database
     func syncWithRemote() async {
         setLoading()
 
-        let result = await fetchJournalEntries()
+        let result = await service.fetchItems()
         switch result {
-        case let .success(remoteJournalEntries):
-            await processRemoteJournalEntries(remoteJournalEntries)
+        case let .success(remoteItems):
+            await processRemoteItems(remoteItems)
             lastSyncDate = Date()
             handleSyncSuccess()
         case let .failure(error):
-            print("DEBUG: Failed to sync journal entries from PostgreSQL:", error)
+            print("DEBUG: Failed to sync journal entries from PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }
 
-    /// Process remote journal entries and update local storage
-    private func processRemoteJournalEntries(_ remoteJournalEntries: [JournalEntryRemote]) async {
+    private func processRemoteItems(_ remoteItems: [JournalEntryRemote]) async {
         guard let modelContext else { return }
-        for remote in remoteJournalEntries {
-            // Check if exists locally by checking postgres id and swift id
+        for remote in remoteItems {
             if let existing = journalEntries.first(where: { $0.id == remote.id }) {
-                // Update existing
                 existing.title = remote.title
                 existing.content = remote.content
                 existing.private = remote.private
                 existing.createdAt = remote.createdAt
             } else {
-                // Create new
                 let newItem = JournalEntryLocal(
                     id: remote.id,
                     title: remote.title,
@@ -101,16 +101,14 @@ class JournalStore: ObservableObject {
             }
         }
 
-        // Save to commit to permanent SwiftData storage
         do {
             try modelContext.save()
-            print("LOG: Synced \(remoteJournalEntries.count) local journal entries with PostgreSQL.")
+            print("LOG: Synced \(remoteItems.count) local journal entries with PocketBase.")
         } catch {
             print("DEBUG: Failed to save journal entries to local SwiftData:", error)
         }
     }
 
-    /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
         print("LOG: Refreshing data for JournalStore...")
         await loadLocal()

@@ -25,14 +25,19 @@ class SentenceStore: ObservableObject {
 
     let authManager: AuthManager
 
-    init(modelContext: ModelContext, authManager: AuthManager) {
+    let service: ProdRemoteService<SentenceRemote, SentenceCreate>
+
+    init(
+        modelContext: ModelContext,
+        authManager: AuthManager,
+    ) {
         self.modelContext = modelContext
         self.authManager = authManager
+        self.service = ProdRemoteService(endpoint: "sentences", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     // MARK: - Sync Boilerplate
 
-    /// Load sentence tags from local SwiftData storage
     func loadLocal() async {
         guard let modelContext else { return }
         do {
@@ -44,34 +49,29 @@ class SentenceStore: ObservableObject {
         }
     }
 
-    /// Sync sentences from remote PostgreSQL database
     func syncWithRemote() async {
         setLoading()
 
-        let result = await fetchSentences()
+        let result = await service.fetchItems()
         switch result {
-        case let .success(remoteSentences):
-            await processRemoteSentences(remoteSentences)
+        case let .success(remoteItems):
+            await processRemoteItems(remoteItems)
             lastSyncDate = Date()
         case let .failure(error):
-            print("DEBUG: Failed to sync sentence tags from PostgreSQL:", error)
+            print("DEBUG: Failed to sync sentence tags from PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }
 
-    /// Process remote sentences and update local storage
-    private func processRemoteSentences(_ remoteSentences: [SentenceRemote]) async {
+    private func processRemoteItems(_ remoteItems: [SentenceRemote]) async {
         guard let modelContext else { return }
-        for remote in remoteSentences {
-            // Check if exists locally by checking postgres id and swift id
+        for remote in remoteItems {
             if let existing = sentences.first(where: { $0.id == remote.id }) {
-                // Update existing
                 existing.journalEntryId = remote.journalEntryId
                 existing.grammarId = remote.grammarId
                 existing.content = remote.content
                 existing.createdAt = remote.createdAt
             } else {
-                // Create new
                 let newItem = SentenceLocal(
                     id: remote.id,
                     journalEntryId: remote.journalEntryId,
@@ -84,17 +84,15 @@ class SentenceStore: ObservableObject {
             }
         }
 
-        // Save to commit to permanent SwiftData storage
         do {
             try modelContext.save()
-            print("LOG: Synced \(remoteSentences.count) local sentence tags with PostgreSQL.")
+            print("LOG: Synced \(remoteItems.count) local sentence tags with PocketBase.")
             handleSyncSuccess()
         } catch {
             print("DEBUG: Failed to save sentence tags to local SwiftData:", error)
         }
     }
 
-    /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
         print("LOG: Refreshing data for SentenceStore...")
         await loadLocal()

@@ -40,27 +40,19 @@ class GrammarStore: ObservableObject {
     /// Last algorithmic subset update date
     private var lastAlgorithmicUpdate: Date?
 
-    /// In production, this will call the real API backend
-    private let remoteService: RemoteGrammarDataServiceProtocol
-
     let modelContext: ModelContext?
 
     let authManager: AuthManager
 
-    /// Production initializer
-    init(modelContext: ModelContext, authManager: AuthManager) {
+    let service: ProdRemoteService<GrammarPointRemote, GrammarPointCreate>
+
+    init(
+        modelContext: ModelContext,
+        authManager: AuthManager,
+    ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        remoteService = ProductionRemoteGrammarDataService()
-    }
-
-
-
-    /// Testing initializer with modelContext too
-    init(remoteService: RemoteGrammarDataServiceProtocol, modelContext: ModelContext?, authManager: AuthManager) {
-        self.remoteService = remoteService
-        self.modelContext = modelContext
-        self.authManager = authManager
+        self.service = ProdRemoteService(endpoint: "grammar", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     // MARK: - Helper Functions
@@ -107,79 +99,6 @@ class GrammarStore: ObservableObject {
         algorithmicGrammarItems.first { $0.id == id }
     }
 
-    // MARK: - Sync Boilerplate
-
-    /// Load grammar points from local SwiftData storage
-    func loadLocal() async {
-        guard let modelContext else { return }
-        do {
-            grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
-            print("LOG: Loaded \(grammarItems.count) grammar points from SwiftData")
-        } catch {
-            print("DEBUG: Failed to load local grammar points:", error)
-            handleLocalLoadFailure()
-        }
-    }
-
-    /// Sync grammar points from remote PostgreSQL database
-    func syncWithRemote() async {
-        setLoading()
-
-        let result = await remoteService.fetchGrammarPoints()
-        switch result {
-        case let .success(remotePoints):
-            await processRemotePoints(remotePoints)
-            lastSyncDate = Date()
-            handleSyncSuccess()
-        case let .failure(error):
-            print("DEBUG: Failed to sync grammar points from PostgreSQL:", error)
-            handleRemoteSyncFailure()
-        }
-    }
-
-    /// Process remote grammar points and update local storage
-    func processRemotePoints(_ remotePoints: [GrammarPointRemote]) async {
-        guard let modelContext else { return } // skip load when testing
-        for remote in remotePoints {
-            // Check if exists locally by checking postgres id and swift id
-            if let existing = grammarItems.first(where: { $0.id == remote.id }) {
-                // Update existing
-                existing.context = remote.context
-                existing.usage = remote.usage
-                existing.meaning = remote.meaning
-                existing.tags = remote.tags
-            } else {
-                // Create new
-                let newItem = GrammarPointLocal(
-                    id: remote.id,
-                    context: remote.context,
-                    usage: remote.usage,
-                    meaning: remote.meaning,
-                    tags: remote.tags,
-                )
-                modelContext.insert(newItem)
-                grammarItems.append(newItem)
-            }
-        }
-
-        // Save to commit to permanent SwiftData storage
-        do {
-            try modelContext.save()
-            print("LOG: Synced \(remotePoints.count) local grammar points with PostgreSQL.")
-        } catch {
-            print("DEBUG: Failed to save grammar points to local SwiftData:", error)
-        }
-    }
-
-    /// Manual force refresh for all grammar data with sync
-    func refresh() async {
-        print("LOG: Refreshing data for GrammarStore...")
-        await loadLocal()
-        await syncWithRemote()
-        updateRandomGrammarPoints(force: true)
-        updateAlgorithmicGrammarPoints(force: true)
-    }
-
     /// Manual force refresh of daily grammar only based on current mode without needing to sync
     func forceDailyRefresh(currentMode: SourceMode) {
         switch currentMode {
@@ -210,6 +129,79 @@ class GrammarStore: ObservableObject {
             lastAlgorithmicUpdate = today
             print("LOG: Picked \(algorithmicGrammarItems.count) new SRS grammar items.")
         }
+    }
+
+    // MARK: - Sync Boilerplate
+
+    /// Load grammar points from local SwiftData storage
+    func loadLocal() async {
+        guard let modelContext else { return }
+        do {
+            grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
+            print("LOG: Loaded \(grammarItems.count) grammar points from SwiftData")
+        } catch {
+            print("DEBUG: Failed to load local grammar points:", error)
+            handleLocalLoadFailure()
+        }
+    }
+
+    /// Sync grammar points from remote PostgreSQL database
+    func syncWithRemote() async {
+        setLoading()
+
+        let result = await service.fetchItems()
+        switch result {
+        case let .success(remoteItems):
+            await processRemoteItems(remoteItems)
+            lastSyncDate = Date()
+            handleSyncSuccess()
+        case let .failure(error):
+            print("DEBUG: Failed to sync grammar points from PostgreSQL:", error)
+            handleRemoteSyncFailure()
+        }
+    }
+
+    /// Process remote grammar points and update local storage
+    func processRemoteItems(_ remoteItems: [GrammarPointRemote]) async {
+        guard let modelContext else { return } // skip load when testing
+        for remote in remoteItems {
+            // Check if exists locally by checking postgres id and swift id
+            if let existing = grammarItems.first(where: { $0.id == remote.id }) {
+                // Update existing
+                existing.context = remote.context
+                existing.usage = remote.usage
+                existing.meaning = remote.meaning
+                existing.tags = remote.tags
+            } else {
+                // Create new
+                let newItem = GrammarPointLocal(
+                    id: remote.id,
+                    context: remote.context,
+                    usage: remote.usage,
+                    meaning: remote.meaning,
+                    tags: remote.tags,
+                )
+                modelContext.insert(newItem)
+                grammarItems.append(newItem)
+            }
+        }
+
+        // Save to commit to permanent SwiftData storage
+        do {
+            try modelContext.save()
+            print("LOG: Synced \(remoteItems.count) local grammar points with PocketBase.")
+        } catch {
+            print("DEBUG: Failed to save grammar points to local SwiftData:", error)
+        }
+    }
+
+    /// Manual force refresh for all grammar data with sync
+    func refresh() async {
+        print("LOG: Refreshing data for GrammarStore...")
+        await loadLocal()
+        await syncWithRemote()
+        updateRandomGrammarPoints(force: true)
+        updateAlgorithmicGrammarPoints(force: true)
     }
 }
 
