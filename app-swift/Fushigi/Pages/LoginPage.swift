@@ -10,31 +10,13 @@ import SwiftUI
 
 // MARK: - Store Auth in Keychain
 
-@MainActor
-func storeToken(_ token: String) {
-    KeychainHelper.shared.save(token, forKey: "pbToken")
-}
-
-// MARK: - Login Page
-
-/// Simple barebones login page stub, eventually gate data load behind this and authorization
 struct LoginPage: View {
-    /// Placeholder for logging in via email, eventually want auth
-    @State private var email = "tester@example.com"
-
-    /// Placeholder for logging in with password, eventually want auth
-    @State private var password = "password123"
-
-    /// Flag to show loading animation during user authentication
+    @State private var email = ""
+    @State private var password = ""
     @State private var isAuthenticating = false
-
-    /// Error, incorrect login, etc type error messages for user feedback
     @State private var errorMessage: String?
 
-    /// Callback when user successfully logs in
-    let onLogin: (UserSession) -> Void
-
-    // MARK: - Main View
+    @ObservedObject var authManager: AuthManager
 
     var body: some View {
         GeometryReader { _ in
@@ -47,24 +29,21 @@ struct LoginPage: View {
                         .scaledToFit()
                         .frame(width: UIConstants.Sizing.bigIcons, height: UIConstants.Sizing.bigIcons)
 
-                    VStack(spacing: UIConstants.Spacing.row) {
-                        Text("Master output through targeted journaling.")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                    }
+                    Text("Master output through targeted journaling.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
                 }
 
                 VStack(spacing: UIConstants.Spacing.content) {
-                    // Apple Sign In Button
                     SignInWithAppleButton(.signIn) { request in
                         request.requestedScopes = [.email]
                     } onCompletion: { result in
                         handleAppleSignIn(result)
                     }
                     .frame(width: 280, height: 45)
+                    .disabled(isAuthenticating)
 
-                    // OR divider
                     HStack {
                         Rectangle()
                             .fill(.secondary.opacity(0.3))
@@ -78,7 +57,6 @@ struct LoginPage: View {
                     }
                     .padding(.horizontal)
 
-                    // Temporary test login form
                     VStack(spacing: UIConstants.Spacing.section) {
                         TextField("Email", text: $email)
                             .textFieldStyle(.roundedBorder)
@@ -88,15 +66,17 @@ struct LoginPage: View {
                             .keyboardType(.emailAddress)
                         #endif
                             .frame(width: 280, height: 45)
+                            .disabled(isAuthenticating)
 
                         SecureField("Password", text: $password)
                             .textFieldStyle(.roundedBorder)
                             .textContentType(.password)
                             .frame(width: 280, height: 45)
+                            .disabled(isAuthenticating)
                     }
 
                     Button {
-                        authenticateWithEmail()
+                        handleEmailSignIn()
                     } label: {
                         HStack {
                             if isAuthenticating {
@@ -104,25 +84,24 @@ struct LoginPage: View {
                                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     .scaleEffect(0.8)
                             }
-                            Text(isAuthenticating ? "Signing in..." : "Sign In (Test)")
+                            Text(isAuthenticating ? "Signing in..." : "Sign In")
                         }
                         .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(email.isEmpty || password.isEmpty || isAuthenticating)
 
-                    // Show error message if exists
                     if let errorMessage {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .font(.caption)
+                            .multilineTextAlignment(.center)
                     }
                 }
                 .padding(.horizontal, UIConstants.Padding.largeIndent)
 
                 Spacer()
 
-                // Footer
                 VStack(spacing: UIConstants.Spacing.row) {
                     Text("Don't have an account?")
                         .font(.caption)
@@ -130,7 +109,6 @@ struct LoginPage: View {
 
                     Button("Sign Up") {
                         // TODO: Navigate to sign up
-                        print("TODO: Create sign up flow.")
                     }
                     .font(.caption)
                 }
@@ -147,122 +125,76 @@ struct LoginPage: View {
         }
     }
 
-    // MARK: - Authorization Actions
-
-    /// Handle Apple Sign-In authentication
     private func handleAppleSignIn(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
-            if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-                isAuthenticating = true
-
-                print("LOG: Apple ID: \(credential.user)")
-                print("LOG: Email: \(credential.email ?? "No email")")
-
-                Task {
-                    await authenticateWithAppleID(
-                        identityToken: credential.identityToken,
-                        user: credential.user,
-                        email: credential.email,
-                    )
-                }
-                isAuthenticating = false
+            guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                  let identityTokenData = credential.identityToken,
+                  let identityToken = String(data: identityTokenData, encoding: .utf8)
+            else {
+                errorMessage = "Failed to process Apple Sign-In credentials"
+                return
             }
+
+            let userID = credential.user
+
+            authenticateWithApple(identityToken: identityToken, userID: userID)
+
         case let .failure(error):
+            if let authError = error as? ASAuthorizationError,
+               authError.code == .canceled
+            {
+                return // User canceled, don't show error
+            }
             errorMessage = "Apple Sign-In failed: \(error.localizedDescription)"
-            print("Apple Sign-In error: \(error)")
         }
     }
 
-    /// Handle test credentials authentication
-    private func authenticateWithEmail() {
+    private func authenticateWithApple(identityToken: String, userID: String) {
+        isAuthenticating = true
+        errorMessage = nil
+
+        let request = AppleAuthRequest(identityToken: identityToken, userID: userID)
+
+        Task {
+            let result = await postAppleAuthRequest(request)
+
+            await MainActor.run {
+                handleAuthResult(result)
+            }
+        }
+    }
+
+    private func handleEmailSignIn() {
         guard !email.isEmpty, !password.isEmpty else { return }
 
         isAuthenticating = true
         errorMessage = nil
 
-        Task {
-            let request = AuthRequest(
-                provider: "email",
-                identityToken: password,
-                providerUserId: email,
-                email: email,
-            )
+        let request = EmailAuthRequest(identity: email, password: password)
 
-            let result = await postAuthRequest(request)
+        Task {
+            let result = await postEmailAuthRequest(request)
 
             await MainActor.run {
-                switch result {
-                case let .success(response):
-                    let session = UserSession(
-                        id: response.user.id,
-                        provider: "email",
-                        providerUserId: response.user.providerUserId,
-                        email: response.user.email,
-                    )
-                    storeToken(response.token)
-                    onLogin(session)
-
-                case let .failure(error):
-                    errorMessage = "Login failed: \(error.localizedDescription)"
-                }
-                isAuthenticating = false
+                handleAuthResult(result)
             }
         }
     }
 
-    /// Call pocketbase auth with apple token
-    private func authenticateWithAppleID(identityToken: Data?, user: String, email: String?) async {
-        guard let identityToken else {
-            await MainActor.run {
-                errorMessage = "Missing identity token"
-                isAuthenticating = false
-            }
-            return
-        }
+    private func handleAuthResult(_ result: Result<AuthResponse, AuthError>) {
+        isAuthenticating = false
 
-        guard let tokenString = String(data: identityToken, encoding: .utf8) else {
-            await MainActor.run {
-                errorMessage = "Invalid token format"
-                isAuthenticating = false
-            }
-            return
-        }
+        switch result {
+        case let .success(response):
+            authManager.login(with: response)
 
-        let request = AuthRequest(
-            provider: "apple",
-            identityToken: tokenString,
-            providerUserId: user,
-            email: email,
-        )
-
-        let result = await postAuthRequest(request)
-
-        await MainActor.run {
-            switch result {
-            case let .success(response):
-                let session = UserSession(
-                    id: response.user.id,
-                    provider: response.user.provider,
-                    providerUserId: response.user.providerUserId,
-                    email: response.user.email,
-                )
-                storeToken(response.token)
-                isAuthenticating = false
-                onLogin(session)
-
-            case let .failure(error):
-                errorMessage = "Authentication failed: \(error.localizedDescription)"
-                isAuthenticating = false
-            }
+        case let .failure(error):
+            errorMessage = error.localizedDescription
         }
     }
 }
 
-// MARK: - Previews
-
 #Preview("Login Page") {
-    LoginPage { session in
-        print("Logged in as: \(session.providerUserId)")
-    }
+    LoginPage(authManager: AuthManager())
 }

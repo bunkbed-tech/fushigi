@@ -43,25 +43,24 @@ class GrammarStore: ObservableObject {
     /// In production, this will call the real API backend
     private let remoteService: RemoteGrammarDataServiceProtocol
 
-    /// SwiftData database session for local persistence
     let modelContext: ModelContext?
 
+    let authManager: AuthManager
+
     /// Production initializer
-    init(modelContext: ModelContext) {
+    init(modelContext: ModelContext, authManager: AuthManager) {
         self.modelContext = modelContext
+        self.authManager = authManager
         remoteService = ProductionRemoteGrammarDataService()
     }
 
-//    /// Testing initializer
-//    init(remoteService: RemoteGrammarDataServiceProtocol) {
-//        self.modelContext = nil
-//        self.remoteService = remoteService
-//    }
+
 
     /// Testing initializer with modelContext too
-    init(remoteService: RemoteGrammarDataServiceProtocol, modelContext: ModelContext?) {
+    init(remoteService: RemoteGrammarDataServiceProtocol, modelContext: ModelContext?, authManager: AuthManager) {
         self.remoteService = remoteService
         self.modelContext = modelContext
+        self.authManager = authManager
     }
 
     // MARK: - Helper Functions

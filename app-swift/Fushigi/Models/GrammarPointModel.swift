@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 /// Grammar point model for remote PostgreSQL database
-struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable {
+struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable, Encodable {
     let id: UUID
     let context: String
     let usage: String

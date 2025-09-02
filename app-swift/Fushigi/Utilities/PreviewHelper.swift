@@ -25,9 +25,9 @@ enum PreviewHelper {
                 for: Schema([GrammarPointLocal.self, JournalEntryLocal.self, SentenceLocal.self]),
                 configurations: [ModelConfiguration(isStoredInMemoryOnly: true)],
             )
-            let grammarStore = GrammarStore(modelContext: container.mainContext)
-            let journalStore = JournalStore(modelContext: container.mainContext)
-            let sentenceStore = SentenceStore(modelContext: container.mainContext)
+            let grammarStore = GrammarStore(modelContext: container.mainContext, authManager: AuthManager())
+            let journalStore = JournalStore(modelContext: container.mainContext, authManager: AuthManager())
+            let sentenceStore = SentenceStore(modelContext: container.mainContext, authManager: AuthManager())
 
             // Configure store with fake data based on preview mode
             configureStoresForPreviewMode(

@@ -21,21 +21,12 @@ struct JournalEntryResponseID: Decodable {
 }
 
 /// Journal entry model for remote PostgreSQL database
-struct JournalEntryRemote: Identifiable, Decodable {
+struct JournalEntryRemote: Identifiable, Decodable, Encodable {
     let id: UUID
     let title: String
     let content: String
     let `private`: Bool
     let createdAt: Date
-    // let userId: UUID
-    // let grammarPoints: [String]
-    // let aiFeedback: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, title, content, `private`
-        case createdAt = "created_at"
-        // case userId = "user_id"
-    }
 }
 
 /// Grammar point model for local SwiftData storage

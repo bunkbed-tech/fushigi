@@ -5,32 +5,85 @@
 //  Created by Tahoe Schrader on 2025/08/27.
 //
 
-/// Represents authentication object required to perform auth
-struct AuthRequest: Codable {
-    /// Apple for users, hardcoded for testing, left open for future auth methods
-    let provider: String
+import Foundation
 
-    /// JWT provided by authorization system
-    let identityToken: String
+// Configuration
+enum APIConfig {
+    static let demoURL = "https://demo.fushigi.bunkbed.tech"
+    static let prodURL = "https://fushigi.bunkbed.tech"
 
-    /// Id provided by authorization system
-    let providerUserId: String
-
-    /// Optional email reference for currently undecided future social features
-    let email: String?
-
-    private enum CodingKeys: String, CodingKey {
-        case provider, email
-        case identityToken = "identity_token"
-        case providerUserId = "provider_user_id"
+    static var currentBaseURL: String {
+        // TODO: Check environment variable
+        #if DEBUG
+            return demoURL
+        #else
+            return prodURL
+        #endif
     }
 }
 
-/// Authorization response from PostgreSQL database
-struct AuthResponse: Decodable {
-    /// Object corresponding to entire user
-    let user: UserRemote
+struct EmailAuthRequest: Codable {
+    let identity: String
+    let password: String
+}
 
-    /// JWT provided by authorization system
+struct AppleAuthRequest: Codable {
+    let provider: String
+    let code: String
+    let codeVerifier: String
+    let redirectURL: String
+
+    init(identityToken: String, userID: String) {
+        provider = "apple"
+        code = identityToken
+        codeVerifier = userID
+        redirectURL = "http://demo.fushigi.bunkbed.tech/api/oauth2-redirect"
+    }
+}
+
+struct AuthRecord: Decodable {
+    let id: String
+    let email: String
+    let collectionId: String
+    let collectionName: String
+    let created: Date
+    let updated: Date
+    let verified: Bool
+    let emailVisibility: Bool
+    let avatar: String
+    let name: String
+}
+
+struct AuthResponse: Decodable {
+    let record: AuthRecord
     let token: String
+}
+
+struct PocketBaseError: Decodable {
+    let code: Int
+    let message: String
+    let data: [String: String]?
+}
+
+enum AuthError: LocalizedError {
+    case invalidCredentials
+    case networkError(String)
+    case serverError(String)
+    case decodingError
+    case tokenStorageError
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidCredentials:
+            "Invalid email or password"
+        case let .networkError(message):
+            "Network error: \(message)"
+        case let .serverError(message):
+            "Server error: \(message)"
+        case .decodingError:
+            "Unable to process server response"
+        case .tokenStorageError:
+            "Failed to store authentication token"
+        }
+    }
 }

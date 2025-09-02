@@ -23,11 +23,13 @@ class JournalStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
-    /// SwiftData database session for local persistence
-    let modelContext: ModelContext
+    let modelContext: ModelContext?
 
-    init(modelContext: ModelContext) {
+    let authManager: AuthManager
+
+    init(modelContext: ModelContext, authManager: AuthManager) {
         self.modelContext = modelContext
+        self.authManager = authManager
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags
@@ -48,6 +50,7 @@ class JournalStore: ObservableObject {
 
     /// Load grammar points from local SwiftData storage
     func loadLocal() async {
+        guard let modelContext else { return }
         do {
             journalEntries = try modelContext.fetch(FetchDescriptor<JournalEntryLocal>())
             print("LOG: Loaded \(journalEntries.count) journal items from local storage")
@@ -75,6 +78,7 @@ class JournalStore: ObservableObject {
 
     /// Process remote journal entries and update local storage
     private func processRemoteJournalEntries(_ remoteJournalEntries: [JournalEntryRemote]) async {
+        guard let modelContext else { return }
         for remote in remoteJournalEntries {
             // Check if exists locally by checking postgres id and swift id
             if let existing = journalEntries.first(where: { $0.id == remote.id }) {

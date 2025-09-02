@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 /// Sentence model for remote PostgreSQL database
-struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
+struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable, Encodable {
     let id: UUID
     let journalEntryId: UUID
     let grammarId: UUID
@@ -22,13 +22,6 @@ struct SentenceRemote: Identifiable, Decodable, Hashable, Sendable {
         grammarId = model.grammarId
         content = model.content
         createdAt = model.createdAt
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case id, content
-        case journalEntryId = "journal_entry_id"
-        case grammarId = "grammar_id"
-        case createdAt = "created_at"
     }
 }
 

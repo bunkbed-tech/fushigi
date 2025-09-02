@@ -5,9 +5,7 @@
 //  Created by Tahoe Schrader on 2025/08/01.
 //
 
-import SwiftData
 import SwiftUI
-import TipKit
 
 // MARK: - Fushigi App
 
@@ -15,18 +13,16 @@ import TipKit
 @main
 struct FushigiApp: App {
     /// Current login state of user
-    @State private var userSession: UserSession?
+    @StateObject private var authManager = AuthManager()
 
     var body: some Scene {
         WindowGroup {
-            if let session = userSession {
+            if authManager.isAuthenticated {
                 // User is authenticated - show main app
-                AuthenticatedView(userSession: session)
+                AuthenticatedView(authManager: authManager)
             } else {
                 // Show login screen
-                LoginPage { session in
-                    userSession = session
-                }
+                LoginPage(authManager: authManager)
             }
         }
     }
@@ -35,7 +31,5 @@ struct FushigiApp: App {
 // MARK: - Preview
 
 #Preview("Login Page") {
-    LoginPage { session in
-        print("Preview login: \(session.providerUserId)")
-    }
+    LoginPage(authManager: AuthManager())
 }

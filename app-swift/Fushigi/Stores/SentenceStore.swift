@@ -21,17 +21,20 @@ class SentenceStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
-    /// SwiftData database session for local persistence
-    let modelContext: ModelContext
+    let modelContext: ModelContext?
 
-    init(modelContext: ModelContext) {
+    let authManager: AuthManager
+
+    init(modelContext: ModelContext, authManager: AuthManager) {
         self.modelContext = modelContext
+        self.authManager = authManager
     }
 
     // MARK: - Sync Boilerplate
 
     /// Load sentence tags from local SwiftData storage
     func loadLocal() async {
+        guard let modelContext else { return }
         do {
             sentences = try modelContext.fetch(FetchDescriptor<SentenceLocal>())
             print("LOG: Loaded \(sentences.count) sentence tags from local storage")
@@ -58,6 +61,7 @@ class SentenceStore: ObservableObject {
 
     /// Process remote sentences and update local storage
     private func processRemoteSentences(_ remoteSentences: [SentenceRemote]) async {
+        guard let modelContext else { return }
         for remote in remoteSentences {
             // Check if exists locally by checking postgres id and swift id
             if let existing = sentences.first(where: { $0.id == remote.id }) {
