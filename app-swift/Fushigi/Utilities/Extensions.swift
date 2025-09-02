@@ -26,6 +26,16 @@ extension JSONDecoder {
         }
         return decoder
     }
+
+    // JSONDecoder configured for PocketBase which has human readable format
+    static var pocketBase: JSONDecoder {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return decoder
+    }
 }
 
 extension View {

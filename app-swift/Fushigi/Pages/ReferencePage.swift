@@ -18,7 +18,7 @@ struct ReferencePage: View {
     @EnvironmentObject var grammarStore: GrammarStore
 
     /// Currently selected grammar point for detailed examination
-    @State private var selectedGrammarID: UUID?
+    @State private var selectedGrammarID: String?
 
     /// Controls the settings sheet for practice content preferences
     @State private var showingSettings: Bool = false

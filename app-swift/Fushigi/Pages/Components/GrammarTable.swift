@@ -13,7 +13,7 @@ struct GrammarTable: View {
     @EnvironmentObject var grammarStore: GrammarStore
 
     /// Currently selected grammar point ID
-    @Binding var selectedGrammarID: UUID?
+    @Binding var selectedGrammarID: String?
 
     /// Controls inspector visibility
     @Binding var showingInspector: Bool

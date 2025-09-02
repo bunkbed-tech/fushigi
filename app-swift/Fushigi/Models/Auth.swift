@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 enum AppEnvironment: String {
     case demo
@@ -19,13 +20,13 @@ enum AppEnvironment: String {
     }
 }
 
-struct APIConfig {
+enum APIConfig {
     static var baseURL: String {
         switch AppEnvironment.current {
         case .demo:
-            return "https://demo.fushigi.bunkbed.tech"
+            "https://demo.fushigi.bunkbed.tech"
         case .prod:
-            return "https://fushigi.bunkbed.tech"
+            "https://fushigi.bunkbed.tech"
         }
     }
 }
@@ -73,25 +74,43 @@ struct PocketBaseError: Decodable {
     let data: [String: String]?
 }
 
-enum AuthError: LocalizedError {
-    case invalidCredentials
-    case networkError(String)
-    case serverError(String)
-    case decodingError
-    case tokenStorageError
+enum AuthError: Error, LocalizedError {
+    case invalidCredentials(String, underlying: Error? = nil)
+    case networkError(String, underlying: Error? = nil)
+    case serverError(String, underlying: Error? = nil)
+    case decodingError(String, underlying: Error? = nil)
+    case tokenStorageError(String, underlying: Error? = nil)
 
     var errorDescription: String? {
         switch self {
-        case .invalidCredentials:
-            "Invalid email or password"
-        case let .networkError(message):
-            "Network error: \(message)"
-        case let .serverError(message):
-            "Server error: \(message)"
-        case .decodingError:
-            "Unable to process server response"
-        case .tokenStorageError:
-            "Failed to store authentication token"
+        case let .invalidCredentials(msg, underlying),
+             let .networkError(msg, underlying),
+             let .serverError(msg, underlying),
+             let .decodingError(msg, underlying),
+             let .tokenStorageError(msg, underlying):
+            "\(msg)" + (underlying.map { " (\($0))" } ?? "")
         }
+    }
+}
+
+@Model
+final class User {
+    @Attribute var id: String = UUID().uuidString
+    var email: String = ""
+    var name: String = ""
+    var created: Date = Date()
+    var updated: Date = Date()
+
+    init(id: UUID = UUID(),
+         email: String = "",
+         name: String = "",
+         created: Date = Date(),
+         updated: Date = Date())
+    {
+        self.id = id.uuidString
+        self.email = email
+        self.name = name
+        self.created = created
+        self.updated = updated
     }
 }

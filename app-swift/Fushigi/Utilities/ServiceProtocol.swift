@@ -28,7 +28,7 @@ class ProdRemoteService<Item: Decodable, Create: Encodable>: RemoteServiceProtoc
     init(
         endpoint: String,
         decoder: JSONDecoder = JSONDecoder(),
-        encoder: JSONEncoder = JSONEncoder()
+        encoder: JSONEncoder = JSONEncoder(),
     ) {
         self.endpoint = endpoint
         self.decoder = decoder
@@ -87,7 +87,7 @@ class MockRemoteService<Item: Decodable, Create: Encodable>: RemoteServiceProtoc
         fetchResult
     }
 
-    func postItem(_ newItem: Create) async -> Result<String, Error> {
+    func postItem(_: Create) async -> Result<String, Error> {
         postResult
     }
 

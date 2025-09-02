@@ -35,7 +35,7 @@ class JournalStore: ObservableObject {
     ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        self.service = ProdRemoteService(endpoint: "journal", decoder: JSONDecoder.iso8601withFractionalSeconds)
+        service = ProdRemoteService(endpoint: "journal", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     /// Filter grammar points by search text across usage, meaning, context, and tags

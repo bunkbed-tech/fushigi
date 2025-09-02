@@ -15,11 +15,6 @@ struct JournalEntryCreate: Codable {
     let `private`: Bool
 }
 
-/// Response containing new entry ID for displaying success messages
-struct JournalEntryResponseID: Decodable {
-    let id: UUID
-}
-
 /// Journal entry model for remote PostgreSQL database
 struct JournalEntryRemote: Identifiable, Decodable, Encodable {
     let id: UUID

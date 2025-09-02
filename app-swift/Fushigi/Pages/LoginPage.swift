@@ -96,7 +96,7 @@ struct LoginPage: View {
                     VStack(spacing: UIConstants.Spacing.section) {
                         TextField(
                             "Email",
-                            text: AppEnvironment.current == .prod ? $email : .constant("tester@example.com")
+                            text: AppEnvironment.current == .prod ? $email : .constant("tester@example.com"),
                         )
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.emailAddress)
@@ -104,12 +104,12 @@ struct LoginPage: View {
                             .autocapitalization(.none)
                             .keyboardType(.emailAddress)
                         #endif
-                        .frame(width: 280, height: 45)
-                        .disabled(shouldDisableInput)
+                            .frame(width: 280, height: 45)
+                            .disabled(shouldDisableInput)
 
                         SecureField(
                             "Password",
-                            text: AppEnvironment.current == .prod ? $password : .constant("password123")
+                            text: AppEnvironment.current == .prod ? $password : .constant("password123"),
                         )
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.password)

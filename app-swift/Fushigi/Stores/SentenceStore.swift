@@ -33,7 +33,7 @@ class SentenceStore: ObservableObject {
     ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        self.service = ProdRemoteService(endpoint: "sentences", decoder: JSONDecoder.iso8601withFractionalSeconds)
+        service = ProdRemoteService(endpoint: "sentences", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     // MARK: - Sync Boilerplate

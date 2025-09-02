@@ -52,7 +52,7 @@ class GrammarStore: ObservableObject {
     ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        self.service = ProdRemoteService(endpoint: "grammar", decoder: JSONDecoder.iso8601withFractionalSeconds)
+        service = ProdRemoteService(endpoint: "grammar", decoder: JSONDecoder.iso8601withFractionalSeconds)
     }
 
     // MARK: - Helper Functions
@@ -84,18 +84,18 @@ class GrammarStore: ObservableObject {
     }
 
     /// Get specific grammar point by ID
-    func getGrammarPoint(id: UUID?) -> GrammarPointLocal? {
+    func getGrammarPoint(id: String?) -> GrammarPointLocal? {
         guard let id else { return nil } // protect id
         return grammarItems.first { $0.id == id }
     }
 
     /// Get specific random grammar point by ID
-    func getRandomGrammarPoint(id: UUID?) -> GrammarPointLocal? {
+    func getRandomGrammarPoint(id: String?) -> GrammarPointLocal? {
         randomGrammarItems.first { $0.id == id }
     }
 
     /// Get specific SRS grammar point by ID
-    func getAlgorithmicGrammarPoint(id: UUID?) -> GrammarPointLocal? {
+    func getAlgorithmicGrammarPoint(id: String?) -> GrammarPointLocal? {
         algorithmicGrammarItems.first { $0.id == id }
     }
 
