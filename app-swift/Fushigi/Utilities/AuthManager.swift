@@ -50,7 +50,7 @@ class AuthManager: ObservableObject {
 
 @MainActor
 func postEmailAuthRequest(_ request: EmailAuthRequest) async -> Result<AuthResponse, AuthError> {
-    guard let url = URL(string: "\(APIConfig.currentBaseURL)/api/collections/users/auth-with-password") else {
+    guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/users/auth-with-password") else {
         return .failure(.networkError("Invalid URL"))
     }
 
@@ -91,7 +91,7 @@ func postEmailAuthRequest(_ request: EmailAuthRequest) async -> Result<AuthRespo
 
 @MainActor
 func postAppleAuthRequest(_ request: AppleAuthRequest) async -> Result<AuthResponse, AuthError> {
-    guard let url = URL(string: "\(APIConfig.currentBaseURL)/api/collections/users/auth-with-oauth2") else {
+    guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/users/auth-with-oauth2") else {
         return .failure(.networkError("Invalid URL"))
     }
 

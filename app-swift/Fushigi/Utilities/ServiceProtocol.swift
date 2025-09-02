@@ -36,7 +36,7 @@ class ProdRemoteService<Item: Decodable, Create: Encodable>: RemoteServiceProtoc
     }
 
     func fetchItems() async -> Result<[Item], Error> {
-        guard let url = URL(string: "\(APIConfig.currentBaseURL)/api/collections/\(endpoint)") else {
+        guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/\(endpoint)") else {
             return .failure(URLError(.badURL))
         }
 
@@ -55,7 +55,7 @@ class ProdRemoteService<Item: Decodable, Create: Encodable>: RemoteServiceProtoc
     }
 
     func postItem(_ newItem: Create) async -> Result<String, Error> {
-        guard let url = URL(string: "\(APIConfig.currentBaseURL)/api/collections/\(endpoint)") else {
+        guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/\(endpoint)") else {
             return .failure(URLError(.badURL))
         }
 

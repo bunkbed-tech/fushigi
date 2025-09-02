@@ -7,18 +7,26 @@
 
 import Foundation
 
-// Configuration
-enum APIConfig {
-    static let demoURL = "https://demo.fushigi.bunkbed.tech"
-    static let prodURL = "https://fushigi.bunkbed.tech"
+enum AppEnvironment: String {
+    case demo
+    case prod
 
-    static var currentBaseURL: String {
-        // TODO: Check environment variable
-        #if DEBUG
-            return demoURL
-        #else
-            return prodURL
-        #endif
+    static var current: AppEnvironment {
+        guard let value = ProcessInfo.processInfo.environment["APP_ENV"]?.lowercased() else {
+            return .demo
+        }
+        return AppEnvironment(rawValue: value) ?? .demo
+    }
+}
+
+struct APIConfig {
+    static var baseURL: String {
+        switch AppEnvironment.current {
+        case .demo:
+            return "https://demo.fushigi.bunkbed.tech"
+        case .prod:
+            return "https://fushigi.bunkbed.tech"
+        }
     }
 }
 
@@ -37,7 +45,7 @@ struct AppleAuthRequest: Codable {
         provider = "apple"
         code = identityToken
         codeVerifier = userID
-        redirectURL = "\(APIConfig.currentBaseURL)/api/oauth2-redirect"
+        redirectURL = "\(APIConfig.baseURL)/api/oauth2-redirect"
     }
 }
 

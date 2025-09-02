@@ -20,6 +20,7 @@ services:
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://fushigi.bunkbed.tech
       IS_PROD: true
+      APP_ENV: prod
     labels:
       - traefik.enable=true
       - traefik.http.routers.db.rule=Host(`fushigi.bunkbed.tech`)
@@ -52,6 +53,7 @@ services:
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://demo.fushigi.bunkbed.tech
       IS_PROD: false
+      APP_ENV: demo
     labels:
       - traefik.enable=true
       - traefik.http.routers.demo.rule=Host(`demo.fushigi.bunkbed.tech`)

@@ -8,15 +8,45 @@
 import AuthenticationServices
 import SwiftUI
 
-// MARK: - Store Auth in Keychain
-
 struct LoginPage: View {
-    @State private var email = "tester@example.com" // for now, hardcode
-    @State private var password = "password123" // same
+    @State private var email = ""
+    @State private var password = ""
     @State private var isAuthenticating = false
     @State private var errorMessage: String?
 
     @ObservedObject var authManager: AuthManager
+
+    init(authManager: AuthManager) {
+        self.authManager = authManager
+
+        if AppEnvironment.current != .prod {
+            _email = State(initialValue: "tester@example.com")
+            _password = State(initialValue: "password123")
+        } else {
+            _email = State(initialValue: "")
+            _password = State(initialValue: "")
+        }
+    }
+
+    private var shouldDisableLogin: Bool {
+        if isAuthenticating {
+            return true
+        }
+        if AppEnvironment.current == .prod {
+            return email.isEmpty || password.isEmpty
+        }
+        return false
+    }
+
+    private var shouldDisableInput: Bool {
+        if isAuthenticating {
+            return true
+        }
+        if AppEnvironment.current != .prod {
+            return true
+        }
+        return false
+    }
 
     var body: some View {
         GeometryReader { _ in
@@ -36,43 +66,55 @@ struct LoginPage: View {
                 }
 
                 VStack(spacing: UIConstants.Spacing.content) {
-                    SignInWithAppleButton(.signIn) { request in
-                        request.requestedScopes = [.email]
-                    } onCompletion: { result in
-                        handleAppleSignIn(result)
-                    }
-                    .frame(width: 280, height: 45)
-                    .disabled(isAuthenticating)
+                    if AppEnvironment.current == .prod {
+                        SignInWithAppleButton(.signIn) { request in
+                            request.requestedScopes = [.email]
+                        } onCompletion: { result in
+                            handleAppleSignIn(result)
+                        }
+                        .frame(width: 280, height: 45)
+                        .disabled(isAuthenticating)
 
-                    HStack {
-                        Rectangle()
-                            .fill(.secondary.opacity(0.3))
-                            .frame(height: 1)
-                        Text("OR")
-                            .font(.caption)
+                        HStack {
+                            Rectangle()
+                                .fill(.secondary.opacity(0.3))
+                                .frame(height: 1)
+                            Text("OR")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Rectangle()
+                                .fill(.secondary.opacity(0.3))
+                                .frame(height: 1)
+                        }
+                        .padding(.horizontal)
+                    } else {
+                        Text("DEMO VERSION")
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
-                        Rectangle()
-                            .fill(.secondary.opacity(0.3))
-                            .frame(height: 1)
                     }
-                    .padding(.horizontal)
 
                     VStack(spacing: UIConstants.Spacing.section) {
-                        TextField("Email", text: $email)
-                            .textFieldStyle(.roundedBorder)
-                            .textContentType(.emailAddress)
+                        TextField(
+                            "Email",
+                            text: AppEnvironment.current == .prod ? $email : .constant("tester@example.com")
+                        )
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.emailAddress)
                         #if os(iOS)
                             .autocapitalization(.none)
                             .keyboardType(.emailAddress)
                         #endif
-                            .frame(width: 280, height: 45)
-                            .disabled(isAuthenticating)
+                        .frame(width: 280, height: 45)
+                        .disabled(shouldDisableInput)
 
-                        SecureField("Password", text: $password)
-                            .textFieldStyle(.roundedBorder)
-                            .textContentType(.password)
-                            .frame(width: 280, height: 45)
-                            .disabled(isAuthenticating)
+                        SecureField(
+                            "Password",
+                            text: AppEnvironment.current == .prod ? $password : .constant("password123")
+                        )
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.password)
+                        .frame(width: 280, height: 45)
+                        .disabled(shouldDisableInput)
                     }
 
                     Button {
@@ -89,7 +131,7 @@ struct LoginPage: View {
                         .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(email.isEmpty || password.isEmpty || isAuthenticating)
+                    .disabled(shouldDisableLogin)
 
                     if let errorMessage {
                         Text(errorMessage)
@@ -111,6 +153,7 @@ struct LoginPage: View {
                         // TODO: Navigate to sign up
                     }
                     .font(.caption)
+                    .disabled(shouldDisableInput)
                 }
                 .padding(.bottom, UIConstants.Padding.largeIndent)
             }
