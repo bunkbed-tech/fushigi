@@ -19,7 +19,7 @@ struct LoginPage: View {
     init(authManager: AuthManager) {
         self.authManager = authManager
 
-        if AppEnvironment.current != .prod {
+        if APIConfig.mode == "DEMO" {
             _email = State(initialValue: "tester@example.com")
             _password = State(initialValue: "password123")
         } else {
@@ -32,7 +32,7 @@ struct LoginPage: View {
         if isAuthenticating {
             return true
         }
-        if AppEnvironment.current == .prod {
+        if APIConfig.mode != "DEMO" {
             return email.isEmpty || password.isEmpty
         }
         return false
@@ -42,7 +42,7 @@ struct LoginPage: View {
         if isAuthenticating {
             return true
         }
-        if AppEnvironment.current != .prod {
+        if APIConfig.mode == "DEMO" {
             return true
         }
         return false
@@ -66,7 +66,7 @@ struct LoginPage: View {
                 }
 
                 VStack(spacing: UIConstants.Spacing.content) {
-                    if AppEnvironment.current == .prod {
+                    if APIConfig.mode != "DEMO" {
                         SignInWithAppleButton(.signIn) { request in
                             request.requestedScopes = [.email]
                         } onCompletion: { result in
@@ -96,7 +96,7 @@ struct LoginPage: View {
                     VStack(spacing: UIConstants.Spacing.section) {
                         TextField(
                             "Email",
-                            text: AppEnvironment.current == .prod ? $email : .constant("tester@example.com"),
+                            text: APIConfig.mode != "DEMO" ? $email : .constant("tester@example.com"),
                         )
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.emailAddress)
@@ -109,7 +109,7 @@ struct LoginPage: View {
 
                         SecureField(
                             "Password",
-                            text: AppEnvironment.current == .prod ? $password : .constant("password123"),
+                            text: APIConfig.mode != "DEMO" ? $password : .constant("password123"),
                         )
                         .textFieldStyle(.roundedBorder)
                         .textContentType(.password)
