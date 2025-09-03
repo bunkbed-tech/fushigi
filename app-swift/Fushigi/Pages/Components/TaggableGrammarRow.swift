@@ -47,7 +47,7 @@ struct TaggableGrammarRow: View {
                 meaning: "while doing",
                 tags: ["simultaneous", "action"],
             ),
-            onTagSelected: { print("Tag selected for preview") },
+            onTagSelected: { print("PREVIEW: Tag selected") },
         )
 
         Divider()
@@ -60,7 +60,7 @@ struct TaggableGrammarRow: View {
                 meaning: "even if",
                 tags: ["conditional", "emphasis"],
             ),
-            onTagSelected: { print("Tag selected for preview") },
+            onTagSelected: { print("PREVIEW: Tag selected") },
         )
     }
     .padding()

@@ -33,7 +33,7 @@ class SentenceStore: ObservableObject {
     ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        service = ProdRemoteService(endpoint: "sentences", decoder: JSONDecoder.iso8601withFractionalSeconds)
+        service = ProdRemoteService(endpoint: "sentence", decoder: JSONDecoder.pocketBase)
     }
 
     // MARK: - Sync Boilerplate
@@ -44,7 +44,7 @@ class SentenceStore: ObservableObject {
             sentences = try modelContext.fetch(FetchDescriptor<SentenceLocal>())
             print("LOG: Loaded \(sentences.count) sentence tags from local storage")
         } catch {
-            print("DEBUG: Failed to load local sentence tags:", error)
+            print("ERROR: Failed to load local sentence tags:", error)
             handleLocalLoadFailure()
         }
     }
@@ -52,13 +52,13 @@ class SentenceStore: ObservableObject {
     func syncWithRemote() async {
         setLoading()
 
-        let result = await service.fetchItems()
+        let result = await service.fetchAllItems()
         switch result {
         case let .success(remoteItems):
             await processRemoteItems(remoteItems)
             lastSyncDate = Date()
         case let .failure(error):
-            print("DEBUG: Failed to sync sentence tags from PocketBase:", error)
+            print("ERROR: Failed to sync sentence tags from PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }
@@ -67,17 +67,21 @@ class SentenceStore: ObservableObject {
         guard let modelContext else { return }
         for remote in remoteItems {
             if let existing = sentences.first(where: { $0.id == remote.id }) {
-                existing.journalEntryId = remote.journalEntryId
-                existing.grammarId = remote.grammarId
+                existing.user = remote.user
+                existing.journalEntry = remote.journalEntry
+                existing.grammar = remote.grammar
                 existing.content = remote.content
-                existing.createdAt = remote.createdAt
+                existing.created = remote.created
+                existing.updated = remote.updated
             } else {
                 let newItem = SentenceLocal(
                     id: remote.id,
-                    journalEntryId: remote.journalEntryId,
-                    grammarId: remote.grammarId,
+                    user: remote.user,
+                    journalEntry: remote.journalEntry,
+                    grammar: remote.grammar,
                     content: remote.content,
-                    createdAt: remote.createdAt,
+                    created: remote.created,
+                    updated: remote.updated,
                 )
                 modelContext.insert(newItem)
                 sentences.append(newItem)
@@ -89,7 +93,7 @@ class SentenceStore: ObservableObject {
             print("LOG: Synced \(remoteItems.count) local sentence tags with PocketBase.")
             handleSyncSuccess()
         } catch {
-            print("DEBUG: Failed to save sentence tags to local SwiftData:", error)
+            print("ERROR: Failed to save sentence tags to local SwiftData:", error)
         }
     }
 
@@ -97,6 +101,15 @@ class SentenceStore: ObservableObject {
         print("LOG: Refreshing data for SentenceStore...")
         await loadLocal()
         await syncWithRemote()
+    }
+
+    /// Clear all in memory data
+    func clearInMemoryData() {
+        // Clear in-memory data (everything Published)
+        sentences.removeAll()
+        dataAvailability = .empty
+        systemHealth = .healthy
+        lastSyncDate = nil
     }
 }
 

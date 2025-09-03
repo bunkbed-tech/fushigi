@@ -136,8 +136,11 @@ struct JournalEntryForm: View {
         statusMessage = nil
         defer { isSaving = false }
 
-        let newItem = JournalEntryCreate(title: entryTitle, content: entryContent, private: isPrivateEntry)
-        let result = await journalStore.service.postItem(newItem)
+        let result = await journalStore.createEntry(
+            title: entryTitle,
+            content: entryContent,
+            isPrivate: isPrivateEntry,
+        )
 
         switch result {
         case let .success(message):
@@ -146,7 +149,7 @@ struct JournalEntryForm: View {
             print("LOG: Successfully posted journal entry.")
         case let .failure(error):
             statusMessage = "Error: \(error.localizedDescription)"
-            print("DEBUG: Failed to post journal entry:", error)
+            print("ERROR: Failed to post journal entry:", error)
         }
     }
 

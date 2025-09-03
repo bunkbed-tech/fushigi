@@ -68,10 +68,14 @@ extension View {
 
 extension View {
     /// Add fake datastore for Preview mode
-    func withPreviewStores(dataAvailability: DataAvailability = .available,
-                           systemHealth: SystemHealth = .healthy) -> some View
-    {
-        PreviewHelper.withStore(dataAvailability: dataAvailability, systemHealth: systemHealth) { _, _, _ in
+    func withPreviewStores(
+        dataAvailability: DataAvailability = .available,
+        systemHealth: SystemHealth = .healthy,
+    ) -> some View {
+        PreviewHelper.withStore(
+            dataAvailability: dataAvailability,
+            systemHealth: systemHealth,
+        ) { _, _, _ in
             self
         }
     }
@@ -82,4 +86,9 @@ extension View {
             self
         }
     }
+}
+
+// Add a logout checker to make wiping data stores easier
+extension Notification.Name {
+    static let userDidLogout = Notification.Name("userDidLogout")
 }

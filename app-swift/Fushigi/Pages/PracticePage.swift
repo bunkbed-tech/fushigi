@@ -73,7 +73,7 @@ struct PracticePage: View {
         case let .multiSelection(ranges):
             return ranges.ranges.map { String(entryContent[$0]) }.joined(separator: "\n")
         @unknown default:
-            print("Debug PracticeView: TextSelection: unknown case: \(selection.indices)")
+            print("ERROR: PracticeView: TextSelection: unknown case: \(selection.indices)")
             return ""
         }
     }
@@ -118,11 +118,16 @@ struct PracticePage: View {
             if isCompact {
                 settingsView
                     .presentationDetents([.medium, .large])
-            } else { settingsView }
+            } else {
+                settingsView
+            }
         }
         .sheet(isPresented: $showTagger) {
-            if isCompact { taggerView.presentationDetents([.medium, .large]) }
-            else { taggerView }
+            if isCompact {
+                taggerView.presentationDetents([.medium, .large])
+            } else {
+                taggerView
+            }
         }
         .toolbar {
             Button("Settings", systemImage: "gear") {

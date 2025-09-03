@@ -28,7 +28,7 @@ struct DetailedGrammar: View {
                 Spacer()
 
                 Button("Edit") {
-                    print("Editing grammar point. TODO: implement.")
+                    print("TODO: Editing grammar point...")
                 }
                 .buttonStyle(.borderedProminent)
             }

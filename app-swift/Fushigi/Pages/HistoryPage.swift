@@ -18,7 +18,7 @@ struct HistoryPage: View {
     @State private var errorMessage: String?
 
     /// Set of expanded journal entry IDs for detail view
-    @State private var expanded: Set<UUID> = []
+    @State private var expanded: Set<String> = []
 
     /// Search text binding from parent view
     @Binding var searchText: String
@@ -53,76 +53,7 @@ struct HistoryPage: View {
                         }
                     }
                     ForEach(journalEntries) { entry in
-                        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(entry.title)
-                                        .font(.headline)
-                                    Text(entry.createdAt.formatted())
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Image(systemName: expanded.contains(entry.id) ?
-                                    "chevron.down" : "chevron.right")
-                                    .animation(.none, value: expanded.contains(entry.id))
-                            }
-
-                            if expanded.contains(entry.id) {
-                                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                                    Text(entry.content)
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("Grammar Points:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.mint)
-                                        Text("• (placeholder) ～てしまう")
-                                        Text("• (placeholder) ～わけではない")
-                                    }
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("AI Feedback:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.purple)
-                                        Text("(placeholder) Try to avoid passive constructions.")
-                                    }
-                                }
-                                .padding(.leading)
-                            }
-                        }
-                        .contentShape(.rect)
-                        .onTapGesture { // hilarious animation...
-                            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
-                                toggleExpanded(for: entry.id)
-                            }
-                        }
-                        .listRowBackground(Color.clear)
-                        .swipeActions(edge: .trailing) {
-                            Button("Edit") {
-                                print("LOG: Share entry: \(entry.title)")
-                            }
-                            .tint(.gray)
-
-                            Button("Delete", role: .destructive) {
-                                if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
-                                    deleteEntry(at: IndexSet(integer: index))
-                                }
-                            }
-                            .tint(.red)
-                        }
-                        .swipeActions(edge: .leading) {
-                            Button("Pin") {
-                                // Pin/favorite action
-                                print("LOG: Pin entry: \(entry.title)")
-                            }
-                            .tint(.mint)
-
-                            Button("Share") {
-                                // Edit action
-                                print("LOG: Edit entry: \(entry.title)")
-                            }
-                            .tint(.purple)
-                        }
+                        journalItemDisclosure(for: entry)
                     }
                 }
                 .scrollDismissesKeyboard(.interactively)
@@ -159,10 +90,84 @@ struct HistoryPage: View {
         }
     }
 
+    @ViewBuilder
+    func journalItemDisclosure(for entry: JournalEntryLocal) -> some View {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(entry.title)
+                        .font(.headline)
+                    Text(entry.created.formatted())
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: expanded.contains(entry.id) ?
+                    "chevron.down" : "chevron.right")
+                    .animation(.none, value: expanded.contains(entry.id))
+            }
+
+            if expanded.contains(entry.id) {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                    Text(entry.content)
+
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                        Text("Grammar Points:")
+                            .font(.subheadline)
+                            .foregroundStyle(.mint)
+                        Text("• (placeholder) ～てしまう")
+                        Text("• (placeholder) ～わけではない")
+                    }
+
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                        Text("AI Feedback:")
+                            .font(.subheadline)
+                            .foregroundStyle(.purple)
+                        Text("(placeholder) Try to avoid passive constructions.")
+                    }
+                }
+                .padding(.leading)
+            }
+        }
+        .contentShape(.rect)
+        .onTapGesture { // hilarious animation...
+            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
+                toggleExpanded(for: entry.id)
+            }
+        }
+        .listRowBackground(Color.clear)
+        .swipeActions(edge: .trailing) {
+            Button("Edit") {
+                print("TODO: Share entry: \(entry.title)")
+            }
+            .tint(.gray)
+
+            Button("Delete", role: .destructive) {
+                if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
+                    deleteEntry(at: IndexSet(integer: index))
+                }
+            }
+            .tint(.red)
+        }
+        .swipeActions(edge: .leading) {
+            Button("Pin") {
+                // Pin/favorite action
+                print("TODO: Pin entry: \(entry.title)")
+            }
+            .tint(.mint)
+
+            Button("Share") {
+                // Edit action
+                print("TODO: Edit entry: \(entry.title)")
+            }
+            .tint(.purple)
+        }
+    }
+
     // MARK: - Helper Methods
 
     /// Toggle expanded state for journal entry
-    private func toggleExpanded(for id: UUID) {
+    private func toggleExpanded(for id: String) {
         if expanded.contains(id) {
             expanded.remove(id)
         } else {
@@ -174,7 +179,7 @@ struct HistoryPage: View {
     private func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
             let deletedEntry = journalEntries[index]
-            print("LOG: Pretending to delete: \(deletedEntry.title)")
+            print("TODO: Pretending to delete: \(deletedEntry.title)")
         }
     }
 }

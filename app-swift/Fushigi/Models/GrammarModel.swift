@@ -1,5 +1,5 @@
 //
-//  GrammarPointModel.swift
+//  GrammarModel.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 /// JSON value stored in database for Examples
-struct Example: Codable, Hashable {
+struct Example: Codable {
     let japanese: String
     let english: String
 }
@@ -23,13 +23,15 @@ struct GrammarPointCreate: Codable {
     let notes: String
     let nuance: String
     let examples: [Example]
+    let user: String
+    let language: String
 }
 
 /// Grammar point model for remote PocketBase database
-struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable, Encodable {
+struct GrammarPointRemote: Codable {
     let id: String
-    let user: String // User ID (can be empty string for default user)
-    let language: String // Language ID
+    let user: String
+    let language: String
     let usage: String
     let meaning: String
     let context: String
@@ -43,22 +45,13 @@ struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable, Encodabl
     // Optional expand field for when ?expand=user,language is used on the route
     let expand: ExpandedRelations?
 
-    struct ExpandedRelations: Codable, Hashable {
-        let user: ExpandedUser? // Full user object if expanded
+    struct ExpandedRelations: Codable {
+        let user: UserRemote?
         let language: ExpandedLanguage? // Full language object if expanded
     }
 
-    struct ExpandedUser: Codable, Hashable {
-        // More in depth model not necessary because not stored on device
-        let id: String
-        let email: String
-        let name: String
-        let created: Date
-        let updated: Date
-    }
-
-    struct ExpandedLanguage: Codable, Hashable {
-        // More in depth model not necessary because not stored on device
+    struct ExpandedLanguage: Codable {
+        // More in depth model not necessary yet
         let id: String
         let name: String
         let created: Date
@@ -86,8 +79,8 @@ struct GrammarPointRemote: Identifiable, Decodable, Hashable, Sendable, Encodabl
 @Model
 final class GrammarPointLocal {
     @Attribute var id: String = UUID().uuidString
-    var user: String? // Match PocketBase storing string ID
-    var language: String = "" // Match PocketBase storing string ID
+    var user: String?
+    var language: String = ""
     var context: String = ""
     var usage: String = ""
     var meaning: String = ""
@@ -98,6 +91,7 @@ final class GrammarPointLocal {
     var created: Date = Date()
     var updated: Date = Date()
 
+    // Convenience init for when making an ID in SwiftDataland
     init(id: UUID = UUID(),
          user: String? = nil,
          language: String = "",
@@ -125,6 +119,7 @@ final class GrammarPointLocal {
         self.updated = updated
     }
 
+    // Convenience init for ID coming from PocketBaseLand
     init(id: String = "",
          user: String? = nil,
          language: String = "",

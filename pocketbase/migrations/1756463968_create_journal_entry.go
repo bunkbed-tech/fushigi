@@ -38,7 +38,7 @@ func init() {
 		})
 
 		collection.Fields.Add(&core.BoolField{
-			Name:     "private",
+			Name:     "is_private",
 			Required: true,
 		})
 

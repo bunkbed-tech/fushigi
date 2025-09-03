@@ -52,7 +52,7 @@ class GrammarStore: ObservableObject {
     ) {
         self.modelContext = modelContext
         self.authManager = authManager
-        service = ProdRemoteService(endpoint: "grammar", decoder: JSONDecoder.iso8601withFractionalSeconds)
+        service = ProdRemoteService(endpoint: "grammar", decoder: JSONDecoder.pocketBase)
     }
 
     // MARK: - Helper Functions
@@ -140,7 +140,7 @@ class GrammarStore: ObservableObject {
             grammarItems = try modelContext.fetch(FetchDescriptor<GrammarPointLocal>())
             print("LOG: Loaded \(grammarItems.count) grammar points from SwiftData")
         } catch {
-            print("DEBUG: Failed to load local grammar points:", error)
+            print("ERROR: Failed to load local grammar points:", error)
             handleLocalLoadFailure()
         }
     }
@@ -149,37 +149,50 @@ class GrammarStore: ObservableObject {
     func syncWithRemote() async {
         setLoading()
 
-        let result = await service.fetchItems()
+        let result = await service.fetchAllItems()
         switch result {
         case let .success(remoteItems):
             await processRemoteItems(remoteItems)
             lastSyncDate = Date()
             handleSyncSuccess()
         case let .failure(error):
-            print("DEBUG: Failed to sync grammar points from PostgreSQL:", error)
+            print("ERROR: Failed to sync grammar points from PostgreSQL:", error)
             handleRemoteSyncFailure()
         }
     }
 
     /// Process remote grammar points and update local storage
     func processRemoteItems(_ remoteItems: [GrammarPointRemote]) async {
-        guard let modelContext else { return } // skip load when testing
+        guard let modelContext else { return }
         for remote in remoteItems {
-            // Check if exists locally by checking postgres id and swift id
             if let existing = grammarItems.first(where: { $0.id == remote.id }) {
-                // Update existing
-                existing.context = remote.context
-                existing.usage = remote.usage
-                existing.meaning = remote.meaning
-                existing.tags = remote.tags
+                if remote.updated > existing.updated {
+                    existing.user = remote.user.isEmpty ? nil : remote.user
+                    existing.language = remote.language
+                    existing.context = remote.context
+                    existing.usage = remote.usage
+                    existing.meaning = remote.meaning
+                    existing.tags = remote.tags
+                    existing.notes = remote.notes
+                    existing.nuance = remote.nuance
+                    existing.examples = remote.examples
+                    existing.created = remote.created
+                    existing.updated = remote.updated
+                }
             } else {
-                // Create new
                 let newItem = GrammarPointLocal(
-                    id: remote.id,
+                    id: UUID(uuidString: remote.id) ?? UUID(),
+                    user: remote.user.isEmpty ? nil : remote.user,
+                    language: remote.language,
                     context: remote.context,
                     usage: remote.usage,
                     meaning: remote.meaning,
                     tags: remote.tags,
+                    notes: remote.notes,
+                    nuance: remote.nuance,
+                    examples: remote.examples,
+                    created: remote.created,
+                    updated: remote.updated,
                 )
                 modelContext.insert(newItem)
                 grammarItems.append(newItem)
@@ -191,7 +204,7 @@ class GrammarStore: ObservableObject {
             try modelContext.save()
             print("LOG: Synced \(remoteItems.count) local grammar points with PocketBase.")
         } catch {
-            print("DEBUG: Failed to save grammar points to local SwiftData:", error)
+            print("ERROR: Failed to save grammar points to local SwiftData:", error)
         }
     }
 
@@ -202,6 +215,18 @@ class GrammarStore: ObservableObject {
         await syncWithRemote()
         updateRandomGrammarPoints(force: true)
         updateAlgorithmicGrammarPoints(force: true)
+    }
+
+    /// Clear all in memory data
+    func clearInMemoryData() {
+        // Clear in-memory data (everything Published)
+        grammarItems.removeAll()
+        randomGrammarItems.removeAll()
+        algorithmicGrammarItems.removeAll()
+        dataAvailability = .empty
+        systemHealth = .healthy
+        selectedGrammarPoint = nil
+        lastSyncDate = nil
     }
 }
 

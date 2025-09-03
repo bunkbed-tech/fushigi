@@ -88,6 +88,13 @@ struct AuthenticatedView: View {
                 await journalStore.refresh()
                 await sentenceStore.refresh()
             }
+            .onReceive(NotificationCenter.default.publisher(for: .userDidLogout)) { _ in
+                wipeSwiftData(container: sharedModelContainer)
+                grammarStore.clearInMemoryData()
+                journalStore.clearInMemoryData()
+                sentenceStore.clearInMemoryData()
+                authManager.clearInMemoryData()
+            }
     }
 
     /// Configure TipKit for user onboarding -- currently none
@@ -98,7 +105,7 @@ struct AuthenticatedView: View {
                 .displayFrequency(.immediate),
             ])
         } catch {
-            print("Unable to configure tips: \(error)")
+            print("ERROR: Unable to configure tips: \(error)")
         }
     }
 }

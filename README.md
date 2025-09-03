@@ -40,3 +40,22 @@ rely on the Pocketbase API for that.
   │ Views         │  ← SwiftUI UI, reads/writes via the store
   └───────────────┘
 ```
+
+## Curl Examples on Backend
+
+```text Adding a Journal Entry
+curl -X POST "https://demo.fushigi.bunkbed.tech/api/collections/journal_entry/records" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Test Journal Entry",
+    "content": "Today I practiced Japanese.",
+    "private": true,
+    "user": "YOUR_USER_ID"
+  }'
+```
+
+```text Returning a Grammar Point
+curl -X GET "https://demo.fushigi.bunkbed.tech/api/collections/journal_entry/records?expand=user" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+```

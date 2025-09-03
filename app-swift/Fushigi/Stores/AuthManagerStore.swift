@@ -1,5 +1,5 @@
 //
-//  AuthManager.swift
+//  AuthManagerStore.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/09/02.
@@ -24,29 +24,69 @@ class AuthManager: ObservableObject {
         currentUser = authResponse.record
         token = authResponse.token
         isAuthenticated = true
+
+        // Store both token and user record in the Apple Keychain
         KeychainHelper.shared.save(authResponse.token, forKey: "pbToken")
+
+        // Decode and error check to get the user string out buried inside
+        if let userData = try? JSONEncoder().encode(authResponse.record),
+           let userString = String(data: userData, encoding: .utf8)
+        {
+            KeychainHelper.shared.save(userString, forKey: "pbUser")
+        }
     }
 
     func logout() {
         currentUser = nil
         token = nil
         isAuthenticated = false
+
+        // Clear both token and user record from Keychain
         KeychainHelper.shared.delete(forKey: "pbToken")
+        KeychainHelper.shared.delete(forKey: "pbUser")
+
+        // Send notification to delete all data for user privacy
+        NotificationCenter.default.post(name: .userDidLogout, object: nil)
     }
 
     private func loadStoredAuth() {
-        if let storedToken = KeychainHelper.shared.load(forKey: "pbToken") {
-            token = storedToken
-            isAuthenticated = true
-            // TODO: Verify with Pocketbase? Refresh?
+        guard let storedToken = KeychainHelper.shared.load(forKey: "pbToken"),
+              let storedUserString = KeychainHelper.shared.load(forKey: "pbUser"),
+              let userData = storedUserString.data(using: .utf8),
+              let user = try? JSONDecoder.pocketBase.decode(AuthRecord.self, from: userData)
+        else {
+            logout()
+            return
         }
+
+        token = storedToken
+        currentUser = user
+        isAuthenticated = true
+
+        // TODO: Verify token is still valid with PocketBase
+        // If token is invalid, call logout()
     }
 
     func refreshUserInfo() async {
-        // guard let token else { return }
-        // TODO: Verify with Pocketbase? Refresh?
-        // TODO: Update currentUser if successful
-        // TODO: Set isAuthenticated = false if token is invalid
+        guard token != nil else {
+            logout()
+            return
+        }
+
+        // TODO: Make API call to verify token and refresh user info
+        // If token is invalid, call logout(), otherwise update
+        // For now, just validate there is a user
+        if currentUser == nil {
+            logout()
+        }
+    }
+
+    /// Clear all in memory data
+    func clearInMemoryData() {
+        // Clear in-memory data (everything Published)
+        isAuthenticated = false
+        currentUser = nil
+        token = nil
     }
 }
 
@@ -94,7 +134,7 @@ private func decode<T: Decodable>(_: T.Type, from data: Data) -> Result<T, AuthE
         return try .success(JSONDecoder.pocketBase.decode(T.self, from: data))
     } catch {
         if let json = String(data: data, encoding: .utf8) {
-            print("Failed to decode \(T.self), raw JSON: \(json)")
+            print("ERROR: Failed to decode \(T.self), raw JSON: \(json)")
         }
         return .failure(.decodingError("Failed to decode \(T.self)", underlying: error))
     }
