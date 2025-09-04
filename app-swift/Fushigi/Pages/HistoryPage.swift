@@ -177,30 +177,12 @@ struct HistoryPage: View {
         }
         .listRowBackground(Color.clear)
         .swipeActions(edge: .trailing) {
-            Button("Edit") {
-                print("TODO: Share entry: \(entry.title)")
-            }
-            .tint(.gray)
-
-            Button("Delete", role: .destructive) {
+            Button("Delete") {
                 if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
                     deleteEntry(at: IndexSet(integer: index))
                 }
             }
             .tint(.red)
-        }
-        .swipeActions(edge: .leading) {
-            Button("Pin") {
-                // Pin/favorite action
-                print("TODO: Pin entry: \(entry.title)")
-            }
-            .tint(.mint)
-
-            Button("Share") {
-                // Edit action
-                print("TODO: Edit entry: \(entry.title)")
-            }
-            .tint(.purple)
         }
     }
 
