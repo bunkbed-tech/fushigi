@@ -7,5 +7,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+    <key>API_BASE_URL</key>
+    <string>$(API_BASE_URL)</string>
 </dict>
 </plist>

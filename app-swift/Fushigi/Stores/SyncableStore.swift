@@ -54,7 +54,7 @@ extension SyncableStore {
 
     /// Handle successful sync
     func handleSyncSuccess() {
-        // Successful sync means PostgreSQL is working - clear postgres errors
+        // Successful sync means PocketBase is working - clear postgres errors
         // But keep SwiftData errors since remote sync doesn't fix local storage
         if systemHealth == .postgresError {
             systemHealth = .healthy

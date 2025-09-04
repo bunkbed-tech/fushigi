@@ -27,6 +27,9 @@ struct JournalEntryForm: View {
     /// Saving state to disable UI during operations
     @Binding var isSaving: Bool
 
+    /// Centralized journal repository with synchronization capabilities
+    @EnvironmentObject var journalStore: JournalStore
+
     /// Focus state for title field
     @FocusState private var isTitleFocused: Bool
 
@@ -133,7 +136,7 @@ struct JournalEntryForm: View {
         statusMessage = nil
         defer { isSaving = false }
 
-        let result = await submitJournalEntry(
+        let result = await journalStore.createEntry(
             title: entryTitle,
             content: entryContent,
             isPrivate: isPrivateEntry,
@@ -146,7 +149,7 @@ struct JournalEntryForm: View {
             print("LOG: Successfully posted journal entry.")
         case let .failure(error):
             statusMessage = "Error: \(error.localizedDescription)"
-            print("DEBUG: Failed to post journal entry:", error)
+            print("ERROR: Failed to post journal entry:", error)
         }
     }
 

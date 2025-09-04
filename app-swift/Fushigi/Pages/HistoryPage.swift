@@ -9,6 +9,18 @@ import SwiftUI
 
 // MARK: - History Page
 
+enum JournalSort: String, CaseIterable {
+    case newest = "Newest First"
+    case oldest = "Oldest First"
+    case title = "By Title"
+}
+
+enum JournalQuickFilter: String, CaseIterable {
+    case all = "All Entries"
+    case isPrivate = "Private Only"
+    case isPublic = "Public Only"
+}
+
 /// Displays user journal entries with search and expandable detail view
 struct HistoryPage: View {
     /// Centralized journal entry repository with synchronization capabilities
@@ -18,14 +30,29 @@ struct HistoryPage: View {
     @State private var errorMessage: String?
 
     /// Set of expanded journal entry IDs for detail view
-    @State private var expanded: Set<UUID> = []
+    @State private var expanded: Set<String> = []
+
+    /// Control to set order in which journal entries are shown for the user
+    @State private var journalSortKey: JournalSort = .newest
+
+    /// Controls currently displayed source of journal entry
+    @State private var selectedFilter: JournalQuickFilter = .all
 
     /// Search text binding from parent view
     @Binding var searchText: String
 
     /// Filtered journal entries based on current search criteria
     var journalEntries: [JournalEntryLocal] {
-        journalStore.filterJournalEntries(containing: searchText)
+        let baseItems: [JournalEntryLocal] = switch selectedFilter {
+        case .all:
+            journalStore.journalEntries
+        case .isPrivate:
+            journalStore.privateJournalEntries
+        case .isPublic:
+            journalStore.publicJournalEntries
+        }
+
+        return journalStore.getJournalEntries(for: baseItems, sortedBy: journalSortKey, containing: searchText)
     }
 
     /// Current primary state for UI rendering decisions
@@ -53,76 +80,7 @@ struct HistoryPage: View {
                         }
                     }
                     ForEach(journalEntries) { entry in
-                        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(entry.title)
-                                        .font(.headline)
-                                    Text(entry.createdAt.formatted())
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Image(systemName: expanded.contains(entry.id) ?
-                                    "chevron.down" : "chevron.right")
-                                    .animation(.none, value: expanded.contains(entry.id))
-                            }
-
-                            if expanded.contains(entry.id) {
-                                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                                    Text(entry.content)
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("Grammar Points:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.mint)
-                                        Text("• (placeholder) ～てしまう")
-                                        Text("• (placeholder) ～わけではない")
-                                    }
-
-                                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                                        Text("AI Feedback:")
-                                            .font(.subheadline)
-                                            .foregroundStyle(.purple)
-                                        Text("(placeholder) Try to avoid passive constructions.")
-                                    }
-                                }
-                                .padding(.leading)
-                            }
-                        }
-                        .contentShape(.rect)
-                        .onTapGesture { // hilarious animation...
-                            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
-                                toggleExpanded(for: entry.id)
-                            }
-                        }
-                        .listRowBackground(Color.clear)
-                        .swipeActions(edge: .trailing) {
-                            Button("Edit") {
-                                print("LOG: Share entry: \(entry.title)")
-                            }
-                            .tint(.gray)
-
-                            Button("Delete", role: .destructive) {
-                                if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
-                                    deleteEntry(at: IndexSet(integer: index))
-                                }
-                            }
-                            .tint(.red)
-                        }
-                        .swipeActions(edge: .leading) {
-                            Button("Pin") {
-                                // Pin/favorite action
-                                print("LOG: Pin entry: \(entry.title)")
-                            }
-                            .tint(.mint)
-
-                            Button("Share") {
-                                // Edit action
-                                print("LOG: Edit entry: \(entry.title)")
-                            }
-                            .tint(.purple)
-                        }
+                        journalItemDisclosure(for: entry)
                     }
                 }
                 .scrollDismissesKeyboard(.interactively)
@@ -135,18 +93,31 @@ struct HistoryPage: View {
         }
         .toolbar {
             Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                Button("Newest First") { /* TODO: Implement sorting */ }
-                Button("Oldest First") { /* TODO: Implement sorting */ }
-                Button("By Title") { /* TODO: Implement sorting */ }
+                ForEach(JournalSort.allCases, id: \.self) { filter in
+                    if journalSortKey == filter {
+                        Button(filter.rawValue, systemImage: "checkmark") {
+                            journalSortKey = filter
+                        }
+                    } else {
+                        Button(filter.rawValue) {
+                            journalSortKey = filter
+                        }
+                    }
+                }
             }
 
             Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                Button("All Entries") { /* TODO: Implement filtering */ }
-                Button("Private Only") { /* TODO: Implement filtering */ }
-                Button("Public Only") { /* TODO: Implement filtering */ }
-                Divider()
-                Button("This Week") { /* TODO: Implement filtering */ }
-                Button("This Month") { /* TODO: Implement filtering */ }
+                ForEach(JournalQuickFilter.allCases, id: \.self) { filter in
+                    if selectedFilter == filter {
+                        Button(filter.rawValue, systemImage: "checkmark") {
+                            selectedFilter = filter
+                        }
+                    } else {
+                        Button(filter.rawValue) {
+                            selectedFilter = filter
+                        }
+                    }
+                }
             }
         }
         .background {
@@ -159,10 +130,66 @@ struct HistoryPage: View {
         }
     }
 
+    @ViewBuilder
+    func journalItemDisclosure(for entry: JournalEntryLocal) -> some View {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(entry.title)
+                        .font(.headline)
+                    Text(entry.created.formatted())
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: expanded.contains(entry.id) ?
+                    "chevron.down" : "chevron.right")
+                    .animation(.none, value: expanded.contains(entry.id))
+            }
+
+            if expanded.contains(entry.id) {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                    Text(entry.content)
+
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                        Text("Grammar Points:")
+                            .font(.subheadline)
+                            .foregroundStyle(.mint)
+                        Text("• (placeholder) ～てしまう")
+                        Text("• (placeholder) ～わけではない")
+                    }
+
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                        Text("AI Feedback:")
+                            .font(.subheadline)
+                            .foregroundStyle(.purple)
+                        Text("(placeholder) Try to avoid passive constructions.")
+                    }
+                }
+                .padding(.leading)
+            }
+        }
+        .contentShape(.rect)
+        .onTapGesture { // hilarious animation...
+            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
+                toggleExpanded(for: entry.id)
+            }
+        }
+        .listRowBackground(Color.clear)
+        .swipeActions(edge: .trailing) {
+            Button("Delete") {
+                if let index = journalEntries.firstIndex(where: { $0.id == entry.id }) {
+                    deleteEntry(at: IndexSet(integer: index))
+                }
+            }
+            .tint(.red)
+        }
+    }
+
     // MARK: - Helper Methods
 
     /// Toggle expanded state for journal entry
-    private func toggleExpanded(for id: UUID) {
+    private func toggleExpanded(for id: String) {
         if expanded.contains(id) {
             expanded.remove(id)
         } else {
@@ -174,7 +201,7 @@ struct HistoryPage: View {
     private func deleteEntry(at offsets: IndexSet) {
         for index in offsets {
             let deletedEntry = journalEntries[index]
-            print("LOG: Pretending to delete: \(deletedEntry.title)")
+            print("TODO: Pretending to delete: \(deletedEntry.title)")
         }
     }
 }

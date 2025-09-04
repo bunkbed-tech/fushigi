@@ -21,80 +21,95 @@ class SentenceStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
-    /// SwiftData database session for local persistence
-    let modelContext: ModelContext
+    let modelContext: ModelContext?
 
-    init(modelContext: ModelContext) {
+    let authManager: AuthManager
+
+    let service: ProdRemoteService<SentenceRemote, SentenceCreate>
+
+    init(
+        modelContext: ModelContext,
+        authManager: AuthManager,
+    ) {
         self.modelContext = modelContext
+        self.authManager = authManager
+        service = ProdRemoteService(endpoint: "sentence", decoder: JSONDecoder.pocketBase)
     }
 
     // MARK: - Sync Boilerplate
 
-    /// Load sentence tags from local SwiftData storage
     func loadLocal() async {
+        guard let modelContext else { return }
         do {
             sentences = try modelContext.fetch(FetchDescriptor<SentenceLocal>())
             print("LOG: Loaded \(sentences.count) sentence tags from local storage")
         } catch {
-            print("DEBUG: Failed to load local sentence tags:", error)
+            print("ERROR: Failed to load local sentence tags:", error)
             handleLocalLoadFailure()
         }
     }
 
-    /// Sync sentences from remote PostgreSQL database
     func syncWithRemote() async {
         setLoading()
 
-        let result = await fetchSentences()
+        let result = await service.fetchAllItems()
         switch result {
-        case let .success(remoteSentences):
-            await processRemoteSentences(remoteSentences)
+        case let .success(remoteItems):
+            await processRemoteItems(remoteItems)
             lastSyncDate = Date()
         case let .failure(error):
-            print("DEBUG: Failed to sync sentence tags from PostgreSQL:", error)
+            print("ERROR: Failed to sync sentence tags from PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }
 
-    /// Process remote sentences and update local storage
-    private func processRemoteSentences(_ remoteSentences: [SentenceRemote]) async {
-        for remote in remoteSentences {
-            // Check if exists locally by checking postgres id and swift id
+    private func processRemoteItems(_ remoteItems: [SentenceRemote]) async {
+        guard let modelContext else { return }
+        for remote in remoteItems {
             if let existing = sentences.first(where: { $0.id == remote.id }) {
-                // Update existing
-                existing.journalEntryId = remote.journalEntryId
-                existing.grammarId = remote.grammarId
+                existing.user = remote.user
+                existing.journalEntry = remote.journalEntry
+                existing.grammar = remote.grammar
                 existing.content = remote.content
-                existing.createdAt = remote.createdAt
+                existing.created = remote.created
+                existing.updated = remote.updated
             } else {
-                // Create new
                 let newItem = SentenceLocal(
                     id: remote.id,
-                    journalEntryId: remote.journalEntryId,
-                    grammarId: remote.grammarId,
+                    user: remote.user,
+                    journalEntry: remote.journalEntry,
+                    grammar: remote.grammar,
                     content: remote.content,
-                    createdAt: remote.createdAt,
+                    created: remote.created,
+                    updated: remote.updated,
                 )
                 modelContext.insert(newItem)
                 sentences.append(newItem)
             }
         }
 
-        // Save to commit to permanent SwiftData storage
         do {
             try modelContext.save()
-            print("LOG: Synced \(remoteSentences.count) local sentence tags with PostgreSQL.")
+            print("LOG: Synced \(remoteItems.count) local sentence tags with PocketBase.")
             handleSyncSuccess()
         } catch {
-            print("DEBUG: Failed to save sentence tags to local SwiftData:", error)
+            print("ERROR: Failed to save sentence tags to local SwiftData:", error)
         }
     }
 
-    /// Manual refresh for pull-to-refresh functionality
     func refresh() async {
         print("LOG: Refreshing data for SentenceStore...")
         await loadLocal()
         await syncWithRemote()
+    }
+
+    /// Clear all in memory data
+    func clearInMemoryData() {
+        // Clear in-memory data (everything Published)
+        sentences.removeAll()
+        dataAvailability = .empty
+        systemHealth = .healthy
+        lastSyncDate = nil
     }
 }
 

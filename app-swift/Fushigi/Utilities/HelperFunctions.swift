@@ -33,11 +33,10 @@ func wipeSwiftData(container: ModelContainer) {
         try context.delete(model: GrammarPointLocal.self)
         try context.delete(model: JournalEntryLocal.self)
         try context.delete(model: SentenceLocal.self)
-        // try context.delete(model: SettingsModel.self)
 
         try context.save()
-        print("SwiftData store wiped successfully")
+        print("LOG: SwiftData store wiped successfully")
     } catch {
-        print("Failed to wipe SwiftData: \(error)")
+        print("ERROR: Failed to wipe SwiftData: \(error)")
     }
 }

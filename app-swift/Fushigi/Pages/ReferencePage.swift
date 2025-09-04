@@ -9,6 +9,14 @@ import SwiftUI
 
 // MARK: - Reference Page
 
+enum GrammarQuickFilter: String, CaseIterable {
+    case all = "All Grammar"
+    case defaults = "Default Items"
+    case custom = "Custom Items"
+//    case inSRS = "Added To SRS"
+//    case available = "Not Yet Added"
+}
+
 /// Searchable grammar reference interface with detailed grammar point inspection
 struct ReferencePage: View {
     /// Responsive layout detection for adaptive table presentation
@@ -18,13 +26,16 @@ struct ReferencePage: View {
     @EnvironmentObject var grammarStore: GrammarStore
 
     /// Currently selected grammar point for detailed examination
-    @State private var selectedGrammarID: UUID?
+    @State private var selectedGrammarID: String?
 
     /// Controls the settings sheet for practice content preferences
     @State private var showingSettings: Bool = false
 
     /// Controls detailed grammar point inspection interface visibility
     @State private var showingInspector: Bool = false
+
+    /// Controls currently displayed source of grammar
+    @State private var selectedFilter: GrammarQuickFilter = .all
 
     /// Search query text coordinated with parent navigation structure
     @Binding var searchText: String
@@ -34,9 +45,21 @@ struct ReferencePage: View {
         horizontalSizeClass == .compact
     }
 
-    /// Filtered grammar points based on current search criteria
+    /// Filtered all grammar points based on current search criteria
     var grammarPoints: [GrammarPointLocal] {
-        grammarStore.filterGrammarPoints(containing: searchText)
+        let baseItems: [GrammarPointLocal] = switch selectedFilter {
+        case .all:
+            grammarStore.grammarItems
+        case .defaults:
+            grammarStore.systemGrammarItems
+        case .custom:
+            grammarStore.userGrammarItems
+//        case .inSRS, .available:
+//            // TODO: Filter by SRS status
+//            grammarStore.grammarItems
+        }
+
+        return grammarStore.filterGrammarPoints(for: baseItems, containing: searchText)
     }
 
     /// Current primary state for UI rendering decisions
@@ -75,21 +98,35 @@ struct ReferencePage: View {
         }
         .toolbar {
             ToolbarItemGroup {
+                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                    ForEach(GrammarQuickFilter.allCases, id: \.self) { filter in
+                        if selectedFilter == filter {
+                            Button(filter.rawValue, systemImage: "checkmark") {
+                                selectedFilter = filter
+                            }
+                        } else {
+                            Button(filter.rawValue) {
+                                selectedFilter = filter
+                            }
+                        }
+                    }
+                }
+
                 Menu("Options", systemImage: "ellipsis.circle") {
-                    Button("Import Grammar", systemImage: "square.and.arrow.down") {
-                        // TODO: Implement grammar import functionality
+                    Button("Import List", systemImage: "square.and.arrow.down") {
+                        print("TODO: Implement Import Grammar List")
                     }
                     .disabled(true)
 
-                    Button("Export Study List", systemImage: "square.and.arrow.up") {
-                        // TODO: Implement grammar export functionality
+                    Button("Export List", systemImage: "square.and.arrow.up") {
+                        print("TODO: Implement Export Grammar List")
                     }
                     .disabled(true)
 
                     Divider()
 
-                    Button("Delete All", systemImage: "trash", role: .destructive) {
-                        // TODO: Implement bulk delete with confirmation
+                    Button("Add New", systemImage: "plus", role: .destructive) {
+                        print("TODO: Implement Add Custom Grammar")
                     }
                     .disabled(true)
                 }

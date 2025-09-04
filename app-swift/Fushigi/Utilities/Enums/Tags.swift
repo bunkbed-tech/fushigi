@@ -5,8 +5,6 @@
 //  Created by Tahoe Schrader on 2025/08/09.
 //
 
-import SwiftUI
-
 /// Politeness level filter options
 enum Level: String, CaseIterable, Identifiable {
     case all = "All Levels"

@@ -25,9 +25,9 @@ enum PreviewHelper {
                 for: Schema([GrammarPointLocal.self, JournalEntryLocal.self, SentenceLocal.self]),
                 configurations: [ModelConfiguration(isStoredInMemoryOnly: true)],
             )
-            let grammarStore = GrammarStore(modelContext: container.mainContext)
-            let journalStore = JournalStore(modelContext: container.mainContext)
-            let sentenceStore = SentenceStore(modelContext: container.mainContext)
+            let grammarStore = GrammarStore(modelContext: container.mainContext, authManager: AuthManager())
+            let journalStore = JournalStore(modelContext: container.mainContext, authManager: AuthManager())
+            let sentenceStore = SentenceStore(modelContext: container.mainContext, authManager: AuthManager())
 
             // Configure store with fake data based on preview mode
             configureStoresForPreviewMode(
@@ -95,7 +95,7 @@ enum PreviewHelper {
 
         store.grammarItems = fakeItems
         store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
-        store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
+        store.setSRSGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
     }
 
     /// Load preview store with fake journal data
@@ -103,39 +103,49 @@ enum PreviewHelper {
     private static func setupJournal(_ store: JournalStore) {
         let fakeItems = [
             JournalEntryLocal(
-                id: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
                 title: "Hello 1",
                 content: "Blah blah blah.",
-                private: false,
-                createdAt: Date(),
+                isPrivate: false,
+                created: Date(),
+                updated: Date(),
             ),
             JournalEntryLocal(
-                id: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
                 title: "Hello 2",
                 content: "Blah blah blah.",
-                private: false,
-                createdAt: Date(),
+                isPrivate: false,
+                created: Date(),
+                updated: Date(),
             ),
             JournalEntryLocal(
-                id: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
                 title: "Hello 3",
                 content: "Blah blah blah.",
-                private: false,
-                createdAt: Date(),
+                isPrivate: false,
+                created: Date(),
+                updated: Date(),
             ),
             JournalEntryLocal(
-                id: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
                 title: "Hello 4",
                 content: "Blah blah blah.",
-                private: false,
-                createdAt: Date(),
+                isPrivate: false,
+                created: Date(),
+                updated: Date(),
             ),
             JournalEntryLocal(
-                id: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
                 title: "Hello 5",
                 content: "Blah blah blah.",
-                private: false,
-                createdAt: Date(),
+                isPrivate: false,
+                created: Date(),
+                updated: Date(),
             ),
         ]
 
@@ -147,39 +157,49 @@ enum PreviewHelper {
     private static func setupSentences(_ store: SentenceStore) {
         let fakeItems = [
             SentenceLocal(
-                id: UUID(),
-                journalEntryId: UUID(),
-                grammarId: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
+                journalEntry: UUID().uuidString,
+                grammar: UUID().uuidString,
                 content: "Test sentence 2.",
-                createdAt: Date(),
+                created: Date(),
+                updated: Date(),
             ),
             SentenceLocal(
-                id: UUID(),
-                journalEntryId: UUID(),
-                grammarId: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
+                journalEntry: UUID().uuidString,
+                grammar: UUID().uuidString,
                 content: "Test sentence 2.",
-                createdAt: Date(),
+                created: Date(),
+                updated: Date(),
             ),
             SentenceLocal(
-                id: UUID(),
-                journalEntryId: UUID(),
-                grammarId: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
+                journalEntry: UUID().uuidString,
+                grammar: UUID().uuidString,
                 content: "Test sentence 3.",
-                createdAt: Date(),
+                created: Date(),
+                updated: Date(),
             ),
             SentenceLocal(
-                id: UUID(),
-                journalEntryId: UUID(),
-                grammarId: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
+                journalEntry: UUID().uuidString,
+                grammar: UUID().uuidString,
                 content: "Test sentence 4.",
-                createdAt: Date(),
+                created: Date(),
+                updated: Date(),
             ),
             SentenceLocal(
-                id: UUID(),
-                journalEntryId: UUID(),
-                grammarId: UUID(),
+                id: UUID().uuidString,
+                user: "test-user",
+                journalEntry: UUID().uuidString,
+                grammar: UUID().uuidString,
                 content: "Test sentence 5.",
-                createdAt: Date(),
+                created: Date(),
+                updated: Date(),
             ),
         ]
 

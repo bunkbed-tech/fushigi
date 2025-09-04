@@ -8,22 +8,13 @@
 import SwiftUI
 
 extension JSONDecoder {
-    /// JSONDecoder configured for ISO8601 dates with fractional seconds from timestamptz
-    static var iso8601withFractionalSeconds: JSONDecoder {
+    // JSONDecoder configured for PocketBase which has human readable format
+    static var pocketBase: JSONDecoder {
         let decoder = JSONDecoder()
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        decoder.dateDecodingStrategy = .custom { decoder in
-            let container = try decoder.singleValueContainer()
-            let dateStr = try container.decode(String.self)
-            guard let date = formatter.date(from: dateStr) else {
-                throw DecodingError.dataCorruptedError(
-                    in: container,
-                    debugDescription: "Invalid date string: \(dateStr)",
-                )
-            }
-            return date
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        decoder.dateDecodingStrategy = .formatted(formatter)
         return decoder
     }
 }
@@ -58,10 +49,14 @@ extension View {
 
 extension View {
     /// Add fake datastore for Preview mode
-    func withPreviewStores(dataAvailability: DataAvailability = .available,
-                           systemHealth: SystemHealth = .healthy) -> some View
-    {
-        PreviewHelper.withStore(dataAvailability: dataAvailability, systemHealth: systemHealth) { _, _, _ in
+    func withPreviewStores(
+        dataAvailability: DataAvailability = .available,
+        systemHealth: SystemHealth = .healthy,
+    ) -> some View {
+        PreviewHelper.withStore(
+            dataAvailability: dataAvailability,
+            systemHealth: systemHealth,
+        ) { _, _, _ in
             self
         }
     }
@@ -72,4 +67,9 @@ extension View {
             self
         }
     }
+}
+
+// Add a logout checker to make wiping data stores easier
+extension Notification.Name {
+    static let userDidLogout = Notification.Name("userDidLogout")
 }

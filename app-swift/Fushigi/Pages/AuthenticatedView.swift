@@ -13,7 +13,7 @@ import TipKit
 
 struct AuthenticatedView: View {
     /// Current login state of user
-    @ObservedObject var userSession: UserSession
+    @ObservedObject var authManager: AuthManager
 
     /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var grammarStore: GrammarStore
@@ -28,8 +28,8 @@ struct AuthenticatedView: View {
     private let sharedModelContainer: ModelContainer
 
     /// Initialize app data stores
-    init(userSession: UserSession) {
-        self.userSession = userSession
+    init(authManager: AuthManager) {
+        self.authManager = authManager
 
         // Create container once
         let schema = Schema([
@@ -60,15 +60,24 @@ struct AuthenticatedView: View {
         #endif
 
         let context = sharedModelContainer.mainContext
-        _grammarStore = StateObject(wrappedValue: GrammarStore(modelContext: context))
-        _journalStore = StateObject(wrappedValue: JournalStore(modelContext: context))
-        _sentenceStore = StateObject(wrappedValue: SentenceStore(modelContext: context))
+        _grammarStore = StateObject(wrappedValue: GrammarStore(
+            modelContext: context,
+            authManager: authManager,
+        ))
+        _journalStore = StateObject(wrappedValue: JournalStore(
+            modelContext: context,
+            authManager: authManager,
+        ))
+        _sentenceStore = StateObject(wrappedValue: SentenceStore(
+            modelContext: context,
+            authManager: authManager,
+        ))
     }
 
     var body: some View {
         NavigationView()
             .modelContainer(sharedModelContainer)
-            .environmentObject(userSession)
+            .environmentObject(authManager)
             .environmentObject(grammarStore)
             .environmentObject(journalStore)
             .environmentObject(sentenceStore)
@@ -78,6 +87,13 @@ struct AuthenticatedView: View {
                 await grammarStore.refresh()
                 await journalStore.refresh()
                 await sentenceStore.refresh()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .userDidLogout)) { _ in
+                wipeSwiftData(container: sharedModelContainer)
+                grammarStore.clearInMemoryData()
+                journalStore.clearInMemoryData()
+                sentenceStore.clearInMemoryData()
+                authManager.clearInMemoryData()
             }
     }
 
@@ -89,7 +105,7 @@ struct AuthenticatedView: View {
                 .displayFrequency(.immediate),
             ])
         } catch {
-            print("Unable to configure tips: \(error)")
+            print("ERROR: Unable to configure tips: \(error)")
         }
     }
 }

@@ -10,8 +10,8 @@ func init() {
 	m.Register(func(app core.App) error {
 		collection := core.NewBaseCollection("journal_entry")
 
-		collection.ViewRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || private = false)")
-		collection.ListRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || private = false)")
+		collection.ViewRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || is_private = false)")
+		collection.ListRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || is_private = false)")
 		collection.CreateRule = types.Pointer("@request.auth.id != '' && @request.body.user = @request.auth.id")
 		collection.UpdateRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id && (@request.body.user:isset = false || @request.body.user = @request.auth.id)")
 		collection.DeleteRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id")
@@ -38,8 +38,8 @@ func init() {
 		})
 
 		collection.Fields.Add(&core.BoolField{
-			Name:     "private",
-			Required: true,
+			Name: "is_private",
+			//Required: true, this does not do what you think it does...
 		})
 
 		collection.Fields.Add(&core.AutodateField{
