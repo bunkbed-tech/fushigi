@@ -23,6 +23,16 @@ class JournalStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
+    /// Journal entries marked as private
+    var privateJournalEntries: [JournalEntryLocal] {
+        journalEntries.filter(\.isPrivate)
+    }
+
+    /// Journal entries marked as public
+    var publicJournalEntries: [JournalEntryLocal] {
+        journalEntries.filter { !$0.isPrivate }
+    }
+
     let modelContext: ModelContext?
 
     let authManager: AuthManager
@@ -38,18 +48,33 @@ class JournalStore: ObservableObject {
         service = ProdRemoteService(endpoint: "journal_entry", decoder: JSONDecoder.pocketBase)
     }
 
-    /// Filter grammar points by search text across usage, meaning, context, and tags
-    func filterJournalEntries(containing searchText: String? = nil) -> [JournalEntryLocal] {
-        var filtered = journalEntries
+    /// Returns journal entries filtered by search text and sorted by the specified key
+    func getJournalEntries(
+        for items: [JournalEntryLocal],
+        sortedBy sortKey: JournalSort,
+        containing term: String? = nil,
+    ) -> [JournalEntryLocal] {
+        var result = items
 
-        if let searchText, !searchText.isEmpty {
-            filtered = filtered.filter {
-                $0.title.localizedCaseInsensitiveContains(searchText) ||
-                    $0.content.localizedCaseInsensitiveContains(searchText)
+        // Apply filtering if search term exists
+        if let term, !term.isEmpty {
+            result = result.filter {
+                $0.title.localizedCaseInsensitiveContains(term) ||
+                    $0.content.localizedCaseInsensitiveContains(term)
             }
         }
 
-        return filtered
+        // Always apply sorting
+        return result.sorted { lhs, rhs in
+            switch sortKey {
+            case .title:
+                lhs.title.localizedStandardCompare(rhs.title) == .orderedAscending
+            case .newest:
+                lhs.created > rhs.created
+            case .oldest:
+                lhs.created < rhs.created
+            }
+        }
     }
 
     /// Create a Journal Entry as the current user using JournalEntryForm view

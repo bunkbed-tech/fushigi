@@ -95,7 +95,7 @@ enum PreviewHelper {
 
         store.grammarItems = fakeItems
         store.setRandomGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
-        store.setAlgorithmicGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
+        store.setSRSGrammarPointsForPreview(Array(fakeItems.shuffled().prefix(5)))
     }
 
     /// Load preview store with fake journal data
