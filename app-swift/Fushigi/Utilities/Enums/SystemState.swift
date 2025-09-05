@@ -18,6 +18,9 @@ enum SystemState: Equatable {
     /// No data available
     case emptyData
 
+    /// As special version of emptiness where there are specifically no SRS records
+    case emptySRS
+
     /// Has data but storage systems are unhealthy
     case degradedOperation(String)
 
@@ -28,11 +31,13 @@ enum SystemState: Equatable {
     var description: String {
         switch self {
         case .loading:
-            "Currently loading locally from SwiftData and fetching remotely from PostgreSQL"
+            "Currently loading locally from SwiftData and fetching remotely from Pocketbase."
         case .normal:
             "Standard operation with full data set"
         case .emptyData:
-            "No data available"
+            "No data available. Add new items or refresh the app."
+        case .emptySRS:
+            "No SRS data available. Under 'Reference', select a grammar item and add to SRS."
         case let .degradedOperation(error):
             "Operating with potentially out of sync data: \(error)"
         case let .criticalError(error):
@@ -40,14 +45,34 @@ enum SystemState: Equatable {
         }
     }
 
+    /// Whether this state represents an error condition
+    var isErrorState: Bool {
+        switch self {
+        case .degradedOperation, .criticalError:
+            true
+        case .loading, .normal, .emptyData, .emptySRS:
+            false
+        }
+    }
+
+    /// Whether this state should show a full content unavailable view
+    var shouldShowContentUnavailable: Bool {
+        switch self {
+        case .loading, .emptyData, .emptySRS, .criticalError:
+            true
+        case .normal, .degradedOperation:
+            false
+        }
+    }
+
     // MARK: - View Builders
 
     /// Returns the appropriate ContentUnavailableView for the current state
     @ViewBuilder
-    func contentUnavailableView(fixAction: @escaping () async -> Void) -> some View {
+    func contentUnavailableView(onRefresh: @escaping () async -> Void) -> some View {
         Group {
             switch self {
-            case .normal:
+            case .normal, .degradedOperation:
                 // Normal state doesn't need an error view
                 EmptyView()
 
@@ -64,11 +89,6 @@ enum SystemState: Equatable {
                 } description: {
                     Text(description)
                         .foregroundStyle(.secondary)
-                } actions: {
-                    Button("Quit") {
-                        Task { await fixAction() }
-                    }
-                    .buttonStyle(.bordered)
                 }
 
             case .emptyData:
@@ -79,22 +99,17 @@ enum SystemState: Equatable {
                         .foregroundColor(.secondary)
                 } actions: {
                     Button("Refresh") {
-                        Task { await fixAction() }
+                        Task { await onRefresh() }
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
                 }
 
-            case let .degradedOperation(error):
+            case .emptySRS:
                 ContentUnavailableView {
-                    Label("Limited Functionality", systemImage: "exclamationmark.triangle.fill")
+                    Label("No SRS Records", systemImage: "graduationcap")
                 } description: {
-                    Text(error)
-                        .foregroundColor(.orange)
-                } actions: {
-                    Button("Retry") {
-                        Task { await fixAction() }
-                    }
-                    .buttonStyle(.bordered)
+                    Text(description)
+                        .foregroundColor(.secondary)
                 }
 
             case let .criticalError(error):
@@ -105,46 +120,10 @@ enum SystemState: Equatable {
                         .foregroundColor(.red)
                 } actions: {
                     Button("Retry") {
-                        Task { await fixAction() }
+                        Task { await onRefresh() }
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
                 }
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-
-    /// Returns the appropriate potential error banner for the current state
-    @ViewBuilder
-    func errorBannerView(fixAction: @escaping () async -> Void) -> some View {
-        Group {
-            switch self {
-            case .normal, .loading, .emptyData:
-                // Not error states so don't need an error banner
-                EmptyView()
-
-            case let .degradedOperation(error), let .criticalError(error):
-                HStack {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.orange)
-                        .font(.caption)
-                    Text("Grammar points may not be current: \(error)")
-                        .font(.caption2)
-                        .foregroundColor(.orange)
-                    Spacer()
-                    Button("Retry") {
-                        Task { await fixAction() }
-                    }
-                    .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-                    .padding(.vertical, UIConstants.Padding.capsuleHeight)
-                    .clipShape(.capsule)
-                }
-                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-                .padding(.vertical, UIConstants.Padding.capsuleHeight)
-                .background(Color.orange.opacity(0.1))
-                .clipShape(.capsule)
-                .listRowBackground(Color.clear)
-                .listRowSeparator(Visibility.hidden, edges: .all)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

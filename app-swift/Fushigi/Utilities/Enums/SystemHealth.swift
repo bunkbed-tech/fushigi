@@ -13,8 +13,8 @@ enum SystemHealth {
     /// Local SwiftData corruption/failure
     case swiftDataError
 
-    /// Unable to establish connection to PostgreSQL database
-    case postgresError
+    /// Unable to establish connection to Pocketbase database
+    case pocketbaseError
 
     /// User friendly description of data availability
     var description: String {
@@ -23,8 +23,8 @@ enum SystemHealth {
             "All systems operational"
         case .swiftDataError:
             "Local SwiftData corruption/failure"
-        case .postgresError:
-            "Unable to establish connection to PostgreSQL database"
+        case .pocketbaseError:
+            "Unable to establish connection to Pocketbase database"
         }
     }
 

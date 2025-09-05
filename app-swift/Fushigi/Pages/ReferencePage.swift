@@ -13,8 +13,18 @@ enum GrammarQuickFilter: String, CaseIterable {
     case all = "All Grammar"
     case defaults = "Default Items"
     case custom = "Custom Items"
-//    case inSRS = "Added To SRS"
-//    case available = "Not Yet Added"
+    case inSRS = "Added To SRS"
+    case available = "Not Yet Added"
+
+    /// Whether this filter requires SRS data
+    var requiresSRSData: Bool {
+        switch self {
+        case .inSRS, .available:
+            true
+        case .all, .defaults, .custom:
+            false
+        }
+    }
 }
 
 /// Searchable grammar reference interface with detailed grammar point inspection
@@ -22,8 +32,14 @@ struct ReferencePage: View {
     /// Responsive layout detection for adaptive table presentation
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
-    /// Centralized grammar data repository with synchronization capabilities
+    /// Centralized on-device storage for user's grammar points + srs records and application state
+    @EnvironmentObject var studyStore: StudyStore
+
+    /// Centralized on-device storage for user's grammar points (used for application state)
     @EnvironmentObject var grammarStore: GrammarStore
+
+    /// Centralized on-device storage for user's srs records
+    @EnvironmentObject var srsStore: SRSStore
 
     /// Currently selected grammar point for detailed examination
     @State private var selectedGrammarID: String?
@@ -45,7 +61,23 @@ struct ReferencePage: View {
         horizontalSizeClass == .compact
     }
 
-    /// Filtered all grammar points based on current search criteria
+    /// Computed system state based on current filter
+    var effectiveSystemState: SystemState {
+        if selectedFilter.requiresSRSData {
+            // For SRS-dependent filters, check SRS state first, then fall back to grammar state
+            switch srsStore.systemState {
+            case .emptySRS, .emptyData:
+                .emptySRS
+            case .loading, .normal, .degradedOperation, .criticalError:
+                srsStore.systemState
+            }
+        } else {
+            // For grammar-only filters, use grammar store state
+            grammarStore.systemState
+        }
+    }
+
+    /// Filtered grammar points based on current search criteria and filter
     var grammarPoints: [GrammarPointLocal] {
         let baseItems: [GrammarPointLocal] = switch selectedFilter {
         case .all:
@@ -54,110 +86,68 @@ struct ReferencePage: View {
             grammarStore.systemGrammarItems
         case .custom:
             grammarStore.userGrammarItems
-//        case .inSRS, .available:
-//            // TODO: Filter by SRS status
-//            grammarStore.grammarItems
+        case .inSRS:
+            studyStore.inSRSGrammarItems
+        case .available:
+            studyStore.availableGrammarItems
         }
 
         return grammarStore.filterGrammarPoints(for: baseItems, containing: searchText)
     }
 
-    /// Current primary state for UI rendering decisions
-    var systemState: SystemState {
-        grammarStore.systemState
+    /// Whether we should show the search empty state
+    var shouldShowSearchEmptyState: Bool {
+        grammarPoints.isEmpty &&
+            !searchText.isEmpty &&
+            effectiveSystemState == .normal &&
+            hasDataForCurrentFilter
+    }
+
+    /// Whether the current filter has underlying data available
+    var hasDataForCurrentFilter: Bool {
+        if selectedFilter.requiresSRSData {
+            return !srsStore.srsRecords.isEmpty
+        } else {
+            if selectedFilter == .custom {
+                return !grammarStore.userGrammarItems.isEmpty
+            }
+            return !grammarStore.grammarItems.isEmpty
+        }
     }
 
     // MARK: - Main View
 
     var body: some View {
-        Group {
-            // TODO: Figure out better ux for proper error views
-            switch systemState {
-            case .loading, .emptyData, .criticalError:
-                systemState.contentUnavailableView {
-                    if case .emptyData = systemState {
-                        searchText = ""
+        VStack(spacing: 0) {
+            mainContentView
+        }
+        .overlay(alignment: .topTrailing) {
+            if case .degradedOperation = effectiveSystemState {
+                Button(action: { Task { await studyStore.refresh() } }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.caption2)
+                        Text("Sync Issue")
+                            .font(.caption2)
+                            .fontWeight(.medium)
                     }
-                    await grammarStore.refresh()
+                    .foregroundColor(.orange)
+                    .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                    .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                    .background(.orange.opacity(0.15))
+                    .clipShape(.capsule)
                 }
-            case .normal, .degradedOperation:
-                if grammarPoints.isEmpty, !searchText.isEmpty, !grammarStore.grammarItems.isEmpty {
-                    ContentUnavailableView.search(text: searchText)
-                } else {
-                    GrammarTable(
-                        selectedGrammarID: $selectedGrammarID,
-                        showingInspector: $showingInspector,
-                        grammarPoints: grammarPoints,
-                        isCompact: isCompact,
-                        onRefresh: {
-                            await grammarStore.refresh()
-                        },
-                    )
-                }
+                .padding()
             }
         }
         .toolbar {
-            ToolbarItemGroup {
-                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                    ForEach(GrammarQuickFilter.allCases, id: \.self) { filter in
-                        if selectedFilter == filter {
-                            Button(filter.rawValue, systemImage: "checkmark") {
-                                selectedFilter = filter
-                            }
-                        } else {
-                            Button(filter.rawValue) {
-                                selectedFilter = filter
-                            }
-                        }
-                    }
-                }
-
-                Menu("Options", systemImage: "ellipsis.circle") {
-                    Button("Import List", systemImage: "square.and.arrow.down") {
-                        print("TODO: Implement Import Grammar List")
-                    }
-                    .disabled(true)
-
-                    Button("Export List", systemImage: "square.and.arrow.up") {
-                        print("TODO: Implement Export Grammar List")
-                    }
-                    .disabled(true)
-
-                    Divider()
-
-                    Button("Add New", systemImage: "plus", role: .destructive) {
-                        print("TODO: Implement Add Custom Grammar")
-                    }
-                    .disabled(true)
-                }
-            }
+            toolbarContent
         }
-        .sheet(
-            isPresented: $showingInspector,
-            onDismiss: {
-                selectedGrammarID = nil
-            },
-            content: {
-                if let selectedGP = grammarStore.selectedGrammarPoint {
-                    DetailedGrammar(
-                        isPresented: $showingInspector,
-                        grammarPoint: selectedGP,
-                    )
-                    .presentationDetents([.medium, .large], selection: .constant(.medium))
-                } else {
-                    ContentUnavailableView {
-                        Label("Error", systemImage: "xmark.circle")
-                    } description: {
-                        Text("Selected grammarID is null. Log bug.")
-                    } actions: {
-                        Button("Dismiss") {
-                            showingInspector = false
-                        }
-                    }
-                    .presentationDetents([.medium])
-                }
-            },
-        )
+        .sheet(isPresented: $showingInspector, onDismiss: {
+            selectedGrammarID = nil
+        }) {
+            grammarInspectorSheet
+        }
         .background {
             LinearGradient(
                 colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
@@ -167,6 +157,100 @@ struct ReferencePage: View {
             .ignoresSafeArea()
         }
     }
+
+    // MARK: - View Components
+
+    @ViewBuilder
+    private var mainContentView: some View {
+        if effectiveSystemState.shouldShowContentUnavailable {
+            effectiveSystemState.contentUnavailableView(
+                onRefresh: {
+                    await studyStore.refresh()
+                },
+            )
+        } else if !hasDataForCurrentFilter {
+            // Filter-specific empty state (separate from system state)
+            ContentUnavailableView {
+                Label("No \(selectedFilter.rawValue)", systemImage: "tray")
+            } description: {
+                Text("Try adding new grammar points or changing the filter.")
+                    .foregroundColor(.secondary)
+            }
+        } else if shouldShowSearchEmptyState {
+            ContentUnavailableView.search(text: searchText)
+        } else {
+            GrammarTable(
+                selectedGrammarID: $selectedGrammarID,
+                showingInspector: $showingInspector,
+                grammarPoints: grammarPoints,
+                isCompact: isCompact,
+                onRefresh: {
+                    await studyStore.refresh()
+                },
+            )
+        }
+    }
+
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItemGroup {
+            Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                ForEach(GrammarQuickFilter.allCases, id: \.self) { filter in
+                    Button(action: { selectedFilter = filter }) {
+                        HStack {
+                            Text(filter.rawValue)
+                            if selectedFilter == filter {
+                                Spacer()
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                }
+            }
+
+            Menu("Options", systemImage: "ellipsis.circle") {
+                Button("Import List", systemImage: "square.and.arrow.down") {
+                    print("TODO: Implement Import Grammar List")
+                }
+                .disabled(true)
+
+                Button("Export List", systemImage: "square.and.arrow.up") {
+                    print("TODO: Implement Export Grammar List")
+                }
+                .disabled(true)
+
+                Divider()
+
+                Button("Add New", systemImage: "plus") {
+                    print("TODO: Implement Add Custom Grammar")
+                }
+                .disabled(true)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var grammarInspectorSheet: some View {
+        if let selectedGP = grammarStore.selectedGrammarPoint {
+            DetailedGrammar(
+                isPresented: $showingInspector,
+                grammarPoint: selectedGP,
+            )
+            .presentationDetents([.medium, .large], selection: .constant(.medium))
+        } else {
+            ContentUnavailableView {
+                Label("Error", systemImage: "xmark.circle")
+            } description: {
+                Text("Selected grammarID is null. Please report this bug.")
+            } actions: {
+                Button("Dismiss") {
+                    showingInspector = false
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .presentationDetents([.medium])
+        }
+    }
 }
 
 // MARK: - Previews
@@ -174,13 +258,13 @@ struct ReferencePage: View {
 #Preview("Normal State") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("Degraded Operation Postgres") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+        .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
@@ -192,7 +276,7 @@ struct ReferencePage: View {
 #Preview("With Search Results") {
     ReferencePage(searchText: .constant("Hello"))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("No Search Results") {
@@ -204,19 +288,25 @@ struct ReferencePage: View {
 #Preview("Loading State") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Empty Database") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .empty)
+}
+
+#Preview("Empty SRS") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(systemState: .emptySRS)
 }
 
 #Preview("Critical Error Postgres") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical Error SwiftData") {

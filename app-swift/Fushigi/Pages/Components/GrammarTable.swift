@@ -108,11 +108,11 @@ struct GrammarTable: View {
     @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
     var isCompact: Bool { horizontalSizeClass == .compact }
 
-    PreviewHelper.withStore { store, _, _ in
+    PreviewHelper.withStore { _, _, studyStore in
         GrammarTable(
             selectedGrammarID: .constant(nil),
             showingInspector: .constant(true),
-            grammarPoints: store.grammarItems,
+            grammarPoints: studyStore.grammarStore.grammarItems,
             isCompact: isCompact,
             onRefresh: {},
         )

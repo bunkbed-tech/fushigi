@@ -14,8 +14,14 @@ struct PracticePage: View {
     /// Responsive layout helper for switching between iOS/side-split apps and iPadOS/macOS layouts
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
-    /// Centralized on-device storage for user's grammar points and application state
+    /// Centralized on-device storage for user's grammar points + srs records and application state
+    @EnvironmentObject var studyStore: StudyStore
+
+    /// Centralized on-device storage for user's grammar points (used for application state)
     @EnvironmentObject var grammarStore: GrammarStore
+
+    /// Centralized on-device storage for user's srs records
+    @EnvironmentObject var srsStore: SRSStore
 
     /// Controls the settings sheet for practice content preferences
     @State private var showSettings = false
@@ -58,9 +64,9 @@ struct PracticePage: View {
         horizontalSizeClass == .compact
     }
 
-    /// Current primary state for UI rendering decisions
+    /// Combine states from both stores and let grammar state win, reimplementing the computation in SyncableStore
     private var systemState: SystemState {
-        grammarStore.systemState
+        studyStore.systemState
     }
 
     /// Extracts readable text from TextSelection objects for tagging
@@ -81,39 +87,28 @@ struct PracticePage: View {
     // MARK: - Main View
 
     var body: some View {
-        Group {
-            // TODO: Figure out better ux for proper error views
-            switch systemState {
-            default:
-                ScrollView {
-                    VStack(alignment: .leading, spacing:
-                        UIConstants.Spacing.default)
-                    {
-                        if case .degradedOperation = systemState {
-                            systemState.errorBannerView {
-                                await grammarStore.refresh()
-                            }
-                        }
-                        DailyGrammar(
-                            showTagger: $showTagger,
-                            selectedSource: $selectedSource,
-                        )
+        ScrollView {
+            VStack(alignment: .leading, spacing:
+                UIConstants.Spacing.default)
+            {
+                DailyGrammar(
+                    showTagger: $showTagger,
+                    selectedSource: $selectedSource,
+                )
 
-                        JournalEntryForm(
-                            entryTitle: $entryTitle,
-                            entryContent: $entryContent,
-                            textSelection: $textSelection,
-                            isPrivateEntry: $isPrivateEntry,
-                            statusMessage: $statusMessage,
-                            isSaving: $isSaving,
-                        )
-                        .layoutPriority(1)
-                    }
-                    .padding()
-                }
-                .scrollDismissesKeyboard(.interactively)
+                JournalEntryForm(
+                    entryTitle: $entryTitle,
+                    entryContent: $entryContent,
+                    textSelection: $textSelection,
+                    isPrivateEntry: $isPrivateEntry,
+                    statusMessage: $statusMessage,
+                    isSaving: $isSaving,
+                )
+                .layoutPriority(1)
             }
+            .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSettings) {
             if isCompact {
                 settingsView
@@ -155,7 +150,7 @@ struct PracticePage: View {
 
     /// Refreshes grammar points based on current source setting
     private func refreshGrammarPoints() async {
-        grammarStore.forceDailyRefresh(currentMode: selectedSource)
+        srsStore.forceDailyRefresh(currentMode: selectedSource)
         showSettings = false
     }
 
@@ -206,7 +201,7 @@ struct PracticePage: View {
 #Preview("Degraded Operation Postgres") {
     PracticePage()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+        .withPreviewStores(dataAvailability: .available, systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
@@ -227,14 +222,20 @@ struct PracticePage: View {
         .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
 }
 
-#Preview("Critical Error Postgres") {
+#Preview("Critical Error Pocketbase") {
     PracticePage()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical Error SwiftData") {
     PracticePage()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
+}
+
+#Preview("Missing SRS") {
+    PracticePage()
+        .withPreviewNavigation()
+        .withPreviewStores(systemState: .emptySRS)
 }
