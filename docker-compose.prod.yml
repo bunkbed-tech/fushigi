@@ -13,10 +13,16 @@ services:
       start_period: 30s
       timeout: 5s
     environment:
+      APP_NAME: Fushigi
+      APP_URL: https://fushigi.bunkbed.tech
+      SENDER_ADDRESS: info@bunkbed.tech
+      SENDER_NAME: "Fushigi App"
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       SMTP_USERNAME: ${SMTP_EMAIL}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://fushigi.bunkbed.tech
       IS_PROD: true
@@ -46,10 +52,16 @@ services:
       start_period: 30s
       timeout: 5s
     environment:
+      APP_NAME: Fushigi
+      APP_URL: https://demo.fushigi.bunkbed.tech
+      SENDER_ADDRESS: info@bunkbed.tech
+      SENDER_NAME: "Fushigi App"
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       SMTP_USERNAME: ${SMTP_EMAIL}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
       PB_ENCRYPTION_KEY: ${PB_ENCRYPTION_KEY}
       VITE_API_BASE: https://demo.fushigi.bunkbed.tech
       IS_PROD: false
