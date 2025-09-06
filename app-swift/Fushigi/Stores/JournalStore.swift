@@ -8,9 +8,13 @@
 import Foundation
 import SwiftData
 
+// MARK: - Journal Store
+
 /// Observable store managing journal entries with local SwiftData storage and remote PostgreSQL sync
 @MainActor
 class JournalStore: ObservableObject {
+    // MARK: - Published State
+
     /// In-memory cache of all journal entries for quick UI access
     @Published var journalEntries: [JournalEntryLocal] = []
 
@@ -23,6 +27,8 @@ class JournalStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
+    // MARK: Computed Properties
+
     /// Journal entries marked as private
     var privateJournalEntries: [JournalEntryLocal] {
         journalEntries.filter(\.isPrivate)
@@ -33,10 +39,10 @@ class JournalStore: ObservableObject {
         journalEntries.filter { !$0.isPrivate }
     }
 
+    // MARK: Init
+
     let modelContext: ModelContext?
-
     let authManager: AuthManager
-
     let service: ProdRemoteService<JournalEntryRemote, JournalEntryCreate>
 
     init(
@@ -47,6 +53,8 @@ class JournalStore: ObservableObject {
         self.authManager = authManager
         service = ProdRemoteService(endpoint: "journal_entry", decoder: JSONDecoder.pocketBase)
     }
+
+    // MARK: - Public API
 
     /// Returns journal entries filtered by search text and sorted by the specified key
     func getJournalEntries(
@@ -107,6 +115,7 @@ class JournalStore: ObservableObject {
 
     // MARK: - Sync Boilerplate
 
+    /// Loads journal entries from local SwiftData
     func loadLocal() async {
         guard let modelContext else { return }
         do {
@@ -118,13 +127,14 @@ class JournalStore: ObservableObject {
         }
     }
 
+    /// Syncs journal entries from remote PocketBase
     func syncWithRemote() async {
         setLoading()
 
         let result = await service.fetchAllItems()
         switch result {
         case let .success(remoteItems):
-            await processRemoteItems(remoteItems)
+            await mergeRemoteItems(remoteItems)
             lastSyncDate = Date()
             handleSyncSuccess()
         case let .failure(error):
@@ -133,17 +143,33 @@ class JournalStore: ObservableObject {
         }
     }
 
-    private func processRemoteItems(_ remoteItems: [JournalEntryRemote]) async {
+    /// Merges remote items using last-write-wins by updated timestamp
+    private func mergeRemoteItems(_ remoteItems: [JournalEntryRemote]) async {
         guard let modelContext else { return }
+
+        // Build index for O(1) lookups during merge
+        var localIndex: [String: JournalEntryLocal] = [:]
+        localIndex.reserveCapacity(journalEntries.count)
+        for local in journalEntries {
+            localIndex[local.id] = local
+        }
+
+        var newItems: [JournalEntryLocal] = []
+        newItems.reserveCapacity(remoteItems.count)
+
         for remote in remoteItems {
-            if let existing = journalEntries.first(where: { $0.id == remote.id }) {
-                existing.user = remote.user
-                existing.title = remote.title
-                existing.content = remote.content
-                existing.isPrivate = remote.isPrivate
-                existing.created = remote.created
-                existing.updated = remote.updated
+            if let existing = localIndex[remote.id] {
+                // Update existing if remote is newer
+                if remote.updated > existing.updated {
+                    existing.user = remote.user
+                    existing.title = remote.title
+                    existing.content = remote.content
+                    existing.isPrivate = remote.isPrivate
+                    existing.created = remote.created
+                    existing.updated = remote.updated
+                }
             } else {
+                // Create new item with remote ID
                 let newItem = JournalEntryLocal(
                     id: remote.id,
                     user: remote.user,
@@ -154,18 +180,23 @@ class JournalStore: ObservableObject {
                     updated: remote.updated,
                 )
                 modelContext.insert(newItem)
-                journalEntries.append(newItem)
+                newItems.append(newItem)
             }
         }
 
+        // Persist changes and update in-memory state
         do {
             try modelContext.save()
-            print("LOG: Synced \(remoteItems.count) local journal entries with PocketBase.")
+            if !newItems.isEmpty {
+                journalEntries.append(contentsOf: newItems)
+            }
+            print("LOG: Synced \(remoteItems.count) journal entries. New: \(newItems.count)")
         } catch {
-            print("ERROR: Failed to save journal entries to local SwiftData:", error)
+            print("ERROR: Failed to save journal entries to SwiftData:", error)
         }
     }
 
+    /// Performs full data refresh with remote sync
     func refresh() async {
         print("LOG: Refreshing data for JournalStore...")
         await loadLocal()
@@ -182,9 +213,10 @@ class JournalStore: ObservableObject {
     }
 }
 
-// Add on sync functionality
+// MARK: - SyncableStore Conformance
+
+/// Add on sync functionality
 extension JournalStore: SyncableStore {
-    /// Main sync functionality is on JournalEntryLocal for this store
     typealias DataType = JournalEntryLocal
     var items: [JournalEntryLocal] { journalEntries }
 }

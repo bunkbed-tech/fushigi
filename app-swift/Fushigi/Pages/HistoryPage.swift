@@ -56,7 +56,7 @@ struct HistoryPage: View {
     }
 
     /// Current primary state for UI rendering decisions
-    var systemState: SystemState {
+    private var systemState: SystemState {
         journalStore.systemState
     }
 
@@ -72,13 +72,8 @@ struct HistoryPage: View {
                     }
                     await journalStore.refresh()
                 }
-            case .normal, .degradedOperation:
+            case .normal, .degradedOperation, .emptySRS:
                 List {
-                    if case .degradedOperation = systemState {
-                        systemState.errorBannerView {
-                            await journalStore.refresh()
-                        }
-                    }
                     ForEach(journalEntries) { entry in
                         journalItemDisclosure(for: entry)
                     }
@@ -89,6 +84,26 @@ struct HistoryPage: View {
                     await journalStore.refresh()
                 }
                 .scrollContentBackground(.hidden)
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            if case .degradedOperation = systemState {
+                Button(action: { Task { await journalStore.refresh() } }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.caption2)
+                        Text("Sync Issue")
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                    }
+                    .foregroundColor(.orange)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(.orange.opacity(0.15))
+                    .clipShape(.capsule)
+                }
+                .padding(.trailing, 16)
+                .padding(.top, 8)
             }
         }
         .toolbar {
@@ -211,43 +226,43 @@ struct HistoryPage: View {
 #Preview("Normal State") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("Data Missing") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Degraded Operation Postgres") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .postgresError)
+        .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
+        .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("No Search Results") {
     HistoryPage(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("Loading State") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Critical Postgres Error") {
     HistoryPage(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .postgresError)
+        .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical SwiftData Error") {

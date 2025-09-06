@@ -190,7 +190,12 @@ struct NavigationView: View {
         .withPreviewStores(dataAvailability: .loading)
 }
 
-#Preview("PostgreSQL Connection State") {
+#Preview("Remote Connection State") {
     NavigationView()
-        .withPreviewStores(systemHealth: .postgresError)
+        .withPreviewStores(systemHealth: .pocketbaseError)
+}
+
+#Preview("Missing SRS") {
+    NavigationView()
+        .withPreviewStores(systemState: .emptySRS)
 }

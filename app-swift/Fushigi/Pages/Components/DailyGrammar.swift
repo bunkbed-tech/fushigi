@@ -7,33 +7,53 @@
 
 import SwiftUI
 
-/// Daily grammar section displaying curated grammar points for practice sessions
+/// Daily grammar section displaying curated grammar points for practice sessions, chosen based on SRS
 struct DailyGrammar: View {
-    /// Centralized grammar data store
+    /// Centralized on-device storage for user's grammar points + srs records and application state
+    @EnvironmentObject var studyStore: StudyStore
+
+    /// Centralized on-device storage for user's grammar points (used for application state)
     @EnvironmentObject var grammarStore: GrammarStore
+
+    /// Centralized on-device storage for user's srs records
+    @EnvironmentObject var srsStore: SRSStore
 
     /// Controls tagging interface visibility
     @Binding var showTagger: Bool
 
-    /// User-selected grammar sourcing strategy
+    /// User-selected sourcing strategy
     @Binding var selectedSource: SourceMode
 
-    /// Grammar points based on current sourcing mode
+    /// SRS records based on current sourcing mode
+    private var srsRecords: [SRSRecordLocal] {
+        srsStore.getSRSRecords(for: selectedSource)
+    }
+
+    /// Grammar points matching SRS records base on current sourcing mode
     private var grammarPoints: [GrammarPointLocal] {
-        grammarStore.getGrammarPoints(for: selectedSource)
+        studyStore.inSRSGrammarItems.filter { grammarPoint in
+            srsRecords.contains(where: { $0.grammar == grammarPoint.id })
+        }
+    }
+
+    /// Combine states from both stores and let grammar state win, reimplementing the computation in SyncableStore
+    private var systemState: SystemState {
+        studyStore.systemState
     }
 
     // MARK: - Main View
 
     var body: some View {
-        switch grammarStore.systemState {
+        switch systemState {
         case .loading, .emptyData, .criticalError:
-            grammarStore.systemState.contentUnavailableView {
-                if case .emptyData = grammarStore.systemState {
+            systemState.contentUnavailableView {
+                if case .emptyData = systemState {
                     // TODO: reset filters to default?
                 }
-                await grammarStore.refresh()
+                await studyStore.refresh()
             }
+        case .emptySRS:
+            systemState.contentUnavailableView {}
         case .normal, .degradedOperation:
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 HStack {
@@ -58,7 +78,7 @@ struct DailyGrammar: View {
                         TaggableGrammarRow(
                             grammarPoint: grammarPoint,
                             onTagSelected: {
-                                grammarStore.selectedGrammarPoint = grammarPoint
+                                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
                                 showTagger = true
                             },
                         )
@@ -70,6 +90,25 @@ struct DailyGrammar: View {
                     }
                 }
             }
+            .overlay(alignment: .centerFirstTextBaseline) {
+                if case .degradedOperation = systemState {
+                    Button(action: { Task { await studyStore.refresh() } }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.caption2)
+                            Text("Sync Issue")
+                                .font(.caption2)
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.orange)
+                        .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                        .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                        .background(.orange.opacity(0.15))
+                        .clipShape(.capsule)
+                    }
+                    .padding()
+                }
+            }
         }
     }
 
@@ -77,7 +116,7 @@ struct DailyGrammar: View {
 
     /// Refresh grammar points based on current source mode
     private func refreshGrammarPoints() async {
-        grammarStore.forceDailyRefresh(currentMode: selectedSource)
+        srsStore.forceDailyRefresh(currentMode: selectedSource)
     }
 }
 
@@ -89,7 +128,7 @@ struct DailyGrammar: View {
         selectedSource: .constant(SourceMode.random),
     )
     .withPreviewNavigation()
-    .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+    .withPreviewStores()
 }
 
 #Preview("SRS - Normal") {
@@ -98,5 +137,23 @@ struct DailyGrammar: View {
         selectedSource: .constant(SourceMode.srs),
     )
     .withPreviewNavigation()
-    .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+    .withPreviewStores()
+}
+
+#Preview("Random - Pocketbase error") {
+    DailyGrammar(
+        showTagger: .constant(false),
+        selectedSource: .constant(SourceMode.random),
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemHealth: .pocketbaseError)
+}
+
+#Preview("Empty SRS") {
+    DailyGrammar(
+        showTagger: .constant(false),
+        selectedSource: .constant(SourceMode.random),
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemState: .emptySRS)
 }

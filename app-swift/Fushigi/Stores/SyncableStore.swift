@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Syncable Store Protocol
+
 /// Protocol that any store with sync functionality can adopt
 @MainActor
 protocol SyncableStore: ObservableObject {
@@ -17,6 +19,8 @@ protocol SyncableStore: ObservableObject {
     var systemHealth: SystemHealth { get set }
 }
 
+// MARK: - Syncable Store
+
 /// Define shared attributes of all stores with sync
 extension SyncableStore {
     /// Computed priority state for UI rendering decisions
@@ -26,11 +30,11 @@ extension SyncableStore {
             .loading
         case (.empty, .healthy):
             .emptyData
-        case (.empty, .swiftDataError), (.empty, .postgresError):
+        case (.empty, .swiftDataError), (.empty, .pocketbaseError):
             .criticalError(systemHealth.description)
         case (.available, .healthy):
             .normal
-        case (.available, .swiftDataError), (.available, .postgresError):
+        case (.available, .swiftDataError), (.available, .pocketbaseError):
             .degradedOperation(systemHealth.description)
         }
     }
@@ -48,7 +52,7 @@ extension SyncableStore {
 
     /// Handle remote sync failure
     func handleRemoteSyncFailure() {
-        systemHealth = .postgresError
+        systemHealth = .pocketbaseError
         dataAvailability = items.isEmpty ? .empty : .available
     }
 
@@ -56,7 +60,7 @@ extension SyncableStore {
     func handleSyncSuccess() {
         // Successful sync means PocketBase is working - clear postgres errors
         // But keep SwiftData errors since remote sync doesn't fix local storage
-        if systemHealth == .postgresError {
+        if systemHealth == .pocketbaseError {
             systemHealth = .healthy
         }
 

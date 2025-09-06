@@ -15,13 +15,13 @@ struct AuthenticatedView: View {
     /// Current login state of user
     @ObservedObject var authManager: AuthManager
 
-    /// Grammar store for user grammars, daily random, and SRS
-    @StateObject private var grammarStore: GrammarStore
+    /// Manages srs algorithm values for grammar points with local SwiftData storage and remote PocketBase sync
+    @StateObject private var studyStore: StudyStore
 
     /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var journalStore: JournalStore
 
-    // Tag store of all user created tags linking journals to grammar
+    /// Tag store of all user created tags linking journals to grammar
     @StateObject private var sentenceStore: SentenceStore
 
     /// Shared SwiftData container for persistent storage
@@ -36,6 +36,7 @@ struct AuthenticatedView: View {
             GrammarPointLocal.self,
             JournalEntryLocal.self,
             SentenceLocal.self,
+            SRSRecordLocal.self,
         ])
 
         let modelConfiguration = ModelConfiguration(
@@ -60,7 +61,8 @@ struct AuthenticatedView: View {
         #endif
 
         let context = sharedModelContainer.mainContext
-        _grammarStore = StateObject(wrappedValue: GrammarStore(
+
+        _studyStore = StateObject(wrappedValue: StudyStore(
             modelContext: context,
             authManager: authManager,
         ))
@@ -77,23 +79,28 @@ struct AuthenticatedView: View {
     var body: some View {
         NavigationView()
             .modelContainer(sharedModelContainer)
-            .environmentObject(authManager)
-            .environmentObject(grammarStore)
+            .environmentObject(authManager) // TODO: is this necessary?
+            .environmentObject(studyStore)
+            .environmentObject(studyStore.grammarStore)
+            .environmentObject(studyStore.srsStore)
             .environmentObject(journalStore)
             .environmentObject(sentenceStore)
             .tint(.mint)
             .task {
                 await configureTips()
-                await grammarStore.refresh()
+                await studyStore.refresh()
                 await journalStore.refresh()
                 await sentenceStore.refresh()
+                print("LOG: Sync and refresh complete")
+                // TODO: should I add an authManager.refresh()
             }
             .onReceive(NotificationCenter.default.publisher(for: .userDidLogout)) { _ in
                 wipeSwiftData(container: sharedModelContainer)
-                grammarStore.clearInMemoryData()
                 journalStore.clearInMemoryData()
                 sentenceStore.clearInMemoryData()
+                studyStore.clearInMemoryData()
                 authManager.clearInMemoryData()
+                print("LOG: All data cleared from in-memory stores")
             }
     }
 

@@ -52,10 +52,12 @@ extension View {
     func withPreviewStores(
         dataAvailability: DataAvailability = .available,
         systemHealth: SystemHealth = .healthy,
+        systemState: SystemState = .normal,
     ) -> some View {
         PreviewHelper.withStore(
             dataAvailability: dataAvailability,
             systemHealth: systemHealth,
+            systemState: systemState,
         ) { _, _, _ in
             self
         }

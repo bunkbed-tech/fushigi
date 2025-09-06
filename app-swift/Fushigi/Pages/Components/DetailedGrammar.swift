@@ -49,10 +49,10 @@ struct DetailedGrammar: View {
 // MARK: - Previews
 
 #Preview {
-    PreviewHelper.withStore { store, _, _ in
+    PreviewHelper.withStore { _, _, studyStore in
         DetailedGrammar(
             isPresented: .constant(true),
-            grammarPoint: store.grammarItems.first!,
+            grammarPoint: studyStore.grammarStore.grammarItems.first!,
         )
     }
 }

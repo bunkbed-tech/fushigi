@@ -16,7 +16,7 @@ struct SentenceCreate: Codable {
     let grammar: String
 }
 
-/// Sentence model for remote PostgreSQL database
+/// Sentence model for remote Pocketbase database
 struct SentenceRemote: Codable {
     let id: String
     let user: String
@@ -47,14 +47,8 @@ struct SentenceRemote: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case user
+        case id, user, grammar, content, created, updated, expand
         case journalEntry = "journal_entry"
-        case grammar
-        case content
-        case created
-        case updated
-        case expand
     }
 }
 

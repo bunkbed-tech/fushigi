@@ -18,12 +18,6 @@ class GrammarStore: ObservableObject {
     /// All grammar points available to the user
     @Published var grammarItems: [GrammarPointLocal] = []
 
-    /// Daily random selection for practice (refreshes once per day)
-    @Published private(set) var randomGrammarItems: [GrammarPointLocal] = []
-
-    /// Daily SRS selection for practice (refreshes once per day)
-    @Published private(set) var srsGrammarItems: [GrammarPointLocal] = []
-
     /// Current data loading state
     @Published var dataAvailability: DataAvailability = .empty
 
@@ -35,14 +29,6 @@ class GrammarStore: ObservableObject {
 
     /// Currently selected item (set by UI, not managed by store)
     @Published var selectedGrammarPoint: GrammarPointLocal?
-
-    // MARK: Private State
-
-    /// Tracks when random subset was last updated
-    private var lastRandomUpdate: Date?
-
-    /// Tracks when SRS subset was last updated
-    private var lastSRSUpdate: Date?
 
     // MARK: Computed Properties
 
@@ -56,13 +42,11 @@ class GrammarStore: ObservableObject {
         grammarItems.filter { !($0.user?.isEmpty ?? true) }
     }
 
-    // MARK: Dependencies
+    // MARK: Init
 
     let modelContext: ModelContext?
     let authManager: AuthManager
     let service: ProdRemoteService<GrammarPointRemote, GrammarPointCreate>
-
-    // MARK: Init
 
     init(
         modelContext: ModelContext,
@@ -75,77 +59,26 @@ class GrammarStore: ObservableObject {
 
     // MARK: - Public API
 
-    /// Returns grammar subset based on selected practice mode
-    func getGrammarPoints(for mode: SourceMode) -> [GrammarPointLocal] {
-        switch mode {
-        case .random:
-            randomGrammarItems
-        case .srs:
-            srsGrammarItems
-        }
-    }
-
-    /// Filters grammar points by search term across all text fields
-    func filterGrammarPoints(for items: [GrammarPointLocal], containing term: String? = nil) -> [GrammarPointLocal] {
-        guard let term, !term.isEmpty else { return items }
-        return items.filter {
-            $0.usage.localizedCaseInsensitiveContains(term) ||
-                $0.meaning.localizedCaseInsensitiveContains(term) ||
-                $0.context.localizedCaseInsensitiveContains(term) ||
-                $0.tags.contains { $0.localizedCaseInsensitiveContains(term) }
-        }
-    }
-
     /// Finds grammar point by ID from all available items
     func getGrammarPoint(id: String?) -> GrammarPointLocal? {
         guard let id else { return nil }
         return grammarItems.first { $0.id == id }
     }
 
-    /// Finds grammar point by ID from current random selection
-    func getRandomGrammarPoint(id: String?) -> GrammarPointLocal? {
-        guard let id else { return nil }
-        return randomGrammarItems.first { $0.id == id }
-    }
-
-    /// Finds grammar point by ID from current SRS selection
-    func getSRSGrammarPoint(id: String?) -> GrammarPointLocal? {
-        guard let id else { return nil }
-        return srsGrammarItems.first { $0.id == id }
-    }
-
-    /// Forces refresh of daily practice selection without syncing
-    func forceDailyRefresh(currentMode: SourceMode) {
-        switch currentMode {
-        case .random:
-            updateRandomGrammarPoints(force: true)
-        case .srs:
-            updateSRSGrammarPoints(force: true)
+    /// Filters grammar points by search term across all text fields
+    func filterGrammarPoints(for baseItems: [GrammarPointLocal],
+                             containing searchText: String? = nil) -> [GrammarPointLocal]
+    {
+        guard let searchText, !searchText.isEmpty else { return baseItems }
+        return baseItems.filter {
+            $0.usage.localizedCaseInsensitiveContains(searchText) ||
+                $0.meaning.localizedCaseInsensitiveContains(searchText) ||
+                $0.context.localizedCaseInsensitiveContains(searchText) ||
+                $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
         }
     }
 
-    /// Updates random selection (once per day unless forced)
-    func updateRandomGrammarPoints(force: Bool = false) {
-        let today = Calendar.current.startOfDay(for: Date())
-        if force || lastRandomUpdate != today || randomGrammarItems.isEmpty {
-            randomGrammarItems = Array(grammarItems.shuffled().prefix(5))
-            lastRandomUpdate = today
-            print("LOG: Selected \(randomGrammarItems.count) random grammar items")
-        }
-    }
-
-    /// Updates SRS selection (once per day unless forced)
-    /// Currently uses random selection until SRS algorithm is implemented
-    func updateSRSGrammarPoints(force: Bool = false) {
-        let today = Calendar.current.startOfDay(for: Date())
-        if force || lastSRSUpdate != today || srsGrammarItems.isEmpty {
-            srsGrammarItems = Array(grammarItems.shuffled().prefix(5))
-            lastSRSUpdate = today
-            print("LOG: Selected \(srsGrammarItems.count) SRS grammar items")
-        }
-    }
-
-    // MARK: - Sync
+    // MARK: - Sync Boilerplate
 
     /// Loads grammar points from local SwiftData
     func loadLocal() async {
@@ -176,30 +109,6 @@ class GrammarStore: ObservableObject {
             handleRemoteSyncFailure()
         }
     }
-
-    /// Performs full data refresh with remote sync
-    func refresh() async {
-        print("LOG: Refreshing data for GrammarStore...")
-        await loadLocal()
-        await syncWithRemote()
-        updateRandomGrammarPoints(force: true)
-        updateSRSGrammarPoints(force: true)
-    }
-
-    /// Clears all in-memory data (preserves local storage)
-    func clearInMemoryData() {
-        grammarItems.removeAll()
-        randomGrammarItems.removeAll()
-        srsGrammarItems.removeAll()
-        dataAvailability = .empty
-        systemHealth = .healthy
-        selectedGrammarPoint = nil
-        lastSyncDate = nil
-        lastRandomUpdate = nil
-        lastSRSUpdate = nil
-    }
-
-    // MARK: - Internal Sync
 
     /// Merges remote items using last-write-wins by updated timestamp
     private func mergeRemoteItems(_ remoteItems: [GrammarPointRemote]) async {
@@ -263,29 +172,28 @@ class GrammarStore: ObservableObject {
             print("ERROR: Failed to save grammar points to SwiftData:", error)
         }
     }
+
+    /// Performs full data refresh with remote sync
+    func refresh() async {
+        print("LOG: Refreshing data for GrammarStore...")
+        await loadLocal()
+        await syncWithRemote()
+    }
+
+    /// Clears all in-memory data (preserves local storage)
+    func clearInMemoryData() {
+        grammarItems.removeAll()
+        dataAvailability = .empty
+        systemHealth = .healthy
+        selectedGrammarPoint = nil
+        lastSyncDate = nil
+    }
 }
 
-// MARK: - SyncableStore
+// MARK: - SyncableStore Conformance
 
+/// Add on sync functionality
 extension GrammarStore: SyncableStore {
     typealias DataType = GrammarPointLocal
     var items: [GrammarPointLocal] { grammarItems }
-}
-
-// MARK: - Preview Helpers
-
-extension GrammarStore {
-    /// Sets random selection for preview/testing
-    func setRandomGrammarPointsForPreview(_ items: [GrammarPointLocal]) {
-        #if DEBUG
-            randomGrammarItems = items
-        #endif
-    }
-
-    /// Sets SRS selection for preview/testing
-    func setSRSGrammarPointsForPreview(_ items: [GrammarPointLocal]) {
-        #if DEBUG
-            srsGrammarItems = items
-        #endif
-    }
 }
