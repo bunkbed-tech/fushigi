@@ -12,6 +12,13 @@ struct EmailAuthRequest: Codable {
     let password: String
 }
 
+struct AccountCreationRequest: Codable {
+    let email: String
+    let name: String
+    let password: String
+    let passwordConfirm: String
+}
+
 struct AppleAuthRequest: Codable {
     let provider: String
     let code: String
@@ -42,10 +49,4 @@ struct AuthRecord: Codable {
 struct AuthResponse: Codable {
     let record: AuthRecord
     let token: String
-}
-
-struct PocketBaseError: Decodable {
-    let code: Int
-    let message: String
-    let data: [String: String]?
 }

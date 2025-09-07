@@ -111,7 +111,7 @@ class AuthManager: ObservableObject {
 func postAuthRequest<T: Decodable>(
     endpoint: String,
     requestBody: some Encodable,
-) async -> Result<T, AuthError> {
+) async -> Result<T, PocketBaseError> {
     guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/users/\(endpoint)") else {
         return .failure(.networkError("Invalid URL"))
     }
@@ -135,18 +135,16 @@ func postAuthRequest<T: Decodable>(
 }
 
 /// Internal error handler from Pocketbase response during authentication
-private func handle<T: Decodable>(_: T.Type, data: Data, status: Int) throws -> Result<T, AuthError> {
+private func handle<T: Decodable>(_: T.Type, data: Data, status: Int) throws -> Result<T, PocketBaseError> {
     if (200 ... 299).contains(status) {
         decode(T.self, from: data)
-    } else if let pbError = try? JSONDecoder.pocketBase.decode(PocketBaseError.self, from: data) {
-        .failure(.serverError(pbError.message))
     } else {
-        .failure(.serverError("Unknown server error"))
+        .failure(.serverError(String(data: data, encoding: .utf8) ?? "Invalid data"))
     }
 }
 
 /// Internal decode of Pocketbase response during authentication
-private func decode<T: Decodable>(_: T.Type, from data: Data) -> Result<T, AuthError> {
+private func decode<T: Decodable>(_: T.Type, from data: Data) -> Result<T, PocketBaseError> {
     do {
         return try .success(JSONDecoder.pocketBase.decode(T.self, from: data))
     } catch {
@@ -161,12 +159,20 @@ private func decode<T: Decodable>(_: T.Type, from data: Data) -> Result<T, AuthE
 
 /// Allow users to authenticate via email/password
 @MainActor
-func postEmailAuthRequest(_ request: EmailAuthRequest) async -> Result<AuthResponse, AuthError> {
+func postEmailAuthRequest(_ request: EmailAuthRequest) async -> Result<AuthResponse, PocketBaseError> {
     await postAuthRequest(endpoint: "auth-with-password", requestBody: request)
 }
 
 /// Allow users to authenticate with oauth2/sign-in-with-apple
 @MainActor
-func postAppleAuthRequest(_ request: AppleAuthRequest) async -> Result<AuthResponse, AuthError> {
+func postAppleAuthRequest(_ request: AppleAuthRequest) async -> Result<AuthResponse, PocketBaseError> {
     await postAuthRequest(endpoint: "auth-with-oauth2", requestBody: request)
+}
+
+/// Allow users to register an account with email/password
+@MainActor
+func postAccountCreationRequest(_ request: AccountCreationRequest) async
+    -> Result<PocketBaseCreateRecordResponse, PocketBaseError>
+{
+    await postAuthRequest(endpoint: "records", requestBody: request)
 }

@@ -10,9 +10,12 @@ import SwiftUI
 
 struct LoginPage: View {
     @State private var email = ""
+    @State private var displayName = ""
     @State private var password = ""
+    @State private var confirmPassword = ""
     @State private var isAuthenticating = false
     @State private var errorMessage: String?
+    @State private var showSignUp: Bool = false
 
     @ObservedObject var authManager: AuthManager
 
@@ -40,9 +43,6 @@ struct LoginPage: View {
 
     private var shouldDisableInput: Bool {
         if isAuthenticating {
-            return true
-        }
-        if APIConfig.mode == "DEMO" {
             return true
         }
         return false
@@ -93,45 +93,11 @@ struct LoginPage: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    VStack(spacing: UIConstants.Spacing.section) {
-                        TextField(
-                            "Email",
-                            text: APIConfig.mode != "DEMO" ? $email : .constant("tester@example.com"),
-                        )
-                        .textFieldStyle(.roundedBorder)
-                        .textContentType(.emailAddress)
-                        #if os(iOS)
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
-                        #endif
-                            .frame(width: 280, height: 45)
-                            .disabled(shouldDisableInput)
-
-                        SecureField(
-                            "Password",
-                            text: APIConfig.mode != "DEMO" ? $password : .constant("password123"),
-                        )
-                        .textFieldStyle(.roundedBorder)
-                        .textContentType(.password)
-                        .frame(width: 280, height: 45)
-                        .disabled(shouldDisableInput)
+                    if showSignUp {
+                        signUpForm
+                    } else {
+                        loginForm
                     }
-
-                    Button {
-                        handleEmailSignIn()
-                    } label: {
-                        HStack {
-                            if isAuthenticating {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                    .scaleEffect(0.8)
-                            }
-                            Text(isAuthenticating ? "Signing in..." : "Sign In")
-                        }
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(shouldDisableLogin)
 
                     if let errorMessage {
                         Text(errorMessage)
@@ -150,7 +116,7 @@ struct LoginPage: View {
                         .foregroundStyle(.secondary)
 
                     Button("Sign Up") {
-                        // TODO: Navigate to sign up
+                        showSignUp.toggle()
                     }
                     .font(.caption)
                     .disabled(shouldDisableInput)
@@ -218,14 +184,41 @@ struct LoginPage: View {
 
         Task {
             let result = await postEmailAuthRequest(request)
+            handleAuthResult(result)
+        }
+    }
 
-            await MainActor.run {
-                handleAuthResult(result)
+    private func handleAccountCreation() {
+        guard !email.isEmpty, !password.isEmpty, !displayName.isEmpty, password == confirmPassword else { return }
+
+        isAuthenticating = true
+        errorMessage = nil
+
+        let creationRequest = AccountCreationRequest(
+            email: email,
+            name: displayName,
+            password: password,
+            passwordConfirm: confirmPassword,
+        )
+
+        Task {
+            isAuthenticating = false
+
+            let creationResult = await postAccountCreationRequest(creationRequest)
+
+            switch creationResult {
+            case .success:
+                let authRequest = EmailAuthRequest(identity: email, password: password)
+                let authResult = await postEmailAuthRequest(authRequest)
+                handleAuthResult(authResult)
+            case let .failure(error):
+                errorMessage = error.localizedDescription
             }
         }
     }
 
-    private func handleAuthResult(_ result: Result<AuthResponse, AuthError>) {
+    @MainActor
+    private func handleAuthResult(_ result: Result<AuthResponse, PocketBaseError>) {
         isAuthenticating = false
 
         switch result {
@@ -235,6 +228,100 @@ struct LoginPage: View {
         case let .failure(error):
             errorMessage = error.localizedDescription
         }
+    }
+
+    @ViewBuilder
+    private var loginForm: some View {
+        VStack(spacing: UIConstants.Spacing.section) {
+            TextField(
+                "Email",
+                text: APIConfig.mode != "DEMO" ? $email : .constant("tester@example.com"),
+            )
+            .textFieldStyle(.roundedBorder)
+            .textContentType(.emailAddress)
+            #if os(iOS)
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
+            #endif
+                .frame(width: 280, height: 45)
+                .disabled(shouldDisableInput)
+
+            SecureField(
+                "Password",
+                text: APIConfig.mode != "DEMO" ? $password : .constant("password123"),
+            )
+            .textFieldStyle(.roundedBorder)
+            .textContentType(.password)
+            .frame(width: 280, height: 45)
+            .disabled(shouldDisableInput)
+        }
+
+        Button {
+            handleEmailSignIn()
+        } label: {
+            HStack {
+                if isAuthenticating {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(0.8)
+                }
+                Text(isAuthenticating ? "Signing in..." : "Sign In")
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .disabled(shouldDisableLogin)
+    }
+
+    @ViewBuilder
+    private var signUpForm: some View {
+        VStack(spacing: UIConstants.Spacing.section) {
+            TextField("Email", text: $email)
+                .textFieldStyle(.roundedBorder)
+                .textContentType(.emailAddress)
+            #if os(iOS)
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
+            #endif
+                .frame(width: 280, height: 45)
+                .disabled(shouldDisableInput)
+
+            TextField("Display Name", text: $displayName)
+                .textFieldStyle(.roundedBorder)
+            #if os(iOS)
+                .autocapitalization(.none)
+            #endif
+                .frame(width: 280, height: 45)
+                .disabled(shouldDisableInput)
+
+            SecureField("Password", text: $password)
+                .textFieldStyle(.roundedBorder)
+                .textContentType(.password)
+                .frame(width: 280, height: 45)
+                .disabled(shouldDisableInput)
+
+            SecureField("Confirm Password", text: $confirmPassword)
+                .textFieldStyle(.roundedBorder)
+                .textContentType(.password)
+                .frame(width: 280, height: 45)
+                .disabled(shouldDisableInput)
+        }
+
+        Button {
+            handleAccountCreation()
+        } label: {
+            HStack {
+                if isAuthenticating {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(0.8)
+                }
+                Text(isAuthenticating ? "Creating account..." : "Sign Up")
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .disabled(shouldDisableLogin)
     }
 }
 
