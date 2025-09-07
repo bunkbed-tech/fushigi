@@ -209,19 +209,24 @@ struct ReferencePage: View {
             }
 
             Menu("Options", systemImage: "ellipsis.circle") {
-                Button("Import List", systemImage: "square.and.arrow.down") {
+                Button("Bulk Import Grammar", systemImage: "square.and.arrow.down") {
                     print("TODO: Implement Import Grammar List")
                 }
                 .disabled(true)
 
-                Button("Export List", systemImage: "square.and.arrow.up") {
+                Button("Bulk Export Grammar", systemImage: "square.and.arrow.up") {
                     print("TODO: Implement Export Grammar List")
                 }
                 .disabled(true)
 
                 Divider()
 
-                Button("Add New", systemImage: "plus") {
+                Button("Single Custom Add", systemImage: "rectangle.fill.badge.plus") {
+                    print("TODO: Implement Add Custom Grammar")
+                }
+                .disabled(true)
+
+                Button("Single Bulk Add", systemImage: "rectangle.stack.fill.badge.plus") {
                     print("TODO: Implement Add Custom Grammar")
                 }
                 .disabled(true)
@@ -231,17 +236,14 @@ struct ReferencePage: View {
 
     @ViewBuilder
     private var grammarInspectorSheet: some View {
-        if let selectedGP = grammarStore.selectedGrammarPoint {
-            DetailedGrammar(
-                isPresented: $showingInspector,
-                grammarPoint: selectedGP,
-            )
-            .presentationDetents([.medium, .large], selection: .constant(.medium))
+        if grammarStore.selectedGrammarPoint != nil {
+            detailedGrammar
+                .presentationDetents([.medium, .large], selection: .constant(.medium))
         } else {
             ContentUnavailableView {
                 Label("Error", systemImage: "xmark.circle")
             } description: {
-                Text("Selected grammarID is null. Please report this bug.")
+                Text("Selected grammar is null. Please report this bug.")
             } actions: {
                 Button("Dismiss") {
                     showingInspector = false
@@ -249,6 +251,63 @@ struct ReferencePage: View {
                 .buttonStyle(.borderedProminent)
             }
             .presentationDetents([.medium])
+        }
+    }
+
+    @ViewBuilder
+    private var detailedGrammar: some View {
+        let point = grammarStore.selectedGrammarPoint! // grammarInspectorSheet protects nil
+        NavigationStack {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+                Text("Usage: \(point.usage)")
+                Text("Meaning: \(point.meaning)")
+                Divider()
+                coloredTagsText(tags: point.tags)
+                Spacer()
+            }
+            .padding()
+            .toolbar {
+                #if os(iOS)
+                let placement: ToolbarItemPlacement = .topBarLeading
+                #else
+                let placement: ToolbarItemPlacement = .navigation
+                #endif
+
+                ToolbarItem(placement: placement) {
+                    Button("Dismiss", systemImage: "xmark.circle.fill") {
+                        showingInspector = false
+                    }
+                    .labelStyle(.iconOnly)
+                }
+                ToolbarItem {
+                    Menu("Options", systemImage: "ellipsis.circle") {
+                        if srsStore.isInSRS(point.id) {
+                            Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
+                                print("TODO: Implement remove from SRS")
+                            }
+                            .disabled(true)
+                        } else {
+                            Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
+                                print("TODO: Implement add to SRS")
+                            }
+                            .disabled(true)
+                        }
+
+                        if !grammarStore.isDefaultGrammar(point) {
+                            Button("Edit", systemImage: "square.and.arrow.up.fill") {
+                                print("TODO: Implement editing user grammar point...")
+                            }
+                            .disabled(true)
+
+                            Button("Delete", systemImage: "trash.slash") {
+                                print("TODO: Implement removing user grammar point...")
+                            }
+                            .disabled(true)
+                        }
+                    }
+                    .labelStyle(.iconOnly)
+                }
+            }
         }
     }
 }
@@ -314,3 +373,4 @@ struct ReferencePage: View {
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
+

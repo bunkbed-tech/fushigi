@@ -15,13 +15,13 @@ struct SearchPage: View {
     @Binding var searchText: String
 
     /// Currently selected page binding for tracking context
-    @Binding var selectedPage: NavigationView.Page?
+    @Binding var selectedPage: AppNavigatorView.Page?
 
     /// Grammar store for data access
     @EnvironmentObject var grammarStore: GrammarStore
 
     /// Last active tab to determine which content to search
-    @State private var lastActiveTab: NavigationView.Page = .practice
+    @State private var lastActiveTab: AppNavigatorView.Page = .practice
 
     // MARK: - Main View
 
@@ -62,7 +62,7 @@ struct SearchPage: View {
 
     /// Returns the appropriate page view with search applied
     @ViewBuilder
-    private func showPageWithSearch(for tab: NavigationView.Page) -> some View {
+    private func showPageWithSearch(for tab: AppNavigatorView.Page) -> some View {
         switch tab {
         case .practice:
             ReferencePage(searchText: $searchText)

@@ -77,7 +77,7 @@ struct AuthenticatedView: View {
     }
 
     var body: some View {
-        NavigationView()
+        AppNavigatorView()
             .modelContainer(sharedModelContainer)
             .environmentObject(authManager) // TODO: is this necessary?
             .environmentObject(studyStore)

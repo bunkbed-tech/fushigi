@@ -93,7 +93,7 @@ struct PracticePage: View {
             {
                 DailyGrammar(
                     showTagger: $showTagger,
-                    selectedSource: $selectedSource,
+                    selectedSource: $selectedSource
                 )
 
                 JournalEntryForm(
@@ -102,7 +102,7 @@ struct PracticePage: View {
                     textSelection: $textSelection,
                     isPrivateEntry: $isPrivateEntry,
                     statusMessage: $statusMessage,
-                    isSaving: $isSaving,
+                    isSaving: $isSaving
                 )
                 .layoutPriority(1)
             }
@@ -125,16 +125,12 @@ struct PracticePage: View {
             }
         }
         .toolbar {
-            Button("Settings", systemImage: "gear") {
-                showSettings.toggle()
+            ToolbarItem {
+                Button("Practice Settings", systemImage: "graduationcap") { showSettings.toggle() }
             }
-            .help("Configure grammar filtering and source preferences")
-            Button("Refresh", systemImage: "arrow.clockwise") {
-                Task {
-                    await refreshGrammarPoints()
-                }
+            ToolbarItem {
+                Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
             }
-            .help("Refresh source of targeted grammar")
         }
         .background {
             LinearGradient(
@@ -161,7 +157,7 @@ struct PracticePage: View {
             selectedLevel: $selectedLevel,
             selectedContext: $selectedContext,
             selectedLanguageVariant: $selectedLanguageVariant,
-            selectedSource: $selectedSource,
+            selectedSource: $selectedSource
         )
     }
 
@@ -171,7 +167,7 @@ struct PracticePage: View {
             Tagger(
                 isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
-                selectedText: selectedText,
+                selectedText: selectedText
             )
         } else {
             ContentUnavailableView {
@@ -179,7 +175,7 @@ struct PracticePage: View {
             } description: {
                 Text(
                     "The selected grammar point id is nil." +
-                        "Please try selecting another point.",
+                        "Please try selecting another point."
                 )
             } actions: {
                 Button("Dismiss") {

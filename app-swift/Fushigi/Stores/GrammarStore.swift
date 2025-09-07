@@ -59,6 +59,11 @@ class GrammarStore: ObservableObject {
 
     // MARK: - Public API
 
+    /// Returns true if grammar item is a default (system-provided) by id
+    func isDefaultGrammar(_ grammar: GrammarPointLocal) -> Bool {
+        systemGrammarItems.contains(grammar)
+    }
+
     /// Finds grammar point by ID from all available items
     func getGrammarPoint(id: String?) -> GrammarPointLocal? {
         guard let id else { return nil }
@@ -154,7 +159,7 @@ class GrammarStore: ObservableObject {
                     nuance: remote.nuance,
                     examples: remote.examples,
                     created: remote.created,
-                    updated: remote.updated,
+                    updated: remote.updated
                 )
                 modelContext.insert(newItem)
                 newItems.append(newItem)
