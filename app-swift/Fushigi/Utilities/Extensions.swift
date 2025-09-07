@@ -24,6 +24,7 @@ extension View {
     @ViewBuilder
     func tabBarMinimizeOnScrollIfAvailable() -> some View {
         #if os(iOS)
+            // The following check only works on xcode-beta right now
             if #available(iOS 26.0, *) {
                 self.tabBarMinimizeBehavior(.onScrollDown)
             } else {

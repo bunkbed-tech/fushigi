@@ -8,18 +8,21 @@
 import SwiftData
 import SwiftUI
 import TipKit
+import WrappingHStack
 
 /// Create colored text from array of tags
 @ViewBuilder
 func coloredTagsText(tags: [String]) -> some View {
-    ForEach(Array(tags.enumerated()), id: \.offset) { index, tag in
-        Text(tag)
-            .font(.caption)
-            .foregroundColor(index.isMultiple(of: 2) ? .primary : .secondary)
-            .padding(.horizontal, 4)
-            .padding(.vertical, 1)
-            .background(.quaternary)
-            .clipShape(.capsule)
+    WrappingHStack(alignment: .leading) {
+        ForEach(Array(tags.enumerated()), id: \.offset) { index, tag in
+            Text(tag)
+                .font(.caption)
+                .foregroundColor(index.isMultiple(of: 2) ? .primary : .secondary)
+                .padding(.horizontal, 4)
+                .padding(.vertical, 1)
+                .background(.quaternary)
+                .clipShape(.capsule)
+        }
     }
 }
 
