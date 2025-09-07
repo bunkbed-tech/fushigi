@@ -60,30 +60,39 @@ struct HistoryPage: View {
         journalStore.systemState
     }
 
+    /// Whether we should show the search empty state
+    var shouldShowSearchEmptyState: Bool {
+        journalEntries.isEmpty &&
+            !searchText.isEmpty &&
+            systemState == .normal &&
+            hasDataForCurrentFilter
+    }
+
+    /// Whether the current filter has underlying data available
+    var hasDataForCurrentFilter: Bool {
+        if selectedFilter == .all {
+            !journalStore.journalEntries.isEmpty
+        } else if selectedFilter == .isPrivate {
+            !journalStore.privateJournalEntries.isEmpty
+        } else {
+            !journalStore.publicJournalEntries.isEmpty
+        }
+    }
+
     // MARK: - Main View
 
     var body: some View {
-        Group {
+        VStack(spacing: 0) {
             switch systemState {
-            case .loading, .emptyData, .criticalError:
-                systemState.contentUnavailableView {
+            case .loading, .emptyData, .criticalError, .emptySRS:
+                systemState.contentUnavailableView(onRefresh: {
                     if case .emptyData = systemState {
                         searchText = ""
                     }
                     await journalStore.refresh()
-                }
-            case .normal, .degradedOperation, .emptySRS:
-                List {
-                    ForEach(journalEntries) { entry in
-                        journalItemDisclosure(for: entry)
-                    }
-                }
-                .scrollDismissesKeyboard(.interactively)
-                .refreshable {
-                    // TODO: Janky, need to fix refreshable
-                    await journalStore.refresh()
-                }
-                .scrollContentBackground(.hidden)
+                })
+            case .normal, .degradedOperation:
+                mainContentView
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -142,6 +151,32 @@ struct HistoryPage: View {
                 endPoint: .bottomTrailing,
             )
             .ignoresSafeArea()
+        }
+    }
+
+    @ViewBuilder
+    private var mainContentView: some View {
+        if !hasDataForCurrentFilter {
+            // Filter-specific empty state (separate from system state)
+            ContentUnavailableView {
+                Label("No \(selectedFilter.rawValue)", systemImage: "tray")
+            } description: {
+                Text("Try writing a new journal entry on the Practice page.")
+                    .foregroundColor(.secondary)
+            }
+        } else if shouldShowSearchEmptyState {
+            ContentUnavailableView.search(text: searchText)
+        } else {
+            List {
+                ForEach(journalEntries) { entry in
+                    journalItemDisclosure(for: entry)
+                }
+            }
+            .scrollDismissesKeyboard(.interactively)
+            .refreshable {
+                await journalStore.refresh()
+            }
+            .scrollContentBackground(.hidden)
         }
     }
 

@@ -19,9 +19,9 @@ enum GrammarQuickFilter: String, CaseIterable {
     /// Whether this filter requires SRS data
     var requiresSRSData: Bool {
         switch self {
-        case .inSRS, .available:
+        case .inSRS:
             true
-        case .all, .defaults, .custom:
+        case .all, .defaults, .custom, .available:
             false
         }
     }

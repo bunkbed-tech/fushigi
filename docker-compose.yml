@@ -15,7 +15,7 @@ services:
     environment:
       APP_NAME: Fushigi
       APP_URL: http://localhost:8090
-      SENDER_ADDRESS: info@bunkbed.tech
+      SENDER_ADDRESS: tahoeschrader@gmail.com
       SENDER_NAME: "Fushigi App"
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
