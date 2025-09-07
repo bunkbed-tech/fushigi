@@ -44,6 +44,12 @@ enum UIConstants {
 
         /// Corner radius sizing. Value: Width = 8, Height = 8
         static let cornerRadius: CGSize = .init(width: 8, height: 8)
+
+        /// MacOS forced frame width. Value: 450
+        static let forcedFrameWidth: CGFloat = 450
+
+        /// MacOS forced frame height. Value:
+        static let forcedFrameHeight: CGFloat = 300
     }
 
     enum Border {

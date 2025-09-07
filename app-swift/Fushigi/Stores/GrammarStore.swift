@@ -159,7 +159,7 @@ class GrammarStore: ObservableObject {
                     nuance: remote.nuance,
                     examples: remote.examples,
                     created: remote.created,
-                    updated: remote.updated
+                    updated: remote.updated,
                 )
                 modelContext.insert(newItem)
                 newItems.append(newItem)

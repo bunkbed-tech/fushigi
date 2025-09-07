@@ -48,14 +48,6 @@ struct SearchPage: View {
                 lastActiveTab = newValue
             }
         }
-        .background {
-            LinearGradient(
-                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing,
-            )
-            .ignoresSafeArea()
-        }
     }
 
     // MARK: - Helper Methods

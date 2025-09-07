@@ -18,13 +18,15 @@ struct FushigiApp: App {
     var body: some Scene {
         WindowGroup {
             if authManager.isAuthenticated {
-                // User is authenticated - show main app
                 AuthenticatedView(authManager: authManager)
             } else {
-                // Show login screen
                 LoginPage(authManager: authManager)
             }
         }
+
+        #if os(macOS)
+            Settings { SettingsView() }
+        #endif
     }
 }
 

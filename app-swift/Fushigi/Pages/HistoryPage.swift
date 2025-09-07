@@ -95,6 +95,7 @@ struct HistoryPage: View {
                 mainContentView
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // necessary for empty search
         .overlay(alignment: .topTrailing) {
             if case .degradedOperation = systemState {
                 Button(action: { Task { await journalStore.refresh() } }) {
@@ -143,14 +144,6 @@ struct HistoryPage: View {
                     }
                 }
             }
-        }
-        .background {
-            LinearGradient(
-                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing,
-            )
-            .ignoresSafeArea()
         }
     }
 

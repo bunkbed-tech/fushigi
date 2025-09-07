@@ -44,9 +44,6 @@ struct ReferencePage: View {
     /// Currently selected grammar point for detailed examination
     @State private var selectedGrammarID: String?
 
-    /// Controls the settings sheet for practice content preferences
-    @State private var showingSettings: Bool = false
-
     /// Controls detailed grammar point inspection interface visibility
     @State private var showingInspector: Bool = false
 
@@ -121,6 +118,7 @@ struct ReferencePage: View {
         VStack(spacing: 0) {
             mainContentView
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // necessary for empty search
         .overlay(alignment: .topTrailing) {
             if case .degradedOperation = effectiveSystemState {
                 Button(action: { Task { await studyStore.refresh() } }) {
@@ -148,14 +146,6 @@ struct ReferencePage: View {
         }) {
             grammarInspectorSheet
         }
-        .background {
-            LinearGradient(
-                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing,
-            )
-            .ignoresSafeArea()
-        }
     }
 
     // MARK: - View Components
@@ -169,7 +159,6 @@ struct ReferencePage: View {
                 },
             )
         } else if !hasDataForCurrentFilter {
-            // Filter-specific empty state (separate from system state)
             ContentUnavailableView {
                 Label("No \(selectedFilter.rawValue)", systemImage: "tray")
             } description: {
@@ -236,9 +225,13 @@ struct ReferencePage: View {
 
     @ViewBuilder
     private var grammarInspectorSheet: some View {
-        if grammarStore.selectedGrammarPoint != nil {
-            detailedGrammar
-                .presentationDetents([.medium, .large], selection: .constant(.medium))
+        if let point = grammarStore.selectedGrammarPoint {
+            GrammarDetailSheet(
+                point: point,
+                isInSRS: srsStore.isInSRS(point.id),
+                isDefault: grammarStore.isDefaultGrammar(point),
+                onDismiss: { showingInspector = false },
+            )
         } else {
             ContentUnavailableView {
                 Label("Error", systemImage: "xmark.circle")
@@ -253,60 +246,66 @@ struct ReferencePage: View {
             .presentationDetents([.medium])
         }
     }
+}
+
+// MARK: - Grammar Detail Sheet
+
+/// Cross-platform grammar detail sheet that handles iOS vs macOS presentation
+struct GrammarDetailSheet: View {
+    let point: GrammarPointLocal
+    let isInSRS: Bool
+    let isDefault: Bool
+    let onDismiss: () -> Void
+
+    var body: some View {
+        PlatformSheet(title: "Grammar Details", onDismiss: onDismiss) {
+            grammarContent
+        }
+        #if os(macOS)
+        .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
+        #else
+        .presentationDetents([.medium, .large], selection: .constant(.medium))
+        #endif
+    }
 
     @ViewBuilder
-    private var detailedGrammar: some View {
-        let point = grammarStore.selectedGrammarPoint! // grammarInspectorSheet protects nil
-        NavigationStack {
-            VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-                Text("Usage: \(point.usage)")
-                Text("Meaning: \(point.meaning)")
-                Divider()
-                coloredTagsText(tags: point.tags)
-                Spacer()
-            }
-            .padding()
-            .toolbar {
-                #if os(iOS)
-                let placement: ToolbarItemPlacement = .topBarLeading
-                #else
-                let placement: ToolbarItemPlacement = .navigation
-                #endif
-
-                ToolbarItem(placement: placement) {
-                    Button("Dismiss", systemImage: "xmark.circle.fill") {
-                        showingInspector = false
-                    }
-                    .labelStyle(.iconOnly)
-                }
-                ToolbarItem {
-                    Menu("Options", systemImage: "ellipsis.circle") {
-                        if srsStore.isInSRS(point.id) {
-                            Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
-                                print("TODO: Implement remove from SRS")
-                            }
-                            .disabled(true)
-                        } else {
-                            Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
-                                print("TODO: Implement add to SRS")
-                            }
-                            .disabled(true)
+    private var grammarContent: some View {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+            Text("Usage: \(point.usage)")
+            Text("Meaning: \(point.meaning)")
+            Divider()
+            coloredTagsText(tags: point.tags)
+            Spacer()
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem(placement: .secondaryAction) {
+                Menu("Options", systemImage: "ellipsis.circle") {
+                    if isInSRS {
+                        Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
+                            print("TODO: Implement remove from SRS")
                         }
-
-                        if !grammarStore.isDefaultGrammar(point) {
-                            Button("Edit", systemImage: "square.and.arrow.up.fill") {
-                                print("TODO: Implement editing user grammar point...")
-                            }
-                            .disabled(true)
-
-                            Button("Delete", systemImage: "trash.slash") {
-                                print("TODO: Implement removing user grammar point...")
-                            }
-                            .disabled(true)
+                        .disabled(true)
+                    } else {
+                        Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
+                            print("TODO: Implement add to SRS")
                         }
+                        .disabled(true)
                     }
-                    .labelStyle(.iconOnly)
+
+                    if !isDefault {
+                        Button("Edit", systemImage: "square.and.arrow.up.fill") {
+                            print("TODO: Implement editing user grammar point...")
+                        }
+                        .disabled(true)
+
+                        Button("Delete", systemImage: "trash.slash") {
+                            print("TODO: Implement removing user grammar point...")
+                        }
+                        .disabled(true)
+                    }
                 }
+                .labelStyle(.iconOnly)
             }
         }
     }
@@ -373,4 +372,3 @@ struct ReferencePage: View {
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
-

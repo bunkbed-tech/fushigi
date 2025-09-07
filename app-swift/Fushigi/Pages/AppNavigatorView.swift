@@ -21,7 +21,7 @@ struct AppNavigatorView: View {
     /// Shared search query state for views that support content filtering
     @State private var searchText: String = ""
 
-    /// Profile sheet presentation state
+    /// Profile sheet presentation state (iOS only)
     @State private var showProfile = false
 
     /// Determines whether to use compact navigation patterns (tabs vs split view)
@@ -40,9 +40,11 @@ struct AppNavigatorView: View {
                 navigationAsSplitView
             }
         }
+        #if os(iOS)
         .sheet(isPresented: $showProfile) {
-            ProfileView(showProfile: $showProfile)
+            IOSSettingsView(showProfile: $showProfile)
         }
+        #endif
     }
 
     // MARK: - Helper Methods
@@ -136,18 +138,34 @@ struct AppNavigatorView: View {
         .navigationTitle(selectedPage?.id ?? "Fushigi")
     }
 
-    /// Reusable profile toolbar button
+    /// Unified account/settings button for both platforms
     @ToolbarContentBuilder
     private var profileToolbarButton: some ToolbarContent {
         #if os(iOS)
-        let placement: ToolbarItemPlacement = .topBarLeading
+            let placement: ToolbarItemPlacement = .topBarLeading
         #else
-        let placement: ToolbarItemPlacement = .navigation
+            let placement: ToolbarItemPlacement = .navigation
         #endif
 
         ToolbarItem(placement: placement) {
-            Button("Profile", systemImage: "person.circle") {
-                showProfile = true
+            AccountButton(showProfile: $showProfile)
+        }
+    }
+
+    /// Account button that opens settings (macOS) or sheet (iOS)
+    struct AccountButton: View {
+        @Binding var showProfile: Bool
+        #if os(macOS)
+            @Environment(\.openSettings) private var openSettings
+        #endif
+
+        var body: some View {
+            Button("Account", systemImage: "person.circle") {
+                #if os(macOS)
+                    openSettings()
+                #else
+                    showProfile = true
+                #endif
             }
         }
     }
@@ -155,16 +173,30 @@ struct AppNavigatorView: View {
     /// Returns the appropriate view for each app section
     @ViewBuilder
     private func decoratedView(for page: Page) -> some View {
-        switch page {
-        case .practice:
-            PracticePage()
-        case .history:
-            HistoryPage(searchText: $searchText)
-        case .reference:
-            ReferencePage(searchText: $searchText)
-        case .search:
-            SearchPage(searchText: $searchText, selectedPage: $selectedPage)
+        Group {
+            switch page {
+            case .practice:
+                PracticePage()
+            case .history:
+                HistoryPage(searchText: $searchText)
+            case .reference:
+                ReferencePage(searchText: $searchText)
+            case .search:
+                SearchPage(searchText: $searchText, selectedPage: $selectedPage)
+            }
         }
+        .background {
+            LinearGradient(
+                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing,
+            )
+            .ignoresSafeArea()
+        }
+        #if os(macOS)
+        // Ensure the gradient fills under the titlebar (why doesnt it by default?)
+        .toolbarBackground(Visibility.hidden, for: .windowToolbar)
+        #endif
     }
 
     /// Application sections with navigation metadata
@@ -195,113 +227,6 @@ struct AppNavigatorView: View {
             case .search: false
             }
         }
-    }
-}
-
-// MARK: - Profile View
-
-/// User profile and settings view presented as a sheet
-struct ProfileView: View {
-    @Binding var showProfile: Bool
-
-    var body: some View {
-        NavigationStack {
-            List {
-                Section("Account") {
-                    HStack {
-                        Image(systemName: "person.circle.fill")
-                            .font(.largeTitle)
-                        VStack(alignment: .leading) {
-                            Text("John Tester")
-                                .font(.headline)
-                            Text("tester@example.com")
-                                .font(.caption)
-                        }
-                    }
-                    .padding(.vertical, UIConstants.Padding.capsuleWidth)
-
-                    Button("Edit Profile") {
-                        print("TODO: Implement user edit")
-                    }
-                }
-
-                Section("App Information") {
-                    NavigationLink("Preferences", destination: PreferencesView())
-                    NavigationLink("Credits & Licenses", destination: CreditsView())
-                }
-
-                Section {
-                    Button("Sign Out", role: .destructive) {
-                        print("TODO: Implement sign out")
-                    }
-                }
-            }
-            .navigationTitle("Profile")
-            .toolbar {
-                ToolbarItem {
-                    Button("Done") {
-                        showProfile = false
-                    }
-                }
-            }
-        }
-        .presentationDetents([.medium, .large], selection: .constant(.large))
-    }
-}
-
-// MARK: - Credits View
-
-struct CreditsView: View {
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: UIConstants.Spacing.content) {
-                Text("Third Party Libraries")
-                    .font(.title2)
-                    .bold()
-
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                    Text("WrappingHStack")
-                        .font(.headline)
-
-                    Text("""
-                    MIT License
-
-                    Copyright (c) 2022 Konstantin Semianov
-
-                    Permission is hereby granted, free of charge, to any person obtaining a copy
-                    of this software and associated documentation files (the "Software"), to deal
-                    in the Software without restriction, including without limitation the rights
-                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                    copies of the Software, and to permit persons to whom the Software is
-                    furnished to do so, subject to the following conditions:
-
-                    The above copyright notice and this permission notice shall be included in all
-                    copies or substantial portions of the Software.
-
-                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                    SOFTWARE.
-                    """)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                }
-            }
-            .padding()
-        }
-        .navigationTitle("Credits")
-    }
-}
-
-// MARK: - Placeholder Views
-
-struct PreferencesView: View {
-    var body: some View {
-        Text("TODO: Preferences/Language Settings")
-            .navigationTitle("Preferences")
     }
 }
 
@@ -336,4 +261,3 @@ struct PreferencesView: View {
     AppNavigatorView()
         .withPreviewStores(systemState: .emptySRS)
 }
-

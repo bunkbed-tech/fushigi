@@ -93,7 +93,7 @@ struct PracticePage: View {
             {
                 DailyGrammar(
                     showTagger: $showTagger,
-                    selectedSource: $selectedSource
+                    selectedSource: $selectedSource,
                 )
 
                 JournalEntryForm(
@@ -102,7 +102,7 @@ struct PracticePage: View {
                     textSelection: $textSelection,
                     isPrivateEntry: $isPrivateEntry,
                     statusMessage: $statusMessage,
-                    isSaving: $isSaving
+                    isSaving: $isSaving,
                 )
                 .layoutPriority(1)
             }
@@ -132,14 +132,6 @@ struct PracticePage: View {
                 Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
             }
         }
-        .background {
-            LinearGradient(
-                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing,
-            )
-            .ignoresSafeArea()
-        }
     }
 
     // MARK: - Helper Methods
@@ -157,7 +149,7 @@ struct PracticePage: View {
             selectedLevel: $selectedLevel,
             selectedContext: $selectedContext,
             selectedLanguageVariant: $selectedLanguageVariant,
-            selectedSource: $selectedSource
+            selectedSource: $selectedSource,
         )
     }
 
@@ -167,7 +159,7 @@ struct PracticePage: View {
             Tagger(
                 isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
-                selectedText: selectedText
+                selectedText: selectedText,
             )
         } else {
             ContentUnavailableView {
@@ -175,7 +167,7 @@ struct PracticePage: View {
             } description: {
                 Text(
                     "The selected grammar point id is nil." +
-                        "Please try selecting another point."
+                        "Please try selecting another point.",
                 )
             } actions: {
                 Button("Dismiss") {
