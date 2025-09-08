@@ -78,27 +78,3 @@ struct GrammarSettings: View {
         }
     }
 }
-
-// MARK: - Previews
-
-#Preview("Random") {
-    GrammarSettings(
-        selectedLevel: .constant(.all),
-        selectedContext: .constant(.all),
-        selectedLanguageVariant: .constant(.none),
-        selectedSource: .constant(.random),
-    )
-    .withPreviewNavigation()
-    .navigationTitle("Practice Settings")
-}
-
-#Preview("SRS") {
-    GrammarSettings(
-        selectedLevel: .constant(.all),
-        selectedContext: .constant(.all),
-        selectedLanguageVariant: .constant(.none),
-        selectedSource: .constant(.srs),
-    )
-    .withPreviewNavigation()
-    .navigationTitle("Practice Settings")
-}

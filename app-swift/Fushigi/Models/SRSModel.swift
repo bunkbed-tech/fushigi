@@ -8,13 +8,47 @@
 import Foundation
 import SwiftData
 
-/// SRS Record  model for simple submission to backend
+/// Required since Pocketbase returns nullable dates as empty strings
+@propertyWrapper
+struct OptionalDate {
+    private var date: Date
+
+    init(wrappedValue: Date?) {
+        date = wrappedValue ?? Date.distantPast
+    }
+
+    var wrappedValue: Date? {
+        get { date == Date.distantPast ? nil : date }
+        set { date = newValue ?? Date.distantPast }
+    }
+}
+
+/// Tell JSON decoder how to deal with OptionalDate type
+extension OptionalDate: Codable {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        date = try container.decode(Date.self)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(date)
+    }
+}
+
+/// SRS Record model for simple submission to backend
 struct SRSRecordCreate: Codable {
     let user: String
     let grammar: String
     let easeFactor: Double
     let intervalDays: Double
     let repetition: Double
+
+    enum CodingKeys: String, CodingKey {
+        case user, grammar, repetition
+        case easeFactor = "ease_factor"
+        case intervalDays = "interval_days"
+    }
 }
 
 /// SRS Record model for remote Pocketbase database
@@ -25,12 +59,12 @@ struct SRSRecordRemote: Codable {
     let easeFactor: Double
     let intervalDays: Double
     let repetition: Double
-    let lastReviewed: Date?
+    @OptionalDate var lastReviewed: Date?
     let dueDate: Date
     let created: Date
     let updated: Date
 
-    // Optional expand field for when ?expand=user,gramamr is used on the route
+    // Optional expand field for when ?expand=user,grammar is used on the route
     let expand: ExpandedRelations?
 
     struct ExpandedRelations: Codable {
@@ -45,11 +79,11 @@ struct SRSRecordRemote: Codable {
         easeFactor = model.easeFactor
         intervalDays = model.intervalDays
         repetition = model.repetition
-        lastReviewed = model.lastReviewed
         dueDate = model.dueDate
         created = model.created
         updated = model.updated
-        expand = nil // Not necessary locally
+        expand = nil
+        _lastReviewed = OptionalDate(wrappedValue: model.lastReviewed)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -67,9 +101,9 @@ final class SRSRecordLocal {
     @Attribute var id: String = UUID().uuidString
     var user: String = UUID().uuidString
     var grammar: String = UUID().uuidString
-    var easeFactor: Double = 2.5 // ?
-    var intervalDays: Double = 1.0 // ?
-    var repetition: Double = 0.0 // ?
+    var easeFactor: Double = 2.5
+    var intervalDays: Double = 1.0
+    var repetition: Double = 0.0
     var lastReviewed: Date?
     var dueDate: Date = Date()
     var created: Date = Date()

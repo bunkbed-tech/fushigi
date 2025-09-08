@@ -116,9 +116,15 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = try encoder.encode(newItem)
 
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let response = try decoder.decode(DefaultResponse.self, from: data)
-            return .success(response.id)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            // DEBUG: Log the actual response
+            if let httpResponse = response as? HTTPURLResponse {
+                print("HTTP Status: \(httpResponse.statusCode)")
+            }
+            print("Raw response body: \(String(data: data, encoding: .utf8) ?? "Could not decode data")")
+
+            let fullresponse = try decoder.decode(DefaultResponse.self, from: data)
+            return .success(fullresponse.id)
         } catch {
             return .failure(error)
         }

@@ -290,6 +290,7 @@ struct ReferencePage: View {
                         Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
                             Task {
                                 await srsStore.addToSRS(point.id)
+                                showingInspector = false
                             }
                         }
                     }

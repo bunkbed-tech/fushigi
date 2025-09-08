@@ -76,19 +76,29 @@ struct DailyGrammar: View {
                         ContentUnavailableView {
                             Label("No SRS Records", systemImage: "tray")
                         } description: {
-                            Text("Try adding new grammar points, changing the filter," +
-                                "or bulk generating SRS items on the Reference Page.")
-                                .foregroundColor(.secondary)
+                            Text("""
+                            Try adding new grammar points, changing the filter,
+                            or bulk generating SRS items on the Reference Page.
+                            """)
+                            .foregroundColor(.secondary)
                         }
                     } else {
                         ForEach(grammarPoints, id: \.id) { grammarPoint in
-                            TaggableGrammarRow(
-                                grammarPoint: grammarPoint,
-                                onTagSelected: {
-                                    studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-                                    showTagger = true
-                                },
-                            )
+                            Button {
+                                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
+                                showTagger = true
+                            } label: {
+                                HStack {
+                                    Text(grammarPoint.usage)
+                                        .foregroundStyle(.foreground)
+                                    Spacer()
+                                    Image(systemName: "plus.circle.fill")
+                                        .foregroundStyle(.mint)
+                                }
+                                .contentShape(.rect)
+                            }
+                            .buttonStyle(.plain)
+                            .help("Link this grammar point to selected text")
 
                             // Hide last Divider for improved visuals
                             if grammarPoint.id != grammarPoints.last?.id {
@@ -126,33 +136,4 @@ struct DailyGrammar: View {
     private func refreshGrammarPoints() async {
         srsStore.forceDailyRefresh(currentMode: selectedSource)
     }
-}
-
-// MARK: - Previews
-
-#Preview("Random - Normal") {
-    DailyGrammar(
-        showTagger: .constant(false),
-        selectedSource: .constant(SourceMode.random),
-    )
-    .withPreviewNavigation()
-    .withPreviewStores()
-}
-
-#Preview("SRS - Normal") {
-    DailyGrammar(
-        showTagger: .constant(false),
-        selectedSource: .constant(SourceMode.srs),
-    )
-    .withPreviewNavigation()
-    .withPreviewStores()
-}
-
-#Preview("Random - Pocketbase error") {
-    DailyGrammar(
-        showTagger: .constant(false),
-        selectedSource: .constant(SourceMode.random),
-    )
-    .withPreviewNavigation()
-    .withPreviewStores(systemHealth: .pocketbaseError)
 }

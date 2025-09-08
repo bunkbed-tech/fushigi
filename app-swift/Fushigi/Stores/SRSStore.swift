@@ -155,7 +155,7 @@ class SRSStore: ObservableObject {
     func updateRandomSRSRecords(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastRandomUpdate != today || randomSRSRecords.isEmpty {
-            randomSRSRecords = Array(srsRecords.shuffled().prefix(5))
+            randomSRSRecords = Array(srsRecords.shuffled().prefix(min(5, srsRecords.count)))
             lastRandomUpdate = today
             print("LOG: Selected \(randomSRSRecords.count) random SRS records")
         }
@@ -166,7 +166,7 @@ class SRSStore: ObservableObject {
     func updateAlgorithmicSRSRecords(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastSRSUpdate != today || algorithmicSRSRecords.isEmpty {
-            algorithmicSRSRecords = Array(srsRecords.shuffled().prefix(5))
+            algorithmicSRSRecords = Array(srsRecords.shuffled().prefix(min(5, srsRecords.count)))
             lastSRSUpdate = today
             print("LOG: Selected \(algorithmicSRSRecords.count) SRS grammar items")
         }

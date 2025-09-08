@@ -144,35 +144,3 @@ struct Tagger: View {
         isShowingTagger = false
     }
 }
-
-// MARK: - Previews
-
-#Preview("Tagger - With Text") {
-    Tagger(
-        isShowingTagger: .constant(true),
-        grammarPoint: GrammarPointLocal(
-            id: UUID(),
-            context: "N3",
-            usage: "〜ながら",
-            meaning: "while doing",
-            tags: ["simultaneous", "action"],
-        ),
-        selectedText: "私は音楽を聞きながら勉強しています。",
-    )
-    .withPreviewNavigation()
-}
-
-#Preview("Tagger - No Text") {
-    Tagger(
-        isShowingTagger: .constant(true),
-        grammarPoint: GrammarPointLocal(
-            id: UUID(),
-            context: "N2",
-            usage: "〜というのは",
-            meaning: "the reason is that",
-            tags: ["explanation", "formal"],
-        ),
-        selectedText: "",
-    )
-    .withPreviewNavigation()
-}

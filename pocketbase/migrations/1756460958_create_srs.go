@@ -72,7 +72,8 @@ func init() {
 			OnUpdate: true,
 		})
 
-		collection.AddIndex("idx_by_user_due", false, "user, due_date", "")
+		collection.AddIndex("idx_srs_by_grammar_per_user", true, "user, grammar", "")
+		collection.AddIndex("idx_srs_by_user_due", false, "user, due_date", "")
 		collection.AddIndex("idx_srs_by_user", false, "user", "")
 
 		err = app.Save(collection)

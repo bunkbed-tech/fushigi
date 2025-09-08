@@ -101,20 +101,3 @@ struct GrammarTable: View {
             }
     }
 }
-
-// MARK: - Previews
-
-#Preview {
-    @Previewable @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    var isCompact: Bool { horizontalSizeClass == .compact }
-
-    PreviewHelper.withStore { _, _, studyStore in
-        GrammarTable(
-            selectedGrammarID: .constant(nil),
-            showingInspector: .constant(true),
-            grammarPoints: studyStore.grammarStore.grammarItems,
-            isCompact: isCompact,
-            onRefresh: {},
-        )
-    }
-}
