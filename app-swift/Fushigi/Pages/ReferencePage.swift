@@ -7,40 +7,21 @@
 
 import SwiftUI
 
-// MARK: - Bulk Operation State
-
-enum BulkOperationState: Equatable {
-    case idle
-    case running
-    case success(String)
-    case error(String)
-
-    var isRunning: Bool {
-        if case .running = self { return true }
-        return false
-    }
-
-    var shouldDisableUI: Bool {
-        if case .running = self { return true }
-        return false
-    }
-}
-
 // MARK: - Reference Page
 
 enum GrammarQuickFilter: String, CaseIterable {
-    case all = "All Grammar"
-    case defaults = "Default Items"
-    case custom = "Custom Items"
-    case inSRS = "Added To SRS"
-    case available = "Not Yet Added"
+    case all = "All"
+    case defaults = "Default"
+    case custom = "Custom"
+    case inSRS = "SRS"
+    case available = "Available"
 
     /// Whether this filter requires SRS data
     var requiresSRSData: Bool {
         switch self {
-        case .inSRS:
+        case .inSRS, .available:
             true
-        case .all, .defaults, .custom, .available:
+        case .all, .defaults, .custom:
             false
         }
     }
@@ -69,22 +50,8 @@ struct ReferencePage: View {
     /// Controls currently displayed source of grammar
     @State private var selectedFilter: GrammarQuickFilter = .all
 
-    /// BETTER: Track bulk operation state with non-dismissible progress
-    @State private var bulkOperationState: BulkOperationState = .idle
-
     /// Search query text coordinated with parent navigation structure
     @Binding var searchText: String
-
-    #if DEBUG
-    // Convenience init for previews to seed @State values
-    init(
-        searchText: Binding<String>,
-        initialBulkOperationState: BulkOperationState = .idle
-    ) {
-        self._searchText = searchText
-        self._bulkOperationState = State(initialValue: initialBulkOperationState)
-    }
-    #endif
 
     /// Determines layout strategy based on available horizontal space
     var isCompact: Bool {
@@ -94,15 +61,8 @@ struct ReferencePage: View {
     /// Computed system state based on current filter
     var effectiveSystemState: SystemState {
         if selectedFilter.requiresSRSData {
-            // For SRS-dependent filters, check SRS state first, then fall back to grammar state
-            switch srsStore.systemState {
-            case .emptySRS, .emptyData:
-                .emptySRS
-            case .loading, .normal, .degradedOperation, .criticalError:
-                srsStore.systemState
-            }
+            srsStore.systemState
         } else {
-            // For grammar-only filters, use grammar store state
             grammarStore.systemState
         }
     }
@@ -129,20 +89,7 @@ struct ReferencePage: View {
     var shouldShowSearchEmptyState: Bool {
         grammarPoints.isEmpty &&
             !searchText.isEmpty &&
-            effectiveSystemState == .normal &&
-            hasDataForCurrentFilter
-    }
-
-    /// Whether the current filter has underlying data available
-    var hasDataForCurrentFilter: Bool {
-        if selectedFilter.requiresSRSData {
-            return !srsStore.srsRecords.isEmpty
-        } else {
-            if selectedFilter == .custom {
-                return !grammarStore.userGrammarItems.isEmpty
-            }
-            return !grammarStore.grammarItems.isEmpty
-        }
+            effectiveSystemState == .normal
     }
 
     // MARK: - Main View
@@ -150,13 +97,13 @@ struct ReferencePage: View {
     var body: some View {
         VStack(spacing: 0) {
             // Show progress indicator when operation is running
-            if bulkOperationState.isRunning {
-                bulkOperationProgressView
+            if effectiveSystemState.shouldDisableUI {
+                loadingProgressView
             }
 
             mainContentView
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity) // necessary for empty search
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .overlay(alignment: .topTrailing) {
             if case .degradedOperation = effectiveSystemState {
                 Button(action: { Task { await studyStore.refresh() } }) {
@@ -174,7 +121,7 @@ struct ReferencePage: View {
                     .clipShape(.capsule)
                 }
                 .padding()
-                .disabled(bulkOperationState.shouldDisableUI)
+                .disabled(effectiveSystemState.shouldDisableUI)
             }
         }
         .toolbar {
@@ -190,12 +137,12 @@ struct ReferencePage: View {
     // MARK: - View Components
 
     @ViewBuilder
-    private var bulkOperationProgressView: some View {
+    private var loadingProgressView: some View {
         HStack(spacing: 12) {
             ProgressView()
                 .scaleEffect(0.8)
 
-            Text("Adding default items to SRS list...")
+            Text("Performing database sync actions...")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -213,20 +160,20 @@ struct ReferencePage: View {
     private var mainContentView: some View {
         if effectiveSystemState.shouldShowContentUnavailable {
             effectiveSystemState.contentUnavailableView(
-                onRefresh: {
-                    guard !bulkOperationState.shouldDisableUI else { return }
+                action: {
+                    guard !effectiveSystemState.shouldDisableUI else { return }
                     await studyStore.refresh()
                 },
             )
-        } else if !hasDataForCurrentFilter {
-            ContentUnavailableView {
-                Label("No \(selectedFilter.rawValue)", systemImage: "tray")
-            } description: {
-                Text("Try adding new grammar points or changing the filter.")
-                    .foregroundColor(.secondary)
-            }
         } else if shouldShowSearchEmptyState {
             ContentUnavailableView.search(text: searchText)
+        } else if grammarPoints.isEmpty {
+            ContentUnavailableView {
+                Label("\(selectedFilter.rawValue): Items Missing", systemImage: "tray")
+            } description: {
+                Text("Try adding new grammar points, changing the filter, or bulk generating SRS items from default.")
+                    .foregroundColor(.secondary)
+            }
         } else {
             GrammarTable(
                 selectedGrammarID: $selectedGrammarID,
@@ -234,11 +181,11 @@ struct ReferencePage: View {
                 grammarPoints: grammarPoints,
                 isCompact: isCompact,
                 onRefresh: {
-                    guard !bulkOperationState.shouldDisableUI else { return }
+                    guard !effectiveSystemState.shouldDisableUI else { return }
                     await studyStore.refresh()
                 },
             )
-            .disabled(bulkOperationState.shouldDisableUI)
+            .disabled(effectiveSystemState.shouldDisableUI)
         }
     }
 
@@ -258,7 +205,7 @@ struct ReferencePage: View {
                     }
                 }
             }
-            .disabled(bulkOperationState.shouldDisableUI)
+            .disabled(effectiveSystemState.shouldDisableUI)
 
             Menu("Options", systemImage: "ellipsis.circle") {
                 Button("TODO: Bulk Import", systemImage: "square.and.arrow.down") {
@@ -279,28 +226,33 @@ struct ReferencePage: View {
                 .disabled(true)
 
                 if selectedFilter == .available {
-                    BulkSaveButton(
-                        items: studyStore.availableGrammarItems,
-                        operationState: $bulkOperationState,
-                        onExecute: { items in
-                            await srsStore.addBulkToSRS(items)
+                    Button("Generate From Defaults", systemImage: "rectangle.stack.fill.badge.plus") {
+                        Task {
+                            await srsStore.addBulkToSRS(studyStore.availableGrammarItems)
                         }
-                    )
+                    }
+                    .disabled(studyStore.availableGrammarItems.isEmpty)
                 }
             }
-            .disabled(bulkOperationState.shouldDisableUI)
+            .disabled(effectiveSystemState.shouldDisableUI)
         }
     }
 
     @ViewBuilder
     private var grammarInspectorSheet: some View {
         if let point = grammarStore.selectedGrammarPoint {
-            GrammarDetailSheet(
-                point: point,
-                isInSRS: srsStore.isInSRS(point.id),
-                isDefault: grammarStore.isDefaultGrammar(point),
-                onDismiss: { showingInspector = false },
-            )
+            PlatformSheet(title: "Grammar Details", onDismiss: { showingInspector = false }) {
+                grammarContent(
+                    point: point,
+                    isInSRS: srsStore.isInSRS(point.id),
+                    isDefault: grammarStore.isDefaultGrammar(point),
+                )
+            }
+            #if os(macOS)
+            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
+            #else
+            .presentationDetents([.medium, .large], selection: .constant(.medium))
+            #endif
         } else {
             ContentUnavailableView {
                 Label("Error", systemImage: "xmark.circle")
@@ -315,94 +267,9 @@ struct ReferencePage: View {
             .presentationDetents([.medium])
         }
     }
-}
-
-// MARK: - BETTER: Reusable Bulk Save Button Component
-
-struct BulkSaveButton<T>: View {
-    let items: [T]
-    @Binding var operationState: BulkOperationState
-    let onExecute: ([T]) async -> BulkOperationResult
-
-    var body: some View {
-        Button(action: executeBulkOperation) {
-            HStack {
-                Text("Bulk Save Defaults")
-
-                switch operationState {
-                case .idle:
-                    Image(systemName: "rectangle.stack.fill.badge.plus")
-                case .running:
-                    ProgressView()
-                        .scaleEffect(0.7)
-                case .success:
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
-                case .error:
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.orange)
-                }
-            }
-        }
-        .disabled(items.isEmpty || operationState.shouldDisableUI)
-        .onChange(of: operationState) { _, newState in
-            if case .success = newState {
-                Task {
-                    try? await Task.sleep(for: .seconds(3))
-                    if case .success = operationState {
-                        operationState = .idle
-                    }
-                }
-            } else if case .error = newState {
-                Task {
-                    try? await Task.sleep(for: .seconds(5))
-                    if case .error = operationState {
-                        operationState = .idle
-                    }
-                }
-            }
-        }
-    }
-
-    private func executeBulkOperation() {
-        Task {
-            operationState = .running
-
-            let result = await onExecute(items)
-
-            // CLEAN: Handle unified result type
-            switch result {
-            case .success(let success):
-                operationState = .success(success.message)
-            case .failure(let error):
-                operationState = .error(error.message)
-            }
-        }
-    }
-}
-
-// MARK: - Grammar Detail Sheet
-
-/// Cross-platform grammar detail sheet that handles iOS vs macOS presentation
-struct GrammarDetailSheet: View {
-    let point: GrammarPointLocal
-    let isInSRS: Bool
-    let isDefault: Bool
-    let onDismiss: () -> Void
-
-    var body: some View {
-        PlatformSheet(title: "Grammar Details", onDismiss: onDismiss) {
-            grammarContent
-        }
-        #if os(macOS)
-        .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
-        #else
-        .presentationDetents([.medium, .large], selection: .constant(.medium))
-        #endif
-    }
 
     @ViewBuilder
-    private var grammarContent: some View {
+    private func grammarContent(point: GrammarPointLocal, isInSRS: Bool, isDefault: Bool) -> some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
             Text("Usage: \(point.usage)")
             Text("Meaning: \(point.meaning)")
@@ -421,9 +288,10 @@ struct GrammarDetailSheet: View {
                         .disabled(true)
                     } else {
                         Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
-                            print("TODO: Implement add to SRS")
+                            Task {
+                                await srsStore.addToSRS(point.id)
+                            }
                         }
-                        .disabled(true)
                     }
 
                     if !isDefault {
@@ -439,6 +307,7 @@ struct GrammarDetailSheet: View {
                     }
                 }
                 .labelStyle(.iconOnly)
+                .disabled(effectiveSystemState.shouldDisableUI)
             }
         }
     }
@@ -488,12 +357,6 @@ struct GrammarDetailSheet: View {
         .withPreviewStores(dataAvailability: .empty)
 }
 
-#Preview("Empty SRS") {
-    ReferencePage(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(systemState: .emptySRS)
-}
-
 #Preview("Critical Error Postgres") {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
@@ -506,29 +369,8 @@ struct GrammarDetailSheet: View {
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
 
-#Preview("Bulk Operation Running") {
-    ReferencePage(
-        searchText: .constant(""),
-        initialBulkOperationState: .running
-    )
-    .withPreviewNavigation()
-    .withPreviewStores()
-}
-
-#Preview("Bulk Operation Success") {
-    ReferencePage(
-        searchText: .constant(""),
-        initialBulkOperationState: .success("Added 25 items to study list")
-    )
-    .withPreviewNavigation()
-    .withPreviewStores()
-}
-
-#Preview("Bulk Operation Error") {
-    ReferencePage(
-        searchText: .constant(""),
-        initialBulkOperationState: .error("Network error - please try again")
-    )
-    .withPreviewNavigation()
-    .withPreviewStores()
+#Preview("Missing SRS") {
+    ReferencePage(searchText: .constant(""))
+        .withPreviewNavigation()
+        .withPreviewStores(noSRS: true)
 }

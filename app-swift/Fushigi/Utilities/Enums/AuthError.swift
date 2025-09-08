@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Authentication Error
+
 enum AuthError: Error, LocalizedError {
     case invalidCredentials(String, underlying: Error? = nil)
     case networkError(String, underlying: Error? = nil)

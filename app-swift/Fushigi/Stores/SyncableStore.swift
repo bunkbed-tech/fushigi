@@ -23,7 +23,7 @@ protocol SyncableStore: ObservableObject {
 
 /// Define shared attributes of all stores with sync
 extension SyncableStore {
-    /// Computed priority state for UI rendering decisions
+    /// Computed priority state for UI rendering decisions (special .emptySRS case determined in SRSStore.swift)
     var systemState: SystemState {
         switch (dataAvailability, systemHealth) {
         case (.loading, _):
@@ -58,8 +58,8 @@ extension SyncableStore {
 
     /// Handle successful sync
     func handleSyncSuccess() {
-        // Successful sync means PocketBase is working - clear postgres errors
-        // But keep SwiftData errors since remote sync doesn't fix local storage
+        // Successful sync means PocketBase is working - clear errors
+        // Keep SwiftData errors since remote sync doesn't fix local storage
         if systemHealth == .pocketbaseError {
             systemHealth = .healthy
         }

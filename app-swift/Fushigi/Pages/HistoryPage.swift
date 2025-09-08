@@ -84,8 +84,8 @@ struct HistoryPage: View {
     var body: some View {
         VStack(spacing: 0) {
             switch systemState {
-            case .loading, .emptyData, .criticalError, .emptySRS:
-                systemState.contentUnavailableView(onRefresh: {
+            case .loading, .emptyData, .criticalError:
+                systemState.contentUnavailableView(action: {
                     if case .emptyData = systemState {
                         searchText = ""
                     }

@@ -38,45 +38,6 @@ class StudyStore: ObservableObject {
         grammarStore.grammarItems.filter { !srsStore.isInSRS($0.id) }
     }
 
-    /// System state when views depend on both SRS and grammar
-    var systemState: SystemState {
-        let grammarState = grammarStore.systemState
-        let srsState = srsStore.systemState
-
-        // Grammar issues are always critical
-        if case .criticalError = grammarState {
-            return grammarState
-        }
-        if case .emptyData = grammarState {
-            return grammarState
-        }
-        if case .loading = grammarState {
-            return grammarState
-        }
-
-        // Grammar is healthy, check SRS states explicitly
-        if case .criticalError = srsState {
-            return srsState
-        }
-        if case .loading = srsState {
-            return srsState
-        }
-        if case .emptySRS = srsState {
-            return srsState
-        }
-
-        // Handle degraded states
-        if case .degradedOperation = grammarState {
-            return grammarState
-        }
-        if case .degradedOperation = srsState {
-            return srsState
-        }
-
-        // Both stores are normal
-        return .normal
-    }
-
     // MARK: - Sync Boilerplate
 
     /// Performs full data refresh with remote sync

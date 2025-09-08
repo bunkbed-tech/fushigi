@@ -92,7 +92,7 @@ struct AppNavigatorView: View {
                 Tab(value: .search, role: .search) {
                     NavigationStack {
                         decoratedView(for: .search)
-                            .navigationTitle(Page.search.id)
+                            .navigationTitle(Page.search.id + " Mode Enabled")
                             .navigationBarTitleDisplayMode(.inline)
                             .searchable(text: $searchText)
                             .toolbar {
@@ -255,9 +255,4 @@ struct AppNavigatorView: View {
 #Preview("Remote Connection State") {
     AppNavigatorView()
         .withPreviewStores(systemHealth: .pocketbaseError)
-}
-
-#Preview("Missing SRS") {
-    AppNavigatorView()
-        .withPreviewStores(systemState: .emptySRS)
 }

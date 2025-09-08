@@ -143,8 +143,8 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
             [
                 "method": "POST",
                 "url": "/api/collections/\(endpoint)/records",
-                "body": item
-            ] as [String : Any]
+                "body": item,
+            ] as [String: Any]
         }
         let batchData = ["requests": requests]
 
@@ -167,7 +167,8 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
             let (data, _) = try await URLSession.shared.data(for: request)
 
             guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                  let responses = jsonObject["responses"] as? [[String: Any]] else {
+                  let responses = jsonObject["responses"] as? [[String: Any]]
+            else {
                 return .failure(URLError(.cannotParseResponse))
             }
 
@@ -203,7 +204,7 @@ class MockRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
         postResult
     }
 
-    func postBulkItems(_ items: [Create]) async -> Result<[String], Error> {
+    func postBulkItems(_: [Create]) async -> Result<[String], Error> {
         postBulkResult
     }
 

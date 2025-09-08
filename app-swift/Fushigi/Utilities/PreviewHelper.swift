@@ -18,6 +18,7 @@ enum PreviewHelper {
         dataAvailability: DataAvailability = .available,
         systemHealth: SystemHealth = .healthy,
         systemState: SystemState = .normal,
+        noSRS: Bool = false,
         @ViewBuilder content: @escaping (JournalStore, SentenceStore, StudyStore) -> some View,
     ) -> some View {
         do {
@@ -38,6 +39,7 @@ enum PreviewHelper {
                 dataAvailability: dataAvailability,
                 systemHealth: systemHealth,
                 systemState: systemState,
+                noSRS: noSRS,
             )
 
             return AnyView(
@@ -66,11 +68,13 @@ enum PreviewHelper {
         dataAvailability: DataAvailability,
         systemHealth: SystemHealth,
         systemState: SystemState,
+        noSRS: Bool = false,
     ) {
         print("PREVIEW DEBUG:")
         print("   dataAvailability: \(dataAvailability)")
         print("   systemState param: \(systemState)")
         print("   systemHealth: \(systemHealth)")
+        print("   include SRS: \(!noSRS)")
 
         switch dataAvailability {
         case .empty, .loading:
@@ -80,34 +84,31 @@ enum PreviewHelper {
             sentenceStore.sentences = []
             print("   → Set all stores to empty arrays")
         case .available:
-            if systemState == .emptySRS {
+            if noSRS {
                 setupGrammarOnly(studyStore)
-                print("   → Setup grammar only, SRS records: \(studyStore.srsStore.srsRecords.count)")
             } else {
                 setupGrammar(studyStore)
-                print(
-                    "   → Setup both, Grammar: \(studyStore.grammarStore.grammarItems.count), SRS: \(studyStore.srsStore.srsRecords.count)",
-                )
             }
+            print(
+                "   → Setup study store: Grammars: \(studyStore.grammarStore.grammarItems.count), SRS: \(studyStore.srsStore.srsRecords.count)",
+            )
             setupJournal(journalStore)
             setupSentences(sentenceStore)
             print("   → Setup journal and sentences")
         }
 
         // Set data availability based on systemState
-        if systemState == .emptySRS {
-            studyStore.grammarStore.dataAvailability = .available
-            studyStore.srsStore.dataAvailability = .empty // This should trigger .emptySRS
-            journalStore.dataAvailability = dataAvailability
-            sentenceStore.dataAvailability = dataAvailability
-            print("   → Set grammar=available, srs=empty for emptySRS")
+        studyStore.grammarStore.dataAvailability = dataAvailability
+        if noSRS {
+            studyStore.srsStore.dataAvailability = .empty
         } else {
-            studyStore.grammarStore.dataAvailability = dataAvailability
             studyStore.srsStore.dataAvailability = dataAvailability
-            journalStore.dataAvailability = dataAvailability
-            sentenceStore.dataAvailability = dataAvailability
-            print("   → Set all stores to \(dataAvailability)")
         }
+
+        journalStore.dataAvailability = dataAvailability
+        sentenceStore.dataAvailability = dataAvailability
+        print("   → Set grammar stores to \(studyStore.grammarStore.dataAvailability)")
+        print("   → Set srs stores to \(studyStore.srsStore.dataAvailability)")
 
         // Set system health for all stores
         studyStore.grammarStore.systemHealth = systemHealth
@@ -119,7 +120,6 @@ enum PreviewHelper {
         // Debug final states
         print("   Final grammar systemState: \(studyStore.grammarStore.systemState)")
         print("   Final srs systemState: \(studyStore.srsStore.systemState)")
-        print("   Final study systemState: \(studyStore.systemState)")
     }
 
     /// Load preview store with fake grammar data AND SRS records with proper relationships

@@ -54,21 +54,32 @@ extension View {
         dataAvailability: DataAvailability = .available,
         systemHealth: SystemHealth = .healthy,
         systemState: SystemState = .normal,
+        noSRS: Bool = false,
     ) -> some View {
         PreviewHelper.withStore(
             dataAvailability: dataAvailability,
             systemHealth: systemHealth,
             systemState: systemState,
+            noSRS: noSRS,
         ) { _, _, _ in
             self
         }
     }
 
-    /// Wrap view in NavigationStack for preview components
+    /// Wrap view in NavigationStack for preview components + add styling
     func withPreviewNavigation() -> some View {
         NavigationStack {
-            self
+            self.background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
         }
+        .preferredColorScheme(.dark)
+        .environment(\.colorScheme, .dark)
     }
 }
 

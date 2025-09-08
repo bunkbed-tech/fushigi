@@ -64,9 +64,9 @@ struct PracticePage: View {
         horizontalSizeClass == .compact
     }
 
-    /// Combine states from both stores and let grammar state win, reimplementing the computation in SyncableStore
+    /// All daily grammar items are taken from SRS records no matter if they are algorithmic or random
     private var systemState: SystemState {
-        studyStore.systemState
+        srsStore.systemState
     }
 
     /// Extracts readable text from TextSelection objects for tagging
@@ -225,5 +225,5 @@ struct PracticePage: View {
 #Preview("Missing SRS") {
     PracticePage()
         .withPreviewNavigation()
-        .withPreviewStores(systemState: .emptySRS)
+        .withPreviewStores(noSRS: true)
 }

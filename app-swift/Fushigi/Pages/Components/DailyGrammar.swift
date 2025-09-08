@@ -36,25 +36,23 @@ struct DailyGrammar: View {
         }
     }
 
-    /// Combine states from both stores and let grammar state win, reimplementing the computation in SyncableStore
+    /// All daily items are pulled from SRS records no matter if random or algorithmic
     private var systemState: SystemState {
-        studyStore.systemState
+        srsStore.systemState
     }
 
     // MARK: - Main View
 
     var body: some View {
         switch systemState {
-        case .loading, .emptyData, .criticalError:
+        case .loading, .criticalError:
             systemState.contentUnavailableView {
                 if case .emptyData = systemState {
                     // TODO: reset filters to default?
                 }
                 await studyStore.refresh()
             }
-        case .emptySRS:
-            systemState.contentUnavailableView {}
-        case .normal, .degradedOperation:
+        case .normal, .degradedOperation, .emptyData:
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 HStack {
                     Text("Targeted Grammar")
@@ -74,18 +72,28 @@ struct DailyGrammar: View {
                 Divider()
 
                 VStack {
-                    ForEach(grammarPoints, id: \.id) { grammarPoint in
-                        TaggableGrammarRow(
-                            grammarPoint: grammarPoint,
-                            onTagSelected: {
-                                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-                                showTagger = true
-                            },
-                        )
+                    if grammarPoints.isEmpty {
+                        ContentUnavailableView {
+                            Label("No SRS Records", systemImage: "tray")
+                        } description: {
+                            Text("Try adding new grammar points, changing the filter," +
+                                "or bulk generating SRS items on the Reference Page.")
+                                .foregroundColor(.secondary)
+                        }
+                    } else {
+                        ForEach(grammarPoints, id: \.id) { grammarPoint in
+                            TaggableGrammarRow(
+                                grammarPoint: grammarPoint,
+                                onTagSelected: {
+                                    studyStore.grammarStore.selectedGrammarPoint = grammarPoint
+                                    showTagger = true
+                                },
+                            )
 
-                        // Hide last Divider for improved visuals
-                        if grammarPoint.id != grammarPoints.last?.id {
-                            Divider()
+                            // Hide last Divider for improved visuals
+                            if grammarPoint.id != grammarPoints.last?.id {
+                                Divider()
+                            }
                         }
                     }
                 }
@@ -147,13 +155,4 @@ struct DailyGrammar: View {
     )
     .withPreviewNavigation()
     .withPreviewStores(systemHealth: .pocketbaseError)
-}
-
-#Preview("Empty SRS") {
-    DailyGrammar(
-        showTagger: .constant(false),
-        selectedSource: .constant(SourceMode.random),
-    )
-    .withPreviewNavigation()
-    .withPreviewStores(systemState: .emptySRS)
 }

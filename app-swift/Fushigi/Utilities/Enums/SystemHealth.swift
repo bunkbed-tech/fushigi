@@ -5,6 +5,8 @@
 //  Created by Tahoe Schrader on 2025/08/27.
 //
 
+// MARK: - System Health
+
 /// Represents the health of our data sources
 enum SystemHealth {
     /// All systems operational
@@ -28,6 +30,7 @@ enum SystemHealth {
         }
     }
 
+    /// Whether the following health state should be considered an error or not
     var hasError: Bool {
         self != .healthy
     }

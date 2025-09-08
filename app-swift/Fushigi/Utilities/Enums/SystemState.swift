@@ -18,9 +18,6 @@ enum SystemState: Equatable {
     /// No data available
     case emptyData
 
-    /// As special version of emptiness where there are specifically no SRS records
-    case emptySRS
-
     /// Has data but storage systems are unhealthy
     case degradedOperation(String)
 
@@ -36,8 +33,6 @@ enum SystemState: Equatable {
             "Standard operation with full data set"
         case .emptyData:
             "No data available. Add new items or refresh the app."
-        case .emptySRS:
-            "No SRS data available. Under 'Reference', select a grammar item and add to SRS."
         case let .degradedOperation(error):
             "Operating with potentially out of sync data: \(error)"
         case let .criticalError(error):
@@ -50,7 +45,7 @@ enum SystemState: Equatable {
         switch self {
         case .degradedOperation, .criticalError:
             true
-        case .loading, .normal, .emptyData, .emptySRS:
+        case .loading, .normal, .emptyData:
             false
         }
     }
@@ -58,74 +53,54 @@ enum SystemState: Equatable {
     /// Whether this state should show a full content unavailable view
     var shouldShowContentUnavailable: Bool {
         switch self {
-        case .loading, .emptyData, .emptySRS, .criticalError:
+        case .loading, .criticalError:
             true
-        case .normal, .degradedOperation:
+        case .normal, .degradedOperation, .emptyData:
             false
         }
+    }
+
+    /// Whether this state should disable UI components to prevent race conditions
+    var shouldDisableUI: Bool {
+        if case .loading = self { return true }
+        return false
     }
 
     // MARK: - View Builders
 
     /// Returns the appropriate ContentUnavailableView for the current state
     @ViewBuilder
-    func contentUnavailableView(onRefresh: @escaping () async -> Void) -> some View {
-        Group {
-            switch self {
-            case .normal, .degradedOperation:
-                // Normal state doesn't need an error view
-                EmptyView()
-
-            case .loading:
-                ContentUnavailableView {
-                    VStack(spacing: UIConstants.Spacing.section) {
-                        ProgressView()
-                            .scaleEffect(2.5)
-                            .frame(height: UIConstants.Sizing.icons)
-                        Text("Loading")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                    }
-                } description: {
-                    Text(description)
-                        .foregroundStyle(.secondary)
+    func contentUnavailableView(action: @escaping () async -> Void) -> some View {
+        // .normal and .degradedOperation do not use this view since content is available
+        // .emptyData does not use this view since it requires explicit user action to solve (adding new content)
+        if case .loading = self {
+            ContentUnavailableView {
+                VStack(spacing: UIConstants.Spacing.section) {
+                    ProgressView()
+                        .scaleEffect(2.5)
+                        .frame(height: UIConstants.Sizing.icons)
+                    Text("Loading")
+                        .font(.title2)
+                        .fontWeight(.semibold)
                 }
-
-            case .emptyData:
-                ContentUnavailableView {
-                    Label("No Data", systemImage: "tray")
-                } description: {
-                    Text(description)
-                        .foregroundColor(.secondary)
-                } actions: {
-                    Button("Refresh") {
-                        Task { await onRefresh() }
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-
-            case .emptySRS:
-                ContentUnavailableView {
-                    Label("No SRS Records", systemImage: "graduationcap")
-                } description: {
-                    Text(description)
-                        .foregroundColor(.secondary)
-                }
-
-            case let .criticalError(error):
-                ContentUnavailableView {
-                    Label("Critical Error", systemImage: "xmark.octagon.fill")
-                } description: {
-                    Text(error)
-                        .foregroundColor(.red)
-                } actions: {
-                    Button("Retry") {
-                        Task { await onRefresh() }
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
+            } description: {
+                Text(description)
+                    .foregroundStyle(.secondary)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if case let .criticalError(error) = self {
+            ContentUnavailableView {
+                Label("Critical Error", systemImage: "xmark.octagon.fill")
+            } description: {
+                Text(error)
+                    .foregroundColor(.red)
+            } actions: {
+                Button("Retry") {
+                    Task { await action() }
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

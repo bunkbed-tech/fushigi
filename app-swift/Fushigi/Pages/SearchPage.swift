@@ -27,16 +27,8 @@ struct SearchPage: View {
 
     var body: some View {
         Group {
-            if searchText.isEmpty {
-                ContentUnavailableView {
-                    Label("Search \(lastActiveTab.rawValue)", systemImage: "magnifyingglass")
-                } description: {
-                    Text("Enter a term to search within \(lastActiveTab.rawValue.lowercased()) content.")
-                }
-            } else {
-                // Just show the actual page with search applied!
-                showPageWithSearch(for: lastActiveTab)
-            }
+            // Just show the actual page with search applied!
+            showPageWithSearch(for: lastActiveTab)
         }
         .onAppear {
             if let current = selectedPage, current != .search {
