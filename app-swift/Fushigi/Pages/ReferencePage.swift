@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+// MARK: - Bulk Operation State
+
+enum BulkOperationState: Equatable {
+    case idle
+    case running
+    case success(String)
+    case error(String)
+
+    var isRunning: Bool {
+        if case .running = self { return true }
+        return false
+    }
+
+    var shouldDisableUI: Bool {
+        if case .running = self { return true }
+        return false
+    }
+}
+
 // MARK: - Reference Page
 
 enum GrammarQuickFilter: String, CaseIterable {
@@ -50,8 +69,22 @@ struct ReferencePage: View {
     /// Controls currently displayed source of grammar
     @State private var selectedFilter: GrammarQuickFilter = .all
 
+    /// BETTER: Track bulk operation state with non-dismissible progress
+    @State private var bulkOperationState: BulkOperationState = .idle
+
     /// Search query text coordinated with parent navigation structure
     @Binding var searchText: String
+
+    #if DEBUG
+    // Convenience init for previews to seed @State values
+    init(
+        searchText: Binding<String>,
+        initialBulkOperationState: BulkOperationState = .idle
+    ) {
+        self._searchText = searchText
+        self._bulkOperationState = State(initialValue: initialBulkOperationState)
+    }
+    #endif
 
     /// Determines layout strategy based on available horizontal space
     var isCompact: Bool {
@@ -116,6 +149,11 @@ struct ReferencePage: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            // Show progress indicator when operation is running
+            if bulkOperationState.isRunning {
+                bulkOperationProgressView
+            }
+
             mainContentView
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // necessary for empty search
@@ -136,6 +174,7 @@ struct ReferencePage: View {
                     .clipShape(.capsule)
                 }
                 .padding()
+                .disabled(bulkOperationState.shouldDisableUI)
             }
         }
         .toolbar {
@@ -151,10 +190,31 @@ struct ReferencePage: View {
     // MARK: - View Components
 
     @ViewBuilder
+    private var bulkOperationProgressView: some View {
+        HStack(spacing: 12) {
+            ProgressView()
+                .scaleEffect(0.8)
+
+            Text("Adding default items to SRS list...")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+            Spacer()
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .bottom) {
+            Rectangle()
+                .frame(height: 0.5)
+        }
+    }
+
+    @ViewBuilder
     private var mainContentView: some View {
         if effectiveSystemState.shouldShowContentUnavailable {
             effectiveSystemState.contentUnavailableView(
                 onRefresh: {
+                    guard !bulkOperationState.shouldDisableUI else { return }
                     await studyStore.refresh()
                 },
             )
@@ -174,9 +234,11 @@ struct ReferencePage: View {
                 grammarPoints: grammarPoints,
                 isCompact: isCompact,
                 onRefresh: {
+                    guard !bulkOperationState.shouldDisableUI else { return }
                     await studyStore.refresh()
                 },
             )
+            .disabled(bulkOperationState.shouldDisableUI)
         }
     }
 
@@ -196,30 +258,37 @@ struct ReferencePage: View {
                     }
                 }
             }
+            .disabled(bulkOperationState.shouldDisableUI)
 
             Menu("Options", systemImage: "ellipsis.circle") {
-                Button("Bulk Import Grammar", systemImage: "square.and.arrow.down") {
-                    print("TODO: Implement Import Grammar List")
+                Button("TODO: Bulk Import", systemImage: "square.and.arrow.down") {
+                    // Nothing yet
                 }
                 .disabled(true)
 
-                Button("Bulk Export Grammar", systemImage: "square.and.arrow.up") {
-                    print("TODO: Implement Export Grammar List")
+                Button("TODO: Bulk Export", systemImage: "square.and.arrow.up") {
+                    // Nothing yet
                 }
                 .disabled(true)
 
                 Divider()
 
-                Button("Single Custom Add", systemImage: "rectangle.fill.badge.plus") {
-                    print("TODO: Implement Add Custom Grammar")
+                Button("TODO: Create", systemImage: "rectangle.fill.badge.plus") {
+                    // Nothing yet
                 }
                 .disabled(true)
 
-                Button("Single Bulk Add", systemImage: "rectangle.stack.fill.badge.plus") {
-                    print("TODO: Implement Add Custom Grammar")
+                if selectedFilter == .available {
+                    BulkSaveButton(
+                        items: studyStore.availableGrammarItems,
+                        operationState: $bulkOperationState,
+                        onExecute: { items in
+                            await srsStore.addBulkToSRS(items)
+                        }
+                    )
                 }
-                .disabled(true)
             }
+            .disabled(bulkOperationState.shouldDisableUI)
         }
     }
 
@@ -244,6 +313,70 @@ struct ReferencePage: View {
                 .buttonStyle(.borderedProminent)
             }
             .presentationDetents([.medium])
+        }
+    }
+}
+
+// MARK: - BETTER: Reusable Bulk Save Button Component
+
+struct BulkSaveButton<T>: View {
+    let items: [T]
+    @Binding var operationState: BulkOperationState
+    let onExecute: ([T]) async -> BulkOperationResult
+
+    var body: some View {
+        Button(action: executeBulkOperation) {
+            HStack {
+                Text("Bulk Save Defaults")
+
+                switch operationState {
+                case .idle:
+                    Image(systemName: "rectangle.stack.fill.badge.plus")
+                case .running:
+                    ProgressView()
+                        .scaleEffect(0.7)
+                case .success:
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.green)
+                case .error:
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.orange)
+                }
+            }
+        }
+        .disabled(items.isEmpty || operationState.shouldDisableUI)
+        .onChange(of: operationState) { _, newState in
+            if case .success = newState {
+                Task {
+                    try? await Task.sleep(for: .seconds(3))
+                    if case .success = operationState {
+                        operationState = .idle
+                    }
+                }
+            } else if case .error = newState {
+                Task {
+                    try? await Task.sleep(for: .seconds(5))
+                    if case .error = operationState {
+                        operationState = .idle
+                    }
+                }
+            }
+        }
+    }
+
+    private func executeBulkOperation() {
+        Task {
+            operationState = .running
+
+            let result = await onExecute(items)
+
+            // CLEAN: Handle unified result type
+            switch result {
+            case .success(let success):
+                operationState = .success(success.message)
+            case .failure(let error):
+                operationState = .error(error.message)
+            }
         }
     }
 }
@@ -371,4 +504,31 @@ struct GrammarDetailSheet: View {
     ReferencePage(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
+}
+
+#Preview("Bulk Operation Running") {
+    ReferencePage(
+        searchText: .constant(""),
+        initialBulkOperationState: .running
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
+}
+
+#Preview("Bulk Operation Success") {
+    ReferencePage(
+        searchText: .constant(""),
+        initialBulkOperationState: .success("Added 25 items to study list")
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
+}
+
+#Preview("Bulk Operation Error") {
+    ReferencePage(
+        searchText: .constant(""),
+        initialBulkOperationState: .error("Network error - please try again")
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }

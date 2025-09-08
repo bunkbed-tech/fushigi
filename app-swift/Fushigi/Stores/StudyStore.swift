@@ -77,14 +77,6 @@ class StudyStore: ObservableObject {
         return .normal
     }
 
-    // MARK: - Public API
-
-    /// Adds a grammar point to the user's SRS system
-    func addGrammarToSRS(_ grammar: GrammarPointLocal) async -> Result<String, Error> {
-        print("LOG: Adding grammar point to SRS")
-        return await srsStore.addToSRS(grammar: grammar.id)
-    }
-
     // MARK: - Sync Boilerplate
 
     /// Performs full data refresh with remote sync

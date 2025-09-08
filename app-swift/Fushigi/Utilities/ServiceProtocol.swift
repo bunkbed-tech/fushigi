@@ -11,6 +11,10 @@ struct DefaultResponse: Decodable {
     let id: String
 }
 
+struct BulkResponse: Decodable {
+    let responses: [DefaultResponse]
+}
+
 protocol RemoteServiceProtocol {
     associatedtype Item: Codable
     associatedtype Create: Encodable
@@ -18,6 +22,7 @@ protocol RemoteServiceProtocol {
     func fetchItems() async -> Result<PaginatedResponse<Item>, Error>
     func fetchAllItems() async -> Result<[Item], Error>
     func postItem(_ newItem: Create) async -> Result<String, Error>
+    func postBulkItems(_ items: [Create]) async -> Result<[String], Error>
 }
 
 /// Generic production CRUD service
@@ -95,7 +100,7 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
         }
     }
 
-    /// Single Item Fetch
+    /// Single Item Post
     func postItem(_ newItem: Create) async -> Result<String, Error> {
         guard let url = URL(string: "\(APIConfig.baseURL)/api/collections/\(endpoint)/records") else {
             return .failure(URLError(.badURL))
@@ -112,8 +117,65 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
             request.httpBody = try encoder.encode(newItem)
 
             let (data, _) = try await URLSession.shared.data(for: request)
-            let response = try JSONDecoder().decode(DefaultResponse.self, from: data)
-            return .success("Saved (ID: \(response.id))")
+            let response = try decoder.decode(DefaultResponse.self, from: data)
+            return .success(response.id)
+        } catch {
+            return .failure(error)
+        }
+    }
+
+    /// Bulk Item Post
+    func postBulkItems(_ items: [Create]) async -> Result<[String], Error> {
+        // Convert items to dictionaries
+        let itemDicts: [[String: Any]]
+        do {
+            let data = try encoder.encode(items)
+            guard let jsonArray = try JSONSerialization.jsonObject(with: data) as? [[String: Any]] else {
+                return .failure(URLError(.cannotParseResponse))
+            }
+            itemDicts = jsonArray
+        } catch {
+            return .failure(error)
+        }
+
+        // Build list of requests for each
+        let requests = itemDicts.map { item in
+            [
+                "method": "POST",
+                "url": "/api/collections/\(endpoint)/records",
+                "body": item
+            ] as [String : Any]
+        }
+        let batchData = ["requests": requests]
+
+        // Continue with standard postItem format but on the batch API
+        guard let url = URL(string: "\(APIConfig.baseURL)/api/batch") else {
+            return .failure(URLError(.badURL))
+        }
+
+        do {
+            var request = URLRequest(url: url)
+            if let token = KeychainHelper.shared.load(forKey: "pbToken") {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
+
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            request.httpBody = try JSONSerialization.data(withJSONObject: batchData)
+
+            let (data, _) = try await URLSession.shared.data(for: request)
+
+            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let responses = jsonObject["responses"] as? [[String: Any]] else {
+                return .failure(URLError(.cannotParseResponse))
+            }
+
+            let createdIDs = responses.compactMap { response -> String? in
+                return response["id"] as? String
+            }
+
+            return .success(createdIDs)
         } catch {
             return .failure(error)
         }
@@ -122,11 +184,12 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
 
 /// Generic mock CRUD service
 class MockRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol {
-    enum MockNotConfigured: Error { case fetch, fetchAll, post }
+    enum MockNotConfigured: Error { case fetch, fetchAll, post, postBulk }
 
     private var fetchResult: Result<PaginatedResponse<Item>, Error> = .failure(MockNotConfigured.fetch)
     private var fetchAllResult: Result<[Item], Error> = .failure(MockNotConfigured.fetchAll)
     private var postResult: Result<String, Error> = .failure(MockNotConfigured.post)
+    private var postBulkResult: Result<[String], Error> = .failure(MockNotConfigured.postBulk)
 
     func fetchItems() async -> Result<PaginatedResponse<Item>, Error> {
         fetchResult
@@ -138,6 +201,10 @@ class MockRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
 
     func postItem(_: Create) async -> Result<String, Error> {
         postResult
+    }
+
+    func postBulkItems(_ items: [Create]) async -> Result<[String], Error> {
+        postBulkResult
     }
 
     // Configuration methods
@@ -166,8 +233,18 @@ class MockRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
         return self
     }
 
-    func withPostSuccess(_ message: String) -> Self {
-        postResult = .success(message)
+    func withPostSuccess(_ id: String) -> Self {
+        postResult = .success(id)
+        return self
+    }
+
+    func withPostBulkError(_ error: Error) -> Self {
+        postBulkResult = .failure(error)
+        return self
+    }
+
+    func withPostBulkSuccess(_ ids: [String]) -> Self {
+        postBulkResult = .success(ids)
         return self
     }
 }

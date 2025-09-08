@@ -8,6 +8,56 @@
 import Foundation
 import SwiftData
 
+// MARK: - UNIFIED: Single source of truth for bulk operation results
+
+/// Standard result for bulk operations across the app
+enum BulkOperationResult {
+    case success(BulkOperationSuccess)
+    case failure(BulkOperationError)
+}
+
+/// Success cases for bulk operations
+enum BulkOperationSuccess {
+    case added(count: Int)
+    case allAlreadyExists
+    case completed(String) // Generic success with custom message
+
+    var message: String {
+        switch self {
+        case .added(let count):
+            return count == 1 ? "Added 1 item to study list" : "Added \(count) items to study list"
+        case .allAlreadyExists:
+            return "All items already in study list"
+        case .completed(let message):
+            return message
+        }
+    }
+}
+
+/// Error cases for bulk operations
+enum BulkOperationError: Error {
+    case authenticationRequired
+    case networkError(Error)
+    case validationError(String)
+    case systemError(String)
+
+    var message: String {
+        switch self {
+        case .authenticationRequired:
+            return "Please sign in to add items"
+        case .networkError(let error):
+            if error is URLError {
+                return "Network connection failed"
+            }
+            return "Network error - please try again"
+        case .validationError(let message):
+            return message
+        case .systemError(let message):
+            return "System error: \(message)"
+        }
+    }
+}
+
 // MARK: - SRS Store
 
 /// Manages srs algorithm values for grammar points with local SwiftData storage and remote PocketBase sync
@@ -86,21 +136,71 @@ class SRSStore: ObservableObject {
         grammarIDsInSRS.contains(grammar)
     }
 
-    /// Adds grammar item to SRS system
-    func addToSRS(grammar: String) async -> Result<String, Error> {
+    /// Single item add with unified return type
+    func addToSRS(_ grammar: String) async -> BulkOperationResult {
         guard let user = authManager.currentUser?.id else {
-            return .failure(URLError(.userAuthenticationRequired))
+            return .failure(.authenticationRequired)
+        }
+
+        guard !isInSRS(grammar) else {
+            return .success(.allAlreadyExists)
         }
 
         let newSRS = SRSRecordCreate(
             user: user,
             grammar: grammar,
-            easeFactor: 2.5, // Default ease (medium between 1 and 5)
-            intervalDays: 1.0, // Default interval in days
-            repetition: 1.0, // Default repetition
+            easeFactor: 2.5,
+            intervalDays: 1.0,
+            repetition: 1.0
         )
 
-        return await service.postItem(newSRS)
+        let result = await service.postItem(newSRS)
+
+        switch result {
+        case .success:
+            await refresh()
+            return .success(.added(count: 1))
+        case .failure(let error):
+            handleRemoteSyncFailure()
+            return .failure(.networkError(error))
+        }
+    }
+
+    /// Bulk operation with unified return type and duplicate filtering
+    func addBulkToSRS(_ grammar: [GrammarPointLocal]) async -> BulkOperationResult {
+        guard let user = authManager.currentUser?.id else {
+            return .failure(.authenticationRequired)
+        }
+
+        // Filter duplicates before API call
+        let grammarToAdd = grammar.filter { !isInSRS($0.id) }
+
+        guard !grammarToAdd.isEmpty else {
+            return .success(.allAlreadyExists)
+        }
+
+        let bulkSRS = grammarToAdd.map { point in
+            SRSRecordCreate(
+                user: user,
+                grammar: point.id,
+                easeFactor: 2.5,
+                intervalDays: 1.0,
+                repetition: 1.0
+            )
+        }
+
+        let result = await service.postBulkItems(bulkSRS)
+
+        switch result {
+        case .success(let createdIDs):
+            await refresh()
+            return .success(.added(count: createdIDs.count))
+
+        case .failure(let error):
+            print("ERROR: Failed to post SRS records to PocketBase:", error)
+            handleRemoteSyncFailure()
+            return .failure(.networkError(error))
+        }
     }
 
     /// Returns SRS records subset based on selected practice mode
