@@ -9,23 +9,27 @@ import SwiftUI
 
 /// Interface for creating links between selected text and grammar concepts
 struct Tagger: View {
+    // MARK: - Published State
+
     /// Centralized grammar data store
     @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Controls the tagging interface visibility
-    @Binding var isShowingTagger: Bool
-
-    /// Grammar point model containing usage patterns and meanings
-    let grammarPoint: GrammarPointLocal
-
-    /// User-selected text content from journal entry for association
-    let selectedText: String
 
     /// Tracks successful tag creation for user feedback
     @State private var isTagCreated = false
 
     /// Temporary status message for operation feedback
     @State private var operationMessage: String?
+
+    /// Controls the tagging interface visibility
+    @Binding var isShowingTagger: Bool
+
+    // MARK: - Init
+
+    /// Grammar point model containing usage patterns and meanings
+    let grammarPoint: GrammarPointLocal
+
+    /// User-selected text content from journal entry for association
+    let selectedText: String
 
     // MARK: - Main View
 

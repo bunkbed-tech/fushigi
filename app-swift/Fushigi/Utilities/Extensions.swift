@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// MARK: - JSON Decoder
+
+// Due to PocketBase using non-standard date and null format, need a special decoder
 extension JSONDecoder {
     // JSONDecoder configured for PocketBase which has human readable format
     static var pocketBase: JSONDecoder {
@@ -31,6 +34,8 @@ extension JSONDecoder {
         return decoder
     }
 }
+
+// MARK: - Platform Dependent Views
 
 extension View {
     /// Apply tab bar minimize behavior if available on iOS 26+
@@ -59,40 +64,7 @@ extension View {
     }
 }
 
-extension View {
-    /// Add fake datastore for Preview mode
-    func withPreviewStores(
-        dataAvailability: DataAvailability = .available,
-        systemHealth: SystemHealth = .healthy,
-        systemState: SystemState = .normal,
-        noSRS: Bool = false,
-    ) -> some View {
-        PreviewHelper.withStore(
-            dataAvailability: dataAvailability,
-            systemHealth: systemHealth,
-            systemState: systemState,
-            noSRS: noSRS,
-        ) { _, _, _ in
-            self
-        }
-    }
-
-    /// Wrap view in NavigationStack for preview components + add styling
-    func withPreviewNavigation() -> some View {
-        NavigationStack {
-            self.background {
-                LinearGradient(
-                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing,
-                )
-                .ignoresSafeArea()
-            }
-        }
-        .preferredColorScheme(.dark)
-        .environment(\.colorScheme, .dark)
-    }
-}
+// MARK: - Notifications
 
 // Add a logout checker to make wiping data stores easier
 extension Notification.Name {

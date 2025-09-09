@@ -1,5 +1,5 @@
 //
-//  PracticePage.swift
+//  PracticeView.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-// MARK: - Practice Page
+// MARK: - Practice View
 
 /// View for creating journal entries with targeted grammar point integration
-struct PracticePage: View {
+struct PracticeView: View {
+    // MARK: - Published State
+
     /// Responsive layout helper for switching between iOS/side-split apps and iPadOS/macOS layouts
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
@@ -58,6 +60,8 @@ struct PracticePage: View {
 
     /// Loading state flag to disable UI elements during async operations
     @State private var isSaving = false
+
+    // MARK: - Computed Properties
 
     /// Determines layout strategy based on available horizontal space
     private var isCompact: Bool {
@@ -181,49 +185,49 @@ struct PracticePage: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
 #Preview("Degraded Operation Postgres") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
 }
 
 #Preview("Loading State") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
 }
 
 #Preview("Empty Data") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
 }
 
-#Preview("Critical Error Pocketbase") {
-    PracticePage()
+#Preview("Critical Error PocketBase") {
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical Error SwiftData") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
 
 #Preview("Missing SRS") {
-    PracticePage()
+    PracticeView()
         .withPreviewNavigation()
         .withPreviewStores(noSRS: true)
 }

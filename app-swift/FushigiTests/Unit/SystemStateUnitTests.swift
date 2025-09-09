@@ -32,6 +32,6 @@ struct SystemStateUnitTests {
     @Test func systemHealthHasError() {
         #expect(!SystemHealth.healthy.hasError)
         #expect(SystemHealth.swiftDataError.hasError)
-        #expect(SystemHealth.postgresError.hasError)
+        #expect(SystemHealth.pocketbaseError.hasError)
     }
 }

@@ -7,28 +7,44 @@
 
 import Foundation
 
-struct DefaultResponse: Decodable {
-    let id: String
-}
+// MARK: - Remote Service Protocol
 
-struct BulkResponse: Decodable {
-    let responses: [DefaultResponse]
-}
-
+/// CRUD protocol to help make api to PocketBase generic and testable
 protocol RemoteServiceProtocol {
+    // MARK: - Required Types
+
+    /// Fetch object type
     associatedtype Item: Codable
+
+    /// Post object type
     associatedtype Create: Encodable
 
+    // MARK: - Required Functions
+
+    /// Single item fetch
     func fetchItems() async -> Result<PaginatedResponse<Item>, Error>
+
+    /// Multi item fetch
     func fetchAllItems() async -> Result<[Item], Error>
+
+    /// Single item post
     func postItem(_ newItem: Create) async -> Result<String, Error>
+
+    /// Bulk item post
     func postBulkItems(_ items: [Create]) async -> Result<[String], Error>
 }
 
 /// Generic production CRUD service
 class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol {
+    // MARK: - Init
+
+    /// Location of PocketBase provided API
     private let endpoint: String
+
+    /// Sometimes custom decoder required to create objects from JSON coming from PocketBase
     private let decoder: JSONDecoder
+
+    /// Sometimes custom encoder required to turn objects in Swift to JSON for posting
     private let encoder: JSONEncoder
 
     init(
@@ -40,6 +56,8 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
         self.decoder = decoder
         self.encoder = encoder
     }
+
+    // MARK: - Helper Methods
 
     /// First page fetch for convenience and protocol conformance
     func fetchItems() async -> Result<PaginatedResponse<Item>, Error> {
@@ -189,67 +207,92 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
     }
 }
 
-/// Generic mock CRUD service
+// MARK: - Remote Service Protocol
+
+/// Testable generic production CRUD service
 class MockRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol {
+    // MARK: - Init
+
+    /// Helper enum to display expected failures across API testing
     enum MockNotConfigured: Error { case fetch, fetchAll, post, postBulk }
 
+    /// Mocked fetch result
     private var fetchResult: Result<PaginatedResponse<Item>, Error> = .failure(MockNotConfigured.fetch)
+
+    /// Mocked fetch all result
     private var fetchAllResult: Result<[Item], Error> = .failure(MockNotConfigured.fetchAll)
+
+    /// Mocked post result
     private var postResult: Result<String, Error> = .failure(MockNotConfigured.post)
+
+    /// Mocked bulk post result
     private var postBulkResult: Result<[String], Error> = .failure(MockNotConfigured.postBulk)
 
+    // MARK: - Helper Methods
+
+    /// Mocked single item fetch
     func fetchItems() async -> Result<PaginatedResponse<Item>, Error> {
         fetchResult
     }
 
+    /// Mocked multi item fetch
     func fetchAllItems() async -> Result<[Item], Error> {
         fetchAllResult
     }
 
+    /// Mocked single item post
     func postItem(_: Create) async -> Result<String, Error> {
         postResult
     }
 
+    /// Mocked multi itemi post
     func postBulkItems(_: [Create]) async -> Result<[String], Error> {
         postBulkResult
     }
 
-    // Configuration methods
+    /// Mocked single item fetch error message
     func withFetchError(_ error: Error) -> Self {
         fetchResult = .failure(error)
         return self
     }
 
+    /// Mocked single item fetch success message
     func withFetchSuccess(_ items: PaginatedResponse<Item>) -> Self {
         fetchResult = .success(items)
         return self
     }
 
+    /// Mocked multi item fetch success message
     func withFetchAllSuccess(_ items: [Item]) -> Self {
         fetchAllResult = .success(items)
         return self
     }
 
+    /// Mocked multi item fetch error message
     func withFetchAllError(_ error: Error) -> Self {
         fetchAllResult = .failure(error)
         return self
     }
 
+    /// Mocked post error message
     func withPostError(_ error: Error) -> Self {
         postResult = .failure(error)
         return self
     }
 
+    /// Mocked post success message
     func withPostSuccess(_ id: String) -> Self {
         postResult = .success(id)
         return self
     }
 
+    /// Mocked bulk post error message
     func withPostBulkError(_ error: Error) -> Self {
         postBulkResult = .failure(error)
         return self
     }
 
+    /// Mocked bulk post success message
     func withPostBulkSuccess(_ ids: [String]) -> Self {
         postBulkResult = .success(ids)
         return self

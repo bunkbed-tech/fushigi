@@ -21,7 +21,7 @@ class JournalStore: ObservableObject {
     /// Current data state (load, empty, normal)
     @Published var dataAvailability: DataAvailability = .empty
 
-    /// Current system health (healthy, sync error, postgres error)
+    /// Current system health (healthy, sync error, PocketBase error)
     @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp

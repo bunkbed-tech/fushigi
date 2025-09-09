@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+// MARK: - UIConstants
+
 /// Common UI spacing and sizing constants
 enum UIConstants {
+    // MARK: - Spacing
+
     enum Spacing {
         /// Content spacing. Value: 20.0
         static let content: CGFloat = 20
@@ -25,6 +29,8 @@ enum UIConstants {
         /// Default spacing. Value: 20.0
         static let `default`: CGFloat = 20
     }
+
+    // MARK: - Sizing
 
     enum Sizing {
         /// Content minimum height sizing. Value: 150.0
@@ -48,9 +54,11 @@ enum UIConstants {
         /// MacOS forced frame width. Value: 450
         static let forcedFrameWidth: CGFloat = 450
 
-        /// MacOS forced frame height. Value:
+        /// MacOS forced frame height. Value: 300
         static let forcedFrameHeight: CGFloat = 300
     }
+
+    // MARK: - Border
 
     enum Border {
         /// Border width. Value: 1.0
@@ -59,6 +67,8 @@ enum UIConstants {
         /// Focused border width. Value: 2.0
         static let focusedWidth: CGFloat = 2
     }
+
+    // MARK: - Padding
 
     enum Padding {
         /// Capsule padding width. Value: 8.0

@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 
+// MARK: - Journal Entry Create
+
 /// Journal entry for model for simple submission to backend
 struct JournalEntryCreate: Codable {
     let title: String
@@ -20,6 +22,8 @@ struct JournalEntryCreate: Codable {
         case isPrivate = "is_private"
     }
 }
+
+// MARK: - Journal Entry Remote
 
 /// Journal entry model for remote PocketBase database
 struct JournalEntryRemote: Codable {
@@ -63,6 +67,8 @@ struct JournalEntryRemote: Codable {
         expand = nil // Not necessary locally
     }
 }
+
+// MARK: - Journal Entry Local
 
 /// Journal entry model for local SwiftData storage
 @Model

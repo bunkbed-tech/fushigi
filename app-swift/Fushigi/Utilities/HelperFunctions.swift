@@ -10,7 +10,9 @@ import SwiftUI
 import TipKit
 import WrappingHStack
 
-/// Create colored text from array of tags
+// MARK: - Colored Tags Text
+
+/// Create colored text from array of tags with pill-like filling behavior from WrappingHStack
 @ViewBuilder
 func coloredTagsText(tags: [String]) -> some View {
     WrappingHStack(alignment: .leading) {
@@ -24,6 +26,8 @@ func coloredTagsText(tags: [String]) -> some View {
         }
     }
 }
+
+// MARK: - Wipe Swift Data
 
 /// Wipe all data from persistent storage for debug mode
 @MainActor

@@ -1,5 +1,5 @@
 //
-//  HistoryPage.swift
+//  JournalView.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -7,22 +7,12 @@
 
 import SwiftUI
 
-// MARK: - History Page
-
-enum JournalSort: String, CaseIterable {
-    case newest = "Newest First"
-    case oldest = "Oldest First"
-    case title = "By Title"
-}
-
-enum JournalQuickFilter: String, CaseIterable {
-    case all = "All Entries"
-    case isPrivate = "Private Only"
-    case isPublic = "Public Only"
-}
+// MARK: - Journal View
 
 /// Displays user journal entries with search and expandable detail view
-struct HistoryPage: View {
+struct JournalView: View {
+    // MARK: - Published State
+
     /// Centralized journal entry repository with synchronization capabilities
     @EnvironmentObject var journalStore: JournalStore
 
@@ -40,6 +30,8 @@ struct HistoryPage: View {
 
     /// Search text binding from parent view
     @Binding var searchText: String
+
+    // MARK: - Computed Properties
 
     /// Filtered journal entries based on current search criteria
     var journalEntries: [JournalEntryLocal] {
@@ -147,6 +139,8 @@ struct HistoryPage: View {
         }
     }
 
+    // MARK: - Sub Views
+
     @ViewBuilder
     private var mainContentView: some View {
         if !hasDataForCurrentFilter {
@@ -252,49 +246,49 @@ struct HistoryPage: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores()
 }
 
 #Preview("Data Missing") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Degraded Operation Postgres") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("No Search Results") {
-    HistoryPage(searchText: .constant("nonexistent"))
+    JournalView(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
         .withPreviewStores()
 }
 
 #Preview("Loading State") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Critical Postgres Error") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical SwiftData Error") {
-    HistoryPage(searchText: .constant(""))
+    JournalView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }

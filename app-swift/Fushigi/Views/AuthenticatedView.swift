@@ -11,7 +11,10 @@ import TipKit
 
 // MARK: - Authenticated App View
 
+/// App wrapper view popst authentication adding in iCloud and data model features
 struct AuthenticatedView: View {
+    // MARK: - Published State
+
     /// Current login state of user
     @ObservedObject var authManager: AuthManager
 
@@ -23,6 +26,8 @@ struct AuthenticatedView: View {
 
     /// Tag store of all user created tags linking journals to grammar
     @StateObject private var sentenceStore: SentenceStore
+
+    // MARK: - Init
 
     /// Shared SwiftData container for persistent storage
     private let sharedModelContainer: ModelContainer
@@ -76,6 +81,8 @@ struct AuthenticatedView: View {
         ))
     }
 
+    // MARK: - Main View
+
     var body: some View {
         AppNavigatorView()
             .modelContainer(sharedModelContainer)
@@ -103,6 +110,8 @@ struct AuthenticatedView: View {
                 print("LOG: All data cleared from in-memory stores")
             }
     }
+
+    // MARK: - Helper Methods
 
     /// Configure TipKit for user onboarding -- currently none
     func configureTips() async {

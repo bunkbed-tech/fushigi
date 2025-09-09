@@ -15,7 +15,7 @@ enum SystemHealth {
     /// Local SwiftData corruption/failure
     case swiftDataError
 
-    /// Unable to establish connection to Pocketbase database
+    /// Unable to establish connection to PocketBase database
     case pocketbaseError
 
     /// User friendly description of data availability
@@ -26,7 +26,7 @@ enum SystemHealth {
         case .swiftDataError:
             "Local SwiftData corruption/failure"
         case .pocketbaseError:
-            "Unable to establish connection to Pocketbase database"
+            "Unable to establish connection to PocketBase database"
         }
     }
 

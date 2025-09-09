@@ -8,33 +8,7 @@
 import Foundation
 import SwiftData
 
-/// Required since Pocketbase returns nullable dates as empty strings
-@propertyWrapper
-struct OptionalDate {
-    private var date: Date
-
-    init(wrappedValue: Date?) {
-        date = wrappedValue ?? Date.distantPast
-    }
-
-    var wrappedValue: Date? {
-        get { date == Date.distantPast ? nil : date }
-        set { date = newValue ?? Date.distantPast }
-    }
-}
-
-/// Tell JSON decoder how to deal with OptionalDate type
-extension OptionalDate: Codable {
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        date = try container.decode(Date.self)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(date)
-    }
-}
+// MARK: - SRS Record Create
 
 /// SRS Record model for simple submission to backend
 struct SRSRecordCreate: Codable {
@@ -51,7 +25,9 @@ struct SRSRecordCreate: Codable {
     }
 }
 
-/// SRS Record model for remote Pocketbase database
+// MARK: - SRS Record Remote
+
+/// SRS Record model for remote PocketBase database
 struct SRSRecordRemote: Codable {
     let id: String
     let user: String
@@ -94,6 +70,8 @@ struct SRSRecordRemote: Codable {
         case dueDate = "due_date"
     }
 }
+
+// MARK: - SRS Record Local
 
 /// SRS Record model for local SwiftData storage
 @Model

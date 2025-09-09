@@ -27,7 +27,7 @@ class SRSStore: ObservableObject {
     /// Current data state (load, empty, normal)
     @Published var dataAvailability: DataAvailability = .empty
 
-    /// Current system health (healthy, sync error, postgres error)
+    /// Current system health (healthy, sync error, PocketBase error)
     @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
@@ -92,7 +92,7 @@ class SRSStore: ObservableObject {
             handleSyncSuccess()
             await refresh()
         case let .failure(error):
-            print("ERROR: Failed to post new SRS record for grammar points to Pocketbase:", error)
+            print("ERROR: Failed to post new SRS record for grammar points to PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }
@@ -124,7 +124,7 @@ class SRSStore: ObservableObject {
             handleSyncSuccess()
             await refresh()
         case let .failure(error):
-            print("ERROR: Failed to post new SRS record for grammar points to Pocketbase:", error)
+            print("ERROR: Failed to post new SRS record for grammar points to PocketBase:", error)
             handleRemoteSyncFailure()
         }
     }

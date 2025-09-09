@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - API Config
+
 /// Configuration flags used for turning on/off features depending on the build
 enum APIConfig {
     /// Location of database

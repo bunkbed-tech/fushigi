@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-// MARK: - Application Preferences
+// MARK: - Settings Window
 
-/// Unified preferences view for MacOS
-struct SettingsView: View {
+/// Unified preferences window popup for MacOS
+struct SettingsWindow: View {
+    // MARK: - App-wide Settings Storage
+
+    /// Desired user interface language
     @AppStorage("interfaceLanguage") private var interfaceLanguage = "en"
+
+    /// Desired target language to study (only JP works right now)
     @AppStorage("targetLanguage") private var targetLanguage = "jp"
+
+    // MARK: - Main View
 
     var body: some View {
         TabView {
@@ -41,11 +48,22 @@ struct SettingsView: View {
     }
 }
 
-/// iOS-style profile view with native NavigationLinks
-struct IOSSettingsView: View {
+// MARK: - Settings Sheet
+
+/// iOS-style profile popup sheet with native NavigationLinks
+struct SettingsSheet: View {
+    // MARK: - App-wide Settings Storage
+
+    /// Desired user interface language
     @AppStorage("interfaceLanguage") private var interfaceLanguage = "en"
+
+    /// Desired target language to study (only JP works right now)
     @AppStorage("targetLanguage") private var targetLanguage = "jp"
+
+    /// Control to pop up the user settings sheet
     @Binding var showProfile: Bool
+
+    // MARK: - Main View
 
     var body: some View {
         #if os(iOS)
@@ -94,7 +112,10 @@ struct IOSSettingsView: View {
 
 // MARK: - Account Preferences Tab
 
+/// Display a contact card showing the logged in user with login/edit functionality
 struct AccountPreferences: View {
+    // MARK: - Main View
+
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.content) {
             HStack {
@@ -124,9 +145,17 @@ struct AccountPreferences: View {
 
 // MARK: - General Preferences Tab
 
+/// General app preferences such as language, display, etc.
 struct GeneralPreferences: View {
+    // MARK: - Published State
+
+    /// Desired user interface language
     @Binding var interfaceLanguage: String
+
+    /// Desired target language to study (only JP works right now)
     @Binding var targetLanguage: String
+
+    // MARK: - Main View
 
     var body: some View {
         #if os(iOS)
@@ -144,6 +173,9 @@ struct GeneralPreferences: View {
         #endif
     }
 
+    // MARK: - Sub Views
+
+    /// User selection for language settings
     @ViewBuilder
     private var languagePickers: some View {
         Section("Language") {
@@ -165,7 +197,10 @@ struct GeneralPreferences: View {
 
 // MARK: - Credits Preferences Tab
 
+/// Show card displaying current app version and 3rd party libraries used
 struct CreditsPreferences: View {
+    // MARK: - Main View
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.content) {

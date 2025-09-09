@@ -7,8 +7,24 @@
 
 import SwiftUI
 
+// MARK: - Journal Entry Form
+
 /// Journal entry form with title, content, and save functionality
 struct JournalEntryForm: View {
+    // MARK: - Published State
+
+    /// Centralized journal repository with synchronization capabilities
+    @EnvironmentObject var journalStore: JournalStore
+
+    /// Focus state for title field
+    @FocusState private var isTitleFocused: Bool
+
+    /// Focus state for content field
+    @FocusState private var isContentFocused: Bool
+
+    /// Save confirmation dialog visibility
+    @State private var showSaveConfirmation: Bool = false
+
     /// Journal entry title
     @Binding var entryTitle: String
 
@@ -26,18 +42,6 @@ struct JournalEntryForm: View {
 
     /// Saving state to disable UI during operations
     @Binding var isSaving: Bool
-
-    /// Centralized journal repository with synchronization capabilities
-    @EnvironmentObject var journalStore: JournalStore
-
-    /// Focus state for title field
-    @FocusState private var isTitleFocused: Bool
-
-    /// Focus state for content field
-    @FocusState private var isContentFocused: Bool
-
-    /// Save confirmation dialog visibility
-    @State private var showSaveConfirmation: Bool = false
 
     // MARK: - Main View
 

@@ -15,17 +15,19 @@ struct FushigiApp: App {
     /// Current login state of user
     @StateObject private var authManager = AuthManager()
 
+    // MARK: - Main View
+
     var body: some Scene {
         WindowGroup {
             if authManager.isAuthenticated {
                 AuthenticatedView(authManager: authManager)
             } else {
-                LoginPage(authManager: authManager)
+                LoginView(authManager: authManager)
             }
         }
 
         #if os(macOS)
-            Settings { SettingsView() }
+            Settings { SettingsWindow() }
         #endif
     }
 }
@@ -33,5 +35,5 @@ struct FushigiApp: App {
 // MARK: - Preview
 
 #Preview("Login Page") {
-    LoginPage(authManager: AuthManager())
+    LoginView(authManager: AuthManager())
 }

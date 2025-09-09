@@ -1,5 +1,5 @@
 //
-//  LoginPage.swift
+//  LoginView.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/24.
@@ -8,13 +8,26 @@
 import AuthenticationServices
 import SwiftUI
 
-struct LoginPage: View {
+/// Displays user login form
+struct LoginView: View {
+    // MARK: - Published State
+
+    /// User email
     @State private var email = ""
+
+    /// User password
     @State private var password = ""
+
+    /// Control to show different views while authentication is running asynchronously
     @State private var isAuthenticating = false
+
+    /// Message store for errors to display to users for UI/UX
     @State private var errorMessage: String?
 
+    /// Manager object for user authentication
     @ObservedObject var authManager: AuthManager
+
+    // MARK: - Init
 
     init(authManager: AuthManager) {
         self.authManager = authManager
@@ -28,6 +41,9 @@ struct LoginPage: View {
         }
     }
 
+    // MARK: - Computed Properties
+
+    /// Computed control to disable login during authentication or when running demo mode
     private var shouldDisableLogin: Bool {
         if isAuthenticating {
             return true
@@ -38,6 +54,7 @@ struct LoginPage: View {
         return false
     }
 
+    /// Computed control to disable textboxes during authentication or when running demo mode
     private var shouldDisableInput: Bool {
         if isAuthenticating {
             return true
@@ -47,6 +64,8 @@ struct LoginPage: View {
         }
         return false
     }
+
+    // MARK: - Main View
 
     var body: some View {
         GeometryReader { _ in
@@ -168,6 +187,9 @@ struct LoginPage: View {
         }
     }
 
+    // MARK: - Helper Methods
+
+    /// Authentication error handler and caller for OAuth
     private func handleAppleSignIn(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
@@ -193,6 +215,7 @@ struct LoginPage: View {
         }
     }
 
+    /// Authentication wrapper for OAuth sign in
     private func authenticateWithApple(identityToken: String, userID: String) {
         isAuthenticating = true
         errorMessage = nil
@@ -208,6 +231,7 @@ struct LoginPage: View {
         }
     }
 
+    /// Authentication wrapper for OAuth sign in
     private func handleEmailSignIn() {
         guard !email.isEmpty, !password.isEmpty else { return }
 
@@ -225,6 +249,7 @@ struct LoginPage: View {
         }
     }
 
+    /// Authentication error handler for decoding database login response
     private func handleAuthResult(_ result: Result<AuthResponse, AuthError>) {
         isAuthenticating = false
 
@@ -238,6 +263,8 @@ struct LoginPage: View {
     }
 }
 
-#Preview("Login Page") {
-    LoginPage(authManager: AuthManager())
+// MARK: - Previews
+
+#Preview {
+    LoginView(authManager: AuthManager())
 }

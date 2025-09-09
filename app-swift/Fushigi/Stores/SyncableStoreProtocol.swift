@@ -1,5 +1,5 @@
 //
-//  SyncableStore.swift
+//  SyncableStoreProtocol.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/27.
@@ -12,10 +12,18 @@ import SwiftUI
 /// Protocol that any store with sync functionality can adopt
 @MainActor
 protocol SyncableStore: ObservableObject {
+    // MARK: - Required Types
+
+    /// Most important stored object type in this store
     associatedtype DataType
 
+    /// Base list of most important object in this store
     var items: [DataType] { get }
+
+    /// Overall data availability of this store
     var dataAvailability: DataAvailability { get set }
+
+    /// Overall system health of this store
     var systemHealth: SystemHealth { get set }
 }
 
@@ -23,6 +31,8 @@ protocol SyncableStore: ObservableObject {
 
 /// Define shared attributes of all stores with sync
 extension SyncableStore {
+    // MARK: - Shared Functionality
+
     /// Computed priority state for UI rendering decisions (special .emptySRS case determined in SRSStore.swift)
     var systemState: SystemState {
         switch (dataAvailability, systemHealth) {

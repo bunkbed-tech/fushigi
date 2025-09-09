@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+// MARK: - Daily Grammar
+
 /// Daily grammar section displaying curated grammar points for practice sessions, chosen based on SRS
 struct DailyGrammar: View {
+    // MARK: - Published State
+
     /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
 
@@ -23,6 +27,8 @@ struct DailyGrammar: View {
 
     /// User-selected sourcing strategy
     @Binding var selectedSource: SourceMode
+
+    // MARK: - Computed Properties
 
     /// SRS records based on current sourcing mode
     private var srsRecords: [SRSRecordLocal] {

@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+// MARK: - Grammar Settings
+
 /// Settings interface for configuring grammar point selection and filtering
 struct GrammarSettings: View {
+    // MARK: - Published State
+
     /// Politeness level filter selection
     @Binding var selectedLevel: Level
 
@@ -20,6 +24,18 @@ struct GrammarSettings: View {
 
     /// Grammar sourcing algorithm selection
     @Binding var selectedSource: SourceMode
+
+    // MARK: - Computed Properties
+
+    /// Footer text explaining the current source mode selection
+    private var sourceFooterText: String {
+        switch selectedSource {
+        case .random:
+            "Randomly selected grammar points for varied practice"
+        case .srs:
+            "Algorithmically chosen points based on your learning progress"
+        }
+    }
 
     // MARK: - Main View
 
@@ -64,17 +80,5 @@ struct GrammarSettings: View {
             }
         }
         .formStyle(.grouped)
-    }
-
-    // MARK: - Helper Methods
-
-    /// Footer text explaining the current source mode selection
-    private var sourceFooterText: String {
-        switch selectedSource {
-        case .random:
-            "Randomly selected grammar points for varied practice"
-        case .srs:
-            "Algorithmically chosen points based on your learning progress"
-        }
     }
 }

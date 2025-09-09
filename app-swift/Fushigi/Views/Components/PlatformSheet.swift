@@ -11,13 +11,22 @@ import SwiftUI
 
 /// Cross-platform sheet wrapper using native interaction patterns
 struct PlatformSheet<Content: View>: View {
+    // MARK: - Init
+
+    /// Title to display on the popup sheet
     let title: String
+
+    /// Action to perform when clicking popup sheet dismiss button
     let onDismiss: () -> Void
+
+    /// All sheet content is passed in as-is
     @ViewBuilder let content: Content
+
+    // MARK: - Main View
 
     var body: some View {
         #if os(macOS)
-            // TODO: Simple VStack to avoid sizing issues for now
+            // TODO: Would prefer something better looking on MacOS but this works for now
             VStack(spacing: 0) {
                 // Header bar
                 HStack {
@@ -35,7 +44,7 @@ struct PlatformSheet<Content: View>: View {
 
                 content
             }
-            .frame(minWidth: 320, minHeight: 240)
+            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
         #else
             NavigationStack {
                 content

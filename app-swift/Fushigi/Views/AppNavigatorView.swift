@@ -12,17 +12,21 @@ import SwiftUI
 
 /// Main navigation container with adaptive layout for tabs and split view
 struct AppNavigatorView: View {
+    // MARK: - Published State
+
     /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
     /// Currently active application section, coordinating tab/sidebar selection
-    @State private var selectedPage: Page? = .practice
+    @State private var selectedView: MainView? = .practice
 
     /// Shared search query state for views that support content filtering
     @State private var searchText: String = ""
 
     /// Profile sheet presentation state (iOS only)
     @State private var showProfile = false
+
+    // MARK: - Computed Properties
 
     /// Determines whether to use compact navigation patterns (tabs vs split view)
     var isCompact: Bool {
@@ -42,22 +46,22 @@ struct AppNavigatorView: View {
         }
         #if os(iOS)
         .sheet(isPresented: $showProfile) {
-            IOSSettingsView(showProfile: $showProfile)
+            SettingsSheet(showProfile: $showProfile)
         }
         #endif
     }
 
-    // MARK: - Helper Methods
+    // MARK: - Sub Views
 
     /// Tab-based navigation optimized for compact layouts (iPhone portrait, small windows)
     @ViewBuilder
     private var navigationAsTabs: some View {
         #if os(iOS)
-            TabView(selection: $selectedPage) {
-                Tab(Page.practice.id, systemImage: Page.practice.icon, value: .practice) {
+            TabView(selection: $selectedView) {
+                Tab(MainView.practice.id, systemImage: MainView.practice.icon, value: .practice) {
                     NavigationStack {
                         decoratedView(for: .practice)
-                            .navigationTitle(Page.practice.id)
+                            .navigationTitle(MainView.practice.id)
                             .navigationBarTitleDisplayMode(.inline)
                             .toolbar {
                                 profileToolbarButton
@@ -65,10 +69,10 @@ struct AppNavigatorView: View {
                     }
                 }
 
-                Tab(Page.history.id, systemImage: Page.history.icon, value: .history) {
+                Tab(MainView.journal.id, systemImage: MainView.journal.icon, value: .journal) {
                     NavigationStack {
-                        decoratedView(for: .history)
-                            .navigationTitle(Page.history.id)
+                        decoratedView(for: .journal)
+                            .navigationTitle(MainView.journal.id)
                             .navigationBarTitleDisplayMode(.inline)
                             .searchableIf(!isCompact, text: $searchText)
                             .toolbar {
@@ -77,10 +81,10 @@ struct AppNavigatorView: View {
                     }
                 }
 
-                Tab(Page.reference.id, systemImage: Page.reference.icon, value: .reference) {
+                Tab(MainView.reference.id, systemImage: MainView.reference.icon, value: .reference) {
                     NavigationStack {
                         decoratedView(for: .reference)
-                            .navigationTitle(Page.reference.id)
+                            .navigationTitle(MainView.reference.id)
                             .navigationBarTitleDisplayMode(.inline)
                             .searchableIf(!isCompact, text: $searchText)
                             .toolbar {
@@ -92,7 +96,7 @@ struct AppNavigatorView: View {
                 Tab(value: .search, role: .search) {
                     NavigationStack {
                         decoratedView(for: .search)
-                            .navigationTitle(Page.search.id + " Mode Enabled")
+                            .navigationTitle(MainView.search.id + " Mode Enabled")
                             .navigationBarTitleDisplayMode(.inline)
                             .searchable(text: $searchText)
                             .toolbar {
@@ -108,21 +112,21 @@ struct AppNavigatorView: View {
     @ViewBuilder
     private var navigationAsSplitView: some View {
         NavigationSplitView {
-            List(selection: $selectedPage) {
-                NavigationLink(value: Page.practice) {
-                    Label(Page.practice.id, systemImage: Page.practice.icon)
+            List(selection: $selectedView) {
+                NavigationLink(value: MainView.practice) {
+                    Label(MainView.practice.id, systemImage: MainView.practice.icon)
                 }
-                NavigationLink(value: Page.history) {
-                    Label(Page.history.id, systemImage: Page.history.icon)
+                NavigationLink(value: MainView.journal) {
+                    Label(MainView.journal.id, systemImage: MainView.journal.icon)
                 }
-                NavigationLink(value: Page.reference) {
-                    Label(Page.reference.id, systemImage: Page.reference.icon)
+                NavigationLink(value: MainView.reference) {
+                    Label(MainView.reference.id, systemImage: MainView.reference.icon)
                 }
             }
         }
         detail: {
-            if let selectedPage {
-                decoratedView(for: selectedPage)
+            if let selectedView {
+                decoratedView(for: selectedView)
                     .toolbar {
                         profileToolbarButton
                     }
@@ -135,7 +139,7 @@ struct AppNavigatorView: View {
             }
         }
         .searchable(text: $searchText, prompt: "Search")
-        .navigationTitle(selectedPage?.id ?? "Fushigi")
+        .navigationTitle(selectedView?.id ?? "Fushigi")
     }
 
     /// Unified account/settings button for both platforms
@@ -152,37 +156,19 @@ struct AppNavigatorView: View {
         }
     }
 
-    /// Account button that opens settings (macOS) or sheet (iOS)
-    struct AccountButton: View {
-        @Binding var showProfile: Bool
-        #if os(macOS)
-            @Environment(\.openSettings) private var openSettings
-        #endif
-
-        var body: some View {
-            Button("Account", systemImage: "person.circle") {
-                #if os(macOS)
-                    openSettings()
-                #else
-                    showProfile = true
-                #endif
-            }
-        }
-    }
-
     /// Returns the appropriate view for each app section
     @ViewBuilder
-    private func decoratedView(for page: Page) -> some View {
+    private func decoratedView(for view: MainView) -> some View {
         Group {
-            switch page {
+            switch view {
             case .practice:
-                PracticePage()
-            case .history:
-                HistoryPage(searchText: $searchText)
+                PracticeView()
+            case .journal:
+                JournalView(searchText: $searchText)
             case .reference:
-                ReferencePage(searchText: $searchText)
+                ReferenceView(searchText: $searchText)
             case .search:
-                SearchPage(searchText: $searchText, selectedPage: $selectedPage)
+                SearchView(searchText: $searchText, selectedView: $selectedView)
             }
         }
         .background {
@@ -199,10 +185,12 @@ struct AppNavigatorView: View {
         #endif
     }
 
+    // MARK: - Helper Methods
+
     /// Application sections with navigation metadata
-    enum Page: String, Identifiable, CaseIterable {
+    enum MainView: String, Identifiable, CaseIterable {
         case practice = "Practice"
-        case history = "History"
+        case journal = "Journal"
         case reference = "Reference"
         case search = "Search"
 
@@ -212,7 +200,7 @@ struct AppNavigatorView: View {
         var icon: String {
             switch self {
             case .practice: "pencil.and.scribble"
-            case .history: "clock.arrow.2.circlepath"
+            case .journal: "clock.arrow.2.circlepath"
             case .reference: "books.vertical.fill"
             case .search: "magnifyingglass"
             }
@@ -222,7 +210,7 @@ struct AppNavigatorView: View {
         var supportsSearch: Bool {
             switch self {
             case .practice: false
-            case .history: true
+            case .journal: true
             case .reference: true
             case .search: false
             }

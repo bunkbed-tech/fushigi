@@ -1,5 +1,5 @@
 //
-//  ReferencePage.swift
+//  ReferenceView.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/01.
@@ -7,28 +7,12 @@
 
 import SwiftUI
 
-// MARK: - Reference Page
-
-enum GrammarQuickFilter: String, CaseIterable {
-    case all = "All"
-    case defaults = "Default"
-    case custom = "Custom"
-    case inSRS = "SRS"
-    case available = "Available"
-
-    /// Whether this filter requires SRS data
-    var requiresSRSData: Bool {
-        switch self {
-        case .inSRS, .available:
-            true
-        case .all, .defaults, .custom:
-            false
-        }
-    }
-}
+// MARK: - Reference View
 
 /// Searchable grammar reference interface with detailed grammar point inspection
-struct ReferencePage: View {
+struct ReferenceView: View {
+    // MARK: - Published State
+
     /// Responsive layout detection for adaptive table presentation
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
@@ -52,6 +36,8 @@ struct ReferencePage: View {
 
     /// Search query text coordinated with parent navigation structure
     @Binding var searchText: String
+
+    // MARK: Computed Properties
 
     /// Determines layout strategy based on available horizontal space
     var isCompact: Bool {
@@ -134,8 +120,9 @@ struct ReferencePage: View {
         }
     }
 
-    // MARK: - View Components
+    // MARK: - Sub Views
 
+    /// Animated loading view to alert user a long async process is currently underway
     @ViewBuilder
     private var loadingProgressView: some View {
         HStack(spacing: 12) {
@@ -156,6 +143,7 @@ struct ReferencePage: View {
         }
     }
 
+    /// Grammar display dependent on current filter and overall app sync state
     @ViewBuilder
     private var mainContentView: some View {
         if effectiveSystemState.shouldShowContentUnavailable {
@@ -189,6 +177,7 @@ struct ReferencePage: View {
         }
     }
 
+    /// Sorting and filtering action toolbar for grammar reference display
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItemGroup {
@@ -238,6 +227,7 @@ struct ReferencePage: View {
         }
     }
 
+    /// Popup sheet declaration for detailed grammar content, platform dependent
     @ViewBuilder
     private var grammarInspectorSheet: some View {
         if let point = grammarStore.selectedGrammarPoint {
@@ -268,6 +258,7 @@ struct ReferencePage: View {
         }
     }
 
+    /// Detailed grammar content showing up on popup sheet
     @ViewBuilder
     private func grammarContent(point: GrammarPointLocal, isInSRS: Bool, isDefault: Bool) -> some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
@@ -317,61 +308,61 @@ struct ReferencePage: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores()
 }
 
 #Preview("Degraded Operation Postgres") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
 }
 
 #Preview("With Search Results") {
-    ReferencePage(searchText: .constant("Hello"))
+    ReferenceView(searchText: .constant("Hello"))
         .withPreviewNavigation()
         .withPreviewStores()
 }
 
 #Preview("No Search Results") {
-    ReferencePage(searchText: .constant("nonexistent"))
+    ReferenceView(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
 }
 
 #Preview("Loading State") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Empty Database") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Critical Error Postgres") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical Error SwiftData") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
 
 #Preview("Missing SRS") {
-    ReferencePage(searchText: .constant(""))
+    ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(noSRS: true)
 }

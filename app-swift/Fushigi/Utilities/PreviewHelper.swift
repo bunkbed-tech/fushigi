@@ -11,7 +11,10 @@ import SwiftUI
 
 // MARK: - Preview Helper
 
+// Special enum to provide fake data in "Canvas Previews" helpful for quick XCode debugging
 enum PreviewHelper {
+    // MARK: - Helper Functions
+
     /// Create fake data store for Preview mode with various configurations
     @MainActor
     static func withStore(
@@ -281,5 +284,42 @@ enum PreviewHelper {
         ]
 
         store.sentences = fakeItems
+    }
+}
+
+// MARK: - View Extension
+
+extension View {
+    /// Add fake datastore for Preview mode
+    func withPreviewStores(
+        dataAvailability: DataAvailability = .available,
+        systemHealth: SystemHealth = .healthy,
+        systemState: SystemState = .normal,
+        noSRS: Bool = false,
+    ) -> some View {
+        PreviewHelper.withStore(
+            dataAvailability: dataAvailability,
+            systemHealth: systemHealth,
+            systemState: systemState,
+            noSRS: noSRS,
+        ) { _, _, _ in
+            self
+        }
+    }
+
+    /// Wrap view in NavigationStack for preview components + add styling
+    func withPreviewNavigation() -> some View {
+        NavigationStack {
+            self.background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
+        }
+        .preferredColorScheme(.dark)
+        .environment(\.colorScheme, .dark)
     }
 }

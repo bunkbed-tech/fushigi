@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 
+// MARK: - Sentence Create
+
 /// Sentence for model for simple submission to backend
 struct SentenceCreate: Codable {
     let content: String
@@ -16,7 +18,9 @@ struct SentenceCreate: Codable {
     let grammar: String
 }
 
-/// Sentence model for remote Pocketbase database
+// MARK: - Sentence Remote
+
+/// Sentence model for remote PocketBase database
 struct SentenceRemote: Codable {
     let id: String
     let user: String
@@ -51,6 +55,8 @@ struct SentenceRemote: Codable {
         case journalEntry = "journal_entry"
     }
 }
+
+// MARK: - Sentence Local
 
 /// Sentence model for local SwiftData storage
 @Model

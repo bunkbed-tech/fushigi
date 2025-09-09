@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - System State
+
 /// The main state that drives UI rendering decisions
 enum SystemState: Equatable {
     /// Currently loading locally from SwiftData and fetching remotely from PostgreSQL
@@ -28,7 +30,7 @@ enum SystemState: Equatable {
     var description: String {
         switch self {
         case .loading:
-            "Currently loading locally from SwiftData and fetching remotely from Pocketbase."
+            "Currently loading locally from SwiftData and fetching remotely from PocketBase."
         case .normal:
             "Standard operation with full data set"
         case .emptyData:

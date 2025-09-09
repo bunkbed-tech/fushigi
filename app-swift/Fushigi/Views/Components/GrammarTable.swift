@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+// MARK: - Grammar Table
+
 /// Responsive table component for displaying grammar points with adaptive layouts
 struct GrammarTable: View {
+    // MARK: - Published State
+
     /// Centralized grammar data repository with synchronization capabilities
     @EnvironmentObject var grammarStore: GrammarStore
 
@@ -17,6 +21,8 @@ struct GrammarTable: View {
 
     /// Controls inspector visibility
     @Binding var showingInspector: Bool
+
+    // MARK: - Init
 
     /// Grammar points to display in table
     let grammarPoints: [GrammarPointLocal]
