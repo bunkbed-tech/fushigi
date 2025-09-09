@@ -1,5 +1,5 @@
 //
-//  GrammarSettings.swift
+//  ReferenceView+GrammarSettings.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/09.
