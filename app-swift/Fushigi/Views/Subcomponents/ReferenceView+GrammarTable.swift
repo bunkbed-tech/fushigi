@@ -16,8 +16,8 @@ struct GrammarTable: View {
     /// Centralized grammar data repository with synchronization capabilities
     @EnvironmentObject var grammarStore: GrammarStore
 
-    /// Currently selected grammar point ID
-    @Binding var selectedGrammarID: String?
+    /// Currently selected grammar point ID for Table selection
+    @State private var selectedGrammarID: String?
 
     /// Controls inspector visibility
     @Binding var showingInspector: Bool

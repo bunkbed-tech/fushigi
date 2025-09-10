@@ -11,11 +11,19 @@ import SwiftData
 // MARK: - Sentence Create
 
 /// Sentence for model for simple submission to backend
-struct SentenceCreate: Codable {
+struct SentenceCreate: Codable, Identifiable {
+    // Local-only UUID for SwiftUI List identification
+    let id = UUID()
+
     let content: String
     let user: String
     let journalEntry: String
     let grammar: String
+
+    // Exclude id from API calls
+    enum CodingKeys: String, CodingKey {
+        case content, user, journalEntry, grammar
+    }
 }
 
 // MARK: - Sentence Remote

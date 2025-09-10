@@ -16,14 +16,14 @@ struct DailyGrammar: View {
     /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
 
-    /// Centralized on-device storage for user's grammar points (used for application state)
-    @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Centralized on-device storage for user's srs records
-    @EnvironmentObject var srsStore: SRSStore
+    /// Centralized sentence tag data store
+    @EnvironmentObject var sentenceStore: SentenceStore
 
     /// Controls tagging interface visibility
     @Binding var showTagger: Bool
+
+    /// Controls detailed grammar point inspection interface visibility
+    @Binding var showDetails: Bool
 
     /// User-selected sourcing strategy
     @Binding var selectedSource: SourceMode
@@ -32,7 +32,7 @@ struct DailyGrammar: View {
 
     /// SRS records based on current sourcing mode
     private var srsRecords: [SRSRecordLocal] {
-        srsStore.getSRSRecords(for: selectedSource)
+        studyStore.srsStore.getSRSRecords(for: selectedSource)
     }
 
     /// Grammar points matching SRS records base on current sourcing mode
@@ -44,7 +44,7 @@ struct DailyGrammar: View {
 
     /// All daily items are pulled from SRS records no matter if random or algorithmic
     private var systemState: SystemState {
-        srsStore.systemState
+        studyStore.srsStore.systemState
     }
 
     // MARK: - Main View
@@ -90,26 +90,7 @@ struct DailyGrammar: View {
                         }
                     } else {
                         ForEach(grammarPoints, id: \.id) { grammarPoint in
-                            Button {
-                                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-                                showTagger = true
-                            } label: {
-                                HStack {
-                                    Text(grammarPoint.usage)
-                                        .foregroundStyle(.foreground)
-                                    Spacer()
-                                    Image(systemName: "plus.circle.fill")
-                                        .foregroundStyle(.mint)
-                                }
-                                .contentShape(.rect)
-                            }
-                            .buttonStyle(.plain)
-                            .help("Link this grammar point to selected text")
-
-                            // Hide last Divider for improved visuals
-                            if grammarPoint.id != grammarPoints.last?.id {
-                                Divider()
-                            }
+                            dailyGrammarRow(grammarPoint: grammarPoint)
                         }
                     }
                 }
@@ -136,10 +117,46 @@ struct DailyGrammar: View {
         }
     }
 
+    // MARK: - Sub Views
+    @ViewBuilder
+    private func dailyGrammarRow(grammarPoint: GrammarPointLocal) -> some View {
+        HStack {
+            Button {
+                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
+                showDetails = true
+            } label: {
+                HStack {
+                    Text(grammarPoint.usage)
+                        .foregroundStyle(.foreground)
+                    Spacer()
+                    Text("Tags: \(sentenceStore.pendingSentences.filter { $0.grammar == grammarPoint.id}.count)")
+                        .clipShape(.capsule)
+                        .font(.caption2)
+                }
+                .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .help("View grammar usage details to rejog your memory.")
+
+            Button {
+                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
+                showTagger = true
+            } label: {
+                Label("Add Tag", systemImage: "plus.circle.fill")
+                    .labelStyle(.iconOnly)
+            }
+            .help("Select a sentence and click this to add/view tags and build your sentence bank over time.")
+
+        }
+        // Hide last Divider for improved visuals
+        if grammarPoint.id != grammarPoints.last?.id {
+            Divider()
+        }
+    }
     // MARK: - Helper Methods
 
     /// Refresh grammar points based on current source mode
     private func refreshGrammarPoints() async {
-        srsStore.forceDailyRefresh(currentMode: selectedSource)
+        studyStore.srsStore.forceDailyRefresh(currentMode: selectedSource)
     }
 }

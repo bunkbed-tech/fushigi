@@ -14,14 +14,21 @@ struct Tagger: View {
     /// Centralized grammar data store
     @EnvironmentObject var grammarStore: GrammarStore
 
-    /// Tracks successful tag creation for user feedback
-    @State private var isTagCreated = false
+    /// Centralized sentence tag data store
+    @EnvironmentObject var sentenceStore: SentenceStore
 
     /// Temporary status message for operation feedback
     @State private var operationMessage: String?
 
     /// Controls the tagging interface visibility
     @Binding var isShowingTagger: Bool
+
+    // MARK: - Computed Properties
+
+    /// Tracks successful tag creation for user feedback
+    private var pendingTags: [SentenceCreate] {
+        sentenceStore.pendingSentences.filter {$0.grammar == grammarPoint.id}
+    }
 
     // MARK: - Init
 
@@ -50,7 +57,7 @@ struct Tagger: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isTagCreated)
+                .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
 
             // Grammar point information display
@@ -107,6 +114,17 @@ struct Tagger: View {
                                 lineWidth: UIConstants.Border.focusedWidth,
                             ),
                     )
+
+                List(pendingTags, id: \.id) { tag in
+                    HStack {
+                        Text(tag.content)
+                        Spacer()
+                        Button("Delete"){
+                            sentenceStore.removePendingTag(content: tag.content, grammar: grammarPoint.id)
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
             }
 
             // Operation status display
@@ -114,8 +132,8 @@ struct Tagger: View {
                 Spacer()
 
                 HStack {
-                    Image(systemName: isTagCreated ? "checkmark.circle.fill" : "info.circle.fill")
-                        .foregroundColor(isTagCreated ? .mint : .red)
+                    Image(systemName: pendingTags.isEmpty ? "checkmark.circle.fill" : "info.circle.fill")
+                        .foregroundColor(!pendingTags.isEmpty ? .mint : .red)
                     Text(message)
                         .font(.subheadline)
                 }
@@ -138,8 +156,14 @@ struct Tagger: View {
             return
         }
 
-        isTagCreated = true
-        operationMessage = "Grammar link created successfully!"
+        let result = await sentenceStore.addPendingTag(grammar: grammarPoint.id, selectedText: selectedText)
+        switch result {
+        case .success:
+            operationMessage = "Sentence tag successfully queued"
+        case .failure:
+            operationMessage = "Sentence tag failed to queue"
+        }
+
     }
 
     /// Dismiss tagging interface and clear selection state

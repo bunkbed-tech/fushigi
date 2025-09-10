@@ -12,6 +12,9 @@ import SwiftUI
 struct LoginView: View {
     // MARK: - Published State
 
+    /// Manager object for user authentication
+    @ObservedObject var authManager: AuthManager
+
     /// User email
     @State private var email = ""
 
@@ -23,9 +26,6 @@ struct LoginView: View {
 
     /// Message store for errors to display to users for UI/UX
     @State private var errorMessage: String?
-
-    /// Manager object for user authentication
-    @ObservedObject var authManager: AuthManager
 
     // MARK: - Init
 

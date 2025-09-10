@@ -48,7 +48,6 @@ struct PlatformSheet<Content: View>: View {
         #else
             NavigationStack {
                 content
-                    .navigationTitle(title)
                     .toolbar {
                         ToolbarItem {
                             Button("Done", action: onDismiss)

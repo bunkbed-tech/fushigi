@@ -18,6 +18,9 @@ class SentenceStore: ObservableObject {
     /// In-memory cache of all sentence tags for quick UI access
     @Published var sentences: [SentenceLocal] = []
 
+    /// Temporary storage for sentence tags being created during journal composition
+    @Published var pendingSentences: [SentenceCreate] = []
+
     /// Current data state (load, empty, normal)
     @Published var dataAvailability: DataAvailability = .empty
 
@@ -139,6 +142,68 @@ class SentenceStore: ObservableObject {
         dataAvailability = .empty
         systemHealth = .healthy
         lastSyncDate = nil
+    }
+
+    // MARK: - Public API
+
+    /// Temporarily store a pending sentence while waiting for full Journal Entry to be submitted
+    func addPendingTag(grammar: String, selectedText: String) async -> Result<String, Error>  {
+        guard let userID = authManager.currentUser?.id else {
+            print("ERROR: No user ID in current session - auth failed")
+            return .failure(URLError(.userAuthenticationRequired))
+        }
+
+        let tag = SentenceCreate(
+            content: selectedText,
+            user: userID,
+            journalEntry: "TEMP",
+            grammar: grammar
+        )
+
+        pendingSentences.append(tag)
+        print("LOG: Added pending sentence tag. Total: \(pendingSentences.count)")
+        return .success("Added pending sentence tag.")
+    }
+
+    /// Remove tag according to the currently selected string
+    func removePendingTag(content: String, grammar: String) {
+        // Remove matches between content and grammar since one sentence might have multiple grammar points and one
+        // grammar point might be used multiple times in a journal entry
+        pendingSentences.removeAll(where: { $0.content == content && $0.grammar == grammar })
+    }
+
+    /// Bulk operation to send all pending sentences to the database
+    func addPendingToDatabase(_ journal: String) async -> Result<Void, Error> {
+        guard !pendingSentences.isEmpty else {
+            print("LOG: No pending sentences to save")
+            return .success(())
+        }
+        setLoading()
+
+        let bulkSentence = pendingSentences.map { point in
+            SentenceCreate(
+                content: point.content,
+                user: point.user,
+                journalEntry: point.journalEntry == "TEMP" ? journal : point.journalEntry,
+                grammar: point.grammar,
+            )
+        }
+
+        let result = await service.postBulkItems(bulkSentence)
+
+        switch result {
+        case .success:
+            print("LOG: Successfully saved \(pendingSentences.count) sentence tags")
+            handleSyncSuccess()
+            await refresh()
+            pendingSentences.removeAll()
+            return .success(())
+
+        case let .failure(error):
+            print("ERROR: Failed to post sentence tags for journal \(journal): \(error)")
+            handleRemoteSyncFailure()
+            return .failure(error)
+        }
     }
 }
 

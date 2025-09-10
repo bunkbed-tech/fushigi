@@ -62,6 +62,7 @@ struct PocketBaseError: Decodable {
 /// Potential error modes when interacting with PocketBase with user/dev friendly descriptions
 enum AuthError: Error, LocalizedError {
     case invalidCredentials(String, underlying: Error? = nil)
+    case needsAuthenticationRefresh
     case networkError(String, underlying: Error? = nil)
     case serverError(String, underlying: Error? = nil)
     case decodingError(String, underlying: Error? = nil)
@@ -75,6 +76,8 @@ enum AuthError: Error, LocalizedError {
              let .decodingError(msg, underlying),
              let .tokenStorageError(msg, underlying):
             "\(msg)" + (underlying.map { " (\($0))" } ?? "")
+        case .needsAuthenticationRefresh:
+            "Please refresh your authentication token"
         }
     }
 }

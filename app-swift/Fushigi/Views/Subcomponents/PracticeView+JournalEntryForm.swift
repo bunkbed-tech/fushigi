@@ -16,6 +16,9 @@ struct JournalEntryForm: View {
     /// Centralized journal repository with synchronization capabilities
     @EnvironmentObject var journalStore: JournalStore
 
+    /// Centralized sentence tag repository with synchronization capabilities
+    @EnvironmentObject var sentenceStore: SentenceStore
+
     /// Focus state for title field
     @FocusState private var isTitleFocused: Bool
 
@@ -144,6 +147,7 @@ struct JournalEntryForm: View {
             title: entryTitle,
             content: entryContent,
             isPrivate: isPrivateEntry,
+            sentenceStore: sentenceStore,
         )
 
         switch result {

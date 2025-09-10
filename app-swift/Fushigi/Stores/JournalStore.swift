@@ -86,12 +86,12 @@ class JournalStore: ObservableObject {
     }
 
     /// Create a Journal Entry as the current user using JournalEntryForm view
-    func createEntry(title: String, content: String, isPrivate: Bool) async -> Result<String, Error> {
+    func createEntry(title: String, content: String, isPrivate: Bool, sentenceStore: SentenceStore ) async -> Result<String, AuthError> {
         print("LOG: Create entry called: \(title)")
 
         guard let userID = authManager.currentUser?.id else {
             print("ERROR: No user ID in current session - auth failed")
-            return .failure(URLError(.userAuthenticationRequired))
+            return .failure(.needsAuthenticationRefresh)
         }
 
         let newItem = JournalEntryCreate(
@@ -103,14 +103,31 @@ class JournalStore: ObservableObject {
 
         let result = await service.postItem(newItem)
 
-        if case .success = result {
-            // Refresh local data with the remote to include the new entry
+        switch result {
+        case .success(let journalID):
+            print("LOG: Journal entry created successfully with ID: \(journalID)")
+
+            let sentenceResult = await sentenceStore.addPendingToDatabase(journalID)
+
             await syncWithRemote()
-        } else {
-            print("TODO: Need to save this locally and deal with sync forward later.")
+
+            switch sentenceResult {
+            case .success:
+                print("LOG: Journal and all sentence tags saved successfully")
+                return .success("Journal and sentence tags saved successfully")
+
+            case .failure(let sentenceError):
+                print("WARNING: Journal saved but sentence tags failed: \(sentenceError)")
+                // TODO: Deal with failed sentence tag uploads
+                return .success("Journal saved but some sentence tags failed - TODO: deal with this later.")
+            }
+
+        case .failure(let error):
+            print("ERROR: Failed to create journal entry: \(error)")
+            // TODO: Save journal locally for offline sync later
+            return .failure(.serverError(error.localizedDescription))
         }
 
-        return result
     }
 
     // MARK: - Sync Boilerplate

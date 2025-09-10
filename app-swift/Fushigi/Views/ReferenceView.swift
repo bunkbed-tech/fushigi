@@ -19,17 +19,8 @@ struct ReferenceView: View {
     /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
 
-    /// Centralized on-device storage for user's grammar points (used for application state)
-    @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Centralized on-device storage for user's srs records
-    @EnvironmentObject var srsStore: SRSStore
-
-    /// Currently selected grammar point for detailed examination
-    @State private var selectedGrammarID: String?
-
     /// Controls detailed grammar point inspection interface visibility
-    @State private var showingInspector: Bool = false
+    @State private var showDetails: Bool = false
 
     /// Controls currently displayed source of grammar
     @State private var selectedFilter: GrammarQuickFilter = .all
@@ -47,9 +38,9 @@ struct ReferenceView: View {
     /// Computed system state based on current filter
     var effectiveSystemState: SystemState {
         if selectedFilter.requiresSRSData {
-            srsStore.systemState
+            studyStore.srsStore.systemState
         } else {
-            grammarStore.systemState
+            studyStore.grammarStore.systemState
         }
     }
 
@@ -57,18 +48,18 @@ struct ReferenceView: View {
     var grammarPoints: [GrammarPointLocal] {
         let baseItems: [GrammarPointLocal] = switch selectedFilter {
         case .all:
-            grammarStore.grammarItems
+            studyStore.grammarStore.grammarItems
         case .defaults:
-            grammarStore.systemGrammarItems
+            studyStore.grammarStore.systemGrammarItems
         case .custom:
-            grammarStore.userGrammarItems
+            studyStore.grammarStore.userGrammarItems
         case .inSRS:
             studyStore.inSRSGrammarItems
         case .available:
             studyStore.availableGrammarItems
         }
 
-        return grammarStore.filterGrammarPoints(for: baseItems, containing: searchText)
+        return studyStore.grammarStore.filterGrammarPoints(for: baseItems, containing: searchText)
     }
 
     /// Whether we should show the search empty state
@@ -113,10 +104,13 @@ struct ReferenceView: View {
         .toolbar {
             toolbarContent
         }
-        .sheet(isPresented: $showingInspector, onDismiss: {
-            selectedGrammarID = nil
+        .sheet(isPresented: $showDetails, onDismiss: {
+            studyStore.grammarStore.selectedGrammarPoint = nil
         }) {
-            grammarInspectorSheet
+            GrammarInspector(
+                showDetails: $showDetails,
+                systemState: effectiveSystemState,
+            )
         }
     }
 
@@ -164,8 +158,7 @@ struct ReferenceView: View {
             }
         } else {
             GrammarTable(
-                selectedGrammarID: $selectedGrammarID,
-                showingInspector: $showingInspector,
+                showingInspector: $showDetails,
                 grammarPoints: grammarPoints,
                 isCompact: isCompact,
                 onRefresh: {
@@ -217,90 +210,13 @@ struct ReferenceView: View {
                 if selectedFilter == .available {
                     Button("Generate From Defaults", systemImage: "rectangle.stack.fill.badge.plus") {
                         Task {
-                            await srsStore.addBulkToSRS(studyStore.availableGrammarItems)
+                            await studyStore.srsStore.addBulkToSRS(studyStore.availableGrammarItems)
                         }
                     }
                     .disabled(studyStore.availableGrammarItems.isEmpty)
                 }
             }
             .disabled(effectiveSystemState.shouldDisableUI)
-        }
-    }
-
-    /// Popup sheet declaration for detailed grammar content, platform dependent
-    @ViewBuilder
-    private var grammarInspectorSheet: some View {
-        if let point = grammarStore.selectedGrammarPoint {
-            PlatformSheet(title: "Grammar Details", onDismiss: { showingInspector = false }) {
-                grammarContent(
-                    point: point,
-                    isInSRS: srsStore.isInSRS(point.id),
-                    isDefault: grammarStore.isDefaultGrammar(point),
-                )
-            }
-            #if os(macOS)
-            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
-            #else
-            .presentationDetents([.medium, .large], selection: .constant(.medium))
-            #endif
-        } else {
-            ContentUnavailableView {
-                Label("Error", systemImage: "xmark.circle")
-            } description: {
-                Text("Selected grammar is null. Please report this bug.")
-            } actions: {
-                Button("Dismiss") {
-                    showingInspector = false
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .presentationDetents([.medium])
-        }
-    }
-
-    /// Detailed grammar content showing up on popup sheet
-    @ViewBuilder
-    private func grammarContent(point: GrammarPointLocal, isInSRS: Bool, isDefault: Bool) -> some View {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-            Text("Usage: \(point.usage)")
-            Text("Meaning: \(point.meaning)")
-            Divider()
-            coloredTagsText(tags: point.tags)
-            Spacer()
-        }
-        .padding()
-        .toolbar {
-            ToolbarItem(placement: .secondaryAction) {
-                Menu("Options", systemImage: "ellipsis.circle") {
-                    if isInSRS {
-                        Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
-                            print("TODO: Implement remove from SRS")
-                        }
-                        .disabled(true)
-                    } else {
-                        Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
-                            Task {
-                                await srsStore.addToSRS(point.id)
-                                showingInspector = false
-                            }
-                        }
-                    }
-
-                    if !isDefault {
-                        Button("Edit", systemImage: "square.and.arrow.up.fill") {
-                            print("TODO: Implement editing user grammar point...")
-                        }
-                        .disabled(true)
-
-                        Button("Delete", systemImage: "trash.slash") {
-                            print("TODO: Implement removing user grammar point...")
-                        }
-                        .disabled(true)
-                    }
-                }
-                .labelStyle(.iconOnly)
-                .disabled(effectiveSystemState.shouldDisableUI)
-            }
         }
     }
 }

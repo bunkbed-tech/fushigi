@@ -19,17 +19,14 @@ struct PracticeView: View {
     /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
 
-    /// Centralized on-device storage for user's grammar points (used for application state)
-    @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Centralized on-device storage for user's srs records
-    @EnvironmentObject var srsStore: SRSStore
-
     /// Controls the settings sheet for practice content preferences
     @State private var showSettings = false
 
     /// Controls the tagging sheet for grammar point and sentence relationships
     @State private var showTagger = false
+
+    /// Controls detailed grammar point inspection interface visibility
+    @State private var showDetails = false
 
     /// User preference for politeness level filtering
     @State private var selectedLevel: Level = .all
@@ -70,7 +67,7 @@ struct PracticeView: View {
 
     /// All daily grammar items are taken from SRS records no matter if they are algorithmic or random
     private var systemState: SystemState {
-        srsStore.systemState
+        studyStore.srsStore.systemState
     }
 
     /// Extracts readable text from TextSelection objects for tagging
@@ -97,6 +94,7 @@ struct PracticeView: View {
             {
                 DailyGrammar(
                     showTagger: $showTagger,
+                    showDetails: $showDetails,
                     selectedSource: $selectedSource,
                 )
 
@@ -121,19 +119,31 @@ struct PracticeView: View {
                 settingsView
             }
         }
-        .sheet(isPresented: $showTagger) {
+        .sheet(isPresented: $showTagger, onDismiss: {
+            studyStore.grammarStore.selectedGrammarPoint = nil
+        }) {
             if isCompact {
                 taggerView.presentationDetents([.medium, .large])
             } else {
                 taggerView
             }
         }
+        .sheet(isPresented: $showDetails, onDismiss: {
+            studyStore.grammarStore.selectedGrammarPoint = nil
+        }) {
+            GrammarInspector(
+                showDetails: $showDetails,
+                systemState: systemState,
+            )
+        }
         .toolbar {
             ToolbarItem {
                 Button("Practice Settings", systemImage: "graduationcap") { showSettings.toggle() }
+                    .disabled(!entryContent.isEmpty)
             }
             ToolbarItem {
                 Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
+                    .disabled(!entryContent.isEmpty)
             }
         }
     }
@@ -142,7 +152,7 @@ struct PracticeView: View {
 
     /// Refreshes grammar points based on current source setting
     private func refreshGrammarPoints() async {
-        srsStore.forceDailyRefresh(currentMode: selectedSource)
+        studyStore.srsStore.forceDailyRefresh(currentMode: selectedSource)
         showSettings = false
     }
 
@@ -159,7 +169,7 @@ struct PracticeView: View {
 
     @ViewBuilder
     private var taggerView: some View {
-        if let grammarPoint = grammarStore.selectedGrammarPoint {
+        if let grammarPoint = studyStore.grammarStore.selectedGrammarPoint {
             Tagger(
                 isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
