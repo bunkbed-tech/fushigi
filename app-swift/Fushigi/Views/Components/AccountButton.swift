@@ -13,7 +13,7 @@ import SwiftUI
 struct AccountButton: View {
     @Binding var showProfile: Bool
     #if os(macOS)
-    @Environment(\.openSettings) private var openSettings
+        @Environment(\.openSettings) private var openSettings
     #endif
 
     var body: some View {

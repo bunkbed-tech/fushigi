@@ -147,7 +147,7 @@ class SentenceStore: ObservableObject {
     // MARK: - Public API
 
     /// Temporarily store a pending sentence while waiting for full Journal Entry to be submitted
-    func addPendingTag(grammar: String, selectedText: String) async -> Result<String, Error>  {
+    func addPendingTag(grammar: String, selectedText: String) async -> Result<String, Error> {
         guard let userID = authManager.currentUser?.id else {
             print("ERROR: No user ID in current session - auth failed")
             return .failure(URLError(.userAuthenticationRequired))
@@ -157,7 +157,7 @@ class SentenceStore: ObservableObject {
             content: selectedText,
             user: userID,
             journalEntry: "TEMP",
-            grammar: grammar
+            grammar: grammar,
         )
 
         pendingSentences.append(tag)

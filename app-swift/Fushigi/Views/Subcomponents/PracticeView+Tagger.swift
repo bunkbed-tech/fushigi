@@ -27,7 +27,7 @@ struct Tagger: View {
 
     /// Tracks successful tag creation for user feedback
     private var pendingTags: [SentenceCreate] {
-        sentenceStore.pendingSentences.filter {$0.grammar == grammarPoint.id}
+        sentenceStore.pendingSentences.filter { $0.grammar == grammarPoint.id }
     }
 
     // MARK: - Init
@@ -64,8 +64,8 @@ struct Tagger: View {
                     .overlay(
                         Capsule().stroke(
                             selectedText.isEmpty ? .clear : .purple,
-                            lineWidth: UIConstants.Border.focusedWidth
-                        )
+                            lineWidth: UIConstants.Border.focusedWidth,
+                        ),
                     )
 
                 if !pendingTags.isEmpty {

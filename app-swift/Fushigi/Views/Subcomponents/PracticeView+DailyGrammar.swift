@@ -111,6 +111,7 @@ struct DailyGrammar: View {
     }
 
     // MARK: - Sub Views
+
     @ViewBuilder
     private func dailyGrammarRow(grammarPoint: GrammarPointLocal) -> some View {
         HStack {
@@ -122,7 +123,7 @@ struct DailyGrammar: View {
                     Text(grammarPoint.usage)
                         .foregroundStyle(.foreground)
                     Spacer()
-                    Text("Tags: \(sentenceStore.pendingSentences.filter { $0.grammar == grammarPoint.id}.count)")
+                    Text("Tags: \(sentenceStore.pendingSentences.count(where: { $0.grammar == grammarPoint.id }))")
                         .clipShape(.capsule)
                         .font(.caption2)
                 }
@@ -139,13 +140,13 @@ struct DailyGrammar: View {
                     .labelStyle(.iconOnly)
             }
             .help("Select a sentence and click this to add/view tags and build your sentence bank over time.")
-
         }
         // Hide last Divider for improved visuals
         if grammarPoint.id != currentGrammar.last?.id {
             Divider()
         }
     }
+
     // MARK: - Helper Methods
 
     /// Refresh grammar points based on current source mode

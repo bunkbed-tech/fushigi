@@ -115,23 +115,22 @@ struct PracticeView: View {
     // MARK: - Main View
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing:
-                UIConstants.Spacing.default)
-            {
-                DailyGrammar(
-                    showTagger: $showTagger,
-                    showDetails: $showDetails,
-                    selectedSource: $selectedSource,
-                    currentGrammar: currentGrammar
-                )
+        GeometryReader { screen in
+            ScrollView {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
+                    DailyGrammar(
+                        showTagger: $showTagger,
+                        showDetails: $showDetails,
+                        selectedSource: $selectedSource,
+                        currentGrammar: currentGrammar,
+                    )
 
-                entryForm.layoutPriority(1)
-
+                    entryForm(availableHeight: screen.size.height)
+                }
+                .padding()
             }
-            .padding()
+            .scrollDismissesKeyboard(.interactively)
         }
-        .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSettings) {
             if isCompact {
                 settingsView
@@ -158,6 +157,9 @@ struct PracticeView: View {
             )
         }
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                EmptyView()
+            }
             ToolbarItem {
                 Button("Practice Settings", systemImage: "graduationcap") { showSettings.toggle() }
                     .disabled(!entryContent.isEmpty)
@@ -166,6 +168,7 @@ struct PracticeView: View {
                 Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
                     .disabled(!entryContent.isEmpty)
             }
+            keyboardQuickTagger
         }
     }
 
@@ -224,7 +227,7 @@ struct PracticeView: View {
 
         let result = await sentenceStore.addPendingTag(
             grammar: grammarPoint.id,
-            selectedText: selectedText
+            selectedText: selectedText,
         )
 
         switch result {
@@ -252,7 +255,8 @@ struct PracticeView: View {
         )
     }
 
-    /// Content of the tagging sheet, showing a list of all current tags for a given grammar item as well as the currently
+    /// Content of the tagging sheet, showing a list of all current tags for a given grammar item as well as the
+    /// currently
     /// selected text. A fall back ContentUnavailableView is also provided, but this should never happen unless a bug
     /// has surfaced.
     @ViewBuilder
@@ -280,8 +284,14 @@ struct PracticeView: View {
         }
     }
 
+    /// Resizable entry form where the diary content should resize to fill all remaining size on device. Requires a
+    /// title and content
+    /// before submit will work. When users select text, they are able to log Sentences in the database that connect
+    /// Journal Entry
+    /// to Grammar to Sentence. These tags are eventually formally submitted to the backend once the user submits the
+    /// form.
     @ViewBuilder
-    private var entryForm: some View {
+    private func entryForm(availableHeight: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Title").font(.headline)
@@ -303,6 +313,8 @@ struct PracticeView: View {
                     .disabled(isSaving)
             }
 
+            // TODO: Get the TextEditor to auto size to the available screen size remainder
+            // TODO: Make sure that when long entries are typed instead of growing, it scrolls
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Content").font(.headline)
                 ZStack(alignment: .topLeading) {
@@ -310,14 +322,14 @@ struct PracticeView: View {
                         Text("Use grammar points above to write a journal entry!")
                             .foregroundStyle(.tertiary)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .allowsHitTesting(false)
                     }
                     TextEditor(text: $entryContent, selection: $textSelection)
                         .scrollContentBackground(.hidden)
-                        .toolbar{
-                            keyboardQuickTagger
-                        }
+                        .focused($isContentFocused)
+                        .disabled(isSaving)
                 }
-                .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
+                .frame(minHeight: availableHeight * 0.4, maxHeight: .infinity)
                 .padding(UIConstants.Spacing.row)
                 .overlay(
                     RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
@@ -326,17 +338,12 @@ struct PracticeView: View {
                             lineWidth: UIConstants.Border.width,
                         ),
                 )
-                .focused($isContentFocused)
-                .disabled(isSaving)
-                .layoutPriority(1) // TODO: figure out why autoresize wont work
             }
 
-            // Privacy toggle
             Toggle("Private Entry", isOn: $isPrivateEntry)
                 .disabled(isSaving)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            // Save section
             HStack(alignment: .center) {
                 Button {
                     showSaveConfirmation = true
@@ -355,7 +362,9 @@ struct PracticeView: View {
                         }
                     }
                 } message: {
-                    Text("Are you sure you're ready to submit this entry? \(sentenceStore.pendingSentences.count) tags will be added.")
+                    Text(
+                        "Are you sure you're ready to submit this entry? \(sentenceStore.pendingSentences.count) tags will be added.",
+                    )
                 }
                 .disabled(isSaving)
                 .buttonStyle(.borderedProminent)
@@ -369,10 +378,18 @@ struct PracticeView: View {
         }
     }
 
+    /// A handy keyboard toolbar for iOS and MacOS touch bar devices that show a list of available tags (grammar points
+    /// in today's study list) that can be attached to the currently selected sentence.
+    ///
+    /// It currently does not work due to what I'm assuming is an obscure SwiftUI bug. The .keyboard
+    /// ToolbarItemPlacement
+    /// does not reactively update until the entire view is refreshed such as by opening a sheet or navigating to
+    /// another tab.
+    /// This behavior is not experienced with any other ToolbarItemPlacement.
     @ToolbarContentBuilder
     private var keyboardQuickTagger: some ToolbarContent {
         // Keyboard mobile tagger (also shows up on mac touch bar)
-        ToolbarItem (placement: .keyboard) {
+        ToolbarItemGroup(placement: .keyboard) {
             // Only show grammar tagging buttons if text is selected
             if !selectedText.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -451,4 +468,3 @@ struct PracticeView: View {
         .withPreviewNavigation()
         .withPreviewStores(noSRS: true)
 }
-

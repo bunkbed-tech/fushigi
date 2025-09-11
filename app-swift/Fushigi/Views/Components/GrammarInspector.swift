@@ -23,6 +23,7 @@ struct GrammarInspector: View {
     let systemState: SystemState
 
     // MARK: - Main View
+
     var body: some View {
         if let point = studyStore.grammarStore.selectedGrammarPoint {
             PlatformSheet(title: "Grammar Details", onDismiss: { showDetails = false }) {
@@ -53,6 +54,7 @@ struct GrammarInspector: View {
     }
 
     // MARK: - Sub Views
+
     /// Detailed grammar content showing up on popup sheet
     @ViewBuilder
     private func grammarContent(point: GrammarPointLocal, isInSRS: Bool, isDefault: Bool) -> some View {
