@@ -19,6 +19,18 @@ struct PracticeView: View {
     /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
 
+    /// Centralized sentence tag repository with synchronization capabilities
+    @EnvironmentObject var sentenceStore: SentenceStore
+
+    /// Centralized journal entry repository with synchronization capabilities
+    @EnvironmentObject var journalStore: JournalStore
+
+    /// Focus state for title field
+    @FocusState private var isTitleFocused: Bool
+
+    /// Focus state for content field
+    @FocusState private var isContentFocused: Bool
+
     /// Controls the settings sheet for practice content preferences
     @State private var showSettings = false
 
@@ -58,6 +70,9 @@ struct PracticeView: View {
     /// Loading state flag to disable UI elements during async operations
     @State private var isSaving = false
 
+    /// Save confirmation dialog visibility
+    @State private var showSaveConfirmation: Bool = false
+
     // MARK: - Computed Properties
 
     /// Determines layout strategy based on available horizontal space
@@ -85,6 +100,18 @@ struct PracticeView: View {
         }
     }
 
+    /// SRS records based on current sourcing mode
+    private var currentRecords: [SRSRecordLocal] {
+        studyStore.srsStore.getSRSRecords(for: selectedSource)
+    }
+
+    /// Grammar points matching SRS records base on current sourcing mode
+    private var currentGrammar: [GrammarPointLocal] {
+        studyStore.inSRSGrammarItems.filter { grammarPoint in
+            currentRecords.contains(where: { $0.grammar == grammarPoint.id })
+        }
+    }
+
     // MARK: - Main View
 
     var body: some View {
@@ -96,17 +123,11 @@ struct PracticeView: View {
                     showTagger: $showTagger,
                     showDetails: $showDetails,
                     selectedSource: $selectedSource,
+                    currentGrammar: currentGrammar
                 )
 
-                JournalEntryForm(
-                    entryTitle: $entryTitle,
-                    entryContent: $entryContent,
-                    textSelection: $textSelection,
-                    isPrivateEntry: $isPrivateEntry,
-                    statusMessage: $statusMessage,
-                    isSaving: $isSaving,
-                )
-                .layoutPriority(1)
+                entryForm.layoutPriority(1)
+
             }
             .padding()
         }
@@ -156,6 +177,70 @@ struct PracticeView: View {
         showSettings = false
     }
 
+    /// Save journal entry to database
+    private func saveJournalEntry() async {
+        guard !isSaving else { return }
+
+        isSaving = true
+        statusMessage = nil
+        defer { isSaving = false }
+
+        let result = await journalStore.createEntry(
+            title: entryTitle,
+            content: entryContent,
+            isPrivate: isPrivateEntry,
+            sentenceStore: sentenceStore,
+        )
+
+        switch result {
+        case let .success(message):
+            statusMessage = message
+            clearForm()
+            print("LOG: Successfully posted journal entry.")
+        case let .failure(error):
+            statusMessage = "Error: \(error.localizedDescription)"
+            print("ERROR: Failed to post journal entry:", error)
+        }
+    }
+
+    /// Clear form after successful submission
+    private func clearForm() {
+        textSelection = nil // must clear textSelection first to be safe from index crash
+        entryTitle = ""
+        entryContent = ""
+        isPrivateEntry = false
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            statusMessage = ""
+        }
+    }
+
+    /// Temporarily add tag to list to be processed later after Journal submission, with slight delay to improve UX
+    private func tagSelectedText(with grammarPoint: GrammarPointLocal) async {
+        guard !selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            statusMessage = "Error: Please select some text before creating a link."
+            return
+        }
+
+        let result = await sentenceStore.addPendingTag(
+            grammar: grammarPoint.id,
+            selectedText: selectedText
+        )
+
+        switch result {
+        case .success:
+            statusMessage = "Sentence tag successfully queued"
+        case .failure:
+            statusMessage = "Error: Sentence tag failed to queue"
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            statusMessage = nil
+        }
+    }
+
+    // MARK: - Sub Views
+
     /// Settings configuration view with state management
     @ViewBuilder
     private var settingsView: some View {
@@ -167,10 +252,14 @@ struct PracticeView: View {
         )
     }
 
+    /// Content of the tagging sheet, showing a list of all current tags for a given grammar item as well as the currently
+    /// selected text. A fall back ContentUnavailableView is also provided, but this should never happen unless a bug
+    /// has surfaced.
     @ViewBuilder
     private var taggerView: some View {
         if let grammarPoint = studyStore.grammarStore.selectedGrammarPoint {
             Tagger(
+                statusMessage: $statusMessage,
                 isShowingTagger: $showTagger,
                 grammarPoint: grammarPoint,
                 selectedText: selectedText,
@@ -190,6 +279,127 @@ struct PracticeView: View {
             }
         }
     }
+
+    @ViewBuilder
+    private var entryForm: some View {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                Text("Title").font(.headline)
+                TextField("Enter title", text: $entryTitle)
+                    .padding(UIConstants.Spacing.row)
+                    .textFieldStyle(.plain)
+                    .overlay(
+                        RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
+                            .stroke(
+                                isTitleFocused ? .purple : .primary,
+                                lineWidth: UIConstants.Border.width,
+                            ),
+                    )
+                    .focused($isTitleFocused)
+                    .onSubmit {
+                        isContentFocused = true
+                        isTitleFocused = false
+                    }
+                    .disabled(isSaving)
+            }
+
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                Text("Content").font(.headline)
+                ZStack(alignment: .topLeading) {
+                    if entryContent.isEmpty {
+                        Text("Use grammar points above to write a journal entry!")
+                            .foregroundStyle(.tertiary)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    TextEditor(text: $entryContent, selection: $textSelection)
+                        .scrollContentBackground(.hidden)
+                        .toolbar{
+                            keyboardQuickTagger
+                        }
+                }
+                .frame(minHeight: UIConstants.Sizing.contentMinHeight, maxHeight: .infinity)
+                .padding(UIConstants.Spacing.row)
+                .overlay(
+                    RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
+                        .stroke(
+                            isContentFocused ? .purple : .primary,
+                            lineWidth: UIConstants.Border.width,
+                        ),
+                )
+                .focused($isContentFocused)
+                .disabled(isSaving)
+                .layoutPriority(1) // TODO: figure out why autoresize wont work
+            }
+
+            // Privacy toggle
+            Toggle("Private Entry", isOn: $isPrivateEntry)
+                .disabled(isSaving)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            // Save section
+            HStack(alignment: .center) {
+                Button {
+                    showSaveConfirmation = true
+                } label: {
+                    if isSaving {
+                        ProgressView()
+                            .scaleEffect(0.8)
+                    } else {
+                        Text("Save").bold()
+                    }
+                }
+                .confirmationDialog("Confirm Submission", isPresented: $showSaveConfirmation) {
+                    Button("Confirm") {
+                        Task {
+                            await saveJournalEntry()
+                        }
+                    }
+                } message: {
+                    Text("Are you sure you're ready to submit this entry? \(sentenceStore.pendingSentences.count) tags will be added.")
+                }
+                .disabled(isSaving)
+                .buttonStyle(.borderedProminent)
+                .dialogIcon(Image(systemName: "questionmark.circle"))
+
+                if let message = statusMessage {
+                    Text(message)
+                        .foregroundColor(message.hasPrefix("Error") ? .red : .green)
+                }
+            }
+        }
+    }
+
+    @ToolbarContentBuilder
+    private var keyboardQuickTagger: some ToolbarContent {
+        // Keyboard mobile tagger (also shows up on mac touch bar)
+        ToolbarItem (placement: .keyboard) {
+            // Only show grammar tagging buttons if text is selected
+            if !selectedText.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: UIConstants.Spacing.row) {
+                        ForEach(currentGrammar, id: \.id) { grammarPoint in
+                            Button(grammarPoint.usage) {
+                                Task {
+                                    await tagSelectedText(with: grammarPoint)
+                                    textSelection = nil // unselect text
+                                }
+                            }
+                            .font(.caption)
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .frame(maxWidth: .infinity)
+            } else if statusMessage != nil {
+                Text(statusMessage!)
+                    .foregroundColor(statusMessage!.hasPrefix("Error") ? .red : .mint)
+                    .font(.caption)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
 }
 
 // MARK: - Previews
@@ -197,31 +407,31 @@ struct PracticeView: View {
 #Preview("Normal State") {
     PracticeView()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("Degraded Operation Postgres") {
     PracticeView()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .pocketbaseError)
+        .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
     PracticeView()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
+        .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("Loading State") {
     PracticeView()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .loading, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Empty Data") {
     PracticeView()
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .healthy)
+        .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Critical Error PocketBase") {
@@ -241,3 +451,4 @@ struct PracticeView: View {
         .withPreviewNavigation()
         .withPreviewStores(noSRS: true)
 }
+

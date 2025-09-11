@@ -18,7 +18,7 @@ struct Tagger: View {
     @EnvironmentObject var sentenceStore: SentenceStore
 
     /// Temporary status message for operation feedback
-    @State private var operationMessage: String?
+    @Binding var statusMessage: String?
 
     /// Controls the tagging interface visibility
     @Binding var isShowingTagger: Bool
@@ -44,98 +44,59 @@ struct Tagger: View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
             // Action buttons with clear visual hierarchy
             HStack(spacing: UIConstants.Spacing.default) {
-                Button("Dismiss") {
-                    dismissTagger()
-                }
-                .buttonStyle(.bordered)
-
+                Button("Dismiss") { dismissTagger() }
+                    .buttonStyle(.bordered)
                 Spacer()
-
-                Button("Confirm") {
-                    Task {
-                        await confirmTagging()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                Button("Confirm") { Task { await confirmTagging() } }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
 
-            // Grammar point information display
-            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                Label("Selected Grammar Point", systemImage: "book.fill")
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                    Text(grammarPoint.usage)
-                        .font(.title3)
-                        .fontWeight(.medium)
-                        .padding(.leading, UIConstants.Sizing.defaultPadding)
-
-                    Text(grammarPoint.meaning)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .padding(.leading, UIConstants.Sizing.defaultPadding)
-
-                    // Grammar point metadata
-                    HStack {
-                        Text(grammarPoint.context)
-                            .font(.caption)
-                            .padding(.horizontal, UIConstants.Padding.capsuleWidth)
-                            .padding(.vertical, UIConstants.Padding.capsuleHeight)
-                            .background(.tertiary)
-                            .clipShape(.capsule)
-
-                        if !grammarPoint.tags.isEmpty {
-                            coloredTagsText(tags: grammarPoint.tags)
-                                .font(.caption)
-                        }
-                    }
-                    .padding(.leading, UIConstants.Sizing.defaultPadding)
-                }
-            }
-
-            Spacer()
-
-            // Selected text information display
+            // Selected text display
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Label("Selected Text", systemImage: "text.quote")
                     .font(.headline)
-                    .foregroundStyle(.primary)
 
                 Text(selectedText.isEmpty ? "No text selected" : selectedText)
                     .font(.body)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(UIConstants.Sizing.defaultPadding)
                     .overlay(
-                        Capsule()
-                            .stroke(
-                                selectedText.isEmpty ? .clear : .purple,
-                                lineWidth: UIConstants.Border.focusedWidth,
-                            ),
+                        Capsule().stroke(
+                            selectedText.isEmpty ? .clear : .purple,
+                            lineWidth: UIConstants.Border.focusedWidth
+                        )
                     )
 
-                List(pendingTags, id: \.id) { tag in
-                    HStack {
-                        Text(tag.content)
-                        Spacer()
-                        Button("Delete"){
-                            sentenceStore.removePendingTag(content: tag.content, grammar: grammarPoint.id)
+                if !pendingTags.isEmpty {
+                    ScrollView {
+                        LazyVStack(spacing: UIConstants.Spacing.row) {
+                            ForEach(pendingTags, id: \.id) { tag in
+                                HStack {
+                                    Text(tag.content)
+                                    Spacer()
+                                    Button("Delete") {
+                                        sentenceStore.removePendingTag(content: tag.content, grammar: grammarPoint.id)
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                }
+                                .padding(.horizontal)
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
                     }
+                    .frame(maxHeight: UIConstants.Sizing.forcedFrameHeight)
+                    .scrollIndicators(.visible)
                 }
             }
 
-            // Operation status display
-            if let message = operationMessage {
-                Spacer()
+            Spacer()
 
+            // Status message (unchanged)
+            if let message = statusMessage {
                 HStack {
                     Image(systemName: pendingTags.isEmpty ? "checkmark.circle.fill" : "info.circle.fill")
                         .foregroundColor(!pendingTags.isEmpty ? .mint : .red)
-                    Text(message)
-                        .font(.subheadline)
+                    Text(message).font(.subheadline)
                 }
                 .padding(.horizontal, UIConstants.Padding.capsuleWidth)
                 .padding(.vertical, UIConstants.Padding.capsuleHeight)
@@ -144,7 +105,6 @@ struct Tagger: View {
             }
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: - Helper Methods
@@ -152,18 +112,22 @@ struct Tagger: View {
     /// Create grammar point to text association with user feedback
     private func confirmTagging() async {
         guard !selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            operationMessage = "Please select some text before creating a link."
+            statusMessage = "Error: Please select some text before creating a link."
             return
         }
 
         let result = await sentenceStore.addPendingTag(grammar: grammarPoint.id, selectedText: selectedText)
+
         switch result {
         case .success:
-            operationMessage = "Sentence tag successfully queued"
+            statusMessage = "Sentence tag successfully queued"
         case .failure:
-            operationMessage = "Sentence tag failed to queue"
+            statusMessage = "Error: Sentence tag failed to queue"
         }
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            statusMessage = nil
+        }
     }
 
     /// Dismiss tagging interface and clear selection state

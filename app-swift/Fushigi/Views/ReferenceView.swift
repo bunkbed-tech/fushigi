@@ -238,7 +238,7 @@ struct ReferenceView: View {
 #Preview("Degraded Operation SwiftData") {
     ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .swiftDataError)
+        .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("With Search Results") {
@@ -250,7 +250,7 @@ struct ReferenceView: View {
 #Preview("No Search Results") {
     ReferenceView(searchText: .constant("nonexistent"))
         .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .available, systemHealth: .healthy)
+        .withPreviewStores()
 }
 
 #Preview("Loading State") {

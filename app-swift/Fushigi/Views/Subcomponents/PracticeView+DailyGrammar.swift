@@ -28,19 +28,12 @@ struct DailyGrammar: View {
     /// User-selected sourcing strategy
     @Binding var selectedSource: SourceMode
 
-    // MARK: - Computed Properties
-
-    /// SRS records based on current sourcing mode
-    private var srsRecords: [SRSRecordLocal] {
-        studyStore.srsStore.getSRSRecords(for: selectedSource)
-    }
+    // MARK: - Init
 
     /// Grammar points matching SRS records base on current sourcing mode
-    private var grammarPoints: [GrammarPointLocal] {
-        studyStore.inSRSGrammarItems.filter { grammarPoint in
-            srsRecords.contains(where: { $0.grammar == grammarPoint.id })
-        }
-    }
+    let currentGrammar: [GrammarPointLocal]
+
+    // MARK: - Computed Properties
 
     /// All daily items are pulled from SRS records no matter if random or algorithmic
     private var systemState: SystemState {
@@ -78,7 +71,7 @@ struct DailyGrammar: View {
                 Divider()
 
                 VStack {
-                    if grammarPoints.isEmpty {
+                    if currentGrammar.isEmpty {
                         ContentUnavailableView {
                             Label("No SRS Records", systemImage: "tray")
                         } description: {
@@ -89,7 +82,7 @@ struct DailyGrammar: View {
                             .foregroundColor(.secondary)
                         }
                     } else {
-                        ForEach(grammarPoints, id: \.id) { grammarPoint in
+                        ForEach(currentGrammar, id: \.id) { grammarPoint in
                             dailyGrammarRow(grammarPoint: grammarPoint)
                         }
                     }
@@ -149,7 +142,7 @@ struct DailyGrammar: View {
 
         }
         // Hide last Divider for improved visuals
-        if grammarPoint.id != grammarPoints.last?.id {
+        if grammarPoint.id != currentGrammar.last?.id {
             Divider()
         }
     }
