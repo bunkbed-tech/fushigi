@@ -11,6 +11,8 @@ import SwiftUI
 
 /// Unified preferences window popup for MacOS since that has better UX than a popup sheet, especially for
 /// settings. Try to follow the normal pattern with tabs and a separate window.
+///
+/// TODO: Fix the data analytics tab which is broken due to there being no data stores in the popup window
 struct SettingsWindow: View {
     // MARK: - App-wide Settings Storage
 
@@ -42,11 +44,11 @@ struct SettingsWindow: View {
                     Text("Credits")
                 }
 
-            UserDataAnalytics()
-                .tabItem {
-                    Image(systemName: "chart.bar")
-                    Text("Analytics")
-                }
+//            UserDataAnalytics()
+//                .tabItem {
+//                    Image(systemName: "chart.bar")
+//                    Text("Analytics")
+//                }
         }
         .frame(width: UIConstants.Sizing.forcedFrameWidth, height: UIConstants.Sizing.forcedFrameHeight)
     }
@@ -292,7 +294,9 @@ struct CreditsPreferences: View {
             }
             .padding()
         }
+        #if os(iOS)
         .containerBackground(.clear, for: .navigation)
+        #endif
     }
 }
 
@@ -375,7 +379,9 @@ struct UserDataAnalytics: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        #if os(iOS)
         .containerBackground(.clear, for: .navigation)
+        #endif
         .task {
             analytics = await studyStore.getStudyAnalytics()
             isLoading = false
@@ -408,7 +414,7 @@ struct StatCard: View {
         }
         .padding(UIConstants.Padding.largeIndent)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemGray6))
+        .background(.secondary)
         .clipShape(.rect(cornerRadius: UIConstants.Padding.capsuleWidth))
     }
 }

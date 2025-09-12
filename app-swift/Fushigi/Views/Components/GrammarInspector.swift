@@ -113,6 +113,8 @@ struct GrammarInspector: View {
                 Text("No sentences tagged with this grammar point.")
             }
         }
+        #if os(iOS)
         .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        #endif
     }
 }
