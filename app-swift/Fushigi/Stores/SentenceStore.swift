@@ -139,6 +139,7 @@ class SentenceStore: ObservableObject {
     func clearInMemoryData() {
         // Clear in-memory data (everything Published)
         sentences.removeAll()
+        pendingSentences.removeAll()
         dataAvailability = .empty
         systemHealth = .healthy
         lastSyncDate = nil

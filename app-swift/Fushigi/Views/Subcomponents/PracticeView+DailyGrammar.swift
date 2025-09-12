@@ -41,13 +41,20 @@ struct DailyGrammar: View {
 
     var body: some View {
         switch systemState {
-        case .loading, .criticalError:
-            systemState.contentUnavailableView {
-                if case .emptyData = systemState {
-                    // TODO: should we reset filters to default here?
+        case .loading:
+            ContentUnavailableView {
+                VStack(spacing: UIConstants.Spacing.section) {
+                    ProgressView()
+                        .scaleEffect(2.5)
+                        .frame(height: UIConstants.Sizing.icons)
                 }
-                await studyStore.refresh()
+            } description: {
+                Text("Currently loading daily study list...")
+                    .foregroundStyle(.secondary)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        case .criticalError:
+            systemState.contentUnavailableView { await studyStore.refresh() }
         case .normal, .degradedOperation, .emptyData:
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 HStack {

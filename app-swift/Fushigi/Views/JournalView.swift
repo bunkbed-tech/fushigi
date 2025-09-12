@@ -51,11 +51,9 @@ struct JournalView: View {
     }
 
     /// Whether we should show the search empty state alerting user that no data currently exists for their current
-    /// criteria. This empty
-    /// state alert should show whenever the Journal View data source (journalEntries) has data and there is an active
-    /// search term
-    /// (searchText). Ensuring the system state is normal also enforces that there isn't a loading sequence actively
-    /// running.
+    /// criteria. This empty state alert should show whenever the Journal View data source (journalEntries) has
+    /// data and there is an active search term (searchText). Ensuring the system state is normal also enforces that
+    /// there isn't a loading sequence actively running.
     var shouldShowSearchEmptyState: Bool {
         journalEntries.isEmpty &&
             !searchText.isEmpty &&
@@ -64,8 +62,7 @@ struct JournalView: View {
     }
 
     /// Content available boolean check needs to be recomputed for each data source depending on the users currently
-    /// selected
-    /// sorting filter
+    /// selected sorting filter
     var hasDataForCurrentFilter: Bool {
         if selectedFilter == .all {
             !journalStore.journalEntries.isEmpty
@@ -81,7 +78,32 @@ struct JournalView: View {
     var body: some View {
         VStack(spacing: 0) {
             switch systemState {
-            case .loading, .emptyData, .criticalError:
+            case .loading:
+                ContentUnavailableView {
+                    VStack(spacing: UIConstants.Spacing.section) {
+                        ProgressView()
+                            .scaleEffect(2.5)
+                            .frame(height: UIConstants.Sizing.icons)
+                    }
+                } description: {
+                    Text("Currently loading Journal Entries...")
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .emptyData:
+                ContentUnavailableView {
+                    Label("Missing", systemImage: "tray")
+                } description: {
+                    Text("No journal entries found or written yet. Submit an entry or refresh the page.")
+                        .foregroundColor(.red)
+                } actions: {
+                    Button("Refresh") {
+                        Task { await journalStore.refresh() }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .criticalError:
                 systemState.contentUnavailableView(action: {
                     if case .emptyData = systemState {
                         searchText = ""
@@ -147,8 +169,7 @@ struct JournalView: View {
     // MARK: - Sub Views
 
     /// Choose whether to show an empty view dpending on the current data and health state, or a list of all journal
-    /// entries. This was
-    /// separated from the main code in order to aid in XCode compilation.
+    /// entries. This was separated from the main code in order to aid in XCode compilation.
     @ViewBuilder
     private var mainContentView: some View {
         if !hasDataForCurrentFilter {
@@ -175,10 +196,8 @@ struct JournalView: View {
     }
 
     /// Implement a list of journal items as a disclosure group (click and drop down) rather than a clickable list with
-    /// a pop up
-    /// sheet or navigation. This was done mostly to experiment with disclure groups although I am a fan of the UX.
-    /// Potentially
-    /// might want to move on from this method to something more standard based on feedback.
+    /// a pop up sheet or navigation. This was done mostly to experiment with disclure groups although I am a fan
+    /// of the UX. Potentially might want to move on from this method to something more standard based on feedback.
     ///
     /// TODO: Display tagged grammar points and feedback rather than hardcode them.
     /// TODO: Include buttons for recomputing feedback.

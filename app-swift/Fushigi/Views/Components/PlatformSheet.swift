@@ -26,6 +26,7 @@ struct PlatformSheet<Content: View>: View {
 
     var body: some View {
         #if os(macOS)
+        NavigationStack {
             VStack(spacing: 0) {
                 // Header bar
                 HStack {
@@ -44,14 +45,10 @@ struct PlatformSheet<Content: View>: View {
                 content
             }
             .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
+        }
         #else
             NavigationStack {
                 content
-                    .toolbar {
-                        ToolbarItem {
-                            Button("Done", action: onDismiss)
-                        }
-                    }
             }
             .presentationDetents([.medium, .large], selection: .constant(.large))
         #endif

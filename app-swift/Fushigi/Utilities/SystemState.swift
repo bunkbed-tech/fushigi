@@ -79,22 +79,7 @@ enum SystemState: Equatable {
     func contentUnavailableView(action: @escaping () async -> Void) -> some View {
         // .normal and .degradedOperation do not use this view since content is available
         // .emptyData does not use this view since it requires explicit user action to solve (adding new content)
-        if case .loading = self {
-            ContentUnavailableView {
-                VStack(spacing: UIConstants.Spacing.section) {
-                    ProgressView()
-                        .scaleEffect(2.5)
-                        .frame(height: UIConstants.Sizing.icons)
-                    Text("Loading")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                }
-            } description: {
-                Text(description)
-                    .foregroundStyle(.secondary)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if case let .criticalError(error) = self {
+        if case let .criticalError(error) = self {
             ContentUnavailableView {
                 Label("Critical Error", systemImage: "xmark.octagon.fill")
             } description: {

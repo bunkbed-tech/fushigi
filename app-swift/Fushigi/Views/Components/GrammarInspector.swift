@@ -35,10 +35,11 @@ struct GrammarInspector: View {
                     Divider()
                     coloredTagsText(tags: point.tags)
                     Spacer()
+                    NavigationLink("Sentence Bank", destination: sentenceBank)
                 }
                 .padding()
                 .toolbar {
-                    ToolbarItem(placement: .secondaryAction) {
+                    ToolbarItem(placement: .primaryAction) {
                         Menu("Options", systemImage: "ellipsis.circle") {
                             if studyStore.srsStore.isInSRS(point.id) {
                                 Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
@@ -88,6 +89,29 @@ struct GrammarInspector: View {
                 .buttonStyle(.borderedProminent)
             }
             .presentationDetents([.medium])
+        }
+    }
+
+    /// Display a sentence bank for all instances of the currently selected grammar
+    /// point. This way a user can easily go back in time and see examples of
+    /// previous usages or how they have improved over time. It can also help them
+    /// not create a sentence tag with the same exact content that they already have
+    /// done before to keep things fresh.
+    @ViewBuilder
+    private var sentenceBank: some View {
+        if !studyStore.sentenceBank.isEmpty {
+            List(studyStore.sentenceBank, id: \.self) { sentence in
+                HStack {
+                    Text(sentence.content)
+                    Spacer()
+                    Button("Delete") {
+                        // TODO: Implement sentence delete
+                    }
+                    .disabled(true)
+                }
+            }
+        } else {
+            Text("No sentences tagged with this grammar point.")
         }
     }
 }

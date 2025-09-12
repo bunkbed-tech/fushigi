@@ -17,6 +17,7 @@ class StudyStore: ObservableObject {
 
     let grammarStore: GrammarStore
     let srsStore: SRSStore
+    let sentenceStore: SentenceStore
 
     init(
         modelContext: ModelContext,
@@ -24,6 +25,7 @@ class StudyStore: ObservableObject {
     ) {
         grammarStore = GrammarStore(modelContext: modelContext, authManager: authManager)
         srsStore = SRSStore(modelContext: modelContext, authManager: authManager)
+        sentenceStore = SentenceStore(modelContext: modelContext, authManager: authManager)
     }
 
     // MARK: - Cross-store Computed Properties
@@ -36,6 +38,11 @@ class StudyStore: ObservableObject {
     /// Grammar points available to add to SRS (not yet added)
     var availableGrammarItems: [GrammarPointLocal] {
         grammarStore.grammarItems.filter { !srsStore.isInSRS($0.id) }
+    }
+
+    /// User created sentences for a given grammar item
+    var sentenceBank: [SentenceLocal] {
+        sentenceStore.sentences.filter { $0.grammar == grammarStore.selectedGrammarPoint?.id}
     }
 
     // MARK: - Sync Boilerplate

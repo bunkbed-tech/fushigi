@@ -82,8 +82,8 @@ struct PracticeView: View {
     }
 
     /// From the current records computed property, filter for grammar points matching SRS records base on current
-    /// sourcing mode
-    /// in order to aide in UI/UX decisions as well as Sentence record creation when sending user data to PocketBase
+    /// sourcing mode in order to aide in UI/UX decisions as well as Sentence record creation when sending user
+    /// data to PocketBase
     private var currentGrammar: [GrammarPointLocal] {
         studyStore.inSRSGrammarItems.filter { grammarPoint in
             currentRecords.contains(where: { $0.grammar == grammarPoint.id })
@@ -191,15 +191,14 @@ struct PracticeView: View {
     }
 
     /// Clear form after successful submission to allow user to conduct further study sessions back from square one. A
-    /// forced
-    /// wait is currently implemented in order to allow any currently active error messages to linger on screen long
-    /// enough to
-    /// be read by the user.
+    /// forced wait is currently implemented in order to allow any currently active error messages to linger on screen long
+    /// enough to be read by the user.
     private func clearForm() {
         textSelection = nil // must clear textSelection first to be safe from index crash
         entryTitle = ""
         entryContent = ""
         isPrivateEntry = false
+        sentenceStore.pendingSentences.removeAll()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             statusMessage = ""
@@ -207,10 +206,8 @@ struct PracticeView: View {
     }
 
     /// Temporarily add tag to list to be processed later after Journal submission, with slight delay to improve UX.
-    /// This is done
-    /// so users can build a pending list of items and send them once they are ready. Thus, they can also delete the
-    /// tags before
-    /// posting the journal entry if they change their mind mid session.
+    /// This is done so users can build a pending list of items and send them once they are ready. Thus, they can
+    /// also delete the tags before posting the journal entry if they change their mind mid session.
     private func tagSelectedText(with grammarPoint: GrammarPointLocal) async {
         guard !selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             statusMessage = "Error: Please select some text before creating a link."

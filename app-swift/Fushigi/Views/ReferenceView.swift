@@ -145,12 +145,9 @@ struct ReferenceView: View {
     }
 
     /// Helper function to simplify code that displays error screens or a list/table of grammar content. Potential error
-    /// screens include
-    /// actual errors from the device during data load, actual errors from the PocketBase backend during data sync, or a
-    /// state of
-    /// there being no data at all despite healthy load procedures. During load, the UI should be completely disabled to
-    /// help prevent
-    /// user action from further breaking async processes.
+    /// screens include actual errors from the device during data load, actual errors from the PocketBase backend
+    /// during data sync, or a state of there being no data at all despite healthy load procedures. During load, the
+    /// UI should be completely disabled to help prevent user action from further breaking async processes.
     @ViewBuilder
     private var mainContentView: some View {
         if effectiveSystemState.shouldShowContentUnavailable {
