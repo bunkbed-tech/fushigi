@@ -18,10 +18,13 @@ class SentenceStore: ObservableObject {
     /// In-memory cache of all sentence tags for quick UI access
     @Published var sentences: [SentenceLocal] = []
 
+    /// Temporary storage for sentence tags being created during journal composition
+    @Published var pendingSentences: [SentenceCreate] = []
+
     /// Current data state (load, empty, normal)
     @Published var dataAvailability: DataAvailability = .empty
 
-    /// Current system health (healthy, sync error, postgres error)
+    /// Current system health (healthy, sync error, PocketBase error)
     @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
@@ -40,6 +43,64 @@ class SentenceStore: ObservableObject {
         self.modelContext = modelContext
         self.authManager = authManager
         service = ProdRemoteService(endpoint: "sentence", decoder: JSONDecoder.pocketBase)
+    }
+
+    // MARK: - Public API
+
+    /// Get sentences for a specific grammar point using database predicates
+    func getSentencesForGrammar(_ grammarId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.grammar == grammarId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.grammar == grammarId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get sentences for a specific journal entry using database predicates
+    func getSentencesForJournal(_ journalId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.journalEntry == journalId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.journalEntry == journalId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get sentences for a specific user using database predicates
+    func getSentencesForUser(_ userId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.user == userId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.user == userId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get grammar usage statistics using efficient counting
+    func getGrammarUsageStats() async -> [String: Int] {
+        guard let modelContext else {
+            // Fallback to in-memory counting
+            var stats: [String: Int] = [:]
+            for sentence in sentences {
+                stats[sentence.grammar, default: 0] += 1
+            }
+            return stats
+        }
+
+        // Use database query for better performance
+        let allSentences = (try? modelContext.fetch(FetchDescriptor<SentenceLocal>())) ?? []
+        var stats: [String: Int] = [:]
+        for sentence in allSentences {
+            stats[sentence.grammar, default: 0] += 1
+        }
+        return stats
     }
 
     // MARK: - Sync Boilerplate
@@ -134,17 +195,76 @@ class SentenceStore: ObservableObject {
 
     /// Clear all in memory data
     func clearInMemoryData() {
-        // Clear in-memory data (everything Published)
         sentences.removeAll()
+        pendingSentences.removeAll()
         dataAvailability = .empty
         systemHealth = .healthy
         lastSyncDate = nil
+    }
+
+    // MARK: - Pending Sentence Management
+
+    /// Temporarily store a pending sentence while waiting for full Journal Entry to be submitted
+    func addPendingTag(grammar: String, selectedText: String) async -> Result<String, Error> {
+        guard let userID = authManager.currentUser?.id else {
+            print("ERROR: No user ID in current session - auth failed")
+            return .failure(URLError(.userAuthenticationRequired))
+        }
+
+        let tag = SentenceCreate(
+            content: selectedText,
+            user: userID,
+            journalEntry: "TEMP",
+            grammar: grammar,
+        )
+
+        pendingSentences.append(tag)
+        print("LOG: Added pending sentence tag. Total: \(pendingSentences.count)")
+        return .success("Added pending sentence tag.")
+    }
+
+    /// Remove tag according to the currently selected string
+    func removePendingTag(content: String, grammar: String) {
+        pendingSentences.removeAll(where: { $0.content == content && $0.grammar == grammar })
+    }
+
+    /// Bulk operation to send all pending sentences to the database
+    func addPendingToDatabase(_ journal: String) async -> Result<Void, Error> {
+        guard !pendingSentences.isEmpty else {
+            print("LOG: No pending sentences to save")
+            return .success(())
+        }
+        setLoading()
+
+        let bulkSentence = pendingSentences.map { point in
+            SentenceCreate(
+                content: point.content,
+                user: point.user,
+                journalEntry: point.journalEntry == "TEMP" ? journal : point.journalEntry,
+                grammar: point.grammar,
+            )
+        }
+
+        let result = await service.postBulkItems(bulkSentence)
+
+        switch result {
+        case .success:
+            print("LOG: Successfully saved \(pendingSentences.count) sentence tags")
+            handleSyncSuccess()
+            await refresh()
+            pendingSentences.removeAll()
+            return .success(())
+
+        case let .failure(error):
+            print("ERROR: Failed to post sentence tags for journal \(journal): \(error)")
+            handleRemoteSyncFailure()
+            return .failure(error)
+        }
     }
 }
 
 // MARK: - SyncableStore Conformance
 
-// Add on sync functionality
 extension SentenceStore: SyncableStore {
     typealias DataType = SentenceLocal
     var items: [SentenceLocal] { sentences }

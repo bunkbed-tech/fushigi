@@ -1,5 +1,5 @@
 //
-//  LoginPage.swift
+//  LoginView.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/24.
@@ -8,13 +8,24 @@
 import AuthenticationServices
 import SwiftUI
 
-struct LoginPage: View {
+/// Displays user login form with the ability to authenticate based on OAuth and email. A user creation interface
+/// is provided as well for new users. Switching logic between the PROD and DEMO mode versions of Fushigi
+/// is spliced in here. All authentication is provided by PocketBase and sensitive tokens are stored in the Apple
+/// Keychain.
+///
+/// TODO: Better user authentication creation error checking
+/// TODO: Add popular OAuth account methods
+/// TODO: Fix user creation, OAuth routes (untested and likely broken)
+struct LoginView: View {
+    // MARK: - Published State
+
+    @ObservedObject var authManager: AuthManager
     @State private var email = ""
     @State private var password = ""
     @State private var isAuthenticating = false
     @State private var errorMessage: String?
 
-    @ObservedObject var authManager: AuthManager
+    // MARK: - Init
 
     init(authManager: AuthManager) {
         self.authManager = authManager
@@ -27,6 +38,8 @@ struct LoginPage: View {
             _password = State(initialValue: "")
         }
     }
+
+    // MARK: - Computed Properties
 
     private var shouldDisableLogin: Bool {
         if isAuthenticating {
@@ -47,6 +60,8 @@ struct LoginPage: View {
         }
         return false
     }
+
+    // MARK: - Main View
 
     var body: some View {
         GeometryReader { _ in
@@ -160,13 +175,15 @@ struct LoginPage: View {
         }
         .background {
             LinearGradient(
-                colors: [.mint.opacity(0.3), .purple.opacity(0.3)],
+                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing,
             )
             .ignoresSafeArea()
         }
     }
+
+    // MARK: - Helper Methods
 
     private func handleAppleSignIn(_ result: Result<ASAuthorization, Error>) {
         switch result {
@@ -203,7 +220,7 @@ struct LoginPage: View {
             let result = await postAppleAuthRequest(request)
 
             await MainActor.run {
-                handleAuthResult(result)
+                handleAuthResponse(result)
             }
         }
     }
@@ -220,12 +237,12 @@ struct LoginPage: View {
             let result = await postEmailAuthRequest(request)
 
             await MainActor.run {
-                handleAuthResult(result)
+                handleAuthResponse(result)
             }
         }
     }
 
-    private func handleAuthResult(_ result: Result<AuthResponse, AuthError>) {
+    private func handleAuthResponse(_ result: Result<AuthResponse, AuthError>) {
         isAuthenticating = false
 
         switch result {
@@ -238,6 +255,8 @@ struct LoginPage: View {
     }
 }
 
-#Preview("Login Page") {
-    LoginPage(authManager: AuthManager())
+// MARK: - Previews
+
+#Preview {
+    LoginView(authManager: AuthManager())
 }

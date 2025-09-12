@@ -1,5 +1,5 @@
 //
-//  GrammarSettings.swift
+//  PracticeView+GrammarSettings.swift
 //  fushigi
 //
 //  Created by Tahoe Schrader on 2025/08/09.
@@ -7,25 +7,44 @@
 
 import SwiftUI
 
-/// Settings interface for configuring grammar point selection and filtering
+// MARK: - Grammar Settings
+
+/// Settings interface for configuring grammar point selection and filtering. This is currently extremely
+/// Japanese specific so if I want to branch out into other languages I will need to make it more generic
+/// or introduce some extra flags. The purpose of these settings is to allow the user to influence the
+/// "SRS" algorithm to choose a more specific set of daily suggested grammar points. The idea being
+/// that if it was truly just SRS based (or even random) then it would be likely you receive completely
+/// disparate grammar points (such as Business + Slag in a single entry) that could make it hard to
+/// write something cohesive if that's something you want to do.
 struct GrammarSettings: View {
-    /// Politeness level filter selection
+    // MARK: - Published State
+
+    /// User preference for politeness level filtering (friends, bosses, customers, etc.)
     @Binding var selectedLevel: Level
-
-    /// Usage context filter selection
+    /// User preference for usage context filtering (spoken, written, ancient, business, etc.)
     @Binding var selectedContext: Context
-
-    /// Language variant filter selection
+    /// User preference for language variants and regional dialects (slang, onomatope, etc.)
     @Binding var selectedLanguageVariant: LanguageVariants
-
-    /// Grammar sourcing algorithm selection
+    /// User preference for grammar sourcing algorithm (random vs. SRS)
     @Binding var selectedSource: SourceMode
+
+    // MARK: - Computed Properties
+
+    /// Footer text explaining the current source mode selection. This is only here in order to try and
+    /// improve the UX to help with discoverability and understanding how the app works.
+    private var sourceFooterText: String {
+        switch selectedSource {
+        case .random:
+            "Randomly selected grammar points for varied practice"
+        case .srs:
+            "Algorithmically chosen points based on your learning progress"
+        }
+    }
 
     // MARK: - Main View
 
     var body: some View {
         Form {
-            // Primary sourcing method configuration
             Section {
                 Picker("Grammar Source", selection: $selectedSource) {
                     ForEach(SourceMode.allCases) { source in
@@ -65,40 +84,4 @@ struct GrammarSettings: View {
         }
         .formStyle(.grouped)
     }
-
-    // MARK: - Helper Methods
-
-    /// Footer text explaining the current source mode selection
-    private var sourceFooterText: String {
-        switch selectedSource {
-        case .random:
-            "Randomly selected grammar points for varied practice"
-        case .srs:
-            "Algorithmically chosen points based on your learning progress"
-        }
-    }
-}
-
-// MARK: - Previews
-
-#Preview("Random") {
-    GrammarSettings(
-        selectedLevel: .constant(.all),
-        selectedContext: .constant(.all),
-        selectedLanguageVariant: .constant(.none),
-        selectedSource: .constant(.random),
-    )
-    .withPreviewNavigation()
-    .navigationTitle("Practice Settings")
-}
-
-#Preview("SRS") {
-    GrammarSettings(
-        selectedLevel: .constant(.all),
-        selectedContext: .constant(.all),
-        selectedLanguageVariant: .constant(.none),
-        selectedSource: .constant(.srs),
-    )
-    .withPreviewNavigation()
-    .navigationTitle("Practice Settings")
 }

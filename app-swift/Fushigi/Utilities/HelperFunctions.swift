@@ -8,20 +8,26 @@
 import SwiftData
 import SwiftUI
 import TipKit
+import WrappingHStack
 
-/// Create colored text from array of tags
+// MARK: - Colored Tags Text
+
+/// Create colored text from array of tags with pill-like filling behavior from WrappingHStack
 @ViewBuilder
 func coloredTagsText(tags: [String]) -> some View {
-    ForEach(Array(tags.enumerated()), id: \.offset) { index, tag in
-        Text(tag)
-            .font(.caption)
-            .foregroundColor(index.isMultiple(of: 2) ? .primary : .secondary)
-            .padding(.horizontal, 4)
-            .padding(.vertical, 1)
-            .background(.quaternary)
-            .clipShape(.capsule)
+    WrappingHStack(alignment: .leading) {
+        ForEach(Array(tags.enumerated()), id: \.offset) { index, tag in
+            Text(tag)
+                .font(.caption)
+                .padding(.horizontal, UIConstants.Padding.capsuleWidth)
+                .padding(.vertical, UIConstants.Padding.capsuleHeight)
+                .background(index.isMultiple(of: 2) ? .purple.opacity(0.3) : .mint.opacity(0.3))
+                .clipShape(.capsule)
+        }
     }
 }
+
+// MARK: - Wipe Swift Data
 
 /// Wipe all data from persistent storage for debug mode
 @MainActor
@@ -33,6 +39,7 @@ func wipeSwiftData(container: ModelContainer) {
         try context.delete(model: GrammarPointLocal.self)
         try context.delete(model: JournalEntryLocal.self)
         try context.delete(model: SentenceLocal.self)
+        try context.delete(model: SRSRecordLocal.self)
 
         try context.save()
         print("LOG: SwiftData store wiped successfully")

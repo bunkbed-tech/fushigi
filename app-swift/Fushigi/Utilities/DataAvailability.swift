@@ -5,6 +5,8 @@
 //  Created by Tahoe Schrader on 2025/08/27.
 //
 
+// MARK: - Data Availability
+
 /// Represents whether the app has usable data for the user
 enum DataAvailability {
     /// Loading data...

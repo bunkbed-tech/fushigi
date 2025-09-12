@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 
+// MARK: - User Remote
+
 /// User model for remote PocketBase database
 struct UserRemote: Codable {
     let id: String
@@ -16,6 +18,8 @@ struct UserRemote: Codable {
     let created: Date
     let updated: Date
 }
+
+// MARK: - User Local
 
 /// User model for local SwiftData storage
 @Model

@@ -21,7 +21,7 @@ class JournalStore: ObservableObject {
     /// Current data state (load, empty, normal)
     @Published var dataAvailability: DataAvailability = .empty
 
-    /// Current system health (healthy, sync error, postgres error)
+    /// Current system health (healthy, sync error, PocketBase error)
     @Published var systemHealth: SystemHealth = .healthy
 
     /// Last successful sync timestamp
@@ -31,12 +31,20 @@ class JournalStore: ObservableObject {
 
     /// Journal entries marked as private
     var privateJournalEntries: [JournalEntryLocal] {
-        journalEntries.filter(\.isPrivate)
+        guard let modelContext else { return [] }
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate { $0.isPrivate == true },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     /// Journal entries marked as public
     var publicJournalEntries: [JournalEntryLocal] {
-        journalEntries.filter { !$0.isPrivate }
+        guard let modelContext else { return [] }
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate { $0.isPrivate == false },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     // MARK: Init
@@ -62,6 +70,19 @@ class JournalStore: ObservableObject {
         sortedBy sortKey: JournalSort,
         containing term: String? = nil,
     ) -> [JournalEntryLocal] {
+        // Use database filtering when possible
+        if let term, !term.isEmpty, let modelContext {
+            let descriptor = FetchDescriptor<JournalEntryLocal>(
+                predicate: #Predicate<JournalEntryLocal> { entry in
+                    entry.title.localizedStandardContains(term) ||
+                        entry.content.localizedStandardContains(term)
+                },
+                sortBy: [sortDescriptor(for: sortKey)],
+            )
+            return (try? modelContext.fetch(descriptor)) ?? []
+        }
+
+        // Fallback to in-memory processing
         var result = items
 
         // Apply filtering if search term exists
@@ -85,13 +106,43 @@ class JournalStore: ObservableObject {
         }
     }
 
+    /// Search journal entries using database predicates
+    func searchJournalEntries(_ searchText: String,
+                              sortedBy sortKey: JournalSort = .newest) async -> [JournalEntryLocal]
+    {
+        guard let modelContext, !searchText.isEmpty else { return [] }
+
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate<JournalEntryLocal> { entry in
+                entry.title.localizedStandardContains(searchText) ||
+                    entry.content.localizedStandardContains(searchText)
+            },
+            sortBy: [sortDescriptor(for: sortKey)],
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Helper to create sort descriptor
+    private func sortDescriptor(for sortKey: JournalSort) -> SortDescriptor<JournalEntryLocal> {
+        switch sortKey {
+        case .title:
+            SortDescriptor(\.title, order: .forward)
+        case .newest:
+            SortDescriptor(\.created, order: .reverse)
+        case .oldest:
+            SortDescriptor(\.created, order: .forward)
+        }
+    }
+
     /// Create a Journal Entry as the current user using JournalEntryForm view
-    func createEntry(title: String, content: String, isPrivate: Bool) async -> Result<String, Error> {
+    func createEntry(title: String, content: String, isPrivate: Bool,
+                     sentenceStore: SentenceStore) async -> Result<String, AuthError>
+    {
         print("LOG: Create entry called: \(title)")
 
         guard let userID = authManager.currentUser?.id else {
             print("ERROR: No user ID in current session - auth failed")
-            return .failure(URLError(.userAuthenticationRequired))
+            return .failure(.needsAuthenticationRefresh)
         }
 
         let newItem = JournalEntryCreate(
@@ -103,14 +154,28 @@ class JournalStore: ObservableObject {
 
         let result = await service.postItem(newItem)
 
-        if case .success = result {
-            // Refresh local data with the remote to include the new entry
-            await syncWithRemote()
-        } else {
-            print("TODO: Need to save this locally and deal with sync forward later.")
-        }
+        switch result {
+        case let .success(journalID):
+            print("LOG: Journal entry created successfully with ID: \(journalID)")
 
-        return result
+            let sentenceResult = await sentenceStore.addPendingToDatabase(journalID)
+
+            await syncWithRemote()
+
+            switch sentenceResult {
+            case .success:
+                print("LOG: Journal and all sentence tags saved successfully")
+                return .success("Journal and sentence tags saved successfully")
+
+            case let .failure(sentenceError):
+                print("WARNING: Journal saved but sentence tags failed: \(sentenceError)")
+                return .success("Journal saved but some sentence tags failed")
+            }
+
+        case let .failure(error):
+            print("ERROR: Failed to create journal entry: \(error)")
+            return .failure(.serverError(error.localizedDescription))
+        }
     }
 
     // MARK: - Sync Boilerplate
@@ -205,7 +270,6 @@ class JournalStore: ObservableObject {
 
     /// Clear all in memory data
     func clearInMemoryData() {
-        // Clear in-memory data (everything Published)
         journalEntries.removeAll()
         dataAvailability = .empty
         systemHealth = .healthy

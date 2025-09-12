@@ -8,45 +8,6 @@ import (
 
 func init() {
 	m.Register(func(app core.App) error {
-		// --- App Settings ---
-		settings := app.Settings()
-
-		// Basic Info
-		settings.Meta.AppName = "Fushigi"
-		settings.Meta.AppURL = "https://fushigi.bunkbed.tech"
-		settings.Meta.SenderName = "Fushigi App"
-		settings.Meta.SenderAddress = "info@bunkbed.tech"
-
-		// Turn on logs
-		settings.Logs.MaxDays = 7
-		settings.Logs.LogAuthId = true
-		settings.Logs.LogIP = true
-
-		// Use SMTP for sending users emails from my SenderAddress
-		settings.SMTP.Enabled = true
-		settings.SMTP.Host = "smtp.gmail.com"
-		settings.SMTP.Port = 587
-		settings.SMTP.Username = os.Getenv("SMTP_EMAIL")
-		settings.SMTP.Password = os.Getenv("SMTP_PASSWORD")
-		settings.SMTP.TLS = true
-
-		// Protect against the api getting hammered (idk good values)
-		settings.RateLimits.Enabled = true
-		settings.RateLimits.Rules = []core.RateLimitRule{
-			{Label: "*:auth", Duration: 60, MaxRequests: 5},
-			{Label: "*:create", Duration: 60, MaxRequests: 10},
-			{Label: "*:update", Duration: 60, MaxRequests: 10},
-			{Label: "/api/", Duration: 60, MaxRequests: 100},
-		}
-
-		// Periodic backups
-		settings.Backups.Cron = "0 0 * * 0" // run every sunday at midnight
-		settings.Backups.CronMaxKeep = 3    // keep three weeks worth
-
-		if err := app.Save(settings); err != nil {
-			return err
-		}
-
 		// Create the initial super user
 		adminEmail := os.Getenv("ADMIN_EMAIL")
 		adminPassword := os.Getenv("ADMIN_PASSWORD")

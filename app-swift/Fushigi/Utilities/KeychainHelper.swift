@@ -8,9 +8,10 @@
 import Foundation
 import Security
 
-// TODO: Need to understand this file better
+// MARK: - KeychainHelper
 
 /// Simple helper for storing/retrieving strings in Keychain
+/// TODO: Need to understand this better
 final class KeychainHelper {
     static let shared = KeychainHelper()
     private init() {}

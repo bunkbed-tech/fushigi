@@ -55,7 +55,7 @@ struct GrammarStoreUnitTests {
         await store.syncWithRemote()
 
         // Verify
-        #expect(store.systemHealth == .postgresError)
+        #expect(store.systemHealth == .pocketbaseError)
     }
 
     // MARK: - loadLocal()

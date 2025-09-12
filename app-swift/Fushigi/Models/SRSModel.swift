@@ -8,16 +8,26 @@
 import Foundation
 import SwiftData
 
-/// SRS Record  model for simple submission to backend
+// MARK: - SRS Record Create
+
+/// SRS Record model for simple submission to backend
 struct SRSRecordCreate: Codable {
     let user: String
     let grammar: String
     let easeFactor: Double
     let intervalDays: Double
     let repetition: Double
+
+    enum CodingKeys: String, CodingKey {
+        case user, grammar, repetition
+        case easeFactor = "ease_factor"
+        case intervalDays = "interval_days"
+    }
 }
 
-/// SRS Record model for remote Pocketbase database
+// MARK: - SRS Record Remote
+
+/// SRS Record model for remote PocketBase database
 struct SRSRecordRemote: Codable {
     let id: String
     let user: String
@@ -25,12 +35,12 @@ struct SRSRecordRemote: Codable {
     let easeFactor: Double
     let intervalDays: Double
     let repetition: Double
-    let lastReviewed: Date?
+    @OptionalDate var lastReviewed: Date?
     let dueDate: Date
     let created: Date
     let updated: Date
 
-    // Optional expand field for when ?expand=user,gramamr is used on the route
+    // Optional expand field for when ?expand=user,grammar is used on the route
     let expand: ExpandedRelations?
 
     struct ExpandedRelations: Codable {
@@ -45,11 +55,11 @@ struct SRSRecordRemote: Codable {
         easeFactor = model.easeFactor
         intervalDays = model.intervalDays
         repetition = model.repetition
-        lastReviewed = model.lastReviewed
         dueDate = model.dueDate
         created = model.created
         updated = model.updated
-        expand = nil // Not necessary locally
+        expand = nil
+        _lastReviewed = OptionalDate(wrappedValue: model.lastReviewed)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -61,15 +71,17 @@ struct SRSRecordRemote: Codable {
     }
 }
 
+// MARK: - SRS Record Local
+
 /// SRS Record model for local SwiftData storage
 @Model
 final class SRSRecordLocal {
     @Attribute var id: String = UUID().uuidString
     var user: String = UUID().uuidString
     var grammar: String = UUID().uuidString
-    var easeFactor: Double = 2.5 // ?
-    var intervalDays: Double = 1.0 // ?
-    var repetition: Double = 0.0 // ?
+    var easeFactor: Double = 2.5
+    var intervalDays: Double = 1.0
+    var repetition: Double = 0.0
     var lastReviewed: Date?
     var dueDate: Date = Date()
     var created: Date = Date()

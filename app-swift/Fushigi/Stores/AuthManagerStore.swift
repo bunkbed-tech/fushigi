@@ -21,7 +21,7 @@ class AuthManager: ObservableObject {
     /// Currently signed-in user
     @Published var currentUser: AuthRecord?
 
-    /// Proof of authentication coming from Pocketbase
+    /// Proof of authentication coming from PocketBase
     @Published var token: String?
 
     // MARK: Init
@@ -29,6 +29,8 @@ class AuthManager: ObservableObject {
     init() {
         loadStoredAuth()
     }
+
+    // MARK: - Helper Methods
 
     /// Given an authentication response, store information in Keychain
     func login(with authResponse: AuthResponse) {
@@ -80,7 +82,7 @@ class AuthManager: ObservableObject {
         // If token is invalid, call logout()
     }
 
-    /// Refresh login authorization with Pocketbase
+    /// Refresh login authorization with PocketBase
     func refreshUserInfo() async {
         guard token != nil else {
             logout()
@@ -134,7 +136,7 @@ func postAuthRequest<T: Decodable>(
     }
 }
 
-/// Internal error handler from Pocketbase response during authentication
+/// Internal error handler from PocketBase response during authentication
 private func handle<T: Decodable>(_: T.Type, data: Data, status: Int) throws -> Result<T, AuthError> {
     if (200 ... 299).contains(status) {
         decode(T.self, from: data)
@@ -145,7 +147,7 @@ private func handle<T: Decodable>(_: T.Type, data: Data, status: Int) throws -> 
     }
 }
 
-/// Internal decode of Pocketbase response during authentication
+/// Internal decode of PocketBase response during authentication
 private func decode<T: Decodable>(_: T.Type, from data: Data) -> Result<T, AuthError> {
     do {
         return try .success(JSONDecoder.pocketBase.decode(T.self, from: data))

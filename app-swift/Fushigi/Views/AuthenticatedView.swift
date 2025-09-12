@@ -11,23 +11,22 @@ import TipKit
 
 // MARK: - Authenticated App View
 
+/// App wrapper view post authentication adding in iCloud and data model features. By default this type of code is
+/// provided by Apple as boilerplate when beginning a new project. I want to force it to occur after a user actually
+/// signs in and is authorized.
 struct AuthenticatedView: View {
-    /// Current login state of user
+    // MARK: - Published State
+
     @ObservedObject var authManager: AuthManager
-
-    /// Manages srs algorithm values for grammar points with local SwiftData storage and remote PocketBase sync
     @StateObject private var studyStore: StudyStore
-
-    /// Grammar store for user grammars, daily random, and SRS
     @StateObject private var journalStore: JournalStore
-
-    /// Tag store of all user created tags linking journals to grammar
     @StateObject private var sentenceStore: SentenceStore
 
-    /// Shared SwiftData container for persistent storage
+    // MARK: - Init
+
+    /// Shared SwiftData container for persistent storage across app open/close
     private let sharedModelContainer: ModelContainer
 
-    /// Initialize app data stores
     init(authManager: AuthManager) {
         self.authManager = authManager
 
@@ -56,7 +55,7 @@ struct AuthenticatedView: View {
         }
 
         #if DEBUG
-            // Comment out kill switch to wipe
+            // Comment out kill switch to wipe data while testing
             // wipeSwiftData(container: sharedModelContainer)
         #endif
 
@@ -76,8 +75,10 @@ struct AuthenticatedView: View {
         ))
     }
 
+    // MARK: - Main View
+
     var body: some View {
-        NavigationView()
+        AppNavigatorView()
             .modelContainer(sharedModelContainer)
             .environmentObject(authManager) // TODO: is this necessary?
             .environmentObject(studyStore)
@@ -104,7 +105,13 @@ struct AuthenticatedView: View {
             }
     }
 
-    /// Configure TipKit for user onboarding -- currently none
+    // MARK: - Helper Methods
+
+    /// Configure TipKit for user onboarding. None are implemented right now due to bugs related to unclosed tips
+    /// showing up on the incorrect view when navigating to a new tab on iOS. I left it in on purpose as dead code
+    /// just as a reminder to come back to it later.
+    ///
+    /// TODO: Figure out how to properly implement tips and implement a user onboarding experience with them.
     func configureTips() async {
         do {
             try Tips.configure([

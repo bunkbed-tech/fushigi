@@ -171,7 +171,7 @@ struct GrammarStoreIntegrationTests {
         store.handleRemoteSyncFailure()
 
         // Verify
-        #expect(store.systemHealth == .postgresError)
+        #expect(store.systemHealth == .pocketbaseError)
         #expect(store.dataAvailability == .empty)
     }
 
@@ -179,7 +179,7 @@ struct GrammarStoreIntegrationTests {
         // Setup
         let container = try MockedModelContainer.createInMemoryContainer()
         let store = GrammarStore(modelContext: container.mainContext)
-        store.systemHealth = .postgresError
+        store.systemHealth = .pocketbaseError
         store.grammarItems = MockedData.createMockGrammarPoints()
 
         // Run

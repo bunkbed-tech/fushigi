@@ -8,11 +8,7 @@
 import Foundation
 import SwiftData
 
-/// JSON value stored in database for Examples
-struct Example: Codable {
-    let japanese: String
-    let english: String
-}
+// MARK: - Grammar Point Create
 
 /// Grammar for model for simple submission to backend
 struct GrammarPointCreate: Codable {
@@ -26,6 +22,8 @@ struct GrammarPointCreate: Codable {
     let user: String
     let language: String
 }
+
+// MARK: - Grammar Point Remote
 
 /// Grammar point model for remote PocketBase database
 struct GrammarPointRemote: Codable {
@@ -74,6 +72,8 @@ struct GrammarPointRemote: Codable {
         expand = nil // Not necessary locally
     }
 }
+
+// MARK: - Grammar Point Local
 
 /// Grammar point model for local SwiftData storage
 @Model
@@ -146,4 +146,12 @@ final class GrammarPointLocal {
         self.created = created
         self.updated = updated
     }
+}
+
+// MARK: - Codable Helpers
+
+/// JSON value stored in database for Examples
+struct Example: Codable {
+    let japanese: String
+    let english: String
 }

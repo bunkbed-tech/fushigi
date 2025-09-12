@@ -8,15 +8,27 @@
 import Foundation
 import SwiftData
 
+// MARK: - Sentence Create
+
 /// Sentence for model for simple submission to backend
-struct SentenceCreate: Codable {
+struct SentenceCreate: Codable, Identifiable {
+    // Local-only UUID for SwiftUI List identification
+    let id = UUID()
+
     let content: String
     let user: String
     let journalEntry: String
     let grammar: String
+
+    // Exclude id from API calls
+    enum CodingKeys: String, CodingKey {
+        case content, user, journalEntry, grammar
+    }
 }
 
-/// Sentence model for remote Pocketbase database
+// MARK: - Sentence Remote
+
+/// Sentence model for remote PocketBase database
 struct SentenceRemote: Codable {
     let id: String
     let user: String
@@ -51,6 +63,8 @@ struct SentenceRemote: Codable {
         case journalEntry = "journal_entry"
     }
 }
+
+// MARK: - Sentence Local
 
 /// Sentence model for local SwiftData storage
 @Model

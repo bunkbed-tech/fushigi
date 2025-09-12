@@ -1,0 +1,72 @@
+{
+	"fill-specializations": [
+		{
+			"value": {
+				"automatic-gradient": "srgb:0.73162,0.75304,0.77452,1.00000"
+			}
+		},
+		{
+			"appearance": "dark",
+			"value": {
+				"solid": "extended-gray:0.00000,1.00000"
+			}
+		}
+	],
+	"groups": [
+		{
+			"blur-material": null,
+			"layers": [
+				{
+					"blend-mode": "normal",
+					"fill": {
+						"solid": "srgb:0.25069,0.01139,0.30744,1.00000"
+					},
+					"glass": true,
+					"hidden": false,
+					"image-name": "fushigi-text.svg",
+					"name": "fushigi-text",
+					"position": {
+						"scale": 1,
+						"translation-in-points": [-54.67578125, 65.71875]
+					}
+				},
+				{
+					"blend-mode": "normal",
+					"fill": {
+						"solid": "extended-srgb:0.00000,0.78431,0.70196,1.00000"
+					},
+					"glass-specializations": [
+						{
+							"value": true
+						},
+						{
+							"appearance": "tinted",
+							"value": true
+						}
+					],
+					"hidden": false,
+					"image-name": "speaking-man.svg",
+					"name": "speaking-man",
+					"opacity": 1,
+					"position": {
+						"scale": 1,
+						"translation-in-points": [43.421875, 128.24609375]
+					}
+				}
+			],
+			"lighting": "individual",
+			"shadow": {
+				"kind": "neutral",
+				"opacity": 0.5
+			},
+			"specular": true,
+			"translucency": {
+				"enabled": true,
+				"value": 0.5
+			}
+		}
+	],
+	"supported-platforms": {
+		"squares": "shared"
+	}
+}
