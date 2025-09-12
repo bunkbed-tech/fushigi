@@ -31,12 +31,20 @@ class JournalStore: ObservableObject {
 
     /// Journal entries marked as private
     var privateJournalEntries: [JournalEntryLocal] {
-        journalEntries.filter(\.isPrivate)
+        guard let modelContext else { return [] }
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate { $0.isPrivate == true },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     /// Journal entries marked as public
     var publicJournalEntries: [JournalEntryLocal] {
-        journalEntries.filter { !$0.isPrivate }
+        guard let modelContext else { return [] }
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate { $0.isPrivate == false },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     // MARK: Init
@@ -62,6 +70,19 @@ class JournalStore: ObservableObject {
         sortedBy sortKey: JournalSort,
         containing term: String? = nil,
     ) -> [JournalEntryLocal] {
+        // Use database filtering when possible
+        if let term, !term.isEmpty, let modelContext {
+            let descriptor = FetchDescriptor<JournalEntryLocal>(
+                predicate: #Predicate<JournalEntryLocal> { entry in
+                    entry.title.localizedStandardContains(term) ||
+                        entry.content.localizedStandardContains(term)
+                },
+                sortBy: [sortDescriptor(for: sortKey)],
+            )
+            return (try? modelContext.fetch(descriptor)) ?? []
+        }
+
+        // Fallback to in-memory processing
         var result = items
 
         // Apply filtering if search term exists
@@ -82,6 +103,34 @@ class JournalStore: ObservableObject {
             case .oldest:
                 lhs.created < rhs.created
             }
+        }
+    }
+
+    /// Search journal entries using database predicates
+    func searchJournalEntries(_ searchText: String,
+                              sortedBy sortKey: JournalSort = .newest) async -> [JournalEntryLocal]
+    {
+        guard let modelContext, !searchText.isEmpty else { return [] }
+
+        let descriptor = FetchDescriptor<JournalEntryLocal>(
+            predicate: #Predicate<JournalEntryLocal> { entry in
+                entry.title.localizedStandardContains(searchText) ||
+                    entry.content.localizedStandardContains(searchText)
+            },
+            sortBy: [sortDescriptor(for: sortKey)],
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Helper to create sort descriptor
+    private func sortDescriptor(for sortKey: JournalSort) -> SortDescriptor<JournalEntryLocal> {
+        switch sortKey {
+        case .title:
+            SortDescriptor(\.title, order: .forward)
+        case .newest:
+            SortDescriptor(\.created, order: .reverse)
+        case .oldest:
+            SortDescriptor(\.created, order: .forward)
         }
     }
 
@@ -120,13 +169,11 @@ class JournalStore: ObservableObject {
 
             case let .failure(sentenceError):
                 print("WARNING: Journal saved but sentence tags failed: \(sentenceError)")
-                // TODO: Deal with failed sentence tag uploads
-                return .success("Journal saved but some sentence tags failed - TODO: deal with this later.")
+                return .success("Journal saved but some sentence tags failed")
             }
 
         case let .failure(error):
             print("ERROR: Failed to create journal entry: \(error)")
-            // TODO: Save journal locally for offline sync later
             return .failure(.serverError(error.localizedDescription))
         }
     }
@@ -223,7 +270,6 @@ class JournalStore: ObservableObject {
 
     /// Clear all in memory data
     func clearInMemoryData() {
-        // Clear in-memory data (everything Published)
         journalEntries.removeAll()
         dataAvailability = .empty
         systemHealth = .healthy

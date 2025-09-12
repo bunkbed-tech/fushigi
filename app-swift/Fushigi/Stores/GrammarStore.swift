@@ -34,12 +34,23 @@ class GrammarStore: ObservableObject {
 
     /// Grammar points created by system/admin (no user ownership)
     var systemGrammarItems: [GrammarPointLocal] {
-        grammarItems.filter { $0.user?.isEmpty ?? true }
+        guard let modelContext else { return [] }
+        let descriptor = FetchDescriptor<GrammarPointLocal>(
+            predicate: #Predicate { $0.user == nil },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     /// Grammar points created by current user
     var userGrammarItems: [GrammarPointLocal] {
-        grammarItems.filter { !($0.user?.isEmpty ?? true) }
+        guard let modelContext else { return [] }
+        guard let userId = authManager.currentUser?.id else { return [] }
+        let descriptor = FetchDescriptor<GrammarPointLocal>(
+            predicate: #Predicate<GrammarPointLocal> { grammar in
+                grammar.user == userId
+            },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
     }
 
     // MARK: Init
@@ -61,26 +72,66 @@ class GrammarStore: ObservableObject {
 
     /// Returns true if grammar item is a default (system-provided) by id
     func isDefaultGrammar(_ grammar: GrammarPointLocal) -> Bool {
-        systemGrammarItems.contains(grammar)
+        grammar.user == nil
     }
 
     /// Finds grammar point by ID from all available items
     func getGrammarPoint(id: String?) -> GrammarPointLocal? {
-        guard let id else { return nil }
-        return grammarItems.first { $0.id == id }
+        guard let id, let modelContext else { return nil }
+        let descriptor = FetchDescriptor<GrammarPointLocal>(
+            predicate: #Predicate<GrammarPointLocal> { $0.id == id },
+        )
+        return try? modelContext.fetch(descriptor).first
     }
 
     /// Filters grammar points by search term across all text fields
-    func filterGrammarPoints(for baseItems: [GrammarPointLocal],
-                             containing searchText: String? = nil) -> [GrammarPointLocal]
-    {
+    func filterGrammarPoints(
+        for baseItems: [GrammarPointLocal],
+        containing searchText: String? = nil,
+    ) -> [GrammarPointLocal] {
         guard let searchText, !searchText.isEmpty else { return baseItems }
+
+        if let modelContext {
+            let descriptor = FetchDescriptor<GrammarPointLocal>(
+                predicate: #Predicate<GrammarPointLocal> { grammar in
+                    grammar.usage.localizedStandardContains(searchText) ||
+                        grammar.meaning.localizedStandardContains(searchText) ||
+                        grammar.context.localizedStandardContains(searchText)
+                },
+            )
+            return (try? modelContext.fetch(descriptor)) ?? []
+        }
+
+        // Fallback to in-memory filtering
         return baseItems.filter {
             $0.usage.localizedCaseInsensitiveContains(searchText) ||
                 $0.meaning.localizedCaseInsensitiveContains(searchText) ||
                 $0.context.localizedCaseInsensitiveContains(searchText) ||
                 $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
         }
+    }
+
+    /// Database-level search filtering using SwiftData predicates
+    func searchGrammarPoints(_ searchText: String) async -> [GrammarPointLocal] {
+        guard let modelContext, !searchText.isEmpty else { return [] }
+
+        let descriptor = FetchDescriptor<GrammarPointLocal>(
+            predicate: #Predicate<GrammarPointLocal> { grammar in
+                grammar.usage.localizedStandardContains(searchText) ||
+                    grammar.meaning.localizedStandardContains(searchText) ||
+                    grammar.context.localizedStandardContains(searchText)
+            },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Basic grammar usage analytics
+    func getGrammarUsageAnalytics() async -> GrammarAnalytics {
+        GrammarAnalytics(
+            totalPoints: grammarItems.count,
+            systemPoints: systemGrammarItems.count,
+            userPoints: userGrammarItems.count,
+        )
     }
 
     // MARK: - Sync Boilerplate
@@ -201,4 +252,13 @@ class GrammarStore: ObservableObject {
 extension GrammarStore: SyncableStore {
     typealias DataType = GrammarPointLocal
     var items: [GrammarPointLocal] { grammarItems }
+}
+
+// MARK: - Grammar Analytics
+
+/// Analytics data structure
+struct GrammarAnalytics {
+    let totalPoints: Int
+    let systemPoints: Int
+    let userPoints: Int
 }

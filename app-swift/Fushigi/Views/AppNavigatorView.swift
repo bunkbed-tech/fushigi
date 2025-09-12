@@ -11,11 +11,9 @@ import SwiftUI
 // MARK: - Navigation View Wrapper
 
 /// Simplify the overall app navigation across platforms. Use a container with adaptive layout for tabs and split view
-/// for MacOS. This was
-/// done because a Navigation Split View looks great on MacOS (and iPad) but terrible on mobile iOS. Tabs is a much more
-/// user friendly
-/// UX pattern. This navigator is used to clean switch between the two and define the toolbar that should persist across
-/// all views.
+/// for MacOS. This was done because a Navigation Split View looks great on MacOS (and iPad) but terrible on
+/// mobile iOS. Tabs is a much more user friendly UX pattern. This navigator is used to clean switch between the
+/// two and define the toolbar that should persist across all views.
 struct AppNavigatorView: View {
     // MARK: - Published State
 
@@ -204,10 +202,8 @@ struct AppNavigatorView: View {
     // MARK: - Helper Methods
 
     /// Defines the main navigatons of the app across all platforms, namely a place to practice via writing journal
-    /// entries,
-    /// a history of all journal entries, a reference page to view detailed grammar information, and a place to search
-    /// the
-    /// app overall.
+    /// entries, a history of all journal entries, a reference page to view detailed grammar information, and a
+    /// place to search the app overall.
     enum MainView: String, Identifiable, CaseIterable {
         case practice = "Practice"
         case journal = "Journal"

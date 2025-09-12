@@ -191,7 +191,8 @@ struct PracticeView: View {
     }
 
     /// Clear form after successful submission to allow user to conduct further study sessions back from square one. A
-    /// forced wait is currently implemented in order to allow any currently active error messages to linger on screen long
+    /// forced wait is currently implemented in order to allow any currently active error messages to linger on screen
+    /// long
     /// enough to be read by the user.
     private func clearForm() {
         textSelection = nil // must clear textSelection first to be safe from index crash

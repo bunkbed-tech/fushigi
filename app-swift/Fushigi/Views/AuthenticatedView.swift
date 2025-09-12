@@ -108,10 +108,8 @@ struct AuthenticatedView: View {
     // MARK: - Helper Methods
 
     /// Configure TipKit for user onboarding. None are implemented right now due to bugs related to unclosed tips
-    /// showing
-    /// up on the incorrect view when navigating to a new tab on iOS. I left it in on purpose as dead code just as a
-    /// reminder
-    /// to come back to it later.
+    /// showing up on the incorrect view when navigating to a new tab on iOS. I left it in on purpose as dead code
+    /// just as a reminder to come back to it later.
     ///
     /// TODO: Figure out how to properly implement tips and implement a user onboarding experience with them.
     func configureTips() async {

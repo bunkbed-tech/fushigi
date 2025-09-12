@@ -33,6 +33,9 @@ class SRSStore: ObservableObject {
     /// Last successful sync timestamp
     @Published var lastSyncDate: Date?
 
+    /// Optimization set for checking if a grammar item has an SRS record associated with it
+    @Published private(set) var grammarIDsInSRS: Set<String> = []
+
     // MARK: Private State
 
     /// Tracks when random subset was last updated
@@ -40,13 +43,6 @@ class SRSStore: ObservableObject {
 
     /// Tracks when SRS subset was last updated
     private var lastSRSUpdate: Date?
-
-    // MARK: - Computed Properties
-
-    /// Fast lookup set for checking if grammar is in SRS
-    private var grammarIDsInSRS: Set<String> {
-        Set(srsRecords.map(\.grammar))
-    }
 
     // MARK: - Init
 
@@ -151,6 +147,40 @@ class SRSStore: ObservableObject {
         return algorithmicSRSRecords.first { $0.id == id }
     }
 
+    /// Get SRS records due for review using database predicates
+    func getRecordsDueForReview() -> [SRSRecordLocal] {
+        guard let modelContext else {
+            return srsRecords.filter { ($0.dueDate) <= Date() }
+        }
+
+        let now = Date()
+        let descriptor = FetchDescriptor<SRSRecordLocal>(
+            predicate: #Predicate<SRSRecordLocal> { record in
+                (record.dueDate) <= now
+            },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Update a single SRS record with new values
+    func updateSRSRecord(_ recordId: String, with update: SRSRecordUpdate) async {
+        guard let modelContext else { return }
+
+        let descriptor = FetchDescriptor<SRSRecordLocal>(
+            predicate: #Predicate<SRSRecordLocal> { $0.id == recordId },
+        )
+
+        guard let record = try? modelContext.fetch(descriptor).first else { return }
+
+        if let easeFactor = update.easeFactor { record.easeFactor = easeFactor }
+        if let intervalDays = update.intervalDays { record.intervalDays = intervalDays }
+        if let repetition = update.repetition { record.repetition = repetition }
+        if let lastReviewed = update.lastReviewed { record.lastReviewed = lastReviewed }
+        if let dueDate = update.dueDate { record.dueDate = dueDate }
+
+        try? modelContext.save()
+    }
+
     /// Updates random selection (once per day unless forced)
     func updateRandomSRSRecords(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
@@ -162,14 +192,24 @@ class SRSStore: ObservableObject {
     }
 
     /// Updates SRS selection (once per day unless forced)
-    /// Currently uses random selection until SRS algorithm is implemented
     func updateAlgorithmicSRSRecords(force: Bool = false) {
         let today = Calendar.current.startOfDay(for: Date())
         if force || lastSRSUpdate != today || algorithmicSRSRecords.isEmpty {
-            algorithmicSRSRecords = Array(srsRecords.shuffled().prefix(min(5, srsRecords.count)))
+            // Use due records when available, otherwise random selection
+            let dueRecords = getRecordsDueForReview()
+            if !dueRecords.isEmpty {
+                algorithmicSRSRecords = Array(dueRecords.prefix(min(5, dueRecords.count)))
+            } else {
+                algorithmicSRSRecords = Array(srsRecords.shuffled().prefix(min(5, srsRecords.count)))
+            }
             lastSRSUpdate = today
             print("LOG: Selected \(algorithmicSRSRecords.count) SRS grammar items")
         }
+    }
+
+    /// Keep the list of grammar ids with SRS records up to date
+    private func updateGrammarIDsSet() {
+        grammarIDsInSRS = Set(srsRecords.map(\.grammar))
     }
 
     // MARK: - Sync Boilerplate
@@ -179,6 +219,7 @@ class SRSStore: ObservableObject {
         guard let modelContext else { return }
         do {
             srsRecords = try modelContext.fetch(FetchDescriptor<SRSRecordLocal>())
+            updateGrammarIDsSet()
             print("LOG: Loaded \(srsRecords.count) SRS records from local storage")
         } catch {
             print("ERROR: Failed to load local SRS records:", error)
@@ -255,6 +296,7 @@ class SRSStore: ObservableObject {
             if !newItems.isEmpty {
                 srsRecords.append(contentsOf: newItems)
             }
+            updateGrammarIDsSet()
             print("LOG: Synced \(remoteItems.count) SRS records. New: \(newItems.count)")
         } catch {
             print("ERROR: Failed to save SRS records to SwiftData:", error)
@@ -272,8 +314,8 @@ class SRSStore: ObservableObject {
 
     /// Clear all in memory data
     func clearInMemoryData() {
-        // Clear in-memory data (everything Published)
         srsRecords.removeAll()
+        grammarIDsInSRS.removeAll()
         randomSRSRecords.removeAll()
         algorithmicSRSRecords.removeAll()
         dataAvailability = .empty
@@ -294,9 +336,32 @@ class SRSStore: ObservableObject {
     }
 }
 
+// MARK: - SRS Record Update
+
+struct SRSRecordUpdate {
+    let easeFactor: Double?
+    let intervalDays: Double?
+    let repetition: Double?
+    let lastReviewed: Date?
+    let dueDate: Date?
+
+    init(
+        easeFactor: Double? = nil,
+        intervalDays: Double? = nil,
+        repetition: Double? = nil,
+        lastReviewed: Date? = nil,
+        dueDate: Date? = nil,
+    ) {
+        self.easeFactor = easeFactor
+        self.intervalDays = intervalDays
+        self.repetition = repetition
+        self.lastReviewed = lastReviewed
+        self.dueDate = dueDate
+    }
+}
+
 // MARK: - SyncableStore Conformance
 
-// Add on sync functionality
 extension SRSStore: SyncableStore {
     typealias DataType = SRSRecordLocal
     var items: [SRSRecordLocal] { srsRecords }
@@ -304,7 +369,6 @@ extension SRSStore: SyncableStore {
 
 // MARK: - Preview Helpers
 
-/// Preview and testing helpers
 extension SRSStore {
     /// Sets random selection for preview/testing
     func setRandomSRSRecordsForPreview(_ items: [SRSRecordLocal]) {

@@ -45,6 +45,64 @@ class SentenceStore: ObservableObject {
         service = ProdRemoteService(endpoint: "sentence", decoder: JSONDecoder.pocketBase)
     }
 
+    // MARK: - Public API
+
+    /// Get sentences for a specific grammar point using database predicates
+    func getSentencesForGrammar(_ grammarId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.grammar == grammarId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.grammar == grammarId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get sentences for a specific journal entry using database predicates
+    func getSentencesForJournal(_ journalId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.journalEntry == journalId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.journalEntry == journalId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get sentences for a specific user using database predicates
+    func getSentencesForUser(_ userId: String) -> [SentenceLocal] {
+        guard let modelContext else {
+            return sentences.filter { $0.user == userId }
+        }
+
+        let descriptor = FetchDescriptor<SentenceLocal>(
+            predicate: #Predicate<SentenceLocal> { $0.user == userId },
+        )
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+
+    /// Get grammar usage statistics using efficient counting
+    func getGrammarUsageStats() async -> [String: Int] {
+        guard let modelContext else {
+            // Fallback to in-memory counting
+            var stats: [String: Int] = [:]
+            for sentence in sentences {
+                stats[sentence.grammar, default: 0] += 1
+            }
+            return stats
+        }
+
+        // Use database query for better performance
+        let allSentences = (try? modelContext.fetch(FetchDescriptor<SentenceLocal>())) ?? []
+        var stats: [String: Int] = [:]
+        for sentence in allSentences {
+            stats[sentence.grammar, default: 0] += 1
+        }
+        return stats
+    }
+
     // MARK: - Sync Boilerplate
 
     /// Loads sentence tags from local SwiftData
@@ -137,7 +195,6 @@ class SentenceStore: ObservableObject {
 
     /// Clear all in memory data
     func clearInMemoryData() {
-        // Clear in-memory data (everything Published)
         sentences.removeAll()
         pendingSentences.removeAll()
         dataAvailability = .empty
@@ -145,7 +202,7 @@ class SentenceStore: ObservableObject {
         lastSyncDate = nil
     }
 
-    // MARK: - Public API
+    // MARK: - Pending Sentence Management
 
     /// Temporarily store a pending sentence while waiting for full Journal Entry to be submitted
     func addPendingTag(grammar: String, selectedText: String) async -> Result<String, Error> {
@@ -168,8 +225,6 @@ class SentenceStore: ObservableObject {
 
     /// Remove tag according to the currently selected string
     func removePendingTag(content: String, grammar: String) {
-        // Remove matches between content and grammar since one sentence might have multiple grammar points and one
-        // grammar point might be used multiple times in a journal entry
         pendingSentences.removeAll(where: { $0.content == content && $0.grammar == grammar })
     }
 
@@ -210,7 +265,6 @@ class SentenceStore: ObservableObject {
 
 // MARK: - SyncableStore Conformance
 
-// Add on sync functionality
 extension SentenceStore: SyncableStore {
     typealias DataType = SentenceLocal
     var items: [SentenceLocal] { sentences }

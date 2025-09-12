@@ -41,6 +41,12 @@ struct SettingsWindow: View {
                     Image(systemName: "info.circle")
                     Text("Credits")
                 }
+
+            UserDataAnalytics()
+                .tabItem {
+                    Image(systemName: "chart.bar")
+                    Text("Analytics")
+                }
         }
         .frame(width: UIConstants.Sizing.forcedFrameWidth, height: UIConstants.Sizing.forcedFrameHeight)
     }
@@ -74,13 +80,15 @@ struct SettingsSheet: View {
                                 Text("tester@example.com")
                                     .font(.caption)
                             }
+                            Spacer()
+                            Button("Edit") {
+                                print("TODO: Implement user edit")
+                            }
+                            .buttonStyle(.borderedProminent)
                         }
                         .padding(.vertical, UIConstants.Padding.capsuleWidth)
-
-                        Button("Edit Profile") {
-                            print("TODO: Implement user edit")
-                        }
                     }
+                    .listRowBackground(Color.clear)
 
                     Section("Settings") {
                         NavigationLink("General", destination: GeneralPreferences(
@@ -88,17 +96,24 @@ struct SettingsSheet: View {
                             targetLanguage: $targetLanguage,
                         )
                         .navigationTitle("General")
-                        .background(Color(.systemGroupedBackground)))
+                        .navigationBarTitleDisplayMode(.inline))
+
                         NavigationLink("Credits & Licenses", destination: CreditsPreferences()
                             .navigationTitle("Credits & Licenses")
-                            .background(Color(.systemGroupedBackground)))
+                            .navigationBarTitleDisplayMode(.inline))
+
+                        NavigationLink("Analytics", destination: UserDataAnalytics()
+                            .navigationTitle("Analytics")
+                            .navigationBarTitleDisplayMode(.inline))
                     }
+                    .listRowBackground(Color.clear)
 
                     Section {
                         Button("Sign Out", role: .destructive) {
                             print("TODO: Implement sign out")
                         }
                     }
+                    .listRowBackground(Color.clear)
                 }
             }
         #endif
@@ -128,10 +143,10 @@ struct AccountPreferences: View {
                         .font(.caption)
                 }
                 Spacer()
-                Button("Sign Out") {
+                Button("Sign Out", role: .destructive) {
                     print("TODO: Sign out")
                 }
-                .foregroundColor(.red)
+                .buttonStyle(.borderedProminent)
 
                 Button("Edit...") {
                     print("TODO: Edit account")
@@ -167,6 +182,7 @@ struct GeneralPreferences: View {
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
+            .containerBackground(.clear, for: .navigation)
         #else
             Form {
                 languagePickers
@@ -197,6 +213,7 @@ struct GeneralPreferences: View {
             }
             .pickerStyle(.menu)
         }
+        .listRowBackground(Color.clear)
     }
 }
 
@@ -206,6 +223,11 @@ struct GeneralPreferences: View {
 /// compliant with any 3rd party open source libraries as well as show users some simple app info such
 /// as version, a nice logo, etc. Mostly just UX niceities.
 struct CreditsPreferences: View {
+    private var mitLicenseText: String {
+        // swiftlint:disable:next line_length
+        "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    }
+
     // MARK: - Main View
 
     var body: some View {
@@ -257,28 +279,10 @@ struct CreditsPreferences: View {
                         }
 
                         ScrollView {
-                            Text("""
-                                Permission is hereby granted, free of charge, to any person obtaining
-                                a copy of this software and associated documentation files (the "Software"),
-                                to deal in the Software without restriction, including without limitation
-                                the rights to use, copy, modify, merge, publish, distribute, sublicense,
-                                and/or sell copies of the Software, and to permit persons to whom the
-                                Software is furnished to do so, subject to the following conditions:
-
-                                The above copyright notice and this permission notice shall be included
-                                in all copies or substantial portions of the Software.
-
-                                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-                                OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                                SOFTWARE.
-                            """)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .textSelection(.enabled)
+                            Text(mitLicenseText)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .textSelection(.enabled)
                         }
                         .frame(height: UIConstants.Sizing.contentMinHeight)
                         .background(Color.secondary.opacity(0.1))
@@ -288,5 +292,128 @@ struct CreditsPreferences: View {
             }
             .padding()
         }
+        .containerBackground(.clear, for: .navigation)
     }
+}
+
+// MARK: - User Stats
+
+/// Settings view that shows users a super brief rollup of the app stats. This acts as an actual
+/// analytics view that may one day become more useful, but it is especially useful during
+/// debugging the app for me.
+struct UserDataAnalytics: View {
+    @EnvironmentObject var studyStore: StudyStore
+    @State private var analytics: StudyAnalytics?
+    @State private var isLoading = true
+
+    var body: some View {
+        ScrollView {
+            if isLoading {
+                ProgressView("Loading analytics...")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if let analytics {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+                    // Overview Card
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        Text("Study Overview")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+
+                        LazyVGrid(columns: [
+                            GridItem(.flexible()),
+                            GridItem(.flexible()),
+                        ], spacing: UIConstants.Spacing.content) {
+                            StatCard(
+                                title: "Grammar Points",
+                                value: "\(analytics.totalGrammarPoints)",
+                                subtitle: "\(analytics.systemGrammarPoints) system, \(analytics.userGrammarPoints) yours",
+                            )
+
+                            StatCard(
+                                title: "SRS Records",
+                                value: "\(analytics.totalSRSRecords)",
+                                subtitle: "\(analytics.recordsDue) due today",
+                            )
+
+                            StatCard(
+                                title: "Sentences",
+                                value: "\(analytics.totalSentences)",
+                                subtitle: "Tagged examples",
+                            )
+
+                            if let mostUsed = analytics.mostUsedGrammar {
+                                StatCard(
+                                    title: "Most Practiced",
+                                    value: mostUsed,
+                                    subtitle: "Top grammar point",
+                                )
+                            }
+                        }
+                    }
+
+                    Divider()
+
+                    // Raw Counts (for debugging)
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        Text("Debug Info")
+                            .font(.title3)
+                            .fontWeight(.medium)
+
+                        VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                            Text("SRS Items: \(studyStore.inSRSGrammarItems.count)")
+                            Text("Available: \(studyStore.availableGrammarItems.count)")
+                            Text("Current Sentences: \(studyStore.sentenceBank.count)")
+                        }
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    }
+                }
+                .padding()
+            } else {
+                Text("Analytics not available")
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        }
+        .containerBackground(.clear, for: .navigation)
+        .task {
+            analytics = await studyStore.getStudyAnalytics()
+            isLoading = false
+        }
+    }
+}
+
+// MARK: - Stat Card Component
+
+/// Show stats as small cards similar to how other apps do it that I use for studying languages.
+/// Generalize the view and let all displays use it to create quick view grid in the settings menu.
+struct StatCard: View {
+    let title: String
+    let value: String
+    let subtitle: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+
+            Text(value)
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            Text(subtitle)
+                .font(.caption2)
+                .foregroundColor(.secondary)
+        }
+        .padding(UIConstants.Padding.largeIndent)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.systemGray6))
+        .clipShape(.rect(cornerRadius: UIConstants.Padding.capsuleWidth))
+    }
+}
+
+#Preview("Normal State") {
+    AppNavigatorView()
+        .withPreviewStores()
 }

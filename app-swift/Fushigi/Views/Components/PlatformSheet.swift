@@ -26,31 +26,34 @@ struct PlatformSheet<Content: View>: View {
 
     var body: some View {
         #if os(macOS)
-        NavigationStack {
-            VStack(spacing: 0) {
-                // Header bar
-                HStack {
-                    Text(title)
-                        .font(.headline)
+            NavigationStack {
+                VStack(spacing: 0) {
+                    // Header bar
+                    HStack {
+                        Text(title)
+                            .font(.headline)
 
-                    Spacer()
+                        Spacer()
 
-                    Button("Done", action: onDismiss)
-                        .buttonStyle(.borderedProminent)
+                        Button("Done", action: onDismiss)
+                            .buttonStyle(.borderedProminent)
+                    }
+                    .padding()
+
+                    Divider()
+
+                    content
                 }
-                .padding()
-
-                Divider()
-
-                content
+                .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
             }
-            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
-        }
         #else
             NavigationStack {
                 content
+                    .scrollContentBackground(.hidden)
+                    .navigationTitle(title)
+                    .navigationBarTitleDisplayMode(.inline)
             }
-            .presentationDetents([.medium, .large], selection: .constant(.large))
+            .presentationDetents([.medium, .large], selection: .constant(.medium))
         #endif
     }
 }

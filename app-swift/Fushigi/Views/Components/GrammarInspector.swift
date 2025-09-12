@@ -74,8 +74,6 @@ struct GrammarInspector: View {
             }
             #if os(macOS)
             .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
-            #else
-            .presentationDetents([.medium, .large], selection: .constant(.medium))
             #endif
         } else {
             ContentUnavailableView {
@@ -99,19 +97,22 @@ struct GrammarInspector: View {
     /// done before to keep things fresh.
     @ViewBuilder
     private var sentenceBank: some View {
-        if !studyStore.sentenceBank.isEmpty {
-            List(studyStore.sentenceBank, id: \.self) { sentence in
-                HStack {
-                    Text(sentence.content)
-                    Spacer()
-                    Button("Delete") {
-                        // TODO: Implement sentence delete
+        Group {
+            if !studyStore.sentenceBank.isEmpty {
+                List(studyStore.sentenceBank, id: \.self) { sentence in
+                    HStack {
+                        Text(sentence.content)
+                        Spacer()
+                        Button("Delete") {
+                            // TODO: Implement sentence delete
+                        }
+                        .disabled(true)
                     }
-                    .disabled(true)
                 }
+            } else {
+                Text("No sentences tagged with this grammar point.")
             }
-        } else {
-            Text("No sentences tagged with this grammar point.")
         }
+        .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
     }
 }
