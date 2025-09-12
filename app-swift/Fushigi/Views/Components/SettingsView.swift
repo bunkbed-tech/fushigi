@@ -9,14 +9,12 @@ import SwiftUI
 
 // MARK: - Settings Window
 
-/// Unified preferences window popup for MacOS
+/// Unified preferences window popup for MacOS since that has better UX than a popup sheet, especially for
+/// settings. Try to follow the normal pattern with tabs and a separate window.
 struct SettingsWindow: View {
     // MARK: - App-wide Settings Storage
 
-    /// Desired user interface language
     @AppStorage("interfaceLanguage") private var interfaceLanguage = "en"
-
-    /// Desired target language to study (only JP works right now)
     @AppStorage("targetLanguage") private var targetLanguage = "jp"
 
     // MARK: - Main View
@@ -50,17 +48,14 @@ struct SettingsWindow: View {
 
 // MARK: - Settings Sheet
 
-/// iOS-style profile popup sheet with native NavigationLinks
+/// iOS-style profile popup sheet with native NavigationLinks that don't force moving to a new view
+/// so users can easily go back to their original main page view they were on before clicking on the
+/// account button.
 struct SettingsSheet: View {
     // MARK: - App-wide Settings Storage
 
-    /// Desired user interface language
     @AppStorage("interfaceLanguage") private var interfaceLanguage = "en"
-
-    /// Desired target language to study (only JP works right now)
     @AppStorage("targetLanguage") private var targetLanguage = "jp"
-
-    /// Control to pop up the user settings sheet
     @Binding var showProfile: Bool
 
     // MARK: - Main View
@@ -112,7 +107,12 @@ struct SettingsSheet: View {
 
 // MARK: - Account Preferences Tab
 
-/// Display a contact card showing the logged in user with login/edit functionality
+/// Display a contact card showing the logged in user with login/edit functionality. This currently is
+/// not set up to do anything and is hard coded.
+///
+/// TODO: Populate account info (name, email, avatar) from the current authenticated user
+/// TODO: Implement edit and logout functionality
+/// TODO: Add some basic user stats (item counts, days studied, data export, etc)
 struct AccountPreferences: View {
     // MARK: - Main View
 
@@ -145,14 +145,17 @@ struct AccountPreferences: View {
 
 // MARK: - General Preferences Tab
 
-/// General app preferences such as language, display, etc.
+/// General app preferences such as language, display, etc. This wrapper was implemented in
+/// order to easily use a List for iOS vs a Form for MacOS to improve UX. So far, it only lets users
+/// choose different language settings although they don't do anything right now. Basically right now
+/// this is just a placeholder.
+///
+/// TODO: Actual have these choices do something (such as show different Grammar/SRS/Journal items
+/// TODO: Could try localizing the app to have the interface language actually change something
 struct GeneralPreferences: View {
     // MARK: - Published State
 
-    /// Desired user interface language
     @Binding var interfaceLanguage: String
-
-    /// Desired target language to study (only JP works right now)
     @Binding var targetLanguage: String
 
     // MARK: - Main View
@@ -175,7 +178,9 @@ struct GeneralPreferences: View {
 
     // MARK: - Sub Views
 
-    /// User selection for language settings
+    /// User selection for language settings should be a simple menu picker on both iOS and MacOS
+    /// platforms. Currently available languages are hardcoded, but could be made to come from the
+    /// PocketBase database instead.
     @ViewBuilder
     private var languagePickers: some View {
         Section("Language") {
@@ -197,7 +202,9 @@ struct GeneralPreferences: View {
 
 // MARK: - Credits Preferences Tab
 
-/// Show card displaying current app version and 3rd party libraries used
+/// Show card displaying current app version and 3rd party libraries used. This is done in order to stay
+/// compliant with any 3rd party open source libraries as well as show users some simple app info such
+/// as version, a nice logo, etc. Mostly just UX niceities.
 struct CreditsPreferences: View {
     // MARK: - Main View
 

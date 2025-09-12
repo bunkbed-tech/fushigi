@@ -7,52 +7,52 @@
 
 import SwiftUI
 
-/// Interface for creating links between selected text and grammar concepts
+/// Interface for creating links between selected text and grammar concepts. The current implementation is
+/// simplified to show the desired tag text, the list of tags made for this grammar point in the current session
+/// (in case users are purposefully writing sentences with it more than once per session and want to log that)
+/// and an alert when things are successful. Note that these tags are only temporary and will not be formally
+/// submitted to the databaser until the journal entry parent is actually submitted. Thus, users can freely
+/// delete the tags on this view without running into sync issues. This helps with the concept of drafts or
+/// changing ones mind before they want to set that an item was studied in stone.
 struct Tagger: View {
     // MARK: - Published State
 
-    /// Centralized grammar data store
     @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Centralized sentence tag data store
     @EnvironmentObject var sentenceStore: SentenceStore
-
-    /// Temporary status message for operation feedback
     @Binding var statusMessage: String?
-
-    /// Controls the tagging interface visibility
-    @Binding var isShowingTagger: Bool
+    @Binding var showTagger: Bool
 
     // MARK: - Computed Properties
 
-    /// Tracks successful tag creation for user feedback
+    /// Track successful tag creations for user feedback, allow for deletes and showing a counter
+    /// on the main screen with the goal of improving user discoverability of this feature
     private var pendingTags: [SentenceCreate] {
         sentenceStore.pendingSentences.filter { $0.grammar == grammarPoint.id }
     }
 
     // MARK: - Init
 
-    /// Grammar point model containing usage patterns and meanings
     let grammarPoint: GrammarPointLocal
-
-    /// User-selected text content from journal entry for association
     let selectedText: String
 
     // MARK: - Main View
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-            // Action buttons with clear visual hierarchy
             HStack(spacing: UIConstants.Spacing.default) {
-                Button("Dismiss") { dismissTagger() }
+                #if os(macOS)
+                    Button("Dismiss") {
+                        grammarStore.selectedGrammarPoint = nil
+                        showTagger = false
+                    }
                     .buttonStyle(.bordered)
+                #endif
                 Spacer()
                 Button("Confirm") { Task { await confirmTagging() } }
                     .buttonStyle(.borderedProminent)
                     .disabled(selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
 
-            // Selected text display
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Label("Selected Text", systemImage: "text.quote")
                     .font(.headline)
@@ -62,6 +62,7 @@ struct Tagger: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(UIConstants.Sizing.defaultPadding)
                     .overlay(
+                        // TODO: this capsule does not look good with lots of text
                         Capsule().stroke(
                             selectedText.isEmpty ? .clear : .purple,
                             lineWidth: UIConstants.Border.focusedWidth,
@@ -91,7 +92,6 @@ struct Tagger: View {
 
             Spacer()
 
-            // Status message (unchanged)
             if let message = statusMessage {
                 HStack {
                     Image(systemName: pendingTags.isEmpty ? "checkmark.circle.fill" : "info.circle.fill")
@@ -109,7 +109,9 @@ struct Tagger: View {
 
     // MARK: - Helper Methods
 
-    /// Create grammar point to text association with user feedback
+    /// Create grammar point to journal association with user feedback that the item was successfully
+    /// appended to the list. This doesn't actually add it to the database though and is just a UX
+    /// feature to feel like something just happened.
     private func confirmTagging() async {
         guard !selectedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             statusMessage = "Error: Please select some text before creating a link."
@@ -128,11 +130,5 @@ struct Tagger: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             statusMessage = nil
         }
-    }
-
-    /// Dismiss tagging interface and clear selection state
-    private func dismissTagger() {
-        grammarStore.selectedGrammarPoint = nil
-        isShowingTagger = false
     }
 }

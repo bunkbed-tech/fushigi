@@ -9,33 +9,30 @@ import SwiftUI
 
 // MARK: - Daily Grammar
 
-/// Daily grammar section displaying curated grammar points for practice sessions, chosen based on SRS
+/// Displays up to 5 curated grammar points for practice sessions, chosen based on SRS records. Users have the
+/// ability to actually leverage an "SRS" algorithm or choose completely randomly. Filters are provided to enhance
+/// this choice further. By clicking on a grammar item, a detailed grammar sheet will pop up to explain the grammar
+/// point further when help is needed. By clickign the + button, a tagger sheet will pop up to aid users in tagging
+/// highlighted sentences within their journal entry with the clicked grammar point. Thus, we are able to enable users
+/// with a slow creation of a custom sourced sentence bank showing their progress in language learning over time.
 struct DailyGrammar: View {
     // MARK: - Published State
 
-    /// Centralized on-device storage for user's grammar points + srs records and application state
     @EnvironmentObject var studyStore: StudyStore
-
-    /// Centralized sentence tag data store
     @EnvironmentObject var sentenceStore: SentenceStore
-
-    /// Controls tagging interface visibility
     @Binding var showTagger: Bool
-
-    /// Controls detailed grammar point inspection interface visibility
     @Binding var showDetails: Bool
-
-    /// User-selected sourcing strategy
+    /// User preference for grammar sourcing algorithm (random vs. SRS)
     @Binding var selectedSource: SourceMode
 
     // MARK: - Init
 
-    /// Grammar points matching SRS records base on current sourcing mode
     let currentGrammar: [GrammarPointLocal]
 
     // MARK: - Computed Properties
 
-    /// All daily items are pulled from SRS records no matter if random or algorithmic
+    /// Determine the health of the most important store for this view (SRS), whether it's an error state,
+    /// loading state, or healthy state
     private var systemState: SystemState {
         studyStore.srsStore.systemState
     }
@@ -47,7 +44,7 @@ struct DailyGrammar: View {
         case .loading, .criticalError:
             systemState.contentUnavailableView {
                 if case .emptyData = systemState {
-                    // TODO: reset filters to default?
+                    // TODO: should we reset filters to default here?
                 }
                 await studyStore.refresh()
             }
@@ -112,6 +109,10 @@ struct DailyGrammar: View {
 
     // MARK: - Sub Views
 
+    /// Each row of the DailyGrammar object should feature the usage of the grammar point, a counter
+    /// showing the current number of tags (to help nudge users towards discoverability of the tagging
+    /// feature) as well as a + button to actually add the tag. This was split with the main code in order
+    /// to help with compilation in XCode.
     @ViewBuilder
     private func dailyGrammarRow(grammarPoint: GrammarPointLocal) -> some View {
         HStack {
@@ -141,16 +142,9 @@ struct DailyGrammar: View {
             }
             .help("Select a sentence and click this to add/view tags and build your sentence bank over time.")
         }
-        // Hide last Divider for improved visuals
+        // Hide last Divider for improved UX visuals
         if grammarPoint.id != currentGrammar.last?.id {
             Divider()
         }
-    }
-
-    // MARK: - Helper Methods
-
-    /// Refresh grammar points based on current source mode
-    private func refreshGrammarPoints() async {
-        studyStore.srsStore.forceDailyRefresh(currentMode: selectedSource)
     }
 }

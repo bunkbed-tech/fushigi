@@ -9,24 +9,19 @@ import SwiftUI
 
 // MARK: - System State
 
-/// The main state that drives UI rendering decisions
+/// The main state that drives UI rendering decisions. This is my attempt to simplify things across views but it has
+/// resulted in a lot of complexity and visual bugs at times so it is worthwhile to vigourously test in the future.
+///
+/// TODO: Add rigorous tests across the enum to make sure not only UX works, but intelligent errors are displayed
 enum SystemState: Equatable {
-    /// Currently loading locally from SwiftData and fetching remotely from PostgreSQL
     case loading
-
-    /// Standard operation with full data set
     case normal
-
-    /// No data available
     case emptyData
-
-    /// Has data but storage systems are unhealthy
+    /// Data exists but storage systems are unhealthy (syncing could not be performed at this moment)
     case degradedOperation(String)
-
-    /// No data and storage systems are unhealthy
+    /// No data and storage systems are unhealthy (syncing could not be performed at this moment)
     case criticalError(String)
 
-    /// User friendly description of all operating modes
     var description: String {
         switch self {
         case .loading:
@@ -42,7 +37,9 @@ enum SystemState: Equatable {
         }
     }
 
-    /// Whether this state represents an error condition
+    /// Do not consider empty data as an error state although it could occur from an actual error. The idea here is that
+    /// only true errors
+    /// coming from SwiftData or PocketBase should raise the error state modes of degraded operation and critical error.
     var isErrorState: Bool {
         switch self {
         case .degradedOperation, .criticalError:
@@ -52,7 +49,9 @@ enum SystemState: Equatable {
         }
     }
 
-    /// Whether this state should show a full content unavailable view
+    /// Only the loading and critical error states correspond to moments when the data is either empty or could be empty
+    /// due to a forced
+    /// data wipe during resync for example.
     var shouldShowContentUnavailable: Bool {
         switch self {
         case .loading, .criticalError:
@@ -62,7 +61,8 @@ enum SystemState: Equatable {
         }
     }
 
-    /// Whether this state should disable UI components to prevent race conditions
+    /// The loading state should always disable UI components so users cannot accidently mess up async processes by
+    /// interacting with buttons and modals when operations are running.
     var shouldDisableUI: Bool {
         if case .loading = self { return true }
         return false
@@ -70,7 +70,11 @@ enum SystemState: Equatable {
 
     // MARK: - View Builders
 
-    /// Returns the appropriate ContentUnavailableView for the current state
+    /// Returns the appropriate ContentUnavailableView for the current state. At many times I have had to reimplement
+    /// this without using this helper
+    /// per view so it might be worth removing in the future or making more intelligent.
+    ///
+    /// TODO: Look into usage to simplify or remove entirely.
     @ViewBuilder
     func contentUnavailableView(action: @escaping () async -> Void) -> some View {
         // .normal and .degradedOperation do not use this view since content is available

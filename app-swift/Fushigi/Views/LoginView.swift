@@ -8,23 +8,21 @@
 import AuthenticationServices
 import SwiftUI
 
-/// Displays user login form
+/// Displays user login form with the ability to authenticate based on OAuth and email. A user creation interface
+/// is provided as well for new users. Switching logic between the PROD and DEMO mode versions of Fushigi
+/// is spliced in here. All authentication is provided by PocketBase and sensitive tokens are stored in the Apple
+/// Keychain.
+///
+/// TODO: Better user authentication creation error checking
+/// TODO: Add popular OAuth account methods
+/// TODO: Fix user creation, OAuth routes (untested and likely broken)
 struct LoginView: View {
     // MARK: - Published State
 
-    /// Manager object for user authentication
     @ObservedObject var authManager: AuthManager
-
-    /// User email
     @State private var email = ""
-
-    /// User password
     @State private var password = ""
-
-    /// Control to show different views while authentication is running asynchronously
     @State private var isAuthenticating = false
-
-    /// Message store for errors to display to users for UI/UX
     @State private var errorMessage: String?
 
     // MARK: - Init
@@ -43,7 +41,6 @@ struct LoginView: View {
 
     // MARK: - Computed Properties
 
-    /// Computed control to disable login during authentication or when running demo mode
     private var shouldDisableLogin: Bool {
         if isAuthenticating {
             return true
@@ -54,7 +51,6 @@ struct LoginView: View {
         return false
     }
 
-    /// Computed control to disable textboxes during authentication or when running demo mode
     private var shouldDisableInput: Bool {
         if isAuthenticating {
             return true
@@ -189,7 +185,6 @@ struct LoginView: View {
 
     // MARK: - Helper Methods
 
-    /// Authentication error handler and caller for OAuth
     private func handleAppleSignIn(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
@@ -215,7 +210,6 @@ struct LoginView: View {
         }
     }
 
-    /// Authentication wrapper for OAuth sign in
     private func authenticateWithApple(identityToken: String, userID: String) {
         isAuthenticating = true
         errorMessage = nil
@@ -226,12 +220,11 @@ struct LoginView: View {
             let result = await postAppleAuthRequest(request)
 
             await MainActor.run {
-                handleAuthResult(result)
+                handleAuthResponse(result)
             }
         }
     }
 
-    /// Authentication wrapper for OAuth sign in
     private func handleEmailSignIn() {
         guard !email.isEmpty, !password.isEmpty else { return }
 
@@ -244,13 +237,12 @@ struct LoginView: View {
             let result = await postEmailAuthRequest(request)
 
             await MainActor.run {
-                handleAuthResult(result)
+                handleAuthResponse(result)
             }
         }
     }
 
-    /// Authentication error handler for decoding database login response
-    private func handleAuthResult(_ result: Result<AuthResponse, AuthError>) {
+    private func handleAuthResponse(_ result: Result<AuthResponse, AuthError>) {
         isAuthenticating = false
 
         switch result {

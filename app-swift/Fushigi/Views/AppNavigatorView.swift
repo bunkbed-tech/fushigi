@@ -10,25 +10,28 @@ import SwiftUI
 
 // MARK: - Navigation View Wrapper
 
-/// Main navigation container with adaptive layout for tabs and split view
+/// Simplify the overall app navigation across platforms. Use a container with adaptive layout for tabs and split view
+/// for MacOS. This was
+/// done because a Navigation Split View looks great on MacOS (and iPad) but terrible on mobile iOS. Tabs is a much more
+/// user friendly
+/// UX pattern. This navigator is used to clean switch between the two and define the toolbar that should persist across
+/// all views.
 struct AppNavigatorView: View {
     // MARK: - Published State
 
-    /// Responsive layout detection for adaptive navigation structure
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
-    /// Currently active application section, coordinating tab/sidebar selection
+    #if os(macOS)
+        @Environment(\.openSettings) private var openSettings
+    #endif
     @State private var selectedView: MainView? = .practice
-
-    /// Shared search query state for views that support content filtering
+    /// Search query text binding provided from parent view search toolbar
     @State private var searchText: String = ""
-
-    /// Profile sheet presentation state (iOS only)
+    /// Controls whether the users account pops up as a sheet  (iOS only)
     @State private var showProfile = false
 
     // MARK: - Computed Properties
 
-    /// Determines whether to use compact navigation patterns (tabs vs split view)
+    /// Flag to get iPadOS to utilize iOS features vs MacOS features based on window size
     var isCompact: Bool {
         horizontalSizeClass == .compact
     }
@@ -142,7 +145,8 @@ struct AppNavigatorView: View {
         .navigationTitle(selectedView?.id ?? "Fushigi")
     }
 
-    /// Unified account/settings button for both platforms
+    /// Unified account/settings button for both platforms used in order to either open as a sheet or a
+    /// separate window
     @ToolbarContentBuilder
     private var profileToolbarButton: some ToolbarContent {
         #if os(iOS)
@@ -152,11 +156,23 @@ struct AppNavigatorView: View {
         #endif
 
         ToolbarItem(placement: placement) {
-            AccountButton(showProfile: $showProfile)
+            Button("Account", systemImage: "person.circle") {
+                #if os(macOS)
+                    openSettings()
+                #else
+                    showProfile = true
+                #endif
+            }
         }
     }
 
-    /// Returns the appropriate view for each app section
+    /// Call the exact view for the selected tab/navigation and add a nice mostly transparent linear gradient
+    /// as a background to make the app feel more friendly and modern for users. This also makes things
+    /// look nicer with Liquid Glass.
+    ///
+    /// Note that there is weird MacOS behavior requiring forcing the toolbar to be see through in order to
+    /// have the linear gradient show up behind the top nav toolbar (something that doesn't happen on iOS
+    /// already by default).
     @ViewBuilder
     private func decoratedView(for view: MainView) -> some View {
         Group {
@@ -187,7 +203,11 @@ struct AppNavigatorView: View {
 
     // MARK: - Helper Methods
 
-    /// Application sections with navigation metadata
+    /// Defines the main navigatons of the app across all platforms, namely a place to practice via writing journal
+    /// entries,
+    /// a history of all journal entries, a reference page to view detailed grammar information, and a place to search
+    /// the
+    /// app overall.
     enum MainView: String, Identifiable, CaseIterable {
         case practice = "Practice"
         case journal = "Journal"
@@ -196,7 +216,6 @@ struct AppNavigatorView: View {
 
         var id: String { rawValue }
 
-        /// System icon name for navigation
         var icon: String {
             switch self {
             case .practice: "pencil.and.scribble"
@@ -206,7 +225,8 @@ struct AppNavigatorView: View {
             }
         }
 
-        /// Flag to hide global search bar for some NavigationLinks in MacOS/iPadOS views
+        /// Flag to hide global search bar for some NavigationLinks in MacOS/iPadOS views.
+        /// TODO: Fix this, the search bar still shows up on the .practice page.
         var supportsSearch: Bool {
             switch self {
             case .practice: false

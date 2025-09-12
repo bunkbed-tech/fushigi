@@ -9,28 +9,22 @@ import SwiftUI
 
 // MARK: - Grammar Table
 
-/// Responsive table component for displaying grammar points with adaptive layouts
+/// Responsive table component for displaying grammar points with adaptive layouts. The two views are either
+/// a fully functional table on MacOS and iPad, or a simple single column list on iOS. Rather than being platform
+/// dependent, it is "compact" dependent. Pull to refresh is currently implemented, although the UX of it is a bit
+/// janky with it being too easy to cancel the refresh and result in an out of sync error message.
 struct GrammarTable: View {
     // MARK: - Published State
 
-    /// Centralized grammar data repository with synchronization capabilities
     @EnvironmentObject var grammarStore: GrammarStore
-
-    /// Currently selected grammar point ID for Table selection
     @State private var selectedGrammarID: String?
-
-    /// Controls inspector visibility
-    @Binding var showingInspector: Bool
+    @Binding var showDetails: Bool
 
     // MARK: - Init
 
-    /// Grammar points to display in table
     let grammarPoints: [GrammarPointLocal]
-
-    /// Layout mode indicator for responsive design
+    /// Flag to get iPadOS to utilize iOS features vs MacOS features based on window size
     let isCompact: Bool
-
-    /// Refresh callback for pull-to-refresh functionality
     let onRefresh: () async -> Void
 
     // MARK: - Main View
@@ -66,7 +60,7 @@ struct GrammarTable: View {
                     .contentShape(.rect)
                     .onTapGesture {
                         grammarStore.selectedGrammarPoint = point
-                        showingInspector = true
+                        showDetails = true
                     }
                 }
             } else {
@@ -92,7 +86,7 @@ struct GrammarTable: View {
                 .onChange(of: selectedGrammarID) { _, new in
                     grammarStore.selectedGrammarPoint = grammarStore.getGrammarPoint(id: new)
                     if new != nil {
-                        showingInspector = true
+                        showDetails = true
                     }
                 }
             }
