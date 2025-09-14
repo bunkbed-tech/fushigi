@@ -1,0 +1,266 @@
+{
+	"advice-obligation": [
+		{
+			"usage": "〜といいです",
+			"meaning": "giving advice",
+			"context": "Appropriate for informal and moderately formal discussions, but might be too casual for highly formal or respectful settings.",
+			"tags": ["conditional", "suggestion", "辞書形"],
+			"notes": "Use 〜といいです after the dictionary form of a verb or a noun followed by だ. Common mistake is using 〜といいです to sound authoritative, which can come off as rude.",
+			"nuance": "〜といいです expresses a light advice or a suggestion, carrying a tone of goodwill or hope.",
+			"examples": [
+				{
+					"japanese": "スキーをしたいので、札幌へ行くといいです",
+					"english": "If you want to ski, it would be good to go to Sapporo."
+				},
+				{
+					"japanese": "この食べ物は辛いので、牛乳を飲むといいです",
+					"english": "This food is spicy, so it would be good to drink some milk."
+				}
+			]
+		},
+		{
+			"usage": "〜ければなりません",
+			"meaning": "must not do",
+			"context": "Polite, more suitable for formal and public scenarios.",
+			"tags": ["conditional", "polite", "ナイ形"],
+			"notes": "Mostly used in written form; in casual conversation, ないといけない is more common. Beware not to confuse it with 〜なければならない which means 'must do'.",
+			"nuance": "Expresses strong obligation or prohibition, often used in formal or professional situations.",
+			"examples": [
+				{
+					"japanese": "金曜日までに宿題をしなければなりません",
+					"english": "I have to do my homework by Friday."
+				},
+				{
+					"japanese": "母は私に野菜を食べなければなりませんと言っていました",
+					"english": "My mother used to tell me that I had to eat vegetables."
+				},
+				{
+					"japanese": "クラスのベルが鳴る前に来ることになっています",
+					"english": "You are supposed to arrive before the class bell rings."
+				},
+				{
+					"japanese": "今冬両親の家へ行かないことになっているんです",
+					"english": "I have decided not to go to my parents' house this winter."
+				}
+			]
+		},
+		{
+			"usage": "〜ことになっています",
+			"meaning": "something has been decided (plan, rules) out of your control",
+			"context": "Formal, commonly found in written language and formal speeches; less common in casual conversation.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Attach to the dictionary or ナイ form of verbs; don't use for personal decisions or spontaneous events. Mistakenly used to express personal decisions or future intentions, instead of decisions beyond one's control.",
+			"nuance": "Implies a rigid rule or decisions made by others, often with a sense of formality or obligation.",
+			"examples": [
+				{
+					"japanese": "来月から東京に転勤することになっています",
+					"english": "I am scheduled to be transferred to Tokyo from next month."
+				},
+				{
+					"japanese": "ここでは写真を撮らないことになっています",
+					"english": "Taking pictures is not allowed here."
+				}
+			]
+		},
+		{
+			"usage": "〜ものだ",
+			"meaning": "should be; this type of thing",
+			"context": "Common in spoken and written language; Often used in reminiscing or giving advice, making it versatile across informal and formal contexts.",
+			"tags": ["explanation", "辞書形", "ナイ形"],
+			"notes": "Use 〜ものだ with dictionary-form verbs for habits or should-be situations, and with 〜ない form for urgency or regret. Don’t confuse 〜ものだ with 〜ものではない; the first implies expectation or habit, while the second denies the identifying characteristics of something.",
+			"nuance": "〜ものだ has a mood of nostalgia, reminiscence, or urgency—often used when expressing things that should be, habits or customs, or recalling past experiences.",
+			"examples": [
+				{
+					"japanese": "人との約束に遅れそうな時は、伝えるものだ",
+					"english": "When you're likely to be late for an appointment with someone, you should let them know."
+				},
+				{
+					"japanese": "たくさんの人の前で話すのは、誰でも心配するものだよ",
+					"english": "Speaking in front of many people is something that anyone would worry about."
+				}
+			]
+		},
+		{
+			"usage": "〜こと",
+			"meaning": "this is specifically a command to do something",
+			"context": "Suitable for written directives, formal commands, or strict rules, not for polite or casual speech.",
+			"tags": [
+				"explanation",
+				"imperative",
+				"辞書形",
+				"ナイ形",
+				"noun-modifier"
+			],
+			"notes": "Used with the dictionary or ナイ形 of verbs, but avoid using it in daily conversations as it might sound too harsh. Remember, don't use it with い adjectives, and beware of the harsh tone, not suitable for requests or casual conversations.",
+			"nuance": "〜こと implies a strong command, often used in public signs or procedural instructions where emotional context is typically formal and impersonal.",
+			"examples": [
+				{
+					"japanese": "避難の際は、エレベーターを使用しないこと",
+					"english": "Do not use the elevator in case of evacuation."
+				},
+				{
+					"japanese": "試験の時は辞書を使わないこと",
+					"english": "Do not use a dictionary during the test"
+				}
+			]
+		},
+		{
+			"usage": "〜ことになった",
+			"meaning": "something decided by someone else, or everyone (not just you)",
+			"context": "Neutral and formal contexts; used in reporting events, rules, or communally decided actions.",
+			"tags": [
+				"change",
+				"passive-voice",
+				"nominalization",
+				"辞書形",
+				"ナイ形",
+				"i-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Attach it after a verb or adjective to denote a decided plan or fact; edit verb/adjective based on tense or formality. Misuse occurs when learner treats it as their own decision; it's typically someone else's or a collective decision.",
+			"nuance": "Implies a decision, often made by people other than the speaker, affecting him/her in some way.",
+			"examples": [
+				{
+					"japanese": "みんなで相談して、バーベキューは７００円という位ことになった",
+					"english": "After discussing with everyone, we decided that the barbecue would be about 700 yen."
+				},
+				{
+					"japanese": "希望していた奨学金がもらえることになった",
+					"english": "I have been granted the scholarship I was hoping for"
+				}
+			]
+		},
+		{
+			"usage": "〜ことはない",
+			"meaning": "there's no need to",
+			"context": "Neutral to informal, not commonly used in highly respectful or formal situations.",
+			"tags": ["fixed-expression", "negation", "辞書形"],
+			"notes": "Used after the dictionary form of a verb, for situations you deem to not require a certain action. Don't use it when giving direct advice, as it can seem dismissive or overly-commanding.",
+			"nuance": "Emotional distance or dismissiveness is often conveyed, implying that the action is unnecessary or the situation won't occur.",
+			"examples": [
+				{
+					"japanese": "またチャンスあるよ。不安になることはない",
+					"english": "There will be another chance. There's no need to worry."
+				},
+				{
+					"japanese": "私のを貸してあげるから、わざわざスーツケースを買うことはない",
+					"english": "You don't have to go out of your way to buy a suitcase, I'll lend you mine."
+				}
+			]
+		},
+		{
+			"usage": "〜たまらない",
+			"meaning": "can't help but to ___",
+			"context": "",
+			"tags": ["likelihood", "テ形"],
+			"notes": "",
+			"nuance": "Unable to generate detailed notes",
+			"examples": [
+				{
+					"japanese": "私の部屋は窓もないし、エアコンもないので、夏は暑くてたまらない",
+					"english": "My room has no windows or air conditioning, so it's unbearably hot in the summer."
+				},
+				{
+					"japanese": "アルバイトが疲れてたまらない。もうやめたい。",
+					"english": "I'm unbearably tired from the part-time job. I want to quit already."
+				}
+			]
+		},
+		{
+			"usage": "〜ではいられない",
+			"meaning": "can't help but to ___; cannot resist",
+			"context": "Usable in both casual and polite contexts; more frequently observed in written Japanese or formal speech.",
+			"tags": [
+				"limitation",
+				"sentence-final",
+				"fixed-expression",
+				"must",
+				"ナイ形"
+			],
+			"notes": "Attach ではいられない to negative ない-form of verbs to express 'can't help but do'. Remember not to use で in positive statements. This form only works with negative verbs.",
+			"nuance": "〜ではいられない implies a strong uncontrollable urge or necessity; it conveys feelings of desperation or lack of choice.",
+			"examples": [
+				{
+					"japanese": "私は、新しいゲームが発売されると、買わないではいられません",
+					"english": "Whenever a new game is released, I can't help but buy it."
+				},
+				{
+					"japanese": "この国の日中はとても暑いので、昼寝をせずにはいられないそうです",
+					"english": "It is said that it's so hot during the day in this country, one cannot help but take a nap."
+				}
+			]
+		},
+		{
+			"usage": "〜ことだ",
+			"meaning": "should, ought, giving advice",
+			"context": "Used in both casual and formal contexts, but sounds more authoritative or teacher-like.",
+			"tags": ["suggestion", "advisory", "辞書形", "ナイ形"],
+			"notes": "Generally follows the dictionary or ない form of a verb; not used with です or ます verbs. Misuse of tense continuity, i.e., using 〜ことだ in the past tense or with non-action verbs is incorrect.",
+			"nuance": "〜ことだ suggests a strong recommendation or advice, often implying a sense of urgency or importance.",
+			"examples": [
+				{
+					"japanese": "自分一人ではどうしていいかわからない時は、誰かに聞くことだよ。",
+					"english": "When you don't know what to do on your own, you should ask someone."
+				},
+				{
+					"japanese": "太りたくないなら、毎日散歩することだ。",
+					"english": "If you don't want to gain weight, you should take a walk everyday."
+				}
+			]
+		},
+		{
+			"usage": "〜べきだ・べきではない・べき「N」",
+			"meaning": "should; shouldn't",
+			"context": "Frequent in written language or formal speech; implies speaker's authority.",
+			"tags": ["辞書形"],
+			"notes": "Use after dictionary form of verbs, but for nouns and な-adjectives, use「だ」as in「だべきだ」. Don’t use べき after the て-form or the ます-form; use the dictionary form instead.",
+			"nuance": "Expresses a strong suggestion or opinion, potentially seen as bossy or know-it-all.",
+			"examples": [
+				{
+					"japanese": "電車やバスの中では、お年寄りに席を譲るべきだ。",
+					"english": "One should give up their seat to the elderly on trains and buses."
+				},
+				{
+					"japanese": "初めて会った女性に年齢を聞くべきではない。",
+					"english": "You should not ask a woman her age when you meet her for the first time."
+				}
+			]
+		},
+		{
+			"usage": "〜より他ない・〜より他しかたがない",
+			"meaning": "have no choice but to; must",
+			"context": "Formal yet emotionally intense, suitable for serious conversations, sometimes found in written language.",
+			"tags": ["辞書形"],
+			"notes": "Use it after the dictionary form of verbs, usually focusing on unwanted or last resort actions. Mistakenly used in positive or neutral situations, it's intended for unwanted necessity.",
+			"nuance": "Expresses a compelling need or lack of alternatives, often used in a sense of urgency or desperation.",
+			"examples": [
+				{
+					"japanese": "誰も代わりにやってくれる人がいないので、自分でやる他ない。",
+					"english": "Since there's no one who can do it in my stead, I have no choice but to do it myself."
+				},
+				{
+					"japanese": "ミスをしたのは私なのだから、謝るより他しかたがないだろう。",
+					"english": "Since I was the one who made the mistake, I have no other choice but to apologize."
+				}
+			]
+		},
+		{
+			"usage": "〜ざるを得ない",
+			"meaning": "don't want to, but have to",
+			"context": "Generally formal and used more often in written rather than spoken Japanese.",
+			"tags": ["ナイ形"],
+			"notes": "Always conjugate the verb preceding 〜ざるを得ない into its negative form. Common mistakes include using casual negative forms incorrectly or singular subjects when plural is required.",
+			"nuance": "Emphasizes reluctance and the inevitability of an undesired action.",
+			"examples": [
+				{
+					"japanese": "髪を伸ばしてみたいが、校則があるので髪を切らざるを得ない。",
+					"english": "I want to grow my hair out, but because of school rules, I have no choice but to cut it."
+				},
+				{
+					"japanese": "歴史的な建物なのでできれば保存したい。だが、古くなって危険なので、潰さざるを得ない。",
+					"english": "Ideally, I'd like to preserve it since it is a historical building. However, it is old and dangerous, so it must be demolished."
+				}
+			]
+		}
+	]
+}

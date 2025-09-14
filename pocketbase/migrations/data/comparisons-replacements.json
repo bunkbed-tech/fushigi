@@ -1,0 +1,229 @@
+{
+	"comparisons-replacements": [
+		{
+			"usage": "〜に比べて",
+			"meaning": "comparisons; use と instead for direct opposites",
+			"context": "Mostly used formally in academic, professional, or polite discourse.",
+			"tags": ["comparative", "noun-modifier"],
+			"notes": "Commonly used in discussions or essays to contrast different entities, not suitable for direct opposition. Don't mistake 〜に比べて (compared to) for と違って (different from) or use it for direct opposites.",
+			"nuance": "〜に比べて subtly suggests the speaker's preference or sentiment towards one thing over the other.",
+			"examples": [
+				{
+					"japanese": "東京に比べて、寒くて乾燥した場所だね",
+					"english": "Compared to Tokyo, it's a cold and dry place, isn't it?"
+				},
+				{
+					"japanese": "田舎は都会に比べて、不便です",
+					"english": "Compared to the city, the countryside is inconvenient."
+				}
+			]
+		},
+		{
+			"usage": "〜に代わって",
+			"meaning": "in place of; in substitute of",
+			"context": "Mostly used in formal, written, or professional contexts; avoid casual colloquial application.",
+			"tags": ["spatial", "description", "comparative", "noun-modifier"],
+			"notes": "It fits situations of substitution, especially in formal events or roles, and is not used for casual daily substitutions. Mistakenly used for trivial replacements; it instead underscores significant or responsible substitutions.",
+			"nuance": "「〜に代わって」indicates replacement and often holds an undercurrent of responsibility or duty in the context.",
+			"examples": [
+				{
+					"japanese": "紙に代わって、タブレットが使われるようになった",
+					"english": "Tablets have come to be used in place of paper."
+				}
+			]
+		},
+		{
+			"usage": "〜に反して",
+			"meaning": "contrary to; opposite to; opposite of 通り",
+			"context": "Can be used in both casual and formal speech, but most commonly seen in written language or formal contexts.",
+			"tags": ["description", "conjunctive", "noun-modifier"],
+			"notes": "Use 〜に反して to express contradiction or opposition; best used when shocking or unexpected results occur. Don't use 〜に反して when simply comparing differences; it's only for situations where standard conventions or expectations are violated.",
+			"nuance": "〜に反して is used to express a contrast between an expectation, principle or norm and an actual outcome, often with a sense of disappointment or surprise.",
+			"examples": [
+				{
+					"japanese": "親の期待に反して、彼はDJになった",
+					"english": "Contrary to his parents' expectations, he became a DJ."
+				}
+			]
+		},
+		{
+			"usage": "〜（の代わりに・に代わって）",
+			"meaning": "in place of; in substitute of",
+			"context": "Formal and informal, often used in workplace or educational settings when talking about duties or responsibilities.",
+			"tags": ["conjunctive", "description", "noun-modifier"],
+			"notes": "「の代わりに」 can be used for both people and objects, but 「に代わって」 is usually used for people. Confusing with similar expressions like 〜ために or 〜ように. Unlike these, using 〜の代わりに implies a replacement, not a purpose or goal.",
+			"nuance": "Expresses replacing, substitution, or standing in for someone else, often with an undertone of responsibility or duty.",
+			"examples": [
+				{
+					"japanese": "ノートの代わりにスマホにメモした",
+					"english": "I took notes on my smartphone instead of a notebook."
+				},
+				{
+					"japanese": "タホに代わってソダさんが係ことになった",
+					"english": "Mr. Soda has taken over Taho's responsibilities"
+				}
+			]
+		},
+		{
+			"usage": "〜に対して",
+			"meaning": "towards; compared to; whereas",
+			"context": "This is a formal expression suitable for written language and formal speech.",
+			"tags": ["comparative", "noun-modifier"],
+			"notes": "Use 〜に対して when contrasting situations, respond to something or someone, or express attitudes/treatment to a specific object or person. A common mistake is confusing 〜に対して with 〜にたいして, which has a different meaning and usage.",
+			"nuance": "〜に対して conveys a sense of comparison, contrast or targeted action, often with a hint of criticism or opposition.",
+			"examples": [
+				{
+					"japanese": "長男が神経質であるのに対して、次男は呑気な性格だ",
+					"english": "While the eldest son is neurotic, the second son has a carefree personality."
+				},
+				{
+					"japanese": "このクラスには、女子学生が１５人いるのに対して、男子学生は３人しかいません",
+					"english": "In this class, there are 15 female students as opposed to only 3 male students."
+				}
+			]
+		},
+		{
+			"usage": "〜と言うより",
+			"meaning": "rather than saying ___, ___",
+			"context": "Both casual and polite conversation, but avoid in formal written text.",
+			"tags": ["contrast", "quotation", "普通形"],
+			"notes": "Follow format 'Aと言うよりB' to effectively contrast and refine ideas, as in 'less like A, more like B'. Avoid using this structure to express strict comparison or preferences, as it indicates a rectification of an initial thought.",
+			"nuance": "～と言うより is used to correct or amend a preceding statement; implies speaker's judgment or perspective.",
+			"examples": [
+				{
+					"japanese": "この絵はとても細かいところまで描かれていて、絵と言うよりまるで写真のすうです",
+					"english": "This painting is drawn in such detail it looks more like a photograph than a painting."
+				}
+			]
+		},
+		{
+			"usage": "〜一方（で）",
+			"meaning": "meanwhile; on the other hand",
+			"context": "Fits typically in formal and written language, may sound unnatural in casual speech.",
+			"tags": [
+				"temporal",
+				"contrast",
+				"enumeration",
+				"普通形",
+				"ナ形容詞",
+				"noun-modifier",
+				"na-adjective-modifier"
+			],
+			"notes": "Use after verbs in their dictionary form or 'na' adjectives/nouns + 'na', not suitable for 'i' adjectives. Avoid using with 'i' adjectives; many learners mistakenly do so.",
+			"nuance": "Indicates two contrasting or concurrent actions or states; often involves a negative implication or comparison.",
+			"examples": [
+				{
+					"japanese": "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する",
+					"english": "The climate in Tokyo is humid in the summer, while it is dry in the winter."
+				}
+			]
+		},
+		{
+			"usage": "どちらかというと",
+			"meaning": "if I had to say; if I had to pick something",
+			"context": "Formal situation; suitable for both writing and speech, but avoid using in highly casual contexts.",
+			"tags": ["fixed-expression"],
+			"notes": "Follow 'どちらかというと' immediately with the preferred choice out of two possibilities. Don't imply a clear choice, this phrase relays a vague or weak preference.",
+			"nuance": "Emphasizes one's preference or inclination when forced to choose between options, but suggests the choice isn't strong or decided.",
+			"examples": [
+				{
+					"japanese": "どちらかと言うと和食かなあ",
+					"english": "If I had to choose, I'd probably say Japanese food."
+				},
+				{
+					"japanese": "今日は金曜日だし、どちらかというと、居酒屋に行きたいかな",
+					"english": "Since today is Friday, I'd rather go to an izakaya, I guess."
+				}
+			]
+		},
+		{
+			"usage": "〜ばかりに",
+			"meaning": "instead of, substitute, the opposite also, this too",
+			"context": "Though not very colloquial, 〜ばかりに is not limited to formal contexts; can be used in casual speech.",
+			"tags": [
+				"contrast",
+				"enumeration",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Use this pattern after verbs, 'i' adjectives, or 'na' adjectives in their plain forms. Don't use 〜ばかりに interchangeably with 〜ばかりだ; they have different connotations.",
+			"nuance": "〜ばかりに indicates a negative outcome due solely to a specific previous action, with a sense of blaming.",
+			"examples": [
+				{
+					"japanese": "佐藤さんに日本語を教えてもらう代わりに、私は佐藤さんに英語を教えてあげる。",
+					"english": "In exchange for Satou-san teaching me Japanese, I teach English to Satou-san."
+				},
+				{
+					"japanese": "パソコンで書いた手紙は、文字が読みやすい代わりに、温かみがないように思います。",
+					"english": "I feel that letters written on a computer, while easier to read, lack a sense of warmth."
+				}
+			]
+		},
+		{
+			"usage": "〜反面",
+			"meaning": "while; on the other hand (can't be too opinionated?)",
+			"context": "Neutral to formal situation, often used in written language and formal speech.",
+			"tags": [
+				"contrast",
+				"affirmation",
+				"negation",
+				"辞書形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Attach 〜反面 to dictionary form of verbs, na-adjectives with a 'na', and nouns. Don't use with i-adjectives, or to express personal opinions.",
+			"nuance": "〜反面 contrasts two sides of a situation, often revealing an unexpected or paradoxical aspect.",
+			"examples": [
+				{
+					"japanese": "就職活動は準備が大変である反面、自分自身を知るチャンスでもある。",
+					"english": "While job hunting is challenging in terms of preparation, it also offers an opportunity to know oneself."
+				},
+				{
+					"japanese": "スマートフォンは日本語を勉強のために便利な反面、ストレスを与える道具でもある。",
+					"english": "While smartphones are convenient for studying Japanese, they can also be a source of stress."
+				}
+			]
+		},
+		{
+			"usage": "〜というか",
+			"meaning": "is more of a; or perhaps I should say; rather than",
+			"context": "Casual, colloquial speech or informal writing; seen as a tad indirect.",
+			"tags": [
+				"subjective",
+				"emotional",
+				"quotation",
+				"contrast",
+				"普通形",
+				"na-adjective-modifer",
+				"noun-modifier"
+			],
+			"notes": "Used after stating something to revise or reconsider it; often used with the plain form of adjectives and verbs. Don't use it in questions or negative sentences; it's not for contrasts between two completely different things.",
+			"nuance": "Expresses hesitation or correction, adding a softer or more indirect tone to what's being said.",
+			"examples": [
+				{
+					"japanese": "元気というか、うるさいよ。",
+					"english": "You're not just lively, you're loud."
+				}
+			]
+		},
+		{
+			"usage": "〜ほど。。。「N」ではない",
+			"meaning": "not as much as this; this is the most",
+			"context": "Neutral; common in both formal and informal language.",
+			"tags": ["辞書形", "noun"],
+			"notes": "Suitable for making comparisons or describing something of the highest degree; often used with negative sentences. Mistakenly using it without a negative expression; Don't use with positive sentences.",
+			"nuance": "Expresses extremity, sometimes with a hint of surprise or exasperation when used in negative statements.",
+			"examples": [
+				{
+					"japanese": "トーストほど美味しいものはないと思う。",
+					"english": "I think there's nothing as delicious as toast."
+				},
+				{
+					"japanese": "アイスホッケーほど面白いsポーツはないと思う。",
+					"english": "I think there's no sport as interesting as ice hockey."
+				}
+			]
+		},
+	]
+}

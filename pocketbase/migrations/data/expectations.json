@@ -1,0 +1,179 @@
+{
+	"expectations": [
+		{
+			"usage": "〜のに、〜",
+			"meaning": "even though ___",
+			"context": "Appropriate in both formal and informal settings; use caution in highly formal written Japanese.",
+			"tags": ["conjunctive", "conditional", "普通形"],
+			"notes": "Use 〜のに、〜 between two clauses having opposite results to their expectations. Don't use past tense before のに, instead use plain form of verbs and adjectives.",
+			"nuance": "Expresses a sense of unexpectedness, disappointment, or regret between two conflicting facts or events.",
+			"examples": [
+				{
+					"japanese": "毎日聴解を練習したのに、日本語が聞き取らない",
+					"english": "Despite practicing listening comprehension daily, I can't understand Japanese."
+				}
+			]
+		},
+		{
+			"usage": "〜はずだ",
+			"meaning": "expectation",
+			"context": "〜はずだ is neutral and can be used in both casual and formal contexts.",
+			"tags": ["combination", "普通形"],
+			"notes": "Use 〜はずだ after verbs, i-adjectives, and na-adjectives in their plain forms to talk about something that should be the case according to the speaker's judgment. Don't confuse 〜はずだ with 〜べきだ. While the former states an expectation based on existing knowledge or information, the latter advises or suggests what should be done.",
+			"nuance": "Expresses a strong belief that something should be the case, often used to express surprise or disappointment when a predicted result doesn't happen.",
+			"examples": [
+				{
+					"japanese": "9時に出れば11時前に到着できるはずだよ",
+					"english": "If you leave at 9, you should be able to arrive before 11."
+				}
+			]
+		},
+		{
+			"usage": "〜はずがない",
+			"meaning": "an action is impossible, no way it will happen",
+			"context": "Common in casual and informal contexts; use cautiously in formal or polite speech due to its emotive tone.",
+			"tags": ["likelihood", "fixed-expression", "普通形"],
+			"notes": "Use it to express confidence in the impossibility of something, not just unlikelihood. Don't confuse with 〜はずだ (should be the case); 〜はずがない suggests impossibility, not expectation.",
+			"nuance": "〜はずがない communicates a strong conviction that an action cannot occur; has a critical or dismissive undertone.",
+			"examples": [
+				{
+					"japanese": "ソダさんは真面目な人だから、ウソをつくはずがない",
+					"english": "Since Mr. Soda is a serious person, he shouldn't tell lies"
+				}
+			]
+		},
+		{
+			"usage": "〜くせに",
+			"meaning": "even though; despite",
+			"context": "Considered casual and informal; use cautiously in formal or highly polite conversations.",
+			"tags": ["negation", "causal", "普通形"],
+			"notes": "Attach くせに after the dictionary form of verbs, i adjectives and nouns, and な for na adjectives. Learners often use it in non-negative contexts or without the proper degree of emotional intensity.",
+			"nuance": "Expresses contradiction between behavior and facts, often implying irritation or criticism.",
+			"examples": [
+				{
+					"japanese": "先輩は「全部やる」と言うくせに、何もしません",
+					"english": "Despite saying 'I'll do everything', the senior doesn't do anything."
+				}
+			]
+		},
+		{
+			"usage": "〜にきまっている",
+			"meaning": "surely bound to; certainly",
+			"context": "Typically informal or colloquial, not suited for formal written communication or polite conversation.",
+			"tags": ["certainty", "change", "普通形"],
+			"notes": "Used after the dictionary form of a verb or an i-adjective. Avoid using 〜にきまっている in situations where doubt or uncertainty is implied.",
+			"nuance": "Expresses a sense of certainty, often with an emotional context of frustration or disbelief.",
+			"examples": [
+				{
+					"japanese": "面接は誰でも好きじゃないにきまっている",
+					"english": "It's a given that nobody likes interviews."
+				},
+				{
+					"japanese": "ソダさんが作った料理なら、美味しいにきまっている",
+					"english": "If it's a dish made by Mr. Sodha, it's bound to be delicious."
+				}
+			]
+		},
+		{
+			"usage": "〜（にしたら・にすれば・にしてみたら）",
+			"meaning": "from the point of view of",
+			"context": "Generally neutral, but somewhat informal or conversational expression; less common in formal writing.",
+			"tags": ["change", "fixed-expression", "conjunctive", "noun-modifier"],
+			"notes": "Commonly used with noun or pronoun before it; verb should be in plain form prior to it. Don't use it to express your own perspective, utilize only to denote other's viewpoint.",
+			"nuance": "Used to express a subjective perspective or assumption, sometimes emphasizing empathy or reconsideration.",
+			"examples": [
+				{
+					"japanese": "学生にしたら、安い食べ物を買うの方がいいだろう",
+					"english": "For students, it would probably be better to buy cheap food."
+				}
+			]
+		},
+		{
+			"usage": "〜つもりだ",
+			"meaning": "think something but it turned out differently",
+			"context": "Frequent use in casual speech; more formal contexts prefer 〜つもりでいた but again implied self-mistake.",
+			"tags": [
+				"change",
+				"contrast",
+				"タ形",
+				"noun-modifier",
+				"テ形いる",
+				"adjective-modifier"
+			],
+			"notes": "Usually used for self-misunderstanding or mistaken behavior rather than questioning others' intentions. Common error is to use this to express future intentions instead of expressing a misconception.",
+			"nuance": "Demonstrates conviction in belief or plans, but indicates an incongruity between expectation and reality.",
+			"examples": [
+				{
+					"japanese": "教科書を鞄に入れたつもりだったんですがないです",
+					"english": "I thought I put the textbook in my bag, but it's not there"
+				}
+			]
+		},
+		{
+			"usage": "〜だけあって",
+			"meaning": "as one would expect; it's natural that",
+			"context": "Frequently used in both casual and formal conversation, but not usually in very formal or written Japanese.",
+			"tags": ["certainty", "change", "普通形"],
+			"notes": "Use after a noun or nominalizer ～の with the connector て to show the reason or cause for some resultant state or condition. Often mistakenly used in negative situations; it should be reserved for positive or neutral outcomes.",
+			"nuance": "～だけあって implies justified expectations towards some attribute or quality, often used when the outcome meets or surpasses expectation.",
+			"examples": [
+				{
+					"japanese": "たくさん練習しただけあって、Aさんのスピーチは素晴らしかった",
+					"english": "As expected from all the practice, Mr./Ms. A's speech was marvelous."
+				}
+			]
+		},
+		{
+			"usage": "〜（からすると・からすれば・から見ると・から見れば）",
+			"meaning": "from the point of view of; analytic/observational",
+			"context": "Used in both formal and informal settings but more common in written language.",
+			"tags": [
+				"judgement",
+				"perspective",
+				"subjective",
+				"conjunctive",
+				"noun-modifier"
+			],
+			"notes": "Attach to plain form of verb, i-adjective, na-adjective, noun. Use からすると/からすれば after a noun for habitual tendencies; から見ると/から見れば for visual implications. Don't use to express other people's perspective or objective facts; don't use interchangeably with にとって.",
+			"nuance": "Expresses personal or subjective analysis/observation, may imply bias depending on context.",
+			"examples": [
+				{
+					"japanese": "テストが必要なのはわかるけど、学生からすると、テストが多いのは面倒臭い",
+					"english": "I understand that tests are necessary, but from a student's perspective, having too many tests is bothersome."
+				}
+			]
+		},
+		{
+			"usage": "〜だけに",
+			"meaning": "as expected, strong reason because (not resulting from quality or nature)",
+			"context": "Frequently used in both formal and casual conversations, as well as in written Japanese.",
+			"tags": ["certainty", "普通形", "noun-modifier", "na-adjective-modifier"],
+			"notes": "Use 〜だけに following nouns or na-adjectives in their dictionary form, or verbs in their plain form. Not to be confused with だけで, which represents sufficiency, or だけど, extensive 'just' or 'simply'; だけに encapsulates higher stakes, expectations.",
+			"nuance": "〜だけに expresses an expected outcome due to a strong reason, often causing a strong emotional reaction.",
+			"examples": [
+				{
+					"japanese": "一年間毎日頑張って勉強しただけに、合格できて本当に嬉しいです",
+					"english": "I'm truly happy to have passed, especially because I worked hard and studied every day for a year."
+				},
+				{
+					"japanese": "やっぱり連休中だけに、人がとても多かったよ",
+					"english": "As I expected, just because it's a consecutive holidays, there were so many people."
+				}
+			]
+		},
+		{
+			"usage": "〜かというと",
+			"meaning": "just when I thought that",
+			"context": "Formal and informal contexts, but not recommended for highly formal settings or written language.",
+			"tags": ["quotation", "concurrent", "contrast", "タ形"],
+			"notes": "Commonly used after a descriptive phrase in the past tense, it often includes a contrastive nuance. Avoid using it in present or future tense as it is generally used to describe past situations.",
+			"nuance": "〜かというと conveys a sense of surprise or change when an expected situation shifts suddenly.",
+			"examples": [
+				{
+					"japanese": "やっと一つ仕事が終わったと思ったら、すぐ次の仕事を頼まれた",
+					"english": "Just when I thought I had finally finished one job, I was asked to do the next one immediately"
+				}
+			]
+		},
+	]
+}

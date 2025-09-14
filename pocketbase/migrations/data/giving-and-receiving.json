@@ -1,0 +1,94 @@
+{
+	"giving-and-receiving": [
+		{
+			"usage": "〜もらえませんか",
+			"meaning": "receiving a favor",
+			"context": "This is considered a polite situation appropriate for superior or unfamiliar relations.",
+			"tags": ["polite", "giving-receiving", "テ形"],
+			"notes": "Use it with te-form verbs to request a favor in a polite, non-forceful way. Confusing it with 〜くれませんか which asks for a favor in a more assertive manner.",
+			"nuance": "Expresses humble requests seeking someone's favor, concurrently implying the speaker's indebtedness.",
+			"examples": [
+				{
+					"japanese": "光を消えてもらえませんか",
+					"english": "Could you turn off the light?"
+				},
+				{
+					"japanese": "結婚式の写真を見せてもらえませんか",
+					"english": "Could you show me your wedding photos?"
+				}
+			]
+		},
+		{
+			"usage": "「」に〜あげます",
+			"meaning": "does it for に/を",
+			"context": "This is a neutral form and can be used in both casual and polite contexts, but avoid for superiors.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Remember to use the te-form (テ形) of the verb before あげます. Don't use this phrase when describing a superior's actions, it's considered poor form and disrespectful.",
+			"nuance": "The phrase 「」に〜あげます is used to express the act of doing a favor or providing help to others, carrying a nuance of kindness or generosity.",
+			"examples": [
+				{
+					"japanese": "ソダさんはタホに釣り旅行の写真を見せてあげます",
+					"english": "Mr. Soda will show Taho the pictures from the fishing trip."
+				},
+				{
+					"japanese": "ソダさんはタホを奥多摩へ連れて行ってあげました",
+					"english": "Mr. Soda took Taho to Okutama."
+				},
+				{
+					"japanese": "タホさんは両親のテレビを治してあげました",
+					"english": "Taho-san fixed his parents' TV for them."
+				}
+			]
+		},
+		{
+			"usage": "「」に〜もらいます",
+			"meaning": "receives from に",
+			"context": "Primarily used in casual situation, though acceptable in more formal speech with careful usage.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Utilize this structure when receiving something directly from someone else. Avoid overlooking the もらいます form requires the verb to be in the て form.",
+			"nuance": "It carries a nuance of gratitude or obligation towards the giver or actor.",
+			"examples": [
+				{
+					"japanese": "タホさんはソダさんに中国語を教えてもらいました",
+					"english": "Taho was taught Chinese by Soda."
+				}
+			]
+		},
+		{
+			"usage": "「」に〜くれます",
+			"meaning": "does it for the speaker (dropped  に usually)",
+			"context": "Used in both casual and formal speech; humble expression when used in business situations.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Use when someone does something for you, placing emphasis on the actor's benevolence. Avoid dropping the に particle when the recipient of the action isn't clear from context.",
+			"nuance": "Expresses a personal favor done by someone else, carrying a sense of gratitude towards that person.",
+			"examples": [
+				{
+					"japanese": "ソダさんが釣り旅行の写真を見せてくれました",
+					"english": "Mr. Soda showed me the pictures from his fishing trip."
+				}
+			]
+		},
+		{
+			"usage": "使役動詞〜（くれます・もらいます）",
+			"meaning": "was told to as a favor / was given permission; に is the grantor",
+			"context": "Use in polite or semi-casual conversations, being careful not to use with someone socially superior.",
+			"tags": ["causal", "giving-receiving", "polite", "テ形", "使役動詞"],
+			"notes": "Remember to use the original verb in the て-form before adding くれます・もらいます, and denote the benefactor with に. Learners often mix up に and を, forgetting that に marks the benefactor rather than the object.",
+			"nuance": "Expresses the speaker receiving a favor by someone's action or permission to do something, often in socially higher position.",
+			"examples": [
+				{
+					"japanese": "母は私に日本語を習わせてくれました",
+					"english": "My mother made me learn Japanese."
+				},
+				{
+					"japanese": "私は母に外で遊ばせてくれませんでした",
+					"english": "My mother did not let me play outside"
+				},
+				{
+					"japanese": "私は先輩に小説を買わせてもらいました",
+					"english": "I had my senior buy a novel for me"
+				}
+			]
+		},
+	]
+}

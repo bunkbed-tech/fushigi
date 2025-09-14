@@ -1,0 +1,76 @@
+{
+	"desires": [
+		{
+			"usage": "〜ほしい・〜もらいたい",
+			"meaning": "something you wish to happen",
+			"context": "Common in both casual and formal contexts, but can sound demanding if not used properly.",
+			"tags": ["combination", "fixed-expression", "テ形"],
+			"notes": "Use with the Verb-て form; for inanimate objects or actions, use ほしい, while ～もらいたい implies receiving a favor or an action. Confusion between ほしい and ～もらいたい, and inappropriate use of the sentence subject.",
+			"nuance": "Expresses a desire as it relates to the speaker's hopes or intentions; slightly more emotional with ～もらいたい.",
+			"examples": [
+				{
+					"japanese": "暑い日が続いています。早く寒くなくてほしい",
+					"english": "The hot days continue. I hope it gets cool quickly."
+				},
+				{
+					"japanese": "みんなレストランに行ってもらいたい",
+					"english": "I want everyone to go to the restaurant."
+				}
+			]
+		},
+		{
+			"usage": "〜なあ",
+			"meaning": "letting someone know your personal thoughts; wondering out loud",
+			"context": "Appropriate for casual, informal social situation; not suitable for polite or formal speech.",
+			"tags": ["appearance", "explanation"],
+			"notes": "Use 〜なあ at the end of a sentence to express internal thoughts or desires silently spoken aloud. Avoid using 〜なあ in formal contexts or with individuals of higher social status; it's informal and personal.",
+			"nuance": "〜なあ expresses deep emotion, longing, desire or consideration often in a wistful, whimsical or nostalgic context.",
+			"examples": [
+				{
+					"japanese": "おなかがすいたなあ、何か食べよう",
+					"english": "I'm hungry, let's eat something."
+				},
+				{
+					"japanese": "この映画、面白そうだったなあ",
+					"english": "This movie looked interesting, didn't it?"
+				},
+				{
+					"japanese": "もしお金があったら、家を買いたいなあ",
+					"english": "If I had money, I would like to buy a house."
+				}
+			]
+		},
+		{
+			"usage": "〜わけにはいかない",
+			"meaning": "wan't to but cant for some reason",
+			"context": "Common in both casual and formal situations, but tends to be avoided in highly formal or written language due to its subjective emotionality.",
+			"tags": ["reasons", "excuse", "negation", "辞書形", "ナイ形"],
+			"notes": "Use with dictionary form or 'nai' form of verbs, indicating a desired action that is not undertaken due to some constraint. Often mistaken with 'cannot do' due to physical inability, 'わけにはいかない' is about situations where one might want to, but can't due to social or moral reasons.",
+			"nuance": "Expresses a strong sense of obligation, social or personal pressure, or an action that shouldn't be done for various reasons.",
+			"examples": [
+				{
+					"japanese": "ちょっと眠いけど、今は授業中なので寝るわけにはいかない。",
+					"english": "I'm a bit sleepy, but I can't sleep because I'm in class right now."
+				}
+			]
+		},
+		{
+			"usage": "〜ようがない",
+			"meaning": "want to but can't; impossible",
+			"context": "Mostly informal, but can be used in polite contexts to emphasize feelings of frustration or regret.",
+			"tags": ["likelihood", "negation", "advanced-usage", "マス形"],
+			"notes": "Used with the verb in its masu-form, and often paired with negatives for full effect. Learners often confuse it with ~たい, which only implies desire without the aspect of impossibility.",
+			"nuance": "Expresses deep desire, yet conveys an inability or impossibility to fulfill it.",
+			"examples": [
+				{
+					"japanese": "これは現代の医学では、治しようがない病気だ。",
+					"english": "This is a disease that modern medicine cannot cure."
+				},
+				{
+					"japanese": "台風で交通機関が全部止まっているので、学校に行きたくても生きようがない。",
+					"english": "Due to the typhoon, all transportation has come to a halt, so even if I want to go to school, there's no way to get there."
+				}
+			]
+		},
+	]
+}

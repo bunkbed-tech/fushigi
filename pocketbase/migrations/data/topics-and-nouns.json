@@ -1,0 +1,262 @@
+{
+	"topics-and-nouns": [
+		{
+			"usage": "〜のが",
+			"meaning": "specifically describing an action turned into a noun",
+			"context": "Neutral; used among different social situations from casual conversation to formal documentation.",
+			"tags": ["nominalization", "辞書形"],
+			"notes": "Used after the dictionary form of verbs and adjectives to turn them into nouns; convenient in complex sentences. Common errors include using the particle を instead of が, or forgetting to use the dictionary form prior.",
+			"nuance": "〜のが emphasizes the object of discussion, adding a subjective feel often used in expressing personal preferences or dislikes.",
+			"examples": [
+				{
+					"japanese": "アニメを見るのが好きです",
+					"english": "I like watching anime."
+				},
+				{
+					"japanese": "スキーをするのが上手です",
+					"english": "You're skillful at skiing"
+				},
+				{
+					"japanese": "長い時間に寝るのが嫌いです",
+					"english": "I don't like to sleep for a long time."
+				}
+			]
+		},
+		{
+			"usage": "〜のは",
+			"meaning": "basic describing an action turned into a noun",
+			"context": "Mainly seen in formal written language; used in spoken language for added emphasis or clarification.",
+			"tags": ["nominalization", "辞書形"],
+			"notes": "Use 〜のは after the dictionary form of a verb to turn it into a noun, essentially encapsulating an action or state. Avoid using 〜のは with な-adjectives and nouns; use 〜なのは instead.",
+			"nuance": "Primarily neutral with slight formal undertones; used for objectifying actions or states to apply further grammar.",
+			"examples": [
+				{
+					"japanese": "ゲームをするのは楽しいです",
+					"english": "Playing games is fun"
+				},
+				{
+					"japanese": "値段が安いのは、トヨタの車です",
+					"english": "The car that is inexpensive is the Toyota."
+				}
+			]
+		},
+		{
+			"usage": "V のは N です",
+			"meaning": "used to choose an option or give an answer",
+			"context": "The formality level is neutral; useful in both casual and formal conversations.",
+			"tags": ["explanation", "普通形"],
+			"notes": "Primarily used for specific selections, showing preference or identifying a specified item/action from multiple options. Often, learners forget to use the nominalizer の to connect the verb and particle は, leading to ungrammatical sentences.",
+			"nuance": "V のは N です adds a tone of finality or confirmation by choosing or providing an answer.",
+			"examples": [
+				{
+					"japanese": "車の値段が安いのはホンダです",
+					"english": "Honda has the cheapest car prices"
+				}
+			]
+		},
+		{
+			"usage": "〜なんて",
+			"meaning": "emphasis on an example",
+			"context": "Casual, fit for informal exchanges and exclamatory remarks among close peers.",
+			"tags": ["explanation", "conditional", "普通形"],
+			"notes": "Used after a noun, verb, or phrase to emphasize that example; often used in casual, emotional or dramatic contexts. Avoid using 〜なんて in formal situations or with people higher in social standing due to its potential negative or exaggerated tone.",
+			"nuance": "〜なんて showcases surprise, emotional intensity, or disdain towards a given example.",
+			"examples": [
+				{
+					"japanese": "新婚旅行がVegasなんて、いいなぁ",
+					"english": "A honeymoon in Vegas, that sounds nice."
+				}
+			]
+		},
+		{
+			"usage": "〜ことで",
+			"meaning": "due to this specific thing",
+			"context": "Neutral to formal, common in both colloquial and formal speech, but frequently used in written text.",
+			"tags": ["explanation", "causal", "普通形"],
+			"notes": "Attach it to short forms of verbs and adjectives; useful for pointing out cause-effect relations. Often confused with 〜から or 〜ので; ことで emphasizes the event, phenomenon or action resulting in a consequence.",
+			"nuance": "Used to explain causal relations with a neutral or slightly formal tone.",
+			"examples": [
+				{
+					"japanese": "寝る前に日記を書くことで、毎日の生活を見直しています",
+					"english": "By writing a diary before going to bed, I reflect on my daily life."
+				}
+			]
+		},
+		{
+			"usage": "〜こと（が・も）ある",
+			"meaning": "this happens, sometimes this happens, this is possible",
+			"context": "Neutral, fits all social contexts but primarily used in casual or informal settings.",
+			"tags": ["nominalization", "fixed-expression", "辞書形", "ナイ形"],
+			"notes": "Used after a verb in the dictionary form or negative form. Mistaking this for specific frequency instead of occasional occurrence or possibility.",
+			"nuance": "Expressing recurring past experiences or potential occurrence of an event.",
+			"examples": [
+				{
+					"japanese": "私はいつも自分で料理を作りますが、たまに作らないことがあります",
+					"english": "I usually cook for myself but occasionally I don't"
+				},
+				{
+					"japanese": "宿題をしているのはたいてい家でする。図書館ですることもあるよ。",
+					"english": "I usually do my homework at home. Sometimes I do it at the library too."
+				}
+			]
+		},
+		{
+			"usage": "〜といえば",
+			"meaning": "speaking of; if it's ___ we're talking about",
+			"context": "Versatile for most settings, but rampant in casual spontaneous speech and less frequent in formal writing.",
+			"tags": ["conditional", "description", "普通形", "noun-modifier"],
+			"notes": "Use 〜といえば when you want to share an anecdote, comment, or information that is of interest or related to the topic being discussed. Avoid using 〜といえば without context or on an unrelated topic, this is not a sentence starter, it's a contextual cue.",
+			"nuance": "〜といえば triggers a reactive, spontaneous memory or subject related to the topic at hand.",
+			"examples": [
+				{
+					"japanese": "もう直ぐ春がくる。春といえば、祭が楽しみだ。",
+					"english": "Spring is coming soon. Speaking of Spring, I'm looking forward to the festival."
+				},
+				{
+					"japanese": "アメリカのお土産というと、「I <3NY」 のT-シャツが一番有名だ",
+					"english": "When it comes to souvenirs from America, the 'I <3 NY' T-shirt is the most famous."
+				}
+			]
+		},
+		{
+			"usage": "〜どころじゃない",
+			"meaning": "not the time for; out of the question",
+			"context": "Found in both casual and formal contexts, more commonly heard in spoken Japanese.",
+			"tags": ["temporal", "description", "辞書形", "noun-modifier"],
+			"notes": "Attach it to dictionary forms of verbs or nouns, but not adjectives. Don't use with adjectives or to express positive events or situations.",
+			"nuance": "Used in situations of urgency or seriousness to express 'not the time for' or 'far from'.",
+			"examples": [
+				{
+					"japanese": "映画を見に行くどころじゃないんだ。ごめんね。",
+					"english": "I'm not in a position to go watch a movie. I'm sorry."
+				},
+				{
+					"japanese": "最近毎日が降っていたので、観光どころじゃなかったんだよ",
+					"english": "Because it's been raining every day recently, sightseeing was the last thing on my mind."
+				}
+			]
+		},
+		{
+			"usage": "〜にしては",
+			"meaning": "considering this; for something thats this; opposite of expectation; more specific than の割りに",
+			"context": "Generally neutral; acceptable in both casual and formal conversations, and writing.",
+			"tags": [
+				"description",
+				"conjunctive",
+				"普通形",
+				"noun-modifier",
+				"adjective-modifer"
+			],
+			"notes": "Use with 接続形 of い-adjectives and verbs, 普通形 of な-adjectives and nouns; switch to 〜なのに for stronger contrast of expectation vs reality. Beginners often forget that 〜にしては requires clauses on both sides; missing the subsequent clause is incorrect.",
+			"nuance": "〜にしては highlights an unexpected result; it carries a slight tone of surprise, subtly implying 'I didn't expect this from/considering...'.",
+			"examples": [
+				{
+					"japanese": "このアパートは便利なところにあるにしては、値段が安い",
+					"english": "Considering its convenient location, this apartment is inexpensive."
+				},
+				{
+					"japanese": "ただの風邪にしては、熱が高いんじゃないかな",
+					"english": "I think the fever is too high for it to be just a cold."
+				}
+			]
+		},
+		{
+			"usage": "〜といったら",
+			"meaning": "can not express how; don't confuse with other いったら forms",
+			"context": "Generally neutral, but usage may lean towards informal or casual conversations due to its emphatic nature.",
+			"tags": ["description", "fixed-expression", "noun-modifier"],
+			"notes": "Use with adjectives or verbs to emphasize expressivity, but avoid using it to refer to possibilities or suppositions. Beware of confusing 〜といったら with 〜と言えば, which introduces a topic instead of amplifying intensity.",
+			"nuance": "〜といったら emphasizes the intensity of an emotion or a situation and is often used to express astonishment, surprise, or displeasure.",
+			"examples": [
+				{
+					"japanese": "妻の美しさと言ったら、言葉では表現できません",
+					"english": "My wife's beauty is beyond words."
+				},
+				{
+					"japanese": "日本料理のおいしさと言ったら、言葉では表現できません",
+					"english": "The deliciousness of Japanese cuisine is beyond words"
+				}
+			]
+		},
+		{
+			"usage": "〜ことに",
+			"meaning": "extremely or especially; think とても",
+			"context": "Common in written language or formal speech; not typically used in casual conversation.",
+			"tags": ["limitation", "タ形", "adjective-modifier"],
+			"notes": "Used with the dictionary form of i-adjectives and ta-form of verbs. Avoid using it with na-adjectives or nouns, and don't confuse with the nominalizer こと.",
+			"nuance": "〜ことに highlights extremity or surprise rather than just intensity; e.g., 'unexpectedly cold' versus 'very cold'.",
+			"examples": [
+				{
+					"japanese": "残縁なことに、昼ご飯を食べよう思ったレストランは休みでした",
+					"english": "Ironically, the restaurant I thought of eating lunch at was closed."
+				}
+			]
+		},
+		{
+			"usage": "〜とは〜（ことだ・と言うことだ）",
+			"meaning": "defining something",
+			"context": "Neutral; suitable for both casual conversation and formal writing.",
+			"tags": [
+				"definition",
+				"fixed-expression",
+				"quotation",
+				"普通形",
+				"noun-modifier"
+			],
+			"notes": "Put a general idea (often a topic of discussion) before とは and a detailed definition after it. Mistakenly using とは for personal opinions, subjective perspectives, or unconfirmed facts.",
+			"nuance": "Used to assertively clarify or define a topic, often emphasizing a significant, previously-unmentioned aspect.",
+			"examples": [
+				{
+					"japanese": "留学とは他の国で勉強することだ",
+					"english": "Studying abroad means studying in another country."
+				}
+			]
+		},
+		{
+			"usage": "〜（に対して・に対する）",
+			"meaning": "in regards to, towards",
+			"context": "Appropriate for formal written and spoken language. Consider using 'にとって' or 'には' for more informal situations.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Use 'に対して' after a noun, pronoun or sentence end (requires 'の'); use 'に対する' for noun-modification. Avoid confusing 'に対して' with 'にとって', which means 'for' or 'from the perspective of'.",
+			"nuance": "Emphasizes a specific direction, object, or point of consideration; can express opposition or contrast.",
+			"examples": [
+				{
+					"japanese": "デパートの店員はお客に対して、丁寧に話します",
+					"english": "The department store clerk speaks politely to customers."
+				}
+			]
+		},
+		{
+			"usage": "〜関して",
+			"meaning": "concerning, related to",
+			"context": "Mostly found in written language and formal speech, not used frequently in casual conversation.",
+			"tags": ["explanation", "conditional", "noun-modifier"],
+			"notes": "Attach 〜関して directly to nouns or noun phrases; don't pair with verbs nor adjectives. Avoid confusion with に関して as 〜関して is less formal; common misplacement of particle の before 〜関して.",
+			"nuance": "〜関して implies a neutral stance with factual or practical discussions, not used for personal feelings or opinions.",
+			"examples": [
+				{
+					"japanese": "私はこの街の歴史に関して図書館で調べてみた。",
+					"english": "I tried researching the history of this city at the library."
+				},
+				{
+					"japanese": "ビザや学費に関することは、学校の事務室に相談してください。",
+					"english": "Please consult with the school office regarding visa and tuition fees."
+				}
+			]
+		},
+		{
+			"usage": "〜にかけては",
+			"meaning": "when it comes to ___, ___　(focus on ability and higher than others)",
+			"context": "Formal and casual, but somewhat assertive, often used in debates, arguments, or playful competitions.",
+			"tags": ["advanced-usage", "comparative", "description", "noun-modifier"],
+			"notes": "Use 〜にかけては after a subject or topic, to express its superiority or excellence in the following context. Often mistakenly used to compare two equal topics instead of emphasizing the superiority of one.",
+			"nuance": "〜にかけては underlines a speaker's emphasis or slightly competitive sense of superiority on a certain topic or ability.",
+			"examples": [
+				{
+					"japanese": "かんさんは人を笑わせることにかけては、クラスで一番だ。",
+					"english": "When it comes to making people laugh, Kansan is the best in the class."
+				}
+			]
+		},
+	]
+}

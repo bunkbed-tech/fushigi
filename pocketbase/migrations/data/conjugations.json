@@ -1,0 +1,217 @@
+{
+	"conjugations": [
+		{
+			"usage": "可能動詞",
+			"meaning": "can be done -- basic potential form",
+			"context": "Both formal and informal contexts; no particular social constraints.",
+			"tags": ["potential-form", "basic-verb-forms"],
+			"notes": "「え」る, られる, できる. In sentence structure, use the particle 'が' not 'を' with potential verbs to indicate the object of a potential action. Confusing potential form with passive form as they may often look similar, but convey different meanings.",
+			"nuance": "Expresses potential, suggesting a speaker's objective belief rather than a subjective wish or hope.",
+			"examples": [
+				{
+					"japanese": "私の犬はずっと遊べる",
+					"english": "My dog can play forever"
+				},
+				{
+					"japanese": "わたしはプログラミングことができる",
+					"english": "I can program"
+				},
+				{
+					"japanese": "私は朝早く起きられない",
+					"english": "I can't wake up early in the morning"
+				}
+			]
+		},
+		{
+			"usage": "〜くて、〜",
+			"meaning": "connecting a negative quality with the rest of a sentence",
+			"context": "Common in both casual and formal situations, but the connotation may be considered slightly negative.",
+			"tags": ["conjunctive", "ナイ形"],
+			"notes": "Use it to link negative adjective clauses and express a causal relationship or reason. Mistaking 〜くて、〜 for a casual version of 'and', it's more nuanced than that, indicating dissatisfaction with the first clause.",
+			"nuance": "The 〜くて、〜 form not only connects ideas, but often suggests a problem or dissatisfaction due to the first clause.",
+			"examples": [
+				{
+					"japanese": "この問題は難しくなくて、簡単です",
+					"english": "This problem is not difficult, it's simple."
+				}
+			]
+		},
+		{
+			"usage": "〜くて ・ 〜で",
+			"meaning": "connects two ideas with adjectives",
+			"context": "Common in both casual and formal Japanese, but particularly noted in conversational contexts.",
+			"tags": ["conjunctive", "adjective-modifer"],
+			"notes": "Used with 'i' and 'na' adjectives, ending with 'kute' or 'de' respectively. Learners often mismatch adjective types, or overuse this form instead of using more descriptive sentences.",
+			"nuance": "〜くて/〜で links adjectives together, emphasizing an emotional or subjective connection between them.",
+			"examples": [
+				{
+					"japanese": "このケーキは甘くて、おいしいです",
+					"english": "This cake is sweet and delicious."
+				},
+				{
+					"japanese": "この部屋は静かで、広いです",
+					"english": "This room is quiet and spacious."
+				}
+			]
+		},
+		{
+			"usage": "〜テ形、〜",
+			"meaning": "giving a reason for what comes next",
+			"context": "Common in both casual conversation and formal writing but tends to be more casual.",
+			"tags": ["causal", "conjunctive", "テ形", "basic-verb-forms"],
+			"notes": "Commonly used to connect two related actions where first action is the reason for the second. Often mistakenly used to express purpose (why an action is performed) unlike English, where it's not appropriate.",
+			"nuance": "Used to express a causal relationship, often implying a direct, immediate cause.",
+			"examples": [
+				{
+					"japanese": "自転車が盗まれて、遅れました",
+					"english": "My bike was stolen, so I was late."
+				},
+				{
+					"japanese": "お酒を飲みすぎて、二日酔いです",
+					"english": "I drank too much alcohol and now I have a hangover."
+				}
+			]
+		},
+		{
+			"usage": "受身形",
+			"meaning": "to be done by; subject is receiver",
+			"context": "Neutral to formal; often seen in news reports and formal writings",
+			"tags": [
+				"giving-receiving",
+				"passive-voice",
+				"basic-verb-forms",
+				"受身形"
+			],
+			"notes": "Typically used when something bad has happened, or when information is reported without any personal involvement Avoid using this form when you're the one doing the action, as it can come off as evasive and overly formal",
+			"nuance": "Expresses action being done to the subject often with a negative connotation or as a neutral reporting verb",
+			"examples": [
+				{
+					"japanese": "タホさんは先生に呼ばれました",
+					"english": "Mr. Taho was called by the teacher"
+				},
+				{
+					"japanese": "私は知らない人に質問を聞かれた",
+					"english": "I was asked a question by someone I don't know"
+				},
+				{
+					"japanese": "財布を盗まれた",
+					"english": "My wallet was stolen"
+				},
+				{
+					"japanese": "今週末からチケットは買われる",
+					"english": "Tickets will be sold from this weekend."
+				},
+				{
+					"japanese": "ハリーポッターはJKローランによって書かれました",
+					"english": "Harry Potter was written by J.K. Rowling"
+				}
+			]
+		},
+		{
+			"usage": "命令形",
+			"meaning": "positive command; super casual",
+			"context": "Super casual, potentially rude if not used with discretion; more common among male speakers.",
+			"tags": ["imperative", "basic-verb-forms", "命令形"],
+			"notes": "Use for casual interactions or with inferiors; must pair with appropriate nonverbal communication to avoid disrespect. Misuse can sound commanding or rude, particularly if speaker-listener relationship is not well established.",
+			"nuance": "命令形 expresses an informal, one-way command or request, often with a stronger tone.",
+			"examples": [
+				{
+					"japanese": "走れ",
+					"english": "Run"
+				},
+				{
+					"japanese": "行け",
+					"english": "Go"
+				}
+			]
+		},
+		{
+			"usage": "〜な",
+			"meaning": "negative command; super casual",
+			"context": "Appropriate in highly casual, in-group settings only.",
+			"tags": ["imperative", "辞書形"],
+			"notes": "Used after the verb in its dictionary form to give strong, casual negative commands, eg. さわるな (Don't touch!) Not to be used in formal or professional contexts, can mistakenly make learner seem rude if misused.",
+			"nuance": "Informal and direct, can be seen as abrupt or rude if not used with close friends or family.",
+			"examples": [
+				{
+					"japanese": "諦めるな",
+					"english": "Don't give up"
+				}
+			]
+		},
+		{
+			"usage": "「あ」せます、させます",
+			"meaning": "basic causative, に receives the command",
+			"context": "Commonly used in both casual and formal settings but can sound commanding.",
+			"tags": ["causal", "giving-receiving", "basic-verb-forms"],
+			"notes": "For group 1 verbs, replace the 'u' ending with 'aseru', and for group 2 verbs, replace the 'ru' with 'saseru'. Frequently confused with the passive voice form; ensure the correct particle に is used with the agent causing the action.",
+			"nuance": "Expresses the act of making or allowing someone do something.",
+			"examples": [
+				{
+					"japanese": "親は子供を塾に通わせます",
+					"english": "Parents send their children to cram school."
+				},
+				{
+					"japanese": "親は子供に野菜を食べさせます",
+					"english": "Parents make their children eat vegetables."
+				},
+				{
+					"japanese": "母親は娘に好きなものを買わせます",
+					"english": "The mother lets her daughter buy whatever she likes."
+				}
+			]
+		},
+		{
+			"usage": "「あ」せられる・「あ」される・させられる",
+			"meaning": "was caused, に gives the command",
+			"context": "Found in both casual and formal contexts, but the use of させられる is more prevalent in formal situations.",
+			"tags": [
+				"causal",
+				"passive-voice",
+				"giving-receiving",
+				"basic-verb-forms",
+				"使役動詞"
+			],
+			"notes": "Remember, the causative passive form is used when there is an agent subject (who causes an action), marked with に. Don't confuse it with the simple passive form; the causative passive includes a causative agent that's causing this action.",
+			"nuance": "Indicates something that someone was made or forced to do, often carrying a negative or reluctant feeling.",
+			"examples": [
+				{
+					"japanese": "私は妻にタバコをやめさせられました",
+					"english": "My wife made me quit smoking"
+				},
+				{
+					"japanese": "私は先輩に酒を飲まされた",
+					"english": "I was made to drink alcohol by my senior"
+				}
+			]
+		},
+		{
+			"usage": "「あ」せる",
+			"meaning": "causative verb from; make, let, cause",
+			"context": "Neutral in situation; acceptable in both formal and casual contexts.",
+			"tags": ["causal", "basic-verb-forms"],
+			"notes": "Used with intransitive verbs; alter final vowel from う-row to あ-row and add せる to form causative. Students often confuse it with passive form verbs or use it where direct action is intended.",
+			"nuance": "「あ」せる adds an act of influence or causing something to occur, often granting permission or enforcing action.",
+			"examples": [
+				{
+					"japanese": "ソダさんは、いつも面白いことを言って、みんなを笑わせる",
+					"english": "Mr. Soda always says interesting things, making everyone laugh"
+				}
+			]
+		},
+		{
+			"usage": "「あ」せられる・「あ」される",
+			"meaning": "to be caused by; に is the causer",
+			"context": "Polite; consider social context and relationship with the 'causer' before usage.",
+			"tags": ["causal", "使役受身形"],
+			"notes": "Commonly used with action verbs in the させられる form; don't use for physical phenomena or uncontrollable circumstances. Mistaking させられる as passive voice; it's causative-passive and implies someone's action caused inconvenience.",
+			"nuance": "Used to express being affected by someone's action, often with a sense of trouble or inconvenience caused.",
+			"examples": [
+				{
+					"japanese": "カリフォルニアの火事になったと言うニュースに驚かされた",
+					"english": "I was surprised by the news that there was a fire in California"
+				}
+			]
+		},
+	]
+}

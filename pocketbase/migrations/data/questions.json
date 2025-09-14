@@ -1,0 +1,188 @@
+{
+	"questions": [
+		{
+			"usage": "何と読みますかー「」と読みます",
+			"meaning": "asking/describing how to read something",
+			"context": "Neutral; Polite and widely used in both casual and formal contexts, educational settings, and language documentation.",
+			"tags": ["question-form", "fixed-expression"],
+			"notes": "Use it in the format  ____を何と読みますか to ask how to read something; answer with ____を「____」と読みます. Learners often erroneously use it for vocabulary they don't understand, not just for reading difficulties.",
+			"nuance": "Mostly used with kanji that one is uncertain how to read, showing a respectful curiosity or need for assistance.",
+			"examples": [
+				{
+					"japanese": "これは何と読みますか",
+					"english": "How do you read this?"
+				},
+				{
+					"japanese": "「」と読みますよ",
+					"english": "It is read as ''."
+				}
+			]
+		},
+		{
+			"usage": "どういう意味ですかー「」という意味です",
+			"meaning": "asking/describing the meaning of a word",
+			"context": "Appropriate in both casual and formal conversation, but mainly used in academic or learning contexts.",
+			"tags": ["question-form", "fixed-expression"],
+			"notes": "Use it when unsure of a word or phrase's meaning, or to explain a term to someone else. Avoid presuming that it's a rhetorical question; it's primarily for actual clarification.",
+			"nuance": "Used neutrally without specific emotional context, it simply seeks or provides clarification on a term's meaning.",
+			"examples": [
+				{
+					"japanese": "「」はどういう意味ですか",
+					"english": "What does 「」mean?"
+				},
+				{
+					"japanese": "「」と言う意味です",
+					"english": "It means ___."
+				},
+				{
+					"japanese": "「」だと言う意味です",
+					"english": "It means that it's ' '."
+				}
+			]
+		},
+		{
+			"usage": "〜ましょうか",
+			"meaning": "invitation or request to do by yourself",
+			"context": "Polite and somewhat formal, best suited for situations requiring deference or respect.",
+			"tags": ["polite", "combination", "favor", "マス形"],
+			"notes": "Use 〜ましょうか to softly offer help or invite action, but not for tasks requiring heavy effort or deep involvement. Avoid using 〜ましょうか for mundane or trivial tasks - it can make the statement sound sarcastic or condescending.",
+			"nuance": "The phrase 〜ましょうか generally connotes a sense of helpfulness, indirectness, and politeness.",
+			"examples": [
+				{
+					"japanese": "レストランに行きましょうか",
+					"english": "Shall we go to the restaurant?"
+				},
+				{
+					"japanese": "家を掃除しましょうか",
+					"english": "Shall we clean the house?"
+				}
+			]
+		},
+		{
+			"usage": "友達言葉の移行形",
+			"meaning": "a friendlier version of ましょう for invitations",
+			"context": "Appropriate for casual conversations or friendly environments, inappropriate for formal or polite context.",
+			"tags": ["volitional-form", "移行形"],
+			"notes": "Commonly employed among close friends, students, or within same-age group. Overuse can imply a lack of politeness or respect when used in formal or hierarchical settings.",
+			"nuance": "It expresses a softer, more casual invite similar to 'let's' in English.",
+			"examples": [
+				{
+					"japanese": "食べよう",
+					"english": "Let's eat"
+				},
+				{
+					"japanese": "行こう",
+					"english": "Let's go"
+				}
+			]
+		},
+		{
+			"usage": "〜たらどうですか",
+			"meaning": "what about this",
+			"context": "Typically used in casual and polite contexts, including friends, coworkers, and seniors but not appropriate for highly formal or authoritative communication.",
+			"tags": ["suggestion", "タ形"],
+			"notes": "It is used with the past form of verbs (た-form) and often ends a sentence. Mistaking it for a past tense form or overusing it in situations calling for stronger statements or commands.",
+			"nuance": "〜たらどうですか provides a suggestion, often as an alternative solution, or from a helper perspective, adding a humble and considerate tone.",
+			"examples": [
+				{
+					"japanese": "留学生の就職について話を聞くのはどうですか",
+					"english": "How about discussing the employment of exchange students?"
+				}
+			]
+		},
+		{
+			"usage": "〜のはどうですか",
+			"meaning": "what about this",
+			"context": "Casual to polite, useful in both conversation and writing, but not in highly formal situations.",
+			"tags": ["question-form", "suggestion", "nominalization", "辞書形"],
+			"notes": "Can be used with both nouns and sentences (when nominalized), best suited for offering alternatives or suggesting changes. Use with non-nominalized sentences won't form a grammatically correct clause, learners often misuse it as a standalone question.",
+			"nuance": "Used when seeking another's thoughts or opinion, creating a non-assertive, casual suggestion or conversation starter.",
+			"examples": [
+				{
+					"japanese": "毎朝ジョギングをするのはどうですか",
+					"english": "How about going for a jog every morning?"
+				}
+			]
+		},
+		{
+			"usage": "〜よね",
+			"meaning": "don't you know?",
+			"context": "It's casual yet polite, making it suitable for conversations among friends, family, or casual settings.",
+			"tags": ["explanation", "combination"],
+			"notes": "Use it at the end of sentences after verbs, adjectives, or nouns to confirm or express an assumption or expectation. Avoid using it in formal situations or when expressing your own opinion; it's not a formal tag question.",
+			"nuance": "〜よね adds emphasis, seeks agreement or confirmation, and has a sense of camaraderie, yet with an underlying assumption that the listener already knows.",
+			"examples": [
+				{
+					"japanese": "このバンド本当にかっこいいよね",
+					"english": "This band is really cool, isn't it?"
+				}
+			]
+		},
+		{
+			"usage": "〜いいんじゃない",
+			"meaning": "giving a recommendation; isn't it?; don't you think?",
+			"context": "Casual, conversational situation; not appropriate in formal or written language.",
+			"tags": ["fixed-expression", "suggestion"],
+			"notes": "Use it primarily in casual conversations to suggest or propose something without pressuring the other person. Avoid overusing it as can sound assertive, and remember not to use it in formal situations or writing.",
+			"nuance": "This phrase is slightly informal and carries nuances of putting forth an idea for consideration in a non-insistent way.",
+			"examples": [
+				{
+					"japanese": "電子辞書を買わないで、スマホを使えばいいんじゃない",
+					"english": "You don't need to buy an electronic dictionary, you can just use your smartphone."
+				}
+			]
+		},
+		{
+			"usage": "〜くれない",
+			"meaning": "won't you do it for me?",
+			"context": "Casual or familiar; avoid using it in formal contexts or with superiors.",
+			"tags": ["favor", "polite", "テ形"],
+			"notes": "Used mostly in casual speech and with verbs of giving and doing; not common in formal or written language. Learners often overuse or use it in inappropriate situations, it can come off as demanding or rude.",
+			"nuance": "Combines denial and request, often used to solicit help; can convey sense of mild frustration or impatience.",
+			"examples": [
+				{
+					"japanese": "消しゴムを忘れたので、貸してくれない？",
+					"english": "I forgot my eraser, could you lend me one?"
+				}
+			]
+		},
+		{
+			"usage": "〜んじゃない",
+			"meaning": "i think this, don't you?",
+			"context": "Typically used in informal and conversational contexts, can sound rough or blunt in formal or polite situations.",
+			"tags": ["question-form", "普通形"],
+			"notes": "When placed at the end of a sentence, 〜んじゃない implies that the speaker believes the preceding statement and seeks the listener's agreement. Misuse often comes from confusing it with the negative form 〜じゃない, when 〜んじゃない is in fact a questioning or confirmatory form.",
+			"nuance": "〜んじゃない is used to seek agreement or confirmation from the listener, often with a subjective and speculative tone.",
+			"examples": [
+				{
+					"japanese": "顔色が悪いけど、大丈夫？早く帰ったほうがいいんじゃない？",
+					"english": "You look pale, are you okay? Wouldn't it be better if you went home early?"
+				},
+				{
+					"japanese": "あのカバンが可愛い。でも高いんじゃない？",
+					"english": "That bag is cute. But isn't it expensive?"
+				}
+			]
+		},
+		{
+			"usage": "のではないでしょうか・じゃないでしょうか",
+			"meaning": "don't you think?",
+			"context": "Mostly formal and polite, with more casual variations like 'じゃない？'.",
+			"tags": [
+				"rhetorical-question",
+				"question-form",
+				"subjective",
+				"questions",
+				"fixed-expression"
+			],
+			"notes": "Use it to express your opinion indirectly, especially when you're unsure or you want the listener to agree. Common mistake is overuse, making all statements seem uncertain; or using it in absolute situations where there's no room for doubt.",
+			"nuance": "This phrase is used to suggest an opinion tentatively or elicit agreement from listener; it adds a question tone.",
+			"examples": [
+				{
+					"japanese": "子供が自由に使ったら、スマホは、危ない目に合うことが多いんじゃないでしょうか",
+					"english": "If children use smartphones freely, don't you think they often encounter dangerous situations?"
+				}
+			]
+		},
+	]
+}

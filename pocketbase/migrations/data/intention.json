@@ -1,0 +1,254 @@
+{
+	"intention": [
+		{
+			"usage": "〜にします",
+			"meaning": "ordering/choosing a specific thing",
+			"context": "Formal when not contracted, casual when contracted. Typically used in ordering things.",
+			"tags": ["conditional", "noun-modifier"],
+			"notes": "Used primarily in situations of choice; it doesn't communicate preference per se. Incorrect use to express preferences or likes. Don't use with actions.",
+			"nuance": "Expresses a decisive choice, sometimes implying careful consideration.",
+			"examples": [
+				{
+					"japanese": "からあげのセットにします",
+					"english": "I'll have the fried chicken set"
+				},
+				{
+					"japanese": "このレストランにしましょう",
+					"english": "Let's choose this restaurant"
+				}
+			]
+		},
+		{
+			"usage": "〜ために",
+			"meaning": "purpose/reason for something",
+			"context": "Polite and formal, but also found in everyday conversation when explaining reasons.",
+			"tags": ["causal", "辞書形", "noun-modifier"],
+			"notes": "When stating a purpose, follow with 辞書形; when explaining cause, use it with a past tense verb/negative form. Confusing the purpose and reason forms of 〜ために, and misuse with casual conversational structures.",
+			"nuance": "~ために often implies a level of intention and planning, whereas in its causative form it denotes an inevitable causative relation.",
+			"examples": [
+				{
+					"japanese": "就職のために、毎日プログラミングを練習しています",
+					"english": "I am practicing programming every day for employment."
+				},
+				{
+					"japanese": "日本語を話すために、日本に来た",
+					"english": "I came to Japan to speak Japanese"
+				}
+			]
+		},
+		{
+			"usage": "〜つもりです",
+			"meaning": "120% sure",
+			"context": "Neutral, but can sound formal in casual settings. Use with discretion.",
+			"tags": ["likelihood", "certainty", "辞書形", "ナイ形"],
+			"notes": "Use when expressing a strong intention or plan, but not when asking if someone else has plans. Do not use with questions or with conjectural form.",
+			"nuance": "Stresses strong intention or conviction, but can sound overconfident or arrogant if not used properly.",
+			"examples": [
+				{
+					"japanese": "8月に友達と一緒に大阪へ行くつもりです",
+					"english": "I plan to go to Osaka with my friends in August."
+				},
+				{
+					"japanese": "今年私の母国へ帰らないつもりです",
+					"english": "I am planning not to return to my homeland this year."
+				}
+			]
+		},
+		{
+			"usage": "〜のに、〜",
+			"meaning": "in order to",
+			"context": "Neutral, suitable for both casual and polite contexts.",
+			"tags": ["causal", "conjunctive", "辞書形"],
+			"notes": "Must follow the dictionary form of verbs/adjectives/nouns. Misused as 'despite'; instead, ~のに (at end of sentence) is the 'despite' form.",
+			"nuance": "Expresses purpose with a subtle implication of effort required in the action.",
+			"examples": [
+				{
+					"japanese": "野菜ジュースを作るのに便利です",
+					"english": "It's convenient for making vegetable juice."
+				},
+				{
+					"japanese": "この靴は山を登るのにいいです",
+					"english": "These shoes are good for climbing mountains."
+				}
+			]
+		},
+		{
+			"usage": "〜に〜",
+			"meaning": "for this specifically, in order to",
+			"context": "Used in both casual and formal contexts, not limited to any specific social situation.",
+			"tags": ["conjunctive", "conditional", "noun-modifier"],
+			"notes": "Use for indicating the purpose of an action or movement toward a goal, usually followed by a verb in the plain form. Students often misuse this for expressing causality or reasons, not for aiming actions toward a specific goal.",
+			"nuance": "Expresses purpose or specific direction, not to be confused with cause or reason.",
+			"examples": [
+				{
+					"japanese": "この食べ物はダイエットにいいです",
+					"english": "This food is good for your diet."
+				}
+			]
+		},
+		{
+			"usage": "〜ようにしています",
+			"meaning": "effort, habit, goal that has started or quit",
+			"context": "Neutral; appropriate in both casual and formal discourse, but avoid using in highly informal or colloquial contexts.",
+			"tags": ["change", "fixed-expression", "辞書形", "ナイ形"],
+			"notes": "Use with verb in dictionary form for habit beginning, use in negative form for habit ending. Learners often mistranslate as a future tense or forget to match the verb form to the desired meaning.",
+			"nuance": "Expresses a continuous effort or intention to maintain or change a habit; can carry a tone of strain or devotion.",
+			"examples": [
+				{
+					"japanese": "私はできるだけ毎日勉強するようにしている",
+					"english": "I try to study as much as possible every day"
+				},
+				{
+					"japanese": "たくさんテレビを見ないようにしています",
+					"english": "I am trying not to watch too much TV."
+				}
+			]
+		},
+		{
+			"usage": "〜ことにします",
+			"meaning": "a choice, resolution to do something",
+			"context": "Neutral to formal; suitable for both casual conversations and formal documents.",
+			"tags": ["fixed-expression", "change", "辞書形", "ナイ形"],
+			"notes": "Use with verbs in 終止形 (ending form) or ナイ形 (negative form) to express an action decided upon, not fit for expressing habits. Often confused with 〜ことになる, which implies a decision made by others or by circumstances, not personal choice.",
+			"nuance": "〜ことにします implies the decision is made after careful thought, which can express earnestness or resolution.",
+			"examples": [
+				{
+					"japanese": "多すぎるお酒を飲まないことにします",
+					"english": "I've decided not to drink too much alcohol."
+				},
+				{
+					"japanese": "スポーツジムを通うことにします",
+					"english": "I've decided to go to the gym regularly"
+				}
+			]
+		},
+		{
+			"usage": "〜ために、〜",
+			"meaning": "giving a reason",
+			"context": "Formal speech and writing; could be used in informal speech if the situation demands clarity.",
+			"tags": ["explanation", "causal", "conjunctive", "普通形"],
+			"notes": "Use before a clause to state the purpose of your action or event, in combination with verbs or adjectives. Avoid using 〜ために with expressions of desire or personal preferences; use 〜ように instead.",
+			"nuance": "〜ために expresses justification; the 'cause' is typically a nonnegotiable fact or event.",
+			"examples": [
+				{
+					"japanese": "ここはとても危険なために、立ち入り禁止になりました",
+					"english": "This place has become off-limits because it is very dangerous."
+				}
+			]
+		},
+		{
+			"usage": "〜向け",
+			"meaning": "meant for",
+			"context": "Neutral/formal; often used in business and product descriptions.",
+			"tags": ["combination", "noun-modifier"],
+			"notes": "Use it after a noun to specify for whom it is intended. Not specifying a noun before 〜向け or using it for non-targetable things.",
+			"nuance": "Emphasizes the target audience of a product or service.",
+			"examples": [
+				{
+					"japanese": "この漫画は子供向けですが大人が見ても十分面白いです",
+					"english": "This comic is intended for children, but it's interesting enough for adults to enjoy too."
+				}
+			]
+		},
+		{
+			"usage": "〜には",
+			"meaning": "in order to",
+			"context": "〜には is neutral in terms of social situation, making it appropriate for both formal and informal situations.",
+			"tags": ["causal", "conditional", "辞書形"],
+			"notes": "Use 〜には after the verb or circumstance that signifies the condition needed to achieve a specific outcome. Avoid using 〜には to express a more general cause-effect relationship; it is more suitable for explicit preconditions or requirements.",
+			"nuance": "The nuance of 〜には conveys an implication of purpose or necessity, often with emphasis on the precondition.",
+			"examples": [
+				{
+					"japanese": "利用するには、事前の申し込みが必要なんだって",
+					"english": "They say that a prior application is necessary to use it."
+				},
+				{
+					"japanese": "本を借りるには、図書館利用者カードが必要です",
+					"english": "To borrow a book, you need a library user card."
+				}
+			]
+		},
+		{
+			"usage": "〜に備えて",
+			"meaning": "in preparation of",
+			"context": "Neutral to formal; used in both conversation and written language.",
+			"tags": ["temporal", "description", "noun-modifier"],
+			"notes": "Often used for unpredictable circumstances or natural disasters, rather than routine or planned events. Cannot be used with instantaneous events, only ones that would last some duration or have a lasting impact.",
+			"nuance": "〜に備えて imposes a sense of uncertainty about the future event, but concern to be ready for it.",
+			"examples": [
+				{
+					"japanese": "地震に備えて、非常持ち出し袋を用意しようと思います",
+					"english": "I'm thinking of preparing an emergency go-bag for earthquake preparedness."
+				}
+			]
+		},
+			{
+			"usage": "〜かねます",
+			"meaning": "personal opinion that you cannot do something",
+			"context": "Polite and formal, often used in business scenarios to maintain the speaker's humility.",
+			"tags": ["subjective", "negation", "certainty", "マス形"],
+			"notes": "Use かねます after the stem of the verb, best suited for negative scenarios or situations where you want to indirectly refuse. Learners often confusingly use かねます to directly negate an action, not an ability or possibility.",
+			"nuance": "Expresses the speaker's inability or impossibility, often with a sense of regret or politeness.",
+			"examples": [
+				{
+					"japanese": "あいにくこちらでは分かりかねます。あちらのカウンタで尋ねください",
+					"english": "Unfortunately, I cannot help you with that here. Please ask at that counter over there."
+				}
+			]
+		},
+		{
+			"usage": "〜ならない",
+			"meaning": "extremely; can't help but",
+			"context": "Commonly used in informal conversation and self-expression, seldom used in formal or business settings.",
+			"tags": ["must", "advanced-usage", "テ形", "adjective-modifier"],
+			"notes": "Typically used with verbs in the て-form (テ形), to denote that the action can't/couldn't be helped. Mistaking it as a negation structure, it doesn't negate the action it emphasizes its necessity.",
+			"nuance": "Expresses strong obligation or necessity, often associated with internal personal feelings or subjective desires.",
+			"examples": [
+				{
+					"japanese": "彼は明日の面接試験でうまく話せるかどうか、不安でならない",
+					"english": "He cannot help but worry about whether he will be able to speak well in the interview tomorrow."
+				},
+				{
+					"japanese": "この写真を見ると、昔のことが思い出されてならない",
+					"english": "Looking at this picture, I can't help but reminisce about the past."
+				}
+			]
+		},
+		{
+			"usage": "〜（しかたがない・しょうがない）",
+			"meaning": "really, extremely, can't help but",
+			"context": "Casual conversation, narrative storytelling or self-reflection, not for formal settings.",
+			"tags": ["advanced-usage", "must", "テ形", "adjective-modifier"],
+			"notes": "Always use with negative verb form or adjective. Avoid using with positive sentence structure, it invalidates the 'helplessness' context.",
+			"nuance": "Emotionally heavy phrase expressing helplessness or intense feelings.",
+			"examples": [
+				{
+					"japanese": "日本へ来て、初めて一人暮らしをしているので、寂しくてしかたがない。",
+					"english": "Since I came to Japan and started living alone for the first time, I can't help but feel lonely."
+				},
+				{
+					"japanese": "ホームシックになってしまった。国の家族に会いたくてしようがない。",
+					"english": "I've become homesick. I desperately want to see my family back home."
+				}
+			]
+		},
+		{
+			"usage": "〜向き（だ・に・の）",
+			"meaning": "suitable for; meant for",
+			"context": "Commonly used in informal contexts or professional settings.",
+			"tags": ["description", "relation", "noun-modifier"],
+			"notes": "Attach 向き directly to nouns, but only when describing objects or situations, not living creatures. Common mistakes include employing it for humans, which sounds odd, and confusing 向き with 向け.",
+			"nuance": "Use this to express the idea of suitability in a subjective and sometimes situational way.",
+			"examples": [
+				{
+					"japanese": "この山はそんなに高くないし、日帰りで行けるので、登山の初心者向きだ。",
+					"english": "This mountain is not so high and can be done in a day trip, so it's suitable for beginner climbers."
+				},
+				{
+					"japanese": "ここは独身者向きのマンションで家族で住むには狭いようだ。",
+					"english": "This seems like a condominium suited for single individuals; it appears too narrow for family living."
+				}
+			]
+		},
+	]
+}

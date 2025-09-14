@@ -1,0 +1,454 @@
+{
+	"like-this": [
+		{
+			"usage": "〜ようになります",
+			"meaning": "an action becoming possible",
+			"context": "Used in both informal and formal speech, but more commonly found in written language.",
+			"tags": ["potential-form", "change", "可能形"],
+			"notes": "Often used with verbs in the potential form; not used for instantaneous changes. Often mistaken with 〜ことができる; While both mean 'can do,' remember that 〜ようになります focuses on the change from not being able to do something to being able to do so.",
+			"nuance": "Indicates a gradual change to a new state, sometimes carrying a feeling of accomplishment.",
+			"examples": [
+				{
+					"japanese": "2026までに日本語が話せるようになりたいです",
+					"english": "I want to be able to speak Japanese by 2026"
+				},
+				{
+					"japanese": "簡単料理が作れるようになりました",
+					"english": "I've become able to make simple dishes"
+				}
+			]
+		},
+		{
+			"usage": "〜そうです",
+			"meaning": "how something seems based on your senses",
+			"context": "This form is considered neutral and can be used in both formal and informal settings.",
+			"tags": ["appearance", "adjective-modifer"],
+			"notes": "Do not use it with past- or future- tense verbs; combine it with present-tense forms for a natural feeling. Avoid attaching it directly to i-adjectives; remove the final い and use 〜そうです.",
+			"nuance": "〜そうです is used to express indirect information based on appearance or hearsay, indicating uncertainty rather than definite knowledge.",
+			"examples": [
+				{
+					"japanese": "そのゲームは面白そうです",
+					"english": "That game looks interesting."
+				},
+				{
+					"japanese": "そのホテルは安くなさそうです",
+					"english": "That hotel doesn't seem cheap"
+				},
+				{
+					"japanese": "私のルームメイトは静かじゃなさそうです",
+					"english": "My roommate does not seem quiet."
+				}
+			]
+		},
+		{
+			"usage": "〜そうです",
+			"meaning": "how something seems based on your senses",
+			"context": "Mostly used in informal or neutral situation, yet acceptable in polite discourse.",
+			"tags": ["appearance", "adjective-modifer"],
+			"notes": "Attach 〜そうです directly to the root form of i-adjectives or na-adjectives, and to the dictionary form of verbs. Do not mix up with 〜そうです used to report hearsay information.",
+			"nuance": "〜そうです gives a conjecture based on appearance or current situations, not on one's opinion or information heard from someone else.",
+			"examples": [
+				{
+					"japanese": "この図書館は静かそうです",
+					"english": "This library seems quiet"
+				},
+				{
+					"japanese": "このホテルは安そうです",
+					"english": "This hotel seems inexpensive"
+				}
+			]
+		},
+		{
+			"usage": "〜そうです",
+			"meaning": "how something seems based on your senses",
+			"context": "Neutral speech, widely used both in casual and formal contexts.",
+			"tags": ["appearance", "マス形"],
+			"notes": "Remove 'ます' from the 'ます' form of the verb to use with 〜そうです; with adjectives, use 'い' form minus 'い' for i-adjectives and use na-adjectives unchanged. Don't confuse 〜そうです (seems like) with 〜そうだ (heard that); not to be used for personal feelings.",
+			"nuance": "〜そうです expresses subjective impression using visual, auditory, or other senses, but isn't used for personal feelings/emotions.",
+			"examples": [
+				{
+					"japanese": "深夜雨が降りそうです",
+					"english": "It looks like it will rain late at night."
+				},
+				{
+					"japanese": "秋の間に京都が混みそうです",
+					"english": "Kyoto seems likely to be crowded in the fall."
+				},
+				{
+					"japanese": "皿が落ちそうです",
+					"english": "The plate looks like it's going to fall."
+				},
+				{
+					"japanese": "ゴミ袋を破れそうです",
+					"english": "The trash bag is likely to tear"
+				}
+			]
+		},
+		{
+			"usage": "〜そう（に・も・にも）ありません",
+			"meaning": "how something seems based on your senses",
+			"context": "Neutral situation; appropriate in both formal and informal contexts.",
+			"tags": ["appearance", "マス形"],
+			"notes": "Use with care, as it often guesses about the speaker's feelings directly. Don't mix up with 「そうです」 which is more assertive, less speculative.",
+			"nuance": "This phrase subtly implies personal uncertainty or hesitation.",
+			"examples": [
+				{
+					"japanese": "彼は勝ちそうにありません",
+					"english": "It doesn't seem like he will win"
+				}
+			]
+		},
+		{
+			"usage": "〜く V",
+			"meaning": "creating a basic adverb",
+			"context": "Applicable in both casual and formal contexts, however, slightly more common in conversational Japanese.",
+			"tags": ["combination", "i-adjective-modifier"],
+			"notes": "To formulate the adverb, replace the い ending of i-adjectives with く, then fuse with a verb. Misconception of it being the negative form (-くない) or te-form (-くて) is prevalent among learners.",
+			"nuance": "The usage of 〜く V depicts a descriptive action or state based on an i-adjective, add warmth to the sentence.",
+			"examples": [
+				{
+					"japanese": "野菜を薄く切ります",
+					"english": "Cut the vegetables thinly."
+				}
+			]
+		},
+		{
+			"usage": "〜に V",
+			"meaning": "creating a basic adverb",
+			"context": "Standard across situations; may sound slightly formal in casual conversations.",
+			"tags": ["combination", "noun-modifier", "na-adjective-modifer"],
+			"notes": "Easily confused: different verbs demand different particles even in English translation; consider: 'Laugh at a joke' (〜で laugh) vs 'Laugh with joy' (〜に laugh). Beware of misplacement; the 〜に V form should immediately follow the noun it modifies.",
+			"nuance": "This grammar point typically conveys the sense of 'doing an action taking a certain manner, method, or tool into consideration'.",
+			"examples": [
+				{
+					"japanese": "彼は静かに勉強している",
+					"english": "He is studying quietly"
+				},
+				{
+					"japanese": "野菜を半分に切ります",
+					"english": "Cut the vegetables in half."
+				},
+				{
+					"japanese": "火を弱火にしてください",
+					"english": "Please turn down the heat."
+				}
+			]
+		},
+		{
+			"usage": "〜ように、〜",
+			"meaning": "so that ... happens",
+			"context": "Used in both formal and informal settings, but might sound overly formal in casual conversations.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Use in situations where you want a certain outcome to happen; the clause before 〜ように describes your desired result. Mistakenly using the negative form (ない形) where a dictionary form (辞書形) is needed or vice versa.",
+			"nuance": "〜ように can imply a degree of uncertainty, like you're hoping for or cannot control the outcome.",
+			"examples": [
+				{
+					"japanese": "忘れないように毎日勉強します",
+					"english": "I study every day so I won't forget."
+				},
+				{
+					"japanese": "タオル流を早く乾くように外に掛ける",
+					"english": "Hang the towels outside to dry quickly."
+				}
+			]
+		},
+		{
+			"usage": "〜ようにしてください",
+			"meaning": "so that... happens (as a command)",
+			"context": "Generally formal; commonly used in written instructions or polite oral discourse.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Commonly used in the construction 辞書形＋ようにしてください or ナイ形＋ようにしてください to request others to do or not to do something so a specific result will come about. Avoid confusing this with ようにしましょう, which means 'Let's try to...' rather than directing the action towards someone else.",
+			"nuance": "This construction is often used to give instructions with an undertone of concern for the result, rather than an overt command.",
+			"examples": [
+				{
+					"japanese": "廊下に走らないようにしてください",
+					"english": "Please refrain from running in the hallways."
+				},
+				{
+					"japanese": "質問があれば、先生に聞くようにしてください",
+					"english": "If you have any questions, please ask the teacher."
+				}
+			]
+		},
+		{
+			"usage": "〜ようです",
+			"meaning": "seems like but with more emphasis on speakers own conclusion",
+			"context": "It's neutral in tone and can be used in both casual and formal situations.",
+			"tags": ["appearance", "普通形"],
+			"notes": "Use it after the plain form of verbs, adjectives or nouns to express that something appears/looks/seems to be a certain way. Don't confuse 〜ようです with 〜そうです; 〜ようです is based on the speaker's judgment, while 〜そうです relates information heard from others.",
+			"nuance": "〜ようです conveys that the speaker has reached a conclusion based on their own observation or information, adding a sense of uncertainty.",
+			"examples": [
+				{
+					"japanese": "電車の事故があったようです",
+					"english": "It seems that there was a train accident"
+				},
+				{
+					"japanese": "雨のようです",
+					"english": "It seems like it's raining"
+				},
+				{
+					"japanese": "このレストランのラーメンを美味しいようです",
+					"english": "The ramen at this restaurant seems delicious."
+				}
+			]
+		},
+		{
+			"usage": "〜みたいです",
+			"meaning": "how something seems based on direct observation, casually; looks like a",
+			"context": "Primarily casual and informal, not suitable for formal or written contexts.",
+			"tags": ["appearance", "普通形"],
+			"notes": "Attach みたいです to the plain form ('dictionary form') of verbs, adjectives, or nouns. Don't presume certainty, and be careful not to make definite insinuations or conclusions; みたいです carries a sense of uncertainty or conjecture.",
+			"nuance": "Used in informal and colloquial speech to express 'seems like' or 'looks like', based on observation, not facts.",
+			"examples": [
+				{
+					"japanese": "その食べ物は美味しいみたいです",
+					"english": "That food seems delicious"
+				},
+				{
+					"japanese": "学校みたいな建物です",
+					"english": "It's a building that looks like a school."
+				},
+				{
+					"japanese": "コンサートが始まるみたいだ",
+					"english": "It seems like the concert is about to start."
+				},
+				{
+					"japanese": "このジュースが健康みたいです",
+					"english": "This juice seems healthy."
+				}
+			]
+		},
+		{
+			"usage": "〜そうに V",
+			"meaning": "in a way that seems like; seems to be",
+			"context": "Neutral in social situation, acceptable in both casual and formal conversations.",
+			"tags": ["appearance", "adjective-modifer"],
+			"notes": "Not usable with verbs that do not express state or condition, such as movement verbs. Common mistake is using it based on one's knowledge, not based on observation, or using it with factual statements.",
+			"nuance": "Used to express one's subjective inference from physical appearance or atmosphere, often includes a sense of uncertainty.",
+			"examples": [
+				{
+					"japanese": "子供たちは楽しそうに遊んでいます",
+					"english": "The children are playing happily"
+				},
+				{
+					"japanese": "ソダさんが心配そうに待っています",
+					"english": "Mr. Soda seems to be waiting anxiously."
+				}
+			]
+		},
+		{
+			"usage": "〜ようになります",
+			"meaning": "new habit or ability, change over time",
+			"context": "Neutral to formal; suitable in both daily conversation and formal writing.",
+			"tags": ["change", "辞書形"],
+			"notes": "Use with dictionary form of a verb for new habits/abilities, but not for on the spot changes. Frequently mixed up with 〜ようにする (decision to do something), and remember it's not suitable for expressing desires or wishes.",
+			"nuance": "Expresses a change resulting in a new state, often associated with personal growth or adjustment over time.",
+			"examples": [
+				{
+					"japanese": "最近たくさんアニメを見るようになりました",
+					"english": "I've started watching a lot of anime recently."
+				}
+			]
+		},
+		{
+			"usage": "〜らしいです",
+			"meaning": "a rumor you heard, something people say",
+			"context": "Neutral form, can be used in both casual and polite contexts, but generally avoided in highly formal situations.",
+			"tags": ["certainty", "explanation", "普通形"],
+			"notes": "Attach 〜らしいです to the plain form of verbs, i-adj, na-adj and nouns to convey indirect information. Do not confuse with 〜そうです for reporting hearsay; 〜らしいです carries an undertone of uncertainty.",
+			"nuance": "Expresses hearsay or conjecture, implying that the information is not firsthand but acquired from another source.",
+			"examples": [
+				{
+					"japanese": "プロテインは体にいいらしいです",
+					"english": "It seems that protein is good for the body."
+				},
+				{
+					"japanese": "二日酔いだとたくさん寝るはいいらしいです",
+					"english": "It seems that it's good to sleep a lot when you are hungover."
+				},
+				{
+					"japanese": "5時午後からそのレストランは無料らしいです",
+					"english": "It seems that the restaurant is free from 5 pm."
+				}
+			]
+		},
+		{
+			"usage": "〜と言われています",
+			"meaning": "a rumor you heard, something people say",
+			"context": "Formal and semi-formal situations, often seen in news reports, academic discussions, and business settings.",
+			"tags": ["nominalization", "explanation", "fixed-expression", "普通形"],
+			"notes": "Use it when conveying a widely held belief, rumor, or anecdote, not for personal opinions. Beware of overusing this as it implies hearsay; incorrect use can disrupt the flow of conversation or presentations.",
+			"nuance": "〜と言われています projects an indirect, humble tone, and communicates something perceived as common knowledge or hearsay.",
+			"examples": [
+				{
+					"japanese": "ニンジンは目にいいと言われています",
+					"english": "It is said that carrots are good for your eyes."
+				}
+			]
+		},
+		{
+			"usage": "〜のような〜",
+			"meaning": "explaining as a type of something similiar",
+			"context": "This construction is neutral and thus suitable for both formal and informal contexts.",
+			"tags": ["description", "comparative", "noun-modifier"],
+			"notes": "Use this pattern when you want to describe something as being similar to or resembling another thing, but be aware it may not imply complete equality. A common mistake is using 〜のような〜 to imply exact likeness; remember it indicates a resemblance, not an exact match.",
+			"nuance": "〜のような〜 suggests a comparison or similarity, but not an exact match, often with a sense of approximation or imitation.",
+			"examples": [
+				{
+					"japanese": "将棋というのはギターのような楽器です",
+					"english": "Shogi is like a musical instrument, such as a guitar."
+				}
+			]
+		},
+		{
+			"usage": "〜がっています",
+			"meaning": "a third persons feelings not in the conversation",
+			"context": "General and casual conversations; less used in formal settings due to its speculative nature.",
+			"tags": ["explanation", "combination", "noun-modifier"],
+			"notes": "Use 〜がっています when speculating about someone's emotions or desires indirectly, perfect for discussions about someone not present. Learners often misuse this form directly to the person concerned, it's incorrect as this form is reserved for discussing third parties.",
+			"nuance": "While 〜がっています describes a third party's emotions, it doesn't reflect direct observation and can carry a slightly gossipy or judgmental tone.",
+			"examples": [
+				{
+					"japanese": "弟はドイツへ行きたがっている",
+					"english": "My younger brother wants to go to Germany"
+				},
+				{
+					"japanese": "母は新しい車を欲しがっている",
+					"english": "My mother wants a new car."
+				}
+			]
+		},
+		{
+			"usage": "〜っぽい",
+			"meaning": "special vocab to describe a person",
+			"context": "「〜っぽい」is informal and used more in everyday conversation; be cautious of using it in formal or professional settings.",
+			"tags": ["nominalization", "マス形", "noun-modifier"],
+			"notes": "Use っぽい appended to a noun, na-adjective, or the stem of a verb to imply 'like' or '-ish'. Common errors include attaching っぽい to i-adjectives or not dropping the 'な' when using with na-adjectives.",
+			"nuance": "「〜っぽい」expresses resemblance or a characteristic of something or someone, with a casual, informal, sometimes playful or derogatory nuance.",
+			"examples": [
+				{
+					"japanese": "私は忘れっぽいせいかくで、よく傘をどこかへ置いてきてしまいます",
+					"english": "I have a forgetful nature, and I often leave my umbrella somewhere."
+				},
+				{
+					"japanese": "彼女は男っぽい性格です",
+					"english": "She has a masculine personality."
+				}
+			]
+		},
+		{
+			"usage": "〜ようになっている",
+			"meaning": "an automatic result of some condition",
+			"context": "Suitable in both casual and formal contexts.",
+			"tags": ["causal", "辞書形", "ナイ形"],
+			"notes": "Appropriate with verbs in dictionary form or negative form, not adjectives. Commonly misused with personal experiences or self-controlled actions.",
+			"nuance": "Expresses natural, common occurrence or automatic consequence.",
+			"examples": [
+				{
+					"japanese": "自動ドアは、ここに立つと開くようになっています",
+					"english": "The automatic door is designed to open when you stand here."
+				}
+			]
+		},
+		{
+			"usage": "（こんな・そんな・あんな・どんな）N",
+			"meaning": "that / this / what kind of; like みたい and のような",
+			"context": "These are standard and commonly used across both formal and informal situations.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Use these terms when describing similarities or asking for specifics; remember they can't replace direct article ('the'). Avoid using them interchangeably; context and speaker-listener relationship matter.",
+			"nuance": "Each depicts a comparative scenario: 'こんな' refers to a similar situation close to the speaker, 'そんな' to something near the listener, 'あんな' to a situation neither close to the speaker nor listener, and 'どんな' asks for the type or quality of something.",
+			"examples": [
+				{
+					"japanese": "あー、かわいい。僕もこんな彼女が欲しいな",
+					"english": "Ah, she's cute. I wish I had a girlfriend like her."
+				}
+			]
+		},
+		{
+			"usage": "（こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう）ふうに",
+			"meaning": "that kind of style; similiar to ように and みたいに",
+			"context": "Fits into both casual and formal speech, but may come across as vague in highly formal situations.",
+			"tags": ["description"],
+			"notes": "Commonly used to make generalizations or hypothetical scenarios. Be careful not to confuse with ように, which typically implies a direct similarity, not just in style or manner.",
+			"nuance": "Expresses a comparison in the style, manner, or way of something or someone.",
+			"examples": [
+				{
+					"japanese": "お休みの日はどんな風に過ごしていますか",
+					"english": "How do you spend your days off?"
+				}
+			]
+		},
+		{
+			"usage": "（みたい・よう）なんですが",
+			"meaning": "politely informing something you noticed",
+			"context": "Suitable for use in both casual and formal scenarios where politeness is needed, yet less common in intimate settings.",
+			"tags": ["polite", "appearance", "fixed-expression"],
+			"notes": "Commonly used to talk about perceived states or changes; it is more polite and less direct than simple declarations. Don't use it for concrete, undeniable facts or when you are certain about something.",
+			"nuance": "Used when politely and indirectly stating a personal observation or opinion, hence expressing a degree of uncertainty.",
+			"examples": [
+				{
+					"japanese": "あのう、すみません、これは違うみたいなんですが",
+					"english": "Excuse me, it seems like this is incorrect"
+				},
+				{
+					"japanese": "あのう、すみません、外に誰か運動していたようなんですが",
+					"english": "Excuse me, it seems like someone was exercising outside."
+				}
+			]
+		},
+		{
+			"usage": "〜しまったようなんです",
+			"meaning": "it seems this may have happened",
+			"context": "Informal; more commonly used in casual conversation rather than formal writing.",
+			"tags": ["explanation", "appearance", "fixed-expression", "テ形"],
+			"notes": "Used when reporting an inference based on indirect or incomplete evidence. Often confused with the explanatory 'んです', difference lies in inferred responsibility.",
+			"nuance": "Expresses regret or surprise of an unexpected or undesirable occurrence.",
+			"examples": [
+				{
+					"japanese": "転んだ時は足をひねってしまったようなんですが",
+					"english": "It seems that I twisted my ankle when I fell"
+				}
+			]
+		},
+		{
+			"usage": "〜通りに",
+			"meaning": "in line with; exactly/precisely this",
+			"context": "Polite and formal, often used in business settings or formal writing.",
+			"tags": ["explanation", "辞書形", "タ形", "noun-modifier"],
+			"notes": "Use it after a noun or verb to describe doing something as dictated or described by that noun/verb. Often mistaken with 〜とおり, which has a similar meaning but different situation and nuance.",
+			"nuance": "Emphasizes strict adherence or precision, often with a sense of expectation or obligation.",
+			"examples": [
+				{
+					"japanese": "先生の指示の通りに避難してください",
+					"english": "Please evacuate as directed by the teacher."
+				},
+				{
+					"japanese": "私の思った通り、事がうまく続いている",
+					"english": "Just as I expected, things are going well"
+				},
+				{
+					"japanese": "期待どおり、Aチームが優秀した",
+					"english": "As expected, Team A excelled."
+				}
+			]
+		},
+		{
+			"usage": "〜げ",
+			"meaning": "seemingly, appears (emotions and feelings)",
+			"context": "Standard in spoken and written, informal to moderately formal contexts, but somewhat sensitive in highly formal or business-like communications.",
+			"tags": ["appearance", "emotional", "adjective-modifier"],
+			"notes": "Use it with non-i adjectives and na-adjectives; for verbs and i-adjectives, use 〜そう instead. Don't use it with objective facts; it's only for subjective emotions or feelings.",
+			"nuance": "〜げ adds a touch of subjectivity, hinting at the speaker's perception or subtle feel about the situation.",
+			"examples": [
+				{
+					"japanese": "田中さんは何か言いたげだったが、何も言わずに部屋を出て行った。",
+					"english": "Tanaka seemed like he wanted to say something, but he left the room without saying a word."
+				},
+				{
+					"japanese": "面接試験の順番を待つ学生は、とても緊張して不安げだ。",
+					"english": "The student waiting for their turn in the interview exam looks very nervous and insecure."
+				}
+			]
+		},
+	]
+}

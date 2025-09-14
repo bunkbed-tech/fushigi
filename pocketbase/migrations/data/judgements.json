@@ -1,0 +1,186 @@
+{
+	"judgements": [
+		{
+			"usage": "〜に応じて",
+			"meaning": "based on; judging from (when both things are changing)",
+			"context": "Frequently used in both formal and informal situations, but seen more often in written forms or formal speeches.",
+			"tags": ["causal", "reasons", "conjunctive", "noun-modifier"],
+			"notes": "Use to express a proportional relationship or a situation based on a certain condition affecting an outcome. Common mistakes include misunderstanding it as a cause-effect relationship, rather than a correlation; or using it with non-variable situations.",
+			"nuance": "The phrase '〜に応じて' implies correlation between two changing aspects with the mood often neutral or factual.",
+			"examples": [
+				{
+					"japanese": "水道料金は使用量に応じて、支払います",
+					"english": "The water bill is paid based on the amount used."
+				}
+			]
+		},
+		{
+			"usage": "〜をもとに",
+			"meaning": "based on",
+			"context": "Standard usage in both formal and informal contexts, but seen more frequently in written or academic discourse.",
+			"tags": ["similiarity", "change", "description", "noun-modifier"],
+			"notes": "Use it when you want to highlight the object (i.e., verb+ noun) you are utilizing for your action. Avoid confusing 〜をもとに with 〜にもとづいて; while somewhat similar, the former implies using something as a reference point, the latter implies following a set rule or principle.",
+			"nuance": "〜をもとに emphasizes the 'source' or 'foundation' on which an action, decision, or production is based.",
+			"examples": [
+				{
+					"japanese": "ひらがなやカタカナは漢字を元にして作られた",
+					"english": "Hiragana and Katakana were created based on Kanji."
+				},
+				{
+					"japanese": "この小説は真実をもとに、書かれたそうです",
+					"english": "Apparently, this novel was written based on truth."
+				}
+			]
+		},
+		{
+			"usage": "〜によって",
+			"meaning": "way; means of using something; via",
+			"context": "Appropriate for every social situation, from casual to formal writing.",
+			"tags": ["causal", "noun-modifier"],
+			"notes": "Not only for 'means' or methods, によって can also suggest a reason or a cause. Avoid confusion with 〜による, which indicates a result, not a method or cause.",
+			"nuance": "〜によって indicates the method or basis of action, often exhibiting variations based on context.",
+			"examples": [
+				{
+					"japanese": "どのクラスに入るかはテストの結果によって決められます",
+					"english": "Which class you are placed in is determined by the test results."
+				},
+				{
+					"japanese": "最近はメールやSNSなど、文字によるコミュニケーションが増えている",
+					"english": "Recently, there has been an increase in text-based communication such as emails and social networking sites."
+				}
+			]
+		},
+		{
+			"usage": "〜によっては",
+			"meaning": "depending on ___, ___ also exists",
+			"context": "Neutral to formal; commonly found in professional, academic, and legal contexts.",
+			"tags": ["causal", "change", "noun-modifier"],
+			"notes": "Use before verb or noun phrases when conditions may alter an outcome. Avoid using when conditions do not significantly change the result; not interchangeable with 'によると'.",
+			"nuance": "Emphasizes variability depending on certain factors, often carries a sense of uncertainty.",
+			"examples": [
+				{
+					"japanese": "年末年始は多くの会社が休みます、でも、会社によっては休みません",
+					"english": "Many companies are closed for the year end and New Year holidays, but some companies do not close."
+				},
+				{
+					"japanese": "関東地方の人は納豆好きだが、人によっては納豆を見るのも嫌だと言う人もいる",
+					"english": "People in the Kanto region tend to like natto, but there are also people who dislike even looking at natto."
+				}
+			]
+		},
+		{
+			"usage": "〜（を通して・を通じで）",
+			"meaning": "through, via, using",
+			"context": "Neutral and can be used in both formal and informal contexts.",
+			"tags": ["methodology", "definition", "noun-modifier"],
+			"notes": "Link it directly to nouns that represent ways to achieve or do something. Beware, not to be confused with the sense of going through a location.",
+			"nuance": "Used to express a medium or method for action, not a route or path.",
+			"examples": [
+				{
+					"japanese": "私は日本のアニメを通して、日本人の生活や習慣を知りました。",
+					"english": "Through Japanese anime, I learned about the lifestyle and customs of the Japanese people."
+				},
+				{
+					"japanese": "旅行の前に、インタネットを通じて、宿泊するホテルを予約した。",
+					"english": "Before the trip, I booked a hotel to stay at through the internet."
+				}
+			]
+		},
+		{
+			"usage": "〜（からいうと・からいって・からいえば）",
+			"meaning": "speaking in terms of",
+			"context": "Commonly used in formal or academic contexts.",
+			"tags": ["description", "quotation", "definition", "noun-modifier"],
+			"notes": "Commonly used in written form or formal speaking, and comes after the topic of consideration. Learners often forget that 〜（からいうと・からいって・からいえば）requires a subject or topic to 'speak in terms of', and may incorrectly use it in casual conversations.",
+			"nuance": "Used to qualify a statement within a specific context, often for comparison, evaluation, or preparing for a contrasting idea.",
+			"examples": [
+				{
+					"japanese": "値段から言うと、単品料理をたくさん頼むより、コース料理の方がお得だ。",
+					"english": "Judging from the price, it's more economical to order a course meal than to order many individual dishes."
+				},
+				{
+					"japanese": "実力から言って、この大会ではブラジルが優勝するだろう。",
+					"english": "Judging by their ability, Brazil will probably win this tournament."
+				},
+				{
+					"japanese": "品質から言えば、これが一番いいけれど、こんなに高いものは私には買えない。",
+					"english": "In terms of quality, this is the best, but it's so expensive that I can't afford it."
+				}
+			]
+		},
+		{
+			"usage": "〜（となると・となれば・となったら）",
+			"meaning": "when it becomes",
+			"context": "Neutral to formal, suitable for a range of contexts, from conversation to written communication.",
+			"tags": [
+				"change",
+				"causal",
+				"conditional",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Use with nouns and na-adjectives, and in contexts where a speaker discusses a hypothetical situation. Don't use if not referring to a situation that prompts change or causes surprise.",
+			"nuance": "Emphasizes change of state or condition, often implying unforeseen circumstances or surprise.",
+			"examples": [
+				{
+					"japanese": "今買い物をすると８％の税金がかかる。これが１０％に上がるとなれば、国民の生活はさらに大変になるだろう。",
+					"english": "Currently, an 8% tax is imposed when you shop. Should this rise to 10%, people's lives will likely become even more difficult."
+				},
+				{
+					"japanese": "早く国へ帰りたいと思っているが、本当に帰国するとなったら、寂しさを感じるかもしれない。",
+					"english": "I'm thinking about wanting to go back to my country soon, but if I really do go back, I might feel lonely."
+				}
+			]
+		},
+		{
+			"usage": "〜（ことだろう・ことか）",
+			"meaning": "god knows; how extremely this feeling/thought",
+			"context": "Mostly used in written language; formal and somewhat literary.",
+			"tags": [
+				"advanced-usage",
+				"sentence-final",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Used with na-adjectives or nouns. Not used to make questions, despite containing 'darou'. Incorrectly treating it as a question or using it with i-adjectives.",
+			"nuance": "Expresses strong feelings; often implying speculation or uncertainty.",
+			"examples": [
+				{
+					"japanese": "もう２年も家族に合っていない。家族は私のことをどんなに心配していることか。",
+					"english": "I haven't seen my family for already two years. I wonder how worried they must be about me."
+				},
+				{
+					"japanese": "この曲が大好きだ。今まで何度聞いたことだろう。",
+					"english": "I love this song. I wonder how many times I've listened to it so far."
+				}
+			]
+		},
+		{
+			"usage": "〜に違いない",
+			"meaning": "theres no doubt; I'm sure that; there's no mistaking",
+			"context": "More common in written contexts or formal speech; can sound overly assertive in casual conversation.",
+			"tags": [
+				"likelihood",
+				"advanced-usage",
+				"certainty",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Combine with 普通形 (plain form) of verbs, i-adjectives, na-adjectives and nouns; avoid using with definitive facts. Don't express doubt or probability; 〜に違いない affirms undeniable certainty.",
+			"nuance": "〜に違いない expresses a strong personal conviction, often used when speculating based on observable evidence.",
+			"examples": [
+				{
+					"japanese": "アンナさんは日本生きて１０年になるとのことだから、ペラペラであるに違いない。",
+					"english": "Since Anna has been living in Japan for ten years, she must be fluent in Japanese."
+				},
+				{
+					"japanese": "彼は足って泣いて、困っているに違いない。",
+					"english": "He must be in trouble, crying and suffering."
+				}
+			]
+		},
+	]
+}

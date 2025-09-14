@@ -1,0 +1,289 @@
+{
+	"certainty": [
+		{
+			"usage": "〜と思っています",
+			"meaning": "80% sure",
+			"context": "Neutral, appropriate to use in various social and professional contexts.",
+			"tags": ["likelihood", "certainty", "意向形"],
+			"notes": "Use when you want to sound less dogmatic about your anticipations or plans. Frequently overused by learners as a general expression of thought, ignoring its uncertainty nuance.",
+			"nuance": "Expresses personal thoughts, more than actual certainty, giving room for potential changes.",
+			"examples": [
+				{
+					"japanese": "今週末日本語の聴解を練習しようと思っています",
+					"english": "I'm planning to practice Japanese listening comprehension this weekend."
+				}
+			]
+		},
+		{
+			"usage": "疑問詞＋普通形＋か",
+			"meaning": "unsure of a question",
+			"context": "Generally found in informal, conversational Japanese, and often used in introspective self-talk.",
+			"tags": ["certainty", "question-form"],
+			"notes": "Commonly used with end-particle 'か' to convey a sense of second-guessing or unsure self-questioning. Mistakenly treated as affirmative sentences due to presence of '普通形'.",
+			"nuance": "Expresses uncertainty about the information being asked, implying a gentle or self-doubting tone.",
+			"examples": [
+				{
+					"japanese": "どの会社がいいか、調べます",
+					"english": "I will research which company is good."
+				},
+				{
+					"japanese": "何を食べるか、まだ決めていません",
+					"english": "I haven't decided what to eat yet."
+				}
+			]
+		},
+		{
+			"usage": "〜かどうか",
+			"meaning": "unsure of a fact",
+			"context": "Most commonly seen in written language and formal communication.",
+			"tags": ["certainty", "question-form", "普通形"],
+			"notes": "Use 〜かどうか after short forms of verbs, adjectives (both i-adjectives and na-adjectives), and nouns to turn a statement into a question. Learners often overuse this form, neglecting to realize it's less common in casual conversation.",
+			"nuance": "Expresses uncertainty or question regarding a fact, often implying the speaker is seeking confirmation.",
+			"examples": [
+				{
+					"japanese": "母国へ帰るかどうか、まだ決めていません",
+					"english": "I haven't decided whether to return to my home country yet."
+				},
+				{
+					"japanese": "ホテルを予約するかどうか、確認します",
+					"english": "I will confirm whether to book the hotel or not."
+				}
+			]
+		},
+		{
+			"usage": "〜かもしれません",
+			"meaning": "50% unsure",
+			"context": "Ideal for formal and informal modes of speech, remaining polite yet conveying uncertainty or speculation.",
+			"tags": ["likelihood", "certainty", "普通形"],
+			"notes": "Perfect for expressing views or guesses without fully committing, use it after noun/い-adj/な-adj/verb in plain forms. Avoid using it in past negative form like 〜なかったかもしれません; use 〜かもしれなかった instead.",
+			"nuance": "〜かもしれません communicates a feeling of uncertainty or possibility, adding a non-committal or speculative tone to the statement.",
+			"examples": [
+				{
+					"japanese": "来年の夏に私の両親は日本へ来るかもしれません",
+					"english": "My parents might come to Japan next summer."
+				}
+			]
+		},
+		{
+			"usage": "〜かな",
+			"meaning": "wondering something to yourself",
+			"context": "Generally casual but can also be used in formal situations, depending on the speaker's affect and preceding sentence.",
+			"tags": ["certainty", "question-form", "普通形", "意向形"],
+			"notes": "While conventionally used at the end of sentences, it can also follow individual words or phrases to denote uncertainty about them specifically. Don't use 〜かな to ask others questions; it expresses personal pondering, not interrogation.",
+			"nuance": "〜かな adds a sense of introspection and uncertainty, as if talking to oneself or thinking out load.",
+			"examples": [
+				{
+					"japanese": "今夜どこへ行こうかな",
+					"english": "I wonder where to go tonight"
+				},
+				{
+					"japanese": "何を買おうかな",
+					"english": "I wonder what to buy"
+				}
+			]
+		},
+		{
+			"usage": "〜（でしょう・だろう）",
+			"meaning": "questioning the likelihood of something",
+			"context": "Standard in writing, but considered formal or indirect in casual, everyday speech.",
+			"tags": ["question-form", "likelihood", "普通形"],
+			"notes": "Don't use with personal, concrete experiences; favor it when discussing future or hypothetical situations. Avoid overuse in spoken communication as it can be perceived as evasive or uncertain.",
+			"nuance": "Expresses uncertainty or speculation, more than a direct question; often includes a hint of soliciting agreement from the listener.",
+			"examples": [
+				{
+					"japanese": "今夜雨が降るでしょう",
+					"english": "It will probably rain tonight."
+				}
+			]
+		},
+		{
+			"usage": "〜でしょうか",
+			"meaning": "wondering something",
+			"context": "More formal, common in professional and polite conversation.",
+			"tags": ["question-form", "polite", "普通形"],
+			"notes": "Attach でしょうか to the end of a plain form statement to turn it into a polite question. Avoid using with negative sentences, as it might be seen as presumptuous or rude.",
+			"nuance": "Used to seek clarification or express uncertainty in a polite way, often implying a softer, lighthearted tone.",
+			"examples": [
+				{
+					"japanese": "どのくらい時間が掛かるでしょうか",
+					"english": "How long will it take?"
+				}
+			]
+		},
+		{
+			"usage": "〜恐れがある",
+			"meaning": "there is a risk that",
+			"context": "Formal and written situations. Less common in casual conversation.",
+			"tags": ["fixed-expression", "普通形", "noun-modifier"],
+			"notes": "Typically used in formal contexts and news reports, not for everyday casual conversation. Do not confuse it with '怖がる', which is used to express feeling scared or fearful.",
+			"nuance": "Often used to express concern or caution, not fear.",
+			"examples": [
+				{
+					"japanese": "今夜から明日にかけて東日本で大雪の恐れがある",
+					"english": "There is a possibility of heavy snow in Eastern Japan from tonight through tomorrow."
+				},
+				{
+					"japanese": "今週末、関東地方で激しい雨が降る恐れがあります。ご注意ください。",
+					"english": "This weekend, there is a possibility of heavy rain in the Kanto region. Please be careful."
+				}
+			]
+		},
+		{
+			"usage": "〜そうにないんですが",
+			"meaning": "its unlikely that",
+			"context": "Mostly used in formal or written context, less in colloquial speech.",
+			"tags": ["likelihood", "マス形"],
+			"notes": "Always follows the verb stem, not the full verb. Many students mistake this is a negative expectation; it expresses low possibility, not certainty.",
+			"nuance": "Use to express a lack of likelihood in a polite, sometimes doubtful or regretful manner.",
+			"examples": [
+				{
+					"japanese": "店長、電車が止まっているので、アルバイトの時間に合いそうにないんですが",
+					"english": "Store manager, the trains are stopped, so it doesn't seem like I'll be able to make it to my part-time job on time"
+				}
+			]
+		},
+		{
+			"usage": "〜かなと思って",
+			"meaning": "wondering something; frequently used after んじゃない",
+			"context": "More common in casual or informal speech but can be used in a polite context with carefulness.",
+			"tags": ["fixed-expression", "certainty"],
+			"notes": "Often used after んじゃない to further express uncertainty, e.g. それは大丈夫なんじゃないかなと思って。 Using かなと思う instead of かなと思って at the end of sentences, or overusing it thereby creating ambiguity.",
+			"nuance": "Expresses a mild speculation without emphasis on wanting an answer, often used in personal monologue.",
+			"examples": [
+				{
+					"japanese": "昨日お菓子を作ったんだけど、ソダさん、食べるかなと思って持ってきたんだ",
+					"english": "I made some sweets yesterday and brought some, wondering if you might want to try them, Soda-san."
+				}
+			]
+		},
+		{
+			"usage": "〜（でしょう・だろう）",
+			"meaning": "isn't it?",
+			"context": "Neutral in polteness, can be used in casual and formal situations respectively.",
+			"tags": ["explanation", "hypothetical", "sentence-final", "普通形"],
+			"notes": "Use it at the end of a sentence or after the short form of a verb to make a conjecture or assumption. Avoid using it in the affirmative form with negative question tags, it can create confusion.",
+			"nuance": "「でしょう・だろう」expresses a moderate level of certainty and is often used to seek confirmation, implying 'right?' or 'isn't it?'",
+			"examples": [
+				{
+					"japanese": "今度のバス旅行、ソダさんも行くでしょう",
+					"english": "For the upcoming bus trip, Mr. Soda is also going, isn't he?"
+				}
+			]
+		},
+		{
+			"usage": "〜っこない",
+			"meaning": "an action is impossible, no way it will happen",
+			"context": "Generally casual, frequently used in spoken and informal context, emotionally charged statements.",
+			"tags": ["likelihood", "limitation", "negation", "マス形"],
+			"notes": "Attach っこない directly to the stem of the verb in マス form, not much used in formal written language. Don't use with non-action verbs or adjectives, it's primarily used with verbs.",
+			"nuance": "Expresses strong certainty that an action won't happen, often with an emotional, frustrated tone.",
+			"examples": [
+				{
+					"japanese": "今から急いで行っても、間に合いっこない",
+					"english": "Even if you hurry now, you won't make it on time."
+				},
+				{
+					"japanese": "スキー旅行は行きっこないよ、寒いところは嫌いだって言っていたから",
+					"english": "I won't be going on a ski trip, I have told you I don't like cold places."
+				}
+			]
+		},
+		{
+			"usage": "とても〜",
+			"meaning": "not at all; cannot possibly",
+			"context": "Neutral tone; used in both casual and formal contexts.",
+			"tags": ["likelihood", "negation", "ナイ形"],
+			"notes": "Implants it immediately before a negative verb, emphasizing 'cannot possibly' or 'not at all'. Don't confuse with positive 「とても」meaning 'very'; only negative connotation when followed by negative verb form.",
+			"nuance": "Used to express extreme or absolute negation, often with a sense of surprise or disbelief.",
+			"examples": [
+				{
+					"japanese": "一度もこんなにたくさんの言葉はとても覚えられない",
+					"english": "There's no way I can remember so many words for the first time."
+				},
+				{
+					"japanese": "そんな難しい本、私にはとても読めない",
+					"english": "I can't possibly read such a difficult book"
+				}
+			]
+		},
+		{
+			"usage": "〜（はもちろん・はもとより）",
+			"meaning": "of course this",
+			"context": "Mainly formal or written Japanese, occasionally used in daily conversations to emphasize a point.",
+			"tags": ["enumeration", "confirmation", "certainty", "noun-modifier"],
+			"notes": "Usually used in formal written language; pair with nouns. Often misused in negative statements; avoid this and remember it predicts positive events.",
+			"nuance": "Used to emphasize something as a given, while suggesting there might be more.",
+			"examples": [
+				{
+					"japanese": "東京ディズニーランドは日曜日はもちろん、平日でも人が多い",
+					"english": "Tokyo Disneyland is crowded not just on Sundays, but also on weekdays."
+				},
+				{
+					"japanese": "「ワンピース」は、子供はもとより大人も楽しめます",
+					"english": "'One Piece' can be enjoyed not only by children, but also by adults."
+				}
+			]
+		},
+		{
+			"usage": "〜かねない",
+			"meaning": "might be; could be",
+			"context": "Used in both, colloquial and formal speech, but seen more in written language, often in newspapers or reports.",
+			"tags": ["likelihood", "negation", "マス形"],
+			"notes": "This cannot be used to express positive predictions or possibilities, and is always attached to the stem of a verb. Students often mistake ～かねない for a negated potential form, or wrongly use it for positive predictions.",
+			"nuance": "Expresses fear, worry, or concern that something negative or undesirable might occur.",
+			"examples": [
+				{
+					"japanese": "スピードを出しすぎると、事故を起こしかねない。",
+					"english": "If you go too fast, you could cause an accident."
+				},
+				{
+					"japanese": "こんなに寒いところにいたら、風邪を引きかねない。",
+					"english": "If you stay in such a cold place, you might catch a cold."
+				}
+			]
+		},
+		{
+			"usage": "〜にも〜",
+			"meaning": "cannot even if you try",
+			"context": "Often used in casual and informal settings; a bit harsh for formal conversation.",
+			"tags": ["likelihood", "negation", "ナイ形", "意向形"],
+			"notes": "Use between verbs; the first verb in dictionary form, the second in negative ~ない form. Common mistake is using negative form for both verbs, needs only in the second.",
+			"nuance": "Expresses an impossibility, even if one tries, often with a negative undertone.",
+			"examples": [
+				{
+					"japanese": "荷物が重すぎて、私一人では持とうにも持てなかった。",
+					"english": "The baggage was so heavy that I couldn't carry it by myself."
+				},
+				{
+					"japanese": "今朝、頭が痛くて、起きようにも起きられなかったんです。",
+					"english": "This morning, I had a headache and couldn't manage to get up."
+				}
+			]
+		},
+		{
+			"usage": "〜わけがない",
+			"meaning": "impossible; no way that",
+			"context": "Common in both casual and formal language, but highly context-dependent.",
+			"tags": [
+				"likelihood",
+				"negation",
+				"advanced-usage",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Use after the plain form of a verb, noun, or na-adjective. Learners often improperly apply 〜わけがない directly to i-adjectives, which need to be turned into nouns first.",
+			"nuance": "Indicates a strong conviction that something cannot possibly be the case, often used to reject an opposing argument.",
+			"examples": [
+				{
+					"japanese": "２月に桜が咲くわけがないよ。梅の花じゃない。",
+					"english": "There's no way cherry blossoms would bloom in February. It's not a plum blossom, after all."
+				},
+				{
+					"japanese": "毎日遊んでばかりいたら、試験に合格するわけがない。",
+					"english": "If you just play around every day, there's no way you'll pass the exam."
+				}
+			]
+		},
+	]
+}

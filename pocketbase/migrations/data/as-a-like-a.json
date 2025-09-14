@@ -1,0 +1,76 @@
+{
+	"as-a-like-a": [
+		{
+			"usage": "〜を〜として",
+			"meaning": "as a ___; ___ being used as a ___",
+			"context": "Fits in both formal and informal contexts, though slightly more common in written discourse or formal oratory.",
+			"tags": ["description", "fixed-expression", "noun-modifier"],
+			"notes": "Commonly used with the form 'someone を something として' or 'something を something として', indicating a respective role or function. Avoid confusing this with 〜としても (even if), which carries a distinctly hypothetical connotation.",
+			"nuance": "〜を〜として speaks to a designation or utilization of something/someone in a specific role, capacity, or context.",
+			"examples": [
+				{
+					"japanese": "要らなくなったプリントを紙の飛行機として使っています",
+					"english": "I'm using the printouts that are no longer needed as paper airplanes."
+				},
+				{
+					"japanese": "この試験では７０点以上を合格とする",
+					"english": "In this test, a score of 70 or above is considered a pass."
+				}
+			]
+		},
+		{
+			"usage": "〜のような",
+			"meaning": "this type of; is like a",
+			"context": "Usage of 〜のような is neutral but might sound slightly formal or literary due to its speculative nature.",
+			"tags": ["comparative", "description", "noun-modifier"],
+			"notes": "Commonly used to describe similarities and characteristics, or for metaphors, but not for actual facts. Avoid using 〜のような for exact, factual comparisons; this is often a common mistake as it denotes a less defined similarity.",
+			"nuance": "〜のような conveys a comparison with a soft suggestion or speculation rather than a hard fact.",
+			"examples": [
+				{
+					"japanese": "私はアイスのような甘い食べ物が好きです",
+					"english": "I like sweet foods like ice cream."
+				},
+				{
+					"japanese": "Monster Energyのような飲み物がいいんじゃない",
+					"english": "Wouldn't a drink like Monster Energy be good?"
+				}
+			]
+		},
+		{
+			"usage": "〜として",
+			"meaning": "as a ___",
+			"context": "Neutral situation, used in both formal and casual conversation, as well as written correspondence.",
+			"tags": ["description", "comparative", "noun-modifier"],
+			"notes": "Positioned after a noun, it sets the condition, role or perspective for the following clause: noun + 〜として. Avoid using 〜として when expressing a concrete, actual state or transformation, the correct usage would be 〜になる.",
+			"nuance": "〜として gives the context or role in which something/someone is viewed; not limited to comparison only, but more about defining a standpoint.",
+			"examples": [
+				{
+					"japanese": "Aさんは１０年前に留学生として日本に来て、日本語を勉強した",
+					"english": "Mr. A came to Japan as a foreign exchange student 10 years ago and studied Japanese."
+				}
+			]
+		},
+		{
+			"usage": "〜ように",
+			"meaning": "exactly like; note that 同じ is a special conjugation",
+			"context": "Used in both casual and formal conversation, careful usage in keigo helps show respect and politeness.",
+			"tags": ["description", "similiarity", "普通形"],
+			"notes": "Best used when expressing a hope, wish, or endeavor, and comparing actions or states. Often misused as a command form, when in fact it's more about aspiration or mirroring a state.",
+			"nuance": "〜ように indicates similarity or desire, driven more by emotion than objective comparison.",
+			"examples": [
+				{
+					"japanese": "母が教えてくれたように作ったら、美味しくできた",
+					"english": "It turned out delicious when I made it as my mother taught me."
+				},
+				{
+					"japanese": "みんなと同じように、うまくできません",
+					"english": "I cannot do it as well as everyone else."
+				},
+				{
+					"japanese": "来月から、ゴミ回収日は以下のように変わります",
+					"english": "From next month, the garbage collection days will change as follows"
+				}
+			]
+		},
+	]
+}

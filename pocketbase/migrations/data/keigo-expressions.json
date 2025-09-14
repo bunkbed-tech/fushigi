@@ -1,0 +1,513 @@
+{
+    "keigo-expressions": [
+        {
+            "usage": "いらっしゃいます",
+            "meaning": "replacement for 行く, 来る, and いる",
+            "context": "Used in formal settings and business contexts; inappropriate for casual conversation.",
+            "tags": ["greeting", "respectful-honorific"],
+            "notes": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",
+            "nuance": "Denotes respect, often to express modesty about ones own actions or to speak humbly about someone else's actions.",
+            "examples": [
+                {
+                    "japanese": "「」はいらっしゃいますか",
+                    "english": "Is [name/person] there?"
+                },
+                {
+                    "japanese": "今週末どこへいらっしゃいますか",
+                    "english": "Where are you going this weekend?"
+                }
+            ]
+        },
+        {
+			"usage": "〜と申します",
+			"meaning": "introducing your name",
+			"context": "This phrase is typically used in formal or business settings, and not commonly used among friends or in casual conversations.",
+			"tags": [
+				"humble-honorific",
+				"greeting",
+				"noun-modifier",
+				"fixed-expression"
+			],
+			"notes": "Use it when introducing yourself in formal situations, such as during a business meeting or a job interview. Avoid using it with people you are familiar with as it may sound distant or overly formal.",
+			"nuance": "〜と申します is a highly polite expression for self introduction, often accompanied by a sense of humility.",
+			"examples": [
+				{
+					"japanese": "初めまして、タホと申します",
+					"english": "Nice to meet you, I'm Taho."
+				}
+			]
+		},
+        {
+			"usage": "参ります",
+			"meaning": "replacement for 行く, and 来る",
+			"context": "Highly polite, typically reserved for formal, business, or ceremonial occasions.",
+			"tags": ["humble-honorific"],
+			"notes": "Commonly used in business contexts, or when announcing one's arrival or departure to a superior. Misuse can occur by applying it in casual or informal contexts, or with equals and inferiors.",
+			"nuance": "参ります is a humble expression, adding a sense of politeness, submission, or self-deprecation.",
+			"examples": [
+				{
+					"japanese": "今年の３月に参りました",
+					"english": "I visited in March this year."
+				},
+				{
+					"japanese": "今年の１０月に大阪へ参ります",
+					"english": "I will go to Osaka in October this year."
+				}
+			]
+		},
+		{
+			"usage": "〜いただけませんか",
+			"meaning": "humble form of もらう (to receive)",
+			"context": "Appropriate for business and formal social contexts.",
+			"tags": ["honorific", "giving-receiving", "テ形"],
+			"notes": "Use when asking for a favor in a professional or formal context, not typically used amongst friends or family. Misused as a casual or informal phrase; it may sound overly formal or insincere if used in the wrong context.",
+			"nuance": "Indicates a humble request or favor; can create a sense of politeness or deference to the listener.",
+			"examples": [
+				{
+					"japanese": "漢字の書き方を教えていただけませんか",
+					"english": "Could you teach me how to write kanji?"
+				}
+			]
+		},
+		{
+			"usage": "お〜になります",
+			"meaning": "create keigo out of any verb",
+			"context": "Generally appropriate in formal, business, or hierarchical social contexts; may sound overly polite in casual situations.",
+			"tags": ["honorific", "combination", "fixed-expression", "マス形"],
+			"notes": "Used to speak about someone else's actions, especially those 'higher' in the societal ladder, not for one's own actions. Learners often erroneously apply it to their own actions or overuse it, making their speech sound overly formal or unnatural.",
+			"nuance": "Adds a level of respect and politeness to verbs, often implying a distance or superior status of addressed person.",
+			"examples": [
+				{
+					"japanese": "どちらそれをお買いになりましたか",
+					"english": "Where did you buy that?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬動詞の受身形",
+			"meaning": "create sonkeigo out of basic verbs",
+			"context": "It's used in extremely formal or polite contexts, such as business emails, news reports, or when addressing individuals of higher status.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "The passive forms of 尊敬動詞 are not very common and are mostly used in formal writing, so prefer 尊敬語 (respectful language) in general conversation. Don't mistake it for a negative sentiment as other passive forms in Japanese can express criticism or hardship.",
+			"nuance": "尊敬動詞の受身形 (sonkeigo of passive verbs) shows the listener's or speaker's respect towards the subject, often used when the doer is someone higher in rank or older.",
+			"examples": [
+				{
+					"japanese": "タホさんは全部たべられました",
+					"english": "Mr. Taho was able to eat it all."
+				},
+				{
+					"japanese": "みんなさん映画へ行かれました",
+					"english": "Everyone went to the movies."
+				},
+				{
+					"japanese": "ソダさんよく釣りをされる",
+					"english": "Mr. Soda, you often go fishing, don't you?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（行く・来る・いる）",
+			"meaning": "replacement for 行く, 来る, and いる",
+			"context": "尊敬語 forms are used in formal, respectful or polite situations, especially in service industries or with superiors.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Replace 行く with いらっしゃる, 来る with 参る, and いる with おる whenever speaking to or about someone of higher status or in an informal setting. Common mistakes include using these forms when talking about oneself or peers, which can sound overly formal or insincere.",
+			"nuance": "尊敬語 for 行く, 来る, and いる conveys a form of respect towards the subject of the sentence, often someone of higher status or in a formal setting.",
+			"examples": [
+				{
+					"japanese": "部長はいらっしゃいますか",
+					"english": "Is the department head in?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（食べる・飲む）",
+			"meaning": "replacement for 食べる, and 飲む",
+			"context": "Use in formal occasions, business settings, or when speaking with elders or superiors.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "When addressing seniors or someone respected, use '召し上がる' instead of '食べる/飲む'. Don't use '召し上がる' for yourself or your in-group actions, it's respectful language aimed at out-groups.",
+			"nuance": "尊敬語 (respectful language) for '吸います' and '飲みます' conveys respect towards the person performing the action.",
+			"examples": [
+				{
+					"japanese": "もうご飯を召し上がりましたか",
+					"english": "Have you already eaten?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（くれる）",
+			"meaning": "replacement for くれる",
+			"context": "Commonly used in formal settings and polite conversation, particularly when interacting with someone of higher status or position.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Mainly used when someone of higher status does something for the speaker or someone in the speaker's in-group; do not use for self-actions. Common mistake is using it for one's own actions or actions of those inside the speaker's in-group towards someone of higher status.",
+			"nuance": "尊敬語（くれる）is used to express respect towards the actions of others, often creating a sense of humility for the speaker's own actions.",
+			"examples": [
+				{
+					"japanese": "こちらでお待ちください",
+					"english": "Please wait here"
+				},
+				{
+					"japanese": "ご注意ください",
+					"english": "Please be careful"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（言う）",
+			"meaning": "replacement for 言う",
+			"context": "Formal and respectful; used in business, professional or formal personal contexts.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Use it when you want to express a higher respect, such as when talking about something said by superiors, elders, or customers. Don't use it when talking about yourself or people in your in-group to others; it can be seen as over-polite or even sarcasm.",
+			"nuance": "尊敬語（言う）is a polite version of 言う ('say'), often conveying respect and formality towards the person being addressed or talked about.",
+			"examples": [
+				{
+					"japanese": "お母さんは帰りなさいとおっしゃいました",
+					"english": "Mother told me to come home."
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（する）",
+			"meaning": "replacement for する",
+			"context": "Appropriate in formal, business, or polite conversation, especially when addressing or referring to someone of higher status.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Use it in the third person context, not between peers, family, or friends. Do not use it for your own actions, it's generally perceived as arrogance.",
+			"nuance": "尊敬語（する）conveys respect towards the subject of the action, often used when talking about superiors or customers.",
+			"examples": [
+				{
+					"japanese": "今冬スキーをなさりますか",
+					"english": "Will you go skiing this winter?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（見る）",
+			"meaning": "replacement for 見る",
+			"context": "Polite; typically used in formal conversation, business communication or when addressing higher-ups.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Use 'ご覧になる' when referring to the action of a respected person or actions of elders or superiors. Avoid using for your own actions or those of peers; not a direct replacement for '見る'.",
+			"nuance": "尊敬語（見る）'ご覧になる' conveys respect towards the subject, often used when speaking about someone of higher status.",
+			"examples": [
+				{
+					"japanese": "映画をご覧になりましたか",
+					"english": "Have you seen the movie?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（知っている）",
+			"meaning": "replacement for 知っている",
+			"context": "Formal and respectful, suitable for deferential contexts like business settings",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Use when talking about a superior's knowledge, not your own or peer's knowledge Misuse by applying to self or peers, it's only for superiors",
+			"nuance": "尊敬語 version of 'know'; shows respect to the person who knows something",
+			"examples": [
+				{
+					"japanese": "このアニメをご存じですか",
+					"english": "Do you know this anime?"
+				}
+			]
+		},
+		{
+			"usage": "尊敬語（etc.）",
+			"meaning": "other various sonkeigo phrases",
+			"context": "Appropriate in formal settings, business situations, or when speaking with superiors or elders.",
+			"tags": ["respectful-honorific", "basic-verb-forms"],
+			"notes": "Use Sonkeigo for superiors, elders, customers, or when talking about someone else's family to show respect. Common mistakes include using Sonkeigo to refer to one's own actions, which can come across as arrogant.",
+			"nuance": "Sonkeigo language reflects the speaker's respect towards the subject of the verb but it's not used to elevate oneself.",
+			"examples": [
+				{
+					"japanese": "日本の生活はいかがですか",
+					"english": "How is life in Japan?"
+				},
+				{
+					"japanese": "どちらいらっしゃいますか",
+					"english": "Which one will you have?"
+				},
+				{
+					"japanese": "どなたこれを召し上がりましたか",
+					"english": "Who ate this?"
+				}
+			]
+		},
+		{
+			"usage": "ご〜します",
+			"meaning": "creating kenjougo from nouns",
+			"context": "Typically used in formal, professional environments or when talking to people of higher status.",
+			"tags": ["humble-honorific", "noun-modifier"],
+			"notes": "Use with nouns representing actions - for instance, contact (連絡) would become 'go-renraku shimasu'. Avoid using for others' actions as it could unintentionally belittle them, and avoid using personal/living things as it sounds unnatural.",
+			"nuance": "This formality expresses the speaker's humility, often used when talking about one's own actions in work settings.",
+			"examples": [
+				{
+					"japanese": "奥さんをご紹介します",
+					"english": "Let me introduce my wife."
+				}
+			]
+		},
+		{
+			"usage": "お〜します",
+			"meaning": "creating kenjougo from verbs",
+			"context": "Formal, business and professional settings where deference to social hierarchy is required.",
+			"tags": ["humble-honorific", "マス形"],
+			"notes": "Appropriate in professional communication, use only to refer to oneself or in-group members and conjugate normally into past, negative, etc. Avoid use for things you do to others (adds condescension) or about out-group actions (sounds presumptuous).",
+			"nuance": "Used when speaking about oneself in professions where deference is important, お〜します denotes humble action rather than literal action.",
+			"examples": [
+				{
+					"japanese": "タホさん、お手伝いしましょうか",
+					"english": "Mr. Taho, do you need help?"
+				},
+				{
+					"japanese": "荷物をお待ちします",
+					"english": "I will wait for the luggage"
+				}
+			]
+		},
+		{
+			"usage": "「」に「」をいただきます",
+			"meaning": "receives from に",
+			"context": "More appropriate for formal situations, conversations with superiors, and in business settings.",
+			"tags": ["giving-receiving"],
+			"notes": "Use this form reciprocating a favor or in business situations when you receive something. Common mistake is using it to express what you give to others, remember it indicates what you receive from others.",
+			"nuance": "「」に「」をいただきます carries a humble tone, underscoring gratitude and respect towards the giver.",
+			"examples": [
+				{
+					"japanese": "私は誕生日プレゼントをいただきました",
+					"english": "I received a birthday present."
+				}
+			]
+		},
+		{
+			"usage": "「」に「」をくださいます",
+			"meaning": "does it for に",
+			"context": "Formal and polite language, often used in business or formal situations.",
+			"tags": ["giving-receiving"],
+			"notes": "Generally used when someone of higher rank does something for the speaker, not typically used among close friends or family. Many learners misuse it to express their own actions for others, which is an incorrect usage.",
+			"nuance": "Expresses the speaker's gratitude or respect to the doer for doing the action for them",
+			"examples": [
+				{
+					"japanese": "ソダさんが誕生日プレゼントをくださいました",
+					"english": "Mr. Soda gave me a birthday present"
+				}
+			]
+		},
+		{
+			"usage": "「」に〜いただきます",
+			"meaning": "receives from に",
+			"context": "Highly formal, often used in business interactions or to superiors.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Frequently used with word「いただく」in keigo (polite language) after the te-form of a verb, commonly in requests or when receiving things. Learners often confusing it with もらいます but keep in mind いただきます is more formal and polite.",
+			"nuance": "Expresses gratitude and politeness for receiving an action or a thing, often used by someone in a lower position to receive from someone in a higher position.",
+			"examples": [
+				{
+					"japanese": "私は母に料理を教えていただきました",
+					"english": "I was taught how to cook by my mother."
+				}
+			]
+		},
+		{
+			"usage": "「」に〜くださいます",
+			"meaning": "does it for に",
+			"context": "Formal and polite, regular usage towards seniors, superiors, or strangers.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Use に〜くださいます to show your gratitude when receiving a favor from higher or non-intimate social relations. Not for self-representation or peer-level actions; misuse portrays arrogance or rudeness.",
+			"nuance": "Expresses gratitude around someone 'giving' a favor or service; considered respectful, often utilized between non-equals.",
+			"examples": [
+				{
+					"japanese": "タホさんが私に釣り方を教えてくださいました",
+					"english": "Mr. Taho taught me how to fish"
+				}
+			]
+		},
+		{
+			"usage": "ご〜ください",
+			"meaning": "creating kenjougo from nouns",
+			"context": "Predominantly used in business scenarios, formal communication or when speaking to superiors.",
+			"tags": ["humble-honorific", "noun-modifier"],
+			"notes": "Use before actions you wish someone else to carry out, not for actions you will perform. Avoid referring to your own actions as this creates discord with the humble tone.",
+			"nuance": "Expresses respectful request or order, may feel over-polite or formal to native speakers if used excessively.",
+			"examples": [
+				{
+					"japanese": "ご注意ください",
+					"english": "Please be careful"
+				},
+				{
+					"japanese": "ご覧ください",
+					"english": "Please take a look"
+				}
+			]
+		},
+		{
+			"usage": "お〜ください",
+			"meaning": "creating kenjougo from verbs",
+			"context": "It's a humble expression used in formal or polite settings, such as business meetings, presentations or when speaking to someone of higher status.",
+			"tags": ["humble-honorific", "マス形"],
+			"notes": "Verb conversions for お〜ください: Use with verbs in ます form, drop ます, add お at start and ください at end, e.g. 飲みます (nomimasu) becomes お飲みください (onomin kudasai). Learners often forget the お, overuse the form in casual situations, or apply it to inanimate objects which is inappropriate.",
+			"nuance": "お〜ください is used to show respect and deference towards the action's receiver, often used with superior or outsider in a formal context.",
+			"examples": [
+				{
+					"japanese": "お待ちください",
+					"english": "Please wait"
+				}
+			]
+		},
+		{
+			"usage": "（お・ご）（ます・する）です",
+			"meaning": "creating keigo from nouns",
+			"context": "Best suited for formal contexts, during business interactions, or when speaking to someone of higher status.",
+			"tags": ["respectful-honorific"],
+			"notes": "Use 「お」for native Japanese words and 「ご」for words of Chinese origin; follows noun to make it keigo. Confusing when to use 'お' or 'ご'; misunderstanding that 'お/ご ＋ noun' alone is not sufficient for honorific expression.",
+			"nuance": "Expresses respect towards the subject or listener, generating a polite and formal tone.",
+			"examples": [
+				{
+					"japanese": "お客様、ご注文はお決まりでしょうか？",
+					"english": "Customer, have you decided on your order?"
+				},
+				{
+					"japanese": "お箸をご利用でしょうか？",
+					"english": "Do you use chopsticks?"
+				}
+			]
+		},
+		{
+			"usage": "〜たいことがあるんですが",
+			"meaning": "polite way of asking for something, asking if it exists",
+			"context": "This is a formal, polite expression mostly used in business or formal social contexts.",
+			"tags": ["polite", "question-form", "fixed-expression", "マス形"],
+			"notes": "Use it when you want to ask for a favor politely and don't want to appear demanding. Do not use 'だ/です' before〜たいことがあるんですが, which may seem arrogant or confrontational.",
+			"nuance": "Typically used by lower rank to higher rank, '〜たいことがあるんですが' communicates a polite, indirect request with a sense of hesitation or uncertainty.",
+			"examples": [
+				{
+					"japanese": "お願いしたいことがあるんですが",
+					"english": "There's something I'd like to ask you."
+				},
+				{
+					"japanese": "ご相談したいことがあるんですが",
+					"english": "I have something I'd like to discuss with you"
+				}
+			]
+		},
+		{
+			"usage": "〜いただきたいんですが",
+			"meaning": "polite way of asking for a favor or help",
+			"context": "Formal, business or respectful occasions, not for close friends or family.",
+			"tags": ["polite", "giving-receiving", "テ形"],
+			"notes": "Use only when you're the one who will receive the benefit, not for actions others do for themselves. Confusing it with いただきます, which is more final and assertive.",
+			"nuance": "Expresses a polite request or desire for a favor, humility from speaker.",
+			"examples": [
+				{
+					"japanese": "先生、私の作文を直していただきたいんですが",
+					"english": "Teacher, I would like you to correct my composition."
+				},
+				{
+					"japanese": "面談の時間を変えていただきたいんですが",
+					"english": "I would like to change the time of the meeting."
+				}
+			]
+		},
+		{
+			"usage": "「あ」せていただけませんか",
+			"meaning": "asking for permission; asking to be allowed to do something",
+			"context": "This phrase is appropriate for formal, professional, or socially distant contexts, suggesting high politeness.",
+			"tags": ["polite", "giving-receiving", "imperative"],
+			"notes": "Use this formula when you want to politely ask for permission in professional or formal situations, but be sure to replace 'あ' with the verb stem you intend to use. A common mistake is using this phrase in informal settings or replacing 'あ' with full verb instead of the verb stem.",
+			"nuance": "This phrase carries a high degree of politeness and humility, and indicates a respectful request.",
+			"examples": [
+				{
+					"japanese": "あのうすみませんがお休ませていただけませんか",
+					"english": "Excuse me, would you mind if I take a break?"
+				},
+				{
+					"japanese": "犬を飼うために、早く帰らせていただけませんか",
+					"english": "Could you please let me leave early to take care of my dog?"
+				}
+			]
+		},
+		{
+			"usage": "〜いただきます",
+			"meaning": "polite way to express your pleasure of doing something",
+			"context": "Primarily used in formal or business situations, with elders, or in hospitality conditions to show politeness and respect.",
+			"tags": ["polite", "sentence-final", "使役形"],
+			"notes": "Use いただきます when you're the one benefitting from an action, service, or gift; or after -te form of verbs to make a polite request. Avoid using as an automatic word swap for 食べる or to make commands more polite; it should signify the speaker's humility and respect in specific contexts.",
+			"nuance": "Expresses humbleness and gratitude, used when receiving something or requesting others' actions.",
+			"examples": [
+				{
+					"japanese": "これから発表について、始めさせていただきます",
+					"english": "I will now begin the presentation."
+				}
+			]
+		},
+		{
+			"usage": "（ご〜・お〜）いたします",
+			"meaning": "polite speech for your own actions",
+			"context": "Highly formal or polite; use when interacting with superiors, elders, or customers to show deference.",
+			"tags": [
+				"humble-honorific",
+				"polite",
+				"sentence-final",
+				"マス形",
+				"noun-modifier"
+			],
+			"notes": "Most suitable in work-related contexts including customer service; refrain from using with friends or in informal settings. Avoid using for actions not performed by the speaker; learners often misuse it for actions done by others due to confusion with respect-honorific form.",
+			"nuance": "Expresses humility or respect towards the listener; often used in professional settings.",
+			"examples": [
+				{
+					"japanese": "お客様にお知らせいたします",
+					"english": "We would like to inform our customers"
+				},
+				{
+					"japanese": "必要なものはこちらでご用意いたしますので、お気軽にご参加ください",
+					"english": "We will prepare everything you need here, so please feel free to participate"
+				}
+			]
+		},
+			{
+			"usage": "〜おります",
+			"meaning": "this is just basic self polite speech for ています",
+			"context": "Highly formal, often used in professional/business/written communications.",
+			"tags": ["humble-honorific", "polite", "テ形"],
+			"notes": "Use 〜おります when requiring a polite, respectful tone, particularly in professional or formal writing. Avoid using ～おります in casual conversation as it may sound overly formal or stiff; do not confuse with ています which is less formal.",
+			"nuance": "〜おります is a highly formal and humbly-polite verb form primarily used in written, business, or official contexts, emphasizing respectfulness.",
+			"examples": [
+				{
+					"japanese": "当店の営業時間は９時から５時までとなっております",
+					"english": "Our store's business hours are from 9 am to 5 pm."
+				}
+			]
+		},
+		{
+			"usage": "〜いただけないでしょうか",
+			"meaning": "could I please get some",
+			"context": "Used in professional or formal conversations to convey respect or subordination.",
+			"tags": ["polite", "giving-receiving", "favor", "テ形"],
+			"notes": "Use this grammar when asking for favors from superiors or in formal settings; remember it contains the verb ‘to receive’ (いただく), not ‘to give’. Avoid using it with close friends or in casual situations; wrong use of politeness level can sound mechanical or distant.",
+			"nuance": "〜いただけないでしょうか expresses a polite and somewhat indirect request, often signaling humility.",
+			"examples": [
+				{
+					"japanese": "もう少しゆっくり話していただけないでしょうか。",
+					"english": "Could you speak a little slower, please?"
+				},
+				{
+					"japanese": "アンケートに協力していただけないでしょうか。",
+					"english": "Could you possibly assist with the survey?"
+				}
+			]
+		},
+		{
+			"usage": "〜いただけないかと思って",
+			"meaning": "was wondering if you could help",
+			"context": "Used in formal/semi-formal situations, professional settings, and in conversations with superiors or unfamiliar people.",
+			"tags": ["polite", "favor", "テ形"],
+			"notes": "Use it when asking for a favor in a polite way, especially from superiors or people you don't know well. Don't use it for casual or informal situations; this could come off as too formal and distant.",
+			"nuance": "Expresses a respectful and indirect request; carries a tone of apprehensiveness and consideration toward the listener's situation.",
+			"examples": [
+				{
+					"japanese": "大学の資料を見せていただけないかと思って。。。",
+					"english": "I was wondering if you could show me some materials from the university..."
+				},
+				{
+					"japanese": "次の説明会の予定を教えていただけないかと思って。。。",
+					"english": "I was wondering if you could let me know the schedule for the next informational meeting..."
+				}
+			]
+		},
+    ]
+}

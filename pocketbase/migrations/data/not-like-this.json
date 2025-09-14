@@ -1,0 +1,50 @@
+{
+	"grammar": [
+		{
+			"usage": "〜じゃなくて",
+			"meaning": "correcting someone",
+			"context": "Generally casual and conversational; overly direct for polite or formal settings.",
+			"tags": ["conditional", "noun-modifier"],
+			"notes": "Followed by what you want to correct; can be used in negative form for more polite context. Beware of overuse, as it can come off as argumentative or arrogant; don't use it to correct factual information, mostly used for personal thoughts.",
+			"nuance": "Used to correct oneself or others, often implying the corrected information is of greater importance; contains degree of emphasis.",
+			"examples": [
+				{
+					"japanese": "ウイリアムじゃなくて、タホですよ",
+					"english": "It's not William, it's Taho."
+				},
+				{
+					"japanese": "オーストラリア人じゃなくて、アメリカ人です",
+					"english": "I'm not Australian, I'm American."
+				}
+			]
+		},
+		{
+			"usage": "〜んじゃなくて",
+			"meaning": "correcting someone",
+			"context": "Mainly colloquial, casual conversations; not appropriate for formal written or spoken context.",
+			"tags": ["conditional", "辞書形"],
+			"notes": "Primarily used in informal and conversational settings, following non-past tense of verbs, i-adjectives or nouns. Mistakenly used in formal situations or following past tense forms which can lead to incorrect usage.",
+			"nuance": "Used to politely correct someone or one's self, showing a shift from an incorrect to a correct point.",
+			"examples": [
+				{
+					"japanese": "彼は行くんじゃなくて、帰るんです",
+					"english": "He's not going, he's returning."
+				}
+			]
+		},
+		{
+			"usage": "〜で",
+			"meaning": "don't do this, do that",
+			"context": "Usually informal; caution with authority figures and use more polite forms (〜ないでください) instead.",
+			"tags": ["suggestion", "imperative", "conjunctive", "ナイ形"],
+			"notes": "Often used when guiding someone's actions or behavior, works with negative dictionary form of verbs (〜ないで). Do not use for positive actions, only used in negative or prohibitive context (avoid using 〜で with positive verb forms).",
+			"nuance": "Implying an advice or suggestion, but in a stronger tone or may carry a hint of warning.",
+			"examples": [
+				{
+					"japanese": "毎日肉を食べないで、時々豆腐を食べます",
+					"english": "I don't eat meat every day, I sometimes eat tofu instead."
+				}
+			]
+		},
+	]
+}
