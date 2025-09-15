@@ -2,7 +2,7 @@
 	"as-a-like-a": [
 		{
 			"usage": "〜を〜として",
-			"meaning": "as a ___; ___ being used as a ___",
+			"meaning": "using (x) as a (y)",
 			"context": "Fits in both formal and informal contexts, though slightly more common in written discourse or formal oratory.",
 			"tags": ["description", "fixed-expression", "noun-modifier"],
 			"notes": "Commonly used with the form 'someone を something として' or 'something を something として', indicating a respective role or function. Avoid confusing this with 〜としても (even if), which carries a distinctly hypothetical connotation.",
@@ -37,6 +37,20 @@
 			]
 		},
 		{
+			"usage": "〜のような〜",
+			"meaning": "explaining as a type of something similiar",
+			"context": "This construction is neutral and thus suitable for both formal and informal contexts.",
+			"tags": ["description", "comparative", "noun-modifier"],
+			"notes": "Use this pattern when you want to describe something as being similar to or resembling another thing, but be aware it may not imply complete equality. A common mistake is using 〜のような〜 to imply exact likeness; remember it indicates a resemblance, not an exact match.",
+			"nuance": "〜のような〜 suggests a comparison or similarity, but not an exact match, often with a sense of approximation or imitation.",
+			"examples": [
+				{
+					"japanese": "将棋というのはギターのような楽器です",
+					"english": "Shogi is like a musical instrument, such as a guitar."
+				}
+			]
+		},
+		{
 			"usage": "〜として",
 			"meaning": "as a ___",
 			"context": "Neutral situation, used in both formal and casual conversation, as well as written correspondence.",
@@ -52,10 +66,10 @@
 		},
 		{
 			"usage": "〜ように",
-			"meaning": "exactly like; note that 同じ is a special conjugation",
+			"meaning": "exactly like (in the way/manner of)",
 			"context": "Used in both casual and formal conversation, careful usage in keigo helps show respect and politeness.",
 			"tags": ["description", "similiarity", "普通形"],
-			"notes": "Best used when expressing a hope, wish, or endeavor, and comparing actions or states. Often misused as a command form, when in fact it's more about aspiration or mirroring a state.",
+			"notes": "Best used when expressing a hope, wish, command, or endeavor, as well as comparing actions or states.",
 			"nuance": "〜ように indicates similarity or desire, driven more by emotion than objective comparison.",
 			"examples": [
 				{
@@ -72,5 +86,33 @@
 				}
 			]
 		},
+		{
+			"usage": "（こんな・そんな・あんな・どんな）N",
+			"meaning": "that / this / what kind of; like みたい and のような",
+			"context": "These are standard and commonly used across both formal and informal situations.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Use these terms when describing similarities or asking for specifics; remember they can't replace direct article ('the'). Avoid using them interchangeably; context and speaker-listener relationship matter.",
+			"nuance": "Each depicts a comparative scenario: 'こんな' refers to a similar situation close to the speaker, 'そんな' to something near the listener, 'あんな' to a situation neither close to the speaker nor listener, and 'どんな' asks for the type or quality of something.",
+			"examples": [
+				{
+					"japanese": "あー、かわいい。僕もこんな彼女が欲しいな",
+					"english": "Ah, she's cute. I wish I had a girlfriend like her."
+				}
+			]
+		},
+		{
+			"usage": "（こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう）ふうに",
+			"meaning": "that kind of style; similiar to ように and みたいに",
+			"context": "Fits into both casual and formal speech, but may come across as vague in highly formal situations.",
+			"tags": ["description"],
+			"notes": "Commonly used to make generalizations or hypothetical scenarios. Be careful not to confuse with ように, which typically implies a direct similarity, not just in style or manner.",
+			"nuance": "Expresses a comparison in the style, manner, or way of something or someone.",
+			"examples": [
+				{
+					"japanese": "お休みの日はどんな風に過ごしていますか",
+					"english": "How do you spend your days off?"
+				}
+			]
+		}
 	]
 }

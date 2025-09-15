@@ -1,0 +1,246 @@
+{
+	"emotional-reactions-desires": [
+		{
+			"usage": "〜たまらない",
+			"meaning": "unbearably; can't stand",
+			"context": "",
+			"tags": ["likelihood", "テ形"],
+			"notes": "",
+			"nuance": "Unable to generate detailed notes",
+			"examples": [
+				{
+					"japanese": "私の部屋は窓もないし、エアコンもないので、夏は暑くてたまらない",
+					"english": "My room has no windows or air conditioning, so it's unbearably hot in the summer."
+				},
+				{
+					"japanese": "アルバイトが疲れてたまらない。もうやめたい。",
+					"english": "I'm unbearably tired from the part-time job. I want to quit already."
+				}
+			]
+		},
+		{
+			"usage": "〜ではいられない",
+			"meaning": "can't help but (compulsion, urge)",
+			"context": "Usable in both casual and polite contexts; more frequently observed in written Japanese or formal speech.",
+			"tags": [
+				"limitation",
+				"sentence-final",
+				"fixed-expression",
+				"must",
+				"ナイ形"
+			],
+			"notes": "Attach ではいられない to negative ない-form of verbs to express 'can't help but do'. Remember not to use で in positive statements. This form only works with negative verbs.",
+			"nuance": "〜ではいられない implies a strong uncontrollable urge or necessity; it conveys feelings of desperation or lack of choice.",
+			"examples": [
+				{
+					"japanese": "私は、新しいゲームが発売されると、買わないではいられません",
+					"english": "Whenever a new game is released, I can't help but buy it."
+				},
+				{
+					"japanese": "この国の日中はとても暑いので、昼寝をせずにはいられないそうです",
+					"english": "It is said that it's so hot during the day in this country, one cannot help but take a nap."
+				}
+			]
+		},
+		{
+			"usage": "なんて〜んだろう",
+			"meaning": "definitely, extremely",
+			"context": "Used in personal and casual conversations, not suitable for professional or formal contexts.",
+			"tags": [
+				"certainty",
+				"advanced-usage",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Often used after な-adjectives and nouns, not typically used in formal writing. Overuse can be perceived as melodramatic or insincere; not appropriate for all situations because of its strong nuance.",
+			"nuance": "An emphatic expression expressing surprise, awe or disbelief rather than a simple certainty.",
+			"examples": [
+				{
+					"japanese": "東京はなんて人が多いんだろう。",
+					"english": "Tokyo sure has a lot of people."
+				},
+				{
+					"japanese": "初めてピザを食べた時はなんて美味しいんだろうと思いました。",
+					"english": "When I ate pizza for the first time, I thought it was incredibly delicious."
+				}
+			]
+		},
+		{
+			"usage": "〜と言うものだ",
+			"meaning": "impression that; criticism/conclusion, this sort of thing",
+			"context": "Common in both spoken and written Japanese, but usage can be more formal when written.",
+			"tags": ["appearance", "fixed-expression", "quotation", "普通形"],
+			"notes": "Use after a verb in plain form; pay attention to nuance, as this shows a certain dissatisfaction or criticism. Avoid using it to describe a specific one-time event, it's meant to describe habitual or general scenarios.",
+			"nuance": "It emphasizes a general rule or phenomena based on the speaker's experience or observation, often with a negative critique.",
+			"examples": [
+				{
+					"japanese": "電車の中で眠っていて、財布を盗まれたなんて不注意と言うものだ",
+					"english": "It's careless to fall asleep on a train and have your wallet stolen."
+				}
+			]
+		},
+		{
+			"usage": "〜（ものだ・もんだ）",
+			"meaning": "it's a ___ thing; obvious summary",
+			"context": "Generally used in somewhat formal or literary contexts, or in casual speech to emphasize personal feelings.",
+			"tags": ["description", "comparative", "普通形", "adjective-modifier"],
+			"notes": "Attach ものだ to the plain form of verbs, adjectives and nouns to express that something is natural or expected. Misuse often comes in attaching it to the polite forms or using it in casual/slang conversations where it's too formal.",
+			"nuance": "Conveys a sense of emotional emphasis, personal conviction or nostalgic reminiscence.",
+			"examples": [
+				{
+					"japanese": "日本にいる間に、一度は富士山に登りたいものだなあ",
+					"english": "While I'm in Japan, I want to climb Mount Fuji at least once."
+				},
+				{
+					"japanese": "いつか結婚してみたいものです",
+					"english": "I would like to get married someday"
+				}
+			]
+		},
+		{
+			"usage": "〜ほしい・〜もらいたい",
+			"meaning": "something you wish to happen",
+			"context": "Common in both casual and formal contexts, but can sound demanding if not used properly.",
+			"tags": ["combination", "fixed-expression", "テ形"],
+			"notes": "Use with the Verb-て form; for inanimate objects or actions, use ほしい, while ～もらいたい implies receiving a favor or an action. Confusion between ほしい and ～もらいたい, and inappropriate use of the sentence subject.",
+			"nuance": "Expresses a desire as it relates to the speaker's hopes or intentions; slightly more emotional with ～もらいたい.",
+			"examples": [
+				{
+					"japanese": "暑い日が続いています。早く寒くなくてほしい",
+					"english": "The hot days continue. I hope it gets cool quickly."
+				},
+				{
+					"japanese": "みんなレストランに行ってもらいたい",
+					"english": "I want everyone to go to the restaurant."
+				}
+			]
+		},
+		{
+			"usage": "〜なあ",
+			"meaning": "letting someone know your personal thoughts; wondering out loud",
+			"context": "Appropriate for casual, informal social situation; not suitable for polite or formal speech.",
+			"tags": ["appearance", "explanation"],
+			"notes": "Use 〜なあ at the end of a sentence to express internal thoughts or desires silently spoken aloud. Avoid using 〜なあ in formal contexts or with individuals of higher social status; it's informal and personal.",
+			"nuance": "〜なあ expresses deep emotion, longing, desire or consideration often in a wistful, whimsical or nostalgic context.",
+			"examples": [
+				{
+					"japanese": "おなかがすいたなあ、何か食べよう",
+					"english": "I'm hungry, let's eat something."
+				},
+				{
+					"japanese": "この映画、面白そうだったなあ",
+					"english": "This movie looked interesting, didn't it?"
+				},
+				{
+					"japanese": "もしお金があったら、家を買いたいなあ",
+					"english": "If I had money, I would like to buy a house."
+				}
+			]
+		},
+		{
+			"usage": "〜わけにはいかない",
+			"meaning": "wan't to but cant for some reason",
+			"context": "Common in both casual and formal situations, but tends to be avoided in highly formal or written language due to its subjective emotionality.",
+			"tags": ["reasons", "excuse", "negation", "辞書形", "ナイ形"],
+			"notes": "Use with dictionary form or 'nai' form of verbs, indicating a desired action that is not undertaken due to some constraint. Often mistaken with 'cannot do' due to physical inability, 'わけにはいかない' is about situations where one might want to, but can't due to social or moral reasons.",
+			"nuance": "Expresses a strong sense of obligation, social or personal pressure, or an action that shouldn't be done for various reasons.",
+			"examples": [
+				{
+					"japanese": "ちょっと眠いけど、今は授業中なので寝るわけにはいかない。",
+					"english": "I'm a bit sleepy, but I can't sleep because I'm in class right now."
+				}
+			]
+		},
+		{
+			"usage": "〜ようがない",
+			"meaning": "want to but can't; impossible",
+			"context": "Mostly informal, but can be used in polite contexts to emphasize feelings of frustration or regret.",
+			"tags": ["likelihood", "negation", "advanced-usage", "マス形"],
+			"notes": "Used with the verb in its masu-form, and often paired with negatives for full effect. Learners often confuse it with ~たい, which only implies desire without the aspect of impossibility.",
+			"nuance": "Expresses deep desire, yet conveys an inability or impossibility to fulfill it.",
+			"examples": [
+				{
+					"japanese": "これは現代の医学では、治しようがない病気だ。",
+					"english": "This is a disease that modern medicine cannot cure."
+				},
+				{
+					"japanese": "台風で交通機関が全部止まっているので、学校に行きたくても生きようがない。",
+					"english": "Due to the typhoon, all transportation has come to a halt, so even if I want to go to school, there's no way to get there."
+				}
+			]
+		},
+		{
+			"usage": "〜ならない",
+			"meaning": "extremely; can't help but",
+			"context": "Commonly used in informal conversation and self-expression, seldom used in formal or business settings.",
+			"tags": ["must", "advanced-usage", "テ形", "adjective-modifier"],
+			"notes": "Typically used with verbs in the て-form (テ形), to denote that the action can't/couldn't be helped. Mistaking it as a negation structure, it doesn't negate the action it emphasizes its necessity.",
+			"nuance": "Expresses strong obligation or necessity, often associated with internal personal feelings or subjective desires.",
+			"examples": [
+				{
+					"japanese": "彼は明日の面接試験でうまく話せるかどうか、不安でならない",
+					"english": "He cannot help but worry about whether he will be able to speak well in the interview tomorrow."
+				},
+				{
+					"japanese": "この写真を見ると、昔のことが思い出されてならない",
+					"english": "Looking at this picture, I can't help but reminisce about the past."
+				}
+			]
+		},
+		{
+			"usage": "〜（しかたがない・しょうがない）",
+			"meaning": "really, extremely, can't help but",
+			"context": "Casual conversation, narrative storytelling or self-reflection, not for formal settings.",
+			"tags": ["advanced-usage", "must", "テ形", "adjective-modifier"],
+			"notes": "Always use with negative verb form or adjective. Avoid using with positive sentence structure, it invalidates the 'helplessness' context.",
+			"nuance": "Emotionally heavy phrase expressing helplessness or intense feelings.",
+			"examples": [
+				{
+					"japanese": "日本へ来て、初めて一人暮らしをしているので、寂しくてしかたがない。",
+					"english": "Since I came to Japan and started living alone for the first time, I can't help but feel lonely."
+				},
+				{
+					"japanese": "ホームシックになってしまった。国の家族に会いたくてしようがない。",
+					"english": "I've become homesick. I desperately want to see my family back home."
+				}
+			]
+		},
+		{
+			"usage": "〜がっています",
+			"meaning": "a third persons feelings not in the conversation",
+			"context": "General and casual conversations; less used in formal settings due to its speculative nature.",
+			"tags": ["explanation", "combination", "noun-modifier"],
+			"notes": "Use 〜がっています when speculating about someone's emotions or desires indirectly, perfect for discussions about someone not present. Learners often misuse this form directly to the person concerned, it's incorrect as this form is reserved for discussing third parties.",
+			"nuance": "While 〜がっています describes a third party's emotions, it doesn't reflect direct observation and can carry a slightly gossipy or judgmental tone.",
+			"examples": [
+				{
+					"japanese": "弟はドイツへ行きたがっている",
+					"english": "My younger brother wants to go to Germany"
+				},
+				{
+					"japanese": "母は新しい車を欲しがっている",
+					"english": "My mother wants a new car."
+				}
+			]
+		},
+		{
+			"usage": "〜げ",
+			"meaning": "seemingly, appears (emotions and feelings)",
+			"context": "Standard in spoken and written, informal to moderately formal contexts, but somewhat sensitive in highly formal or business-like communications.",
+			"tags": ["appearance", "emotional", "adjective-modifier"],
+			"notes": "Use it with non-i adjectives and na-adjectives; for verbs and i-adjectives, use 〜そう instead. Don't use it with objective facts; it's only for subjective emotions or feelings.",
+			"nuance": "〜げ adds a touch of subjectivity, hinting at the speaker's perception or subtle feel about the situation.",
+			"examples": [
+				{
+					"japanese": "田中さんは何か言いたげだったが、何も言わずに部屋を出て行った。",
+					"english": "Tanaka seemed like he wanted to say something, but he left the room without saying a word."
+				},
+				{
+					"japanese": "面接試験の順番を待つ学生は、とても緊張して不安げだ。",
+					"english": "The student waiting for their turn in the interview exam looks very nervous and insecure."
+				}
+			]
+		}
+	]
+}

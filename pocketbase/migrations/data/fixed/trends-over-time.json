@@ -1,0 +1,122 @@
+{
+	"trends-over-time": [
+		{
+			"usage": "〜いきます",
+			"meaning": "guessing a future trend",
+			"context": "Neutral, used both casually and formally. Not found in super-formal speech.",
+			"tags": ["explanation", "temporal", "テ形"],
+			"notes": "Use after the te-form of the verb when predicting changes or trends over time. Don't confuse with verb 'to go' (-いく); avoid overuse on unsure predictions.",
+			"nuance": "Indicates a predictable or intended progression towards a future state; carries mild inference or expectation.",
+			"examples": [
+				{
+					"japanese": "これからも減っていくと思います",
+					"english": "I think it will continue to decrease from now on"
+				},
+				{
+					"japanese": "これからは増えていくと思います",
+					"english": "I think it will increase from now on."
+				}
+			]
+		},
+		{
+			"usage": "〜きます",
+			"meaning": "explaining a past trend",
+			"context": "Neutral, suitable for daily conversation; also seen in written language.",
+			"tags": ["explanation", "temporal", "テ形"],
+			"notes": "Used mostly with verbs indicating action or state change, usually with negative verbs to express regret or lament. Not to be confused with the future tense -きます, context is key.",
+			"nuance": "With a sense of reminiscence, it brings up past trends or habits without a specified period.",
+			"examples": [
+				{
+					"japanese": "最近交通事故がだんだん増えてきました",
+					"english": "Recently, the number of traffic accidents has been gradually increasing."
+				},
+				{
+					"japanese": "最近交通事故がだんだん減ってきました",
+					"english": "Recently, traffic accidents have been gradually decreasing."
+				},
+				{
+					"japanese": "ガソリンの値段がどんどん増えてきました",
+					"english": "The price of gasoline has been steadily increasing."
+				}
+			]
+		},
+		{
+			"usage": "〜（ばかりだ・一方だ）",
+			"meaning": "only keeps on ___ ing; keeps ___ ing",
+			"context": "Generally used in informal speech and writing, but can be used formally with use of appropriate verb endings.",
+			"tags": ["temporal", "continuous", "limitation", "辞書形"],
+			"notes": "Use with non-volitional verbs for 'ばかりだ' and with both volitional and non-volitional verbs for '一方だ'. Learners often misuse the form to imply positive progression or action.",
+			"nuance": "Implies a continuance or progression in one, usually negative, direction; often emotion-laden.",
+			"examples": [
+				{
+					"japanese": "雨は強くなるばかりで、全然やみそうにない",
+					"english": "The rain is only getting stronger, and it doesn't look like it's going to stop at all."
+				},
+				{
+					"japanese": "東京の車の数は増加する一方だ",
+					"english": "The number of cars in Tokyo is steadily increasing"
+				}
+			]
+		},
+		{
+			"usage": "〜なくなります",
+			"meaning": "decrease in frequency, quantity; becoming less",
+			"context": "Frequently used in both formal and informal situations, transitions well across various social contexts.",
+			"tags": ["change", "ナイ形"],
+			"notes": "Used with the ない form of a verb to express something is 'becoming less'.",
+			"nuance": "This structure typically presents a kind of wistful or mournful observation, focusing more on the decrease or decline than the new state.",
+			"examples": [
+				{
+					"japanese": "最近お酒を飲まなくなりました",
+					"english": "I have recently stopped drinking alcohol."
+				}
+			]
+		},
+		{
+			"usage": "〜ようになります",
+			"meaning": "an action becoming possible",
+			"context": "Used in both informal and formal speech, but more commonly found in written language.",
+			"tags": ["potential-form", "change", "可能形"],
+			"notes": "Often used with verbs in the potential form; not used for instantaneous changes. Often mistaken with 〜ことができる; While both mean 'can do,' remember that 〜ようになります focuses on the change from not being able to do something to being able to do so.",
+			"nuance": "Indicates a gradual change to a new state, sometimes carrying a feeling of accomplishment.",
+			"examples": [
+				{
+					"japanese": "2026までに日本語が話せるようになりたいです",
+					"english": "I want to be able to speak Japanese by 2026"
+				},
+				{
+					"japanese": "簡単料理が作れるようになりました",
+					"english": "I've become able to make simple dishes"
+				}
+			]
+		},
+		{
+			"usage": "〜ようになります",
+			"meaning": "new habit or ability, change over time",
+			"context": "Neutral to formal; suitable in both daily conversation and formal writing.",
+			"tags": ["change", "辞書形"],
+			"notes": "Use with dictionary form of a verb for new habits/abilities, but not for on the spot changes. Frequently mixed up with 〜ようにする (decision to do something), and remember it's not suitable for expressing desires or wishes.",
+			"nuance": "Expresses a change resulting in a new state, often associated with personal growth or adjustment over time.",
+			"examples": [
+				{
+					"japanese": "最近たくさんアニメを見るようになりました",
+					"english": "I've started watching a lot of anime recently."
+				}
+			]
+		},
+		{
+			"usage": "〜ようになっている",
+			"meaning": "an automatic result of some condition",
+			"context": "Suitable in both casual and formal contexts.",
+			"tags": ["causal", "辞書形", "ナイ形"],
+			"notes": "Appropriate with verbs in dictionary form or negative form, not adjectives. Commonly misused with personal experiences or self-controlled actions.",
+			"nuance": "Expresses natural, common occurrence or automatic consequence.",
+			"examples": [
+				{
+					"japanese": "自動ドアは、ここに立つと開くようになっています",
+					"english": "The automatic door is designed to open when you stand here."
+				}
+			]
+		}
+	]
+}

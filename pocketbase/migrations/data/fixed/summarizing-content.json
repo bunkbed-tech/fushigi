@@ -1,0 +1,90 @@
+{
+	"summarizing-content": [
+		{
+			"usage": "〜と言うことだ",
+			"meaning": "summarize something heard / some general truth",
+			"context": "Ideal for both casual conversation and formal writing, but not often used in highly formal situations like speeches or academic papers.",
+			"tags": ["fixed-expression"],
+			"notes": "Use when summing up what someone else has said or a commonly accepted idea, not your own opinion. Avoid using for direct speech, personal thoughts or other people's exact quotes; it's for reported speech or general truths.",
+			"nuance": "Emphasizes indirect, second-hand knowledge or shared wisdom rather than personal assertion.",
+			"examples": [
+				{
+					"japanese": "じゃあ、卒業したら、国へ帰るということですね",
+					"english": "So, you're saying that you will return to your country after graduation."
+				}
+			]
+		},
+		{
+			"usage": "〜（と言うわけだ・わけだ）",
+			"meaning": "that's why; that's why it's said; that's why it's called",
+			"context": "Formal and informal contexts alike, but sounds somewhat explanatory and may feel too direct in casual conversation.",
+			"tags": ["fixed-expression", "sentence-final", "explanation", "普通形"],
+			"notes": "Frequently used with clauses rather than single words, and the preceding statement should convey some sort of evidence or basis. Using only in sentences that result in 'that's why', without considering the logical or explanatory context.",
+			"nuance": "Used to indicate cause and effect relationship, or logical conclusions, often with a slight explanatory feel.",
+			"examples": [
+				{
+					"japanese": "そうなんだ、通りで英語がペラペラなわけだ",
+					"english": "I see, that's why your English is so fluent."
+				},
+				{
+					"japanese": "なるほど、それで、機嫌が悪いわけだ",
+					"english": "I see, so that's why you're in a bad mood."
+				}
+			]
+		},
+		{
+			"usage": "と言うことだ・とのことだ",
+			"meaning": "it is said that; that is the thing they call",
+			"context": "Primarily used in formal settings or when speaking of a third party.",
+			"tags": ["description", "explanation", "quotation", "fixed-expression"],
+			"notes": "Prefer 'ということです' when speaking about personal understandings, 'とのことです' for conveying received information. Avoid using this phrase when speaking directly; it's not intended for firsthand experiences or opinions.",
+			"nuance": "Renders reported information, often carries a feel of detachment or secondhand knowledge.",
+			"examples": [
+				{
+					"japanese": "ニュースによると、外国人がもっと増えると言うことだ",
+					"english": "According to the news, they say the number of foreigners will increase."
+				},
+				{
+					"japanese": "昨夜の天気予報は、今日は暑くなると言うことが、それほど暑くなかった",
+					"english": "Last night's weather forecast said it would be hot today, but it wasn't that hot."
+				}
+			]
+		},
+		{
+			"usage": "〜とはいえば・〜というと",
+			"meaning": "speaking of; if it were the case",
+			"context": "Generally neutral in formality, common in casual to semi-formal conversational Japanese.",
+			"tags": ["普通形", "na-adjective", "noun"],
+			"notes": "Follows na-adjectives and nouns in their plain form, often introduced as a way to 'mention' the subject; not used in questions. Don't confuse with similar expressions (-といえば、-といった、-という), each has different contexts and uses.",
+			"nuance": "Used to introduce a topic or comment on something, often highlighting unexpected associations or reactions.",
+			"examples": [
+				{
+					"japanese": "そうなんだ。あ、テストといえば、JLPTの申し込み、いつまでだったっけ？",
+					"english": "Is that so? Oh, speaking of tests, until when was the deadline for the JLPT application?"
+				},
+				{
+					"japanese": "うん。あ、ラーメンといえば、ハンさんがラーメン屋でバイト始めたって。",
+					"english": "Yeah. Speaking of ramen, I heard Han started working part-time at a ramen shop."
+				}
+			]
+		},
+		{
+			"usage": "〜（はもちろん・はもとより）",
+			"meaning": "of course this",
+			"context": "Mainly formal or written Japanese, occasionally used in daily conversations to emphasize a point.",
+			"tags": ["enumeration", "confirmation", "certainty", "noun-modifier"],
+			"notes": "Usually used in formal written language; pair with nouns. Often misused in negative statements; avoid this and remember it predicts positive events.",
+			"nuance": "Used to emphasize something as a given, while suggesting there might be more.",
+			"examples": [
+				{
+					"japanese": "東京ディズニーランドは日曜日はもちろん、平日でも人が多い",
+					"english": "Tokyo Disneyland is crowded not just on Sundays, but also on weekdays."
+				},
+				{
+					"japanese": "「ワンピース」は、子供はもとより大人も楽しめます",
+					"english": "'One Piece' can be enjoyed not only by children, but also by adults."
+				}
+			]
+		}
+	]
+}

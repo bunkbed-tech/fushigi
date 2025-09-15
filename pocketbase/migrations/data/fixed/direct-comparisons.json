@@ -1,0 +1,58 @@
+{
+	"direct-comparisons": [
+		{
+			"usage": "〜に比べて",
+			"meaning": "comparisons; use と instead for direct opposites",
+			"context": "Mostly used formally in academic, professional, or polite discourse.",
+			"tags": ["comparative", "noun-modifier"],
+			"notes": "Commonly used in discussions or essays to contrast different entities, not suitable for direct opposition. Don't mistake 〜に比べて (compared to) for と違って (different from) or use it for direct opposites.",
+			"nuance": "〜に比べて subtly suggests the speaker's preference or sentiment towards one thing over the other.",
+			"examples": [
+				{
+					"japanese": "東京に比べて、寒くて乾燥した場所だね",
+					"english": "Compared to Tokyo, it's a cold and dry place, isn't it?"
+				},
+				{
+					"japanese": "田舎は都会に比べて、不便です",
+					"english": "Compared to the city, the countryside is inconvenient."
+				}
+			]
+		},
+		{
+			"usage": "〜に対して",
+			"meaning": "towards; compared to; whereas",
+			"context": "This is a formal expression suitable for written language and formal speech.",
+			"tags": ["comparative", "noun-modifier"],
+			"notes": "Use 〜に対して when contrasting situations, respond to something or someone, or express attitudes/treatment to a specific object or person. A common mistake is confusing 〜に対して with 〜にたいして, which has a different meaning and usage.",
+			"nuance": "〜に対して conveys a sense of comparison, contrast or targeted action, often with a hint of criticism or opposition.",
+			"examples": [
+				{
+					"japanese": "長男が神経質であるのに対して、次男は呑気な性格だ",
+					"english": "While the eldest son is neurotic, the second son has a carefree personality."
+				},
+				{
+					"japanese": "このクラスには、女子学生が１５人いるのに対して、男子学生は３人しかいません",
+					"english": "In this class, there are 15 female students as opposed to only 3 male students."
+				}
+			]
+		},
+		{
+			"usage": "〜ほど。。。「N」ではない",
+			"meaning": "not as much as this; this is the most",
+			"context": "Neutral; common in both formal and informal language.",
+			"tags": ["辞書形", "noun"],
+			"notes": "Suitable for making comparisons or describing something of the highest degree; often used with negative sentences. Mistakenly using it without a negative expression; Don't use with positive sentences.",
+			"nuance": "Expresses extremity, sometimes with a hint of surprise or exasperation when used in negative statements.",
+			"examples": [
+				{
+					"japanese": "トーストほど美味しいものはないと思う。",
+					"english": "I think there's nothing as delicious as toast."
+				},
+				{
+					"japanese": "アイスホッケーほど面白いsポーツはないと思う。",
+					"english": "I think there's no sport as interesting as ice hockey."
+				}
+			]
+		}
+	]
+}

@@ -20,7 +20,7 @@
 		},
 		{
 			"usage": "〜ければなりません",
-			"meaning": "must not do",
+			"meaning": "must (not) do",
 			"context": "Polite, more suitable for formal and public scenarios.",
 			"tags": ["conditional", "polite", "ナイ形"],
 			"notes": "Mostly used in written form; in casual conversation, ないといけない is more common. Beware not to confuse it with 〜なければならない which means 'must do'.",
@@ -41,24 +41,6 @@
 				{
 					"japanese": "今冬両親の家へ行かないことになっているんです",
 					"english": "I have decided not to go to my parents' house this winter."
-				}
-			]
-		},
-		{
-			"usage": "〜ことになっています",
-			"meaning": "something has been decided (plan, rules) out of your control",
-			"context": "Formal, commonly found in written language and formal speeches; less common in casual conversation.",
-			"tags": ["change", "辞書形", "ナイ形"],
-			"notes": "Attach to the dictionary or ナイ form of verbs; don't use for personal decisions or spontaneous events. Mistakenly used to express personal decisions or future intentions, instead of decisions beyond one's control.",
-			"nuance": "Implies a rigid rule or decisions made by others, often with a sense of formality or obligation.",
-			"examples": [
-				{
-					"japanese": "来月から東京に転勤することになっています",
-					"english": "I am scheduled to be transferred to Tokyo from next month."
-				},
-				{
-					"japanese": "ここでは写真を撮らないことになっています",
-					"english": "Taking pictures is not allowed here."
 				}
 			]
 		},
@@ -105,32 +87,6 @@
 			]
 		},
 		{
-			"usage": "〜ことになった",
-			"meaning": "something decided by someone else, or everyone (not just you)",
-			"context": "Neutral and formal contexts; used in reporting events, rules, or communally decided actions.",
-			"tags": [
-				"change",
-				"passive-voice",
-				"nominalization",
-				"辞書形",
-				"ナイ形",
-				"i-adjective-modifier",
-				"noun-modifier"
-			],
-			"notes": "Attach it after a verb or adjective to denote a decided plan or fact; edit verb/adjective based on tense or formality. Misuse occurs when learner treats it as their own decision; it's typically someone else's or a collective decision.",
-			"nuance": "Implies a decision, often made by people other than the speaker, affecting him/her in some way.",
-			"examples": [
-				{
-					"japanese": "みんなで相談して、バーベキューは７００円という位ことになった",
-					"english": "After discussing with everyone, we decided that the barbecue would be about 700 yen."
-				},
-				{
-					"japanese": "希望していた奨学金がもらえることになった",
-					"english": "I have been granted the scholarship I was hoping for"
-				}
-			]
-		},
-		{
 			"usage": "〜ことはない",
 			"meaning": "there's no need to",
 			"context": "Neutral to informal, not commonly used in highly respectful or formal situations.",
@@ -145,48 +101,6 @@
 				{
 					"japanese": "私のを貸してあげるから、わざわざスーツケースを買うことはない",
 					"english": "You don't have to go out of your way to buy a suitcase, I'll lend you mine."
-				}
-			]
-		},
-		{
-			"usage": "〜たまらない",
-			"meaning": "can't help but to ___",
-			"context": "",
-			"tags": ["likelihood", "テ形"],
-			"notes": "",
-			"nuance": "Unable to generate detailed notes",
-			"examples": [
-				{
-					"japanese": "私の部屋は窓もないし、エアコンもないので、夏は暑くてたまらない",
-					"english": "My room has no windows or air conditioning, so it's unbearably hot in the summer."
-				},
-				{
-					"japanese": "アルバイトが疲れてたまらない。もうやめたい。",
-					"english": "I'm unbearably tired from the part-time job. I want to quit already."
-				}
-			]
-		},
-		{
-			"usage": "〜ではいられない",
-			"meaning": "can't help but to ___; cannot resist",
-			"context": "Usable in both casual and polite contexts; more frequently observed in written Japanese or formal speech.",
-			"tags": [
-				"limitation",
-				"sentence-final",
-				"fixed-expression",
-				"must",
-				"ナイ形"
-			],
-			"notes": "Attach ではいられない to negative ない-form of verbs to express 'can't help but do'. Remember not to use で in positive statements. This form only works with negative verbs.",
-			"nuance": "〜ではいられない implies a strong uncontrollable urge or necessity; it conveys feelings of desperation or lack of choice.",
-			"examples": [
-				{
-					"japanese": "私は、新しいゲームが発売されると、買わないではいられません",
-					"english": "Whenever a new game is released, I can't help but buy it."
-				},
-				{
-					"japanese": "この国の日中はとても暑いので、昼寝をせずにはいられないそうです",
-					"english": "It is said that it's so hot during the day in this country, one cannot help but take a nap."
 				}
 			]
 		},
@@ -259,6 +173,56 @@
 				{
 					"japanese": "歴史的な建物なのでできれば保存したい。だが、古くなって危険なので、潰さざるを得ない。",
 					"english": "Ideally, I'd like to preserve it since it is a historical building. However, it is old and dangerous, so it must be demolished."
+				}
+			]
+		},
+		{
+			"usage": "〜ように、〜",
+			"meaning": "so that ... happens",
+			"context": "Used in both formal and informal settings, but might sound overly formal in casual conversations.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Use in situations where you want a certain outcome to happen; the clause before 〜ように describes your desired result. Mistakenly using the negative form (ない形) where a dictionary form (辞書形) is needed or vice versa.",
+			"nuance": "〜ように can imply a degree of uncertainty, like you're hoping for or cannot control the outcome.",
+			"examples": [
+				{
+					"japanese": "忘れないように毎日勉強します",
+					"english": "I study every day so I won't forget."
+				},
+				{
+					"japanese": "タオル流を早く乾くように外に掛ける",
+					"english": "Hang the towels outside to dry quickly."
+				}
+			]
+		},
+		{
+			"usage": "〜ようにしてください",
+			"meaning": "so that... happens (as a command)",
+			"context": "Generally formal; commonly used in written instructions or polite oral discourse.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Commonly used in the construction 辞書形＋ようにしてください or ナイ形＋ようにしてください to request others to do or not to do something so a specific result will come about. Avoid confusing this with ようにしましょう, which means 'Let's try to...' rather than directing the action towards someone else.",
+			"nuance": "This construction is often used to give instructions with an undertone of concern for the result, rather than an overt command.",
+			"examples": [
+				{
+					"japanese": "廊下に走らないようにしてください",
+					"english": "Please refrain from running in the hallways."
+				},
+				{
+					"japanese": "質問があれば、先生に聞くようにしてください",
+					"english": "If you have any questions, please ask the teacher."
+				}
+			]
+		},
+		{
+			"usage": "〜で",
+			"meaning": "don't do this, do that",
+			"context": "Usually informal; caution with authority figures and use more polite forms (〜ないでください) instead.",
+			"tags": ["suggestion", "imperative", "conjunctive", "ナイ形"],
+			"notes": "Often used when guiding someone's actions or behavior, works with negative dictionary form of verbs (〜ないで). Do not use for positive actions, only used in negative or prohibitive context (avoid using 〜で with positive verb forms).",
+			"nuance": "Implying an advice or suggestion, but in a stronger tone or may carry a hint of warning.",
+			"examples": [
+				{
+					"japanese": "毎日肉を食べないで、時々豆腐を食べます",
+					"english": "I don't eat meat every day, I sometimes eat tofu instead."
 				}
 			]
 		}

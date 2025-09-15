@@ -1,5 +1,5 @@
 {
-	"ignoring": [
+	"ignoring-despite": [
 		{
 			"usage": "〜に関わらず",
 			"meaning": "regardless of",
@@ -231,6 +231,6 @@
 					"english": "Because I slept with the window open, I ended up catching a cold."
 				}
 			]
-		},
+		}
 	]
 }

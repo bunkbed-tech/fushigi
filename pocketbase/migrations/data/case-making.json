@@ -485,5 +485,33 @@
 				}
 			]
 		},
+		{
+			"usage": "テ形 V",
+			"meaning": "an action that involves two",
+			"context": "It can be used in both casual and formal settings, so practical in everyday and business conversations.",
+			"tags": ["combination", "conditional", "テ形"],
+			"notes": "Remember, the order of actions presented is important, as actions flow from first to last. Avoid using it to express causes or reasons, it's about sequence.",
+			"nuance": "テ形 V is used to connect sequences of events or actions, maintaining neutral emotions.",
+			"examples": [
+				{
+					"japanese": "砂糖を入れて飲めます",
+					"english": "You can drink it with sugar."
+				}
+			]
+		},
+		{
+			"usage": "ナイ形 で V",
+			"meaning": "an action that involves two, negatively",
+			"context": "Neutral; appropriate for both casual conversation and formal writing.",
+			"tags": ["combination", "conditional", "ナイ形"],
+			"notes": "Used when expressing an action that can’t be done unless another action is not performed. Avoid confusing it with positive concurrent action constructs (～ながら), which have a different conjugation and meaning.",
+			"nuance": "Reflects a situation where two events or actions do not occur simultaneously, often with a negative emotional context.",
+			"examples": [
+				{
+					"japanese": "砂糖を入れないで飲めません",
+					"english": "I can't drink it without adding sugar."
+				}
+			]
+		}
 	]
 }

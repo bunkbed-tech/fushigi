@@ -1,0 +1,40 @@
+{
+	"sort-later": [
+		{
+			"usage": "〜のを見ました",
+			"meaning": "something seen happening recently",
+			"context": "Generally neutral, appropriate for both casual and formal contexts.",
+			"tags": [
+				"change",
+				"appearance",
+				"explanation",
+				"habitual",
+				"辞書形",
+				"タ形",
+				"テ形"
+			],
+			"notes": "Commonly used following the dictionary form of a verb; also remember the tense of '見ました' indicates the time of viewing, not the action itself. Often confused with the simpler 「見て」 form which doesn't specifically indicate the action was observed happening.",
+			"nuance": "Used to express that one has witnessed a certain action taking place or a change occurring recently.",
+			"examples": [
+				{
+					"japanese": "子供たちが公園で元気に遊んでいるのを見ました",
+					"english": "I saw the children playing energetically in the park"
+				}
+			]
+		},
+		{
+			"usage": "〜いました",
+			"meaning": "something that used to happen",
+			"context": "〜いました is neutral form and can be used in casual or polite conversation and writing, but not in very formal situations.",
+			"tags": ["explanation", "combination", "habitual", "テ形"],
+			"notes": "Use 〜いました for explanations about old habits or routines, not for a single past event. Don't confuse 〜いました with 〜ました, which is a simple past tense form; the 'i' indicates habitual past.",
+			"nuance": "〜いました conveys past habitual activities or states, rather than one-off occurrences; a sense of nostalgia often accompanies this form.",
+			"examples": [
+				{
+					"japanese": "子供の頃、毎日友達と遊んでいました",
+					"english": "When I was a child, I used to play with my friends every day."
+				}
+			]
+		}
+	]
+}

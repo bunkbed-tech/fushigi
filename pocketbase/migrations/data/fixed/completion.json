@@ -1,0 +1,88 @@
+{
+	"completion": [
+		{
+			"usage": "〜しまいました",
+			"meaning": "accidentally or unexpected, in advance",
+			"context": "Neutral, suitable for both casual conversation and formal context.",
+			"tags": ["combination", "explanation", "テ形"],
+			"notes": "Used commonly with negative outcomes, or to emphasis completion or perfection. Confusing it with 'しました' (simple past tense), or overusing it for positive outcomes.",
+			"nuance": "Expresses regret for an action completed unintentionally or unexpectedly, or something done thoroughly beforehand.",
+			"examples": [
+				{
+					"japanese": "傘を忘れてしまいました",
+					"english": "I forgot my umbrella"
+				},
+				{
+					"japanese": "スマホを落としちゃった",
+					"english": "I dropped my smartphone"
+				}
+			]
+		},
+		{
+			"usage": "〜おきます",
+			"meaning": "do something in advance, leave in place",
+			"context": "Typically used in formal, written or polite scenarios.",
+			"tags": ["combination", "テ形"],
+			"notes": "Commonly uses verbs like 仕留める (to leave in place) or 支払う (to pay in advance). Don't confuse with similar 〜ておく, which is less formal and more colloquial.",
+			"nuance": "Conveys foresight or convenience through doing a task ahead of time or leaving something in place.",
+			"examples": [
+				{
+					"japanese": "クラスの前にカバンをまとめておきます",
+					"english": "I'll gather the bags before class."
+				},
+				{
+					"japanese": "ビールを冷蔵庫に入れておきます",
+					"english": "I'll put the beer in the refrigerator."
+				},
+				{
+					"japanese": "そのままにしておきます",
+					"english": "I will leave it as it is"
+				}
+			]
+		},
+		{
+			"usage": "〜ばかりです",
+			"meaning": "just finished",
+			"context": "Neutral, can be used in formal and casual contexts.",
+			"tags": ["temporal", "タ形"],
+			"notes": "Use it after the 'ta form' of verbs to express actions or states just finished. Learners may confuse this with 'bakari' (only), ignoring its temporal aspect.",
+			"nuance": "It implies the action JUST ceased, often giving a sense of immediacy or freshness.",
+			"examples": [
+				{
+					"japanese": "日本に来たばかりです",
+					"english": "I just came to Japan"
+				},
+				{
+					"japanese": "アルバイトを始めたばかりなので、まだ仕事に慣れません",
+					"english": "Since I've just started my part-time job, I'm not used to the work yet."
+				},
+				{
+					"japanese": "仕事を辞めたばかりなのに、もう新しい仕事を見つけた",
+					"english": "Even though I just quit my job, I already found a new one"
+				}
+			]
+		},
+		{
+			"usage": "〜通りに",
+			"meaning": "in line with; exactly/precisely this",
+			"context": "Polite and formal, often used in business settings or formal writing.",
+			"tags": ["explanation", "辞書形", "タ形", "noun-modifier"],
+			"notes": "Use it after a noun or verb to describe doing something as dictated or described by that noun/verb. Often mistaken with 〜とおり, which has a similar meaning but different situation and nuance.",
+			"nuance": "Emphasizes strict adherence or precision, often with a sense of expectation or obligation.",
+			"examples": [
+				{
+					"japanese": "先生の指示の通りに避難してください",
+					"english": "Please evacuate as directed by the teacher."
+				},
+				{
+					"japanese": "私の思った通り、事がうまく続いている",
+					"english": "Just as I expected, things are going well"
+				},
+				{
+					"japanese": "期待どおり、Aチームが優秀した",
+					"english": "As expected, Team A excelled."
+				}
+			]
+		}
+	]
+}

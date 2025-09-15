@@ -1,0 +1,178 @@
+{
+	"personal-speculation": [
+		{
+			"usage": "〜と思っています",
+			"meaning": "80% sure",
+			"context": "Neutral, appropriate to use in various social and professional contexts.",
+			"tags": ["likelihood", "certainty", "意向形"],
+			"notes": "Use when you want to sound less dogmatic about your anticipations or plans. Frequently overused by learners as a general expression of thought, ignoring its uncertainty nuance.",
+			"nuance": "Expresses personal thoughts, more than actual certainty, giving room for potential changes.",
+			"examples": [
+				{
+					"japanese": "今週末日本語の聴解を練習しようと思っています",
+					"english": "I'm planning to practice Japanese listening comprehension this weekend."
+				}
+			]
+		},
+		{
+			"usage": "〜かな",
+			"meaning": "wondering something to yourself",
+			"context": "Generally casual but can also be used in formal situations, depending on the speaker's affect and preceding sentence.",
+			"tags": ["certainty", "question-form", "普通形", "意向形"],
+			"notes": "While conventionally used at the end of sentences, it can also follow individual words or phrases to denote uncertainty about them specifically. Don't use 〜かな to ask others questions; it expresses personal pondering, not interrogation.",
+			"nuance": "〜かな adds a sense of introspection and uncertainty, as if talking to oneself or thinking out load.",
+			"examples": [
+				{
+					"japanese": "今夜どこへ行こうかな",
+					"english": "I wonder where to go tonight"
+				},
+				{
+					"japanese": "何を買おうかな",
+					"english": "I wonder what to buy"
+				}
+			]
+		},
+		{
+			"usage": "〜かなと思って",
+			"meaning": "wondering something; frequently used after んじゃない",
+			"context": "More common in casual or informal speech but can be used in a polite context with carefulness.",
+			"tags": ["fixed-expression", "certainty"],
+			"notes": "Often used after んじゃない to further express uncertainty, e.g. それは大丈夫なんじゃないかなと思って。 Using かなと思う instead of かなと思って at the end of sentences, or overusing it thereby creating ambiguity.",
+			"nuance": "Expresses a mild speculation without emphasis on wanting an answer, often used in personal monologue.",
+			"examples": [
+				{
+					"japanese": "昨日お菓子を作ったんだけど、ソダさん、食べるかなと思って持ってきたんだ",
+					"english": "I made some sweets yesterday and brought some, wondering if you might want to try them, Soda-san."
+				}
+			]
+		},
+		{
+			"usage": "〜ようです",
+			"meaning": "seems like but with more emphasis on speakers own conclusion",
+			"context": "It's neutral in tone and can be used in both casual and formal situations.",
+			"tags": ["appearance", "普通形"],
+			"notes": "Use it after the plain form of verbs, adjectives or nouns to express that something appears/looks/seems to be a certain way. Don't confuse 〜ようです with 〜そうです; 〜ようです is based on the speaker's judgment, while 〜そうです relates information heard from others.",
+			"nuance": "〜ようです conveys that the speaker has reached a conclusion based on their own observation or information, adding a sense of uncertainty.",
+			"examples": [
+				{
+					"japanese": "電車の事故があったようです",
+					"english": "It seems that there was a train accident"
+				},
+				{
+					"japanese": "雨のようです",
+					"english": "It seems like it's raining"
+				},
+				{
+					"japanese": "このレストランのラーメンを美味しいようです",
+					"english": "The ramen at this restaurant seems delicious."
+				}
+			]
+		},
+		{
+			"usage": "〜みたいです",
+			"meaning": "how something seems based on direct observation, casually; looks like a",
+			"context": "Primarily casual and informal, not suitable for formal or written contexts.",
+			"tags": ["appearance", "普通形"],
+			"notes": "Attach みたいです to the plain form ('dictionary form') of verbs, adjectives, or nouns. Don't presume certainty, and be careful not to make definite insinuations or conclusions; みたいです carries a sense of uncertainty or conjecture.",
+			"nuance": "Used in informal and colloquial speech to express 'seems like' or 'looks like', based on observation, not facts.",
+			"examples": [
+				{
+					"japanese": "その食べ物は美味しいみたいです",
+					"english": "That food seems delicious"
+				},
+				{
+					"japanese": "学校みたいな建物です",
+					"english": "It's a building that looks like a school."
+				},
+				{
+					"japanese": "コンサートが始まるみたいだ",
+					"english": "It seems like the concert is about to start."
+				},
+				{
+					"japanese": "このジュースが健康みたいです",
+					"english": "This juice seems healthy."
+				}
+			]
+		},
+		{
+			"usage": "（みたい・よう）なんですが",
+			"meaning": "politely informing something you noticed",
+			"context": "Suitable for use in both casual and formal scenarios where politeness is needed, yet less common in intimate settings.",
+			"tags": ["polite", "appearance", "fixed-expression"],
+			"notes": "Commonly used to talk about perceived states or changes; it is more polite and less direct than simple declarations. Don't use it for concrete, undeniable facts or when you are certain about something.",
+			"nuance": "Used when politely and indirectly stating a personal observation or opinion, hence expressing a degree of uncertainty.",
+			"examples": [
+				{
+					"japanese": "あのう、すみません、これは違うみたいなんですが",
+					"english": "Excuse me, it seems like this is incorrect"
+				},
+				{
+					"japanese": "あのう、すみません、外に誰か運動していたようなんですが",
+					"english": "Excuse me, it seems like someone was exercising outside."
+				}
+			]
+		},
+		{
+			"usage": "〜しまったようなんです",
+			"meaning": "it seems this may have happened",
+			"context": "Informal; more commonly used in casual conversation rather than formal writing.",
+			"tags": ["explanation", "appearance", "fixed-expression", "テ形"],
+			"notes": "Used when reporting an inference based on indirect or incomplete evidence. Often confused with the explanatory 'んです', difference lies in inferred responsibility.",
+			"nuance": "Expresses regret or surprise of an unexpected or undesirable occurrence.",
+			"examples": [
+				{
+					"japanese": "転んだ時は足をひねってしまったようなんですが",
+					"english": "It seems that I twisted my ankle when I fell"
+				}
+			]
+		},
+		{
+			"usage": "〜んです",
+			"meaning": "adding extra information/explaining",
+			"context": "Mostly informal, used amongst peers and friends, not suitable for formal settings or with superiors.",
+			"tags": ["question-form", "explanation", "普通形"],
+			"notes": "Primarily used during casual conversations, or when seeking an explanation or giving one. Avoid its excessive use as it may sound overly explanatory or even confrontational.",
+			"nuance": "It adds a tone of intimacy/explanation, making the utterance more expressive.",
+			"examples": [
+				{
+					"japanese": "タホさんはこの本を読んだんですか",
+					"english": "Did you read this book, Mr. Taho?"
+				},
+				{
+					"japanese": "あれはソダさんの？",
+					"english": "Is that Mr. Soda's?"
+				},
+				{
+					"japanese": "それを食べているんですか",
+					"english": "Are you eating that?"
+				},
+				{
+					"japanese": "どうして日本に来たんですか",
+					"english": "Why did you come to Japan?"
+				},
+				{
+					"japanese": "何してんだよ",
+					"english": "What are you doing?"
+				}
+			]
+		},
+		{
+			"usage": "〜んですが",
+			"meaning": "giving a reason for an incoming question / topic switch",
+			"context": "Most prevalent in informal or semi-formal speech, less appropriate in very formal contexts or written language.",
+			"tags": ["question-form", "explanation", "conjunctive", "普通形"],
+			"notes": "Can be used at the end of sentence concepts to politely imply a question or soft change in topic, also well suited to softening requests. Avoid using in formal writing. Tend to misuse in conversations due to overuse or misunderstanding of its function as indirect speech.",
+			"nuance": "Used to provide a reason or context for a topic or question, often to segue smoothly into a discussion or express modesty or hesitation.",
+			"examples": [
+				{
+					"japanese": "今冬スキーをしたいんですが、一緒に行きませんか",
+					"english": "I want to go skiing this winter, would you like to come with me?"
+				},
+				{
+					"japanese": "卒業をしたら、日本の会社で働きたいんですが、いい会社を紹介してもらえませんか",
+					"english": "Once I graduate, I would like to work for a Japanese company. Could you introduce me to a good one?"
+				}
+			]
+		}
+	]
+}

@@ -757,5 +757,37 @@
 				}
 			]
 		},
+		{
+			"usage": "N が〜きます",
+			"meaning": "coming towards",
+			"context": "Neutral - suitable in casual or formal context, but might be too spatially-oriented for metaphorical or abstract uses.",
+			"tags": ["combination", "spatial", "テ形"],
+			"notes": "Used frequently to explain someone or something's approach; remember that the subject marked by が is the one coming or approaching. Careful not to confuse it with まで (up to/till), and don’t use it when expressing movement away from the speaker or their in-group.",
+			"nuance": "Expresses movement towards the speaker or their side, often with implied arrival in the near future.",
+			"examples": [
+				{
+					"japanese": "あの鳥が飛んできました",
+					"english": "That bird came flying."
+				},
+				{
+					"japanese": "先生が入ってきます",
+					"english": "The teacher is coming in."
+				}
+			]
+		},
+		{
+			"usage": "N が〜いきます",
+			"meaning": "going away",
+			"context": "Neutral situation, appropriate for both casual conversations and formal interactions.",
+			"tags": ["combination", "spatial", "テ形"],
+			"notes": "Commonly used to describe something or someone moving away; remember to use spatially appropriate particles. Inappropriate usage of particle が when particle を should be used with transitive verbs, confusing it with parallel construct 'N がきます' (coming).",
+			"nuance": "N が〜いきます implies the subject is moving away from the speaker's viewpoint or location, often with a tone of finality or farewell.",
+			"examples": [
+				{
+					"japanese": "犬が走っていきます",
+					"english": "The dog will run."
+				}
+			]
+		}
 	]
 }

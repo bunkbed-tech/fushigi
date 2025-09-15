@@ -1,0 +1,58 @@
+{
+	"residual-state": [
+		{
+			"usage": "〜あります",
+			"meaning": "after an action was done and left by someone",
+			"context": "It's typically used in formal, polite speech or writing.",
+			"tags": ["テ形"],
+			"notes": "This form is commonly used with verbs that indicate changes or transformations because of someone's intentional action. Common mistakes include misusing 〜あります for actions that do not dictate change or state, and assuming it always implies a recent action, which is not true.",
+			"nuance": "〜あります is often used when you state a fact or situation that was intentionally left by someone. It implies a sense of permanence or a state due to a preceding action.",
+			"examples": [
+				{
+					"japanese": "駅の近くに地図が貼ってあります",
+					"english": "There is a map posted near the station."
+				}
+			]
+		},
+		{
+			"usage": "〜まま",
+			"meaning": "left as is",
+			"context": "It's neutral in situation and can be used in both casual and formal contexts.",
+			"tags": [
+				"conditional",
+				"description",
+				"タ形",
+				"ナイ形",
+				"i-adjective-modifier",
+				"na-adjective-modifer",
+				"noun-modifier"
+			],
+			"notes": "Remember to use the 〜まま form after the dictionary, た, or negative form of verbs, and always use の with nouns and na-adjectives. Avoid the mistake of using 〜まま form after ます, 〜て form or i-adjectives, it's incorrect in standard Japanese.",
+			"nuance": "This form carries the nuanced meaning of 'in the state of; as it is' and may contain slight regret or disapproval.",
+			"examples": [
+				{
+					"japanese": "新幹線が混んでいて、東京から大阪までずっと立ったままだ",
+					"english": "The bullet train was crowded, and I had to stand all the way from Tokyo to Osaka."
+				},
+				{
+					"japanese": "父は時々、家の鍵をかけないまま出かける",
+					"english": "Sometimes, my father leaves without locking the house."
+				}
+			]
+		},
+		{
+			"usage": "〜と書いてあります",
+			"meaning": "after a writing action was done and left by someone",
+			"context": "Neutral formality, leaning towards informal; not typically suitable for honorific language.",
+			"tags": ["question-form", "combination", "fixed-expression"],
+			"notes": "Primarily used in written language; can be substituted with '〜と書かれている' in more formal contexts. Avoid using for things you wrote or when conjecturing about authorship.",
+			"nuance": "Used to convey factuality, establishing that something you saw written somewhere is a reliable source.",
+			"examples": [
+				{
+					"japanese": "「」と書いてあります",
+					"english": "It is written as ___."
+				}
+			]
+		}
+	]
+}
