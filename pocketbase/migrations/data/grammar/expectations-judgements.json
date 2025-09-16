@@ -193,7 +193,7 @@
 			"usage": "〜をもとに",
 			"meaning": "based on",
 			"context": "Standard usage in both formal and informal contexts, but seen more frequently in written or academic discourse.",
-			"tags": ["similiarity", "change", "description", "noun-modifier"],
+			"tags": ["similarity", "change", "description", "noun-modifier"],
 			"notes": "Use it when you want to highlight the object (i.e., verb+ noun) you are utilizing for your action. Avoid confusing 〜をもとに with 〜にもとづいて; while somewhat similar, the former implies using something as a reference point, the latter implies following a set rule or principle.",
 			"nuance": "〜をもとに emphasizes the 'source' or 'foundation' on which an action, decision, or production is based.",
 			"examples": [
@@ -385,7 +385,7 @@
 				"fixed-expression",
 				"普通形",
 				"noun-modifier",
-				"na-adjective-modifer"
+				"na-adjective-modifier"
 			],
 			"notes": "Typically used when expressing personal thoughts or impressions; can be used with verbs, nouns, and na-adjectives. Avoid overusing it as it can make your statements sound excessively unsure or indecisive.",
 			"nuance": "〜ように思う conveys a tentativeness, suggesting you believe or feel something but are open to other interpretations.",
@@ -400,7 +400,7 @@
 			"usage": "〜そうです",
 			"meaning": "how something seems based on your senses",
 			"context": "This form is considered neutral and can be used in both formal and informal settings.",
-			"tags": ["appearance", "adjective-modifer"],
+			"tags": ["appearance", "adjective-modifier"],
 			"notes": "Do not use it with past- or future- tense verbs; combine it with present-tense forms for a natural feeling. Avoid attaching it directly to i-adjectives; remove the final い and use 〜そうです.",
 			"nuance": "〜そうです is used to express indirect information based on appearance or hearsay, indicating uncertainty rather than definite knowledge.",
 			"examples": [
@@ -422,7 +422,7 @@
 			"usage": "〜そうです",
 			"meaning": "how something seems based on your senses",
 			"context": "Mostly used in informal or neutral situation, yet acceptable in polite discourse.",
-			"tags": ["appearance", "adjective-modifer"],
+			"tags": ["appearance", "adjective-modifier"],
 			"notes": "Attach 〜そうです directly to the root form of i-adjectives or na-adjectives, and to the dictionary form of verbs. Do not mix up with 〜そうです used to report hearsay information.",
 			"nuance": "〜そうです gives a conjecture based on appearance or current situations, not on one's opinion or information heard from someone else.",
 			"examples": [
@@ -466,7 +466,7 @@
 			"usage": "〜そうに V",
 			"meaning": "in a way that seems like; seems to be",
 			"context": "Neutral in social situation, acceptable in both casual and formal conversations.",
-			"tags": ["appearance", "adjective-modifer"],
+			"tags": ["appearance", "adjective-modifier"],
 			"notes": "Not usable with verbs that do not express state or condition, such as movement verbs. Common mistake is using it based on one's knowledge, not based on observation, or using it with factual statements.",
 			"nuance": "Used to express one's subjective inference from physical appearance or atmosphere, often includes a sense of uncertainty.",
 			"examples": [
@@ -498,7 +498,7 @@
 			"usage": "〜すぎます",
 			"meaning": "describing something/something you did as too much",
 			"context": "〜すぎます is neutral, appropriate for both casual and formal settings.",
-			"tags": ["i-adjective-modifer", "マス形"],
+			"tags": ["i-adjective-modifier", "マス形"],
 			"notes": "Use すぎます after the stem of verbs and adjectives to express 'too much'. Avoid using すぎます after な-adjectives and nouns, instead, use すぎるのです.",
 			"nuance": "〜すぎます often implies a negative overtone, expressing excessive, inappropriate or undesirable qualities.",
 			"examples": [

@@ -1,12 +1,13 @@
 {
 	"counting-rules": [
 		{
+			"id": "88fcf567-aa81-40de-88ea-01916bf8eb99",
 			"usage": "数量詞 につき 数量詞",
 			"meaning": "every",
-			"context": "Generally formal and often used in business or legal settings, not common in casual speech.",
-			"tags": ["counting"],
-			"notes": "Remember to put it after the item it describes and before the quantity or stipulations; usually used with numbers. Avoid using it in casual conversations; can be easily substituted with 'ごとに' but not always interchangeable.",
-			"nuance": "Expresses the concept of 'per' or 'every', but often denotes a rule or set condition, and can convey a more formal or serious tone.",
+			"context": ["formal", "business", "legal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Placed after the item it describes and before quantity; often interchangeable with 'ごとに' but more formal.",
 			"examples": [
 				{
 					"japanese": "このクーポンは１枚につき、５名様までご利用になれます",
@@ -15,12 +16,13 @@
 			]
 		},
 		{
+			"id": "2e6b038d-0bc8-451d-ac2b-ec316b7c7436",
 			"usage": "〜し、〜",
 			"meaning": "listing actions",
-			"context": "适用于各种社会方阵，从非正式到半正式，根据上下文而定。",
-			"tags": ["enumeration", "conjunctive", "普通形"],
-			"notes": "可用于列举任何数量的项目，但通常至少需要2个，并且最后一项可以暗示 “等等”。 误将其用于列举行为，而不是事实或原因。",
-			"nuance": "用于列举原因或事实，常包含作者的主观意见、情感色彩。",
+			"context": ["casual", "semi-formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Lists two or more items, often implying 'etc.' or continuation. Not for single reasons.",
 			"examples": [
 				{
 					"japanese": "東京になたくさん店もあるし、美味しい食べ物も食べるし、安いホテルもある",
@@ -29,12 +31,13 @@
 			]
 		},
 		{
+			"id": "8af5fe46-b686-4d10-a211-84a44222475d",
 			"usage": "個 も V",
 			"meaning": "surprise at a high number",
-			"context": "Informal and colloquial, common in speech and casual writing.",
-			"tags": ["counting", "fixed-expression"],
-			"notes": "Use after a counter and before a verb, typically used in negative sentences and questions. Confusing with common counter usage, remember this indicates surprise at the quantity.",
-			"nuance": "Expresses incredulity at an unexpectedly large number, amplifying emotion.",
+			"context": ["informal", "casual", "speech"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "After a counter and before a verb, usually in negatives or questions to show surprise.",
 			"examples": [
 				{
 					"japanese": "お酒は6杯も飲みました",
@@ -43,12 +46,13 @@
 			]
 		},
 		{
+			"id": "bb9cb81e-9687-49da-982f-c295cda7dfb3",
 			"usage": "（個・N）しか〜",
 			"meaning": "surprise at a low number",
-			"context": "Casual to formal or written; commonly used, avoiding usage can sound unnatural.",
-			"tags": ["counting", "ナイ形"],
-			"notes": "Used with negative verb forms to convey 'only (number) is/are not...' Avoid using it without a negative verb form, as it can lead to confusion.",
-			"nuance": "Expresses surprise or dissatisfaction at a low count or scarcity, often paired with negation.",
+			"context": ["casual", "formal", "written"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Used with negative verb forms. Avoid without negation.",
 			"examples": [
 				{
 					"japanese": "昨日は3時間しか寝られなかった",
@@ -61,12 +65,13 @@
 			]
 		},
 		{
+			"id": "37d35df0-89d4-4194-b7de-77b01a1c4865",
 			"usage": "〜ばかり〜います",
 			"meaning": "negative emphasis on something only happening",
-			"context": "Used in daily, informal conversation, less frequently and formally in written and business language.",
-			"tags": ["explanation", "habitual", "テ形", "noun-modifier"],
-			"notes": "Often used to express the speaker's irritation or disappointment about a habitual action or state, and more common in spoken rather than written context. Mistakenly generalizing its usage to positive contexts or non-habitual actions.",
-			"nuance": "〜ばかり〜います expresses certain negative or undesirable situations that recur or persist, frequently conveying emotional dissatisfaction or impatience.",
+			"context": ["informal", "daily speech"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Expresses irritation/disappointment about habitual action; more common in spoken Japanese.",
 			"examples": [
 				{
 					"japanese": "ゲームばかりしています",
@@ -75,12 +80,13 @@
 			]
 		},
 		{
+			"id": "9114713e-20f1-49c0-974d-bd7fef2af725",
 			"usage": "〜ばかりいます",
 			"meaning": "negative emphasis on something only happening",
-			"context": "Typically casual; can sound informal or impolite in formal situations.",
-			"tags": ["explanation", "habitual", "テ形"],
-			"notes": "Use after the te-form of verbs, not after nouns or adjectives. Learners often confuse it with ばかりだ or use it in positive contexts.",
-			"nuance": "〜ばかりいます conveys disapproval, irritation or regret about a habitual or frequent action.",
+			"context": ["casual", "informal"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "After te-form of verbs. Conveys disapproval or regret about a habitual action.",
 			"examples": [
 				{
 					"japanese": "ゲームをしてばかりいます",
@@ -89,12 +95,13 @@
 			]
 		},
 		{
+			"id": "cb46e772-9e07-4f60-92e2-8afaf651bea2",
 			"usage": "〜だけじゃなくて、〜も〜",
 			"meaning": "not just this exists, also this",
-			"context": "Suitable for both casual and formal context, but add 'です' to the end for increased formality.",
-			"tags": ["enumeration", "explanation", "普通形"],
-			"notes": "Commonly used with both nouns and verbs, not just to list but also to add weight to a point. Remember not to use it for comparisons or expressing preference degrees; it's for enumeration, not relative valuation.",
-			"nuance": "Emphasizes inclusion and plurality, often used when expressing there's more than one element involved.",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Works with nouns and verbs to emphasize inclusion; not for comparison.",
 			"examples": [
 				{
 					"japanese": "日本のアニメを見たいだけじゃなくて、外国のアニメも見たいです",
@@ -103,12 +110,13 @@
 			]
 		},
 		{
+			"id": "dec1ebc9-526f-4dd6-ad15-433c2fe5fce8",
 			"usage": "〜とか〜とか〜",
 			"meaning": "list examples",
-			"context": "Predominantly informal and conversational, inappropriate for formal or business settings.",
-			"tags": ["enumeration", "普通形"],
-			"notes": "Use 〜とか〜とか for vague or incomplete listings, avoid using in formal writing or presentations. Common mistake is assuming it's an exhaustive list; it just lists some examples, not all possibilities.",
-			"nuance": "〜とか〜とか conveys a non-exhaustive list of examples, expressing casualness or ambiguity.",
+			"context": ["informal", "conversational"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Non-exhaustive list, casual. Avoid formal writing.",
 			"examples": [
 				{
 					"japanese": "そのレストランはたくさん食べ物を注文できる、ラーメンとか、ハンバーガーとかかな",
@@ -117,12 +125,13 @@
 			]
 		},
 		{
+			"id": "6ae86e9d-a73d-46b1-b87f-8f0db95f8f2e",
 			"usage": "〜（だけ・だけの）",
-			"meaning": "as much as you want, limits to the full extent of what its attached to",
-			"context": "すごく丁寧な表現でないけど、ちょっとインフォーマルすぎるわけでもない、中間のレベル。",
-			"tags": ["combination", "普通形"],
-			"notes": "Use 〜だけ for noun, な-adjective or verb, and だけの before noun after an い-adjective or a verb. Not differentiating between the two (だけ & だけの) can cause confusion as だけの cannot follow a noun or な-adjective directly.",
-			"nuance": "〜だけ・だけの emphasizes a limitation or a quantity, but also contains an emotional overtone of filling those limited boundaries to their full potential.",
+			"meaning": "as much as you want; limits to full extent",
+			"context": ["informal", "neutral"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "〜だけ: noun, na-adj, verb; だけの: i-adj or verb before noun. Expresses limitation or fullness of extent.",
 			"examples": [
 				{
 					"japanese": "今日は飲み放題なので、すきなだけ飲んでください",
@@ -135,12 +144,13 @@
 			]
 		},
 		{
+			"id": "1afdbf8a-7578-4cb9-b06a-920b96a2c652",
 			"usage": "〜でも",
 			"meaning": "even this; indicates a bit of surprise",
-			"context": "Informal to formal, applicable in oral and written communication.",
-			"tags": ["conditional", "noun-modifier"],
-			"notes": "Use 〜でも sparingly, as it highlights items that are surprising or noteworthy in context. Avoid overusing 〜でも as it doesn't simply replace other conjunctions or particles.",
-			"nuance": "〜でも holds a slight sense of surprise or unexpectedness, reinforcing 'even this/that' vibe.",
+			"context": ["informal", "formal", "oral", "written"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Highlights surprising or noteworthy items.",
 			"examples": [
 				{
 					"japanese": "かの問題は難しいので、先生でも間違えます",
@@ -149,12 +159,13 @@
 			]
 		},
 		{
+			"id": "6f640828-ad10-4953-b3e8-643b2fb1d8df",
 			"usage": "〜に限り",
 			"meaning": "limited to a condition",
-			"context": "Formal, often used in written statements or rules.",
-			"tags": ["conditional", "noun-modifier"],
-			"notes": "Follows directly after a noun; roughly equivalent to 'only in the case of' in English. Learners often misuse 〜に限り with non-specific conditions or across more general scenarios where 〜だけ should be used.",
-			"nuance": "Conveys an exclusive emphasis; indicates only a specific condition or case is applicable.",
+			"context": ["formal", "written", "rules"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "After noun; indicates exclusive applicability.",
 			"examples": [
 				{
 					"japanese": "この交流会に参加できるのは、外国人に限ります",
@@ -163,12 +174,13 @@
 			]
 		},
 		{
+			"id": "da773eb0-8c4d-4ebb-b9d0-65507ae15730",
 			"usage": "〜でも",
-			"meaning": "gives a single example, ignoring the other options",
-			"context": "This is a common expression in both formal and informal usage, but may sound too casual in professional settings.",
-			"tags": ["enumeration", "suggestion", "noun-modifier"],
-			"notes": "Often used in suggestions or offers, try inserting it after the noun in conversations. Frequently, learners overuse ~でも to list or enumerate items rather than suggesting an option out of many or expressing a lack of preference.",
-			"nuance": "The use of ~でも is to propose a single alternative amidst many possible options and often implies indifference or lack of preference.",
+			"meaning": "gives a single example, ignoring other options",
+			"context": ["informal", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used in suggestions/offers; implies indifference or lack of preference.",
 			"examples": [
 				{
 					"japanese": "あそこでお茶でも飲みませんか",
@@ -181,12 +193,13 @@
 			]
 		},
 		{
+			"id": "efda47ed-0de6-4d86-bde3-e6b7b26db4be",
 			"usage": "〜とか",
 			"meaning": "heard this or something like that",
-			"context": "Mainly used in informal settings; avoid using in formal writings or speeches.",
-			"tags": ["enumeration", "appearance"],
-			"notes": "Use when recalling or listing things, but note it implies the list is not comprehensive or detailed. It is often overused by beginners, making formal conversations sound casual and vague.",
-			"nuance": "〜とか gives a casual indication of vagueness or uncertainty; it's non-exhaustive listing, like saying 'and stuff' in English.",
+			"context": ["informal", "casual"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Non-exhaustive listing, casual, implies vagueness.",
 			"examples": [
 				{
 					"japanese": "ええ、よくわからないんですが、ドアが故障したとかで、動かないみたいですよ",
@@ -195,12 +208,13 @@
 			]
 		},
 		{
+			"id": "9e98b6be-f3c4-40bf-b28f-89ee4a3f841b",
 			"usage": "〜やら",
 			"meaning": "things like; whether ___ or ___",
-			"context": "Commonly used in informal speech or internal monologue, less seen in formal writing or business language.",
-			"tags": ["enumeration", "similiarity", "辞書形", "adjective-modifier"],
-			"notes": "Use with dictionary form of verbs/nouns/adjectives; end a list with 〜やら何やら when listing things and ending imprecisely. Don't use 〜やら to list every item clearly; it implies uncertainty or incomplete listing.",
-			"nuance": "Used for unsure or unprepared enumerations, often with a sense of frustration or trouble.",
+			"context": ["informal", "casual", "speech"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "For imprecise lists; often paired with 何やら. Expresses incomplete enumeration or frustration.",
 			"examples": [
 				{
 					"japanese": "毎月食費やら家賃やら、どんどんお金が出て行きます",
@@ -213,12 +227,13 @@
 			]
 		},
 		{
+			"id": "5cba440a-8b65-47a0-b3f5-13576ae738ea",
 			"usage": "〜（なんて・なんか・など）",
 			"meaning": "such as, things like this, etc",
-			"context": "Casual; usage in formal settings or written language can be inappropriate.",
-			"tags": ["enumeration", "noun-modifier"],
-			"notes": "Often used to list examples or to express a sense of 'and so forth', but with a slightly dismissive tone. Overusing it can make conversations sound overly casual or sarcastic.",
-			"nuance": "Expresses a level of contempt or belittlement when referring to something.",
+			"context": ["casual", "informal"],
+			"level": "neutral",
+			"variant": "none",
+			"notes": "Often expresses dismissive tone; do not overuse in formal contexts.",
 			"examples": [
 				{
 					"japanese": "スキーなんて難しい、ちょっと練習すれば、すぐできるようになるよ",
@@ -227,12 +242,13 @@
 			]
 		},
 		{
+			"id": "7a4617c0-b478-47a8-98cd-fb15531eb437",
 			"usage": "〜といった",
 			"meaning": "such as",
-			"context": "Neutral toward formal, not typically used in casual everyday speech.",
-			"tags": ["enumeration", "exemplification", "noun-modifier"],
-			"notes": "Often used in formal, academic or business context to mention examples without listing all. Don't mistake it for exhaustive enumeration, it implies non-exclusivity of the items mentioned.",
-			"nuance": "Lists exhaustive or representative examples, but not always the only or best ones.",
+			"context": ["neutral", "formal", "academic", "business"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Lists representative examples, not exhaustive.",
 			"examples": [
 				{
 					"japanese": "京都や日光と言った有名な観光地へ行ってみたい。",
@@ -245,12 +261,13 @@
 			]
 		},
 		{
+			"id": "31443534-dc52-4c5f-8d72-f54b90f82fd9",
 			"usage": "「N」も〜「N」も",
 			"meaning": "___ and ___",
-			"context": "Neutral, commonly used in both written and spoken Japanese.",
-			"tags": ["concurrent", "enumeration", "noun-modifier", "条件形"],
-			"notes": "Use the pattern when you want to emphasize the equalness of two or more nouns or noun phrases. Do not use with only one noun, and never mix 'と' and 'も' in the same context.",
-			"nuance": "「N」も〜「N」も is used to express multiple actions on the same topic and shows that both parts have equal weight.",
+			"context": ["neutral", "written", "spoken"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Emphasizes equality of two or more nouns or phrases; do not mix with 'と'.",
 			"examples": [
 				{
 					"japanese": "父は酒も飲めば、とばこも吸うので、体を壊さないか心配です。",
