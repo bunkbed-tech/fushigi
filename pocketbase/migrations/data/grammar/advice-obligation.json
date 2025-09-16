@@ -1,0 +1,320 @@
+{
+	"advice-obligation": [
+		{
+			"id": "66490554-73ab-479b-a0c2-329baa8f56be",
+			"usage": "〜といいです",
+			"meaning": "hope, suggestion",
+			"context": ["spoken"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Soft suggestion; polite but casual. Used to give light advice or express hope. Do not use to sound authoritative.",
+			"examples": [
+				{
+					"japanese": "スキーをしたいので、札幌へ行くといいです",
+					"english": "If you want to ski, it would be good to go to Sapporo."
+				},
+				{
+					"japanese": "この食べ物は辛いので、牛乳を飲むといいです",
+					"english": "This food is spicy, so it would be good to drink some milk."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + といいです",
+				"い-adjective": "〜い + といいです",
+				"な-adjective/noun": "〜だ + といいです"
+			}
+		},
+		{
+			"id": "'a8ed30f0-74a9-40ec-a12e-a7bc0f6ac6d6",
+			"usage": "〜ければなりません",
+			"meaning": "must",
+			"context": ["written", "spoken", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses strong obligation. Mostly used in written or formal contexts; in casual conversation, ないといけない is more common.",
+			"examples": [
+				{
+					"japanese": "金曜日までに宿題をしなければなりません",
+					"english": "I have to do my homework by Friday."
+				},
+				{
+					"japanese": "母は私に野菜を食べなければなりませんと言っていました",
+					"english": "My mother used to tell me that I had to eat vegetables."
+				}
+			],
+			"forms": {
+				"verb": "〜なければならない (polite form of 'must')"
+			}
+		},
+		{
+			"id": "c1e2dad1-f521-45a3-a0df-dc78db511304",
+			"usage": "〜ものだ",
+			"meaning": "should be",
+			"context": ["spoken", "written"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with dictionary-form verbs for habits or expected behaviors, and with ない-form for urgency or regret. Do not confuse with 〜ものではない, which denies a characteristic.",
+			"examples": [
+				{
+					"japanese": "人との約束に遅れそうな時は、伝えるものだ",
+					"english": "When you're likely to be late for an appointment, you should let them know."
+				},
+				{
+					"japanese": "たくさんの人の前で話すのは、誰でも心配するものだよ",
+					"english": "Speaking in front of many people is something anyone would worry about."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + ものだ / ない-form + ものだ"
+			}
+		},
+		{
+			"id": "7812484f-079c-4664-9a78-56c3f6a41bdc",
+			"usage": "〜こと",
+			"meaning": "must / do this",
+			"context": ["written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with dictionary or ない-form verbs for formal commands or rules. Avoid in casual conversation, and do not use with い-adjectives.",
+			"examples": [
+				{
+					"japanese": "避難の際は、エレベーターを使用しないこと",
+					"english": "Do not use the elevator in case of evacuation."
+				},
+				{
+					"japanese": "試験の時は辞書を使わないこと",
+					"english": "Do not use a dictionary during the test."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / ない-form + こと"
+			}
+		},
+		{
+			"id": "2c0b703b-ddc7-4871-9dfa-798758d5226c",
+			"usage": "〜ことはない",
+			"meaning": "no need to",
+			"context": ["spoken", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used after dictionary-form verbs to indicate that a certain action is unnecessary. Avoid using it for direct advice, as it can seem dismissive.",
+			"examples": [
+				{
+					"japanese": "またチャンスあるよ。不安になることはない",
+					"english": "There will be another chance. There's no need to worry."
+				},
+				{
+					"japanese": "私のを貸してあげるから、わざわざスーツケースを買うことはない",
+					"english": "You don't have to go out of your way to buy a suitcase, I'll lend you mine."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + ことはない"
+			}
+		},
+		{
+			"id": "1aebc0ff-cd73-42f9-ae72-c723d964ed8e",
+			"usage": "〜ことだ",
+			"meaning": "should / ought",
+			"context": ["spoken", "written"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Generally follows dictionary or ない-form verbs. Not used with です/ます verbs. Expresses strong advice or recommendation.",
+			"examples": [
+				{
+				"japanese": "自分一人ではどうしていいかわからない時は、誰かに聞くことだよ。",
+				"english": "When you don't know what to do on your own, you should ask someone."
+				},
+				{
+				"japanese": "太りたくないなら、毎日散歩することだ。",
+				"english": "If you don't want to gain weight, you should take a walk every day."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / ない-form + ことだ"
+			}
+		},
+		{
+			"id": "29747ba2-cf0b-46ab-8db0-6d39a00ee651",
+			"usage": "〜べきだ・べきではない・べき「N」",
+			"meaning": "should / shouldn't",
+			"context": ["written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use after dictionary-form verbs. For nouns and な-adjectives, use だ as in だべきだ. Do not use after て-form or ます-form verbs. Expresses strong suggestion or opinion.",
+			"examples": [
+				{
+					"japanese": "電車やバスの中では、お年寄りに席を譲るべきだ。",
+					"english": "One should give up their seat to the elderly on trains and buses."
+				},
+				{
+					"japanese": "初めて会った女性に年齢を聞くべきではない。",
+					"english": "You should not ask a woman her age when you meet her for the first time."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + べきだ / べきではない"
+			}
+		},
+		{
+			"id": "22e4056a-00de-4ba7-b1fc-6d006f753c94",
+			"usage": "〜より他ない・〜より他しかたがない",
+			"meaning": "have no choice",
+			"context": ["written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used after dictionary-form verbs to express an unwanted or last-resort action. Avoid using in neutral or positive situations.",
+			"examples": [
+				{
+					"japanese": "誰も代わりにやってくれる人がいないので、自分でやる他ない。",
+					"english": "Since there's no one who can do it in my stead, I have no choice but to do it myself."
+				},
+				{
+					"japanese": "ミスをしたのは私なのだから、謝るより他しかたがないだろう。",
+					"english": "Since I was the one who made the mistake, I have no other choice but to apologize."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + より他ない / より他しかたがない"
+			}
+		},
+		{
+			"id": "10b1b433-9947-4c7c-ba96-d61fc563315f",
+			"usage": "〜ざるを得ない",
+			"meaning": "have to",
+			"context": ["written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Preceding verb must be in negative form. Indicates reluctance or inevitability of an undesired action.",
+			"examples": [
+				{
+					"japanese": "髪を伸ばしてみたいが、校則があるので髪を切らざるを得ない。",
+					"english": "I want to grow my hair out, but because of school rules, I have no choice but to cut it."
+				},
+				{
+					"japanese": "歴史的な建物なのでできれば保存したい。だが、古くなって危険なので、潰さざるを得ない。",
+					"english": "Ideally, I'd like to preserve it since it is a historical building. However, it is old and dangerous, so it must be demolished."
+				}
+			],
+			"forms": {
+				"verb": "negative form + ざるを得ない"
+			}
+		},
+		{
+			"id": "4786922a-d749-4683-b7bf-a9bfa779e7dc",
+			"usage": "〜ように、〜",
+			"meaning": "so that",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Clause before 〜ように describes a desired outcome. Can indicate hope or uncertain results.",
+			"examples": [
+				{
+					"japanese": "忘れないように毎日勉強します",
+					"english": "I study every day so I won't forget."
+				},
+				{
+					"japanese": "タオル流を早く乾くように外に掛ける",
+					"english": "Hang the towels outside to dry quickly."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / ない-form + ように"
+			}
+		},
+		{
+			"id": "8382dc45-e4ed-4347-81b5-e75f99331185",
+			"usage": "〜ようにしてください",
+			"meaning": "please do / don’t do",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used to request someone to do or not do something to achieve a desired result. Avoid confusing with ようにしましょう.",
+			"examples": [
+				{
+					"japanese": "廊下に走らないようにしてください",
+					"english": "Please refrain from running in the hallways."
+				},
+				{
+					"japanese": "質問があれば、先生に聞くようにしてください",
+					"english": "If you have any questions, please ask the teacher."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / ない-form + ようにしてください"
+			}
+		},
+		{
+			"id": "acbd2d34-c1c2-4bc1-b9b3-02ecbf579364",
+			"usage": "〜で",
+			"meaning": "don’t do ...",
+			"context": ["spoken", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with negative dictionary-form verbs (〜ないで) to advise or guide actions. Only used in negative/prohibitive context; avoid for positive actions.",
+			"examples": [
+				{
+					"japanese": "毎日肉を食べないで、時々豆腐を食べます",
+					"english": "I don't eat meat every day; I sometimes eat tofu instead."
+				}
+			],
+			"forms": {
+				"verb": "negative dictionary form + で"
+			}
+		},
+		{
+			"id": "e50b4b4d-3427-4ece-86ae-4c9db28459bc",
+			"usage": "〜たらどうですか",
+			"meaning": "how about …",
+			"context": ["spoken", "polite", "casual"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with past-form verbs (た-form) to provide a suggestion or alternative solution.",
+			"examples": [
+				{
+					"japanese": "留学生の就職について話を聞くのはどうですか",
+					"english": "How about discussing the employment of exchange students?"
+				}
+			],
+			"forms": {
+				"verb": "past form + らどうですか"
+			}
+		},
+		{
+			"id": "93d17b6b-803f-4567-ad96-3b92c0d308f0",
+			"usage": "〜のはどうですか",
+			"meaning": "how about …",
+			"context": ["spoken", "polite", "casual"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Can be used with nouns or nominalized sentences to offer alternatives or suggestions. Avoid in highly formal contexts.",
+			"examples": [
+				{
+					"japanese": "毎朝ジョギングをするのはどうですか",
+					"english": "How about going for a jog every morning?"
+				}
+			],
+			"forms": {
+				"noun/verb": "noun + のはどうですか / verb dictionary form + のはどうですか"
+			}
+		},
+		{
+			"id": "976434bf-916b-4e07-b362-148632bacbc1",
+			"usage": "〜いいんじゃない",
+			"meaning": "isn’t it … / good idea …",
+			"context": ["spoken", "casual"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Casual expression for suggesting something without pressure. Avoid formal or written contexts.",
+			"examples": [
+				{
+					"japanese": "電子辞書を買わないで、スマホを使えばいいんじゃない",
+					"english": "You don't need to buy an electronic dictionary; you can just use your smartphone."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / ない-form + いいんじゃない"
+			}
+		}
+	]
+}

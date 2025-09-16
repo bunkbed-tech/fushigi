@@ -35,6 +35,20 @@
 					"english": "I came to Japan to speak Japanese"
 				}
 			]
+		},
+		{
+			"usage": "〜にかけては",
+			"meaning": "when it comes to ___, ___　(focus on ability and higher than others)",
+			"context": "Formal and casual, but somewhat assertive, often used in debates, arguments, or playful competitions.",
+			"tags": ["advanced-usage", "comparative", "description", "noun-modifier"],
+			"notes": "Use 〜にかけては after a subject or topic, to express its superiority or excellence in the following context. Often mistakenly used to compare two equal topics instead of emphasizing the superiority of one.",
+			"nuance": "〜にかけては underlines a speaker's emphasis or slightly competitive sense of superiority on a certain topic or ability.",
+			"examples": [
+				{
+					"japanese": "かんさんは人を笑わせることにかけては、クラスで一番だ。",
+					"english": "When it comes to making people laugh, Kansan is the best in the class."
+				}
+			]
 		}
 	]
 }

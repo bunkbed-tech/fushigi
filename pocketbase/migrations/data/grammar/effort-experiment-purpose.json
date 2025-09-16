@@ -95,6 +95,24 @@
 					"english": "I am trying not to watch too much TV."
 				}
 			]
+		},
+		{
+			"usage": "〜を通して",
+			"meaning": "throughout (time); via (tool)",
+			"context": "This construction is neutral; can be used both in informal and formal situations, including writing.",
+			"tags": ["description", "temporal", "conjunctive", "noun-modifier"],
+			"notes": "Use 〜を通して to indicate a long-term action or to denote something done via a particular medium or method. Avoid using 〜を通して when referring to instantaneous or one-time events, or direct actions without a medium.",
+			"nuance": "〜を通して suggests a process over a period of time or via a medium/method, with an emphasis on continuity or being thorough.",
+			"examples": [
+				{
+					"japanese": "この地方は、一年を通じて、暑いです",
+					"english": "This region is hot all year round."
+				},
+				{
+					"japanese": "この町では、四季を通して、さまざまな果物が食べられる",
+					"english": "In this town, a variety of fruits can be enjoyed throughout the four seasons."
+				}
+			]
 		}
 	]
 }

@@ -1,5 +1,19 @@
 {
-	"lists-counts": [
+	"counting-rules": [
+		{
+			"usage": "数量詞 につき 数量詞",
+			"meaning": "every",
+			"context": "Generally formal and often used in business or legal settings, not common in casual speech.",
+			"tags": ["counting"],
+			"notes": "Remember to put it after the item it describes and before the quantity or stipulations; usually used with numbers. Avoid using it in casual conversations; can be easily substituted with 'ごとに' but not always interchangeable.",
+			"nuance": "Expresses the concept of 'per' or 'every', but often denotes a rule or set condition, and can convey a more formal or serious tone.",
+			"examples": [
+				{
+					"japanese": "このクーポンは１枚につき、５名様までご利用になれます",
+					"english": "This coupon is valid for up to 5 people per sheet."
+				}
+			]
+		},
 		{
 			"usage": "〜し、〜",
 			"meaning": "listing actions",

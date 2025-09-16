@@ -89,6 +89,56 @@
 					"english": "I had my senior buy a novel for me"
 				}
 			]
+		},
+		{
+			"usage": "〜ましょうか",
+			"meaning": "invitation or request to do by yourself",
+			"context": "Polite and somewhat formal, best suited for situations requiring deference or respect.",
+			"tags": ["polite", "combination", "favor", "マス形"],
+			"notes": "Use 〜ましょうか to softly offer help or invite action, but not for tasks requiring heavy effort or deep involvement. Avoid using 〜ましょうか for mundane or trivial tasks - it can make the statement sound sarcastic or condescending.",
+			"nuance": "The phrase 〜ましょうか generally connotes a sense of helpfulness, indirectness, and politeness.",
+			"examples": [
+				{
+					"japanese": "レストランに行きましょうか",
+					"english": "Shall we go to the restaurant?"
+				},
+				{
+					"japanese": "家を掃除しましょうか",
+					"english": "Shall we clean the house?"
+				}
+			]
+		},
+		{
+			"usage": "友達言葉の移行形",
+			"meaning": "a friendlier version of ましょう for invitations",
+			"context": "Appropriate for casual conversations or friendly environments, inappropriate for formal or polite context.",
+			"tags": ["volitional-form", "移行形"],
+			"notes": "Commonly employed among close friends, students, or within same-age group. Overuse can imply a lack of politeness or respect when used in formal or hierarchical settings.",
+			"nuance": "It expresses a softer, more casual invite similar to 'let's' in English.",
+			"examples": [
+				{
+					"japanese": "食べよう",
+					"english": "Let's eat"
+				},
+				{
+					"japanese": "行こう",
+					"english": "Let's go"
+				}
+			]
+		},
+		{
+			"usage": "〜くれない",
+			"meaning": "won't you do it for me?",
+			"context": "Casual or familiar; avoid using it in formal contexts or with superiors.",
+			"tags": ["favor", "polite", "テ形"],
+			"notes": "Used mostly in casual speech and with verbs of giving and doing; not common in formal or written language. Learners often overuse or use it in inappropriate situations, it can come off as demanding or rude.",
+			"nuance": "Combines denial and request, often used to solicit help; can convey sense of mild frustration or impatience.",
+			"examples": [
+				{
+					"japanese": "消しゴムを忘れたので、貸してくれない？",
+					"english": "I forgot my eraser, could you lend me one?"
+				}
+			]
 		}
 	]
 }

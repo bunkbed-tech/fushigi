@@ -241,6 +241,88 @@
 					"english": "The student waiting for their turn in the interview exam looks very nervous and insecure."
 				}
 			]
+		},
+		{
+			"usage": "〜だらけ",
+			"meaning": "to be covered in something; slightly negative feeling",
+			"context": "Common in casual and informal conversation, not suited for formal or polite speech.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Used with nouns to denote negative or undesirable characteristics; not used with positive/neutral ones. Learning mistake is applying it to positive or neutral nouns; it's used for negative context.",
+			"nuance": "〜だらけ implies dissatisfaction, undesirable excess or being saturated with something negative.",
+			"examples": [
+				{
+					"japanese": "どうしたの？その血だらけの足？大丈夫？",
+					"english": "What happened? What's with that bloody foot? Are you alright?"
+				},
+				{
+					"japanese": "何ですか？この部屋は、服だらけじゃない！！！",
+					"english": "What is this? This room is not filled with clothes!!!"
+				}
+			]
+		},
+		{
+			"usage": "〜どころじゃない",
+			"meaning": "not the time for; out of the question",
+			"context": "Found in both casual and formal contexts, more commonly heard in spoken Japanese.",
+			"tags": ["temporal", "description", "辞書形", "noun-modifier"],
+			"notes": "Attach it to dictionary forms of verbs or nouns, but not adjectives. Don't use with adjectives or to express positive events or situations.",
+			"nuance": "Used in situations of urgency or seriousness to express 'not the time for' or 'far from'.",
+			"examples": [
+				{
+					"japanese": "映画を見に行くどころじゃないんだ。ごめんね。",
+					"english": "I'm not in a position to go watch a movie. I'm sorry."
+				},
+				{
+					"japanese": "最近毎日が降っていたので、観光どころじゃなかったんだよ",
+					"english": "Because it's been raining every day recently, sightseeing was the last thing on my mind."
+				}
+			]
+		},
+		{
+			"usage": "〜ことに",
+			"meaning": "extremely or especially; think とても",
+			"context": "Common in written language or formal speech; not typically used in casual conversation.",
+			"tags": ["limitation", "タ形", "adjective-modifier"],
+			"notes": "Used with the dictionary form of i-adjectives and ta-form of verbs. Avoid using it with na-adjectives or nouns, and don't confuse with the nominalizer こと.",
+			"nuance": "〜ことに highlights extremity or surprise rather than just intensity; e.g., 'unexpectedly cold' versus 'very cold'.",
+			"examples": [
+				{
+					"japanese": "残縁なことに、昼ご飯を食べよう思ったレストランは休みでした",
+					"english": "Ironically, the restaurant I thought of eating lunch at was closed."
+				}
+			]
+		},
+		{
+			"usage": "〜といったら",
+			"meaning": "can not express how; don't confuse with other いったら forms",
+			"context": "Generally neutral, but usage may lean towards informal or casual conversations due to its emphatic nature.",
+			"tags": ["description", "fixed-expression", "noun-modifier"],
+			"notes": "Use with adjectives or verbs to emphasize expressivity, but avoid using it to refer to possibilities or suppositions. Beware of confusing 〜といったら with 〜と言えば, which introduces a topic instead of amplifying intensity.",
+			"nuance": "〜といったら emphasizes the intensity of an emotion or a situation and is often used to express astonishment, surprise, or displeasure.",
+			"examples": [
+				{
+					"japanese": "妻の美しさと言ったら、言葉では表現できません",
+					"english": "My wife's beauty is beyond words."
+				},
+				{
+					"japanese": "日本料理のおいしさと言ったら、言葉では表現できません",
+					"english": "The deliciousness of Japanese cuisine is beyond words"
+				}
+			]
+		},
+		{
+			"usage": "〜のことになると",
+			"meaning": "if it becomes this topic of conversation",
+			"context": "Common in both casual speech and formal writing.",
+			"tags": ["fixed-expression", "conjunctive", "noun-modifier"],
+			"notes": "Often used with topics that induce strong opinions or feelings; does not require another clause to be meaningful. Avoid using it for neutral, unemotional topics, or in conjunction with verbs only.",
+			"nuance": "Used to express a certain emotional intensity or emphasis when it comes to a given topic",
+			"examples": [
+				{
+					"japanese": "ソダさんはいつもはあまり話さない静かな人だが、釣りのことになると、目がキラキラする",
+					"english": "Mr. Soda is generally a quiet person who doesn't talk much, but when it comes to fishing, his eyes light up."
+				}
+			]
 		}
 	]
 }

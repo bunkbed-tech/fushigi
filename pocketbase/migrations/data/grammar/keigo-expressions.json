@@ -1,24 +1,24 @@
 {
-    "keigo-expressions": [
-        {
-            "usage": "いらっしゃいます",
-            "meaning": "replacement for 行く, 来る, and いる",
-            "context": "Used in formal settings and business contexts; inappropriate for casual conversation.",
-            "tags": ["greeting", "respectful-honorific"],
-            "notes": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",
-            "nuance": "Denotes respect, often to express modesty about ones own actions or to speak humbly about someone else's actions.",
-            "examples": [
-                {
-                    "japanese": "「」はいらっしゃいますか",
-                    "english": "Is [name/person] there?"
-                },
-                {
-                    "japanese": "今週末どこへいらっしゃいますか",
-                    "english": "Where are you going this weekend?"
-                }
-            ]
-        },
-        {
+	"keigo-expressions": [
+		{
+			"usage": "いらっしゃいます",
+			"meaning": "replacement for 行く, 来る, and いる",
+			"context": "Used in formal settings and business contexts; inappropriate for casual conversation.",
+			"tags": ["greeting", "respectful-honorific"],
+			"notes": "Use いらっしゃいます when referring to someone of a higher status or in situations requiring politeness.",
+			"nuance": "Denotes respect, often to express modesty about ones own actions or to speak humbly about someone else's actions.",
+			"examples": [
+				{
+					"japanese": "「」はいらっしゃいますか",
+					"english": "Is [name/person] there?"
+				},
+				{
+					"japanese": "今週末どこへいらっしゃいますか",
+					"english": "Where are you going this weekend?"
+				}
+			]
+		},
+		{
 			"usage": "〜と申します",
 			"meaning": "introducing your name",
 			"context": "This phrase is typically used in formal or business settings, and not commonly used among friends or in casual conversations.",
@@ -37,7 +37,7 @@
 				}
 			]
 		},
-        {
+		{
 			"usage": "参ります",
 			"meaning": "replacement for 行く, and 来る",
 			"context": "Highly polite, typically reserved for formal, business, or ceremonial occasions.",
@@ -459,7 +459,7 @@
 				}
 			]
 		},
-			{
+		{
 			"usage": "〜おります",
 			"meaning": "this is just basic self polite speech for ています",
 			"context": "Highly formal, often used in professional/business/written communications.",
@@ -509,5 +509,5 @@
 				}
 			]
 		}
-    ]
+	]
 }

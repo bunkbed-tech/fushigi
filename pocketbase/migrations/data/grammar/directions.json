@@ -1,0 +1,84 @@
+{
+	"directions": [
+		{
+			"usage": "N と、V があります",
+			"meaning": "giving directions",
+			"context": "Common in casual conversation, tutoring, and guiding, but can seem a bit direct or commanding in formal situations.",
+			"tags": [
+				"spatial",
+				"conditional",
+				"辞書形",
+				"noun-modifier",
+				"fixed-expression"
+			],
+			"notes": "Use to inform or instruct about the location of an object, building or place. Misplacing と, or overlooking があります, indicating existence at the end of the sentence.",
+			"nuance": "Expresses location, slight urgency or importance, mostly used when giving a specific direction.",
+			"examples": [
+				{
+					"japanese": "駅から5分くらいまっすぐ歩くと、右に私のアパートがあります",
+					"english": "If you walk straight from the station for about 5 minutes, my apartment is on the right."
+				}
+			]
+		},
+		{
+			"usage": "〜を背にして",
+			"meaning": "with your back facing (used for directions)",
+			"context": "Best suited for formal written language, literature, or expressive spoken language -- seldom used in colloquial conversation.",
+			"tags": ["fixed-expression", "description", "spatial", "noun-modifier"],
+			"notes": "Use when you need to describe metaphorically turning your back on something or someone to illustrate departure or detachment. Mistakenly used in place of simple directions, like 'behind'; but it's not for everyday navigation or physical orientation.",
+			"nuance": "This phrase carries an almost poetic tone, often found in literature or emotive speech, usually describing a situation where one is leaving or forsaking something.",
+			"examples": [
+				{
+					"japanese": "じゃ、西口を背にして、本屋と花屋の間の道をまっすぐ行くと、右側にありますよ",
+					"english": "So, with the west exit behind you, if you go straight down the road between the bookstore and the florist, it's on your right."
+				}
+			]
+		},
+		{
+			"usage": "〜に沿って",
+			"meaning": "along; in accordance with",
+			"context": "Generally neutral; appropriate in both formal and casual conversations.",
+			"tags": ["spatial", "description", "noun-modifier"],
+			"notes": "Use 〜に沿って to discuss something progressing along a set path, both spatially and metaphorically. Avoid using 〜に沿って to denote 'beside' or 'next to', it primarily indicates a specific path or order.",
+			"nuance": "Suggests a physical or metaphorical path that something follows.",
+			"examples": [
+				{
+					"japanese": "この道に沿ってずっと行くと、私の家がある",
+					"english": "If you keep going along this road, you'll find my house"
+				}
+			]
+		},
+		{
+			"usage": "N が〜きます",
+			"meaning": "coming towards",
+			"context": "Neutral - suitable in casual or formal context, but might be too spatially-oriented for metaphorical or abstract uses.",
+			"tags": ["combination", "spatial", "テ形"],
+			"notes": "Used frequently to explain someone or something's approach; remember that the subject marked by が is the one coming or approaching. Careful not to confuse it with まで (up to/till), and don’t use it when expressing movement away from the speaker or their in-group.",
+			"nuance": "Expresses movement towards the speaker or their side, often with implied arrival in the near future.",
+			"examples": [
+				{
+					"japanese": "あの鳥が飛んできました",
+					"english": "That bird came flying."
+				},
+				{
+					"japanese": "先生が入ってきます",
+					"english": "The teacher is coming in."
+				}
+			]
+		},
+		{
+			"usage": "N が〜いきます",
+			"meaning": "going away",
+			"context": "Neutral situation, appropriate for both casual conversations and formal interactions.",
+			"tags": ["combination", "spatial", "テ形"],
+			"notes": "Commonly used to describe something or someone moving away; remember to use spatially appropriate particles. Inappropriate usage of particle が when particle を should be used with transitive verbs, confusing it with parallel construct 'N がきます' (coming).",
+			"nuance": "N が〜いきます implies the subject is moving away from the speaker's viewpoint or location, often with a tone of finality or farewell.",
+			"examples": [
+				{
+					"japanese": "犬が走っていきます",
+					"english": "The dog will run."
+				}
+			]
+		}
+	]
+}

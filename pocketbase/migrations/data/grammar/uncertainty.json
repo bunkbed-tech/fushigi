@@ -1,6 +1,5 @@
 {
 	"uncertainty": [
-
 		{
 			"usage": "疑問詞＋普通形＋か",
 			"meaning": "unsure of a question",
@@ -177,6 +176,26 @@
 				{
 					"japanese": "ニンジンは目にいいと言われています",
 					"english": "It is said that carrots are good for your eyes."
+				}
+			]
+		},
+		{
+			"usage": "のではないでしょうか・じゃないでしょうか",
+			"meaning": "don't you think?",
+			"context": "Mostly formal and polite, with more casual variations like 'じゃない？'.",
+			"tags": [
+				"rhetorical-question",
+				"question-form",
+				"subjective",
+				"questions",
+				"fixed-expression"
+			],
+			"notes": "Use it to express your opinion indirectly, especially when you're unsure or you want the listener to agree. Common mistake is overuse, making all statements seem uncertain; or using it in absolute situations where there's no room for doubt.",
+			"nuance": "This phrase is used to suggest an opinion tentatively or elicit agreement from listener; it adds a question tone.",
+			"examples": [
+				{
+					"japanese": "子供が自由に使ったら、スマホは、危ない目に合うことが多いんじゃないでしょうか",
+					"english": "If children use smartphones freely, don't you think they often encounter dangerous situations?"
 				}
 			]
 		}

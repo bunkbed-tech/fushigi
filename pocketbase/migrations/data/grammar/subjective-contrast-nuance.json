@@ -226,6 +226,101 @@
 					"english": "He's not going, he's returning."
 				}
 			]
+		},
+		{
+			"usage": "〜ながらも",
+			"meaning": "even while",
+			"context": "Can be used in both casual and formal contexts, but often seen in written language.",
+			"tags": [
+				"combination",
+				"conjunctive",
+				"マス形",
+				"ナイ形",
+				"i-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Ensure it follows the マス形, ナイ形, i-adjective-modifier, or noun-modifier of the verb/adjective/noun it modifies. Learners often confuse ~ながらも with while-in-the-process-of; remember it's used to express 'even though' or contradiction.",
+			"nuance": "〜ながらも implies a sense of contrast or unexpectedness between concurrent states or actions.",
+			"examples": [
+				{
+					"japanese": "試験の前の日、勉強しなきゃと思いながらも、テレビを見ちゃった",
+					"english": "Even though I thought I had to study the day before the exam, I ended up watching TV."
+				},
+				{
+					"japanese": "あの子はまだ小学生ながらも、有名な歌手です",
+					"english": "Despite being just a grade-schooler, that child is a famous singer."
+				}
+			]
+		},
+		{
+			"usage": "〜につけ",
+			"meaning": "every time; related to feelings only; NOT actions",
+			"context": "Mainly used in a context of written language or literature, but not common in normal conversation.",
+			"tags": ["temporal", "conditional", "辞書形"],
+			"notes": "With 〜につけ, it's best to use it with verbs in dictionary form, and it emphasizes the speaker's emotional reaction. Do not use this form for actions or physical upcoming events, it's strictly used for past feelings and experiences.",
+			"nuance": "This pattern is often used in contexts where a strong emotional reaction is elicited each time a certain situation, image, etc. comes up, and it's linked more with feelings and memories rather than actions.",
+			"examples": [
+				{
+					"japanese": "私はこの写真を見につけ、昔の友達を思い出します",
+					"english": "When I look at this picture, I remember my old friends."
+				}
+			]
+		},
+		{
+			"usage": "〜にしては",
+			"meaning": "considering this; for something thats this; opposite of expectation; more specific than の割りに",
+			"context": "Generally neutral; acceptable in both casual and formal conversations, and writing.",
+			"tags": [
+				"description",
+				"conjunctive",
+				"普通形",
+				"noun-modifier",
+				"adjective-modifer"
+			],
+			"notes": "Use with 接続形 of い-adjectives and verbs, 普通形 of な-adjectives and nouns; switch to 〜なのに for stronger contrast of expectation vs reality. Beginners often forget that 〜にしては requires clauses on both sides; missing the subsequent clause is incorrect.",
+			"nuance": "〜にしては highlights an unexpected result; it carries a slight tone of surprise, subtly implying 'I didn't expect this from/considering...'.",
+			"examples": [
+				{
+					"japanese": "このアパートは便利なところにあるにしては、値段が安い",
+					"english": "Considering its convenient location, this apartment is inexpensive."
+				},
+				{
+					"japanese": "ただの風邪にしては、熱が高いんじゃないかな",
+					"english": "I think the fever is too high for it to be just a cold."
+				}
+			]
+		},
+		{
+			"usage": "〜（に対して・に対する）",
+			"meaning": "in regards to, towards",
+			"context": "Appropriate for formal written and spoken language. Consider using 'にとって' or 'には' for more informal situations.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Use 'に対して' after a noun, pronoun or sentence end (requires 'の'); use 'に対する' for noun-modification. Avoid confusing 'に対して' with 'にとって', which means 'for' or 'from the perspective of'.",
+			"nuance": "Emphasizes a specific direction, object, or point of consideration; can express opposition or contrast.",
+			"examples": [
+				{
+					"japanese": "デパートの店員はお客に対して、丁寧に話します",
+					"english": "The department store clerk speaks politely to customers."
+				}
+			]
+		},
+		{
+			"usage": "〜んじゃない",
+			"meaning": "i think this, don't you?",
+			"context": "Typically used in informal and conversational contexts, can sound rough or blunt in formal or polite situations.",
+			"tags": ["question-form", "普通形"],
+			"notes": "When placed at the end of a sentence, 〜んじゃない implies that the speaker believes the preceding statement and seeks the listener's agreement. Misuse often comes from confusing it with the negative form 〜じゃない, when 〜んじゃない is in fact a questioning or confirmatory form.",
+			"nuance": "〜んじゃない is used to seek agreement or confirmation from the listener, often with a subjective and speculative tone.",
+			"examples": [
+				{
+					"japanese": "顔色が悪いけど、大丈夫？早く帰ったほうがいいんじゃない？",
+					"english": "You look pale, are you okay? Wouldn't it be better if you went home early?"
+				},
+				{
+					"japanese": "あのカバンが可愛い。でも高いんじゃない？",
+					"english": "That bag is cute. But isn't it expensive?"
+				}
+			]
 		}
 	]
 }

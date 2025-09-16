@@ -1,5 +1,5 @@
 {
-	"because": [
+	"reason-because": [
 		{
 			"usage": "〜ので",
 			"meaning": "basic cause and effect",
@@ -273,6 +273,20 @@
 				{
 					"japanese": "やる気次第で、うまく行くかどうかは決まると思う。",
 					"english": "I think whether things go well or not depends on your motivation."
+				}
+			]
+		},
+		{
+			"usage": "〜ことで",
+			"meaning": "due to this specific thing",
+			"context": "Neutral to formal, common in both colloquial and formal speech, but frequently used in written text.",
+			"tags": ["explanation", "causal", "普通形"],
+			"notes": "Attach it to short forms of verbs and adjectives; useful for pointing out cause-effect relations. Often confused with 〜から or 〜ので; ことで emphasizes the event, phenomenon or action resulting in a consequence.",
+			"nuance": "Used to explain causal relations with a neutral or slightly formal tone.",
+			"examples": [
+				{
+					"japanese": "寝る前に日記を書くことで、毎日の生活を見直しています",
+					"english": "By writing a diary before going to bed, I reflect on my daily life."
 				}
 			]
 		}

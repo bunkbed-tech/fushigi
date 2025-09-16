@@ -479,6 +479,52 @@
 					"english": "Mr. Soda seems to be waiting anxiously."
 				}
 			]
+		},
+		{
+			"usage": "〜すぎです",
+			"meaning": "pointing out something someone else did too much",
+			"context": "Appropriate in both formal and informal contexts but contrarily less suitable for highly polite or respectful occasions due to its critical tone.",
+			"tags": ["マス形", "noun-modifier"],
+			"notes": "Attach to a verb stem, i-adjective, or noun; use with discretion as it may sound critical.Avoid using it in personal context about yourself, as it generally criticizes others' actions.",
+			"nuance": "Used to express an excessive or unwelcome amount, often comes off as judgmental or disapproving.",
+			"examples": [
+				{
+					"japanese": "タホさん、飲みすぎですよ",
+					"english": "Taho, you're drinking too much."
+				}
+			]
+		},
+		{
+			"usage": "〜すぎます",
+			"meaning": "describing something/something you did as too much",
+			"context": "〜すぎます is neutral, appropriate for both casual and formal settings.",
+			"tags": ["i-adjective-modifer", "マス形"],
+			"notes": "Use すぎます after the stem of verbs and adjectives to express 'too much'. Avoid using すぎます after な-adjectives and nouns, instead, use すぎるのです.",
+			"nuance": "〜すぎます often implies a negative overtone, expressing excessive, inappropriate or undesirable qualities.",
+			"examples": [
+				{
+					"japanese": "ボストンには私のアパートが高すぎました",
+					"english": "My apartment in Boston was too expensive."
+				},
+				{
+					"japanese": "私は食べすぎました",
+					"english": "I ate too much."
+				}
+			]
+		},
+		{
+			"usage": "〜よね",
+			"meaning": "don't you know?",
+			"context": "It's casual yet polite, making it suitable for conversations among friends, family, or casual settings.",
+			"tags": ["explanation", "combination"],
+			"notes": "Use it at the end of sentences after verbs, adjectives, or nouns to confirm or express an assumption or expectation. Avoid using it in formal situations or when expressing your own opinion; it's not a formal tag question.",
+			"nuance": "〜よね adds emphasis, seeks agreement or confirmation, and has a sense of camaraderie, yet with an underlying assumption that the listener already knows.",
+			"examples": [
+				{
+					"japanese": "このバンド本当にかっこいいよね",
+					"english": "This band is really cool, isn't it?"
+				}
+			]
 		}
 	]
 }

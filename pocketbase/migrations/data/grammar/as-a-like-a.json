@@ -1,0 +1,146 @@
+{
+	"as-a-like-a": [
+		{
+			"id": "b4d984e8-79f2-4356-b2a9-06ceee2e7040",
+			"usage": "〜を〜として",
+			"meaning": "using as",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates the role or function of someone/something. Do not confuse with 〜としても (even if).",
+			"examples": [
+				{
+					"japanese": "要らなくなったプリントを紙の飛行機として使っています",
+					"english": "I'm using the printouts that are no longer needed as paper airplanes."
+				},
+				{
+					"japanese": "この試験では７０点以上を合格とする",
+					"english": "In this test, a score of 70 or above is considered a pass."
+				}
+			],
+			"forms": {
+				"noun": "noun + を + noun + として"
+			}
+		},
+		{
+			"id": "1d973608-9bcc-465f-8632-94f282c60ffb",
+			"usage": "〜のような",
+			"meaning": "like / similar to",
+			"context": ["spoken", "written"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Describes similarity or characteristics. Indicates a soft comparison, not a factual match.",
+			"examples": [
+				{
+					"japanese": "私はアイスのような甘い食べ物が好きです",
+					"english": "I like sweet foods like ice cream."
+				},
+				{
+					"japanese": "Monster Energyのような飲み物がいいんじゃない",
+					"english": "Wouldn't a drink like Monster Energy be good?"
+				}
+			],
+			"forms": {
+				"noun": "noun + のような"
+			}
+		},
+		{
+			"id": "970a3b63-6660-45ff-97fb-bbe472968413",
+			"usage": "〜のような〜",
+			"meaning": "like / resembling",
+			"context": ["spoken", "written"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Describes something as similar to another thing; not exact equality.",
+			"examples": [
+				{
+					"japanese": "将棋というのはギターのような楽器です",
+					"english": "Shogi is like a musical instrument, such as a guitar."
+				}
+			],
+			"forms": {
+				"noun": "noun + のような + noun"
+			}
+		},
+		{
+			"id": "5851b5e7-2486-4529-aff2-a03e6debbd56",
+			"usage": "〜として",
+			"meaning": "as",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates a role, standpoint, or condition. Avoid using to express actual transformation (use 〜になる).",
+			"examples": [
+				{
+					"japanese": "Aさんは１０年前に留学生として日本に来て、日本語を勉強した",
+					"english": "Mr. A came to Japan as a foreign exchange student 10 years ago and studied Japanese."
+				}
+			],
+			"forms": {
+				"noun": "noun + として"
+			}
+		},
+		{
+			"id": "677038aa-e007-4bb4-9893-bc1e3e9fa375",
+			"usage": "〜ように",
+			"meaning": "like / in the way of",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates similarity, manner, hope, or command. Often driven by intention or emotion rather than objective comparison.",
+			"examples": [
+				{
+					"japanese": "母が教えてくれたように作ったら、美味しくできた",
+					"english": "It turned out delicious when I made it as my mother taught me."
+				},
+				{
+					"japanese": "みんなと同じように、うまくできません",
+					"english": "I cannot do it as well as everyone else."
+				},
+				{
+					"japanese": "来月から、ゴミ回収日は以下のように変わります",
+					"english": "From next month, the garbage collection days will change as follows."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + ように / noun + のように"
+			}
+		},
+		{
+			"id": "119726f9-3b36-42de-ae49-ae327c8d6fd3",
+			"usage": "（こんな・そんな・あんな・どんな）N",
+			"meaning": "this / that / what kind of",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used to describe or ask about types/kinds. Choice depends on proximity to speaker/listener.",
+			"examples": [
+				{
+					"japanese": "あー、かわいい。僕もこんな彼女が欲しいな",
+					"english": "Ah, she's cute. I wish I had a girlfriend like her."
+				}
+			],
+			"forms": {
+				"noun": "(こんな / そんな / あんな / どんな) + noun"
+			}
+		},
+		{
+			"id": "2feaa326-c0d2-48d8-b03c-2aa0bbb2d1e2",
+			"usage": "（こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう）ふうに",
+			"meaning": "in this/that way",
+			"context": ["spoken", "written"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates manner, style, or hypothetical scenarios. Do not confuse with 〜ように for direct similarity.",
+			"examples": [
+				{
+					"japanese": "お休みの日はどんな風に過ごしていますか",
+					"english": "How do you spend your days off?"
+				}
+			],
+			"forms": {
+				"phrase": "(こんな / そんな / あんな / どんな / こういう / そういう / ああいう / どういう) + ふうに"
+			}
+		}
+	]
+}

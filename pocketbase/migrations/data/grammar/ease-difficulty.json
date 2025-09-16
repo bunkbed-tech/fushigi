@@ -1,0 +1,64 @@
+{
+	"ease-difficulty": [
+		{
+			"usage": "〜やすいです",
+			"meaning": "describing something as too easy",
+			"context": "Neutral to formal, can be used in any social context.",
+			"tags": ["マス形"],
+			"notes": "Applies to adjective based verbs, e.g. 覚える (to remember) noting something is easy to remember: 覚えやすいです. Often misused with noun or い-adjective, correctly use with verb basis only.",
+			"nuance": "Not 'too easy', but rather 'easy to do' emphasizing the ease of task completion.",
+			"examples": [
+				{
+					"japanese": "この小説は読みやすいです",
+					"english": "This novel is easy to read."
+				}
+			]
+		},
+		{
+			"usage": "〜にくいです",
+			"meaning": "describing something as too hard",
+			"context": "Neutral form, appropriate for both formal and casual conversations.",
+			"tags": ["マス形"],
+			"notes": "This form should be attached to a verb stem instead of a verb end. Common mistake is to use it with noun or adjective, it should only be used with verbs.",
+			"nuance": "～にくいです is used to express difficulty performing an action, it carries a negative connotation.",
+			"examples": [
+				{
+					"japanese": "日本語の宿題が多いですから、プログラミングをしにくいです",
+					"english": "Because I have a lot of Japanese homework, it's hard for me to do programming."
+				}
+			]
+		},
+		{
+			"usage": "〜がたい",
+			"meaning": "difficult or hard to do; not related to personal abilities",
+			"context": "Common in formal writing; less used in casual conversation.",
+			"tags": ["negation", "マス形"],
+			"notes": "Use 〜がたい with verbs in the ます-stem form; don't use with physical actions. Often confused with 〜にくい, which is for physical difficulty, not emotional.",
+			"nuance": "Expresses struggle, not in terms of ability, but an emotional or moral difficulty, often reluctance or hesitation.",
+			"examples": [
+				{
+					"japanese": "私にとって、日本での留学生活は忘れがたい思い出です",
+					"english": "For me, my student life in Japan is an unforgettable memory."
+				},
+				{
+					"japanese": "全然お皿を洗わないなんて、許し難い",
+					"english": "Not washing the dishes at all is unforgivable."
+				}
+			]
+		},
+		{
+			"usage": "〜づらい",
+			"meaning": "difficult to do something",
+			"context": "Generally neutral and acceptable in most contexts, slightly more common in writing and formal speech.",
+			"tags": ["combination", "conditional", "マス形"],
+			"notes": "Use this form by attaching づらい to the stem of the verb (マス形 without マス). Avoid confusion with 〜にくい; while similar, 〜づらい tends to emphasize personal experience or emotion more.",
+			"nuance": "〜づらい expresses not only the physical difficulty but can also signify emotional reluctance or discomfort towards the action.",
+			"examples": [
+				{
+					"japanese": "好きな人できたことを友達には言えるけど、両親には言いづらいなあ",
+					"english": "I can tell my friends when I have someone I like, but it's hard to tell my parents."
+				}
+			]
+		}
+	]
+}

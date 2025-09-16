@@ -1,0 +1,44 @@
+{
+	"questions": [
+		{
+			"usage": "何と読みますかー「」と読みます",
+			"meaning": "asking/describing how to read something",
+			"context": "Neutral; Polite and widely used in both casual and formal contexts, educational settings, and language documentation.",
+			"tags": ["question-form", "fixed-expression"],
+			"notes": "Use it in the format  ____を何と読みますか to ask how to read something; answer with ____を「____」と読みます. Learners often erroneously use it for vocabulary they don't understand, not just for reading difficulties.",
+			"nuance": "Mostly used with kanji that one is uncertain how to read, showing a respectful curiosity or need for assistance.",
+			"examples": [
+				{
+					"japanese": "これは何と読みますか",
+					"english": "How do you read this?"
+				},
+				{
+					"japanese": "「」と読みますよ",
+					"english": "It is read as ''."
+				}
+			]
+		},
+		{
+			"usage": "どういう意味ですかー「」という意味です",
+			"meaning": "asking/describing the meaning of a word",
+			"context": "Appropriate in both casual and formal conversation, but mainly used in academic or learning contexts.",
+			"tags": ["question-form", "fixed-expression"],
+			"notes": "Use it when unsure of a word or phrase's meaning, or to explain a term to someone else. Avoid presuming that it's a rhetorical question; it's primarily for actual clarification.",
+			"nuance": "Used neutrally without specific emotional context, it simply seeks or provides clarification on a term's meaning.",
+			"examples": [
+				{
+					"japanese": "「」はどういう意味ですか",
+					"english": "What does 「」mean?"
+				},
+				{
+					"japanese": "「」と言う意味です",
+					"english": "It means ___."
+				},
+				{
+					"japanese": "「」だと言う意味です",
+					"english": "It means that it's ' '."
+				}
+			]
+		}
+	]
+}
