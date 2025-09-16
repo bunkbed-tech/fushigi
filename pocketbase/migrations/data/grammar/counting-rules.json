@@ -2,6 +2,7 @@
 	"counting-rules": [
 		{
 			"id": "88fcf567-aa81-40de-88ea-01916bf8eb99",
+			"language": "Japanese",
 			"usage": "数量詞 につき 数量詞",
 			"meaning": "every",
 			"context": ["formal", "business", "legal"],
@@ -17,6 +18,7 @@
 		},
 		{
 			"id": "2e6b038d-0bc8-451d-ac2b-ec316b7c7436",
+			"language": "Japanese",
 			"usage": "〜し、〜",
 			"meaning": "listing actions",
 			"context": ["casual", "semi-formal", "neutral"],
@@ -32,6 +34,7 @@
 		},
 		{
 			"id": "8af5fe46-b686-4d10-a211-84a44222475d",
+			"language": "Japanese",
 			"usage": "個 も V",
 			"meaning": "surprise at a high number",
 			"context": ["informal", "casual", "speech"],
@@ -47,6 +50,7 @@
 		},
 		{
 			"id": "bb9cb81e-9687-49da-982f-c295cda7dfb3",
+			"language": "Japanese",
 			"usage": "（個・N）しか〜",
 			"meaning": "surprise at a low number",
 			"context": ["casual", "formal", "written"],
@@ -66,6 +70,7 @@
 		},
 		{
 			"id": "37d35df0-89d4-4194-b7de-77b01a1c4865",
+			"language": "Japanese",
 			"usage": "〜ばかり〜います",
 			"meaning": "negative emphasis on something only happening",
 			"context": ["informal", "daily speech"],
@@ -81,6 +86,7 @@
 		},
 		{
 			"id": "9114713e-20f1-49c0-974d-bd7fef2af725",
+			"language": "Japanese",
 			"usage": "〜ばかりいます",
 			"meaning": "negative emphasis on something only happening",
 			"context": ["casual", "informal"],
@@ -96,6 +102,7 @@
 		},
 		{
 			"id": "cb46e772-9e07-4f60-92e2-8afaf651bea2",
+			"language": "Japanese",
 			"usage": "〜だけじゃなくて、〜も〜",
 			"meaning": "not just this exists, also this",
 			"context": ["casual", "formal", "neutral"],
@@ -111,6 +118,7 @@
 		},
 		{
 			"id": "dec1ebc9-526f-4dd6-ad15-433c2fe5fce8",
+			"language": "Japanese",
 			"usage": "〜とか〜とか〜",
 			"meaning": "list examples",
 			"context": ["informal", "conversational"],
@@ -126,6 +134,7 @@
 		},
 		{
 			"id": "6ae86e9d-a73d-46b1-b87f-8f0db95f8f2e",
+			"language": "Japanese",
 			"usage": "〜（だけ・だけの）",
 			"meaning": "as much as you want; limits to full extent",
 			"context": ["informal", "neutral"],
@@ -145,6 +154,7 @@
 		},
 		{
 			"id": "1afdbf8a-7578-4cb9-b06a-920b96a2c652",
+			"language": "Japanese",
 			"usage": "〜でも",
 			"meaning": "even this; indicates a bit of surprise",
 			"context": ["informal", "formal", "oral", "written"],
@@ -160,6 +170,7 @@
 		},
 		{
 			"id": "6f640828-ad10-4953-b3e8-643b2fb1d8df",
+			"language": "Japanese",
 			"usage": "〜に限り",
 			"meaning": "limited to a condition",
 			"context": ["formal", "written", "rules"],
@@ -175,6 +186,7 @@
 		},
 		{
 			"id": "da773eb0-8c4d-4ebb-b9d0-65507ae15730",
+			"language": "Japanese",
 			"usage": "〜でも",
 			"meaning": "gives a single example, ignoring other options",
 			"context": ["informal", "formal", "neutral"],
@@ -194,6 +206,7 @@
 		},
 		{
 			"id": "efda47ed-0de6-4d86-bde3-e6b7b26db4be",
+			"language": "Japanese",
 			"usage": "〜とか",
 			"meaning": "heard this or something like that",
 			"context": ["informal", "casual"],
@@ -209,6 +222,7 @@
 		},
 		{
 			"id": "9e98b6be-f3c4-40bf-b28f-89ee4a3f841b",
+			"language": "Japanese",
 			"usage": "〜やら",
 			"meaning": "things like; whether ___ or ___",
 			"context": ["informal", "casual", "speech"],
@@ -228,6 +242,7 @@
 		},
 		{
 			"id": "5cba440a-8b65-47a0-b3f5-13576ae738ea",
+			"language": "Japanese",
 			"usage": "〜（なんて・なんか・など）",
 			"meaning": "such as, things like this, etc",
 			"context": ["casual", "informal"],
@@ -243,6 +258,7 @@
 		},
 		{
 			"id": "7a4617c0-b478-47a8-98cd-fb15531eb437",
+			"language": "Japanese",
 			"usage": "〜といった",
 			"meaning": "such as",
 			"context": ["neutral", "formal", "academic", "business"],
@@ -262,6 +278,7 @@
 		},
 		{
 			"id": "31443534-dc52-4c5f-8d72-f54b90f82fd9",
+			"language": "Japanese",
 			"usage": "「N」も〜「N」も",
 			"meaning": "___ and ___",
 			"context": ["neutral", "written", "spoken"],

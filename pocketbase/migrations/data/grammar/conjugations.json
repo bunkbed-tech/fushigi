@@ -2,6 +2,7 @@
 	"conjugations": [
 		{
 			"id": "a06bfa82-6979-464e-b808-deef77116f37",
+			"language": "Japanese",
 			"usage": "可能動詞",
 			"meaning": "can be done -- basic potential form",
 			"context": ["formal", "informal", "neutral"],
@@ -30,6 +31,7 @@
 		},
 		{
 			"id": "86b2eba7-7ea4-42cb-b473-8764986d7dba",
+			"language": "Japanese",
 			"usage": "〜くて、〜",
 			"meaning": "connecting a negative quality with the rest of a sentence",
 			"context": ["casual", "formal", "neutral"],
@@ -48,6 +50,7 @@
 		},
 		{
 			"id": "193144f2-135c-4bb4-85b0-205bb5923478",
+			"language": "Japanese",
 			"usage": "〜くて ・ 〜で",
 			"meaning": "connects two ideas with adjectives",
 			"context": ["casual", "formal", "neutral"],
@@ -71,6 +74,7 @@
 		},
 		{
 			"id": "fa53a026-1a4f-4481-871b-87db7db7fe73",
+			"language": "Japanese",
 			"usage": "〜テ形、〜",
 			"meaning": "giving a reason for what comes next",
 			"context": ["casual", "formal", "neutral"],
@@ -93,6 +97,7 @@
 		},
 		{
 			"id": "4282aebf-9019-4934-aef8-550995ec1a00",
+			"language": "Japanese",
 			"usage": "受身形",
 			"meaning": "to be done by; subject is receiver",
 			"context": ["neutral", "formal", "news", "writing"],
@@ -126,6 +131,7 @@
 		},
 		{
 			"id": "b3608434-31c9-418b-9057-0a962d1416d6",
+			"language": "Japanese",
 			"usage": "命令形",
 			"meaning": "positive command; super casual",
 			"context": ["casual", "male-oriented", "neutral"],
@@ -143,6 +149,7 @@
 		},
 		{
 			"id": "57484541-bb27-4c71-ae1b-f6b1d2451151",
+			"language": "Japanese",
 			"usage": "〜な",
 			"meaning": "negative command; super casual",
 			"context": ["casual", "in-group", "neutral"],
@@ -156,6 +163,7 @@
 		},
 		{
 			"id": "8a4920d7-26d3-436a-a057-19ac8369709d",
+			"language": "Japanese",
 			"usage": "「あ」せます、させます",
 			"meaning": "basic causative; make or let someone do",
 			"context": ["casual", "formal", "neutral"],
@@ -183,6 +191,7 @@
 		},
 		{
 			"id": "0146c4b5-9a77-4158-867d-43a7f348fb40",
+			"language": "Japanese",
 			"usage": "「あ」せられる・「あ」される・させられる",
 			"meaning": "causative-passive; was caused or forced to do",
 			"context": ["casual", "formal", "neutral"],
@@ -206,6 +215,7 @@
 		},
 		{
 			"id": "7f551a5d-44dd-42cb-b1f8-861d12c7af67",
+			"language": "Japanese",
 			"usage": "「あ」せる",
 			"meaning": "causative verb; make, let, cause",
 			"context": ["casual", "formal", "neutral"],
@@ -225,6 +235,7 @@
 		},
 		{
 			"id": "32478937-1e64-4996-b600-f3713b86bad3",
+			"language": "Japanese",
 			"usage": "「あ」せられる・「あ」される",
 			"meaning": "causative-passive; to be caused by",
 			"context": ["polite", "formal", "neutral"],

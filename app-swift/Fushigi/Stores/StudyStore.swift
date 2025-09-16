@@ -85,8 +85,6 @@ class StudyStore: ObservableObject {
 
         return StudyAnalytics(
             totalGrammarPoints: grammarStats.totalPoints,
-            systemGrammarPoints: grammarStats.systemPoints,
-            userGrammarPoints: grammarStats.userPoints,
             totalSRSRecords: srsStore.srsRecords.count,
             recordsDue: dueRecords.count,
             totalSentences: sentenceStore.sentences.count,
@@ -115,8 +113,6 @@ class StudyStore: ObservableObject {
 
 struct StudyAnalytics {
     let totalGrammarPoints: Int
-    let systemGrammarPoints: Int
-    let userGrammarPoints: Int
     let totalSRSRecords: Int
     let recordsDue: Int
     let totalSentences: Int

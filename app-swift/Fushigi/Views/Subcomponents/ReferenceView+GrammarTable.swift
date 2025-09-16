@@ -42,7 +42,7 @@ struct GrammarTable: View {
 
                             Spacer()
 
-                            Text(point.context)
+                            Text(point.notes)
                                 .font(.caption2)
                                 .fontWeight(.medium)
                                 .foregroundStyle(.purple)
@@ -66,7 +66,7 @@ struct GrammarTable: View {
             } else {
                 Table(grammarPoints, selection: $selectedGrammarID) {
                     TableColumn("場合") { point in
-                        Text(point.context)
+                        Text(point.notes)
                     }
                     TableColumn("使い方") { point in
                         VStack(alignment: .leading) {

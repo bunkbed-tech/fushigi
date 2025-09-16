@@ -16,37 +16,22 @@ type Example struct {
 }
 
 type Grammar struct {
-	Usage    string    `json:"usage"`
-	Meaning  string    `json:"meaning"`
-	Context  string    `json:"context"`
-	Tags     []string  `json:"tags"`
-	Notes    string    `json:"notes"`
-	Nuance   string    `json:"nuance"`
-	Examples []Example `json:"examples"`
-}
-
-type GrammarData struct {
-	Grammar []Grammar `json:"grammar"`
+	ID       string            `json:"id"`
+	Language string            `json:"language"`
+	Usage    string            `json:"usage"`
+	Meaning  string            `json:"meaning"`
+	Context  []string          `json:"context"`
+	Level    string            `json:"level"`
+	Variant  string            `json:"variant"`
+	Notes    string            `json:"notes"`
+	Examples []Example         `json:"examples"`
+	Forms    map[string]string `json:"forms"`
 }
 
 func init() {
 	m.Register(func(app core.App) error {
-		// Find Japanese language
-		languagesCollection, err := app.FindCollectionByNameOrId("languages")
-		if err != nil {
-			return err
-		}
-
-		japaneseRecord, err := app.FindFirstRecordByFilter(
-			languagesCollection.Id,
-			"name = 'Japanese'",
-		)
-		if err != nil {
-			return err
-		}
-
-		// Load embedded grammar data
-		var grammarData GrammarData
+		// Parse the category-based JSON structure
+		var grammarData map[string][]Grammar
 		if err := json.Unmarshal(grammarJSON, &grammarData); err != nil {
 			return err
 		}
@@ -56,20 +41,25 @@ func init() {
 			return err
 		}
 
-		// Create grammar records
-		for _, grammar := range grammarData.Grammar {
-			record := core.NewRecord(grammarCollection)
-			record.Set("language", japaneseRecord.Id)
-			record.Set("usage", grammar.Usage)
-			record.Set("meaning", grammar.Meaning)
-			record.Set("context", grammar.Context)
-			record.Set("notes", grammar.Notes)
-			record.Set("nuance", grammar.Nuance)
-			record.Set("tags", grammar.Tags)
-			record.Set("examples", grammar.Examples)
+		// Iterate through all categories and their grammar items
+		for category, grammars := range grammarData {
+			for _, grammar := range grammars {
+				record := core.NewRecord(grammarCollection)
+				record.Set("id", grammar.ID)
+				record.Set("language", grammar.Language)
+				record.Set("usage", grammar.Usage)
+				record.Set("meaning", grammar.Meaning)
+				record.Set("context", grammar.Context)
+				record.Set("level", grammar.Level)
+				record.Set("variant", grammar.Variant)
+				record.Set("notes", grammar.Notes)
+				record.Set("examples", grammar.Examples)
+				record.Set("forms", grammar.Forms)
+				record.Set("tags", []string{category})
 
-			if err := app.Save(record); err != nil {
-				return err
+				if err := app.Save(record); err != nil {
+					return err
+				}
 			}
 		}
 

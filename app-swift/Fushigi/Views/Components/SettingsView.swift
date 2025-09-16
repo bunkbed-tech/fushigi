@@ -330,7 +330,7 @@ struct UserDataAnalytics: View {
                             StatCard(
                                 title: "Grammar Points",
                                 value: "\(analytics.totalGrammarPoints)",
-                                subtitle: "\(analytics.systemGrammarPoints) system, \(analytics.userGrammarPoints) yours",
+                                subtitle: "",
                             )
 
                             StatCard(

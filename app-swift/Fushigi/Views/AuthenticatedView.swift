@@ -56,7 +56,7 @@ struct AuthenticatedView: View {
 
         #if DEBUG
             // Comment out kill switch to wipe data while testing
-            // wipeSwiftData(container: sharedModelContainer)
+            wipeSwiftData(container: sharedModelContainer)
         #endif
 
         let context = sharedModelContainer.mainContext

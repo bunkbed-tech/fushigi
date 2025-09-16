@@ -55,17 +55,15 @@ struct GrammarInspector: View {
                                 }
                             }
 
-                            if !studyStore.grammarStore.isDefaultGrammar(point) {
-                                Button("Edit", systemImage: "square.and.arrow.up.fill") {
-                                    print("TODO: Implement editing user grammar point...")
-                                }
-                                .disabled(true)
-
-                                Button("Delete", systemImage: "trash.slash") {
-                                    print("TODO: Implement removing user grammar point...")
-                                }
-                                .disabled(true)
+                            Button("Edit", systemImage: "square.and.arrow.up.fill") {
+                                print("TODO: Implement editing user grammar point...")
                             }
+                            .disabled(true)
+
+                            Button("Delete", systemImage: "trash.slash") {
+                                print("TODO: Implement removing user grammar point...")
+                            }
+                            .disabled(true)
                         }
                         .labelStyle(.iconOnly)
                         .disabled(systemState.shouldDisableUI)

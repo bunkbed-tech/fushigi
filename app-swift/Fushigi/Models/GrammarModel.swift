@@ -14,11 +14,13 @@ import SwiftData
 struct GrammarPointCreate: Codable {
     let usage: String
     let meaning: String
-    let context: String
-    let tags: [String]
+    let context: [String]
+    let level: String
+    let variant: String
     let notes: String
-    let nuance: String
     let examples: [Example]
+    let forms: [String: String]
+    let tags: [String]
     let user: String
     let language: String
 }
@@ -32,11 +34,13 @@ struct GrammarPointRemote: Codable {
     let language: String
     let usage: String
     let meaning: String
-    let context: String
-    let tags: [String]
+    let context: [String]
+    let level: String
+    let variant: String
     let notes: String
-    let nuance: String
     let examples: [Example]
+    let forms: [String: String]
+    let tags: [String]
     let created: Date
     let updated: Date
 
@@ -45,7 +49,7 @@ struct GrammarPointRemote: Codable {
 
     struct ExpandedRelations: Codable {
         let user: UserRemote?
-        let language: ExpandedLanguage? // Full language object if expanded
+        let language: ExpandedLanguage?
     }
 
     struct ExpandedLanguage: Codable {
@@ -58,18 +62,20 @@ struct GrammarPointRemote: Codable {
 
     init(from model: GrammarPointLocal) {
         id = model.id
-        user = model.user ?? ""
+        user = model.user
         language = model.language
         usage = model.usage
         meaning = model.meaning
         context = model.context
-        tags = model.tags
+        level = model.level
+        variant = model.variant
         notes = model.notes
-        nuance = model.nuance
         examples = model.examples
+        forms = model.forms
+        tags = model.tags
         created = model.created
         updated = model.updated
-        expand = nil // Not necessary locally
+        expand = nil
     }
 }
 
@@ -79,29 +85,33 @@ struct GrammarPointRemote: Codable {
 @Model
 final class GrammarPointLocal {
     @Attribute var id: String = UUID().uuidString
-    var user: String?
+    var user: String = ""
     var language: String = ""
-    var context: String = ""
+    var context: [String] = []
     var usage: String = ""
     var meaning: String = ""
-    var tags: [String] = []
+    var level: String = ""
+    var variant: String = ""
     var notes: String = ""
-    var nuance: String = ""
     var examples: [Example] = []
+    var forms: [String: String] = [:]
+    var tags: [String] = []
     var created: Date = Date()
     var updated: Date = Date()
 
     // Convenience init for when making an ID in SwiftDataland
     init(id: UUID = UUID(),
-         user: String? = nil,
+         user: String = "",
          language: String = "",
-         context: String = "",
+         context: [String] = [],
          usage: String = "",
          meaning: String = "",
-         tags: [String] = [],
+         level: String = "",
+         variant: String = "",
          notes: String = "",
-         nuance: String = "",
          examples: [Example] = [],
+         forms: [String: String] = [:],
+         tags: [String] = [],
          created: Date = Date(),
          updated: Date = Date())
     {
@@ -111,25 +121,29 @@ final class GrammarPointLocal {
         self.context = context
         self.usage = usage
         self.meaning = meaning
-        self.tags = tags
+        self.level = level
+        self.variant = variant
         self.notes = notes
-        self.nuance = nuance
         self.examples = examples
+        self.forms = forms
+        self.tags = tags
         self.created = created
         self.updated = updated
     }
 
     // Convenience init for ID coming from PocketBaseLand
     init(id: String = "",
-         user: String? = nil,
+         user: String = "",
          language: String = "",
-         context: String = "",
+         context: [String] = [],
          usage: String = "",
          meaning: String = "",
-         tags: [String] = [],
+         level: String = "",
+         variant: String = "",
          notes: String = "",
-         nuance: String = "",
          examples: [Example] = [],
+         forms: [String: String] = [:],
+         tags: [String] = [],
          created: Date = Date(),
          updated: Date = Date())
     {
@@ -139,10 +153,12 @@ final class GrammarPointLocal {
         self.context = context
         self.usage = usage
         self.meaning = meaning
-        self.tags = tags
+        self.level = level
+        self.variant = variant
         self.notes = notes
-        self.nuance = nuance
         self.examples = examples
+        self.forms = forms
+        self.tags = tags
         self.created = created
         self.updated = updated
     }

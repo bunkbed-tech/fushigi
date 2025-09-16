@@ -50,10 +50,6 @@ struct ReferenceView: View {
         let baseItems: [GrammarPointLocal] = switch selectedFilter {
         case .all:
             studyStore.grammarStore.grammarItems
-        case .defaults:
-            studyStore.grammarStore.systemGrammarItems
-        case .custom:
-            studyStore.grammarStore.userGrammarItems
         case .inSRS:
             studyStore.inSRSGrammarItems
         case .available:
