@@ -1,7 +1,7 @@
 {
 	"case-making": [
 		{
-			"id": "cc2e9279-fe8d-40fc-94b2-541e6c8d36e7",
+			"id": "3A-ccJ70RcSI",
 			"language": "Japanese",
 			"usage": "〜なら",
 			"meaning": "if it's this",
@@ -28,7 +28,7 @@
 			}
 		},
 		{
-			"id": "233dab30-b92b-4ef2-ae49-422b95dfaef6",
+			"id": "A5GbxDNQS6C1",
 			"language": "Japanese",
 			"usage": "〜たら",
 			"meaning": "once this happens",
@@ -55,7 +55,7 @@
 			}
 		},
 		{
-			"id": "6809d15c-5005-41cf-85c6-f606db260f48",
+			"id": "HfY-TxazQwyD",
 			"language": "Japanese",
 			"usage": "〜たら、〜",
 			"meaning": "once this happened",
@@ -74,7 +74,7 @@
 			}
 		},
 		{
-			"id": "3e11f93d-85fd-4034-9e63-e13dbd33b90c",
+			"id": "gu3FqIeERGi5",
 			"language": "Japanese",
 			"usage": "条件形 〜ば",
 			"meaning": "if (general condition)",
@@ -101,7 +101,7 @@
 			}
 		},
 		{
-			"id": "8db73d28-e5c1-48a2-88b3-d98b3d08f5a0",
+			"id": "FjCpoHYVS0Wz",
 			"language": "Japanese",
 			"usage": "〜と言っていました",
 			"meaning": "quoting something said",
@@ -124,7 +124,7 @@
 			}
 		},
 		{
-			"id": "1ed1ce74-2d6f-44c0-9525-037c70156eec",
+			"id": "oNBWGHT3TRaS",
 			"language": "Japanese",
 			"usage": "〜って何ですか",
 			"meaning": "what is this",
@@ -143,7 +143,7 @@
 			}
 		},
 		{
-			"id": "1cfef939-4b4d-4326-ad1d-d5e9bd755239",
+			"id": "JMXcUvxURdGz",
 			"language": "Japanese",
 			"usage": "〜というのは〜です",
 			"meaning": "rephrasing",
@@ -162,7 +162,7 @@
 			}
 		},
 		{
-			"id": "129fde49-c926-4fa7-9bfc-0f5bbd9c79cf",
+			"id": "_0F2zBkFS2qe",
 			"language": "Japanese",
 			"usage": "〜なんかどうですか",
 			"meaning": "how about this",
@@ -181,7 +181,7 @@
 			}
 		},
 		{
-			"id": "8f851b2a-52fc-46a7-aba8-433b13be76d6",
+			"id": "QzOYmQ1sSKil",
 			"language": "Japanese",
 			"usage": "〜くないと、〜",
 			"meaning": "if not this, then",
@@ -200,7 +200,7 @@
 			}
 		},
 		{
-			"id": "73b9a641-8e60-4fb2-b75f-99c78eb9eef8",
+			"id": "JwV-H0ucRBqT",
 			"language": "Japanese",
 			"usage": "〜じゃないと、〜",
 			"meaning": "if not this, then",
@@ -219,7 +219,7 @@
 			}
 		},
 		{
-			"id": "9e8f3e02-5353-4c68-af08-c38f66c0615a",
+			"id": "QUqnyskZS4uc",
 			"language": "Japanese",
 			"usage": "〜と、〜",
 			"meaning": "if/when this, then",
@@ -238,7 +238,7 @@
 			}
 		},
 		{
-			"id": "3aad8f2f-ab4f-4560-96dd-d0168ed5c9d5",
+			"id": "XNfruSc4TaqK",
 			"language": "Japanese",
 			"usage": "〜と、〜",
 			"meaning": "certain result",
@@ -257,7 +257,7 @@
 			}
 		},
 		{
-			"id": "19ae23e8-2145-475e-9655-14ed70823a59",
+			"id": "zplv1B-ZTGSv",
 			"language": "Japanese",
 			"usage": "〜によって",
 			"meaning": "depending on",
@@ -276,7 +276,7 @@
 			}
 		},
 		{
-			"id": "27cc49c1-7dad-4a8a-b63e-3367b57ba1aa",
+			"id": "3J4V3XCTS92k",
 			"language": "Japanese",
 			"usage": "〜わりに",
 			"meaning": "contrary to",
@@ -295,7 +295,7 @@
 			}
 		},
 		{
-			"id": "0b6d4cc1-3711-4188-a156-5d865a485b8b",
+			"id": "vdSKyzE2RruT",
 			"language": "Japanese",
 			"usage": "〜において / 〜における〜",
 			"meaning": "in / at",
@@ -318,7 +318,7 @@
 			}
 		},
 		{
-			"id": "27372fa2-21ed-433b-a30e-ec316cefb1c2",
+			"id": "keclkMi1S8qQ",
 			"language": "Japanese",
 			"usage": "〜にとって",
 			"meaning": "for / regarding",
@@ -337,7 +337,7 @@
 			}
 		},
 		{
-			"id": "7df7a442-8438-4bfb-8c2b-a095382760be",
+			"id": "TM1s0820TTGZ",
 			"language": "Japanese",
 			"usage": "〜ほど",
 			"meaning": "the more … the more …",
@@ -360,7 +360,7 @@
 			}
 		},
 		{
-			"id": "e1bd8ab5-9588-4bf7-8786-d0992de5afeb",
+			"id": "o4C8ZKpGSoa4",
 			"language": "Japanese",
 			"usage": "〜場合",
 			"meaning": "in case",
@@ -379,7 +379,7 @@
 			}
 		},
 		{
-			"id": "d51b5ca1-e8a1-4084-9cf5-c63e4b7fad48",
+			"id": "2bMgleSjStyP",
 			"language": "Japanese",
 			"usage": "〜ことには〜",
 			"meaning": "without ..., impossible",
@@ -398,7 +398,7 @@
 			}
 		},
 		{
-			"id": "fa352925-938e-4d81-ae70-1eff9cdd10ba",
+			"id": "NM138EtoRBm9",
 			"language": "Japanese",
 			"usage": "〜際に",
 			"meaning": "at the time of",
@@ -417,7 +417,7 @@
 			}
 		},
 		{
-			"id": "d878ad94-6da7-468d-baa3-7094b9a656bc",
+			"id": "zi1jzHbYRb-s",
 			"language": "Japanese",
 			"usage": "（ば・なら・たら）〜たのに",
 			"meaning": "if only … then … (regret)",
@@ -436,7 +436,7 @@
 			}
 		},
 		{
-			"id": "d2a068bf-536c-4bd3-939d-3cd8fbe92ace",
+			"id": "8e85UbBIQ5Ks",
 			"language": "Japanese",
 			"usage": "〜からには",
 			"meaning": "since / as long as",
@@ -459,7 +459,7 @@
 			}
 		},
 		{
-			"id": "086b22c8-62eb-4b3e-99ca-0b844693555c",
+			"id": "XtnhC6w5QGSe",
 			"language": "Japanese",
 			"usage": "〜（としたら・とすれば・とすると）",
 			"meaning": "if it were the case",
@@ -478,7 +478,7 @@
 			}
 		},
 		{
-			"id": "8135d3ce-324a-4b8a-a4bd-965afd14eddb",
+			"id": "sQETl9WRSXKE",
 			"language": "Japanese",
 			"usage": "〜にあたって",
 			"meaning": "when doing …",
@@ -501,7 +501,7 @@
 			}
 		},
 		{
-			"id": "0bde866b-9868-40b6-a4c5-5deeae118987",
+			"id": "6s0p3AmYTGq5",
 			"language": "Japanese",
 			"usage": "テ形 V",
 			"meaning": "sequential action",
@@ -520,7 +520,7 @@
 			}
 		},
 		{
-			"id": "1bdd4ad3-27b9-4bcd-9f20-24cb5c4aaade",
+			"id": "nN1aXEUAQl6E",
 			"language": "Japanese",
 			"usage": "ナイ形 で V",
 			"meaning": "action with negative condition",

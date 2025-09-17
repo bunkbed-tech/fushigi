@@ -16,7 +16,8 @@
 					"japanese": "スキー旅行は行きっこないよ、寒いところは嫌いだって言っていたから",
 					"english": "I won't be going on a ski trip, I have told you I don't like cold places."
 				}
-			]
+			],
+			"id": "V5cnpivESZyV"
 		},
 		{
 			"usage": "とても〜",
@@ -34,7 +35,8 @@
 					"japanese": "そんな難しい本、私にはとても読めない",
 					"english": "I can't possibly read such a difficult book"
 				}
-			]
+			],
+			"id": "4QPGBBWyTZ6f"
 		},
 		{
 			"usage": "〜かねない",
@@ -52,7 +54,8 @@
 					"japanese": "こんなに寒いところにいたら、風邪を引きかねない。",
 					"english": "If you stay in such a cold place, you might catch a cold."
 				}
-			]
+			],
+			"id": "CfG0k-m9SWai"
 		},
 		{
 			"usage": "〜にも〜",
@@ -70,7 +73,8 @@
 					"japanese": "今朝、頭が痛くて、起きようにも起きられなかったんです。",
 					"english": "This morning, I had a headache and couldn't manage to get up."
 				}
-			]
+			],
+			"id": "tb8A3XWmRqSl"
 		},
 		{
 			"usage": "〜わけがない",
@@ -95,7 +99,8 @@
 					"japanese": "毎日遊んでばかりいたら、試験に合格するわけがない。",
 					"english": "If you just play around every day, there's no way you'll pass the exam."
 				}
-			]
+			],
+			"id": "zMjN1PO5Q5me"
 		},
 		{
 			"usage": "〜ないことはない",
@@ -119,7 +124,8 @@
 					"japanese": "時間をもらえれば、やれないことはないと思います。",
 					"english": "If given the time, I believe there's nothing I cannot do."
 				}
-			]
+			],
+			"id": "6v2tTbBAR8GX"
 		},
 		{
 			"usage": "〜かねます",
@@ -133,7 +139,8 @@
 					"japanese": "あいにくこちらでは分かりかねます。あちらのカウンタで尋ねください",
 					"english": "Unfortunately, I cannot help you with that here. Please ask at that counter over there."
 				}
-			]
+			],
+			"id": "s6sD6fIcQ2-1"
 		},
 		{
 			"usage": "〜そう（に・も・にも）ありません",
@@ -147,7 +154,8 @@
 					"japanese": "彼は勝ちそうにありません",
 					"english": "It doesn't seem like he will win"
 				}
-			]
+			],
+			"id": "51Zd8tbtSyia"
 		}
 	]
 }

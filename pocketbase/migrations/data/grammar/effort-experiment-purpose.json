@@ -12,7 +12,8 @@
 					"japanese": "寒い朝は、布団から起きようとしても、なかなか出られない",
 					"english": "On cold mornings, even if I try to get up from the futon, it's quite hard to do so."
 				}
-			]
+			],
+			"id": "MmXPlhfTQ8u1"
 		},
 		{
 			"usage": "〜みます",
@@ -30,7 +31,8 @@
 					"japanese": "この上着を着てみたいです",
 					"english": "I would like to try on this jacket."
 				}
-			]
+			],
+			"id": "czCYuFdDRsOx"
 		},
 		{
 			"usage": "〜ために、〜",
@@ -44,7 +46,8 @@
 					"japanese": "ここはとても危険なために、立ち入り禁止になりました",
 					"english": "This place has become off-limits because it is very dangerous."
 				}
-			]
+			],
+			"id": "nZAtg4r6TV-0"
 		},
 		{
 			"usage": "〜のに、〜",
@@ -62,7 +65,8 @@
 					"japanese": "この靴は山を登るのにいいです",
 					"english": "These shoes are good for climbing mountains."
 				}
-			]
+			],
+			"id": "Agw_LhekRcau"
 		},
 		{
 			"usage": "〜に〜",
@@ -76,7 +80,8 @@
 					"japanese": "この食べ物はダイエットにいいです",
 					"english": "This food is good for your diet."
 				}
-			]
+			],
+			"id": "n7qTC7GGTLiT"
 		},
 		{
 			"usage": "〜ようにしています",
@@ -94,7 +99,8 @@
 					"japanese": "たくさんテレビを見ないようにしています",
 					"english": "I am trying not to watch too much TV."
 				}
-			]
+			],
+			"id": "WaoVUC8BTkG7"
 		},
 		{
 			"usage": "〜を通して",
@@ -112,7 +118,8 @@
 					"japanese": "この町では、四季を通して、さまざまな果物が食べられる",
 					"english": "In this town, a variety of fruits can be enjoyed throughout the four seasons."
 				}
-			]
+			],
+			"id": "AH3Z50fRSuWW"
 		}
 	]
 }

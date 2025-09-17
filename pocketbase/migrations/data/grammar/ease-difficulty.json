@@ -12,7 +12,8 @@
 					"japanese": "この小説は読みやすいです",
 					"english": "This novel is easy to read."
 				}
-			]
+			],
+			"id": "VkubG0_6QKuO"
 		},
 		{
 			"usage": "〜にくいです",
@@ -26,7 +27,8 @@
 					"japanese": "日本語の宿題が多いですから、プログラミングをしにくいです",
 					"english": "Because I have a lot of Japanese homework, it's hard for me to do programming."
 				}
-			]
+			],
+			"id": "XIPpc0cUT0KR"
 		},
 		{
 			"usage": "〜がたい",
@@ -44,7 +46,8 @@
 					"japanese": "全然お皿を洗わないなんて、許し難い",
 					"english": "Not washing the dishes at all is unforgivable."
 				}
-			]
+			],
+			"id": "m662zrmeRUSC"
 		},
 		{
 			"usage": "〜づらい",
@@ -58,7 +61,8 @@
 					"japanese": "好きな人できたことを友達には言えるけど、両親には言いづらいなあ",
 					"english": "I can tell my friends when I have someone I like, but it's hard to tell my parents."
 				}
-			]
+			],
+			"id": "OhblShBTSA-8"
 		}
 	]
 }

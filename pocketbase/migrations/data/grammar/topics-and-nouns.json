@@ -20,7 +20,8 @@
 					"japanese": "長い時間に寝るのが嫌いです",
 					"english": "I don't like to sleep for a long time."
 				}
-			]
+			],
+			"id": "etg1OBi2Sx22"
 		},
 		{
 			"usage": "〜のは",
@@ -38,7 +39,8 @@
 					"japanese": "値段が安いのは、トヨタの車です",
 					"english": "The car that is inexpensive is the Toyota."
 				}
-			]
+			],
+			"id": "aPZ5SDHkT2Gt"
 		},
 		{
 			"usage": "V のは N です",
@@ -52,7 +54,8 @@
 					"japanese": "車の値段が安いのはホンダです",
 					"english": "Honda has the cheapest car prices"
 				}
-			]
+			],
+			"id": "kl4kA0DWTzGD"
 		},
 		{
 			"usage": "〜なんて",
@@ -66,7 +69,8 @@
 					"japanese": "新婚旅行がVegasなんて、いいなぁ",
 					"english": "A honeymoon in Vegas, that sounds nice."
 				}
-			]
+			],
+			"id": "NcfKeqeQQRii"
 		},
 		{
 			"usage": "〜といえば",
@@ -84,7 +88,8 @@
 					"japanese": "アメリカのお土産というと、「I <3NY」 のT-シャツが一番有名だ",
 					"english": "When it comes to souvenirs from America, the 'I <3 NY' T-shirt is the most famous."
 				}
-			]
+			],
+			"id": "B379b_2jSeen"
 		},
 		{
 			"usage": "〜とは〜（ことだ・と言うことだ）",
@@ -104,7 +109,8 @@
 					"japanese": "留学とは他の国で勉強することだ",
 					"english": "Studying abroad means studying in another country."
 				}
-			]
+			],
+			"id": "w5mfUY02TE-F"
 		},
 		{
 			"usage": "〜関して",
@@ -122,7 +128,8 @@
 					"japanese": "ビザや学費に関することは、学校の事務室に相談してください。",
 					"english": "Please consult with the school office regarding visa and tuition fees."
 				}
-			]
+			],
+			"id": "6lqQbeyvRJOc"
 		},
 		{
 			"usage": "〜のことなんですが",
@@ -136,7 +143,8 @@
 					"japanese": "スポーツの試合のことなんだけど、私たちのチームは２０点差で負けた",
 					"english": "It's about a sports game, but our team lost by 20 points."
 				}
-			]
+			],
+			"id": "z0Pro6PaR7SH"
 		}
 	]
 }

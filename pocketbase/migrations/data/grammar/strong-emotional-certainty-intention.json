@@ -16,7 +16,8 @@
 					"japanese": "今年私の母国へ帰らないつもりです",
 					"english": "I am planning not to return to my homeland this year."
 				}
-			]
+			],
+			"id": "PHfPyikxQAGb"
 		},
 		{
 			"usage": "〜ために",
@@ -34,7 +35,8 @@
 					"japanese": "日本語を話すために、日本に来た",
 					"english": "I came to Japan to speak Japanese"
 				}
-			]
+			],
+			"id": "RTxCI0t1TTCB"
 		},
 		{
 			"usage": "〜にかけては",
@@ -48,7 +50,8 @@
 					"japanese": "かんさんは人を笑わせることにかけては、クラスで一番だ。",
 					"english": "When it comes to making people laugh, Kansan is the best in the class."
 				}
-			]
+			],
+			"id": "P2jrTfeTTI-6"
 		}
 	]
 }

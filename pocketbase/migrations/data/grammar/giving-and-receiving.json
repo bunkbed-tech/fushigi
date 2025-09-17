@@ -16,7 +16,8 @@
 					"japanese": "結婚式の写真を見せてもらえませんか",
 					"english": "Could you show me your wedding photos?"
 				}
-			]
+			],
+			"id": "_qOXhqU0RQWT"
 		},
 		{
 			"usage": "「」に〜あげます",
@@ -38,7 +39,8 @@
 					"japanese": "タホさんは両親のテレビを治してあげました",
 					"english": "Taho-san fixed his parents' TV for them."
 				}
-			]
+			],
+			"id": "NVhGdYTCQRuM"
 		},
 		{
 			"usage": "「」に〜もらいます",
@@ -52,7 +54,8 @@
 					"japanese": "タホさんはソダさんに中国語を教えてもらいました",
 					"english": "Taho was taught Chinese by Soda."
 				}
-			]
+			],
+			"id": "Lc8XE1wfTrqK"
 		},
 		{
 			"usage": "「」に〜くれます",
@@ -66,7 +69,8 @@
 					"japanese": "ソダさんが釣り旅行の写真を見せてくれました",
 					"english": "Mr. Soda showed me the pictures from his fishing trip."
 				}
-			]
+			],
+			"id": "U3lTqxmyTQ-a"
 		},
 		{
 			"usage": "使役動詞〜（くれます・もらいます）",
@@ -88,7 +92,8 @@
 					"japanese": "私は先輩に小説を買わせてもらいました",
 					"english": "I had my senior buy a novel for me"
 				}
-			]
+			],
+			"id": "y7xDx4CRTkuS"
 		},
 		{
 			"usage": "〜ましょうか",
@@ -106,7 +111,8 @@
 					"japanese": "家を掃除しましょうか",
 					"english": "Shall we clean the house?"
 				}
-			]
+			],
+			"id": "K1rVZf20T0-O"
 		},
 		{
 			"usage": "友達言葉の移行形",
@@ -124,7 +130,8 @@
 					"japanese": "行こう",
 					"english": "Let's go"
 				}
-			]
+			],
+			"id": "02msvRnfQI6y"
 		},
 		{
 			"usage": "〜くれない",
@@ -138,7 +145,8 @@
 					"japanese": "消しゴムを忘れたので、貸してくれない？",
 					"english": "I forgot my eraser, could you lend me one?"
 				}
-			]
+			],
+			"id": "KFcCArulT0u0"
 		}
 	]
 }

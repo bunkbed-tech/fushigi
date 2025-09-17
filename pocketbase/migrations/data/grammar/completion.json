@@ -1,7 +1,7 @@
 {
 	"completion": [
 		{
-			"id": "f31ff588-5e6c-4bd0-a037-7006e9a7af98",
+			"id": "oLWJWA41Q8KZ",
 			"language": "Japanese",
 			"usage": "〜しまいました",
 			"meaning": "regret/accidental",
@@ -24,7 +24,7 @@
 			}
 		},
 		{
-			"id": "5852e082-8f5d-43df-9eab-f4ffc59255ec",
+			"id": "9CTIyj1xTV68",
 			"language": "Japanese",
 			"usage": "〜おきます",
 			"meaning": "in advance",
@@ -51,7 +51,7 @@
 			}
 		},
 		{
-			"id": "2be29d6a-41d8-446b-a92a-1ed8580803d1",
+			"id": "8ltTHOoPQFuo",
 			"language": "Japanese",
 			"usage": "〜ばかりです",
 			"meaning": "just finished",
@@ -78,7 +78,7 @@
 			}
 		},
 		{
-			"id": "fe1fcaaf-e5dd-4823-bebe-02f3c505d32a",
+			"id": "zToz3mkxTJeq",
 			"language": "Japanese",
 			"usage": "〜通りに",
 			"meaning": "exactly as",
@@ -105,7 +105,7 @@
 			}
 		},
 		{
-			"id": "8529eeab-f32b-4d44-ae07-32d106235985",
+			"id": "vCPc73_OT-qS",
 			"language": "Japanese",
 			"usage": "〜かけだ・〜かけの「N」・〜かける",
 			"meaning": "half done",
@@ -128,7 +128,7 @@
 			}
 		},
 		{
-			"id": "cfcea42f-1038-4ada-aa64-1c170b76a60c",
+			"id": "bnq21GEWTL2r",
 			"language": "Japanese",
 			"usage": "〜のあとで",
 			"meaning": "after",
@@ -147,7 +147,7 @@
 			}
 		},
 		{
-			"id": "7c2880a7-c704-4511-b671-7ec69fce7aa1",
+			"id": "okETnHRgSduj",
 			"language": "Japanese",
 			"usage": "〜あとで",
 			"meaning": "after",
@@ -170,7 +170,7 @@
 			}
 		},
 		{
-			"id": "f925cc35-15ca-469b-a9d6-f5dc2c50a8f2",
+			"id": "vdZjLulQRHeR",
 			"language": "Japanese",
 			"usage": "〜上で・〜の上で",
 			"meaning": "after doing",
@@ -189,7 +189,7 @@
 			}
 		},
 		{
-			"id": "69f1c302-1d83-4579-8bb9-abac56738270",
+			"id": "QCa2SBvXQzqf",
 			"language": "Japanese",
 			"usage": "〜次第",
 			"meaning": "as soon as",
@@ -212,7 +212,7 @@
 			}
 		},
 		{
-			"id": "1caf96e0-9319-4a12-9287-78cb950942c9",
+			"id": "PwfJneQoTVSl",
 			"language": "Japanese",
 			"usage": "〜ところ（に・を）",
 			"meaning": "just as",
@@ -235,7 +235,7 @@
 			}
 		},
 		{
-			"id": "d3cbc20d-5a37-488e-9b6e-90e4590e1497",
+			"id": "fsftwB6CTGWw",
 			"language": "Japanese",
 			"usage": "〜ところ",
 			"meaning": "just after",
@@ -254,7 +254,7 @@
 			}
 		},
 		{
-			"id": "ac48ecf7-8faf-4877-b6be-a51166ad5191",
+			"id": "1TrPkNq3S3Ci",
 			"language": "Japanese",
 			"usage": "〜とたんに",
 			"meaning": "the instant",
@@ -277,7 +277,7 @@
 			}
 		},
 		{
-			"id": "a2d78ab7-ad1b-4adb-8de3-766e2d7a23a1",
+			"id": "4uoJKTg0TLi6",
 			"language": "Japanese",
 			"usage": "〜か〜かのうちに",
 			"meaning": "just as",
@@ -300,7 +300,7 @@
 			}
 		},
 		{
-			"id": "91fc5496-4c11-4d6a-a705-f120185a633e",
+			"id": "Qxbpb8hcRhSs",
 			"language": "Japanese",
 			"usage": "〜初めて",
 			"meaning": "for the first time",
@@ -323,7 +323,7 @@
 			}
 		},
 		{
-			"id": "f46ab7f3-812f-4084-91f3-c34022e022b5",
+			"id": "G0su1NyrRXG_",
 			"language": "Japanese",
 			"usage": "〜上で",
 			"meaning": "upon",
@@ -346,7 +346,7 @@
 			}
 		},
 		{
-			"id": "ef2c0780-e3e5-429c-b671-55ac145b4aec",
+			"id": "G170RUa9QuGb",
 			"language": "Japanese",
 			"usage": "〜挙げ句",
 			"meaning": "after all",
@@ -369,7 +369,7 @@
 			}
 		},
 		{
-			"id": "db10d867-c1a7-443c-818b-3a3d61bd2467",
+			"id": "m_3AzHP1SyeR",
 			"language": "Japanese",
 			"usage": "〜きり・〜っきり",
 			"meaning": "ever since",
@@ -392,7 +392,7 @@
 			}
 		},
 		{
-			"id": "d264923f-e69d-45a7-b06f-bf561fd3d61d",
+			"id": "Z3sWfCfWQxuZ",
 			"language": "Japanese",
 			"usage": "〜までに",
 			"meaning": "by (deadline)",
@@ -415,7 +415,7 @@
 			}
 		},
 		{
-			"id": "b442c471-0cb6-4faa-9238-cef4be4831a9",
+			"id": "ZbnrbnFqRSi2",
 			"language": "Japanese",
 			"usage": "〜うちに",
 			"meaning": "before",
@@ -434,7 +434,7 @@
 			}
 		},
 		{
-			"id": "711c57c8-5a60-4da6-a18c-c140e680ce1f",
+			"id": "ZGwQMT0HQyeK",
 			"language": "Japanese",
 			"usage": "〜ところだった",
 			"meaning": "almost",
@@ -453,7 +453,7 @@
 			}
 		},
 		{
-			"id": "96b62a51-6908-4a5c-9102-c1a2f3f6c92d",
+			"id": "bu8mprrvRPGO",
 			"language": "Japanese",
 			"usage": "〜に先立って",
 			"meaning": "prior to",

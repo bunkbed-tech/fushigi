@@ -16,7 +16,8 @@
 					"japanese": "今週末どこへいらっしゃいますか",
 					"english": "Where are you going this weekend?"
 				}
-			]
+			],
+			"id": "zr6YXFuIRq26"
 		},
 		{
 			"usage": "〜と申します",
@@ -35,7 +36,8 @@
 					"japanese": "初めまして、タホと申します",
 					"english": "Nice to meet you, I'm Taho."
 				}
-			]
+			],
+			"id": "8wKUvjGOT8ec"
 		},
 		{
 			"usage": "参ります",
@@ -53,7 +55,8 @@
 					"japanese": "今年の１０月に大阪へ参ります",
 					"english": "I will go to Osaka in October this year."
 				}
-			]
+			],
+			"id": "mRr3W0zETl2E"
 		},
 		{
 			"usage": "〜いただけませんか",
@@ -67,7 +70,8 @@
 					"japanese": "漢字の書き方を教えていただけませんか",
 					"english": "Could you teach me how to write kanji?"
 				}
-			]
+			],
+			"id": "aopKvXugTKWB"
 		},
 		{
 			"usage": "お〜になります",
@@ -81,7 +85,8 @@
 					"japanese": "どちらそれをお買いになりましたか",
 					"english": "Where did you buy that?"
 				}
-			]
+			],
+			"id": "SaVqIU8oQz-j"
 		},
 		{
 			"usage": "尊敬動詞の受身形",
@@ -103,7 +108,8 @@
 					"japanese": "ソダさんよく釣りをされる",
 					"english": "Mr. Soda, you often go fishing, don't you?"
 				}
-			]
+			],
+			"id": "EH1M8hVLTzu1"
 		},
 		{
 			"usage": "尊敬語（行く・来る・いる）",
@@ -117,7 +123,8 @@
 					"japanese": "部長はいらっしゃいますか",
 					"english": "Is the department head in?"
 				}
-			]
+			],
+			"id": "7NucIt5-SYu6"
 		},
 		{
 			"usage": "尊敬語（食べる・飲む）",
@@ -131,7 +138,8 @@
 					"japanese": "もうご飯を召し上がりましたか",
 					"english": "Have you already eaten?"
 				}
-			]
+			],
+			"id": "5PBnPkoIS0uw"
 		},
 		{
 			"usage": "尊敬語（くれる）",
@@ -149,7 +157,8 @@
 					"japanese": "ご注意ください",
 					"english": "Please be careful"
 				}
-			]
+			],
+			"id": "cU70EQ0USmWp"
 		},
 		{
 			"usage": "尊敬語（言う）",
@@ -163,7 +172,8 @@
 					"japanese": "お母さんは帰りなさいとおっしゃいました",
 					"english": "Mother told me to come home."
 				}
-			]
+			],
+			"id": "yFGhAKBAT4O2"
 		},
 		{
 			"usage": "尊敬語（する）",
@@ -177,7 +187,8 @@
 					"japanese": "今冬スキーをなさりますか",
 					"english": "Will you go skiing this winter?"
 				}
-			]
+			],
+			"id": "8BotsBPvRvu7"
 		},
 		{
 			"usage": "尊敬語（見る）",
@@ -191,7 +202,8 @@
 					"japanese": "映画をご覧になりましたか",
 					"english": "Have you seen the movie?"
 				}
-			]
+			],
+			"id": "AyZl32PsTEiU"
 		},
 		{
 			"usage": "尊敬語（知っている）",
@@ -205,7 +217,8 @@
 					"japanese": "このアニメをご存じですか",
 					"english": "Do you know this anime?"
 				}
-			]
+			],
+			"id": "9X82nbqLQ6Go"
 		},
 		{
 			"usage": "尊敬語（etc.）",
@@ -227,7 +240,8 @@
 					"japanese": "どなたこれを召し上がりましたか",
 					"english": "Who ate this?"
 				}
-			]
+			],
+			"id": "RGL-GSf8Q1iQ"
 		},
 		{
 			"usage": "ご〜します",
@@ -241,7 +255,8 @@
 					"japanese": "奥さんをご紹介します",
 					"english": "Let me introduce my wife."
 				}
-			]
+			],
+			"id": "aK5mGxUoQnuQ"
 		},
 		{
 			"usage": "お〜します",
@@ -259,7 +274,8 @@
 					"japanese": "荷物をお待ちします",
 					"english": "I will wait for the luggage"
 				}
-			]
+			],
+			"id": "29HCZTNvSpmr"
 		},
 		{
 			"usage": "「」に「」をいただきます",
@@ -273,7 +289,8 @@
 					"japanese": "私は誕生日プレゼントをいただきました",
 					"english": "I received a birthday present."
 				}
-			]
+			],
+			"id": "2onUeThTRxay"
 		},
 		{
 			"usage": "「」に「」をくださいます",
@@ -287,7 +304,8 @@
 					"japanese": "ソダさんが誕生日プレゼントをくださいました",
 					"english": "Mr. Soda gave me a birthday present"
 				}
-			]
+			],
+			"id": "CsfMf6F4TpOV"
 		},
 		{
 			"usage": "「」に〜いただきます",
@@ -301,7 +319,8 @@
 					"japanese": "私は母に料理を教えていただきました",
 					"english": "I was taught how to cook by my mother."
 				}
-			]
+			],
+			"id": "sQxQM76xQwmX"
 		},
 		{
 			"usage": "「」に〜くださいます",
@@ -315,7 +334,8 @@
 					"japanese": "タホさんが私に釣り方を教えてくださいました",
 					"english": "Mr. Taho taught me how to fish"
 				}
-			]
+			],
+			"id": "6ixliU4bRmuS"
 		},
 		{
 			"usage": "ご〜ください",
@@ -333,7 +353,8 @@
 					"japanese": "ご覧ください",
 					"english": "Please take a look"
 				}
-			]
+			],
+			"id": "rerIB3zpSTus"
 		},
 		{
 			"usage": "お〜ください",
@@ -347,7 +368,8 @@
 					"japanese": "お待ちください",
 					"english": "Please wait"
 				}
-			]
+			],
+			"id": "vnsvOCYWSB2g"
 		},
 		{
 			"usage": "（お・ご）（ます・する）です",
@@ -365,7 +387,8 @@
 					"japanese": "お箸をご利用でしょうか？",
 					"english": "Do you use chopsticks?"
 				}
-			]
+			],
+			"id": "OS6g0CE1QzOt"
 		},
 		{
 			"usage": "〜たいことがあるんですが",
@@ -383,7 +406,8 @@
 					"japanese": "ご相談したいことがあるんですが",
 					"english": "I have something I'd like to discuss with you"
 				}
-			]
+			],
+			"id": "KJegD9ZMRh2B"
 		},
 		{
 			"usage": "〜いただきたいんですが",
@@ -401,7 +425,8 @@
 					"japanese": "面談の時間を変えていただきたいんですが",
 					"english": "I would like to change the time of the meeting."
 				}
-			]
+			],
+			"id": "q2_HDUP6RBCH"
 		},
 		{
 			"usage": "「あ」せていただけませんか",
@@ -419,7 +444,8 @@
 					"japanese": "犬を飼うために、早く帰らせていただけませんか",
 					"english": "Could you please let me leave early to take care of my dog?"
 				}
-			]
+			],
+			"id": "37n0sjfCQWSI"
 		},
 		{
 			"usage": "〜いただきます",
@@ -433,7 +459,8 @@
 					"japanese": "これから発表について、始めさせていただきます",
 					"english": "I will now begin the presentation."
 				}
-			]
+			],
+			"id": "ZjZQEQDTT1-U"
 		},
 		{
 			"usage": "（ご〜・お〜）いたします",
@@ -457,7 +484,8 @@
 					"japanese": "必要なものはこちらでご用意いたしますので、お気軽にご参加ください",
 					"english": "We will prepare everything you need here, so please feel free to participate"
 				}
-			]
+			],
+			"id": "MOu7Z9apR1qq"
 		},
 		{
 			"usage": "〜おります",
@@ -471,7 +499,8 @@
 					"japanese": "当店の営業時間は９時から５時までとなっております",
 					"english": "Our store's business hours are from 9 am to 5 pm."
 				}
-			]
+			],
+			"id": "1NT7I44HRVmz"
 		},
 		{
 			"usage": "〜いただけないでしょうか",
@@ -489,7 +518,8 @@
 					"japanese": "アンケートに協力していただけないでしょうか。",
 					"english": "Could you possibly assist with the survey?"
 				}
-			]
+			],
+			"id": "71MRgRMySgyx"
 		},
 		{
 			"usage": "〜いただけないかと思って",
@@ -507,7 +537,8 @@
 					"japanese": "次の説明会の予定を教えていただけないかと思って。。。",
 					"english": "I was wondering if you could let me know the schedule for the next informational meeting..."
 				}
-			]
+			],
+			"id": "AsNgkYPgTEmJ"
 		}
 	]
 }

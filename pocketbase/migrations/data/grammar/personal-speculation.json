@@ -12,7 +12,8 @@
 					"japanese": "今週末日本語の聴解を練習しようと思っています",
 					"english": "I'm planning to practice Japanese listening comprehension this weekend."
 				}
-			]
+			],
+			"id": "h3-rbxVgSe2t"
 		},
 		{
 			"usage": "〜かな",
@@ -30,7 +31,8 @@
 					"japanese": "何を買おうかな",
 					"english": "I wonder what to buy"
 				}
-			]
+			],
+			"id": "iJ-6G1U6RD-4"
 		},
 		{
 			"usage": "〜かなと思って",
@@ -44,7 +46,8 @@
 					"japanese": "昨日お菓子を作ったんだけど、ソダさん、食べるかなと思って持ってきたんだ",
 					"english": "I made some sweets yesterday and brought some, wondering if you might want to try them, Soda-san."
 				}
-			]
+			],
+			"id": "G5_QqWwMQBmj"
 		},
 		{
 			"usage": "〜ようです",
@@ -66,7 +69,8 @@
 					"japanese": "このレストランのラーメンを美味しいようです",
 					"english": "The ramen at this restaurant seems delicious."
 				}
-			]
+			],
+			"id": "JPREXvbDSxio"
 		},
 		{
 			"usage": "〜みたいです",
@@ -92,7 +96,8 @@
 					"japanese": "このジュースが健康みたいです",
 					"english": "This juice seems healthy."
 				}
-			]
+			],
+			"id": "eiu2krXlS1Gj"
 		},
 		{
 			"usage": "（みたい・よう）なんですが",
@@ -110,7 +115,8 @@
 					"japanese": "あのう、すみません、外に誰か運動していたようなんですが",
 					"english": "Excuse me, it seems like someone was exercising outside."
 				}
-			]
+			],
+			"id": "_5eKRBohSIKJ"
 		},
 		{
 			"usage": "〜しまったようなんです",
@@ -124,7 +130,8 @@
 					"japanese": "転んだ時は足をひねってしまったようなんですが",
 					"english": "It seems that I twisted my ankle when I fell"
 				}
-			]
+			],
+			"id": "qcE6X40kSFCb"
 		},
 		{
 			"usage": "〜んです",
@@ -154,7 +161,8 @@
 					"japanese": "何してんだよ",
 					"english": "What are you doing?"
 				}
-			]
+			],
+			"id": "SfQEui7ISnGt"
 		},
 		{
 			"usage": "〜んですが",
@@ -172,7 +180,8 @@
 					"japanese": "卒業をしたら、日本の会社で働きたいんですが、いい会社を紹介してもらえませんか",
 					"english": "Once I graduate, I would like to work for a Japanese company. Could you introduce me to a good one?"
 				}
-			]
+			],
+			"id": "3aMs1vagRzGY"
 		}
 	]
 }

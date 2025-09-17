@@ -12,7 +12,8 @@
 					"japanese": "じゃあ、卒業したら、国へ帰るということですね",
 					"english": "So, you're saying that you will return to your country after graduation."
 				}
-			]
+			],
+			"id": "vceUZNP2S6m2"
 		},
 		{
 			"usage": "〜（と言うわけだ・わけだ）",
@@ -30,7 +31,8 @@
 					"japanese": "なるほど、それで、機嫌が悪いわけだ",
 					"english": "I see, so that's why you're in a bad mood."
 				}
-			]
+			],
+			"id": "Jm8TjXofS_Gj"
 		},
 		{
 			"usage": "と言うことだ・とのことだ",
@@ -48,7 +50,8 @@
 					"japanese": "昨夜の天気予報は、今日は暑くなると言うことが、それほど暑くなかった",
 					"english": "Last night's weather forecast said it would be hot today, but it wasn't that hot."
 				}
-			]
+			],
+			"id": "bCSd5nXBTT2i"
 		},
 		{
 			"usage": "〜とはいえば・〜というと",
@@ -66,7 +69,8 @@
 					"japanese": "うん。あ、ラーメンといえば、ハンさんがラーメン屋でバイト始めたって。",
 					"english": "Yeah. Speaking of ramen, I heard Han started working part-time at a ramen shop."
 				}
-			]
+			],
+			"id": "LZOBs-c_Sg2V"
 		},
 		{
 			"usage": "〜（はもちろん・はもとより）",
@@ -84,7 +88,8 @@
 					"japanese": "「ワンピース」は、子供はもとより大人も楽しめます",
 					"english": "'One Piece' can be enjoyed not only by children, but also by adults."
 				}
-			]
+			],
+			"id": "805xw6eMQ6GL"
 		}
 	]
 }

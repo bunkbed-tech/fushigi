@@ -16,7 +16,8 @@
 					"japanese": "田舎は都会に比べて、不便です",
 					"english": "Compared to the city, the countryside is inconvenient."
 				}
-			]
+			],
+			"id": "StdlvfXSS4ye"
 		},
 		{
 			"usage": "〜に対して",
@@ -34,7 +35,8 @@
 					"japanese": "このクラスには、女子学生が１５人いるのに対して、男子学生は３人しかいません",
 					"english": "In this class, there are 15 female students as opposed to only 3 male students."
 				}
-			]
+			],
+			"id": "XGDVtdkrTYGD"
 		},
 		{
 			"usage": "〜ほど。。。「N」ではない",
@@ -52,7 +54,8 @@
 					"japanese": "アイスホッケーほど面白いsポーツはないと思う。",
 					"english": "I think there's no sport as interesting as ice hockey."
 				}
-			]
+			],
+			"id": "pz49sTXORUSY"
 		}
 	]
 }

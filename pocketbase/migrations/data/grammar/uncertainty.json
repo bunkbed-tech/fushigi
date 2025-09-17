@@ -16,7 +16,8 @@
 					"japanese": "何を食べるか、まだ決めていません",
 					"english": "I haven't decided what to eat yet."
 				}
-			]
+			],
+			"id": "spHsoAZ_TBi0"
 		},
 		{
 			"usage": "〜かどうか",
@@ -34,7 +35,8 @@
 					"japanese": "ホテルを予約するかどうか、確認します",
 					"english": "I will confirm whether to book the hotel or not."
 				}
-			]
+			],
+			"id": "PsR4qjDqQRKM"
 		},
 		{
 			"usage": "〜かもしれません",
@@ -48,7 +50,8 @@
 					"japanese": "来年の夏に私の両親は日本へ来るかもしれません",
 					"english": "My parents might come to Japan next summer."
 				}
-			]
+			],
+			"id": "S5G4drO9RrCA"
 		},
 		{
 			"usage": "〜（でしょう・だろう）",
@@ -62,7 +65,8 @@
 					"japanese": "今夜雨が降るでしょう",
 					"english": "It will probably rain tonight."
 				}
-			]
+			],
+			"id": "HHUnDzN-Ro2W"
 		},
 		{
 			"usage": "〜でしょうか",
@@ -76,7 +80,8 @@
 					"japanese": "どのくらい時間が掛かるでしょうか",
 					"english": "How long will it take?"
 				}
-			]
+			],
+			"id": "EsWgUhdoQp6v"
 		},
 		{
 			"usage": "〜恐れがある",
@@ -94,7 +99,8 @@
 					"japanese": "今週末、関東地方で激しい雨が降る恐れがあります。ご注意ください。",
 					"english": "This weekend, there is a possibility of heavy rain in the Kanto region. Please be careful."
 				}
-			]
+			],
+			"id": "zcb7mPbeSFOr"
 		},
 		{
 			"usage": "〜そうにないんですが",
@@ -108,9 +114,9 @@
 					"japanese": "店長、電車が止まっているので、アルバイトの時間に合いそうにないんですが",
 					"english": "Store manager, the trains are stopped, so it doesn't seem like I'll be able to make it to my part-time job on time"
 				}
-			]
+			],
+			"id": "ivpMIfAQRX-U"
 		},
-
 		{
 			"usage": "〜（でしょう・だろう）",
 			"meaning": "isn't it?",
@@ -123,7 +129,8 @@
 					"japanese": "今度のバス旅行、ソダさんも行くでしょう",
 					"english": "For the upcoming bus trip, Mr. Soda is also going, isn't he?"
 				}
-			]
+			],
+			"id": "s6O6M2hmTsC3"
 		},
 		{
 			"usage": "〜っけ",
@@ -141,7 +148,8 @@
 					"japanese": "今日、アルバイトだったっけ？",
 					"english": "Was today supposed to be the part-time job?"
 				}
-			]
+			],
+			"id": "lqzfGjWhR1qX"
 		},
 		{
 			"usage": "〜らしいです",
@@ -163,7 +171,8 @@
 					"japanese": "5時午後からそのレストランは無料らしいです",
 					"english": "It seems that the restaurant is free from 5 pm."
 				}
-			]
+			],
+			"id": "YcMtcWoSRIeZ"
 		},
 		{
 			"usage": "〜と言われています",
@@ -177,7 +186,8 @@
 					"japanese": "ニンジンは目にいいと言われています",
 					"english": "It is said that carrots are good for your eyes."
 				}
-			]
+			],
+			"id": "FDD_bDr-Ty2Z"
 		},
 		{
 			"usage": "のではないでしょうか・じゃないでしょうか",
@@ -197,7 +207,8 @@
 					"japanese": "子供が自由に使ったら、スマホは、危ない目に合うことが多いんじゃないでしょうか",
 					"english": "If children use smartphones freely, don't you think they often encounter dangerous situations?"
 				}
-			]
+			],
+			"id": "Ys_v_dhZSKij"
 		}
 	]
 }

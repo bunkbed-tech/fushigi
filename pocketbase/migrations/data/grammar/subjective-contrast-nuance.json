@@ -12,7 +12,8 @@
 					"japanese": "親の期待に反して、彼はDJになった",
 					"english": "Contrary to his parents' expectations, he became a DJ."
 				}
-			]
+			],
+			"id": "Ncg3dMuhRXe7"
 		},
 		{
 			"usage": "〜と言うより",
@@ -26,7 +27,8 @@
 					"japanese": "この絵はとても細かいところまで描かれていて、絵と言うよりまるで写真のすうです",
 					"english": "This painting is drawn in such detail it looks more like a photograph than a painting."
 				}
-			]
+			],
+			"id": "e85KTXm1R32c"
 		},
 		{
 			"usage": "〜一方（で）",
@@ -48,7 +50,8 @@
 					"japanese": "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する",
 					"english": "The climate in Tokyo is humid in the summer, while it is dry in the winter."
 				}
-			]
+			],
+			"id": "Mhjr1kNfSy-t"
 		},
 		{
 			"usage": "どちらかというと",
@@ -66,7 +69,8 @@
 					"japanese": "今日は金曜日だし、どちらかというと、居酒屋に行きたいかな",
 					"english": "Since today is Friday, I'd rather go to an izakaya, I guess."
 				}
-			]
+			],
+			"id": "h89SiM90Qhaq"
 		},
 		{
 			"usage": "〜ばかりに",
@@ -90,7 +94,8 @@
 					"japanese": "パソコンで書いた手紙は、文字が読みやすい代わりに、温かみがないように思います。",
 					"english": "I feel that letters written on a computer, while easier to read, lack a sense of warmth."
 				}
-			]
+			],
+			"id": "tvZLFJfDTUmM"
 		},
 		{
 			"usage": "〜反面",
@@ -115,7 +120,8 @@
 					"japanese": "スマートフォンは日本語を勉強のために便利な反面、ストレスを与える道具でもある。",
 					"english": "While smartphones are convenient for studying Japanese, they can also be a source of stress."
 				}
-			]
+			],
+			"id": "yCxIApN2TZaa"
 		},
 		{
 			"usage": "〜というか",
@@ -137,7 +143,8 @@
 					"japanese": "元気というか、うるさいよ。",
 					"english": "You're not just lively, you're loud."
 				}
-			]
+			],
+			"id": "Tnaq7WcXQC-f"
 		},
 		{
 			"usage": "〜ことは〜が",
@@ -161,7 +168,8 @@
 					"japanese": "行くことは行くけど、３０分ぐらい遅刻するかもしれない",
 					"english": "I will go, but I might be about 30 minutes late."
 				}
-			]
+			],
+			"id": "m_Cw2Zn5Qai4"
 		},
 		{
 			"usage": "〜（わけではない・と言うわけではない）",
@@ -175,7 +183,8 @@
 					"japanese": "デザートを食べないけど甘いものが嫌いなわけではないんだ。",
 					"english": "I don't eat dessert, but it's not that I dislike sweet things."
 				}
-			]
+			],
+			"id": "UnANQQInSNyC"
 		},
 		{
 			"usage": "〜っぽい",
@@ -193,7 +202,8 @@
 					"japanese": "彼女は男っぽい性格です",
 					"english": "She has a masculine personality."
 				}
-			]
+			],
+			"id": "dMiIosu9QXGd"
 		},
 		{
 			"usage": "〜じゃなくて",
@@ -211,7 +221,8 @@
 					"japanese": "オーストラリア人じゃなくて、アメリカ人です",
 					"english": "I'm not Australian, I'm American."
 				}
-			]
+			],
+			"id": "FaSgPN2BQreG"
 		},
 		{
 			"usage": "〜んじゃなくて",
@@ -225,7 +236,8 @@
 					"japanese": "彼は行くんじゃなくて、帰るんです",
 					"english": "He's not going, he's returning."
 				}
-			]
+			],
+			"id": "cbKfGgSzTuWB"
 		},
 		{
 			"usage": "〜ながらも",
@@ -250,7 +262,8 @@
 					"japanese": "あの子はまだ小学生ながらも、有名な歌手です",
 					"english": "Despite being just a grade-schooler, that child is a famous singer."
 				}
-			]
+			],
+			"id": "1x-UKlZFS9e7"
 		},
 		{
 			"usage": "〜につけ",
@@ -264,7 +277,8 @@
 					"japanese": "私はこの写真を見につけ、昔の友達を思い出します",
 					"english": "When I look at this picture, I remember my old friends."
 				}
-			]
+			],
+			"id": "iBibOCQySFaU"
 		},
 		{
 			"usage": "〜にしては",
@@ -288,7 +302,8 @@
 					"japanese": "ただの風邪にしては、熱が高いんじゃないかな",
 					"english": "I think the fever is too high for it to be just a cold."
 				}
-			]
+			],
+			"id": "3eVMVZ-bQJmK"
 		},
 		{
 			"usage": "〜（に対して・に対する）",
@@ -302,7 +317,8 @@
 					"japanese": "デパートの店員はお客に対して、丁寧に話します",
 					"english": "The department store clerk speaks politely to customers."
 				}
-			]
+			],
+			"id": "AWo8stXLSleg"
 		},
 		{
 			"usage": "〜んじゃない",
@@ -320,7 +336,8 @@
 					"japanese": "あのカバンが可愛い。でも高いんじゃない？",
 					"english": "That bag is cute. But isn't it expensive?"
 				}
-			]
+			],
+			"id": "GBX8qiC5Rm2a"
 		}
 	]
 }

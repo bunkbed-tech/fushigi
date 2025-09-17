@@ -12,7 +12,8 @@
 					"japanese": "毎日聴解を練習したのに、日本語が聞き取らない",
 					"english": "Despite practicing listening comprehension daily, I can't understand Japanese."
 				}
-			]
+			],
+			"id": "8bqzGtAgSiGZ"
 		},
 		{
 			"usage": "〜はずだ",
@@ -26,7 +27,8 @@
 					"japanese": "9時に出れば11時前に到着できるはずだよ",
 					"english": "If you leave at 9, you should be able to arrive before 11."
 				}
-			]
+			],
+			"id": "VBGqYORzR1ua"
 		},
 		{
 			"usage": "〜はずがない",
@@ -40,7 +42,8 @@
 					"japanese": "ソダさんは真面目な人だから、ウソをつくはずがない",
 					"english": "Since Mr. Soda is a serious person, he shouldn't tell lies"
 				}
-			]
+			],
+			"id": "WC6rY_CUSE2t"
 		},
 		{
 			"usage": "〜くせに",
@@ -54,7 +57,8 @@
 					"japanese": "先輩は「全部やる」と言うくせに、何もしません",
 					"english": "Despite saying 'I'll do everything', the senior doesn't do anything."
 				}
-			]
+			],
+			"id": "UuYiwmFHS4uZ"
 		},
 		{
 			"usage": "〜にきまっている",
@@ -72,7 +76,8 @@
 					"japanese": "ソダさんが作った料理なら、美味しいにきまっている",
 					"english": "If it's a dish made by Mr. Sodha, it's bound to be delicious."
 				}
-			]
+			],
+			"id": "Bx4up-M6QAiM"
 		},
 		{
 			"usage": "〜（にしたら・にすれば・にしてみたら）",
@@ -86,7 +91,8 @@
 					"japanese": "学生にしたら、安い食べ物を買うの方がいいだろう",
 					"english": "For students, it would probably be better to buy cheap food."
 				}
-			]
+			],
+			"id": "yTeRD5xTR96m"
 		},
 		{
 			"usage": "〜つもりだ",
@@ -107,7 +113,8 @@
 					"japanese": "教科書を鞄に入れたつもりだったんですがないです",
 					"english": "I thought I put the textbook in my bag, but it's not there"
 				}
-			]
+			],
+			"id": "RAet9KgISYys"
 		},
 		{
 			"usage": "〜だけあって",
@@ -121,7 +128,8 @@
 					"japanese": "たくさん練習しただけあって、Aさんのスピーチは素晴らしかった",
 					"english": "As expected from all the practice, Mr./Ms. A's speech was marvelous."
 				}
-			]
+			],
+			"id": "zESFNsreTcyG"
 		},
 		{
 			"usage": "〜（からすると・からすれば・から見ると・から見れば）",
@@ -141,7 +149,8 @@
 					"japanese": "テストが必要なのはわかるけど、学生からすると、テストが多いのは面倒臭い",
 					"english": "I understand that tests are necessary, but from a student's perspective, having too many tests is bothersome."
 				}
-			]
+			],
+			"id": "as-AMN3VQXO0"
 		},
 		{
 			"usage": "〜だけに",
@@ -159,7 +168,8 @@
 					"japanese": "やっぱり連休中だけに、人がとても多かったよ",
 					"english": "As I expected, just because it's a consecutive holidays, there were so many people."
 				}
-			]
+			],
+			"id": "9BtdMZk-Qvqt"
 		},
 		{
 			"usage": "〜かというと",
@@ -173,7 +183,8 @@
 					"japanese": "やっと一つ仕事が終わったと思ったら、すぐ次の仕事を頼まれた",
 					"english": "Just when I thought I had finally finished one job, I was asked to do the next one immediately"
 				}
-			]
+			],
+			"id": "FZ7yVfvGSAym"
 		},
 		{
 			"usage": "〜に応じて",
@@ -187,7 +198,8 @@
 					"japanese": "水道料金は使用量に応じて、支払います",
 					"english": "The water bill is paid based on the amount used."
 				}
-			]
+			],
+			"id": "dhwVsT5UQ2at"
 		},
 		{
 			"usage": "〜をもとに",
@@ -205,7 +217,8 @@
 					"japanese": "この小説は真実をもとに、書かれたそうです",
 					"english": "Apparently, this novel was written based on truth."
 				}
-			]
+			],
+			"id": "uMC-eov4RKSx"
 		},
 		{
 			"usage": "〜によって",
@@ -223,7 +236,8 @@
 					"japanese": "最近はメールやSNSなど、文字によるコミュニケーションが増えている",
 					"english": "Recently, there has been an increase in text-based communication such as emails and social networking sites."
 				}
-			]
+			],
+			"id": "xp1y1hofSpuK"
 		},
 		{
 			"usage": "〜によっては",
@@ -241,7 +255,8 @@
 					"japanese": "関東地方の人は納豆好きだが、人によっては納豆を見るのも嫌だと言う人もいる",
 					"english": "People in the Kanto region tend to like natto, but there are also people who dislike even looking at natto."
 				}
-			]
+			],
+			"id": "xpYFKCy2QmCD"
 		},
 		{
 			"usage": "〜（を通して・を通じで）",
@@ -259,7 +274,8 @@
 					"japanese": "旅行の前に、インタネットを通じて、宿泊するホテルを予約した。",
 					"english": "Before the trip, I booked a hotel to stay at through the internet."
 				}
-			]
+			],
+			"id": "O5xWr4sDTR6D"
 		},
 		{
 			"usage": "〜（からいうと・からいって・からいえば）",
@@ -281,7 +297,8 @@
 					"japanese": "品質から言えば、これが一番いいけれど、こんなに高いものは私には買えない。",
 					"english": "In terms of quality, this is the best, but it's so expensive that I can't afford it."
 				}
-			]
+			],
+			"id": "XKnYVZ_AQIyM"
 		},
 		{
 			"usage": "〜（となると・となれば・となったら）",
@@ -306,7 +323,8 @@
 					"japanese": "早く国へ帰りたいと思っているが、本当に帰国するとなったら、寂しさを感じるかもしれない。",
 					"english": "I'm thinking about wanting to go back to my country soon, but if I really do go back, I might feel lonely."
 				}
-			]
+			],
+			"id": "ruIkLwZtThea"
 		},
 		{
 			"usage": "〜（ことだろう・ことか）",
@@ -330,7 +348,8 @@
 					"japanese": "この曲が大好きだ。今まで何度聞いたことだろう。",
 					"english": "I love this song. I wonder how many times I've listened to it so far."
 				}
-			]
+			],
+			"id": "5c3P6jtzR3KX"
 		},
 		{
 			"usage": "〜に違いない",
@@ -355,7 +374,8 @@
 					"japanese": "彼は足って泣いて、困っているに違いない。",
 					"english": "He must be in trouble, crying and suffering."
 				}
-			]
+			],
+			"id": "GlTBwskDRcef"
 		},
 		{
 			"usage": "〜からして",
@@ -373,7 +393,8 @@
 					"japanese": "この本は表紙からして、面白そうだ",
 					"english": "Judging from its cover, this book seems interesting."
 				}
-			]
+			],
+			"id": "mJ6LEgz_QAa4"
 		},
 		{
 			"usage": "〜ように思う",
@@ -394,7 +415,8 @@
 					"japanese": "東口の前に無くしたように思うんですが、はっきりと覚えていないんです",
 					"english": "I think I lost it in front of the east exit, but I really can't remember clearly."
 				}
-			]
+			],
+			"id": "MGbiSKgQQVSM"
 		},
 		{
 			"usage": "〜そうです",
@@ -416,7 +438,8 @@
 					"japanese": "私のルームメイトは静かじゃなさそうです",
 					"english": "My roommate does not seem quiet."
 				}
-			]
+			],
+			"id": "t7ZNhSbGT4CS"
 		},
 		{
 			"usage": "〜そうです",
@@ -434,7 +457,8 @@
 					"japanese": "このホテルは安そうです",
 					"english": "This hotel seems inexpensive"
 				}
-			]
+			],
+			"id": "poGVNrPASH2d"
 		},
 		{
 			"usage": "〜そうです",
@@ -460,7 +484,8 @@
 					"japanese": "ゴミ袋を破れそうです",
 					"english": "The trash bag is likely to tear"
 				}
-			]
+			],
+			"id": "R486uLMzTLC_"
 		},
 		{
 			"usage": "〜そうに V",
@@ -478,7 +503,8 @@
 					"japanese": "ソダさんが心配そうに待っています",
 					"english": "Mr. Soda seems to be waiting anxiously."
 				}
-			]
+			],
+			"id": "9mGX2QVGSAaH"
 		},
 		{
 			"usage": "〜すぎです",
@@ -492,7 +518,8 @@
 					"japanese": "タホさん、飲みすぎですよ",
 					"english": "Taho, you're drinking too much."
 				}
-			]
+			],
+			"id": "BdD3YqW_Rme1"
 		},
 		{
 			"usage": "〜すぎます",
@@ -510,7 +537,8 @@
 					"japanese": "私は食べすぎました",
 					"english": "I ate too much."
 				}
-			]
+			],
+			"id": "aV3Vy0J_Sr-w"
 		},
 		{
 			"usage": "〜よね",
@@ -524,7 +552,8 @@
 					"japanese": "このバンド本当にかっこいいよね",
 					"english": "This band is really cool, isn't it?"
 				}
-			]
+			],
+			"id": "ITCk2iTISum2"
 		}
 	]
 }

@@ -24,7 +24,8 @@
 					"japanese": "希望していた奨学金がもらえることになった",
 					"english": "I have been granted the scholarship I was hoping for"
 				}
-			]
+			],
+			"id": "bL-VPFebSE6B"
 		},
 		{
 			"usage": "〜ことになっています",
@@ -42,7 +43,8 @@
 					"japanese": "ここでは写真を撮らないことになっています",
 					"english": "Taking pictures is not allowed here."
 				}
-			]
+			],
+			"id": "D8cVJ4rzRjO3"
 		},
 		{
 			"usage": "〜にします",
@@ -60,7 +62,8 @@
 					"japanese": "このレストランにしましょう",
 					"english": "Let's choose this restaurant"
 				}
-			]
+			],
+			"id": "MnunSPWxRMS_"
 		},
 		{
 			"usage": "〜ことにします",
@@ -78,7 +81,8 @@
 					"japanese": "スポーツジムを通うことにします",
 					"english": "I've decided to go to the gym regularly"
 				}
-			]
+			],
+			"id": "fai9mXl4RvWS"
 		},
 		{
 			"usage": "〜には",
@@ -96,7 +100,8 @@
 					"japanese": "本を借りるには、図書館利用者カードが必要です",
 					"english": "To borrow a book, you need a library user card."
 				}
-			]
+			],
+			"id": "PAQBHq7qTB6u"
 		},
 		{
 			"usage": "〜に備えて",
@@ -110,7 +115,8 @@
 					"japanese": "地震に備えて、非常持ち出し袋を用意しようと思います",
 					"english": "I'm thinking of preparing an emergency go-bag for earthquake preparedness."
 				}
-			]
+			],
+			"id": "uQjO8zEaQPSp"
 		},
 		{
 			"usage": "〜（以上は・上は）",
@@ -137,7 +143,8 @@
 					"japanese": "書類にサインした以上は、キャンセルはできません。",
 					"english": "Once you've signed the documents, you cannot cancel."
 				}
-			]
+			],
+			"id": "zvVrOl5QSSa-"
 		}
 	]
 }

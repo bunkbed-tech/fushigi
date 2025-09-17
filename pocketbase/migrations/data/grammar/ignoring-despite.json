@@ -20,7 +20,8 @@
 					"japanese": "テストの後は、点数のいい悪いに関わらず、間違えたところをよく復習してください",
 					"english": "After the test, regardless of whether your score is good or bad, please thoroughly review what you got wrong."
 				}
-			]
+			],
+			"id": "XDLcrt2kSKCq"
 		},
 		{
 			"usage": "〜（ものの・とは言うものの）",
@@ -34,7 +35,8 @@
 					"japanese": "新しい靴を買ったものの、ずっと天気が悪くて、一度もはいていない",
 					"english": "I bought new shoes, but due to the continuous bad weather, I haven't worn them even once."
 				}
-			]
+			],
+			"id": "BfcsSmMpTPmh"
 		},
 		{
 			"usage": "〜と言っても",
@@ -48,7 +50,8 @@
 					"japanese": "食べたと言っても、パン一枚だけだよ。時間がなかったからね。",
 					"english": "Even if I say I ate, it was only a single piece of bread. I didn't have time."
 				}
-			]
+			],
+			"id": "V4ocAFNDTUuc"
 		},
 		{
 			"usage": "〜（にしても・にしろ・にせよ）",
@@ -62,7 +65,8 @@
 					"japanese": "いくら忙しかったにしても、返信する時間ぐらいはあったでしょ",
 					"english": "No matter how busy you were, you should have found the time to reply."
 				}
-			]
+			],
+			"id": "RZZyNiiYRYSe"
 		},
 		{
 			"usage": "〜（にしても・にしろ・にせよ）〜（にしても・にしろ・にせよ）",
@@ -76,7 +80,8 @@
 					"japanese": "唐揚げにしてもピザにしても、私が好きなものはカロリーが高い",
 					"english": "Whether it's fried chicken or pizza, the things I like are high in calories."
 				}
-			]
+			],
+			"id": "Ck2R7gcKT6ST"
 		},
 		{
 			"usage": "〜としても",
@@ -94,7 +99,8 @@
 					"japanese": "遅れたとしても、連絡はくれるはずだよ",
 					"english": "Even if they are late, they should contact you."
 				}
-			]
+			],
+			"id": "NfjvVS3sQom7"
 		},
 		{
 			"usage": "〜どころか",
@@ -118,7 +124,8 @@
 					"japanese": "薬を飲んだのに、体調が良くなるどころか、もっと悪くなった。",
 					"english": "Despite taking the medicine, far from getting better, I felt even worse."
 				}
-			]
+			],
+			"id": "82IdcwksQ2S5"
 		},
 		{
 			"usage": "〜はともかく（として）",
@@ -132,7 +139,8 @@
 					"japanese": "このシャツはデザインはともかくとして、色があまり好きじゃない。",
 					"english": "Regardless of the design, I don't really like the color of this shirt."
 				}
-			]
+			],
+			"id": "MINBve0aQhKr"
 		},
 		{
 			"usage": "〜にもかかわらず",
@@ -156,7 +164,8 @@
 					"japanese": "家族が反対したにもかかわらず、彼は軍に入会する。",
 					"english": "Despite his family's opposition, he joined the military."
 				}
-			]
+			],
+			"id": "EMQlwZP9Rh2G"
 		},
 		{
 			"usage": "〜を問わず",
@@ -174,7 +183,8 @@
 					"japanese": "北海度は季節を問わず、多くの観光客で賑わっています。",
 					"english": "Hokkaido is bustling with many tourists, regardless of the season."
 				}
-			]
+			],
+			"id": "_UweFZenTuSF"
 		},
 		{
 			"usage": "〜ところを",
@@ -194,7 +204,8 @@
 					"japanese": "もしもし、先生、お休みのところ、お電話してすみません。実は。。。",
 					"english": "Hello, teacher, I'm sorry to call you during your break. Actually..."
 				}
-			]
+			],
+			"id": "NE0uGyXjROqv"
 		},
 		{
 			"usage": "〜つつも",
@@ -212,7 +223,8 @@
 					"japanese": "友達と遊びたいと思いつつも、忙しくてその暇がない。",
 					"english": "Even though I want to hang out with my friends, I'm too busy to find the time."
 				}
-			]
+			],
+			"id": "wcyRFkzKScOA"
 		},
 		{
 			"usage": "〜っぱなし",
@@ -230,7 +242,8 @@
 					"japanese": "窓を開けっぱなしで寝たので、風邪をひいてしまいました。",
 					"english": "Because I slept with the window open, I ended up catching a cold."
 				}
-			]
+			],
+			"id": "yCEhUIQ8RJe_"
 		}
 	]
 }

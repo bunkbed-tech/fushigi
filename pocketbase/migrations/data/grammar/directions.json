@@ -18,7 +18,8 @@
 					"japanese": "駅から5分くらいまっすぐ歩くと、右に私のアパートがあります",
 					"english": "If you walk straight from the station for about 5 minutes, my apartment is on the right."
 				}
-			]
+			],
+			"id": "GbF0n4qXS4Oj"
 		},
 		{
 			"usage": "〜を背にして",
@@ -32,7 +33,8 @@
 					"japanese": "じゃ、西口を背にして、本屋と花屋の間の道をまっすぐ行くと、右側にありますよ",
 					"english": "So, with the west exit behind you, if you go straight down the road between the bookstore and the florist, it's on your right."
 				}
-			]
+			],
+			"id": "zOovIM6ORtSE"
 		},
 		{
 			"usage": "〜に沿って",
@@ -46,7 +48,8 @@
 					"japanese": "この道に沿ってずっと行くと、私の家がある",
 					"english": "If you keep going along this road, you'll find my house"
 				}
-			]
+			],
+			"id": "r0hh-wrPRhaU"
 		},
 		{
 			"usage": "N が〜きます",
@@ -64,7 +67,8 @@
 					"japanese": "先生が入ってきます",
 					"english": "The teacher is coming in."
 				}
-			]
+			],
+			"id": "yrgpJ3CpQvOC"
 		},
 		{
 			"usage": "N が〜いきます",
@@ -78,7 +82,8 @@
 					"japanese": "犬が走っていきます",
 					"english": "The dog will run."
 				}
-			]
+			],
+			"id": "RBlpgr9wS7CY"
 		}
 	]
 }

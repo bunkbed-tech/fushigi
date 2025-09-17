@@ -12,7 +12,8 @@
 					"japanese": "駅の近くに地図が貼ってあります",
 					"english": "There is a map posted near the station."
 				}
-			]
+			],
+			"id": "1-w4lUYvRuGF"
 		},
 		{
 			"usage": "〜まま",
@@ -38,7 +39,8 @@
 					"japanese": "父は時々、家の鍵をかけないまま出かける",
 					"english": "Sometimes, my father leaves without locking the house."
 				}
-			]
+			],
+			"id": "oqJF28oNReC_"
 		},
 		{
 			"usage": "〜と書いてあります",
@@ -52,7 +54,8 @@
 					"japanese": "「」と書いてあります",
 					"english": "It is written as ___."
 				}
-			]
+			],
+			"id": "BcsSj8TNR-eo"
 		},
 		{
 			"usage": "〜に（囲まれている・囲まれた）〜",
@@ -70,7 +73,8 @@
 					"japanese": "この村は山林に囲まれています",
 					"english": "This village is surrounded by forests and mountains."
 				}
-			]
+			],
+			"id": "fplGW15XQr2E"
 		},
 		{
 			"usage": "〜をしめる",
@@ -88,7 +92,8 @@
 					"japanese": "睡眠が１日の約３分の１を占めている",
 					"english": "Sleep occupies about one third of a day"
 				}
-			]
+			],
+			"id": "sNvPomx5R9-O"
 		},
 		{
 			"usage": "〜こと（が・も）ある",
@@ -106,7 +111,8 @@
 					"japanese": "宿題をしているのはたいてい家でする。図書館ですることもあるよ。",
 					"english": "I usually do my homework at home. Sometimes I do it at the library too."
 				}
-			]
+			],
+			"id": "T-FFbk4ARhCi"
 		}
 	]
 }

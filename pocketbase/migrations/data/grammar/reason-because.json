@@ -16,7 +16,8 @@
 					"japanese": "私の犬の種類は「ヒーラー」なので、私はいつも疲れます",
 					"english": "Since my dog's breed is 'Heeler', I always get tired"
 				}
-			]
+			],
+			"id": "QvbLVm0MSc6W"
 		},
 		{
 			"usage": "〜からです",
@@ -30,7 +31,8 @@
 					"japanese": "祖母にカメの置物をあげました、カメは長生きのシンボルからです",
 					"english": "I gave my grandmother a turtle ornament because the turtle is a symbol of longevity."
 				}
-			]
+			],
+			"id": "d8gZnZ5SQfut"
 		},
 		{
 			"usage": "〜んだって",
@@ -44,7 +46,8 @@
 					"japanese": "インダーネットで調べたんだけど、今週末花火があるんだって",
 					"english": "I looked it up on the internet, and it seems there will be fireworks this weekend."
 				}
-			]
+			],
+			"id": "0Cje7Cb7QDaS"
 		},
 		{
 			"usage": "〜がきっかけで",
@@ -58,7 +61,8 @@
 					"japanese": "アニメがきっかけで、日本語の勉強を始めました",
 					"english": "I started studying Japanese because of anime."
 				}
-			]
+			],
+			"id": "_WYsm9pURx6B"
 		},
 		{
 			"usage": "〜こそ・〜からこそ",
@@ -76,7 +80,8 @@
 					"japanese": "毎日仕事をしているからこそ、休みが嬉しいんだよ",
 					"english": "It's precisely because I work every day that I'm happy to have a day off."
 				}
-			]
+			],
+			"id": "fB70BNRQTnOy"
 		},
 		{
 			"usage": "〜ことだし",
@@ -94,7 +99,8 @@
 					"japanese": "せっかく日本にいることだし、富士山に登りたいなあと思っています",
 					"english": "Since I'm already in Japan, I'm thinking I'd like to climb Mount Fuji."
 				}
-			]
+			],
+			"id": "c5U9axwWSYSE"
 		},
 		{
 			"usage": "〜につき",
@@ -108,7 +114,8 @@
 					"japanese": "雨天につき、本日のイベントは中止になりました",
 					"english": "Due to the rainy weather, today's event has been cancelled."
 				}
-			]
+			],
+			"id": "d0cO35GITmqW"
 		},
 		{
 			"usage": "〜によって",
@@ -122,7 +129,8 @@
 					"japanese": "雷雨の影響によって、電車が遅れています",
 					"english": "The train is delayed due to the impact of the thunderstorm."
 				}
-			]
+			],
+			"id": "yQFX2FmIQtCN"
 		},
 		{
 			"usage": "〜ことから",
@@ -142,7 +150,8 @@
 					"japanese": "この辺は富士山がよく見えることから、富士見町と呼ばれるようになった",
 					"english": "This area came to be known as Fujimi Town because Mount Fuji can be seen clearly from here."
 				}
-			]
+			],
+			"id": "zNdd5iSUQByF"
 		},
 		{
 			"usage": "〜（ものですから・ものだから・もので）",
@@ -160,7 +169,8 @@
 					"japanese": "彼女とのデートなものだから、寝坊しちゃって",
 					"english": "Because it was a date with her, I ended up oversleeping"
 				}
-			]
+			],
+			"id": "MtXqW4ShR2K4"
 		},
 		{
 			"usage": "〜おかげで",
@@ -178,7 +188,8 @@
 					"japanese": "両親のおかげで、留学できたので、とても感謝しています",
 					"english": "Thanks to my parents, I was able to study abroad, for which I am very grateful."
 				}
-			]
+			],
+			"id": "TEqFnZdSQz6k"
 		},
 		{
 			"usage": "〜せいで",
@@ -196,7 +207,8 @@
 					"japanese": "せっかく新幹線を予約したのに、友達が遅刻したせいで、乗れなかった",
 					"english": "Even though I went to the trouble of reserving the bullet train, I couldn't get on because my friend was late"
 				}
-			]
+			],
+			"id": "iuZPAWmmT4K8"
 		},
 		{
 			"usage": "〜（もん・だもん）",
@@ -210,7 +222,8 @@
 					"japanese": "どうして買わないの？だから、高すぎるんだもん！",
 					"english": "Why aren't you buying it? Because it's too expensive!"
 				}
-			]
+			],
+			"id": "IcgyYHiiTGu4"
 		},
 		{
 			"usage": "〜結果",
@@ -224,7 +237,8 @@
 					"japanese": "川の水が減った結果、魚がいなくなってしまった",
 					"english": "As a result of the river's water level decreasing, the fish have disappeared"
 				}
-			]
+			],
+			"id": "95qLyd8xSnq4"
 		},
 		{
 			"usage": "〜んだから",
@@ -238,7 +252,8 @@
 					"japanese": "ここに書いてあるんだから、自分で見ればいいでしょ",
 					"english": "Since it's written here, you should look at it yourself."
 				}
-			]
+			],
+			"id": "OBSwfkbkSviM"
 		},
 		{
 			"usage": "〜からと言って",
@@ -256,7 +271,8 @@
 					"japanese": "友達からと言って、なんでも頼むのは良くない",
 					"english": "Just because we are friends, it's not good to ask for anything and everything."
 				}
-			]
+			],
+			"id": "sPWgHAZUQVCu"
 		},
 		{
 			"usage": "〜次第だ",
@@ -274,7 +290,8 @@
 					"japanese": "やる気次第で、うまく行くかどうかは決まると思う。",
 					"english": "I think whether things go well or not depends on your motivation."
 				}
-			]
+			],
+			"id": "Wv--kWW7SZOa"
 		},
 		{
 			"usage": "〜ことで",
@@ -288,7 +305,8 @@
 					"japanese": "寝る前に日記を書くことで、毎日の生活を見直しています",
 					"english": "By writing a diary before going to bed, I reflect on my daily life."
 				}
-			]
+			],
+			"id": "1gp0uRK8S7Ws"
 		}
 	]
 }
