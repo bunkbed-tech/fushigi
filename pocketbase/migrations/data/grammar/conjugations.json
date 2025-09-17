@@ -1,0 +1,271 @@
+{
+	"conjugations": [
+		{
+			"id": "g9c7rgee9zqgqic",
+			"language": "Japanese",
+			"usage": "可能動詞",
+			"meaning": "can be done -- basic potential form",
+			"context": ["formal", "informal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "「え」る, られる, できる. Use particle 'が' for the object. Often confused with passive form.",
+			"examples": [
+				{
+					"japanese": "私の犬はずっと遊べる",
+					"english": "My dog can play forever"
+				},
+				{
+					"japanese": "わたしはプログラミングことができる",
+					"english": "I can program"
+				},
+				{
+					"japanese": "私は朝早く起きられない",
+					"english": "I can't wake up early in the morning"
+				}
+			],
+			"forms": {
+				"group1": "u-row verb → e-row + る",
+				"group2": "る verb → られる",
+				"exception": "できる"
+			}
+		},
+		{
+			"id": "4cuxy6b7yxxba74",
+			"language": "Japanese",
+			"usage": "〜くて、〜",
+			"meaning": "connecting a negative quality with the rest of a sentence",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Links negative adjectives and implies dissatisfaction or reason.",
+			"examples": [
+				{
+					"japanese": "この問題は難しくなくて、簡単です",
+					"english": "This problem is not difficult, it's simple."
+				}
+			],
+			"forms": {
+				"adjective": "i-adj + くて"
+			}
+		},
+		{
+			"id": "ms0vmhw5tob7wyu",
+			"language": "Japanese",
+			"usage": "〜くて ・ 〜で",
+			"meaning": "connects two ideas with adjectives",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "i-adj use くて, na-adj use で. Links adjectives to emphasize connection.",
+			"examples": [
+				{
+					"japanese": "このケーキは甘くて、おいしいです",
+					"english": "This cake is sweet and delicious."
+				},
+				{
+					"japanese": "この部屋は静かで、広いです",
+					"english": "This room is quiet and spacious."
+				}
+			],
+			"forms": {
+				"i-adj": "i-adj + くて",
+				"na-adj": "na-adj + で"
+			}
+		},
+		{
+			"id": "ekdgyavkzgsowh6",
+			"language": "Japanese",
+			"usage": "〜テ形、〜",
+			"meaning": "giving a reason for what comes next",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Connects two actions where first is reason for second. Not for purpose.",
+			"examples": [
+				{
+					"japanese": "自転車が盗まれて、遅れました",
+					"english": "My bike was stolen, so I was late."
+				},
+				{
+					"japanese": "お酒を飲みすぎて、二日酔いです",
+					"english": "I drank too much alcohol and now I have a hangover."
+				}
+			],
+			"forms": {
+				"verb": "te-form + 〜"
+			}
+		},
+		{
+			"id": "ifndrpcfdldjewb",
+			"language": "Japanese",
+			"usage": "受身形",
+			"meaning": "to be done by; subject is receiver",
+			"context": ["neutral", "formal", "news", "writing"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used for events happening to subject, often negative or neutral. Avoid if subject is actor.",
+			"examples": [
+				{
+					"japanese": "タホさんは先生に呼ばれました",
+					"english": "Mr. Taho was called by the teacher"
+				},
+				{
+					"japanese": "私は知らない人に質問を聞かれた",
+					"english": "I was asked a question by someone I don't know"
+				},
+				{
+					"japanese": "財布を盗まれた",
+					"english": "My wallet was stolen"
+				},
+				{
+					"japanese": "今週末からチケットは買われる",
+					"english": "Tickets will be sold from this weekend."
+				},
+				{
+					"japanese": "ハリーポッターはJKローランによって書かれました",
+					"english": "Harry Potter was written by J.K. Rowling"
+				}
+			],
+			"forms": {
+				"group1": "u-verb → a-row + れる",
+				"group2": "ru-verb → られる",
+				"irregular": "する → される, 来る → 来られる"
+			}
+		},
+		{
+			"id": "2vw7xwrfm1xkcps",
+			"language": "Japanese",
+			"usage": "命令形",
+			"meaning": "positive command; super casual",
+			"context": ["casual", "male-oriented", "neutral"],
+			"level": "informal",
+			"variant": "none",
+			"notes": "Use with close friends or inferiors. Can sound rude.",
+			"examples": [
+				{
+					"japanese": "走れ",
+					"english": "Run"
+				},
+				{
+					"japanese": "行け",
+					"english": "Go"
+				}
+			],
+			"forms": {
+				"group1": "u-verb → e-row",
+				"group2": "ru-verb → ro"
+			}
+		},
+		{
+			"id": "u25s26vbaz80inp",
+			"language": "Japanese",
+			"usage": "〜な",
+			"meaning": "negative command; super casual",
+			"context": ["casual", "in-group", "neutral"],
+			"level": "informal",
+			"variant": "none",
+			"notes": "Attach to dictionary form; strong negative command. Avoid formal situations.",
+			"examples": [
+				{
+					"japanese": "諦めるな",
+					"english": "Don't give up"
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + な"
+			}
+		},
+		{
+			"id": "nthqxu6oi79jqfr",
+			"language": "Japanese",
+			"usage": "「あ」せます、させます",
+			"meaning": "basic causative; make or let someone do",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Group 1: u → a + せる, Group 2: ru → させる. Use particle に for the agent.",
+			"examples": [
+				{
+					"japanese": "親は子供を塾に通わせます",
+					"english": "Parents send their children to cram school."
+				},
+				{
+					"japanese": "親は子供に野菜を食べさせます",
+					"english": "Parents make their children eat vegetables."
+				},
+				{
+					"japanese": "母親は娘に好きなものを買わせます",
+					"english": "The mother lets her daughter buy whatever she likes."
+				}
+			],
+			"forms": {
+				"group1": "u-verb → a-row + せる",
+				"group2": "ru-verb → させる"
+			}
+		},
+		{
+			"id": "amdvrudmxne3tzz",
+			"language": "Japanese",
+			"usage": "「あ」せられる・「あ」される・させられる",
+			"meaning": "causative-passive; was caused or forced to do",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used when agent (に) causes action. Not same as simple passive.",
+			"examples": [
+				{
+					"japanese": "私は妻にタバコをやめさせられました",
+					"english": "My wife made me quit smoking"
+				},
+				{
+					"japanese": "私は先輩に酒を飲まされた",
+					"english": "I was made to drink alcohol by my senior"
+				}
+			],
+			"forms": {
+				"group1": "u-verb → a-row + せられる",
+				"group2": "ru-verb → させられる"
+			}
+		},
+		{
+			"id": "wdt710qcuv9ua57",
+			"language": "Japanese",
+			"usage": "「あ」せる",
+			"meaning": "causative verb; make, let, cause",
+			"context": ["casual", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with intransitive verbs. Students often confuse with passive.",
+			"examples": [
+				{
+					"japanese": "ソダさんは、いつも面白いことを言って、みんなを笑わせる",
+					"english": "Mr. Soda always says interesting things, making everyone laugh"
+				}
+			],
+			"forms": {
+				"group1": "u-verb → a-row + せる",
+				"group2": "ru-verb → させる"
+			}
+		},
+		{
+			"id": "j0o697pzz54m58d",
+			"language": "Japanese",
+			"usage": "「あ」せられる・「あ」される",
+			"meaning": "causative-passive; to be caused by",
+			"context": ["polite", "formal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses being affected by someone's action; use に for agent.",
+			"examples": [
+				{
+					"japanese": "カリフォルニアの火事になったと言うニュースに驚かされた",
+					"english": "I was surprised by the news that there was a fire in California"
+				}
+			],
+			"forms": {
+				"group1": "u-verb → a-row + せられる",
+				"group2": "ru-verb → させられる"
+			}
+		}
+	]
+}

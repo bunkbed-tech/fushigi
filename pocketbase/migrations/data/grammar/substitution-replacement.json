@@ -1,0 +1,76 @@
+{
+	"grammar": [
+		{
+			"usage": "〜に代わって",
+			"meaning": "in place of; in substitute of",
+			"context": "Mostly used in formal, written, or professional contexts; avoid casual colloquial application.",
+			"tags": ["spatial", "description", "comparative", "noun-modifier"],
+			"notes": "It fits situations of substitution, especially in formal events or roles, and is not used for casual daily substitutions. Mistakenly used for trivial replacements; it instead underscores significant or responsible substitutions.",
+			"nuance": "「〜に代わって」indicates replacement and often holds an undercurrent of responsibility or duty in the context.",
+			"examples": [
+				{
+					"japanese": "紙に代わって、タブレットが使われるようになった",
+					"english": "Tablets have come to be used in place of paper."
+				}
+			],
+			"id": "bc6432emsty125s"
+		},
+		{
+			"usage": "〜（の代わりに・に代わって）",
+			"meaning": "in place of; in substitute of",
+			"context": "Formal and informal, often used in workplace or educational settings when talking about duties or responsibilities.",
+			"tags": ["conjunctive", "description", "noun-modifier"],
+			"notes": "「の代わりに」 can be used for both people and objects, but 「に代わって」 is usually used for people. Confusing with similar expressions like 〜ために or 〜ように. Unlike these, using 〜の代わりに implies a replacement, not a purpose or goal.",
+			"nuance": "Expresses replacing, substitution, or standing in for someone else, often with an undertone of responsibility or duty.",
+			"examples": [
+				{
+					"japanese": "ノートの代わりにスマホにメモした",
+					"english": "I took notes on my smartphone instead of a notebook."
+				},
+				{
+					"japanese": "タホに代わってソダさんが係ことになった",
+					"english": "Mr. Soda has taken over Taho's responsibilities"
+				}
+			],
+			"id": "udmriyvz4wnmnin"
+		},
+		{
+			"usage": "〜く V",
+			"meaning": "creating a basic adverb",
+			"context": "Applicable in both casual and formal contexts, however, slightly more common in conversational Japanese.",
+			"tags": ["combination", "i-adjective-modifier"],
+			"notes": "To formulate the adverb, replace the い ending of i-adjectives with く, then fuse with a verb. Misconception of it being the negative form (-くない) or te-form (-くて) is prevalent among learners.",
+			"nuance": "The usage of 〜く V depicts a descriptive action or state based on an i-adjective, add warmth to the sentence.",
+			"examples": [
+				{
+					"japanese": "野菜を薄く切ります",
+					"english": "Cut the vegetables thinly."
+				}
+			],
+			"id": "uhl8uvm28zo3cp2"
+		},
+		{
+			"usage": "〜に V",
+			"meaning": "creating a basic adverb",
+			"context": "Standard across situations; may sound slightly formal in casual conversations.",
+			"tags": ["combination", "noun-modifier", "na-adjective-modifier"],
+			"notes": "Easily confused: different verbs demand different particles even in English translation; consider: 'Laugh at a joke' (〜で laugh) vs 'Laugh with joy' (〜に laugh). Beware of misplacement; the 〜に V form should immediately follow the noun it modifies.",
+			"nuance": "This grammar point typically conveys the sense of 'doing an action taking a certain manner, method, or tool into consideration'.",
+			"examples": [
+				{
+					"japanese": "彼は静かに勉強している",
+					"english": "He is studying quietly"
+				},
+				{
+					"japanese": "野菜を半分に切ります",
+					"english": "Cut the vegetables in half."
+				},
+				{
+					"japanese": "火を弱火にしてください",
+					"english": "Please turn down the heat."
+				}
+			],
+			"id": "q2dbs1fsbcyso57"
+		}
+	]
+}

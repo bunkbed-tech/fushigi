@@ -1,0 +1,38 @@
+{
+	"suitability": [
+		{
+			"usage": "〜向け",
+			"meaning": "meant for",
+			"context": "Neutral/formal; often used in business and product descriptions.",
+			"tags": ["combination", "noun-modifier"],
+			"notes": "Use it after a noun to specify for whom it is intended. Not specifying a noun before 〜向け or using it for non-targetable things.",
+			"nuance": "Emphasizes the target audience of a product or service.",
+			"examples": [
+				{
+					"japanese": "この漫画は子供向けですが大人が見ても十分面白いです",
+					"english": "This comic is intended for children, but it's interesting enough for adults to enjoy too."
+				}
+			],
+			"id": "tkltbk9pr0pn5sj"
+		},
+		{
+			"usage": "〜向き（だ・に・の）",
+			"meaning": "suitable for; meant for",
+			"context": "Commonly used in informal contexts or professional settings.",
+			"tags": ["description", "relation", "noun-modifier"],
+			"notes": "Attach 向き directly to nouns, but only when describing objects or situations, not living creatures. Common mistakes include employing it for humans, which sounds odd, and confusing 向き with 向け.",
+			"nuance": "Use this to express the idea of suitability in a subjective and sometimes situational way.",
+			"examples": [
+				{
+					"japanese": "この山はそんなに高くないし、日帰りで行けるので、登山の初心者向きだ。",
+					"english": "This mountain is not so high and can be done in a day trip, so it's suitable for beginner climbers."
+				},
+				{
+					"japanese": "ここは独身者向きのマンションで家族で住むには狭いようだ。",
+					"english": "This seems like a condominium suited for single individuals; it appears too narrow for family living."
+				}
+			],
+			"id": "006b0ophjm9qw26"
+		}
+	]
+}

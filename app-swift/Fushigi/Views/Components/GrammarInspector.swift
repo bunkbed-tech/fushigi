@@ -42,12 +42,12 @@ struct GrammarInspector: View {
                     ToolbarItem(placement: .primaryAction) {
                         Menu("Options", systemImage: "ellipsis.circle") {
                             if studyStore.srsStore.isInSRS(point.id) {
-                                Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
+                                Button("Ignore in SRS", systemImage: "rectangle.on.rectangle.slash") {
                                     print("TODO: Implement remove from SRS")
                                 }
                                 .disabled(true)
                             } else {
-                                Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
+                                Button("Track in SRS", systemImage: "plus.rectangle.on.rectangle") {
                                     Task {
                                         await studyStore.srsStore.addToSRS(point.id)
                                         showDetails = false
@@ -55,17 +55,15 @@ struct GrammarInspector: View {
                                 }
                             }
 
-                            if !studyStore.grammarStore.isDefaultGrammar(point) {
-                                Button("Edit", systemImage: "square.and.arrow.up.fill") {
-                                    print("TODO: Implement editing user grammar point...")
-                                }
-                                .disabled(true)
-
-                                Button("Delete", systemImage: "trash.slash") {
-                                    print("TODO: Implement removing user grammar point...")
-                                }
-                                .disabled(true)
+                            Button("Edit", systemImage: "square.and.arrow.up.fill") {
+                                print("TODO: Implement editing user grammar point...")
                             }
+                            .disabled(true)
+
+                            Button("Delete", systemImage: "trash.slash") {
+                                print("TODO: Implement removing user grammar point...")
+                            }
+                            .disabled(true)
                         }
                         .labelStyle(.iconOnly)
                         .disabled(systemState.shouldDisableUI)
@@ -113,6 +111,8 @@ struct GrammarInspector: View {
                 Text("No sentences tagged with this grammar point.")
             }
         }
+        #if os(iOS)
         .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        #endif
     }
 }

@@ -1,0 +1,57 @@
+{
+	"strong-emotional-certainty-intention": [
+		{
+			"usage": "〜つもりです",
+			"meaning": "120% sure",
+			"context": "Neutral, but can sound formal in casual settings. Use with discretion.",
+			"tags": ["likelihood", "certainty", "辞書形", "ナイ形"],
+			"notes": "Use when expressing a strong intention or plan, but not when asking if someone else has plans. Do not use with questions or with conjectural form.",
+			"nuance": "Stresses strong intention or conviction, but can sound overconfident or arrogant if not used properly.",
+			"examples": [
+				{
+					"japanese": "8月に友達と一緒に大阪へ行くつもりです",
+					"english": "I plan to go to Osaka with my friends in August."
+				},
+				{
+					"japanese": "今年私の母国へ帰らないつもりです",
+					"english": "I am planning not to return to my homeland this year."
+				}
+			],
+			"id": "rzav9na0sfcefng"
+		},
+		{
+			"usage": "〜ために",
+			"meaning": "purpose/reason for something",
+			"context": "Polite and formal, but also found in everyday conversation when explaining reasons.",
+			"tags": ["causal", "辞書形", "noun-modifier"],
+			"notes": "When stating a purpose, follow with 辞書形; when explaining cause, use it with a past tense verb/negative form. Confusing the purpose and reason forms of 〜ために, and misuse with casual conversational structures.",
+			"nuance": "~ために often implies a level of intention and planning, whereas in its causative form it denotes an inevitable causative relation.",
+			"examples": [
+				{
+					"japanese": "就職のために、毎日プログラミングを練習しています",
+					"english": "I am practicing programming every day for employment."
+				},
+				{
+					"japanese": "日本語を話すために、日本に来た",
+					"english": "I came to Japan to speak Japanese"
+				}
+			],
+			"id": "quwdwc8m157rh54"
+		},
+		{
+			"usage": "〜にかけては",
+			"meaning": "when it comes to ___, ___　(focus on ability and higher than others)",
+			"context": "Formal and casual, but somewhat assertive, often used in debates, arguments, or playful competitions.",
+			"tags": ["advanced-usage", "comparative", "description", "noun-modifier"],
+			"notes": "Use 〜にかけては after a subject or topic, to express its superiority or excellence in the following context. Often mistakenly used to compare two equal topics instead of emphasizing the superiority of one.",
+			"nuance": "〜にかけては underlines a speaker's emphasis or slightly competitive sense of superiority on a certain topic or ability.",
+			"examples": [
+				{
+					"japanese": "かんさんは人を笑わせることにかけては、クラスで一番だ。",
+					"english": "When it comes to making people laugh, Kansan is the best in the class."
+				}
+			],
+			"id": "nds0lccaafbggux"
+		}
+	]
+}

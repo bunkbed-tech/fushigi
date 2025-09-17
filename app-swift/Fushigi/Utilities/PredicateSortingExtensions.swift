@@ -43,22 +43,12 @@ extension ModelContext {
 enum CommonPredicates {
     // MARK: Grammar Point Predicates
 
-    /// Predicate for system grammar points
-    static var systemGrammarPoints: Predicate<GrammarPointLocal> {
-        #Predicate<GrammarPointLocal> { $0.user == nil }
-    }
-
-    /// Predicate for user grammar points
-    static func userGrammarPoints(userId: String) -> Predicate<GrammarPointLocal> {
-        #Predicate<GrammarPointLocal> { $0.user == userId }
-    }
-
     /// Predicate for grammar points containing search term
     static func grammarPointsContaining(_ searchText: String) -> Predicate<GrammarPointLocal> {
         #Predicate<GrammarPointLocal> { grammar in
             grammar.usage.localizedStandardContains(searchText) ||
                 grammar.meaning.localizedStandardContains(searchText) ||
-                grammar.context.localizedStandardContains(searchText)
+                grammar.notes.localizedStandardContains(searchText)
         }
     }
 

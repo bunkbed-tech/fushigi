@@ -1,0 +1,542 @@
+{
+	"case-making": [
+		{
+			"id": "xl5tjzvqdvg0qci",
+			"language": "Japanese",
+			"usage": "〜なら",
+			"meaning": "if it's this",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Attach 〜なら after a noun, adjective, or verb stem to indicate a specific condition; often used for advice or suggestions based on a situation.",
+			"examples": [
+				{
+					"japanese": "雨なら、傘を持ってきてください",
+					"english": "If it's raining, please bring an umbrella."
+				},
+				{
+					"japanese": "暑いなら、セーターを持っていってください",
+					"english": "If it's hot, please take your sweater with you."
+				},
+				{
+					"japanese": "日本語なら、私が読みます",
+					"english": "If it's in Japanese, I'll read it."
+				}
+			],
+			"forms": {
+				"noun/verb/adjective": "〜なら"
+			}
+		},
+		{
+			"id": "arq8d0eehqjxhud",
+			"language": "Japanese",
+			"usage": "〜たら",
+			"meaning": "once this happens",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Follows the タ形 (past tense) of verbs/adjectives; used for specific conditions or A→B sequences. Not interchangeable with 〜ば or 〜と for general conditions.",
+			"examples": [
+				{
+					"japanese": "日本語学校を卒業したら、日本の会社で働きたいです",
+					"english": "After I graduate from the Japanese language school, I want to work at a Japanese company."
+				},
+				{
+					"japanese": "夏休みになったら、新しい本を読む",
+					"english": "When summer vacation comes, I'll read a new book."
+				},
+				{
+					"japanese": "今週末電話したらどうですか",
+					"english": "How about calling this weekend?"
+				}
+			],
+			"forms": {
+				"verb/adjective": "タ形 + ら / noun + だったら"
+			}
+		},
+		{
+			"id": "qk180g08gpukski",
+			"language": "Japanese",
+			"usage": "〜たら、〜",
+			"meaning": "once this happened",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates a reaction or event immediately after a stated action; often carries an unexpected or unplanned nuance.",
+			"examples": [
+				{
+					"japanese": "カバンを開けたら、財布がありませんでした",
+					"english": "When I opened the bag, there was no wallet."
+				}
+			],
+			"forms": {
+				"verb/adjective": "タ形 + ら、〜 / noun + だったら、〜"
+			}
+		},
+		{
+			"id": "gix46pt586qnihl",
+			"language": "Japanese",
+			"usage": "条件形 〜ば",
+			"meaning": "if (general condition)",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "For verbs: replace the final う sound with its 'え' equivalent + ば (飲む → 飲めば). Expresses general or habitual conditions, unlike 〜たら which is more situational.",
+			"examples": [
+				{
+					"japanese": "毎日勉強すれば、日本語能力試験を合格できます",
+					"english": "If you study every day, you can pass the Japanese language proficiency test."
+				},
+				{
+					"japanese": "寒ければ、手袋を持ってきてください",
+					"english": "If it's cold, please bring gloves."
+				},
+				{
+					"japanese": "質問があれば、先生に聞いてください",
+					"english": "If you have any questions, please ask the teacher."
+				}
+			],
+			"forms": {
+				"verb": "条件形 + ば / i-adjective + ければ / na-adjective + なら"
+			}
+		},
+		{
+			"id": "yacjzg8cqorljme",
+			"language": "Japanese",
+			"usage": "〜と言っていました",
+			"meaning": "quoting something said",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use to report what someone else said in the past; not for immediate conversation.",
+			"examples": [
+				{
+					"japanese": "彼がそのレストランはいいと言っていました",
+					"english": "He said that the restaurant is good."
+				},
+				{
+					"japanese": "先生が明日は休むと言っていました",
+					"english": "The teacher said they will take a day off tomorrow."
+				}
+			],
+			"forms": {
+				"plain": "普通形 + と言っていました"
+			}
+		},
+		{
+			"id": "ya98h3dlreg83kw",
+			"language": "Japanese",
+			"usage": "〜って何ですか",
+			"meaning": "what is this",
+			"context": ["spoken", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Casual way to ask about an unknown word, phrase, or concept someone mentioned. Avoid formal contexts.",
+			"examples": [
+				{
+					"japanese": "水族館って何ですか",
+					"english": "What is an aquarium?"
+				}
+			],
+			"forms": {
+				"phrase": "〜って何ですか"
+			}
+		},
+		{
+			"id": "f2a82322jg3g673",
+			"language": "Japanese",
+			"usage": "〜というのは〜です",
+			"meaning": "rephrasing",
+			"context": ["spoken", "written", "formal", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used to clarify or define something said. Helps avoid ambiguity, can sound redundant if overused.",
+			"examples": [
+				{
+					"japanese": "ランドセルというのは小学生が使うカバンです",
+					"english": "A randoseru is a bag used by elementary school students."
+				}
+			],
+			"forms": {
+				"phrase": "〜というのは〜です"
+			}
+		},
+		{
+			"id": "ok1zkc3pp866g10",
+			"language": "Japanese",
+			"usage": "〜なんかどうですか",
+			"meaning": "how about this",
+			"context": ["spoken", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Modest suggestion or tentative proposal. Avoid with higher-status people; casual tone.",
+			"examples": [
+				{
+					"japanese": "恋人のプレゼントなら、時計なんかどうですか",
+					"english": "How about something like a watch for a lover's gift?"
+				}
+			],
+			"forms": {
+				"phrase": "〜なんかどうですか"
+			}
+		},
+		{
+			"id": "igrcvkgo5nzxqsc",
+			"language": "Japanese",
+			"usage": "〜くないと、〜",
+			"meaning": "if not this, then",
+			"context": ["spoken", "written", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with negative verbs or i-adjectives to indicate a necessary condition. Stronger than 〜なければ.",
+			"examples": [
+				{
+					"japanese": "もっと安くないと、誰も買いません",
+					"english": "No one will buy it unless it becomes cheaper."
+				}
+			],
+			"forms": {
+				"adjective": "i-adjective (negative) + と、〜"
+			}
+		},
+		{
+			"id": "x0xz6d0ev03gpwa",
+			"language": "Japanese",
+			"usage": "〜じゃないと、〜",
+			"meaning": "if not this, then",
+			"context": ["spoken", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with negative forms, mainly for na-adjectives and nouns. Strong urgency or necessity. Casual tone.",
+			"examples": [
+				{
+					"japanese": "さくら図書館は市民じゃないと本が借りられません",
+					"english": "You cannot borrow books from Sakura Library unless you are a resident of the city."
+				}
+			],
+			"forms": {
+				"na-adjective/noun": "〜じゃないと、〜"
+			}
+		},
+		{
+			"id": "t5knyjuvg3yginy",
+			"language": "Japanese",
+			"usage": "〜と、〜",
+			"meaning": "if/when this, then",
+			"context": ["spoken", "written", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used in narrative sentences to indicate an unexpected or automatic consequence. Not for quoting or general truth.",
+			"examples": [
+				{
+					"japanese": "ゆっくり話さないと、聞き取りません",
+					"english": "If you don't speak slowly, I won't understand."
+				}
+			],
+			"forms": {
+				"phrase": "〜と、〜"
+			}
+		},
+		{
+			"id": "8bpapuzwaeu8iwm",
+			"language": "Japanese",
+			"usage": "〜と、〜",
+			"meaning": "certain result",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates that an action always leads to a particular result. Often confused with 〜たら which implies sequence, not certainty.",
+			"examples": [
+				{
+					"japanese": "今夜は寒くなるから、では手袋を持っていくと、便利だよ",
+					"english": "It's going to be cold tonight, so it will be convenient if you bring gloves."
+				}
+			],
+			"forms": {
+				"phrase": "〜と、〜"
+			}
+		},
+		{
+			"id": "yms4bxwe2s6678r",
+			"language": "Japanese",
+			"usage": "〜によって",
+			"meaning": "depending on",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Attach after noun or noun phrase to show variations due to factors. Not used with verbs.",
+			"examples": [
+				{
+					"japanese": "味のお好みは国によって違います",
+					"english": "Taste preferences vary by country."
+				}
+			],
+			"forms": {
+				"noun": "〜によって"
+			}
+		},
+		{
+			"id": "tm54yz8l5fg18ve",
+			"language": "Japanese",
+			"usage": "〜わりに",
+			"meaning": "contrary to",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Shows contrast between expectation and reality. Can be used with non-past verbs and adjectives.",
+			"examples": [
+				{
+					"japanese": "あのレストランは高い割に、あまり美味しくなかった",
+					"english": "Given the price, that restaurant wasn't very good."
+				}
+			],
+			"forms": {
+				"phrase": "〜わりに"
+			}
+		},
+		{
+			"id": "7crgjjwpjvkee24",
+			"language": "Japanese",
+			"usage": "〜において / 〜における〜",
+			"meaning": "in / at",
+			"context": ["written", "formal", "business"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used in formal writing or speeches to indicate place, time, or context. Avoid casual usage.",
+			"examples": [
+				{
+					"japanese": "2024年パーリーにおいて、次回の夏のオリンピックが開かれます",
+					"english": "The next Summer Olympics will be held in Paris in 2024."
+				},
+				{
+					"japanese": "私の健康テーマは、日本における自動車産業の欠点です",
+					"english": "My wellness theme is the shortcomings of the automobile industry in Japan."
+				}
+			],
+			"forms": {
+				"noun": "〜において / 〜における + noun"
+			}
+		},
+		{
+			"id": "5qoywsdmjnrje8o",
+			"language": "Japanese",
+			"usage": "〜にとって",
+			"meaning": "for / regarding",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates personal or subjective perspective; not universal facts.",
+			"examples": [
+				{
+					"japanese": "私にとって、大切な人は妻です",
+					"english": "For me, the most important person is my wife."
+				}
+			],
+			"forms": {
+				"noun": "〜にとって"
+			}
+		},
+		{
+			"id": "umxs6lvzq2td87b",
+			"language": "Japanese",
+			"usage": "〜ほど",
+			"meaning": "the more … the more …",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Shows proportional relationship. Use with dictionary form verbs or i-adjectives; na-adjectives need だ before ほど.",
+			"examples": [
+				{
+					"japanese": "練習すればするほど、上手になります",
+					"english": "The more you practice, the better you will become."
+				},
+				{
+					"japanese": "安ければ安いほどいいんですが",
+					"english": "The cheaper, the better."
+				}
+			],
+			"forms": {
+				"verb/adjective": "dictionary form / i-adjective / na-adjective + ほど"
+			}
+		},
+		{
+			"id": "jlem1r4ablezewd",
+			"language": "Japanese",
+			"usage": "〜場合",
+			"meaning": "in case",
+			"context": ["written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use after the plain form of verbs or adjectives to indicate hypothetical situations. Avoid casual conversation.",
+			"examples": [
+				{
+					"japanese": "火事の場合は、１１９番に電話してください",
+					"english": "In case of a fire, please call 119."
+				}
+			],
+			"forms": {
+				"verb/adjective": "plain form + 場合"
+			}
+		},
+		{
+			"id": "nr0i7aiozfvltqw",
+			"language": "Japanese",
+			"usage": "〜ことには〜",
+			"meaning": "without ..., impossible",
+			"context": ["written", "formal", "spoken"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Always used with a negative verb before 'ことには'. Indicates a necessary condition.",
+			"examples": [
+				{
+					"japanese": "経験者でないことには、うまくやることはできないだろう",
+					"english": "Without experience, it's likely that one cannot do well."
+				}
+			],
+			"forms": {
+				"verb": "negative plain form + ことには"
+			}
+		},
+		{
+			"id": "vvjr9apvv8b0ki2",
+			"language": "Japanese",
+			"usage": "〜際に",
+			"meaning": "at the time of",
+			"context": ["written", "formal", "business"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use for significant or formal events; less common in casual speech.",
+			"examples": [
+				{
+					"japanese": "電車を降りる際は、お忘れ物のないようご注意ください",
+					"english": "When getting off the train, please be careful not to leave anything behind."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form / past form + 際に"
+			}
+		},
+		{
+			"id": "askpwi1rtj3id0y",
+			"language": "Japanese",
+			"usage": "（ば・なら・たら）〜たのに",
+			"meaning": "if only … then … (regret)",
+			"context": ["spoken", "written", "informal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses regret over unrealized conditions in the past. Combine with past tense verbs.",
+			"examples": [
+				{
+					"japanese": "時間があったら、テストが全部できたのに、時間が足りなくて、できなかった",
+					"english": "If I had had enough time, I could have completed all the tests, but I couldn't because I didn't have enough time."
+				}
+			],
+			"forms": {
+				"conditional": "〜ば / 〜なら / 〜たら + たのに"
+			}
+		},
+		{
+			"id": "vf9mrkwkw4smniz",
+			"language": "Japanese",
+			"usage": "〜からには",
+			"meaning": "since / as long as",
+			"context": ["written", "formal", "spoken"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use with dictionary form verbs or nouns + からには. Expresses obligation or expectation once a condition is met.",
+			"examples": [
+				{
+					"japanese": "学校の代表として、スピーチコンテストに出場するからには、１位になりたい。",
+					"english": "As a representative of my school, if I'm participating in a speech contest, I want to be first place."
+				},
+				{
+					"japanese": "約束したからには、守るのが当然だ。",
+					"english": "Since I made a promise, it's only natural that I keep it."
+				}
+			],
+			"forms": {
+				"verb/noun": "dictionary form / noun + からには"
+			}
+		},
+		{
+			"id": "r62owf4wuf5z52o",
+			"language": "Japanese",
+			"usage": "〜（としたら・とすれば・とすると）",
+			"meaning": "if it were the case",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use with noun, adjective, or verb in plain form. Expresses hypothetical or suppositional situations.",
+			"examples": [
+				{
+					"japanese": "もし、ドキにでも旅行に行けるとしたら、どこへ行きたいですか",
+					"english": "If you could go on a trip anywhere, where would you like to go?"
+				}
+			],
+			"forms": {
+				"verb/noun/adjective": "plain form + としたら / とすれば / とすると"
+			}
+		},
+		{
+			"id": "qxjmymcqc349dwj",
+			"language": "Japanese",
+			"usage": "〜にあたって",
+			"meaning": "when doing …",
+			"context": ["written", "formal", "business"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use with dictionary form verbs for significant or formal events. Not for casual or spontaneous actions.",
+			"examples": [
+				{
+					"japanese": "留学にあたって、必要な書類を準備しました。",
+					"english": "In preparation for studying abroad, I have prepared the necessary documents."
+				},
+				{
+					"japanese": "帰国するにあたって、先生のところへ挨拶に行った。",
+					"english": "Before returning to my home country, I went to greet my teacher."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + にあたって"
+			}
+		},
+		{
+			"id": "crxackqli2c37u5",
+			"language": "Japanese",
+			"usage": "テ形 V",
+			"meaning": "sequential action",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Connects sequential actions; order matters. Not for cause/reason.",
+			"examples": [
+				{
+					"japanese": "砂糖を入れて飲めます",
+					"english": "You can drink it with sugar."
+				}
+			],
+			"forms": {
+				"verb": "て-form + verb"
+			}
+		},
+		{
+			"id": "5bfh0lzzakmu7h7",
+			"language": "Japanese",
+			"usage": "ナイ形 で V",
+			"meaning": "action with negative condition",
+			"context": ["spoken", "written", "formal"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Action cannot occur unless the first action is not done. Different from ～ながら (positive).",
+			"examples": [
+				{
+					"japanese": "砂糖を入れないで飲めません",
+					"english": "I can't drink it without adding sugar."
+				}
+			],
+			"forms": {
+				"verb": "negative plain form + で + verb"
+			}
+		}
+	]
+}

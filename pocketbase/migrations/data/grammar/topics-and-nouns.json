@@ -1,0 +1,150 @@
+{
+	"topics-and-nouns": [
+		{
+			"usage": "〜のが",
+			"meaning": "specifically describing an action turned into a noun",
+			"context": "Neutral; used among different social situations from casual conversation to formal documentation.",
+			"tags": ["nominalization", "辞書形"],
+			"notes": "Used after the dictionary form of verbs and adjectives to turn them into nouns; convenient in complex sentences. Common errors include using the particle を instead of が, or forgetting to use the dictionary form prior.",
+			"nuance": "〜のが emphasizes the object of discussion, adding a subjective feel often used in expressing personal preferences or dislikes.",
+			"examples": [
+				{
+					"japanese": "アニメを見るのが好きです",
+					"english": "I like watching anime."
+				},
+				{
+					"japanese": "スキーをするのが上手です",
+					"english": "You're skillful at skiing"
+				},
+				{
+					"japanese": "長い時間に寝るのが嫌いです",
+					"english": "I don't like to sleep for a long time."
+				}
+			],
+			"id": "u8jd5aadwnrz5qt"
+		},
+		{
+			"usage": "〜のは",
+			"meaning": "basic describing an action turned into a noun",
+			"context": "Mainly seen in formal written language; used in spoken language for added emphasis or clarification.",
+			"tags": ["nominalization", "辞書形"],
+			"notes": "Use 〜のは after the dictionary form of a verb to turn it into a noun, essentially encapsulating an action or state. Avoid using 〜のは with な-adjectives and nouns; use 〜なのは instead.",
+			"nuance": "Primarily neutral with slight formal undertones; used for objectifying actions or states to apply further grammar.",
+			"examples": [
+				{
+					"japanese": "ゲームをするのは楽しいです",
+					"english": "Playing games is fun"
+				},
+				{
+					"japanese": "値段が安いのは、トヨタの車です",
+					"english": "The car that is inexpensive is the Toyota."
+				}
+			],
+			"id": "js1we6spx2s6b3v"
+		},
+		{
+			"usage": "V のは N です",
+			"meaning": "used to choose an option or give an answer",
+			"context": "The formality level is neutral; useful in both casual and formal conversations.",
+			"tags": ["explanation", "普通形"],
+			"notes": "Primarily used for specific selections, showing preference or identifying a specified item/action from multiple options. Often, learners forget to use the nominalizer の to connect the verb and particle は, leading to ungrammatical sentences.",
+			"nuance": "V のは N です adds a tone of finality or confirmation by choosing or providing an answer.",
+			"examples": [
+				{
+					"japanese": "車の値段が安いのはホンダです",
+					"english": "Honda has the cheapest car prices"
+				}
+			],
+			"id": "cdjm9s72gfnexr4"
+		},
+		{
+			"usage": "〜なんて",
+			"meaning": "emphasis on an example",
+			"context": "Casual, fit for informal exchanges and exclamatory remarks among close peers.",
+			"tags": ["explanation", "conditional", "普通形"],
+			"notes": "Used after a noun, verb, or phrase to emphasize that example; often used in casual, emotional or dramatic contexts. Avoid using 〜なんて in formal situations or with people higher in social standing due to its potential negative or exaggerated tone.",
+			"nuance": "〜なんて showcases surprise, emotional intensity, or disdain towards a given example.",
+			"examples": [
+				{
+					"japanese": "新婚旅行がVegasなんて、いいなぁ",
+					"english": "A honeymoon in Vegas, that sounds nice."
+				}
+			],
+			"id": "1lpnba5y7wg4qdd"
+		},
+		{
+			"usage": "〜といえば",
+			"meaning": "speaking of; if it's ___ we're talking about",
+			"context": "Versatile for most settings, but rampant in casual spontaneous speech and less frequent in formal writing.",
+			"tags": ["conditional", "description", "普通形", "noun-modifier"],
+			"notes": "Use 〜といえば when you want to share an anecdote, comment, or information that is of interest or related to the topic being discussed. Avoid using 〜といえば without context or on an unrelated topic, this is not a sentence starter, it's a contextual cue.",
+			"nuance": "〜といえば triggers a reactive, spontaneous memory or subject related to the topic at hand.",
+			"examples": [
+				{
+					"japanese": "もう直ぐ春がくる。春といえば、祭が楽しみだ。",
+					"english": "Spring is coming soon. Speaking of Spring, I'm looking forward to the festival."
+				},
+				{
+					"japanese": "アメリカのお土産というと、「I <3NY」 のT-シャツが一番有名だ",
+					"english": "When it comes to souvenirs from America, the 'I <3 NY' T-shirt is the most famous."
+				}
+			],
+			"id": "l29lxmjiu9tsk8c"
+		},
+		{
+			"usage": "〜とは〜（ことだ・と言うことだ）",
+			"meaning": "defining something",
+			"context": "Neutral; suitable for both casual conversation and formal writing.",
+			"tags": [
+				"definition",
+				"fixed-expression",
+				"quotation",
+				"普通形",
+				"noun-modifier"
+			],
+			"notes": "Put a general idea (often a topic of discussion) before とは and a detailed definition after it. Mistakenly using とは for personal opinions, subjective perspectives, or unconfirmed facts.",
+			"nuance": "Used to assertively clarify or define a topic, often emphasizing a significant, previously-unmentioned aspect.",
+			"examples": [
+				{
+					"japanese": "留学とは他の国で勉強することだ",
+					"english": "Studying abroad means studying in another country."
+				}
+			],
+			"id": "b7mtriaxwxbpcay"
+		},
+		{
+			"usage": "〜関して",
+			"meaning": "concerning, related to",
+			"context": "Mostly found in written language and formal speech, not used frequently in casual conversation.",
+			"tags": ["explanation", "conditional", "noun-modifier"],
+			"notes": "Attach 〜関して directly to nouns or noun phrases; don't pair with verbs nor adjectives. Avoid confusion with に関して as 〜関して is less formal; common misplacement of particle の before 〜関して.",
+			"nuance": "〜関して implies a neutral stance with factual or practical discussions, not used for personal feelings or opinions.",
+			"examples": [
+				{
+					"japanese": "私はこの街の歴史に関して図書館で調べてみた。",
+					"english": "I tried researching the history of this city at the library."
+				},
+				{
+					"japanese": "ビザや学費に関することは、学校の事務室に相談してください。",
+					"english": "Please consult with the school office regarding visa and tuition fees."
+				}
+			],
+			"id": "g1hcxh7ni75pi9m"
+		},
+		{
+			"usage": "〜のことなんですが",
+			"meaning": "polite introduction to a topic",
+			"context": "Polite, formal or semi-formal, best suited to business conversations, delicate discussions, or formal situations.",
+			"tags": ["fixed-expression", "conjunctive", "description", "polite"],
+			"notes": "Often paired with delicate or pointed questions, softens topic introduction while showing politeness. Using it casually or for non-serious subjects; it's intended for grave or delicate topics.",
+			"nuance": "Used to broach a topic tactfully, indicating a respect for the listener's feelings or position.",
+			"examples": [
+				{
+					"japanese": "スポーツの試合のことなんだけど、私たちのチームは２０点差で負けた",
+					"english": "It's about a sports game, but our team lost by 20 points."
+				}
+			],
+			"id": "4omp4zd30z4jqwp"
+		}
+	]
+}

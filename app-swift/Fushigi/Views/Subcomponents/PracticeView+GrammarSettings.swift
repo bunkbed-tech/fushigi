@@ -14,7 +14,7 @@ import SwiftUI
 /// or introduce some extra flags. The purpose of these settings is to allow the user to influence the
 /// "SRS" algorithm to choose a more specific set of daily suggested grammar points. The idea being
 /// that if it was truly just SRS based (or even random) then it would be likely you receive completely
-/// disparate grammar points (such as Business + Slag in a single entry) that could make it hard to
+/// disparate grammar points (such as Business + Slang in a single entry) that could make it hard to
 /// write something cohesive if that's something you want to do.
 struct GrammarSettings: View {
     // MARK: - Published State

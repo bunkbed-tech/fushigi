@@ -1,0 +1,343 @@
+{
+	"subjective-contrast-nuance": [
+		{
+			"usage": "〜に反して",
+			"meaning": "contrary to; opposite to; opposite of 通り",
+			"context": "Can be used in both casual and formal speech, but most commonly seen in written language or formal contexts.",
+			"tags": ["description", "conjunctive", "noun-modifier"],
+			"notes": "Use 〜に反して to express contradiction or opposition; best used when shocking or unexpected results occur. Don't use 〜に反して when simply comparing differences; it's only for situations where standard conventions or expectations are violated.",
+			"nuance": "〜に反して is used to express a contrast between an expectation, principle or norm and an actual outcome, often with a sense of disappointment or surprise.",
+			"examples": [
+				{
+					"japanese": "親の期待に反して、彼はDJになった",
+					"english": "Contrary to his parents' expectations, he became a DJ."
+				}
+			],
+			"id": "7ysgodeduzb6kht"
+		},
+		{
+			"usage": "〜と言うより",
+			"meaning": "rather than saying ___, ___",
+			"context": "Both casual and polite conversation, but avoid in formal written text.",
+			"tags": ["contrast", "quotation", "普通形"],
+			"notes": "Follow format 'Aと言うよりB' to effectively contrast and refine ideas, as in 'less like A, more like B'. Avoid using this structure to express strict comparison or preferences, as it indicates a rectification of an initial thought.",
+			"nuance": "～と言うより is used to correct or amend a preceding statement; implies speaker's judgment or perspective.",
+			"examples": [
+				{
+					"japanese": "この絵はとても細かいところまで描かれていて、絵と言うよりまるで写真のすうです",
+					"english": "This painting is drawn in such detail it looks more like a photograph than a painting."
+				}
+			],
+			"id": "z2ozs2d6u7b8eil"
+		},
+		{
+			"usage": "〜一方（で）",
+			"meaning": "meanwhile; on the other hand",
+			"context": "Fits typically in formal and written language, may sound unnatural in casual speech.",
+			"tags": [
+				"temporal",
+				"contrast",
+				"enumeration",
+				"普通形",
+				"ナ形容詞",
+				"noun-modifier",
+				"na-adjective-modifier"
+			],
+			"notes": "Use after verbs in their dictionary form or 'na' adjectives/nouns + 'na', not suitable for 'i' adjectives. Avoid using with 'i' adjectives; many learners mistakenly do so.",
+			"nuance": "Indicates two contrasting or concurrent actions or states; often involves a negative implication or comparison.",
+			"examples": [
+				{
+					"japanese": "東京の気候は、夏は蒸し暑い一方で、冬は乾燥する",
+					"english": "The climate in Tokyo is humid in the summer, while it is dry in the winter."
+				}
+			],
+			"id": "llug2zo7hfbkcxd"
+		},
+		{
+			"usage": "どちらかというと",
+			"meaning": "if I had to say; if I had to pick something",
+			"context": "Formal situation; suitable for both writing and speech, but avoid using in highly casual contexts.",
+			"tags": ["fixed-expression"],
+			"notes": "Follow 'どちらかというと' immediately with the preferred choice out of two possibilities. Don't imply a clear choice, this phrase relays a vague or weak preference.",
+			"nuance": "Emphasizes one's preference or inclination when forced to choose between options, but suggests the choice isn't strong or decided.",
+			"examples": [
+				{
+					"japanese": "どちらかと言うと和食かなあ",
+					"english": "If I had to choose, I'd probably say Japanese food."
+				},
+				{
+					"japanese": "今日は金曜日だし、どちらかというと、居酒屋に行きたいかな",
+					"english": "Since today is Friday, I'd rather go to an izakaya, I guess."
+				}
+			],
+			"id": "4avbzctxztgoaan"
+		},
+		{
+			"usage": "〜ばかりに",
+			"meaning": "instead of, substitute, the opposite also, this too",
+			"context": "Though not very colloquial, 〜ばかりに is not limited to formal contexts; can be used in casual speech.",
+			"tags": [
+				"contrast",
+				"enumeration",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Use this pattern after verbs, 'i' adjectives, or 'na' adjectives in their plain forms. Don't use 〜ばかりに interchangeably with 〜ばかりだ; they have different connotations.",
+			"nuance": "〜ばかりに indicates a negative outcome due solely to a specific previous action, with a sense of blaming.",
+			"examples": [
+				{
+					"japanese": "佐藤さんに日本語を教えてもらう代わりに、私は佐藤さんに英語を教えてあげる。",
+					"english": "In exchange for Satou-san teaching me Japanese, I teach English to Satou-san."
+				},
+				{
+					"japanese": "パソコンで書いた手紙は、文字が読みやすい代わりに、温かみがないように思います。",
+					"english": "I feel that letters written on a computer, while easier to read, lack a sense of warmth."
+				}
+			],
+			"id": "25gqcs6ohf51ogd"
+		},
+		{
+			"usage": "〜反面",
+			"meaning": "while; on the other hand (can't be too opinionated?)",
+			"context": "Neutral to formal situation, often used in written language and formal speech.",
+			"tags": [
+				"contrast",
+				"affirmation",
+				"negation",
+				"辞書形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Attach 〜反面 to dictionary form of verbs, na-adjectives with a 'na', and nouns. Don't use with i-adjectives, or to express personal opinions.",
+			"nuance": "〜反面 contrasts two sides of a situation, often revealing an unexpected or paradoxical aspect.",
+			"examples": [
+				{
+					"japanese": "就職活動は準備が大変である反面、自分自身を知るチャンスでもある。",
+					"english": "While job hunting is challenging in terms of preparation, it also offers an opportunity to know oneself."
+				},
+				{
+					"japanese": "スマートフォンは日本語を勉強のために便利な反面、ストレスを与える道具でもある。",
+					"english": "While smartphones are convenient for studying Japanese, they can also be a source of stress."
+				}
+			],
+			"id": "8mrmdkvkbhab2vu"
+		},
+		{
+			"usage": "〜というか",
+			"meaning": "is more of a; or perhaps I should say; rather than",
+			"context": "Casual, colloquial speech or informal writing; seen as a tad indirect.",
+			"tags": [
+				"subjective",
+				"emotional",
+				"quotation",
+				"contrast",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Used after stating something to revise or reconsider it; often used with the plain form of adjectives and verbs. Don't use it in questions or negative sentences; it's not for contrasts between two completely different things.",
+			"nuance": "Expresses hesitation or correction, adding a softer or more indirect tone to what's being said.",
+			"examples": [
+				{
+					"japanese": "元気というか、うるさいよ。",
+					"english": "You're not just lively, you're loud."
+				}
+			],
+			"id": "1entgiw0zmsc6d3"
+		},
+		{
+			"usage": "〜ことは〜が",
+			"meaning": "its true that ___, but (uses same word in both spots)",
+			"context": "More formal and written language; less commonly seen in casual speech.",
+			"tags": [
+				"contrast",
+				"description",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Following ことは, use non-past tense, applying negative form (〜ないことはないが) for denial translation. Confusion arises from expecting entire sentence negation, instead of its partial or concessive negation nature.",
+			"nuance": "Expresses partial agreement, followed by contrasting information or an objection.",
+			"examples": [
+				{
+					"japanese": "インターネットは便利なことは便利だが、子供が使うには問題もある",
+					"english": "While the internet is convenient, there are issues when it comes to usage by children."
+				},
+				{
+					"japanese": "行くことは行くけど、３０分ぐらい遅刻するかもしれない",
+					"english": "I will go, but I might be about 30 minutes late."
+				}
+			],
+			"id": "yol4mkear4pcjnw"
+		},
+		{
+			"usage": "〜（わけではない・と言うわけではない）",
+			"meaning": "that's NOT the reason; that's NOT why",
+			"context": "Primarily used in formal and casual spoken language, and also in formal written language.",
+			"tags": ["negation", "explanation", "fixed-expression", "普通形"],
+			"notes": "Use after the 'te' form, noun or な adjective, to loosely negate a suggestion or possibility. Avoid using with verbs requiring the 'wo' particle and don't use to generally negate a statement.",
+			"nuance": "Indicates the speaker doesn't fully agree with a preceding or implied statement, also adds an element of hesitation or modesty.",
+			"examples": [
+				{
+					"japanese": "デザートを食べないけど甘いものが嫌いなわけではないんだ。",
+					"english": "I don't eat dessert, but it's not that I dislike sweet things."
+				}
+			],
+			"id": "my6jni2o5cd3ycg"
+		},
+		{
+			"usage": "〜っぽい",
+			"meaning": "special vocab to describe a person",
+			"context": "「〜っぽい」is informal and used more in everyday conversation; be cautious of using it in formal or professional settings.",
+			"tags": ["nominalization", "マス形", "noun-modifier"],
+			"notes": "Use っぽい appended to a noun, na-adjective, or the stem of a verb to imply 'like' or '-ish'. Common errors include attaching っぽい to i-adjectives or not dropping the 'な' when using with na-adjectives.",
+			"nuance": "「〜っぽい」expresses resemblance or a characteristic of something or someone, with a casual, informal, sometimes playful or derogatory nuance.",
+			"examples": [
+				{
+					"japanese": "私は忘れっぽいせいかくで、よく傘をどこかへ置いてきてしまいます",
+					"english": "I have a forgetful nature, and I often leave my umbrella somewhere."
+				},
+				{
+					"japanese": "彼女は男っぽい性格です",
+					"english": "She has a masculine personality."
+				}
+			],
+			"id": "ggb8bwha6f1chgt"
+		},
+		{
+			"usage": "〜じゃなくて",
+			"meaning": "correcting someone",
+			"context": "Generally casual and conversational; overly direct for polite or formal settings.",
+			"tags": ["conditional", "noun-modifier"],
+			"notes": "Followed by what you want to correct; can be used in negative form for more polite context. Beware of overuse, as it can come off as argumentative or arrogant; don't use it to correct factual information, mostly used for personal thoughts.",
+			"nuance": "Used to correct oneself or others, often implying the corrected information is of greater importance; contains degree of emphasis.",
+			"examples": [
+				{
+					"japanese": "ウイリアムじゃなくて、タホですよ",
+					"english": "It's not William, it's Taho."
+				},
+				{
+					"japanese": "オーストラリア人じゃなくて、アメリカ人です",
+					"english": "I'm not Australian, I'm American."
+				}
+			],
+			"id": "aue1zoyhlxmz36f"
+		},
+		{
+			"usage": "〜んじゃなくて",
+			"meaning": "correcting someone",
+			"context": "Mainly colloquial, casual conversations; not appropriate for formal written or spoken context.",
+			"tags": ["conditional", "辞書形"],
+			"notes": "Primarily used in informal and conversational settings, following non-past tense of verbs, i-adjectives or nouns. Mistakenly used in formal situations or following past tense forms which can lead to incorrect usage.",
+			"nuance": "Used to politely correct someone or one's self, showing a shift from an incorrect to a correct point.",
+			"examples": [
+				{
+					"japanese": "彼は行くんじゃなくて、帰るんです",
+					"english": "He's not going, he's returning."
+				}
+			],
+			"id": "lvdy8bpuf6tbnii"
+		},
+		{
+			"usage": "〜ながらも",
+			"meaning": "even while",
+			"context": "Can be used in both casual and formal contexts, but often seen in written language.",
+			"tags": [
+				"combination",
+				"conjunctive",
+				"マス形",
+				"ナイ形",
+				"i-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Ensure it follows the マス形, ナイ形, i-adjective-modifier, or noun-modifier of the verb/adjective/noun it modifies. Learners often confuse ~ながらも with while-in-the-process-of; remember it's used to express 'even though' or contradiction.",
+			"nuance": "〜ながらも implies a sense of contrast or unexpectedness between concurrent states or actions.",
+			"examples": [
+				{
+					"japanese": "試験の前の日、勉強しなきゃと思いながらも、テレビを見ちゃった",
+					"english": "Even though I thought I had to study the day before the exam, I ended up watching TV."
+				},
+				{
+					"japanese": "あの子はまだ小学生ながらも、有名な歌手です",
+					"english": "Despite being just a grade-schooler, that child is a famous singer."
+				}
+			],
+			"id": "ybl51s45wc84x39"
+		},
+		{
+			"usage": "〜につけ",
+			"meaning": "every time; related to feelings only; NOT actions",
+			"context": "Mainly used in a context of written language or literature, but not common in normal conversation.",
+			"tags": ["temporal", "conditional", "辞書形"],
+			"notes": "With 〜につけ, it's best to use it with verbs in dictionary form, and it emphasizes the speaker's emotional reaction. Do not use this form for actions or physical upcoming events, it's strictly used for past feelings and experiences.",
+			"nuance": "This pattern is often used in contexts where a strong emotional reaction is elicited each time a certain situation, image, etc. comes up, and it's linked more with feelings and memories rather than actions.",
+			"examples": [
+				{
+					"japanese": "私はこの写真を見につけ、昔の友達を思い出します",
+					"english": "When I look at this picture, I remember my old friends."
+				}
+			],
+			"id": "aj3qe65uo396uml"
+		},
+		{
+			"usage": "〜にしては",
+			"meaning": "considering this; for something thats this; opposite of expectation; more specific than の割りに",
+			"context": "Generally neutral; acceptable in both casual and formal conversations, and writing.",
+			"tags": [
+				"description",
+				"conjunctive",
+				"普通形",
+				"noun-modifier",
+				"adjective-modifier"
+			],
+			"notes": "Use with 接続形 of い-adjectives and verbs, 普通形 of な-adjectives and nouns; switch to 〜なのに for stronger contrast of expectation vs reality. Beginners often forget that 〜にしては requires clauses on both sides; missing the subsequent clause is incorrect.",
+			"nuance": "〜にしては highlights an unexpected result; it carries a slight tone of surprise, subtly implying 'I didn't expect this from/considering...'.",
+			"examples": [
+				{
+					"japanese": "このアパートは便利なところにあるにしては、値段が安い",
+					"english": "Considering its convenient location, this apartment is inexpensive."
+				},
+				{
+					"japanese": "ただの風邪にしては、熱が高いんじゃないかな",
+					"english": "I think the fever is too high for it to be just a cold."
+				}
+			],
+			"id": "9v3bjiyj274xxho"
+		},
+		{
+			"usage": "〜（に対して・に対する）",
+			"meaning": "in regards to, towards",
+			"context": "Appropriate for formal written and spoken language. Consider using 'にとって' or 'には' for more informal situations.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Use 'に対して' after a noun, pronoun or sentence end (requires 'の'); use 'に対する' for noun-modification. Avoid confusing 'に対して' with 'にとって', which means 'for' or 'from the perspective of'.",
+			"nuance": "Emphasizes a specific direction, object, or point of consideration; can express opposition or contrast.",
+			"examples": [
+				{
+					"japanese": "デパートの店員はお客に対して、丁寧に話します",
+					"english": "The department store clerk speaks politely to customers."
+				}
+			],
+			"id": "cbfqkyfhkb87ue7"
+		},
+		{
+			"usage": "〜んじゃない",
+			"meaning": "i think this, don't you?",
+			"context": "Typically used in informal and conversational contexts, can sound rough or blunt in formal or polite situations.",
+			"tags": ["question-form", "普通形"],
+			"notes": "When placed at the end of a sentence, 〜んじゃない implies that the speaker believes the preceding statement and seeks the listener's agreement. Misuse often comes from confusing it with the negative form 〜じゃない, when 〜んじゃない is in fact a questioning or confirmatory form.",
+			"nuance": "〜んじゃない is used to seek agreement or confirmation from the listener, often with a subjective and speculative tone.",
+			"examples": [
+				{
+					"japanese": "顔色が悪いけど、大丈夫？早く帰ったほうがいいんじゃない？",
+					"english": "You look pale, are you okay? Wouldn't it be better if you went home early?"
+				},
+				{
+					"japanese": "あのカバンが可愛い。でも高いんじゃない？",
+					"english": "That bag is cute. But isn't it expensive?"
+				}
+			],
+			"id": "9kv1uft5t0fy0mq"
+		}
+	]
+}

@@ -1,0 +1,475 @@
+{
+	"completion": [
+		{
+			"id": "dgck789fd2pd3z6",
+			"language": "Japanese",
+			"usage": "〜しまいました",
+			"meaning": "regret/accidental",
+			"context": ["spoken", "written", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses regret or unintended completion. Often used with negative outcomes.",
+			"examples": [
+				{
+					"japanese": "傘を忘れてしまいました",
+					"english": "I forgot my umbrella."
+				},
+				{
+					"japanese": "スマホを落としちゃった",
+					"english": "I dropped my smartphone."
+				}
+			],
+			"forms": {
+				"verb": "て-form + しまう / しまいました"
+			}
+		},
+		{
+			"id": "qai4po3f9zzo8mm",
+			"language": "Japanese",
+			"usage": "〜おきます",
+			"meaning": "in advance",
+			"context": ["spoken", "written", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Do something in advance or leave something in place. Shows foresight or convenience.",
+			"examples": [
+				{
+					"japanese": "クラスの前にカバンをまとめておきます",
+					"english": "I'll gather the bags before class."
+				},
+				{
+					"japanese": "ビールを冷蔵庫に入れておきます",
+					"english": "I'll put the beer in the refrigerator."
+				},
+				{
+					"japanese": "そのままにしておきます",
+					"english": "I will leave it as it is."
+				}
+			],
+			"forms": {
+				"verb": "て-form + おく / おきます"
+			}
+		},
+		{
+			"id": "onle9ogyecz741c",
+			"language": "Japanese",
+			"usage": "〜ばかりです",
+			"meaning": "just finished",
+			"context": ["spoken", "written", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates an action just completed. Use after the ta-form of verbs.",
+			"examples": [
+				{
+					"japanese": "日本に来たばかりです",
+					"english": "I just came to Japan"
+				},
+				{
+					"japanese": "アルバイトを始めたばかりなので、まだ仕事に慣れません",
+					"english": "Since I've just started my part-time job, I'm not used to the work yet."
+				},
+				{
+					"japanese": "仕事を辞めたばかりなのに、もう新しい仕事を見つけた",
+					"english": "Even though I just quit my job, I already found a new one"
+				}
+			],
+			"forms": {
+				"verb": "ta-form + ばかりです"
+			}
+		},
+		{
+			"id": "jyihqe8wvfcpp93",
+			"language": "Japanese",
+			"usage": "〜通りに",
+			"meaning": "exactly as",
+			"context": ["written", "business", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Do something exactly as instructed or expected. Attach after nouns or verbs.",
+			"examples": [
+				{
+					"japanese": "先生の指示の通りに避難してください",
+					"english": "Please evacuate as directed by the teacher."
+				},
+				{
+					"japanese": "私の思った通り、事がうまく続いている",
+					"english": "Just as I expected, things are going well"
+				},
+				{
+					"japanese": "期待どおり、Aチームが優秀した",
+					"english": "As expected, Team A excelled."
+				}
+			],
+			"forms": {
+				"noun/verb": "noun/verb + 通りに"
+			}
+		},
+		{
+			"id": "p8x9rdk12ujgke2",
+			"language": "Japanese",
+			"usage": "〜かけだ・〜かけの「N」・〜かける",
+			"meaning": "half done",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses an incomplete action. Cannot be used with stative verbs.",
+			"examples": [
+				{
+					"japanese": "この作文は書きかけですから、全部書いて明日提出します。",
+					"english": "This essay is only half-finished, so I will complete it and submit it tomorrow."
+				},
+				{
+					"japanese": "風邪が治りかけていたのに、無理をしたので、またひどくなってしまった。",
+					"english": "I was on the verge of recovering from a cold, but because I overexerted myself, it got worse again."
+				}
+			],
+			"forms": {
+				"verb": "masu-stem + かけだ / かけの + N / かける"
+			}
+		},
+		{
+			"id": "iooro5bx46296cy",
+			"language": "Japanese",
+			"usage": "〜のあとで",
+			"meaning": "after",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Describes the sequence of events; attach to nouns.",
+			"examples": [
+				{
+					"japanese": "卒業のあとで、会社で働き始めた",
+					"english": "After graduation, I started working at a company"
+				}
+			],
+			"forms": {
+				"noun": "noun + のあとで"
+			}
+		},
+		{
+			"id": "lm9n25magsrauxn",
+			"language": "Japanese",
+			"usage": "〜あとで",
+			"meaning": "after",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Attach after past-tense verbs (ta-form). Shows sequence of actions.",
+			"examples": [
+				{
+					"japanese": "クラスが終わったあとで、買い物をしよう",
+					"english": "Let's go shopping after class ends."
+				},
+				{
+					"japanese": "家に帰ったあとで、シャワーを浴びました",
+					"english": "After I returned home, I took a shower."
+				}
+			],
+			"forms": {
+				"verb": "ta-form + あとで"
+			}
+		},
+		{
+			"id": "pn4bgcf2vgmtz4p",
+			"language": "Japanese",
+			"usage": "〜上で・〜の上で",
+			"meaning": "after doing",
+			"context": ["written", "business", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates an action completed before an important subsequent action.",
+			"examples": [
+				{
+					"japanese": "書類の内容を読んだ上で、サインをお願いします",
+					"english": "Please sign this after reading the content of the document."
+				}
+			],
+			"forms": {
+				"verb/noun": "verb/noun + の上で / 上で"
+			}
+		},
+		{
+			"id": "yb7x557sq94ecyp",
+			"language": "Japanese",
+			"usage": "〜次第",
+			"meaning": "as soon as",
+			"context": ["written", "business", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates immediate action following completion of something within speaker's control.",
+			"examples": [
+				{
+					"japanese": "準備が出来次第、発表を始めましょう",
+					"english": "As soon as we're ready, let's start the presentation"
+				},
+				{
+					"japanese": "仕事が終わり次第、すぐそちらに向かいます",
+					"english": "As soon as I finish my work, I'll head straight to your location"
+				}
+			],
+			"forms": {
+				"verb": "ます-stem + 次第"
+			}
+		},
+		{
+			"id": "e3qcchzjyqelvvo",
+			"language": "Japanese",
+			"usage": "〜ところ（に・を）",
+			"meaning": "just as",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "に marks time; を marks another person or place causing action.",
+			"examples": [
+				{
+					"japanese": "家を出ようとしたところに、雨が降ってきた",
+					"english": "Just as I was about to leave the house, it started to rain"
+				},
+				{
+					"japanese": "昨日、階段で転んだところを人に見られて、とても恥ずかしかった",
+					"english": "Yesterday, I tripped on the stairs and someone saw me, which was very embarrassing."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/ta-form + ところに / ところを"
+			}
+		},
+		{
+			"id": "ow9f31c696g3g9h",
+			"language": "Japanese",
+			"usage": "〜ところ",
+			"meaning": "just after",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Expresses the state immediately after or upon completion of an action.",
+			"examples": [
+				{
+					"japanese": "新しいパソコンを買ったところ、とても使いやすかった",
+					"english": "I just bought a new computer, and it's very easy to use."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/ta-form + ところ"
+			}
+		},
+		{
+			"id": "f1yet6d52ib0mwz",
+			"language": "Japanese",
+			"usage": "〜とたんに",
+			"meaning": "the instant",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Use with non-volitional past-tense verbs. Sudden or unexpected events.",
+			"examples": [
+				{
+					"japanese": "国の母に電話をかけた。母の声を聞いたとたんに、涙が出てきた。",
+					"english": "I called my mother back in my home country. The moment I heard her voice, tears started to fall."
+				},
+				{
+					"japanese": "テレビで紹介されて有名になったとたんに、お店のサービスが悪くなった。",
+					"english": "As soon as it was featured on TV and became famous, the service at the store worsened."
+				}
+			],
+			"forms": {
+				"verb": "ta-form + とたんに"
+			}
+		},
+		{
+			"id": "xxuc40uodj807ff",
+			"language": "Japanese",
+			"usage": "〜か〜かのうちに",
+			"meaning": "just as",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Occurs immediately after or during an action. Use with dictionary, ta, or nai forms.",
+			"examples": [
+				{
+					"japanese": "バスが止まるが止まらないかのうちに席を立つ人が多い。",
+					"english": "Many people stand up from their seats while the bus is still deciding whether to stop or not."
+				},
+				{
+					"japanese": "昨夜は疲れていたので、ベッドに横になったかならないかのうちに、眠ってしまった。",
+					"english": "I was tired last night, so I fell asleep almost as soon as I lay in bed."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/ta-form/nai-form + か + verb + かのうちに"
+			}
+		},
+		{
+			"id": "o94dh1eiw9h0o04",
+			"language": "Japanese",
+			"usage": "〜初めて",
+			"meaning": "for the first time",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Emphasizes first experience or realization. Use directly after verbs.",
+			"examples": [
+				{
+					"japanese": "病気になって初めて、家族の大切さがわかった。",
+					"english": "It was only after I fell ill that I understood the importance of family."
+				},
+				{
+					"japanese": "一人暮らしになって初めて、母親のありがたさがわかった。",
+					"english": "It was only when I started living alone that I truly appreciated my mother."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/ta-form + 初めて"
+			}
+		},
+		{
+			"id": "unr7d3s384c75p4",
+			"language": "Japanese",
+			"usage": "〜上で",
+			"meaning": "upon",
+			"context": ["written", "business", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates necessary condition for action. Use with dictionary verbs or nouns.",
+			"examples": [
+				{
+					"japanese": "仕事を進める上で、みんなの協力が必要だ。",
+					"english": "In progressing with work, everyone's cooperation is necessary."
+				},
+				{
+					"japanese": "共同生活をする上で大切なのは、お互いにルールを守ることです。",
+					"english": "In communal living, it's important to respect each other's rules."
+				}
+			],
+			"forms": {
+				"verb/noun": "dictionary form + 上で"
+			}
+		},
+		{
+			"id": "mbm8m83zieth8nc",
+			"language": "Japanese",
+			"usage": "〜挙げ句",
+			"meaning": "after all",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used with negative outcomes after a series of events. Attach after ta-form verbs.",
+			"examples": [
+				{
+					"japanese": "５時間も話し合いを続けたあげく、何も決まらなかった。",
+					"english": "After discussing for five hours, we didn't decide on anything."
+				},
+				{
+					"japanese": "彼は散々悩んだ挙げ句、会社を辞めることに決めた。",
+					"english": "After much distress, he decided to resign from the company."
+				}
+			],
+			"forms": {
+				"verb": "ta-form + 挙げ句"
+			}
+		},
+		{
+			"id": "v6ucqr05vgq2orb",
+			"language": "Japanese",
+			"usage": "〜きり・〜っきり",
+			"meaning": "ever since",
+			"context": ["spoken", "informal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates a single event since a point in time; often negative.",
+			"examples": [
+				{
+					"japanese": "この本は子どものころ読んだきり、その後一度も読んでいません。",
+					"english": "I haven't read this book since I first read it as a child."
+				},
+				{
+					"japanese": "彼に最後に会ったのは、卒業式の時です。それきり、一度も会いません。",
+					"english": "The last time I saw him was at the graduation ceremony. I haven't seen him even once since then."
+				}
+			],
+			"forms": {
+				"verb": "ta-form + きり / っきり"
+			}
+		},
+		{
+			"id": "aorch5joprjze92",
+			"language": "Japanese",
+			"usage": "〜までに",
+			"meaning": "by (deadline)",
+			"context": ["spoken", "written", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates something must be completed before a specific time.",
+			"examples": [
+				{
+					"japanese": "2026までに日本語のが話せなければなりません",
+					"english": "I must be able to speak Japanese by 2026."
+				},
+				{
+					"japanese": "今週末までにチケットを買わなければなりません",
+					"english": "I have to buy a ticket by this weekend."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/ta-form + までに"
+			}
+		},
+		{
+			"id": "1qb2sbodsgj1omk",
+			"language": "Japanese",
+			"usage": "〜うちに",
+			"meaning": "before",
+			"context": ["spoken", "written", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Do something before a condition changes. Often with negative verbs.",
+			"examples": [
+				{
+					"japanese": "忘れてしまわないうちに、メモします",
+					"english": "I'll make a note of it before I forget."
+				}
+			],
+			"forms": {
+				"verb": "dictionary/negative form + うちに"
+			}
+		},
+		{
+			"id": "2nbd63uvrhs2g9r",
+			"language": "Japanese",
+			"usage": "〜ところだった",
+			"meaning": "almost",
+			"context": ["spoken", "informal", "neutral"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Indicates an action almost happened but was prevented.",
+			"examples": [
+				{
+					"japanese": "もう少しで１００点取れるところだったのに。９５点だった。",
+					"english": "I was so close to getting 100 points, but I got 95."
+				}
+			],
+			"forms": {
+				"verb": "dictionary form + ところだった"
+			}
+		},
+		{
+			"id": "ecyhb77ldkyszta",
+			"language": "Japanese",
+			"usage": "〜に先立って",
+			"meaning": "prior to",
+			"context": ["written", "business", "polite"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Used before important or ceremonial events; highly formal.",
+			"examples": [
+				{
+					"japanese": "遊園地の開業に先立って、オープニングイベントが行われます",
+					"english": "An opening event will be held before the amusement park opens."
+				}
+			],
+			"forms": {
+				"noun/verb": "noun/verb + に先立って"
+			}
+		}
+	]
+}

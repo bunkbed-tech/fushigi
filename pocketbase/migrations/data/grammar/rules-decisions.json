@@ -1,0 +1,150 @@
+{
+	"rules-decisions": [
+		{
+			"usage": "〜ことになった",
+			"meaning": "something decided by someone else, or everyone (not just you)",
+			"context": "Neutral and formal contexts; used in reporting events, rules, or communally decided actions.",
+			"tags": [
+				"change",
+				"passive-voice",
+				"nominalization",
+				"辞書形",
+				"ナイ形",
+				"i-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Attach it after a verb or adjective to denote a decided plan or fact; edit verb/adjective based on tense or formality. Misuse occurs when learner treats it as their own decision; it's typically someone else's or a collective decision.",
+			"nuance": "Implies a decision, often made by people other than the speaker, affecting him/her in some way.",
+			"examples": [
+				{
+					"japanese": "みんなで相談して、バーベキューは７００円という位ことになった",
+					"english": "After discussing with everyone, we decided that the barbecue would be about 700 yen."
+				},
+				{
+					"japanese": "希望していた奨学金がもらえることになった",
+					"english": "I have been granted the scholarship I was hoping for"
+				}
+			],
+			"id": "982bmjmomhap0fs"
+		},
+		{
+			"usage": "〜ことになっています",
+			"meaning": "something has been decided (plan, rules) out of your control",
+			"context": "Formal, commonly found in written language and formal speeches; less common in casual conversation.",
+			"tags": ["change", "辞書形", "ナイ形"],
+			"notes": "Attach to the dictionary or ナイ form of verbs; don't use for personal decisions or spontaneous events. Mistakenly used to express personal decisions or future intentions, instead of decisions beyond one's control.",
+			"nuance": "Implies a rigid rule or decisions made by others, often with a sense of formality or obligation.",
+			"examples": [
+				{
+					"japanese": "来月から東京に転勤することになっています",
+					"english": "I am scheduled to be transferred to Tokyo from next month."
+				},
+				{
+					"japanese": "ここでは写真を撮らないことになっています",
+					"english": "Taking pictures is not allowed here."
+				}
+			],
+			"id": "i59rvogq9eclyd6"
+		},
+		{
+			"usage": "〜にします",
+			"meaning": "ordering/choosing a specific thing",
+			"context": "Formal when not contracted, casual when contracted. Typically used in ordering things.",
+			"tags": ["conditional", "noun-modifier"],
+			"notes": "Used primarily in situations of choice; it doesn't communicate preference per se. Incorrect use to express preferences or likes. Don't use with actions.",
+			"nuance": "Expresses a decisive choice, sometimes implying careful consideration.",
+			"examples": [
+				{
+					"japanese": "からあげのセットにします",
+					"english": "I'll have the fried chicken set"
+				},
+				{
+					"japanese": "このレストランにしましょう",
+					"english": "Let's choose this restaurant"
+				}
+			],
+			"id": "kdr38wsq3yz5quz"
+		},
+		{
+			"usage": "〜ことにします",
+			"meaning": "a choice, resolution to do something",
+			"context": "Neutral to formal; suitable for both casual conversations and formal documents.",
+			"tags": ["fixed-expression", "change", "辞書形", "ナイ形"],
+			"notes": "Use with verbs in 終止形 (ending form) or ナイ形 (negative form) to express an action decided upon, not fit for expressing habits. Often confused with 〜ことになる, which implies a decision made by others or by circumstances, not personal choice.",
+			"nuance": "〜ことにします implies the decision is made after careful thought, which can express earnestness or resolution.",
+			"examples": [
+				{
+					"japanese": "多すぎるお酒を飲まないことにします",
+					"english": "I've decided not to drink too much alcohol."
+				},
+				{
+					"japanese": "スポーツジムを通うことにします",
+					"english": "I've decided to go to the gym regularly"
+				}
+			],
+			"id": "p5bzsch7d29vhre"
+		},
+		{
+			"usage": "〜には",
+			"meaning": "in order to",
+			"context": "〜には is neutral in terms of social situation, making it appropriate for both formal and informal situations.",
+			"tags": ["causal", "conditional", "辞書形"],
+			"notes": "Use 〜には after the verb or circumstance that signifies the condition needed to achieve a specific outcome. Avoid using 〜には to express a more general cause-effect relationship; it is more suitable for explicit preconditions or requirements.",
+			"nuance": "The nuance of 〜には conveys an implication of purpose or necessity, often with emphasis on the precondition.",
+			"examples": [
+				{
+					"japanese": "利用するには、事前の申し込みが必要なんだって",
+					"english": "They say that a prior application is necessary to use it."
+				},
+				{
+					"japanese": "本を借りるには、図書館利用者カードが必要です",
+					"english": "To borrow a book, you need a library user card."
+				}
+			],
+			"id": "vrx78yb9fpencvi"
+		},
+		{
+			"usage": "〜に備えて",
+			"meaning": "in preparation of",
+			"context": "Neutral to formal; used in both conversation and written language.",
+			"tags": ["temporal", "description", "noun-modifier"],
+			"notes": "Often used for unpredictable circumstances or natural disasters, rather than routine or planned events. Cannot be used with instantaneous events, only ones that would last some duration or have a lasting impact.",
+			"nuance": "〜に備えて imposes a sense of uncertainty about the future event, but concern to be ready for it.",
+			"examples": [
+				{
+					"japanese": "地震に備えて、非常持ち出し袋を用意しようと思います",
+					"english": "I'm thinking of preparing an emergency go-bag for earthquake preparedness."
+				}
+			],
+			"id": "jybsgom66hbm32j"
+		},
+		{
+			"usage": "〜（以上は・上は）",
+			"meaning": "since; now that; because",
+			"context": "More towards formal and written Japanese; sometimes seen in formal speeches.",
+			"tags": [
+				"reasons",
+				"causal",
+				"change",
+				"普通形",
+				"辞書形",
+				"タ形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Often used in formal statements or decisions; usually after dictionary form or na-adjective/noun with 'である'. The mistake is to interchange/confuse with 以上 (meaning more than or not less than); this 以上 is different, with the meaning of 'since' or 'now that'.",
+			"nuance": "～以上は/上は suggests a causality, but carries a stronger, more set tone, expressing a situation that must be done/must be so because the condition is set (above this point).",
+			"examples": [
+				{
+					"japanese": "試合に出場する以上、絶対勝ってみせる。",
+					"english": "Now that I'm taking part in the match, I'll definitely show you a win."
+				},
+				{
+					"japanese": "書類にサインした以上は、キャンセルはできません。",
+					"english": "Once you've signed the documents, you cannot cancel."
+				}
+			],
+			"id": "t0otqgyb9gcnw9r"
+		}
+	]
+}

@@ -9,9 +9,8 @@ import (
 func init() {
 	m.Register(func(app core.App) error {
 		collection := core.NewBaseCollection("grammar")
-
-		collection.ViewRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || user = null)")
-		collection.ListRule = types.Pointer("@request.auth.id != '' && (user = @request.auth.id || user = null)")
+		collection.ViewRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id")
+		collection.ListRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id")
 		collection.CreateRule = types.Pointer("@request.auth.id != '' && @request.body.user = @request.auth.id")
 		collection.UpdateRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id && (@request.body.user:isset = false || @request.body.user = @request.auth.id)")
 		collection.DeleteRule = types.Pointer("@request.auth.id != '' && user = @request.auth.id")
@@ -20,22 +19,17 @@ func init() {
 		if err != nil {
 			return err
 		}
+
 		collection.Fields.Add(&core.RelationField{
 			Name:          "user",
-			Required:      false,
+			Required:      true,
 			CascadeDelete: true,
 			CollectionId:  usersCollection.Id,
 		})
 
-		languagesCollection, err := app.FindCollectionByNameOrId("languages")
-		if err != nil {
-			return err
-		}
-		collection.Fields.Add(&core.RelationField{
-			Name:          "language",
-			Required:      true,
-			CascadeDelete: false,
-			CollectionId:  languagesCollection.Id,
+		collection.Fields.Add(&core.TextField{
+			Name:     "language",
+			Required: true,
 		})
 
 		collection.Fields.Add(&core.TextField{
@@ -48,13 +42,18 @@ func init() {
 			Required: true,
 		})
 
-		collection.Fields.Add(&core.TextField{
+		collection.Fields.Add(&core.JSONField{
 			Name:     "context",
 			Required: false,
 		})
 
-		collection.Fields.Add(&core.JSONField{
-			Name:     "tags",
+		collection.Fields.Add(&core.TextField{
+			Name:     "level",
+			Required: false,
+		})
+
+		collection.Fields.Add(&core.TextField{
+			Name:     "variant",
 			Required: false,
 		})
 
@@ -63,13 +62,18 @@ func init() {
 			Required: false,
 		})
 
-		collection.Fields.Add(&core.TextField{
-			Name:     "nuance",
+		collection.Fields.Add(&core.JSONField{
+			Name:     "examples",
 			Required: false,
 		})
 
 		collection.Fields.Add(&core.JSONField{
-			Name:     "examples",
+			Name:     "forms",
+			Required: false,
+		})
+
+		collection.Fields.Add(&core.JSONField{
+			Name:     "tags",
 			Required: false,
 		})
 
@@ -90,12 +94,11 @@ func init() {
 		}
 
 		return nil
-	}, func(app core.App) error { // optional revert operation
+	}, func(app core.App) error {
 		collection, err := app.FindCollectionByNameOrId("grammar")
 		if err != nil {
 			return err
 		}
-
 		return app.Delete(collection)
 	})
 }

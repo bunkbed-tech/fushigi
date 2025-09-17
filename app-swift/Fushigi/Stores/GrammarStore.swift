@@ -30,29 +30,6 @@ class GrammarStore: ObservableObject {
     /// Currently selected item (set by UI, not managed by store)
     @Published var selectedGrammarPoint: GrammarPointLocal?
 
-    // MARK: Computed Properties
-
-    /// Grammar points created by system/admin (no user ownership)
-    var systemGrammarItems: [GrammarPointLocal] {
-        guard let modelContext else { return [] }
-        let descriptor = FetchDescriptor<GrammarPointLocal>(
-            predicate: #Predicate { $0.user == nil },
-        )
-        return (try? modelContext.fetch(descriptor)) ?? []
-    }
-
-    /// Grammar points created by current user
-    var userGrammarItems: [GrammarPointLocal] {
-        guard let modelContext else { return [] }
-        guard let userId = authManager.currentUser?.id else { return [] }
-        let descriptor = FetchDescriptor<GrammarPointLocal>(
-            predicate: #Predicate<GrammarPointLocal> { grammar in
-                grammar.user == userId
-            },
-        )
-        return (try? modelContext.fetch(descriptor)) ?? []
-    }
-
     // MARK: Init
 
     let modelContext: ModelContext?
@@ -69,11 +46,6 @@ class GrammarStore: ObservableObject {
     }
 
     // MARK: - Public API
-
-    /// Returns true if grammar item is a default (system-provided) by id
-    func isDefaultGrammar(_ grammar: GrammarPointLocal) -> Bool {
-        grammar.user == nil
-    }
 
     /// Finds grammar point by ID from all available items
     func getGrammarPoint(id: String?) -> GrammarPointLocal? {
@@ -96,7 +68,7 @@ class GrammarStore: ObservableObject {
                 predicate: #Predicate<GrammarPointLocal> { grammar in
                     grammar.usage.localizedStandardContains(searchText) ||
                         grammar.meaning.localizedStandardContains(searchText) ||
-                        grammar.context.localizedStandardContains(searchText)
+                        grammar.notes.localizedStandardContains(searchText)
                 },
             )
             return (try? modelContext.fetch(descriptor)) ?? []
@@ -106,7 +78,7 @@ class GrammarStore: ObservableObject {
         return baseItems.filter {
             $0.usage.localizedCaseInsensitiveContains(searchText) ||
                 $0.meaning.localizedCaseInsensitiveContains(searchText) ||
-                $0.context.localizedCaseInsensitiveContains(searchText) ||
+                $0.notes.localizedCaseInsensitiveContains(searchText) ||
                 $0.tags.contains { $0.localizedCaseInsensitiveContains(searchText) }
         }
     }
@@ -119,7 +91,7 @@ class GrammarStore: ObservableObject {
             predicate: #Predicate<GrammarPointLocal> { grammar in
                 grammar.usage.localizedStandardContains(searchText) ||
                     grammar.meaning.localizedStandardContains(searchText) ||
-                    grammar.context.localizedStandardContains(searchText)
+                    grammar.notes.localizedStandardContains(searchText)
             },
         )
         return (try? modelContext.fetch(descriptor)) ?? []
@@ -129,8 +101,6 @@ class GrammarStore: ObservableObject {
     func getGrammarUsageAnalytics() async -> GrammarAnalytics {
         GrammarAnalytics(
             totalPoints: grammarItems.count,
-            systemPoints: systemGrammarItems.count,
-            userPoints: userGrammarItems.count,
         )
     }
 
@@ -184,15 +154,17 @@ class GrammarStore: ObservableObject {
             if let existing = localIndex[remote.id] {
                 // Update existing if remote is newer
                 if remote.updated > existing.updated {
-                    existing.user = remote.user.isEmpty ? nil : remote.user
+                    existing.user = remote.user
                     existing.language = remote.language
                     existing.context = remote.context
                     existing.usage = remote.usage
                     existing.meaning = remote.meaning
+                    existing.level = remote.level
+                    existing.variant = remote.variant
                     existing.tags = remote.tags
                     existing.notes = remote.notes
-                    existing.nuance = remote.nuance
                     existing.examples = remote.examples
+                    existing.forms = remote.forms
                     existing.created = remote.created
                     existing.updated = remote.updated
                 }
@@ -200,15 +172,17 @@ class GrammarStore: ObservableObject {
                 // Create new item with remote ID
                 let newItem = GrammarPointLocal(
                     id: remote.id,
-                    user: remote.user.isEmpty ? nil : remote.user,
+                    user: remote.user,
                     language: remote.language,
                     context: remote.context,
                     usage: remote.usage,
                     meaning: remote.meaning,
-                    tags: remote.tags,
+                    level: remote.level,
+                    variant: remote.variant,
                     notes: remote.notes,
-                    nuance: remote.nuance,
                     examples: remote.examples,
+                    forms: remote.forms,
+                    tags: remote.tags,
                     created: remote.created,
                     updated: remote.updated,
                 )
@@ -259,6 +233,4 @@ extension GrammarStore: SyncableStore {
 /// Analytics data structure
 struct GrammarAnalytics {
     let totalPoints: Int
-    let systemPoints: Int
-    let userPoints: Int
 }

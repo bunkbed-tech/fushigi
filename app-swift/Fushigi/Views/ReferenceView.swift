@@ -50,10 +50,6 @@ struct ReferenceView: View {
         let baseItems: [GrammarPointLocal] = switch selectedFilter {
         case .all:
             studyStore.grammarStore.grammarItems
-        case .defaults:
-            studyStore.grammarStore.systemGrammarItems
-        case .custom:
-            studyStore.grammarStore.userGrammarItems
         case .inSRS:
             studyStore.inSRSGrammarItems
         case .available:
@@ -211,7 +207,7 @@ struct ReferenceView: View {
                 Button("Create", systemImage: "rectangle.fill.badge.plus") {}.disabled(true)
 
                 if selectedFilter == .available {
-                    Button("Generate From Defaults", systemImage: "rectangle.stack.fill.badge.plus") {
+                    Button("Generate From All", systemImage: "rectangle.stack.fill.badge.plus") {
                         Task {
                             await studyStore.srsStore.addBulkToSRS(studyStore.availableGrammarItems)
                         }

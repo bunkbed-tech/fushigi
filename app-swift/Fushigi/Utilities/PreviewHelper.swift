@@ -136,11 +136,11 @@ enum PreviewHelper {
         let userID = UUID()
 
         let fakeItems = [
-            GrammarPointLocal(id: id1, context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
-            GrammarPointLocal(id: id2, context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
-            GrammarPointLocal(id: id3, context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
-            GrammarPointLocal(id: id4, context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
-            GrammarPointLocal(id: id5, context: "casual", usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
+            GrammarPointLocal(id: id1, context: ["casual"], usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
+            GrammarPointLocal(id: id2, context: ["casual"], usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
+            GrammarPointLocal(id: id3, context: ["casual"], usage: "I", meaning: "私は", tags: ["context"]),
+            GrammarPointLocal(id: id4, context: ["casual"], usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
+            GrammarPointLocal(id: id5, context: ["casual"], usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
         ]
 
         // Create SRS records with proper relationships - different record IDs but grammar field matches grammar item
@@ -169,11 +169,11 @@ enum PreviewHelper {
         let id5 = UUID()
 
         let fakeItems = [
-            GrammarPointLocal(id: id1, context: "casual", usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
-            GrammarPointLocal(id: id2, context: "casual", usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
-            GrammarPointLocal(id: id3, context: "casual", usage: "I", meaning: "私は", tags: ["context"]),
-            GrammarPointLocal(id: id4, context: "casual", usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
-            GrammarPointLocal(id: id5, context: "casual", usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
+            GrammarPointLocal(id: id1, context: ["casual"], usage: "Hello", meaning: "こんにちは", tags: ["greeting"]),
+            GrammarPointLocal(id: id2, context: ["casual"], usage: "Goodbye", meaning: "さようなら", tags: ["farewell"]),
+            GrammarPointLocal(id: id3, context: ["casual"], usage: "I", meaning: "私は", tags: ["context"]),
+            GrammarPointLocal(id: id4, context: ["casual"], usage: "Cool", meaning: "かっこいい", tags: ["adjective"]),
+            GrammarPointLocal(id: id5, context: ["casual"], usage: "Am", meaning: "desu", tags: ["sentence-ender"]),
         ]
         store.grammarStore.grammarItems = fakeItems
     }

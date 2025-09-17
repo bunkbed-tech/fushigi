@@ -38,7 +38,7 @@ struct SentenceRemote: Codable {
     let created: Date
     let updated: Date
 
-    // Optional expand field for when ?expand=user,journal_entry,gramamr is used on the route
+    // Optional expand field for when ?expand=user,journal_entry,grammar is used on the route
     let expand: ExpandedRelations?
 
     struct ExpandedRelations: Codable {

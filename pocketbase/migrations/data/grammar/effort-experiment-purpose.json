@@ -1,0 +1,125 @@
+{
+	"effort-experiment-purpose": [
+		{
+			"usage": "〜とする",
+			"meaning": "try to, attempt to",
+			"context": "Common in both casual and formal speech; Can also be used in written language.",
+			"tags": ["description", "fixed-expression", "conjunctive", "意向形"],
+			"notes": "Follows the volitional form of a verb for 'try to do something'; follows a noun for 'presume that'. Often confused with 〜つもり, which is more concrete; 〜とする is speculative and implies effort or attempt.",
+			"nuance": "Expresses the speaker's intention to attempt an action or the idea of supposing or assuming a situation.",
+			"examples": [
+				{
+					"japanese": "寒い朝は、布団から起きようとしても、なかなか出られない",
+					"english": "On cold mornings, even if I try to get up from the futon, it's quite hard to do so."
+				}
+			],
+			"id": "60pd32cn2viz7qz"
+		},
+		{
+			"usage": "〜みます",
+			"meaning": "try something",
+			"context": "Standard, used in both casual and formal situation.",
+			"tags": ["テ形"],
+			"notes": "Use this when you want to express trying out or tasting something new. Do not use 〜みます for habitual or routine actions, it's only for new experiences.",
+			"nuance": "〜みます suggests a tentative attempt or experimentation, often for the first time.",
+			"examples": [
+				{
+					"japanese": "あの山を登ってみます",
+					"english": "I will try to climb that mountain."
+				},
+				{
+					"japanese": "この上着を着てみたいです",
+					"english": "I would like to try on this jacket."
+				}
+			],
+			"id": "ysm3s43cy6kj8o7"
+		},
+		{
+			"usage": "〜ために、〜",
+			"meaning": "giving a reason",
+			"context": "Formal speech and writing; could be used in informal speech if the situation demands clarity.",
+			"tags": ["explanation", "causal", "conjunctive", "普通形"],
+			"notes": "Use before a clause to state the purpose of your action or event, in combination with verbs or adjectives. Avoid using 〜ために with expressions of desire or personal preferences; use 〜ように instead.",
+			"nuance": "〜ために expresses justification; the 'cause' is typically a nonnegotiable fact or event.",
+			"examples": [
+				{
+					"japanese": "ここはとても危険なために、立ち入り禁止になりました",
+					"english": "This place has become off-limits because it is very dangerous."
+				}
+			],
+			"id": "gmf0rmsb6ppvk1f"
+		},
+		{
+			"usage": "〜のに、〜",
+			"meaning": "in order to",
+			"context": "Neutral, suitable for both casual and polite contexts.",
+			"tags": ["causal", "conjunctive", "辞書形"],
+			"notes": "Must follow the dictionary form of verbs/adjectives/nouns. Misused as 'despite'; instead, ~のに (at end of sentence) is the 'despite' form.",
+			"nuance": "Expresses purpose with a subtle implication of effort required in the action.",
+			"examples": [
+				{
+					"japanese": "野菜ジュースを作るのに便利です",
+					"english": "It's convenient for making vegetable juice."
+				},
+				{
+					"japanese": "この靴は山を登るのにいいです",
+					"english": "These shoes are good for climbing mountains."
+				}
+			],
+			"id": "277i59yu7wmijns"
+		},
+		{
+			"usage": "〜に〜",
+			"meaning": "for this specifically, in order to",
+			"context": "Used in both casual and formal contexts, not limited to any specific social situation.",
+			"tags": ["conjunctive", "conditional", "noun-modifier"],
+			"notes": "Use for indicating the purpose of an action or movement toward a goal, usually followed by a verb in the plain form. Students often misuse this for expressing causality or reasons, not for aiming actions toward a specific goal.",
+			"nuance": "Expresses purpose or specific direction, not to be confused with cause or reason.",
+			"examples": [
+				{
+					"japanese": "この食べ物はダイエットにいいです",
+					"english": "This food is good for your diet."
+				}
+			],
+			"id": "1t8xi33tz0nt818"
+		},
+		{
+			"usage": "〜ようにしています",
+			"meaning": "effort, habit, goal that has started or quit",
+			"context": "Neutral; appropriate in both casual and formal discourse, but avoid using in highly informal or colloquial contexts.",
+			"tags": ["change", "fixed-expression", "辞書形", "ナイ形"],
+			"notes": "Use with verb in dictionary form for habit beginning, use in negative form for habit ending. Learners often mistranslate as a future tense or forget to match the verb form to the desired meaning.",
+			"nuance": "Expresses a continuous effort or intention to maintain or change a habit; can carry a tone of strain or devotion.",
+			"examples": [
+				{
+					"japanese": "私はできるだけ毎日勉強するようにしている",
+					"english": "I try to study as much as possible every day"
+				},
+				{
+					"japanese": "たくさんテレビを見ないようにしています",
+					"english": "I am trying not to watch too much TV."
+				}
+			],
+			"id": "ko3967pxqosi8w3"
+		},
+		{
+			"usage": "〜を通して",
+			"meaning": "throughout (time); via (tool)",
+			"context": "This construction is neutral; can be used both in informal and formal situations, including writing.",
+			"tags": ["description", "temporal", "conjunctive", "noun-modifier"],
+			"notes": "Use 〜を通して to indicate a long-term action or to denote something done via a particular medium or method. Avoid using 〜を通して when referring to instantaneous or one-time events, or direct actions without a medium.",
+			"nuance": "〜を通して suggests a process over a period of time or via a medium/method, with an emphasis on continuity or being thorough.",
+			"examples": [
+				{
+					"japanese": "この地方は、一年を通じて、暑いです",
+					"english": "This region is hot all year round."
+				},
+				{
+					"japanese": "この町では、四季を通して、さまざまな果物が食べられる",
+					"english": "In this town, a variety of fruits can be enjoyed throughout the four seasons."
+				}
+			],
+			"id": "9zr6p3qd7rfyhmr"
+		}
+	]
+}

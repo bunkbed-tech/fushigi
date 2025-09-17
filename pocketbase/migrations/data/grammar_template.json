@@ -1,22 +1,22 @@
 {
 	"grammar": [
 		{
-			"usage": "",
-			"meaning": "",
-			"context": "",
-			"tags": [""],
-			"notes": "",
-			"nuance": "",
+			"id": "qny87a7nqze514n",
+			"usage": "〜...",
+			"meaning": "short english phrase, single word descriptor",
+			"context": ["spoken", "casual", "etc"],
+			"level": "polite",
+			"variant": "none",
+			"notes": "Extra descriptor.",
 			"examples": [
 				{
 					"japanese": "",
 					"english": ""
-				},
-				{
-					"japanese": "",
-					"english": ""
 				}
-			]
+			],
+			"forms": {
+				"verb": "exact sentence pattern"
+			}
 		}
 	]
 }

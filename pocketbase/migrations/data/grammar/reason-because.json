@@ -1,0 +1,312 @@
+{
+	"reason-because": [
+		{
+			"usage": "〜ので",
+			"meaning": "basic cause and effect",
+			"context": "Generally used in polite or semi-formal speech, and suitable to use in written language.",
+			"tags": ["causal", "普通形"],
+			"notes": "Usable with both nouns and verbs, always placed at end of the cause clause. Often confused with 〜から in usage, but 〜ので is typically more formal and less emotionally charged.",
+			"nuance": "〜ので presents a neutral tone and a direct-forward relationship between cause and effect, often used to give explanations or reasons.",
+			"examples": [
+				{
+					"japanese": "札幌には夢がたくさんあるのでスキーをしたいです",
+					"english": "I want to ski because there are so many dreams in Sapporo."
+				},
+				{
+					"japanese": "私の犬の種類は「ヒーラー」なので、私はいつも疲れます",
+					"english": "Since my dog's breed is 'Heeler', I always get tired"
+				}
+			],
+			"id": "5cl5pu55c8weewg"
+		},
+		{
+			"usage": "〜からです",
+			"meaning": "giving a reason at the end of a sentence",
+			"context": "Considered neutral in formality and appropriate for use in daily, formal, and academic settings.",
+			"tags": ["explanation", "causal", "普通形"],
+			"notes": "Use 〜からです at the end of a sentence to present the cause or reason, with the predicate prior to it being in its plain form. Learners often misuse 〜からです with predicates in polite form or in questions, which is incorrect.",
+			"nuance": "Used to provide explanation or reason, often with a tone of justification or assertion.",
+			"examples": [
+				{
+					"japanese": "祖母にカメの置物をあげました、カメは長生きのシンボルからです",
+					"english": "I gave my grandmother a turtle ornament because the turtle is a symbol of longevity."
+				}
+			],
+			"id": "81cl45peqm2uu06"
+		},
+		{
+			"usage": "〜んだって",
+			"meaning": "explaining something you saw",
+			"context": "It's casual, used in informal conversations and not suitable for formal or business contexts.",
+			"tags": ["explanation", "普通形"],
+			"notes": "Use it to convey information you've overheard or been told indirectly, not facts you know firsthand. Avoid using 〜んだって for certainties or personal experiences. It's for secondhand information only.",
+			"nuance": "〜んだって carries a nuance of reporting heard information, akin to 'it seems' or 'I heard.'",
+			"examples": [
+				{
+					"japanese": "インダーネットで調べたんだけど、今週末花火があるんだって",
+					"english": "I looked it up on the internet, and it seems there will be fireworks this weekend."
+				}
+			],
+			"id": "9jdki10b9ya425i"
+		},
+		{
+			"usage": "〜がきっかけで",
+			"meaning": "due to; the original cause",
+			"context": "Neutral, commonly used in both casual conversation and formal writing.",
+			"tags": ["causal", "noun-modifier"],
+			"notes": "Use after a noun or noun phrase to indicate the original causal factor behind a situation. Don't confuse with similar expressions like 〜きっかけに or 〜ために, each has distinct causal relationships and nuances.",
+			"nuance": "Used to denote the initiating cause that prompted an event rather than the direct cause, often carrying sentimental feelings.",
+			"examples": [
+				{
+					"japanese": "アニメがきっかけで、日本語の勉強を始めました",
+					"english": "I started studying Japanese because of anime."
+				}
+			],
+			"id": "f4bsuxsjrs9naa2"
+		},
+		{
+			"usage": "〜こそ・〜からこそ",
+			"meaning": "calling out a specific reason",
+			"context": "Moderate to formal settings, seen in expressive writings, speeches, and serious conversation; not common in casual or colloquial speaking.",
+			"tags": ["causal", "conditional", "普通形", "noun-modifier"],
+			"notes": "Use 〜こそ・〜からこそ after the reason-stating clause, often incorporated into explanatory statements or justifications. Avoid using it for simple casual reasons as its use adds intensity or seriousness; inappropriate use may come off as dramatic.",
+			"nuance": "〜こそ・〜からこそ stress a particular element as the definite cause or reason, often carrying a sense of necessity, regret, or urgency.",
+			"examples": [
+				{
+					"japanese": "明日こそ、早く起きよう",
+					"english": "Tomorrow, I'll definitely wake up early."
+				},
+				{
+					"japanese": "毎日仕事をしているからこそ、休みが嬉しいんだよ",
+					"english": "It's precisely because I work every day that I'm happy to have a day off."
+				}
+			],
+			"id": "wucueyuhkkmt4f0"
+		},
+		{
+			"usage": "〜ことだし",
+			"meaning": "many reasons exist, but this one is good enough; since ___, ___",
+			"context": "Polite, moderately formal; use in diplomatic discussions, rationale explanations and mild suggestion context.",
+			"tags": ["enumeration", "description", "普通形"],
+			"notes": "Use after plain form of verbs, adjectives and nouns to highlight a particular 'good enough' reason. Mistakenly using after conjugated forms, and overusing ことだし and making speech sound overly formal or unconvincing.",
+			"nuance": "Signals the speaker's perspective that the reason given, despite being one of many, is sufficient for the conclusion.",
+			"examples": [
+				{
+					"japanese": "天気もいいことだし、飲みに行かない？",
+					"english": "The weather is nice, so why don't we go for a drink?"
+				},
+				{
+					"japanese": "せっかく日本にいることだし、富士山に登りたいなあと思っています",
+					"english": "Since I'm already in Japan, I'm thinking I'd like to climb Mount Fuji."
+				}
+			],
+			"id": "s9dfs46cy3dj4ep"
+		},
+		{
+			"usage": "〜につき",
+			"meaning": "formal version of due to (だから)",
+			"context": "Highly formal, suited for business or academic writings, not appropriate for general conversation.",
+			"tags": ["polite", "noun-modifier"],
+			"notes": "Primarily used in notices or instructions, often seen in statements or announcements. Don't use in casual conversations or informal writing; only prior to nouns.",
+			"nuance": "Utilized strictly in formal written contexts to express reasons/conditions equivalent to だから.",
+			"examples": [
+				{
+					"japanese": "雨天につき、本日のイベントは中止になりました",
+					"english": "Due to the rainy weather, today's event has been cancelled."
+				}
+			],
+			"id": "nx0ou3mra7qpjjo"
+		},
+		{
+			"usage": "〜によって",
+			"meaning": "depending on or according to",
+			"context": "Commonly used in both informal and formal contexts, yet beware 〜により as a more formal alternative.",
+			"tags": ["explanation", "causal", "noun-modifier"],
+			"notes": "Best utilized when there is uncertainty or variation based on a particular factor or circumstance. Avoid confusing with 〜により or 〜による — the former is more formal, the latter is for direct cause-and-effect.",
+			"nuance": "〜によって connotes potential variables; mood can shift neutral to negative depending on outcome of conditions.",
+			"examples": [
+				{
+					"japanese": "雷雨の影響によって、電車が遅れています",
+					"english": "The train is delayed due to the impact of the thunderstorm."
+				}
+			],
+			"id": "2htx1fisi5pcixo"
+		},
+		{
+			"usage": "〜ことから",
+			"meaning": "because of",
+			"context": "This phrase is generally found in formal or written Japanese.",
+			"tags": [
+				"description",
+				"conjunctive",
+				"causal",
+				"nominalization",
+				"普通形"
+			],
+			"notes": "It's commonly used in written language or formal speech after a clause in the plain form (non-past or past, positive or negative). Students often misuse this structure in a subjective or biased context, forgetting that ことから is for objective or universal truths.",
+			"nuance": "「〜ことから」is used when providing a reason or root cause for a certain conclusion or resultant state, often implying an objective or factual basis as opposed to subjective opinion.",
+			"examples": [
+				{
+					"japanese": "この辺は富士山がよく見えることから、富士見町と呼ばれるようになった",
+					"english": "This area came to be known as Fujimi Town because Mount Fuji can be seen clearly from here."
+				}
+			],
+			"id": "27af4ldkj3och82"
+		},
+		{
+			"usage": "〜（ものですから・ものだから・もので）",
+			"meaning": "explain or give excuses for a certain action",
+			"context": "Its use is equally fitting in both formal and casual speech, yet carries more weight in formal contexts.",
+			"tags": ["conjunctive", "description", "普通形", "noun-modifier"],
+			"notes": "Mostly employed after the dictionary form of verbs and i-adjectives, with na-adjectives and nouns attach 'na' before /ものですから/. Avoid using this form to justify rude or inappropriate behavior; it is frequently misconstrued as such by beginner learners.",
+			"nuance": "It conveys a soft and polite tone, generally used to explain reasons or causes, usually with an apologetic or explanatory note.",
+			"examples": [
+				{
+					"japanese": "手帳に書かなかったもので、ゴミの曜日がよく分からなかったんです",
+					"english": "I didn't write it down in my notebook, so I couldn't quite understand the garbage collection day."
+				},
+				{
+					"japanese": "彼女とのデートなものだから、寝坊しちゃって",
+					"english": "Because it was a date with her, I ended up oversleeping"
+				}
+			],
+			"id": "t6w6o0iz9fc4ijz"
+		},
+		{
+			"usage": "〜おかげで",
+			"meaning": "thanks to, in a positive way",
+			"context": "Common in formal and informal communication, but particularly polite or academic settings.",
+			"tags": ["causal", "affirmation", "普通形"],
+			"notes": "Follows the 普通形 of verbs, adjectives, and nouns to sound more natural. Only used to express positive causes, using it for negative consequences is incorrect.",
+			"nuance": "Used to express gratitude for a positive outcome, often from an external source.",
+			"examples": [
+				{
+					"japanese": "みんなが手伝ってくれたおかげで、迷った犬を見つけました",
+					"english": "Thanks to everyone's help, we found the lost dog."
+				},
+				{
+					"japanese": "両親のおかげで、留学できたので、とても感謝しています",
+					"english": "Thanks to my parents, I was able to study abroad, for which I am very grateful."
+				}
+			],
+			"id": "i4xn1lzrewy4rl3"
+		},
+		{
+			"usage": "〜せいで",
+			"meaning": "thanks to, in a blaming way",
+			"context": "Casual to semi-formal, less likely to be used in business or formal writing.",
+			"tags": ["causal", "negation", "普通形"],
+			"notes": "Follows the dictionary form of verbs, i-adjectives, na-adjectives, nouns, and can be used colloquially with sarcasm or humor. Avoid using it lightly due to its strong negative connotation, unlike 'のために' or 'から'.",
+			"nuance": "Used to express blame or negative impact in a situation, stronger than 'のせいで'.",
+			"examples": [
+				{
+					"japanese": "声が出ないのは、病気のせいだ",
+					"english": "The reason I can't speak is because of sickness."
+				},
+				{
+					"japanese": "せっかく新幹線を予約したのに、友達が遅刻したせいで、乗れなかった",
+					"english": "Even though I went to the trouble of reserving the bullet train, I couldn't get on because my friend was late"
+				}
+			],
+			"id": "7ryqvggwqj7ttys"
+		},
+		{
+			"usage": "〜（もん・だもん）",
+			"meaning": "because of; it's a ___ thing; giving a reason",
+			"context": "Highly informal and colloquial, fits in casual dialogues among close friends or family.",
+			"tags": ["description", "explanation", "childish", "普通形"],
+			"notes": "Pairs well with casual conversations and informal sentences, not for formal language or written Japanese. Often overused by learners, making their speech style sound overly childish.",
+			"nuance": "Emphasizes subjectivity or emotional justification, often perceived as childish or self-centered.",
+			"examples": [
+				{
+					"japanese": "どうして買わないの？だから、高すぎるんだもん！",
+					"english": "Why aren't you buying it? Because it's too expensive!"
+				}
+			],
+			"id": "j6ekiksq1p40das"
+		},
+		{
+			"usage": "〜結果",
+			"meaning": "as a result of",
+			"context": "Neutral situation, usable in both conversational and written Japanese.",
+			"tags": ["causal", "タ形", "noun-modifier"],
+			"notes": "Use it after the verb in ~た-form to indicate 'as a result of doing that verb'. Don't confuse with ~ため (because of); 〜結果 emphasizes the result, ~ため emphasizes the reason.",
+			"nuance": "〜結果 carries an inference of causality, often signifying an unforeseen outcome.",
+			"examples": [
+				{
+					"japanese": "川の水が減った結果、魚がいなくなってしまった",
+					"english": "As a result of the river's water level decreasing, the fish have disappeared"
+				}
+			],
+			"id": "e7r2muec7q8mn9k"
+		},
+		{
+			"usage": "〜んだから",
+			"meaning": "giving a reason for something you feel someone should already know; of course it's ___",
+			"context": "Common in informal and semi-formal speech; not suitable in polite or formal situations.",
+			"tags": ["reasons", "confirmation", "sentence-final", "普通形"],
+			"notes": "Follows short forms or nouns (using ので); used when speaking about known information and often with corrective or explanatory tone. Avoid using 〜んだから to start a sentence; it can sound harsh and blunt.",
+			"nuance": "〜んだから is used for emphasis; expressing frustration or surprise that the listener doesn't know something they should.",
+			"examples": [
+				{
+					"japanese": "ここに書いてあるんだから、自分で見ればいいでしょ",
+					"english": "Since it's written here, you should look at it yourself."
+				}
+			],
+			"id": "pf6deeh4f9v4nqz"
+		},
+		{
+			"usage": "〜からと言って",
+			"meaning": "just because",
+			"context": "Generally neutral in sociolinguistic situation, can be used in both casual and formal speech.",
+			"tags": ["limitation", "quotation", "普通形"],
+			"notes": "Only used with verb plain form, i-adjectives, and noun+だ. Often confused with '~から', which lacks the dismissive 'just because' tone of '~からと言って'.",
+			"nuance": "Used to indicate that a certain condition does not necessarily lead to an expected outcome, sometimes with a tone of caution.",
+			"examples": [
+				{
+					"japanese": "美味しいからと言って、食べすぎてはいけません",
+					"english": "Just because it's delicious, doesn't mean you should overeat."
+				},
+				{
+					"japanese": "友達からと言って、なんでも頼むのは良くない",
+					"english": "Just because we are friends, it's not good to ask for anything and everything."
+				}
+			],
+			"id": "fh35f19weop4c4q"
+		},
+		{
+			"usage": "〜次第だ",
+			"meaning": "because, this situation, these circumstances",
+			"context": "Mostly used in a formal, polite, or written context, less common in informal or casual speech.",
+			"tags": ["causal", "conditional", "reasons", "noun-modifier"],
+			"notes": "It is usually used with nouns to add contextual reasons influencing the current situation. Incorrect replacement of ~次第だ with other causal/conditional clauses (あげく、ため) due to similar meanings but different emotional contexts.",
+			"nuance": "〜次第だ implies causality but also a degree of helplessness or inevitability, often used when 'things are as they are' due to circumstances beyond control.",
+			"examples": [
+				{
+					"japanese": "明日のイベントに行くかどうかは、天気次第です。",
+					"english": "Whether or not I'll go to the event tomorrow depends on the weather."
+				},
+				{
+					"japanese": "やる気次第で、うまく行くかどうかは決まると思う。",
+					"english": "I think whether things go well or not depends on your motivation."
+				}
+			],
+			"id": "l67cavpqgf2k6ee"
+		},
+		{
+			"usage": "〜ことで",
+			"meaning": "due to this specific thing",
+			"context": "Neutral to formal, common in both colloquial and formal speech, but frequently used in written text.",
+			"tags": ["explanation", "causal", "普通形"],
+			"notes": "Attach it to short forms of verbs and adjectives; useful for pointing out cause-effect relations. Often confused with 〜から or 〜ので; ことで emphasizes the event, phenomenon or action resulting in a consequence.",
+			"nuance": "Used to explain causal relations with a neutral or slightly formal tone.",
+			"examples": [
+				{
+					"japanese": "寝る前に日記を書くことで、毎日の生活を見直しています",
+					"english": "By writing a diary before going to bed, I reflect on my daily life."
+				}
+			],
+			"id": "gh0mam6nfzz7kp3"
+		}
+	]
+}

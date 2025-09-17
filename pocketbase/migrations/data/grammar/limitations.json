@@ -1,0 +1,557 @@
+{
+	"limitations": [
+		{
+			"usage": "〜に限る",
+			"meaning": "this specific point marks something as the BEST; limited to ___",
+			"context": "Mostly found in personal conversation and subjective writing; avoid in formal documents.",
+			"tags": [
+				"description",
+				"conditional",
+				"辞書形",
+				"ナイ形",
+				"noun-modifier",
+				"adjective-modifier"
+			],
+			"notes": "Most often used with positive situations or things, rarely with negative. Don't confuse with the formal に限らず (not only), which expands, not limits.",
+			"nuance": "Expresses the speaker's strong preference or endorsement; not a casual expression.",
+			"examples": [
+				{
+					"japanese": "ストレスが溜まった時には、休憩するに限ります",
+					"english": "When you're stressed, taking a break is crucial."
+				},
+				{
+					"japanese": "旅行するなら、冬に限るよ",
+					"english": "If you're going to travel, there's nothing like winter."
+				}
+			],
+			"id": "3ewym9ldalspuzv"
+		},
+		{
+			"usage": "〜を中心に（して）",
+			"meaning": "mainly; focused on; centered on",
+			"context": "Neutral to formal, found in both casual conversation and formal texts.",
+			"tags": ["description", "noun-modifier"],
+			"notes": "Pair with nouns, not verbs; use to focus attention to a central idea or subject and its related topics. Mistakenly used with verbs or unrelated subjects; it's not suitable to express 'mainly' as a frequency.",
+			"nuance": "Emphasizes the core around which something revolves or from which something spreads",
+			"examples": [
+				{
+					"japanese": "このチームはタホさんを中心によくまとまっている",
+					"english": "This team is well organized around Mr. Taho."
+				},
+				{
+					"japanese": "健康のために野菜を中心とした食事をするようにといつも母に言われている",
+					"english": "My mother always tells me to eat a vegetable-centric diet for my health."
+				}
+			],
+			"id": "rv2g7du8rk0e3ra"
+		},
+		{
+			"usage": "〜をはじめ",
+			"meaning": "starting with; mostly as an example rather than literally time based",
+			"context": "Neutral, suitable for both colloquial and formal communication.",
+			"tags": ["enumeration", "description", "conjunctive", "noun-modifier"],
+			"notes": "Use to present the foremost case in an array of items, don't use for chronological order or sequences. Common error is literal translation; it does not mean 'starting with' in a temporal context.",
+			"nuance": "〜をはじめ introduces a representative example or the most important case, implying many others left unsaid.",
+			"examples": [
+				{
+					"japanese": "アメリカにはバーベキューをはじめ、美味しい食べ物がたくさんあります",
+					"english": "In America, there are a lot of delicious foods, starting with barbecue."
+				},
+				{
+					"japanese": "冬はスキーを始め、楽しいスポーツがいろいろある",
+					"english": "There are various fun sports to enjoy in winter, starting with skiing."
+				}
+			],
+			"id": "1ssoyuzua5zn0c4"
+		},
+		{
+			"usage": "〜限り",
+			"meaning": "as long as, always the same; limited to this exactly",
+			"context": "Primarily used in formal, written Japanese and during serious conversations.",
+			"tags": ["comparative", "普通形"],
+			"notes": "'〜限り' is commonly used after nouns, verbs, adjectives; and it often indicates a temporal or conditional limitation. Avoid confusing with 'だけ' which has a similar meaning; '〜限り' has a stronger sense of restriction and urgency.",
+			"nuance": "Expresses 'as long as' a certain condition holds true, implies a sense of limit or constraint.",
+			"examples": [
+				{
+					"japanese": "卒業しても、仕事が見つからない限りはその店のバイトを続けるつもりです",
+					"english": "Even after I graduate, I plan to continue working part-time at that store until I find another job."
+				},
+				{
+					"japanese": "満員電車について、東京が首都である限り、変わらないよ",
+					"english": "As long as Tokyo is the capital, the situation with crowded trains won't change."
+				}
+			],
+			"id": "1d3qbm4c3jblrdj"
+		},
+		{
+			"usage": "〜（に・で）さえ",
+			"meaning": "even ___ (a limit not hit)",
+			"context": "Commonly used in both formal and informal contexts, more frequently in formal or written language.",
+			"tags": ["limitation", "likelihood", "noun-modifier"],
+			"notes": "Always attaches to a noun or verb stem, with に following motion verbs and で following ability or state verbs. Mixing up the use of に and で; forgetting it carries an implied negative event or outcome behind.",
+			"nuance": "Expresses that 'even' something usually not included or exceptional didn't meet the standard.",
+			"examples": [
+				{
+					"japanese": "今日は朝からとても忙しくて、食べる時間さえありませんでした",
+					"english": "I was extremely busy from morning today, I didn't even have time to eat."
+				},
+				{
+					"japanese": "卵かけご飯なんて、子供でさえ作れますよ",
+					"english": "Even a child can make egg over rice."
+				}
+			],
+			"id": "8o4szwkvbh93h96"
+		},
+		{
+			"usage": "〜（ほど・ぐらい・くらい）",
+			"meaning": "something done to the extent that ___ happens",
+			"context": "ほど is slightly formal; ぐらい/くらい are more conversational.",
+			"tags": ["comparative", "description", "普通形"],
+			"notes": "Used after the subject, often with negative verbs to express 'not as ___ as'. Do not use when comparing two things of equal level; use 'より' instead.",
+			"nuance": "Indicates extent or degree of an action or situation, slightly emphasizing in ほど while ぐらい/くらい being more casual.",
+			"examples": [
+				{
+					"japanese": "この料理は口から火が出るほど辛かった",
+					"english": "This dish was so spicy that it felt like fire was coming out of my mouth."
+				},
+				{
+					"japanese": "今回の試験のために、死ねほど勉強するつもり",
+					"english": "I intend to study so hard for this test, it's like I could die."
+				}
+			],
+			"id": "2zfqg5rmweq83hc"
+		},
+		{
+			"usage": "〜（くらい・ぐらい）",
+			"meaning": "small thing; about ___ much; close to",
+			"context": "Generally casual/informal; can be used in formal speech but with care.",
+			"tags": ["comparative", "description", "普通形"],
+			"notes": "Use after verbs, i-adjectives, or nouns (with くらい for verbs and i-adjectives, ぐらい for nouns). Don't confuse with ほど; くらい/ぐらい is more informal and perceived as less serious.",
+			"nuance": "Expresses modesty or slight humility, often bringing a softening or dismissive effect.",
+			"examples": [
+				{
+					"japanese": "もう子供じゃないでしょう？部屋を掃除するぐらい自分でしなさい！",
+					"english": "You're not a child anymore, right? Clean your room yourself!"
+				}
+			],
+			"id": "qxhk496x7z1wjrl"
+		},
+		{
+			"usage": "〜気味",
+			"meaning": "a little bit; 少し",
+			"context": "Common in casual conversation or writing, sometimes in formal speech, but seldom in business or formal writing.",
+			"tags": [
+				"limitation",
+				"negation",
+				"description",
+				"マス形",
+				"noun-modifier"
+			],
+			"notes": "Attach to the stem of adjectives/nouns (removing い in い-adjectives), and don't use with verbs or な-adjectives. Inappropriate use in positive context; it's mostly used to express negative or worrisome matters.",
+			"nuance": "〜気味 adds a subjective, slight feel to the adjective, indicating perceptual or potential state, often with negative implications.",
+			"examples": [
+				{
+					"japanese": "最近、忙しくて、疲れ気味だから、ゆっくり休みたい",
+					"english": "Recently, I've been so busy and feeling somewhat tired, so I want to take a break and relax"
+				},
+				{
+					"japanese": "外食ばかりしているので、お金が不足気味かもしれないと心配です",
+					"english": "I'm worried that I may be running low on money because I've been eating out a lot."
+				}
+			],
+			"id": "onhfkj066rft7h7"
+		},
+		{
+			"usage": "(V さえすれば)・(N さえ条件形)・(A さえあれば)",
+			"meaning": "if only ___; as long as ___; さえ is a limiter",
+			"context": "Formal but can be seen in both casual and polite conversation; be aware of the emotional intensity when using.",
+			"tags": [
+				"limitation",
+				"conditional",
+				"マス形",
+				"noun-modifier",
+				"adjective-modifier"
+			],
+			"notes": "Primarily used with positive actions or states; conjugate condition with ば-form when modifying verbs or adjectives. Common errors include using it with negative actions/states or forgetting to use the ば-form after さえ.",
+			"nuance": "Implies strong emphasis on the condition; usage often conveys desperation, desire or frustration.",
+			"examples": [
+				{
+					"japanese": "私はあなたさえいれば、幸せです",
+					"english": "As long as I have you, I am happy"
+				},
+				{
+					"japanese": "私はあなたが意さえすれば、幸せです",
+					"english": "I'm happy if only you mean it."
+				},
+				{
+					"japanese": "カップラーメンはお湯さえ入れれば、食べられる",
+					"english": "With just hot water, you can eat cup ramen"
+				},
+				{
+					"japanese": "カップラーメンはお湯を入れさえすれば、食べられる",
+					"english": "You only need to add hot water to eat cup ramen."
+				},
+				{
+					"japanese": "私は給料さえよければ、どんな仕事でもします",
+					"english": "As long as the salary is good, I'll do any kind of job."
+				},
+				{
+					"japanese": "私は給料がよくさえあれば、どんな仕事でもします",
+					"english": "If the pay is good, I'll do any job."
+				},
+				{
+					"japanese": "年をとっても体さえ丈夫なら、何でもできます",
+					"english": "As long as your body stays strong as you age, you can do anything."
+				},
+				{
+					"japanese": "年をとっても体が丈夫さえあれば、何でもできます",
+					"english": "Even as you age, as long as you have a strong body, you can do anything."
+				}
+			],
+			"id": "w5z7ergmb6ipo4a"
+		},
+		{
+			"usage": "１助数詞〜として〜ない",
+			"meaning": "not a single one",
+			"context": "Neutral–avoid using in especially polite or informal situations.",
+			"tags": ["negation", "limitation"],
+			"notes": "Used with counter word and noun, often for inanimate objects or abstract concepts. Incorrect counter word usage or placing the particle と where it doesn't belong.",
+			"nuance": "Expresses comprehensive negation of existence, often conveying strong personal sentiment.",
+			"examples": [
+				{
+					"japanese": "私の家は火事で焼けてしまいました、家族の思い出の品はもう一つとしてありません",
+					"english": "My house has burned down in a fire, not even one of my family's keepsakes remains."
+				}
+			],
+			"id": "farto0k4hk7he2c"
+		},
+		{
+			"usage": "〜とは限らない",
+			"meaning": "no guarantee that; not limited to",
+			"context": "It is neutral in its social situation, used in both informal and formal contexts.",
+			"tags": ["limitation", "negation", "普通形"],
+			"notes": "Use 〜とは限らない after the plain form of verbs, i-adjectives, or nouns to express the idea that something is not always the case. Students often incorrectly link 〜とは限らない with na-adjectives, forgetting it requires aだorである before.",
+			"nuance": "〜とは限らない carries an overtone of uncertainty or lack of assurance that the subject is exclusively as stated.",
+			"examples": [
+				{
+					"japanese": "健康に気をつけている人がみんな長生きするとは限りません",
+					"english": "Not everyone who takes care of their health lives a long life."
+				}
+			],
+			"id": "hi7ct6gs6zhs23b"
+		},
+		{
+			"usage": "〜しかない",
+			"meaning": "no choice but; only",
+			"context": "Commonly used in both formal and informal contexts but may carry a pessimistic tone when used in casual conversation.",
+			"tags": ["limitation", "negation", "辞書形"],
+			"notes": "Combined with a negative verb, it emphasizes the scarcity or insufficiency of something; with positive verbs, it denotes exclusivity. Often used incorrectly with positive verbs, or forgotten to negate the verb that follows.",
+			"nuance": "〜しかない conveys a sense of limitation or constraint and often includes a sense of regret, disappointment, or inevitability.",
+			"examples": [
+				{
+					"japanese": "あまり行きたくないけど、先輩に誘われたら、行くしかないなあ",
+					"english": "I don't really want to go, but if my senior invites me, I guess I have no choice."
+				}
+			],
+			"id": "b8axmlozzndcq1g"
+		},
+		{
+			"usage": "〜のみならず",
+			"meaning": "not only; but also",
+			"context": "Primarily used in formal, written, or academic language, less so in everyday spoken Japanese.",
+			"tags": [
+				"formal",
+				"enumeration",
+				"comparative",
+				"普通形",
+				"noun-modifier",
+				"na-adjective-modifier"
+			],
+			"notes": "Similar to 'だけでなく', but adds a touch of emphasis or surprise; takes 普通形, noun and na-adjective as preceding elements. Avoid overuse in colloquial speech as it gives a formal or written language feel. Don't use with い-adjectives.",
+			"nuance": "はたらけどのみならず implies not only the mentioned situation, but also others of equal or greater importance, often enhancing contrast or surprise.",
+			"examples": [
+				{
+					"japanese": "環境問題は、この国のみならず、世界中の問題だ",
+					"english": "Environmental issues are not only this country's problem, but a global issue."
+				},
+				{
+					"japanese": "この辺りは駅から近くて便利であるのみならず、公園もあって住みやすい環境だ",
+					"english": "Not only is this area convenient due to its proximity to the station, it also has a park and is a comfortable place to live."
+				}
+			],
+			"id": "gw40d5sbob0kbj6"
+		},
+		{
+			"usage": "〜ばかりでなく〜も",
+			"meaning": "not only; but also (more formal)",
+			"context": "Prefers formal and written contexts; don't use it in casual or slangish expressions.",
+			"tags": [
+				"formal",
+				"enumeration",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Remember to use it after a noun or な-adjective in 終止形 mode for the second part. Avoid using personal experiences and opinions; this grammar point is preferred for objective facts.",
+			"nuance": "This form emphasizes that the second element adds something unexpected or further important information after the first one.",
+			"examples": [
+				{
+					"japanese": "彼女は歌手であるばかりでなく、有名な漫画家でもある",
+					"english": "Not only is she a singer, but she is also a famous cartoonist."
+				}
+			],
+			"id": "jyn4s1v8lb4fqfe"
+		},
+		{
+			"usage": "〜（える・えない）",
+			"meaning": "can, can't (not based on personal abilities)",
+			"context": "Neutral form, used in both casual and formal situations.",
+			"tags": ["likelihood", "マス形"],
+			"notes": "Use 〜（える・えない） when talking about rules or laws, not personal abilities or talents. Learners often confuse it with ことができる、which is for personal abilities.",
+			"nuance": "Expresses a condition that is objectively possible or impossible.",
+			"examples": [
+				{
+					"japanese": "考え得る方法は全部やってみたけど、うまくいかなかった。",
+					"english": "I tried every method I could think of, but none of them worked."
+				},
+				{
+					"japanese": "恋人と別れた時の気持ちは、どんな言葉を使っても、表し得ない。",
+					"english": "The feelings when breaking up with a lover can't be expressed with any words."
+				}
+			],
+			"id": "5qbgdae6lg77fpk"
+		},
+		{
+			"usage": "〜限らず",
+			"meaning": "not only, but also; not limited to",
+			"context": "Typically used in formal or written contexts; tends to sound stiff in casual conversations.",
+			"tags": ["enumeration", "limitation", "noun-modifier"],
+			"notes": "Use 〜限らず after a noun to express more than the actual noun does, often with a feeling of inclusion. Avoid using 〜限らず after verbs or adjectives, it's designed for nouns.",
+			"nuance": "〜限らず has a broader, open-ended implication, emphasizing that action or state is also applicable to others beyond what's stated.",
+			"examples": [
+				{
+					"japanese": "私はりんごに限らず、赤いならなんでも好きだ。",
+					"english": "I like everything that's red, not just apples."
+				},
+				{
+					"japanese": "京都は休日に限らず、平日観光地が多い。",
+					"english": "Kyoto has many tourist destinations, not only on holidays but also on weekdays."
+				}
+			],
+			"id": "go7e9976hc4z5y4"
+		},
+		{
+			"usage": "〜ばかりに",
+			"meaning": "simply because, just because (not normal/bad result)",
+			"context": "Commonly used in both formal and casual situations, but with a careful tone due to its negative implications.",
+			"tags": [
+				"description",
+				"limitation",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Attach 〜ばかりに after a dictionary form of a verb, an い-adjective, or a noun+の; do not use with a positive outcome. Learners often misuse 〜ばかりに with positive results or without attributing negative or undesired consequences.",
+			"nuance": "〜ばかりに denotes a regrettable or negative outcome solely due to a certain reason, with an undertone of blaming or criticizing.",
+			"examples": [
+				{
+					"japanese": "この子は最近オスマートフォンがほしいばかりに、母親の財布からお金を盗んだ。",
+					"english": "This kid recently stole money from his mother's wallet because he wanted a smartphone so badly."
+				},
+				{
+					"japanese": "私は字が下手なばかりに、色々な場面で損をしている。",
+					"english": "Because my handwriting is so bad, it's caused me losses in various situations."
+				}
+			],
+			"id": "1zkv08dyowmn252"
+		},
+		{
+			"usage": "〜（からでないと・からでなければ）",
+			"meaning": "not unless, not until",
+			"context": "More suited to written language, speeches, or formal situations; too formal for intimate and casual conversations.",
+			"tags": ["conditional", "timing", "limitation", "テ形"],
+			"notes": "Commonly used with actions the speaker wishes to emphasize as necessary or important to achieve a certain goal. Learners often confuse this with 'から' alone, but adding 'でないと/でなければ' makes it conditional; essential to complete the action, event, or state.",
+			"nuance": "Emphasizes a strong condition that MUST be met; slightly formal and dramatic.",
+			"examples": [
+				{
+					"japanese": "書類の内容を読んでから出ないと、印鑑を押すことはできません。",
+					"english": "I cannot stamp the seal until I read the content of the document."
+				},
+				{
+					"japanese": "私の国では、２０歳になってからでなければ、お酒を飲むことができません。",
+					"english": "In my country, you cannot drink alcohol until you turn 20."
+				}
+			],
+			"id": "s1ffoam7cph453h"
+		},
+		{
+			"usage": "〜（きる・きれる・きれない）",
+			"meaning": "completely, totally, utterly",
+			"context": "Common in both casual and polite speech, but it's more frequent in written language or formal conversations.",
+			"tags": ["advanced-usage", "limitation", "マス形"],
+			"notes": "Often used with verbs of perception, understanding, consumption; in the negative form, indicates incapability or lack of capacity. Not to be used with verbs expressing continuous or habitual actions, or ones that can't represent a finite quantitative limit.",
+			"nuance": "Expresses an extent or limit, often indicating a state of completion, capacity, or inability.",
+			"examples": [
+				{
+					"japanese": "５００ページもある本を１日で読み切るなんて無理です。",
+					"english": "It's impossible to finish reading a 500-page book in one day."
+				},
+				{
+					"japanese": "こんなにたくさんの料理、私一人では食べきれない。",
+					"english": "I can't finish all this food by myself."
+				}
+			],
+			"id": "cdbu41niwfm6r8p"
+		},
+		{
+			"usage": "〜ぬく",
+			"meaning": "completely; to the bitter end",
+			"context": "Considered literary or old-fashioned language, so it is often found in written texts or formal settings.",
+			"tags": ["advanced-usage", "methodology", "マス形"],
+			"notes": "Most commonly used with verbs that express continuous or repeated action (ex: 読む → 読みぬく). Not to be confused with the negative form 'ぬ', nor should it be used with instantaneous, one-time actions.",
+			"nuance": "The 〜ぬく ending express a sense of strong determination to finish/completeness, or mandates a task be done thoroughly.",
+			"examples": [
+				{
+					"japanese": "どんな苦しくても途中で諦めない。最後までやり抜くつもりだ。",
+					"english": "No matter how tough it gets, I won't give up halfway. I intend to see it through to the end."
+				},
+				{
+					"japanese": "祖父は戦後の苦しい時代を何とか生き抜く、今は孫に囲まれる幸せに暮らしている。",
+					"english": "My grandfather, who somehow survived the difficult post-war era, now lives happily surrounded by his grandchildren."
+				}
+			],
+			"id": "a03p5l4pxd59hzz"
+		},
+		{
+			"usage": "〜（っ）きりだ",
+			"meaning": "only; just",
+			"context": "Common in spoken and written language; slightly informal.",
+			"tags": ["limitation", "noun-modifier"],
+			"notes": "Use after a verb stem or a noun; it cannot modify adjectives directly. Don't confuse it with ~(だ)け for quantifying; ~(っ)きり also implies a negative emotional context.",
+			"nuance": "Emphasizes the limit or an unchanging state since a certain point; signifies disappointment or dissatisfaction.",
+			"examples": [
+				{
+					"japanese": "あの人会ったのは一回きりだから、まだどんな人かはよくわからない。",
+					"english": "I've only met that person once, so I still don't really know what they're like."
+				},
+				{
+					"japanese": "クリスマスを一人きりですごそのは本当に寂しいものだ。",
+					"english": "Spending Christmas alone is truly a lonely thing."
+				}
+			],
+			"id": "xknq55x3olatj9n"
+		},
+		{
+			"usage": "〜にすぎない",
+			"meaning": "only; just; no more than",
+			"context": "Neutral to formal; found in written language and formal conversations.",
+			"tags": [
+				"limitation",
+				"negation",
+				"普通形",
+				"noun-modifier",
+				"na-adjective-modifier"
+			],
+			"notes": "Pairs with nouns, verbs (in dictionary form), and na-adjectives; does not work with i-adjectives. Learners frequently neglect the negative connotation, or misuse it with i-adjectives.",
+			"nuance": "Expresses a limitation or minimal status, often with a dismissive too; may imply disappointment or underachievement.",
+			"examples": [
+				{
+					"japanese": "漢字を習ったと言っても、１００字ぐらい覚えたにすぎない。",
+					"english": "Even though I said I learned kanji, I only remember about 100 characters."
+				},
+				{
+					"japanese": "ドイツ語がわかると言っても、日常会話んみすぎません。",
+					"english": "Even though I say I understand German, it doesn't go beyond daily conversation."
+				}
+			],
+			"id": "xzem3zi5b1ve9qj"
+		},
+		{
+			"usage": "〜限り",
+			"meaning": "as long as; while; to the limit possible",
+			"context": "",
+			"tags": [
+				"limitation",
+				"continuous",
+				"concurrent",
+				"辞書形",
+				"noun-modifier"
+			],
+			"notes": "nouns need the の",
+			"nuance": "Unable to generate detailed notes",
+			"examples": [
+				{
+					"japanese": "難民たちは持てる限りの荷物を持って、逃げてきた。",
+					"english": "The refugees came fleeing with as much luggage as they could carry."
+				},
+				{
+					"japanese": "映画が好きなので、時間とお金の許す限り、映画館へ見に行っています。",
+					"english": "Because I like movies, I go to the cinema to watch them as much as my time and money allow."
+				}
+			],
+			"id": "pg80d0yzm3f5gq9"
+		},
+		{
+			"usage": "〜ことなく",
+			"meaning": "without ___ ing",
+			"context": "Formal, often used in written language or formal speech.",
+			"tags": ["conditional", "description", "辞書形"],
+			"notes": "Use with verbs in their dictionary form; don't use with potential or passive verbs. Learners often forget that 'ことなく' attaches to the dictionary form of verbs, and mistakenly use it with the negative verb form.",
+			"nuance": "Expresses the idea of 'not doing something even once'; often used to emphasize surprising or exceptional cases.",
+			"examples": [
+				{
+					"japanese": "初めてマラソン大会に出場したが、途中で一度も止まるこたなく、走り抜いた。",
+					"english": "It was my first time participating in a marathon, but I managed to run all the way without stopping even once."
+				},
+				{
+					"japanese": "彼は何度失敗しても構うことなく、のんびりする。",
+					"english": "He doesn't mind how many times he fails, he takes it easy."
+				}
+			],
+			"id": "qmonnswr236m2h7"
+		},
+		{
+			"usage": "〜上に",
+			"meaning": "in addition to; as well as",
+			"context": "Mixture of casual and formal, but often seen informally in conversation.",
+			"tags": [
+				"enumeration",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Commonly used with negative sentences or unexpected situations, but can also be used with positive situations. Often mistaken as only for negative points or misunderstood as an 'on top of that' structure. Make sure the main clause and the 〜上に clause are logically connected.",
+			"nuance": "〜上に often carries a sense of unexpectedness and intensity, amplifying the situation with the additional fact provided.",
+			"examples": [
+				{
+					"japanese": "この会社は給料が高い上に、休みも多い。",
+					"english": "This company not only pays well, but also provides a lot of days off."
+				},
+				{
+					"japanese": "このレストランは安い上に、美味しいので、いつも混んでいる。",
+					"english": "This restaurant is not only cheap, but also delicious, so it's always crowded."
+				}
+			],
+			"id": "mnhn2gtz37wthyy"
+		},
+		{
+			"usage": "〜に他ならない",
+			"meaning": "nothing but, only this option",
+			"context": "Formal or literary language; inappropriate for casual, informal speech.",
+			"tags": ["limitation", "noun-modifier"],
+			"notes": "Use with nouns or noun phrases; not generally used in casual conversation due to its formal tone. Avoid overuse, can make speech come off as overly dramatic or emphatic; inappropriate for informal contexts.",
+			"nuance": "Expresses strong emphasis or confirmation about the only option or solution; can lend sternness or finality.",
+			"examples": [
+				{
+					"japanese": "彼がうつ病になったのは努力の結果に他ならない。",
+					"english": "His becoming depressed is nothing but the result of his efforts."
+				},
+				{
+					"japanese": "両親が子供に淋しくするのは、子供を愛しているからに他ならない。",
+					"english": "The only reason parents make their children feel lonely is because of their love for them."
+				}
+			],
+			"id": "0v5mp0nirwo2s80"
+		}
+	]
+}

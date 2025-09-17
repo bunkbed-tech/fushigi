@@ -106,24 +106,18 @@ enum GrammarQuickFilter: String, CaseIterable {
     /// Show all grammar items
     case all = "All"
 
-    /// Show grammar items provided by me for "Free"
-    case defaults = "Default"
-
-    /// Show user generated grammar items
-    case custom = "Custom"
-
     /// Show grammar items that have an SRS record attached
-    case inSRS = "SRS"
+    case inSRS = "Tracked by SRS"
 
     /// Show grammar items that do not have an SRS record attached yet (or previously deleted)
-    case available = "Available"
+    case available = "Ignored by SRS"
 
     /// Whether this filter requires SRS data
     var requiresSRSData: Bool {
         switch self {
         case .inSRS, .available:
             true
-        case .all, .defaults, .custom:
+        case .all:
             false
         }
     }

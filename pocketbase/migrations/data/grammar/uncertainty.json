@@ -1,0 +1,214 @@
+{
+	"uncertainty": [
+		{
+			"usage": "疑問詞＋普通形＋か",
+			"meaning": "unsure of a question",
+			"context": "Generally found in informal, conversational Japanese, and often used in introspective self-talk.",
+			"tags": ["certainty", "question-form"],
+			"notes": "Commonly used with end-particle 'か' to convey a sense of second-guessing or unsure self-questioning. Mistakenly treated as affirmative sentences due to presence of '普通形'.",
+			"nuance": "Expresses uncertainty about the information being asked, implying a gentle or self-doubting tone.",
+			"examples": [
+				{
+					"japanese": "どの会社がいいか、調べます",
+					"english": "I will research which company is good."
+				},
+				{
+					"japanese": "何を食べるか、まだ決めていません",
+					"english": "I haven't decided what to eat yet."
+				}
+			],
+			"id": "9xfcfp4pu5f1p1c"
+		},
+		{
+			"usage": "〜かどうか",
+			"meaning": "unsure of a fact",
+			"context": "Most commonly seen in written language and formal communication.",
+			"tags": ["certainty", "question-form", "普通形"],
+			"notes": "Use 〜かどうか after short forms of verbs, adjectives (both i-adjectives and na-adjectives), and nouns to turn a statement into a question. Learners often overuse this form, neglecting to realize it's less common in casual conversation.",
+			"nuance": "Expresses uncertainty or question regarding a fact, often implying the speaker is seeking confirmation.",
+			"examples": [
+				{
+					"japanese": "母国へ帰るかどうか、まだ決めていません",
+					"english": "I haven't decided whether to return to my home country yet."
+				},
+				{
+					"japanese": "ホテルを予約するかどうか、確認します",
+					"english": "I will confirm whether to book the hotel or not."
+				}
+			],
+			"id": "lrvxyh2ly8hbbw1"
+		},
+		{
+			"usage": "〜かもしれません",
+			"meaning": "50% unsure",
+			"context": "Ideal for formal and informal modes of speech, remaining polite yet conveying uncertainty or speculation.",
+			"tags": ["likelihood", "certainty", "普通形"],
+			"notes": "Perfect for expressing views or guesses without fully committing, use it after noun/い-adj/な-adj/verb in plain forms. Avoid using it in past negative form like 〜なかったかもしれません; use 〜かもしれなかった instead.",
+			"nuance": "〜かもしれません communicates a feeling of uncertainty or possibility, adding a non-committal or speculative tone to the statement.",
+			"examples": [
+				{
+					"japanese": "来年の夏に私の両親は日本へ来るかもしれません",
+					"english": "My parents might come to Japan next summer."
+				}
+			],
+			"id": "dvsd20kxlt9ao2l"
+		},
+		{
+			"usage": "〜（でしょう・だろう）",
+			"meaning": "questioning the likelihood of something",
+			"context": "Standard in writing, but considered formal or indirect in casual, everyday speech.",
+			"tags": ["question-form", "likelihood", "普通形"],
+			"notes": "Don't use with personal, concrete experiences; favor it when discussing future or hypothetical situations. Avoid overuse in spoken communication as it can be perceived as evasive or uncertain.",
+			"nuance": "Expresses uncertainty or speculation, more than a direct question; often includes a hint of soliciting agreement from the listener.",
+			"examples": [
+				{
+					"japanese": "今夜雨が降るでしょう",
+					"english": "It will probably rain tonight."
+				}
+			],
+			"id": "cxk7oyrnvyy7am1"
+		},
+		{
+			"usage": "〜でしょうか",
+			"meaning": "wondering something",
+			"context": "More formal, common in professional and polite conversation.",
+			"tags": ["question-form", "polite", "普通形"],
+			"notes": "Attach でしょうか to the end of a plain form statement to turn it into a polite question. Avoid using with negative sentences, as it might be seen as presumptuous or rude.",
+			"nuance": "Used to seek clarification or express uncertainty in a polite way, often implying a softer, lighthearted tone.",
+			"examples": [
+				{
+					"japanese": "どのくらい時間が掛かるでしょうか",
+					"english": "How long will it take?"
+				}
+			],
+			"id": "9nobo5m4yxloio8"
+		},
+		{
+			"usage": "〜恐れがある",
+			"meaning": "there is a risk that",
+			"context": "Formal and written situations. Less common in casual conversation.",
+			"tags": ["fixed-expression", "普通形", "noun-modifier"],
+			"notes": "Typically used in formal contexts and news reports, not for everyday casual conversation. Do not confuse it with '怖がる', which is used to express feeling scared or fearful.",
+			"nuance": "Often used to express concern or caution, not fear.",
+			"examples": [
+				{
+					"japanese": "今夜から明日にかけて東日本で大雪の恐れがある",
+					"english": "There is a possibility of heavy snow in Eastern Japan from tonight through tomorrow."
+				},
+				{
+					"japanese": "今週末、関東地方で激しい雨が降る恐れがあります。ご注意ください。",
+					"english": "This weekend, there is a possibility of heavy rain in the Kanto region. Please be careful."
+				}
+			],
+			"id": "8guwqld8ttlr3l7"
+		},
+		{
+			"usage": "〜そうにないんですが",
+			"meaning": "its unlikely that",
+			"context": "Mostly used in formal or written context, less in colloquial speech.",
+			"tags": ["likelihood", "マス形"],
+			"notes": "Always follows the verb stem, not the full verb. Many students mistake this is a negative expectation; it expresses low possibility, not certainty.",
+			"nuance": "Use to express a lack of likelihood in a polite, sometimes doubtful or regretful manner.",
+			"examples": [
+				{
+					"japanese": "店長、電車が止まっているので、アルバイトの時間に合いそうにないんですが",
+					"english": "Store manager, the trains are stopped, so it doesn't seem like I'll be able to make it to my part-time job on time"
+				}
+			],
+			"id": "0ackt0n8bvuvkn5"
+		},
+		{
+			"usage": "〜（でしょう・だろう）",
+			"meaning": "isn't it?",
+			"context": "Neutral in polteness, can be used in casual and formal situations respectively.",
+			"tags": ["explanation", "hypothetical", "sentence-final", "普通形"],
+			"notes": "Use it at the end of a sentence or after the short form of a verb to make a conjecture or assumption. Avoid using it in the affirmative form with negative question tags, it can create confusion.",
+			"nuance": "「でしょう・だろう」expresses a moderate level of certainty and is often used to seek confirmation, implying 'right?' or 'isn't it?'",
+			"examples": [
+				{
+					"japanese": "今度のバス旅行、ソダさんも行くでしょう",
+					"english": "For the upcoming bus trip, Mr. Soda is also going, isn't he?"
+				}
+			],
+			"id": "6wogo0s3pv9rhrq"
+		},
+		{
+			"usage": "〜っけ",
+			"meaning": "what was it",
+			"context": "Mostly used in informal speech, but also found in narratives for self-reflection or inner monologue.",
+			"tags": ["sentence-final", "explanation", "certainty", "questions"],
+			"notes": "Used when the speaker vaguely remembers something but needs confirmation. Don't mistake it for a rouge tag question or as an expression of disbelief; it's about recollection.",
+			"nuance": "Expresses a sense of self-questioning or an attempt to recall forgotten details.",
+			"examples": [
+				{
+					"japanese": "休みって、いつまでだったっけ？",
+					"english": "When was the holiday until again?"
+				},
+				{
+					"japanese": "今日、アルバイトだったっけ？",
+					"english": "Was today supposed to be the part-time job?"
+				}
+			],
+			"id": "9t90lyvf0lp3a5q"
+		},
+		{
+			"usage": "〜らしいです",
+			"meaning": "a rumor you heard, something people say",
+			"context": "Neutral form, can be used in both casual and polite contexts, but generally avoided in highly formal situations.",
+			"tags": ["certainty", "explanation", "普通形"],
+			"notes": "Attach 〜らしいです to the plain form of verbs, i-adj, na-adj and nouns to convey indirect information. Do not confuse with 〜そうです for reporting hearsay; 〜らしいです carries an undertone of uncertainty.",
+			"nuance": "Expresses hearsay or conjecture, implying that the information is not firsthand but acquired from another source.",
+			"examples": [
+				{
+					"japanese": "プロテインは体にいいらしいです",
+					"english": "It seems that protein is good for the body."
+				},
+				{
+					"japanese": "二日酔いだとたくさん寝るはいいらしいです",
+					"english": "It seems that it's good to sleep a lot when you are hungover."
+				},
+				{
+					"japanese": "5時午後からそのレストランは無料らしいです",
+					"english": "It seems that the restaurant is free from 5 pm."
+				}
+			],
+			"id": "exk5fffwn999e7u"
+		},
+		{
+			"usage": "〜と言われています",
+			"meaning": "a rumor you heard, something people say",
+			"context": "Formal and semi-formal situations, often seen in news reports, academic discussions, and business settings.",
+			"tags": ["nominalization", "explanation", "fixed-expression", "普通形"],
+			"notes": "Use it when conveying a widely held belief, rumor, or anecdote, not for personal opinions. Beware of overusing this as it implies hearsay; incorrect use can disrupt the flow of conversation or presentations.",
+			"nuance": "〜と言われています projects an indirect, humble tone, and communicates something perceived as common knowledge or hearsay.",
+			"examples": [
+				{
+					"japanese": "ニンジンは目にいいと言われています",
+					"english": "It is said that carrots are good for your eyes."
+				}
+			],
+			"id": "3pvnrc8wdbf4gar"
+		},
+		{
+			"usage": "のではないでしょうか・じゃないでしょうか",
+			"meaning": "don't you think?",
+			"context": "Mostly formal and polite, with more casual variations like 'じゃない？'.",
+			"tags": [
+				"rhetorical-question",
+				"question-form",
+				"subjective",
+				"questions",
+				"fixed-expression"
+			],
+			"notes": "Use it to express your opinion indirectly, especially when you're unsure or you want the listener to agree. Common mistake is overuse, making all statements seem uncertain; or using it in absolute situations where there's no room for doubt.",
+			"nuance": "This phrase is used to suggest an opinion tentatively or elicit agreement from listener; it adds a question tone.",
+			"examples": [
+				{
+					"japanese": "子供が自由に使ったら、スマホは、危ない目に合うことが多いんじゃないでしょうか",
+					"english": "If children use smartphones freely, don't you think they often encounter dangerous situations?"
+				}
+			],
+			"id": "y9yczf631y98gay"
+		}
+	]
+}

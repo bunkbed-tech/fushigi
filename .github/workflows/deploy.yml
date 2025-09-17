@@ -1,0 +1,83 @@
+---
+name: Deploy Pocketbase to Vultr
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'ui-mvp'
+        type: choice
+        options:
+          - ui-mvp
+          - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest code
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/fushigi
+            git fetch origin
+            git checkout ${{ github.event.inputs.branch }}
+            git pull origin ${{ github.event.inputs.branch }}
+            echo "${{ github.event.inputs.branch }} branch updated"
+
+      - name: Copy secrets file
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cp /root/secrets/.env /root/fushigi/.env
+            echo ".env file copied"
+
+      - name: Update TLS certificates
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            if
+              [ ! -d "/root/fushigi/letsencrypt" ] ||
+              [ "/root/letsencrypt" -nt "/root/fushigi/letsencrypt" ];
+            then
+              cp -r /root/letsencrypt /root/fushigi/
+              echo "TLS certificates updated"
+            else
+              echo "TLS certificates already up to date"
+            fi
+
+      - name: Rebuild and restart containers
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/fushigi
+            docker compose -f docker-compose.prod.yml down -v --rmi all \
+              --remove-orphans
+            docker compose -f docker-compose.prod.yml build --no-cache
+            docker compose -f docker-compose.prod.yml up -d
+            echo "Containers rebuilt and started"
+
+      - name: Check deployment status
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/fushigi
+            sleep 5
+            docker compose -f docker-compose.prod.yml logs --tail=20

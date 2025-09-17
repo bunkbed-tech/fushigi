@@ -1,0 +1,249 @@
+{
+	"ignoring-despite": [
+		{
+			"usage": "〜に関わらず",
+			"meaning": "regardless of",
+			"context": "Used mainly in formal, neutral or written language, not casual or colloquial speech.",
+			"tags": ["certainty", "fixed-expression", "conjunctive"],
+			"notes": "Commonly used in formal, written language or in speeches, not for everyday conversation. Avoid using it in casual situations; also, the noun before 〜に関わらず must be in the nominal form.",
+			"nuance": "Expresses objective, non-emotionally charged situations where something happens irrespective of circumstances.",
+			"examples": [
+				{
+					"japanese": "サッカーの試合は天候に関わらず、行われます",
+					"english": "Soccer games are held regardless of the weather."
+				},
+				{
+					"japanese": "お酒を飲む飲まないに関わらず、明日の飲み会の会費は全員３千円です",
+					"english": "Regardless of whether you're drinking or not, the attendance fee for tomorrow's drinking party is 3,000 yen for everyone."
+				},
+				{
+					"japanese": "テストの後は、点数のいい悪いに関わらず、間違えたところをよく復習してください",
+					"english": "After the test, regardless of whether your score is good or bad, please thoroughly review what you got wrong."
+				}
+			],
+			"id": "ytshkjanpp20498"
+		},
+		{
+			"usage": "〜（ものの・とは言うものの）",
+			"meaning": "although; even though",
+			"context": "Formal, often used in written language or formal spoken discourse; not commonly used in casual conversation.",
+			"tags": ["comparative", "contrast", "普通形"],
+			"notes": "Used with the dictionary form of verbs and i-adjectives; for na-adjectives and nouns use 'だ' before 'ものの/とはいうものの'. Overuse or misuse often results in sounding overly formal or melodramatic; misuse in casual conversation should be avoided.",
+			"nuance": "Expresses a sense of regret or dissatisfaction with an opposing fact or outcome, often associated with a negative or unfavorable follow-up.",
+			"examples": [
+				{
+					"japanese": "新しい靴を買ったものの、ずっと天気が悪くて、一度もはいていない",
+					"english": "I bought new shoes, but due to the continuous bad weather, I haven't worn them even once."
+				}
+			],
+			"id": "2640h1a1oahwol9"
+		},
+		{
+			"usage": "〜と言っても",
+			"meaning": "even though (it is said)",
+			"context": "While not overly formal, '〜と言っても' is more common in written than spoken Japanese.",
+			"tags": ["quotation", "comparative", "contrast", "普通形"],
+			"notes": "Remember to precede '〜と言っても' with plain form predicates. Avoid using it interchangeably with '〜ても', which lacks the quotation nuance.",
+			"nuance": "Used to indicate contrast, '〜と言っても' adds a touch of surprise or contradiction.",
+			"examples": [
+				{
+					"japanese": "食べたと言っても、パン一枚だけだよ。時間がなかったからね。",
+					"english": "Even if I say I ate, it was only a single piece of bread. I didn't have time."
+				}
+			],
+			"id": "pvzhads4zelszub"
+		},
+		{
+			"usage": "〜（にしても・にしろ・にせよ）",
+			"meaning": "even if it's ___; even though it's ___; some opposite thing",
+			"context": "Primarily used in formal or semi-formal speech; 〜にせよ is more literary and therefore less commonly used in casual conversation.",
+			"tags": ["conjunctive", "contrast", "普通形"],
+			"notes": "While 〜にしても, 〜にしろ, and 〜にせよ are mostly interchangeable, 〜にせよ tends to be more formal and literary. Can lead to confusion if overused or used incorrectly to express conditionality, not contrast.",
+			"nuance": "Expresses a sense of contrast, often used to highlight the speaker's decisiveness or resignation in certain situations.",
+			"examples": [
+				{
+					"japanese": "いくら忙しかったにしても、返信する時間ぐらいはあったでしょ",
+					"english": "No matter how busy you were, you should have found the time to reply."
+				}
+			],
+			"id": "rkq7jhmky5ybqla"
+		},
+		{
+			"usage": "〜（にしても・にしろ・にせよ）〜（にしても・にしろ・にせよ）",
+			"meaning": "whether it's ___ or ___; regardless if its ___ or ___",
+			"context": "Generally informal; but 'にせよ' is formal and literary.",
+			"tags": ["comparative", "confirmation", "普通形"],
+			"notes": "Use with two contrasting nouns, verb phrases, adjectives or sentence ends; the last usage being particularly formal. Learners often fail to use both structures in one sentence or misuse with positive contexts.",
+			"nuance": "Expresses indetermination or inclusiveness; often with a neutral or negative emotional context.",
+			"examples": [
+				{
+					"japanese": "唐揚げにしてもピザにしても、私が好きなものはカロリーが高い",
+					"english": "Whether it's fried chicken or pizza, the things I like are high in calories."
+				}
+			],
+			"id": "g21g2pu9zv1a789"
+		},
+		{
+			"usage": "〜としても",
+			"meaning": "even if; assuming",
+			"context": "Appropriate for both informal and formal situations; common in conversational and written Japanese.",
+			"tags": ["contrast", "change", "普通形"],
+			"notes": "Used after the plain form (普通形) of verbs, adjectives or with nouns, typically conjugated in the negative form to depict assumptions and contrasts. Commonly mistaken with 〜たとしても; the usage differs as 〜としても works with non-past tenses while 〜たとしても focuses on finished actions.",
+			"nuance": "Expresses the speaker's lack of expectation towards a hypothetical situation, often asserting an unfavorable or negative outcome.",
+			"examples": [
+				{
+					"japanese": "この大学に合格するのが難しいとしても、私はこの大学を受験したいです",
+					"english": "Even if it's difficult to pass this university, I want to take the entrance exam for this university."
+				},
+				{
+					"japanese": "遅れたとしても、連絡はくれるはずだよ",
+					"english": "Even if they are late, they should contact you."
+				}
+			],
+			"id": "y8y6vld7ilctyyq"
+		},
+		{
+			"usage": "〜どころか",
+			"meaning": "let alone, far from",
+			"context": "While mostly used in written language or formal speech, it can occur in casual conversation when emphasizing a strong contrast.",
+			"tags": [
+				"negation",
+				"contrast",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Use this structure after a noun or na-adjective, and remember it emphasizes contrast in extreme terms, not mere comparison. Avoid using 「どころか」after an i-adjective or verb; instead, use the plain form of nouns and na-adjectives.",
+			"nuance": "「〜どころか」is used to highlight extreme contrast, stating that not only does A not apply, but more surprisingly, the opposite, B, is true.",
+			"examples": [
+				{
+					"japanese": "天気予報では晴れると言っていたのに、晴れるどころか大雨だ。",
+					"english": "The weather forecast said it would be clear, but it's not just cloudy, it's pouring rain."
+				},
+				{
+					"japanese": "薬を飲んだのに、体調が良くなるどころか、もっと悪くなった。",
+					"english": "Despite taking the medicine, far from getting better, I felt even worse."
+				}
+			],
+			"id": "f1q8z1mjc2vkjl4"
+		},
+		{
+			"usage": "〜はともかく（として）",
+			"meaning": "setting aside, apart from",
+			"context": "Mostly used in casual and informal speech, occasionally in formal written texts.",
+			"tags": ["enumeration", "description", "topic-shift", "noun-modifier"],
+			"notes": "Use it to distinguish between two subjects or ideas, typically setting the first aside to focus on the second. Don't mix this up with 〜はもちろん（which stresses the importance of the first item); 〜はともかく downplays the first item's importance.",
+			"nuance": "〜はともかく（として）can indicate a dismissive or neutral attitude toward the first mentioned item while focusing on the latter.",
+			"examples": [
+				{
+					"japanese": "このシャツはデザインはともかくとして、色があまり好きじゃない。",
+					"english": "Regardless of the design, I don't really like the color of this shirt."
+				}
+			],
+			"id": "vsq3nnoulosszb1"
+		},
+		{
+			"usage": "〜にもかかわらず",
+			"meaning": "despite, without being affected by",
+			"context": "Flexibly utilized in casual, formal, written, or spoken language.",
+			"tags": [
+				"contrast",
+				"methodology",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Paste directly after nouns, na-adjectives, or verbs in dictionary/plain forms. Don't follow it with verb in negative form, that changes the meaning.",
+			"nuance": "Used to express strong contrast, can carry a sense of dissatisfaction or surprise.",
+			"examples": [
+				{
+					"japanese": "今日は結婚する日であるにもかかわらず、田中さんはあまり嬉しそうに見えない。",
+					"english": "Despite today being his wedding day, Mr. Tanaka doesn't seem very happy."
+				},
+				{
+					"japanese": "家族が反対したにもかかわらず、彼は軍に入会する。",
+					"english": "Despite his family's opposition, he joined the military."
+				}
+			],
+			"id": "kso7ysg2rxd18kp"
+		},
+		{
+			"usage": "〜を問わず",
+			"meaning": "whether or not",
+			"context": "Formal written language; less common but still acceptable in spoken language - considered business-like or bureaucratic.",
+			"tags": ["relation", "negation", "contrast", "noun-modifier"],
+			"notes": "Use it after nouns to convey 'regardless of'; e.g., 年齢を問わず (regardless of age). Often misused to express preference or abstract statements, but is intended to express the lack of discrimination between concrete categories or options.",
+			"nuance": "The phrase ～を問わず possesses a rather formal and cold tone, marking an impersonal and broad sweeping categorization.",
+			"examples": [
+				{
+					"japanese": "コンビニは昼夜を問わず、営業しています。",
+					"english": "Convenience stores are open day and night, regardless of time."
+				},
+				{
+					"japanese": "北海度は季節を問わず、多くの観光客で賑わっています。",
+					"english": "Hokkaido is bustling with many tourists, regardless of the season."
+				}
+			],
+			"id": "a43awdv4k60b4st"
+		},
+		{
+			"usage": "〜ところを",
+			"meaning": "while I'm interrupting; I'm sorry but",
+			"context": "Polite and formal; used in situations requiring social etiquette.",
+			"tags": [
+				"conditional",
+				"polite",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Commonly used with verbs in the te-form or nouns indicating an action, not usually with adjectives. Learners often use it as a casual phrase, failing to recognize its formal and somewhat apologetic connotations.",
+			"nuance": "Used to preface an interruption or show regret for inconvenience caused, often creates a light apologetic tone.",
+			"examples": [
+				{
+					"japanese": "もしもし、先生、お休みのところ、お電話してすみません。実は。。。",
+					"english": "Hello, teacher, I'm sorry to call you during your break. Actually..."
+				}
+			],
+			"id": "g7lx4uot87id8nq"
+		},
+		{
+			"usage": "〜つつも",
+			"meaning": "despite ___ing; even while ___",
+			"context": "〜つつも leans toward formal and literary contexts; not commonly used in everyday, casual speech.",
+			"tags": ["contrast", "conditional", "negation", "マス形"],
+			"notes": "Use 〜つつも after the ます-stem of a verb to express 'despite doing' or 'even while doing'. Avoid using 〜つつも with actions that aren't continuous, as it implies an ongoing action.",
+			"nuance": "〜つつも conveys a contrast between the ongoing action and the unexpected or contradicting circumstance.",
+			"examples": [
+				{
+					"japanese": "体に悪いと知りつつ、つい一体タバコを吸ってしまう。",
+					"english": "Even though I know it's bad for my health, I end up smoking a cigarette anyway."
+				},
+				{
+					"japanese": "友達と遊びたいと思いつつも、忙しくてその暇がない。",
+					"english": "Even though I want to hang out with my friends, I'm too busy to find the time."
+				}
+			],
+			"id": "7q03ubtmohf3du5"
+		},
+		{
+			"usage": "〜っぱなし",
+			"meaning": "leaving something as; casually negative statement",
+			"context": "Common in spoken language, informal dialogues and casual settings, not used in formal writing or speech.",
+			"tags": ["continuous", "conditional", "negation", "マス形"],
+			"notes": "Use after the stem of verb, usually for actions undesirably incomplete or states uncorrected over a period of time. Learners often misapply it to non-action verbs or use it without negative connotations which is typically incorrect.",
+			"nuance": "〜っぱなし indicates something left in a certain state, usually uncared for, and carries a sense of frustrative negativity.",
+			"examples": [
+				{
+					"japanese": "誰もいないのに、電気もエアコンも付けっぱなしだ。",
+					"english": "Even though there's no one around, both the lights and the air conditioner have been left on."
+				},
+				{
+					"japanese": "窓を開けっぱなしで寝たので、風邪をひいてしまいました。",
+					"english": "Because I slept with the window open, I ended up catching a cold."
+				}
+			],
+			"id": "qai94wuas0nhb3b"
+		}
+	]
+}

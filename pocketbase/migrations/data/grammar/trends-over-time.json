@@ -1,0 +1,541 @@
+{
+	"trends-over-time": [
+		{
+			"usage": "〜いきます",
+			"meaning": "guessing a future trend",
+			"context": "Neutral, used both casually and formally. Not found in super-formal speech.",
+			"tags": ["explanation", "temporal", "テ形"],
+			"notes": "Use after the te-form of the verb when predicting changes or trends over time. Don't confuse with verb 'to go' (-いく); avoid overuse on unsure predictions.",
+			"nuance": "Indicates a predictable or intended progression towards a future state; carries mild inference or expectation.",
+			"examples": [
+				{
+					"japanese": "これからも減っていくと思います",
+					"english": "I think it will continue to decrease from now on"
+				},
+				{
+					"japanese": "これからは増えていくと思います",
+					"english": "I think it will increase from now on."
+				}
+			],
+			"id": "wj95d45rcsi73g9"
+		},
+		{
+			"usage": "〜きます",
+			"meaning": "explaining a past trend",
+			"context": "Neutral, suitable for daily conversation; also seen in written language.",
+			"tags": ["explanation", "temporal", "テ形"],
+			"notes": "Used mostly with verbs indicating action or state change, usually with negative verbs to express regret or lament. Not to be confused with the future tense -きます, context is key.",
+			"nuance": "With a sense of reminiscence, it brings up past trends or habits without a specified period.",
+			"examples": [
+				{
+					"japanese": "最近交通事故がだんだん増えてきました",
+					"english": "Recently, the number of traffic accidents has been gradually increasing."
+				},
+				{
+					"japanese": "最近交通事故がだんだん減ってきました",
+					"english": "Recently, traffic accidents have been gradually decreasing."
+				},
+				{
+					"japanese": "ガソリンの値段がどんどん増えてきました",
+					"english": "The price of gasoline has been steadily increasing."
+				}
+			],
+			"id": "70tlmaah51ih58z"
+		},
+		{
+			"usage": "〜（ばかりだ・一方だ）",
+			"meaning": "only keeps on ___ ing; keeps ___ ing",
+			"context": "Generally used in informal speech and writing, but can be used formally with use of appropriate verb endings.",
+			"tags": ["temporal", "continuous", "limitation", "辞書形"],
+			"notes": "Use with non-volitional verbs for 'ばかりだ' and with both volitional and non-volitional verbs for '一方だ'. Learners often misuse the form to imply positive progression or action.",
+			"nuance": "Implies a continuance or progression in one, usually negative, direction; often emotion-laden.",
+			"examples": [
+				{
+					"japanese": "雨は強くなるばかりで、全然やみそうにない",
+					"english": "The rain is only getting stronger, and it doesn't look like it's going to stop at all."
+				},
+				{
+					"japanese": "東京の車の数は増加する一方だ",
+					"english": "The number of cars in Tokyo is steadily increasing"
+				}
+			],
+			"id": "ibzqj1jecfx913w"
+		},
+		{
+			"usage": "〜なくなります",
+			"meaning": "decrease in frequency, quantity; becoming less",
+			"context": "Frequently used in both formal and informal situations, transitions well across various social contexts.",
+			"tags": ["change", "ナイ形"],
+			"notes": "Used with the ない form of a verb to express something is 'becoming less'.",
+			"nuance": "This structure typically presents a kind of wistful or mournful observation, focusing more on the decrease or decline than the new state.",
+			"examples": [
+				{
+					"japanese": "最近お酒を飲まなくなりました",
+					"english": "I have recently stopped drinking alcohol."
+				}
+			],
+			"id": "4yiy0dp8kmwognj"
+		},
+		{
+			"usage": "〜ようになります",
+			"meaning": "an action becoming possible",
+			"context": "Used in both informal and formal speech, but more commonly found in written language.",
+			"tags": ["potential-form", "change", "可能形"],
+			"notes": "Often used with verbs in the potential form; not used for instantaneous changes. Often mistaken with 〜ことができる; While both mean 'can do,' remember that 〜ようになります focuses on the change from not being able to do something to being able to do so.",
+			"nuance": "Indicates a gradual change to a new state, sometimes carrying a feeling of accomplishment.",
+			"examples": [
+				{
+					"japanese": "2026までに日本語が話せるようになりたいです",
+					"english": "I want to be able to speak Japanese by 2026"
+				},
+				{
+					"japanese": "簡単料理が作れるようになりました",
+					"english": "I've become able to make simple dishes"
+				}
+			],
+			"id": "7vfoxt709ipbefp"
+		},
+		{
+			"usage": "〜ようになります",
+			"meaning": "new habit or ability, change over time",
+			"context": "Neutral to formal; suitable in both daily conversation and formal writing.",
+			"tags": ["change", "辞書形"],
+			"notes": "Use with dictionary form of a verb for new habits/abilities, but not for on the spot changes. Frequently mixed up with 〜ようにする (decision to do something), and remember it's not suitable for expressing desires or wishes.",
+			"nuance": "Expresses a change resulting in a new state, often associated with personal growth or adjustment over time.",
+			"examples": [
+				{
+					"japanese": "最近たくさんアニメを見るようになりました",
+					"english": "I've started watching a lot of anime recently."
+				}
+			],
+			"id": "imbylfx3x3ehfbz"
+		},
+		{
+			"usage": "〜ようになっている",
+			"meaning": "an automatic result of some condition",
+			"context": "Suitable in both casual and formal contexts.",
+			"tags": ["causal", "辞書形", "ナイ形"],
+			"notes": "Appropriate with verbs in dictionary form or negative form, not adjectives. Commonly misused with personal experiences or self-controlled actions.",
+			"nuance": "Expresses natural, common occurrence or automatic consequence.",
+			"examples": [
+				{
+					"japanese": "自動ドアは、ここに立つと開くようになっています",
+					"english": "The automatic door is designed to open when you stand here."
+				}
+			],
+			"id": "6iqgnat2spdq05r"
+		},
+		{
+			"usage": "〜がち",
+			"meaning": "mostly; tending towards but in a negative way",
+			"context": "Neutral to formal, fair usage in both conversation and writing, not considered casual.",
+			"tags": ["description", "マス形", "noun-modifier"],
+			"notes": "Attach 〜がち after the stem of verbs, not in the polite form or past tense. Learners often misconstrue it as always happening, rather than showing a tendency towards a negative action.",
+			"nuance": "〜がち evokes a negative tendency, implying the subject often (but not always) exhibits the linked behavior unfavorably.",
+			"examples": [
+				{
+					"japanese": "彼は最近遅刻しがちで、出席率が下がってきています",
+					"english": "He has been prone to being late recently, and his attendance rate has been dropping."
+				},
+				{
+					"japanese": "このような間違いは初心者にありがちなことだ",
+					"english": "Such mistakes are common among beginners."
+				}
+			],
+			"id": "cvma3e733slraxz"
+		},
+		{
+			"usage": "〜以来",
+			"meaning": "ever since",
+			"context": "Neutral formality; used in both colloquial and written, formal contexts.",
+			"tags": ["temporal", "sequential", "continuous", "テ形", "noun-modifier"],
+			"notes": "For verbs, always use the past tense (テ形) before 〜以来; for nouns, directly attach 〜以来. Do not confuse with 〜から (from); 〜以来 implies no change since named event, 〜から stresses point of departure.",
+			"nuance": "Expresses continuous state or action from specified past point to present, often imbued with nostalgia or significant change.",
+			"examples": [
+				{
+					"japanese": "私の人身事故以来、自転車に乗るのが怖くなった。",
+					"english": "Ever since my personal accident, I've become scared of riding a bicycle."
+				},
+				{
+					"japanese": "日本へ来て以来、毎週ラーメンを食べている。",
+					"english": "Since coming to Japan, I have been eating ramen every week."
+				}
+			],
+			"id": "sj358u0ydn5pgiv"
+		},
+		{
+			"usage": "〜物だ",
+			"meaning": "used to",
+			"context": "Standard and casual, often seen in spoken language and personal narratives.",
+			"tags": ["past", "description", "タ形"],
+			"notes": "Attach to verb's past-form (タ形), doesn't work with past negatives. Avoid using it for routine or recurring past actions (そうだ used instead).",
+			"nuance": "Expresses past habit or state, usually nostalgic or somewhat regretful.",
+			"examples": [
+				{
+					"japanese": "子供の頃は、よく甘いものを食べたものだ。",
+					"english": "When I was a child, I used to eat sweets quite often."
+				},
+				{
+					"japanese": "国ではよく友達とサッカをしたものだ。",
+					"english": "I used to often play soccer with my friends in my country."
+				}
+			],
+			"id": "srcf2t629ife8bp"
+		},
+		{
+			"usage": "〜いる間に",
+			"meaning": "while",
+			"context": "Neutral; appropriate for both formal and informal conversations.",
+			"tags": ["temporal", "テ形"],
+			"notes": "Use with actions that are continuing or states that persist for a period of time. Many learners mistakenly use it with instantaneous actions; it should be used with ongoing processes.",
+			"nuance": "〜いる間に extends beyond simple 'while,' and connotes something happened in the duration of the given state/action.",
+			"examples": [
+				{
+					"japanese": "肉を焼きている間に、ビールを飲む",
+					"english": "Drink a beer while grilling the meat."
+				}
+			],
+			"id": "ylh3xqjie580ojr"
+		},
+		{
+			"usage": "〜ながら",
+			"meaning": "doing two things at once",
+			"context": "Neutral, suitable for both formal and informal contexts.",
+			"tags": ["timing", "temporal", "マス形"],
+			"notes": "Follows the masu-stem of verbs, usually used when expressing actions performed by the same subject. Mixing up ながら with が, the former denotes simultaneous actions while the latter contrasts two states.",
+			"nuance": "Implies multitasking rather than simultaneous actions, with a focus on the action in the main clause.",
+			"examples": [
+				{
+					"japanese": "歩きながら、食べている",
+					"english": "Eating while walking"
+				},
+				{
+					"japanese": "仕事をしながら、日本語を勉強している",
+					"english": "I am studying Japanese while working."
+				}
+			],
+			"id": "zyokminng4kaw7w"
+		},
+		{
+			"usage": "〜から〜にかけて",
+			"meaning": "a polite form of time boxing instead of まで",
+			"context": "主に文章やフォーマルな状況で使用されます。",
+			"tags": ["polite", "temporal", "noun-modifier"],
+			"notes": "主に文体で使用され、口語ではあまり使われません。 頻繁に間違って範囲が狭いと解釈される一方、実際には広範囲を指します。",
+			"nuance": "この表現は時間や場所を指す範囲を示し、両端の範囲も含みます。",
+			"examples": [
+				{
+					"japanese": "明日は夕方から夜にかけて晴れそうだ",
+					"english": "It looks like it will be clear from tomorrow evening through the night."
+				}
+			],
+			"id": "37qq91a5x77g60m"
+		},
+		{
+			"usage": "〜途中",
+			"meaning": "in the middle of; on the way",
+			"context": "Common in both casual and formal contexts, but can seem indirect or vague in formal written Japanese.",
+			"tags": ["change", "explanation", "temporal", "辞書形", "noun-modifier"],
+			"notes": "Attach 途中 directly to 辞書形 verbs or nouns to express 'in the middle of' or 'on the way' (i.e. 帰る途中, 読書の途中). Avoid confusing its usage with 途中で (specific interruption location); 途中 is more about the temporal state of being in process.",
+			"nuance": "〜途中 (tochuu) often conveys a feeling of interruption or pause in an ongoing action/process or journey.",
+			"examples": [
+				{
+					"japanese": "学校から渋谷駅向かう途中で、急に雨が降ったきた",
+					"english": "Suddenly, it started raining on my way from school to Shibuya station."
+				},
+				{
+					"japanese": "電車で会社に行く途中で、急に気分悪くなった",
+					"english": "On the way to the office by train, I suddenly felt sick."
+				}
+			],
+			"id": "6npwoktu0chmx7h"
+		},
+		{
+			"usage": "〜につれて",
+			"meaning": "as, along with ___",
+			"context": "Neutral to formal; frequently used in written language and formal conversation.",
+			"tags": ["explanation", "辞書形", "noun-modifier"],
+			"notes": "Always used with two clauses - the change in the second clause occurs along with change/due to circumstances in the first clause. Don't use this for sudden changes or events; incorrectly using it for mere correlations, instead of causal relationship or changes over time.",
+			"nuance": "Expresses slow, simultaneous change along with another event; conveys a sense of inevitability.",
+			"examples": [
+				{
+					"japanese": "台風が近づくにつれて、雨が強くなってきた",
+					"english": "As the typhoon approaches, the rain is getting stronger"
+				},
+				{
+					"japanese": "暑くなるにつれて、アイスの売り上げが伸びてきた",
+					"english": "As it gets hotter, ice cream sales are increasing."
+				}
+			],
+			"id": "ilw58a57u33y2dr"
+		},
+		{
+			"usage": "〜うちに",
+			"meaning": "while/during something remaining unchanged",
+			"context": "Neutral form, used in both casual and formal speech; not seen frequently in ultra-polite discourse.",
+			"tags": [
+				"temporal",
+				"change",
+				"conjunctive",
+				"辞書形",
+				"テ形いる",
+				"ナイ形"
+			],
+			"notes": "Use it to indicate an event that should happen before a situation changes; typically used in negative forms to show regrets. Avoid using it for changes the speaker can control; commonly mistaken to state changes that happen gradually.",
+			"nuance": "Expresses a situation where one acts before a state or condition changes; can imply urgency or fleeting opportunities.",
+			"examples": [
+				{
+					"japanese": "勉強しているうちに、だんだん上手になるよ",
+					"english": "As you keep studying, you will gradually get better."
+				}
+			],
+			"id": "pefdz44tyeq1jnw"
+		},
+		{
+			"usage": "〜とともに",
+			"meaning": "together at same time (not caused by one though)",
+			"context": "Neutral formality, but found more in written than spoken language.",
+			"tags": ["temporal", "辞書形", "noun-modifier"],
+			"notes": "Often used with nouns and verb dictionary forms; not suitable for verbs expressing desire or intent. Mistakenly used interchangeably with 〜がため or when ascribing cause; also erroneous with negative form verbs.",
+			"nuance": "Expresses simultaneous events/conditions, but doesn't imply causal relationship.",
+			"examples": [
+				{
+					"japanese": "時間が経つとともに、私の悩みも消えていました",
+					"english": "As time passed, my worries also disappeared."
+				},
+				{
+					"japanese": "時代とともに、人権も変わる",
+					"english": "As time goes by, human rights also change."
+				}
+			],
+			"id": "kc04x2ndjwdxhm5"
+		},
+		{
+			"usage": "〜ついでに",
+			"meaning": "while you're at it",
+			"context": "Neutral situation, common in both casual and formal communication, but rather informal if used excessively.",
+			"tags": ["temporal", "conjunctive", "辞書形", "タ形", "noun-modifier"],
+			"notes": "Mostly used with verb in dictionary form or ta-form, can also follow a noun directly. Beware not to use it when the secondary task is of much greater significance than the primary, order and context of tasks matter.",
+			"nuance": "Expresses the notion of taking advantage of a situation/activity to do something else, often implying efficiency or convenience.",
+			"examples": [
+				{
+					"japanese": "コンビニへ行くついでに、この手紙をポストに入れてきてくれない",
+					"english": "While you're on your way to the convenience store, could you drop this letter in the mailbox for me?"
+				}
+			],
+			"id": "2o7d3bukm1m59rw"
+		},
+		{
+			"usage": "〜つつある",
+			"meaning": "in the process of; while; -ing",
+			"context": "Suitable for all levels of formality, but more commonly used in written or formal spoken Japanese.",
+			"tags": ["stem-combo", "temporal", "similarity", "マス形"],
+			"notes": "Use つつある with the stem (ます-form) of verbs to express an ongoing state or action. Avoid using it for instantaneous actions; it's inappropriate with certain verbs like 知る.",
+			"nuance": "～つつある conveys a gradual process or ongoing change, not immediate actions.",
+			"examples": [
+				{
+					"japanese": "大型の台風が日本に接近しつつあります",
+					"english": "A large typhoon is approaching Japan"
+				},
+				{
+					"japanese": "父は病状は、徐々に治りつつあるとのことで、安心した",
+					"english": "I felt relieved to hear that my father's condition is gradually improving."
+				}
+			],
+			"id": "e3ex4tw5wsvub8y"
+		},
+		{
+			"usage": "〜とともに",
+			"meaning": "together with; at the same time",
+			"context": "More formal and literary than casual spoken Japanese, suitable for professional or academic contexts.",
+			"tags": ["temporal", "enumeration", "noun-modifier"],
+			"notes": "Can be used with any verb, adjective or noun, but is often employed in formal or written context. Avoid using 〜とともに when expressing negative events or situations, it is mostly used in neutral or positive contexts.",
+			"nuance": "〜とともに indicates simultaneity and also conveys a sense of correspondence or companionship.",
+			"examples": [
+				{
+					"japanese": "毎年、冬休みは家族とともに過ごすことにしている",
+					"english": "Every year, I make it a point to spend winter vacation with my family."
+				}
+			],
+			"id": "bvbrd76hejujgo6"
+		},
+		{
+			"usage": "〜と同時に",
+			"meaning": "at the same time",
+			"context": "Used in both casual and formal, though slightly more common in formal or written language.",
+			"tags": [
+				"temporal",
+				"concurrent",
+				"limitation",
+				"普通形",
+				"na-adjective-modifier",
+				"noun-modifier"
+			],
+			"notes": "Used primarily with verbs; less commonly, but still acceptably, with na-adjectives and nouns. Common mistake is to use it with i-adjectives, but this sentence form is not correct.",
+			"nuance": "〜と同時に indicates actions or states occurring concurrently, but often with a sense of surprise, or unexpectedness.",
+			"examples": [
+				{
+					"japanese": "先生はチャイムと同時に、教室に入ってきた",
+					"english": "The teacher entered the classroom at the same time as the chime."
+				}
+			],
+			"id": "4u7yeu6l2vy9kul"
+		},
+		{
+			"usage": "〜（にわたって・にわたる・にわたる「N」）",
+			"meaning": "across, throughout",
+			"context": "Neutral, can be used in both casual and formal contexts.",
+			"tags": ["temporal", "continuous", "noun-modifier"],
+			"notes": "Use にわたって for actions/changes over time, にわたる modifies a noun, and Noun + にわたる for 'throughout N'. Avoid using with instantaneous actions; rather, use for ongoing processes or changes.",
+			"nuance": "Expresses the concept of something spanning or extending over a certain period or area.",
+			"examples": [
+				{
+					"japanese": "この店は５０年にわたって、伝統の味を守り続けている。",
+					"english": "This shop has been preserving its traditional flavors for over 50 years."
+				},
+				{
+					"japanese": "４時間にわたる会議がやっと終わりました。",
+					"english": "The meeting that lasted for four hours has finally ended."
+				}
+			],
+			"id": "ffiiuq3bxac38im"
+		},
+		{
+			"usage": "〜つつ",
+			"meaning": "while ___",
+			"context": "Generally neutral, found in both casual and formal contexts, but more common in written Japanese or formal speech.",
+			"tags": ["timing", "concurrent", "マス形"],
+			"notes": "Attach 〜つつ to the stem of verbs, not to conjugated forms. Avoid using with actions which don't logically occur at the same time.",
+			"nuance": "〜つつ expresses two events happening simultaneously but conveys a sense of ongoing action or change.",
+			"examples": [
+				{
+					"japanese": "古い友人たちと酒を飲みつつ、学生時代の懐かしい話をした。",
+					"english": "While drinking booze with old friends, we talked about fond memories from our student days."
+				},
+				{
+					"japanese": "結婚するのことは恋人と相談しつつ、決めるつもりだ。",
+					"english": "I intend to decide on getting married while consulting with my partner."
+				}
+			],
+			"id": "zlczg7vgznqoqyv"
+		},
+		{
+			"usage": "〜最中に",
+			"meaning": "in the middle of",
+			"context": "Neutral, inadequate for highly formal contexts or casual, intimate speech.",
+			"tags": ["テ形いる", "noun-の"],
+			"notes": "Pair it with verb in て-form or use it after a noun with の, but not with instantaneous events. Don't use it for scheduled future actions, or with verbs not expressing a progressive action.",
+			"nuance": "Used to highlight an action or event in progress, not always mid-point but rather deep within.",
+			"examples": [
+				{
+					"japanese": "今勉強している最中だから、ちょっと待って。",
+					"english": "I'm in the middle of studying right now, so could you wait a bit?"
+				},
+				{
+					"japanese": "駅へ行く最中に、コンビニに寄った。",
+					"english": "On the way to the station, I stopped by the convenience store."
+				}
+			],
+			"id": "tp5jkhoykmv186h"
+		},
+		{
+			"usage": "〜に伴って・〜に伴い・〜に伴う「N」",
+			"meaning": "accompanying; along with",
+			"context": "Mainly used in formal or written contexts such as news, reports, official documents.",
+			"tags": ["辞書形", "noun"],
+			"notes": "Often used with changes in society or environment; use with dictionary form verbs or nouns. Don't confuse with 'とともに'; 'に伴う' doesn't imply doing things together like 'とともに' does.",
+			"nuance": "Expresses a happening indirectly, simultaneously, or as a result of another event; neutral tone.",
+			"examples": [
+				{
+					"japanese": "円安に伴い、外国からの旅行者が増えている。",
+					"english": "With the weakening of the yen, the number of travelers from foreign countries is increasing."
+				},
+				{
+					"japanese": "自転車が増加するに伴って、交通渋滞がひどくなった。",
+					"english": "As the number of bicycles increased, the traffic congestion worsened."
+				}
+			],
+			"id": "im0dxlq7vg04568"
+		},
+		{
+			"usage": "〜したがって",
+			"meaning": "as this happens; following this; sometimes written in kanji",
+			"context": "Primarily used in formal, academic, or written contexts or scenarios requiring respectful communication.",
+			"tags": ["concurrent", "temporal", "causal", "辞書形", "noun-modifier"],
+			"notes": "Works best with formal expressions and should be used in the middle of a sentence, not at the end. Avoid using in casual or informal contexts, and do not confuse with 〜たがる which signifies someone else's wants or desires.",
+			"nuance": "Used to show a direct consequential relationship between two circumstances, often implying the speaker's personal judgement or inference.",
+			"examples": [
+				{
+					"japanese": "工事が進むにしたがって、建物の全体が見えてきた。",
+					"english": "As the construction progressed, the entire building became visible."
+				},
+				{
+					"japanese": "冬が近づいているに従って、気温が下がります。",
+					"english": "As winter approaches, the temperature drops."
+				}
+			],
+			"id": "93cyflws5bevvo8"
+		},
+		{
+			"usage": "〜ところです",
+			"meaning": "just before, during, or immediately after",
+			"context": "Primarily neutral, used in both informal and formal speech but not extremely formal contexts.",
+			"tags": ["temporal", "辞書形", "タ形", "テ形"],
+			"notes": "Use するところです to describe an action about to take place, しているところです to describe an ongoing action, and したところです to convey a completed action. Avoid using ~ところです with states or habits; it's intended for actions.",
+			"nuance": "〜ところです allows precise indication of an action's temporal state, carrying a sense of immediacy or suspense.",
+			"examples": [
+				{
+					"japanese": "雨が降るところです",
+					"english": "It's about to rain."
+				},
+				{
+					"japanese": "晩ご飯を作っているところです",
+					"english": "I am in the middle of making dinner"
+				},
+				{
+					"japanese": "宿題を終わったところです",
+					"english": "I have just finished my homework."
+				}
+			],
+			"id": "hw1ax68juhskdx3"
+		},
+		{
+			"usage": "〜いました",
+			"meaning": "something that used to happen",
+			"context": "〜いました is neutral form and can be used in casual or polite conversation and writing, but not in very formal situations.",
+			"tags": ["explanation", "combination", "habitual", "テ形"],
+			"notes": "Use 〜いました for explanations about old habits or routines, not for a single past event. Don't confuse 〜いました with 〜ました, which is a simple past tense form; the 'i' indicates habitual past.",
+			"nuance": "〜いました conveys past habitual activities or states, rather than one-off occurrences; a sense of nostalgia often accompanies this form.",
+			"examples": [
+				{
+					"japanese": "子供の頃、毎日友達と遊んでいました",
+					"english": "When I was a child, I used to play with my friends every day."
+				}
+			],
+			"id": "ydgkijmrdp5q1zy"
+		},
+		{
+			"usage": "〜のを見ました",
+			"meaning": "something seen happening recently",
+			"context": "Generally neutral, appropriate for both casual and formal contexts.",
+			"tags": [
+				"change",
+				"appearance",
+				"explanation",
+				"habitual",
+				"辞書形",
+				"タ形",
+				"テ形"
+			],
+			"notes": "Commonly used following the dictionary form of a verb; also remember the tense of '見ました' indicates the time of viewing, not the action itself. Often confused with the simpler 「見て」 form which doesn't specifically indicate the action was observed happening.",
+			"nuance": "Used to express that one has witnessed a certain action taking place or a change occurring recently.",
+			"examples": [
+				{
+					"japanese": "子供たちが公園で元気に遊んでいるのを見ました",
+					"english": "I saw the children playing energetically in the park"
+				}
+			],
+			"id": "gqpd466rzkxzlv6"
+		}
+	]
+}

@@ -1,0 +1,152 @@
+{
+	"giving-and-receiving": [
+		{
+			"usage": "〜もらえませんか",
+			"meaning": "receiving a favor",
+			"context": "This is considered a polite situation appropriate for superior or unfamiliar relations.",
+			"tags": ["polite", "giving-receiving", "テ形"],
+			"notes": "Use it with te-form verbs to request a favor in a polite, non-forceful way. Confusing it with 〜くれませんか which asks for a favor in a more assertive manner.",
+			"nuance": "Expresses humble requests seeking someone's favor, concurrently implying the speaker's indebtedness.",
+			"examples": [
+				{
+					"japanese": "光を消えてもらえませんか",
+					"english": "Could you turn off the light?"
+				},
+				{
+					"japanese": "結婚式の写真を見せてもらえませんか",
+					"english": "Could you show me your wedding photos?"
+				}
+			],
+			"id": "flvmu1sfnmoats3"
+		},
+		{
+			"usage": "「」に〜あげます",
+			"meaning": "does it for に/を",
+			"context": "This is a neutral form and can be used in both casual and polite contexts, but avoid for superiors.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Remember to use the te-form (テ形) of the verb before あげます. Don't use this phrase when describing a superior's actions, it's considered poor form and disrespectful.",
+			"nuance": "The phrase 「」に〜あげます is used to express the act of doing a favor or providing help to others, carrying a nuance of kindness or generosity.",
+			"examples": [
+				{
+					"japanese": "ソダさんはタホに釣り旅行の写真を見せてあげます",
+					"english": "Mr. Soda will show Taho the pictures from the fishing trip."
+				},
+				{
+					"japanese": "ソダさんはタホを奥多摩へ連れて行ってあげました",
+					"english": "Mr. Soda took Taho to Okutama."
+				},
+				{
+					"japanese": "タホさんは両親のテレビを治してあげました",
+					"english": "Taho-san fixed his parents' TV for them."
+				}
+			],
+			"id": "wm2ava8nj2re576"
+		},
+		{
+			"usage": "「」に〜もらいます",
+			"meaning": "receives from に",
+			"context": "Primarily used in casual situation, though acceptable in more formal speech with careful usage.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Utilize this structure when receiving something directly from someone else. Avoid overlooking the もらいます form requires the verb to be in the て form.",
+			"nuance": "It carries a nuance of gratitude or obligation towards the giver or actor.",
+			"examples": [
+				{
+					"japanese": "タホさんはソダさんに中国語を教えてもらいました",
+					"english": "Taho was taught Chinese by Soda."
+				}
+			],
+			"id": "h0680gg69ahmqo4"
+		},
+		{
+			"usage": "「」に〜くれます",
+			"meaning": "does it for the speaker (dropped  に usually)",
+			"context": "Used in both casual and formal speech; humble expression when used in business situations.",
+			"tags": ["giving-receiving", "テ形"],
+			"notes": "Use when someone does something for you, placing emphasis on the actor's benevolence. Avoid dropping the に particle when the recipient of the action isn't clear from context.",
+			"nuance": "Expresses a personal favor done by someone else, carrying a sense of gratitude towards that person.",
+			"examples": [
+				{
+					"japanese": "ソダさんが釣り旅行の写真を見せてくれました",
+					"english": "Mr. Soda showed me the pictures from his fishing trip."
+				}
+			],
+			"id": "30z2vzabjbzxb58"
+		},
+		{
+			"usage": "使役動詞〜（くれます・もらいます）",
+			"meaning": "was told to as a favor / was given permission; に is the grantor",
+			"context": "Use in polite or semi-casual conversations, being careful not to use with someone socially superior.",
+			"tags": ["causal", "giving-receiving", "polite", "テ形", "使役動詞"],
+			"notes": "Remember to use the original verb in the て-form before adding くれます・もらいます, and denote the benefactor with に. Learners often mix up に and を, forgetting that に marks the benefactor rather than the object.",
+			"nuance": "Expresses the speaker receiving a favor by someone's action or permission to do something, often in socially higher position.",
+			"examples": [
+				{
+					"japanese": "母は私に日本語を習わせてくれました",
+					"english": "My mother made me learn Japanese."
+				},
+				{
+					"japanese": "私は母に外で遊ばせてくれませんでした",
+					"english": "My mother did not let me play outside"
+				},
+				{
+					"japanese": "私は先輩に小説を買わせてもらいました",
+					"english": "I had my senior buy a novel for me"
+				}
+			],
+			"id": "gfisr8riv533p87"
+		},
+		{
+			"usage": "〜ましょうか",
+			"meaning": "invitation or request to do by yourself",
+			"context": "Polite and somewhat formal, best suited for situations requiring deference or respect.",
+			"tags": ["polite", "combination", "favor", "マス形"],
+			"notes": "Use 〜ましょうか to softly offer help or invite action, but not for tasks requiring heavy effort or deep involvement. Avoid using 〜ましょうか for mundane or trivial tasks - it can make the statement sound sarcastic or condescending.",
+			"nuance": "The phrase 〜ましょうか generally connotes a sense of helpfulness, indirectness, and politeness.",
+			"examples": [
+				{
+					"japanese": "レストランに行きましょうか",
+					"english": "Shall we go to the restaurant?"
+				},
+				{
+					"japanese": "家を掃除しましょうか",
+					"english": "Shall we clean the house?"
+				}
+			],
+			"id": "bajp7viqo7ynie0"
+		},
+		{
+			"usage": "友達言葉の移行形",
+			"meaning": "a friendlier version of ましょう for invitations",
+			"context": "Appropriate for casual conversations or friendly environments, inappropriate for formal or polite context.",
+			"tags": ["volitional-form", "移行形"],
+			"notes": "Commonly employed among close friends, students, or within same-age group. Overuse can imply a lack of politeness or respect when used in formal or hierarchical settings.",
+			"nuance": "It expresses a softer, more casual invite similar to 'let's' in English.",
+			"examples": [
+				{
+					"japanese": "食べよう",
+					"english": "Let's eat"
+				},
+				{
+					"japanese": "行こう",
+					"english": "Let's go"
+				}
+			],
+			"id": "6dd3v70nr7scx3m"
+		},
+		{
+			"usage": "〜くれない",
+			"meaning": "won't you do it for me?",
+			"context": "Casual or familiar; avoid using it in formal contexts or with superiors.",
+			"tags": ["favor", "polite", "テ形"],
+			"notes": "Used mostly in casual speech and with verbs of giving and doing; not common in formal or written language. Learners often overuse or use it in inappropriate situations, it can come off as demanding or rude.",
+			"nuance": "Combines denial and request, often used to solicit help; can convey sense of mild frustration or impatience.",
+			"examples": [
+				{
+					"japanese": "消しゴムを忘れたので、貸してくれない？",
+					"english": "I forgot my eraser, could you lend me one?"
+				}
+			],
+			"id": "3tvry6969c1x6o1"
+		}
+	]
+}
