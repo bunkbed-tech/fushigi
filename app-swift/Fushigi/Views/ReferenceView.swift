@@ -207,7 +207,7 @@ struct ReferenceView: View {
                 Button("Create", systemImage: "rectangle.fill.badge.plus") {}.disabled(true)
 
                 if selectedFilter == .available {
-                    Button("Generate From Defaults", systemImage: "rectangle.stack.fill.badge.plus") {
+                    Button("Generate From All", systemImage: "rectangle.stack.fill.badge.plus") {
                         Task {
                             await studyStore.srsStore.addBulkToSRS(studyStore.availableGrammarItems)
                         }
