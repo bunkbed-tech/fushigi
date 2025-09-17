@@ -42,12 +42,12 @@ struct GrammarInspector: View {
                     ToolbarItem(placement: .primaryAction) {
                         Menu("Options", systemImage: "ellipsis.circle") {
                             if studyStore.srsStore.isInSRS(point.id) {
-                                Button("Remove from SRS", systemImage: "rectangle.on.rectangle.slash") {
+                                Button("Ignore in SRS", systemImage: "rectangle.on.rectangle.slash") {
                                     print("TODO: Implement remove from SRS")
                                 }
                                 .disabled(true)
                             } else {
-                                Button("Add to SRS", systemImage: "plus.rectangle.on.rectangle") {
+                                Button("Track in SRS", systemImage: "plus.rectangle.on.rectangle") {
                                     Task {
                                         await studyStore.srsStore.addToSRS(point.id)
                                         showDetails = false

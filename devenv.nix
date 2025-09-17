@@ -32,7 +32,7 @@
         mdsh.enable = true;
         tagref.enable = true;
         typos.enable = true;
-        typos.excludes = [".*grammar.json"];
+        typos.excludes = [".*.json"];
         typos.settings.ignored-words = ["ratatui"];
 
         # pre-commit builtins

@@ -1,7 +1,7 @@
 {
 	"conjugations": [
 		{
-			"id": "FOJ7ra3bSLux",
+			"id": "g9c7rgee9zqgqic",
 			"language": "Japanese",
 			"usage": "可能動詞",
 			"meaning": "can be done -- basic potential form",
@@ -30,7 +30,7 @@
 			}
 		},
 		{
-			"id": "VcLDm0szQ7iD",
+			"id": "4cuxy6b7yxxba74",
 			"language": "Japanese",
 			"usage": "〜くて、〜",
 			"meaning": "connecting a negative quality with the rest of a sentence",
@@ -49,7 +49,7 @@
 			}
 		},
 		{
-			"id": "QeqcdbqFQSqM",
+			"id": "ms0vmhw5tob7wyu",
 			"language": "Japanese",
 			"usage": "〜くて ・ 〜で",
 			"meaning": "connects two ideas with adjectives",
@@ -73,7 +73,7 @@
 			}
 		},
 		{
-			"id": "rkVjDthBSrC5",
+			"id": "ekdgyavkzgsowh6",
 			"language": "Japanese",
 			"usage": "〜テ形、〜",
 			"meaning": "giving a reason for what comes next",
@@ -96,7 +96,7 @@
 			}
 		},
 		{
-			"id": "h7WJ0E4tSTaj",
+			"id": "ifndrpcfdldjewb",
 			"language": "Japanese",
 			"usage": "受身形",
 			"meaning": "to be done by; subject is receiver",
@@ -133,7 +133,7 @@
 			}
 		},
 		{
-			"id": "M0WkXN1kS-K9",
+			"id": "2vw7xwrfm1xkcps",
 			"language": "Japanese",
 			"usage": "命令形",
 			"meaning": "positive command; super casual",
@@ -157,7 +157,7 @@
 			}
 		},
 		{
-			"id": "USTP1-JiTEKN",
+			"id": "u25s26vbaz80inp",
 			"language": "Japanese",
 			"usage": "〜な",
 			"meaning": "negative command; super casual",
@@ -176,7 +176,7 @@
 			}
 		},
 		{
-			"id": "erWn16udSb63",
+			"id": "nthqxu6oi79jqfr",
 			"language": "Japanese",
 			"usage": "「あ」せます、させます",
 			"meaning": "basic causative; make or let someone do",
@@ -204,7 +204,7 @@
 			}
 		},
 		{
-			"id": "xU6zDjSOTo6b",
+			"id": "amdvrudmxne3tzz",
 			"language": "Japanese",
 			"usage": "「あ」せられる・「あ」される・させられる",
 			"meaning": "causative-passive; was caused or forced to do",
@@ -228,7 +228,7 @@
 			}
 		},
 		{
-			"id": "ixoV1SLUTe6s",
+			"id": "wdt710qcuv9ua57",
 			"language": "Japanese",
 			"usage": "「あ」せる",
 			"meaning": "causative verb; make, let, cause",
@@ -248,7 +248,7 @@
 			}
 		},
 		{
-			"id": "5AMB92mcRHOV",
+			"id": "j0o697pzz54m58d",
 			"language": "Japanese",
 			"usage": "「あ」せられる・「あ」される",
 			"meaning": "causative-passive; to be caused by",
