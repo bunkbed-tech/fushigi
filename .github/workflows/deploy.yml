@@ -1,6 +1,8 @@
+---
 name: Deploy Pocketbase to Vultr
-on:
-  workflow_dispatch:  # Manual trigger only
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
     inputs:
       branch:
         description: 'Branch to deploy'
@@ -8,8 +10,8 @@ on:
         default: 'ui-mvp'
         type: choice
         options:
-        - ui-mvp
-        - main
+          - ui-mvp
+          - main
 
 jobs:
   deploy:
@@ -45,7 +47,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            if [ ! -d "/root/fushigi/letsencrypt" ] || [ "/root/letsencrypt" -nt "/root/fushigi/letsencrypt" ]; then
+            if
+              [ ! -d "/root/fushigi/letsencrypt" ] ||
+              [ "/root/letsencrypt" -nt "/root/fushigi/letsencrypt" ];
+            then
               cp -r /root/letsencrypt /root/fushigi/
               echo "TLS certificates updated"
             else
@@ -60,7 +65,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /root/fushigi
-            docker compose -f docker-compose.prod.yml down -v --rmi all --remove-orphans
+            docker compose -f docker-compose.prod.yml down -v --rmi all \
+              --remove-orphans
             docker compose -f docker-compose.prod.yml build --no-cache
             docker compose -f docker-compose.prod.yml up -d
             echo "Containers rebuilt and started"
@@ -75,4 +81,3 @@ jobs:
             cd /root/fushigi
             sleep 5
             docker compose -f docker-compose.prod.yml logs --tail=20
-
