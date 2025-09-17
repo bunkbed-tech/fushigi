@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/pocketbase/pocketbase/core"
 	m "github.com/pocketbase/pocketbase/migrations"
+	"os"
 )
 
 //go:embed data/grammar.json
@@ -41,24 +42,35 @@ func init() {
 			return err
 		}
 
-		// Iterate through all categories and their grammar items
-		for category, grammars := range grammarData {
-			for _, grammar := range grammars {
-				record := core.NewRecord(grammarCollection)
-				record.Set("id", grammar.ID)
-				record.Set("language", grammar.Language)
-				record.Set("usage", grammar.Usage)
-				record.Set("meaning", grammar.Meaning)
-				record.Set("context", grammar.Context)
-				record.Set("level", grammar.Level)
-				record.Set("variant", grammar.Variant)
-				record.Set("notes", grammar.Notes)
-				record.Set("examples", grammar.Examples)
-				record.Set("forms", grammar.Forms)
-				record.Set("tags", []string{category})
+		// Only seed the demo build with example grammar
+		var demoUserID string
+		prodFlag := os.Getenv("IS_PROD")
+		if prodFlag == "false" {
+			demoUser, _ := app.FindAuthRecordByEmail("users", "tester@example.com")
+			if demoUser != nil {
+				demoUserID = demoUser.Id
 
-				if err := app.Save(record); err != nil {
-					return err
+				// Iterate through all categories and their grammar items
+				for category, grammars := range grammarData {
+					for _, grammar := range grammars {
+						record := core.NewRecord(grammarCollection)
+						record.Set("id", grammar.ID)
+						record.Set("language", grammar.Language)
+						record.Set("usage", grammar.Usage)
+						record.Set("meaning", grammar.Meaning)
+						record.Set("context", grammar.Context)
+						record.Set("level", grammar.Level)
+						record.Set("variant", grammar.Variant)
+						record.Set("notes", grammar.Notes)
+						record.Set("examples", grammar.Examples)
+						record.Set("forms", grammar.Forms)
+						record.Set("tags", []string{category})
+						record.Set("user", demoUserID)
+
+						if err := app.Save(record); err != nil {
+							return err
+						}
+					}
 				}
 			}
 		}
