@@ -24,9 +24,6 @@ struct PracticeView: View {
     @FocusState private var isTitleFocused: Bool
     @FocusState private var isContentFocused: Bool
 
-    @State private var showSettings = false
-    @State private var showTagger = false
-    @State private var showDetails = false
     /// User preference for politeness level filtering (friends, bosses, customers, etc.)
     @State private var selectedLevel: Level = .all
     /// User preference for usage context filtering (spoken, written, ancient, business, etc.)
@@ -93,61 +90,52 @@ struct PracticeView: View {
     // MARK: - Main View
 
     var body: some View {
-        GeometryReader { screen in
-            ScrollView {
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-                    DailyGrammar(
-                        showTagger: $showTagger,
-                        showDetails: $showDetails,
-                        selectedSource: $selectedSource,
-                        currentGrammar: currentGrammar,
-                    )
-
-                    entryForm(availableHeight: screen.size.height)
+        PlatformSheet(title: "Daily Practice", onDismiss: {} ) {
+            NavigationStack {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
+                        DailyGrammar(
+                            selectedSource: $selectedSource,
+                            currentGrammar: currentGrammar,
+                            selectedText: selectedText,
+                            systemState: systemState
+                        )
+                        entryForm
+                    }
+                    .padding()
                 }
-                .padding()
+                .scrollDismissesKeyboard(.interactively)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        EmptyView()
+                    }
+                    ToolbarItem {
+                        NavigationLink(destination: settingsView) {
+                            Label("Practice Settings", systemImage: "graduationcap")
+                        }
+                        .disabled(!entryContent.isEmpty)
+                    }
+                    ToolbarItem {
+                        Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
+                            .disabled(!entryContent.isEmpty)
+                    }
+                    // keyboardQuickTagger
+                }
+                .navigationDestination(for: GrammarInspectorDestination.self) { _ in
+                    GrammarInspector()
+                }
+                .navigationDestination(for: TaggerDestination.self) { destination in
+                    Tagger(
+                        statusMessage: $statusMessage,
+                        grammarPoint: destination.grammarPoint,
+                        selectedText: destination.selectedText
+                    )
+                }
             }
-            .scrollDismissesKeyboard(.interactively)
         }
-        .sheet(isPresented: $showSettings) {
-            if isCompact {
-                settingsView
-                    .presentationDetents([.medium, .large])
-            } else {
-                settingsView
-            }
-        }
-        .sheet(isPresented: $showTagger, onDismiss: {
-            studyStore.grammarStore.selectedGrammarPoint = nil
-        }) {
-            if isCompact {
-                taggerView.presentationDetents([.medium, .large])
-            } else {
-                taggerView
-            }
-        }
-        .sheet(isPresented: $showDetails, onDismiss: {
-            studyStore.grammarStore.selectedGrammarPoint = nil
-        }) {
-            GrammarInspector(
-                showDetails: $showDetails,
-                systemState: systemState,
-            )
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                EmptyView()
-            }
-            ToolbarItem {
-                Button("Practice Settings", systemImage: "graduationcap") { showSettings.toggle() }
-                    .disabled(!entryContent.isEmpty)
-            }
-            ToolbarItem {
-                Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
-                    .disabled(!entryContent.isEmpty)
-            }
-            // keyboardQuickTagger
-        }
+        #if os(macOS)
+        .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
+        #endif
     }
 
     // MARK: - Helper Methods
@@ -158,7 +146,6 @@ struct PracticeView: View {
     /// current study suggestions mid session.
     private func refreshGrammarPoints() async {
         studyStore.srsStore.forceDailyRefresh(currentMode: selectedSource)
-        showSettings = false
     }
 
     /// Save journal entry to database by first post the entry itself, grabbing the auto generated id, and
@@ -245,34 +232,10 @@ struct PracticeView: View {
             selectedLanguageVariant: $selectedLanguageVariant,
             selectedSource: $selectedSource,
         )
-    }
-
-    /// Content of the tagging sheet, showing a list of all current tags for a given grammar item as well as the
-    /// currently selected text. A fall back ContentUnavailableView is also provided, but this should never happen
-    /// unless a bug has surfaced.
-    @ViewBuilder
-    private var taggerView: some View {
-        if let grammarPoint = studyStore.grammarStore.selectedGrammarPoint {
-            Tagger(
-                statusMessage: $statusMessage,
-                showTagger: $showTagger,
-                grammarPoint: grammarPoint,
-                selectedText: selectedText,
-            )
-        } else {
-            ContentUnavailableView {
-                Label("Grammar Point Unavailable", systemImage: "xmark.circle")
-            } description: {
-                Text(
-                    "The selected grammar point id is nil." +
-                        "Please try selecting another point.",
-                )
-            } actions: {
-                Button("Dismiss") {
-                    showTagger = false
-                }
-            }
-        }
+        .navigationTitle("Settings")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 
     /// Resizable entry form where the diary content should resize to fill all remaining size on device. Requires a
@@ -283,7 +246,7 @@ struct PracticeView: View {
     /// TODO: Get the TextEditor to auto size to the available screen size remainder
     /// TODO: Make sure that when long entries are typed instead of growing, it scrolls
     @ViewBuilder
-    private func entryForm(availableHeight: CGFloat) -> some View {
+    private var entryForm: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 Text("Title").font(.headline)
@@ -319,7 +282,7 @@ struct PracticeView: View {
                         .focused($isContentFocused)
                         .disabled(isSaving)
                 }
-                .frame(minHeight: availableHeight * 0.4, maxHeight: .infinity)
+                .frame(maxHeight: .infinity)
                 .padding(UIConstants.Spacing.row)
                 .overlay(
                     RoundedRectangle(cornerSize: UIConstants.Sizing.cornerRadius)
@@ -407,6 +370,17 @@ struct PracticeView: View {
             }
         }
     }
+}
+
+// MARK: - Navigation Destinations
+
+struct GrammarInspectorDestination: Hashable {
+    let grammarPoint: GrammarPointLocal
+}
+
+struct TaggerDestination: Hashable {
+    let grammarPoint: GrammarPointLocal
+    let selectedText: String
 }
 
 // MARK: - Previews

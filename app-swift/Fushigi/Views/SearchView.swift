@@ -15,7 +15,7 @@ struct SearchView: View {
     // MARK: - Published State
 
     @EnvironmentObject var grammarStore: GrammarStore
-    @State private var lastActiveView: AppNavigatorView.MainView = .practice
+    @State private var lastActiveView: AppNavigatorView.MainView = .journal
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
     @Binding var selectedView: AppNavigatorView.MainView?
@@ -48,9 +48,6 @@ struct SearchView: View {
     @ViewBuilder
     private func showViewWithSearch(for tab: AppNavigatorView.MainView) -> some View {
         switch tab {
-        case .practice:
-            ReferenceView(searchText: $searchText)
-
         case .journal:
             JournalView(searchText: $searchText)
 

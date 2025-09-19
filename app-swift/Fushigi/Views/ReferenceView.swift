@@ -105,13 +105,16 @@ struct ReferenceView: View {
         .toolbar {
             toolbarContent
         }
-        .sheet(isPresented: $showDetails, onDismiss: {
-            studyStore.grammarStore.selectedGrammarPoint = nil
-        }) {
-            GrammarInspector(
-                showDetails: $showDetails,
-                systemState: effectiveSystemState,
-            )
+        .sheet(isPresented: $showDetails) {
+            PlatformSheet(
+                title: "GrammarDetails",
+                onDismiss: {
+                    showDetails.toggle()
+                    studyStore.grammarStore.selectedGrammarPoint = nil
+                }
+            ) {
+                GrammarInspector()
+            }
         }
     }
 
@@ -268,12 +271,6 @@ struct ReferenceView: View {
     ReferenceView(searchText: .constant(""))
         .withPreviewNavigation()
         .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
-}
-
-#Preview("Critical Error SwiftData") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }
 
 #Preview("Missing SRS") {

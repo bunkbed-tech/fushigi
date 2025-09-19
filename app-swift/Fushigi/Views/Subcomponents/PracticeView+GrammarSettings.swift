@@ -44,44 +44,62 @@ struct GrammarSettings: View {
     // MARK: - Main View
 
     var body: some View {
+        #if os(iOS)
+            List {
+                sourceAndFilters
+            }
+            .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .containerBackground(.clear, for: .navigation)
+        #else
         Form {
-            Section {
-                Picker("Grammar Source", selection: $selectedSource) {
-                    ForEach(SourceMode.allCases) { source in
-                        Label(source.displayName, systemImage: source.icon)
-                            .tag(source)
-                    }
+            sourceAndFilters
+        }
+        .formStyle(.grouped)
+        #endif
+    }
+
+    // MARK: - Sub Views
+
+    @ViewBuilder
+    private var sourceAndFilters: some View {
+        Section {
+            Picker("Grammar Source", selection: $selectedSource) {
+                ForEach(SourceMode.allCases) { source in
+                    Label(source.displayName, systemImage: source.icon)
+                        .tag(source)
                 }
-                .pickerStyle(.segmented)
-            } header: {
-                Text("Source Method")
-            } footer: {
-                Text(sourceFooterText)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            }
+            .pickerStyle(.segmented)
+        } header: {
+            Text("Source Method")
+        } footer: {
+            Text(sourceFooterText)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .listRowBackground(Color.clear)
+
+        // Content filtering options
+        Section("Content Filters") {
+            Picker("Usage Context", selection: $selectedContext) {
+                ForEach(Context.allCases) { context in
+                    Text(context.displayName).tag(context)
+                }
             }
 
-            // Content filtering options
-            Section("Content Filters") {
-                Picker("Usage Context", selection: $selectedContext) {
-                    ForEach(Context.allCases) { context in
-                        Text(context.displayName).tag(context)
-                    }
+            Picker("Politeness Level", selection: $selectedLevel) {
+                ForEach(Level.allCases) { level in
+                    Text(level.displayName).tag(level)
                 }
+            }
 
-                Picker("Politeness Level", selection: $selectedLevel) {
-                    ForEach(Level.allCases) { level in
-                        Text(level.displayName).tag(level)
-                    }
-                }
-
-                Picker("Language Variants", selection: $selectedLanguageVariant) {
-                    ForEach(LanguageVariants.allCases) { mode in
-                        Text(mode.displayName).tag(mode)
-                    }
+            Picker("Language Variants", selection: $selectedLanguageVariant) {
+                ForEach(LanguageVariants.allCases) { mode in
+                    Text(mode.displayName).tag(mode)
                 }
             }
         }
-        .formStyle(.grouped)
+        .listRowBackground(Color.clear)
     }
 }

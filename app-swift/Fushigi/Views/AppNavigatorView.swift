@@ -21,7 +21,7 @@ struct AppNavigatorView: View {
     #if os(macOS)
         @Environment(\.openSettings) private var openSettings
     #endif
-    @State private var selectedView: MainView? = .practice
+    @State private var selectedView: MainView? = .journal
     /// Search query text binding provided from parent view search toolbar
     @State private var searchText: String = ""
     /// Controls whether the users account pops up as a sheet  (iOS only)
@@ -59,21 +59,9 @@ struct AppNavigatorView: View {
     private var navigationAsTabs: some View {
         #if os(iOS)
             TabView(selection: $selectedView) {
-                Tab(MainView.practice.id, systemImage: MainView.practice.icon, value: .practice) {
-                    NavigationStack {
-                        decoratedView(for: .practice)
-                            .navigationTitle(MainView.practice.id)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .toolbar {
-                                profileToolbarButton
-                            }
-                    }
-                }
-
                 Tab(MainView.journal.id, systemImage: MainView.journal.icon, value: .journal) {
                     NavigationStack {
                         decoratedView(for: .journal)
-                            .navigationTitle(MainView.journal.id)
                             .navigationBarTitleDisplayMode(.inline)
                             .searchableIf(!isCompact, text: $searchText)
                             .toolbar {
@@ -85,7 +73,6 @@ struct AppNavigatorView: View {
                 Tab(MainView.reference.id, systemImage: MainView.reference.icon, value: .reference) {
                     NavigationStack {
                         decoratedView(for: .reference)
-                            .navigationTitle(MainView.reference.id)
                             .navigationBarTitleDisplayMode(.inline)
                             .searchableIf(!isCompact, text: $searchText)
                             .toolbar {
@@ -97,7 +84,7 @@ struct AppNavigatorView: View {
                 Tab(value: .search, role: .search) {
                     NavigationStack {
                         decoratedView(for: .search)
-                            .navigationTitle(MainView.search.id + " Mode Enabled")
+                            .navigationTitle(MainView.search.id + " Mode")
                             .navigationBarTitleDisplayMode(.inline)
                             .searchable(text: $searchText)
                             .toolbar {
@@ -114,9 +101,6 @@ struct AppNavigatorView: View {
     private var navigationAsSplitView: some View {
         NavigationSplitView {
             List(selection: $selectedView) {
-                NavigationLink(value: MainView.practice) {
-                    Label(MainView.practice.id, systemImage: MainView.practice.icon)
-                }
                 NavigationLink(value: MainView.journal) {
                     Label(MainView.journal.id, systemImage: MainView.journal.icon)
                 }
@@ -175,8 +159,6 @@ struct AppNavigatorView: View {
     private func decoratedView(for view: MainView) -> some View {
         Group {
             switch view {
-            case .practice:
-                PracticeView()
             case .journal:
                 JournalView(searchText: $searchText)
             case .reference:
@@ -205,7 +187,6 @@ struct AppNavigatorView: View {
     /// entries, a history of all journal entries, a reference page to view detailed grammar information, and a
     /// place to search the app overall.
     enum MainView: String, Identifiable, CaseIterable {
-        case practice = "Practice"
         case journal = "Journal"
         case reference = "Reference"
         case search = "Search"
@@ -214,7 +195,6 @@ struct AppNavigatorView: View {
 
         var icon: String {
             switch self {
-            case .practice: "pencil.and.scribble"
             case .journal: "clock.arrow.2.circlepath"
             case .reference: "books.vertical.fill"
             case .search: "magnifyingglass"
@@ -222,10 +202,8 @@ struct AppNavigatorView: View {
         }
 
         /// Flag to hide global search bar for some NavigationLinks in MacOS/iPadOS views.
-        /// TODO: Fix this, the search bar still shows up on the .practice page.
         var supportsSearch: Bool {
             switch self {
-            case .practice: false
             case .journal: true
             case .reference: true
             case .search: false

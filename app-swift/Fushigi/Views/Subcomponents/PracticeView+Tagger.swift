@@ -20,7 +20,6 @@ struct Tagger: View {
     @EnvironmentObject var grammarStore: GrammarStore
     @EnvironmentObject var sentenceStore: SentenceStore
     @Binding var statusMessage: String?
-    @Binding var showTagger: Bool
 
     // MARK: - Computed Properties
 
@@ -40,13 +39,6 @@ struct Tagger: View {
     var body: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
             HStack(spacing: UIConstants.Spacing.default) {
-                #if os(macOS)
-                    Button("Dismiss") {
-                        grammarStore.selectedGrammarPoint = nil
-                        showTagger = false
-                    }
-                    .buttonStyle(.bordered)
-                #endif
                 Spacer()
                 Button("Confirm") { Task { await confirmTagging() } }
                     .buttonStyle(.borderedProminent)
@@ -105,6 +97,11 @@ struct Tagger: View {
             }
         }
         .padding()
+        .navigationTitle("Tagger")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        #endif
     }
 
     // MARK: - Helper Methods

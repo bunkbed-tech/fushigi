@@ -12,7 +12,7 @@ import SwiftUI
 /// Displays up to 5 curated grammar points for practice sessions, chosen based on SRS records. Users have the
 /// ability to actually leverage an "SRS" algorithm or choose completely randomly. Filters are provided to enhance
 /// this choice further. By clicking on a grammar item, a detailed grammar sheet will pop up to explain the grammar
-/// point further when help is needed. By clickign the + button, a tagger sheet will pop up to aid users in tagging
+/// point further when help is needed. By clickign the + button, a tagger sheet will navigate to aid users in tagging
 /// highlighted sentences within their journal entry with the clicked grammar point. Thus, we are able to enable users
 /// with a slow creation of a custom sourced sentence bank showing their progress in language learning over time.
 struct DailyGrammar: View {
@@ -20,22 +20,14 @@ struct DailyGrammar: View {
 
     @EnvironmentObject var studyStore: StudyStore
     @EnvironmentObject var sentenceStore: SentenceStore
-    @Binding var showTagger: Bool
-    @Binding var showDetails: Bool
     /// User preference for grammar sourcing algorithm (random vs. SRS)
     @Binding var selectedSource: SourceMode
 
     // MARK: - Init
 
     let currentGrammar: [GrammarPointLocal]
-
-    // MARK: - Computed Properties
-
-    /// Determine the health of the most important store for this view (SRS), whether it's an error state,
-    /// loading state, or healthy state
-    private var systemState: SystemState {
-        studyStore.srsStore.systemState
-    }
+    let selectedText: String
+    let systemState: SystemState
 
     // MARK: - Main View
 
@@ -123,10 +115,7 @@ struct DailyGrammar: View {
     @ViewBuilder
     private func dailyGrammarRow(grammarPoint: GrammarPointLocal) -> some View {
         HStack {
-            Button {
-                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-                showDetails = true
-            } label: {
+            NavigationLink(value: GrammarInspectorDestination(grammarPoint: grammarPoint)) {
                 HStack {
                     Text(grammarPoint.usage)
                         .foregroundStyle(.foreground)
@@ -137,13 +126,13 @@ struct DailyGrammar: View {
                 }
                 .contentShape(.rect)
             }
+            .simultaneousGesture(TapGesture().onEnded {
+                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
+            })
             .buttonStyle(.plain)
             .help("View grammar usage details to rejog your memory.")
 
-            Button {
-                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-                showTagger = true
-            } label: {
+            NavigationLink(value: TaggerDestination(grammarPoint: grammarPoint, selectedText: selectedText)) {
                 Label("Add Tag", systemImage: "plus.circle.fill")
                     .labelStyle(.iconOnly)
             }

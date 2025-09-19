@@ -25,6 +25,8 @@ struct JournalView: View {
     @State private var journalSortKey: JournalSort = .newest
     /// Control to swap between all, private, and public journal entries in anticipation of potential social features
     @State private var selectedFilter: JournalQuickFilter = .all
+    /// Controls whether the sheet for writing a journal entry pops up
+    @State private var showNewJournalEntry: Bool = false
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
 
@@ -92,10 +94,9 @@ struct JournalView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             case .emptyData:
                 ContentUnavailableView {
-                    Label("Missing", systemImage: "tray")
+                    Label("Empty", systemImage: "tray")
                 } description: {
-                    Text("No journal entries found or written yet. Submit an entry or refresh the page.")
-                        .foregroundColor(.red)
+                    Text("No journal entries found or written yet. Submit an entry by clicking the pencil icon or refreshing the page.")
                 } actions: {
                     Button("Refresh") {
                         Task { await journalStore.refresh() }
@@ -135,30 +136,48 @@ struct JournalView: View {
                 .padding(.top, 8)
             }
         }
+        .sheet(isPresented: $showNewJournalEntry){
+            PracticeView()
+        }
         .toolbar {
-            Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                ForEach(JournalSort.allCases, id: \.self) { filter in
-                    if journalSortKey == filter {
-                        Button(filter.rawValue, systemImage: "checkmark") {
-                            journalSortKey = filter
-                        }
-                    } else {
-                        Button(filter.rawValue) {
-                            journalSortKey = filter
+            ToolbarItem{
+                Button("Add Journal Entry", systemImage: "pencil.and.scribble"){
+                    showNewJournalEntry.toggle()
+                }
+            }
+            if #available(iOS 26.0, macOS 26.0, *) {
+                ToolbarSpacer()
+            } else {
+                ToolbarItem(placement: .automatic) {
+                    EmptyView()
+                }
+            }
+            ToolbarItem{
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    ForEach(JournalSort.allCases, id: \.self) { filter in
+                        if journalSortKey == filter {
+                            Button(filter.rawValue, systemImage: "checkmark") {
+                                journalSortKey = filter
+                            }
+                        } else {
+                            Button(filter.rawValue) {
+                                journalSortKey = filter
+                            }
                         }
                     }
                 }
             }
-
-            Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                ForEach(JournalQuickFilter.allCases, id: \.self) { filter in
-                    if selectedFilter == filter {
-                        Button(filter.rawValue, systemImage: "checkmark") {
-                            selectedFilter = filter
-                        }
-                    } else {
-                        Button(filter.rawValue) {
-                            selectedFilter = filter
+            ToolbarItem {
+                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                    ForEach(JournalQuickFilter.allCases, id: \.self) { filter in
+                        if selectedFilter == filter {
+                            Button(filter.rawValue, systemImage: "checkmark") {
+                                selectedFilter = filter
+                            }
+                        } else {
+                            Button(filter.rawValue) {
+                                selectedFilter = filter
+                            }
                         }
                     }
                 }
