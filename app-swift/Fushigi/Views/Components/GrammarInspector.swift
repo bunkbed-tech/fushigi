@@ -18,62 +18,56 @@ struct GrammarInspector: View {
 
     @EnvironmentObject var studyStore: StudyStore
 
+    // MARK: - Init
+
+    let selectedGrammarPoint: GrammarPointLocal
+
     // MARK: - Main View
 
     var body: some View {
-        Group {
-            if let point = studyStore.grammarStore.selectedGrammarPoint {
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-                    Text("Usage: \(point.usage)")
-                    Text("Meaning: \(point.meaning)")
-                    Divider()
-                    coloredTagsText(tags: point.tags)
-                    Spacer()
-                    NavigationLink("Sentence Bank", destination: sentenceBank)
-                }
-                .padding()
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Menu("Options", systemImage: "ellipsis.circle") {
-                            if studyStore.srsStore.isInSRS(point.id) {
-                                Button("Ignore in SRS", systemImage: "rectangle.on.rectangle.slash") {
-                                    print("TODO: Implement remove from SRS")
-                                }
-                                .disabled(true)
-                            } else {
-                                Button("Track in SRS", systemImage: "plus.rectangle.on.rectangle") {
-                                    Task {
-                                        await studyStore.srsStore.addToSRS(point.id)
-                                    }
-                                }
-                            }
-
-                            Button("Edit", systemImage: "square.and.arrow.up.fill") {
-                                print("TODO: Implement editing user grammar point...")
-                            }
-                            .disabled(true)
-
-                            Button("Delete", systemImage: "trash.slash") {
-                                print("TODO: Implement removing user grammar point...")
-                            }
-                            .disabled(true)
+        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+            Text("Usage: \(selectedGrammarPoint.usage)")
+            Text("Meaning: \(selectedGrammarPoint.meaning)")
+            Divider()
+            coloredTagsText(tags: selectedGrammarPoint.tags)
+            Spacer()
+            NavigationLink("Sentence Bank", destination: sentenceBank)
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Menu("Options", systemImage: "ellipsis.circle") {
+                    if studyStore.srsStore.isInSRS(selectedGrammarPoint.id) {
+                        Button("Ignore in SRS", systemImage: "rectangle.on.rectangle.slash") {
+                            print("TODO: Implement remove from SRS")
                         }
-                        .labelStyle(.iconOnly)
-                        .disabled(studyStore.srsStore.systemState.shouldDisableUI)
+                        .disabled(true)
+                    } else {
+                        Button("Track in SRS", systemImage: "plus.rectangle.on.rectangle") {
+                            Task {
+                                await studyStore.srsStore.addToSRS(selectedGrammarPoint.id)
+                            }
+                        }
                     }
+
+                    Button("Edit", systemImage: "square.and.arrow.up.fill") {
+                        print("TODO: Implement editing user grammar point...")
+                    }
+                    .disabled(true)
+
+                    Button("Delete", systemImage: "trash.slash") {
+                        print("TODO: Implement removing user grammar point...")
+                    }
+                    .disabled(true)
                 }
-            } else {
-                ContentUnavailableView {
-                    Label("Error", systemImage: "xmark.circle")
-                } description: {
-                    Text("Selected grammar is null. Please report this bug.")
-                }
+                .labelStyle(.iconOnly)
+                .disabled(studyStore.srsStore.systemState.shouldDisableUI)
             }
         }
         .navigationTitle("Grammar Details")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
-        .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        .containerBackground(.clear, for: .navigation)
         #endif
     }
 
@@ -84,9 +78,10 @@ struct GrammarInspector: View {
     /// done before to keep things fresh.
     @ViewBuilder
     private var sentenceBank: some View {
+        let sentences = studyStore.getSentencesForGrammar(selectedGrammarPoint.id)
         Group {
-            if !studyStore.sentenceBank.isEmpty {
-                List(studyStore.sentenceBank, id: \.self) { sentence in
+            if !sentences.isEmpty {
+                List(sentences, id: \.self) { sentence in
                     HStack {
                         Text(sentence.content)
                         Spacer()

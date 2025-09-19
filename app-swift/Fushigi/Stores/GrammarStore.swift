@@ -27,9 +27,6 @@ class GrammarStore: ObservableObject {
     /// Timestamp of last successful remote sync
     @Published var lastSyncDate: Date?
 
-    /// Currently selected item (set by UI, not managed by store)
-    @Published var selectedGrammarPoint: GrammarPointLocal?
-
     // MARK: Init
 
     let modelContext: ModelContext?
@@ -215,7 +212,6 @@ class GrammarStore: ObservableObject {
         grammarItems.removeAll()
         dataAvailability = .empty
         systemHealth = .healthy
-        selectedGrammarPoint = nil
         lastSyncDate = nil
     }
 }

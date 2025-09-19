@@ -16,9 +16,7 @@ import SwiftUI
 struct GrammarTable: View {
     // MARK: - Published State
 
-    @EnvironmentObject var grammarStore: GrammarStore
-    @State private var selectedGrammarID: String?
-    @Binding var showDetails: Bool
+    @Binding var selectedGrammarPoint: GrammarPointLocal?
 
     // MARK: - Init
 
@@ -32,72 +30,75 @@ struct GrammarTable: View {
     var body: some View {
         Group {
             if isCompact {
-                List(grammarPoints, id: \.id) { point in
-                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                        HStack {
-                            Text(point.usage)
-                                .font(.body)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.mint)
-
-                            Spacer()
-
-                            Text(point.notes)
-                                .font(.caption2)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.purple)
-                        }
-
-                        Text(point.meaning)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-
-                        if !point.tags.isEmpty {
-                            coloredTagsText(tags: point.tags)
-                        }
-                    }
-                    .padding(UIConstants.Sizing.defaultPadding)
-                    .contentShape(.rect)
-                    .onTapGesture {
-                        grammarStore.selectedGrammarPoint = point
-                        showDetails = true
-                    }
-                }
+                grammarAsList
             } else {
-                Table(grammarPoints, selection: $selectedGrammarID) {
-                    TableColumn("場合") { point in
-                        Text(point.notes)
-                    }
-                    TableColumn("使い方") { point in
-                        VStack(alignment: .leading) {
-                            Text(point.usage)
-                            Text(point.meaning)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        .lineLimit(nil)
-                    }
-                    TableColumn("タッグ") { point in
-                        coloredTagsText(tags: point.tags)
-                            .lineLimit(nil)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .onChange(of: selectedGrammarID) { _, new in
-                    grammarStore.selectedGrammarPoint = grammarStore.getGrammarPoint(id: new)
-                    if new != nil {
-                        showDetails = true
-                    }
-                }
+                grammarAsTable
             }
         }
         .scrollContentBackground(.hidden)
         .listRowBackground(Color.clear)
-        #if os(macOS)
-            .tableStyle(.inset(alternatesRowBackgrounds: false))
-        #endif
-            .refreshable {
-                await onRefresh()
+        .refreshable {
+            await onRefresh()
+        }
+    }
+
+    @ViewBuilder
+    private var grammarAsList: some View {
+        List(grammarPoints, id: \.id) { point in
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                HStack {
+                    Text(point.usage)
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.mint)
+
+                    Spacer()
+
+                    Text(point.notes)
+                        .font(.caption2)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.purple)
+                }
+
+                Text(point.meaning)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+
+                if !point.tags.isEmpty {
+                    coloredTagsText(tags: point.tags)
+                }
             }
+            .padding(UIConstants.Sizing.defaultPadding)
+            .contentShape(.rect)
+            .onTapGesture {
+                selectedGrammarPoint = point
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var grammarAsTable: some View {
+        Table(grammarPoints) {
+            TableColumn("場合") { point in
+                Text(point.notes)
+            }
+            TableColumn("使い方") { point in
+                VStack(alignment: .leading) {
+                    Text(point.usage)
+                    Text(point.meaning)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .lineLimit(nil)
+            }
+            TableColumn("タッグ") { point in
+                coloredTagsText(tags: point.tags)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        #if os(macOS)
+        .tableStyle(.inset(alternatesRowBackgrounds: false))
+        #endif
     }
 }

@@ -121,8 +121,8 @@ struct PracticeView: View {
                     }
                     // keyboardQuickTagger
                 }
-                .navigationDestination(for: GrammarInspectorDestination.self) { _ in
-                    GrammarInspector()
+                .navigationDestination(for: GrammarInspectorDestination.self) { destination in
+                    GrammarInspector(selectedGrammarPoint: destination.grammarPoint)
                 }
                 .navigationDestination(for: TaggerDestination.self) { destination in
                     Tagger(

@@ -17,10 +17,9 @@ struct ReferenceView: View {
 
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @EnvironmentObject var studyStore: StudyStore
-    /// Controls whether the sheet for explicit grammar details pops up
-    @State private var showDetails: Bool = false
     /// Controls currently displayed source of grammar (default, custom, in SRS, not in SRS, etc)
     @State private var selectedFilter: GrammarQuickFilter = .all
+    @State private var selectedGrammarPoint: GrammarPointLocal?
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
 
@@ -105,15 +104,12 @@ struct ReferenceView: View {
         .toolbar {
             toolbarContent
         }
-        .sheet(isPresented: $showDetails) {
+        .sheet(item: $selectedGrammarPoint) { grammarPoint in
             PlatformSheet(
-                title: "GrammarDetails",
-                onDismiss: {
-                    showDetails.toggle()
-                    studyStore.grammarStore.selectedGrammarPoint = nil
-                }
+                title: "Grammar Details",
+                onDismiss: { selectedGrammarPoint = nil }
             ) {
-                GrammarInspector()
+                GrammarInspector(selectedGrammarPoint: grammarPoint)
             }
         }
     }
@@ -167,7 +163,7 @@ struct ReferenceView: View {
             }
         } else {
             GrammarTable(
-                showDetails: $showDetails,
+                selectedGrammarPoint: $selectedGrammarPoint,
                 grammarPoints: grammarPoints,
                 isCompact: isCompact,
                 onRefresh: {

@@ -126,9 +126,6 @@ struct DailyGrammar: View {
                 }
                 .contentShape(.rect)
             }
-            .simultaneousGesture(TapGesture().onEnded {
-                studyStore.grammarStore.selectedGrammarPoint = grammarPoint
-            })
             .buttonStyle(.plain)
             .help("View grammar usage details to rejog your memory.")
 

@@ -55,12 +55,6 @@ class StudyStore: ObservableObject {
         return grammarStore.grammarItems.filter { !srsGrammarIds.contains($0.id) }
     }
 
-    /// User created sentences for a given grammar item - uses database predicates
-    var sentenceBank: [SentenceLocal] {
-        guard let selectedId = grammarStore.selectedGrammarPoint?.id else { return [] }
-        return sentenceStore.getSentencesForGrammar(selectedId)
-    }
-
     // MARK: - Enhanced Query API
 
     /// Get sentences for any grammar point using database predicates

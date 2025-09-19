@@ -366,7 +366,7 @@ struct UserDataAnalytics: View {
                         VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
                             Text("SRS Items: \(studyStore.inSRSGrammarItems.count)")
                             Text("Available: \(studyStore.availableGrammarItems.count)")
-                            Text("Current Sentences: \(studyStore.sentenceBank.count)")
+                            Text("Total Sentences: \(studyStore.sentenceStore.sentences.count)")
                         }
                         .font(.caption)
                         .foregroundColor(.secondary)
