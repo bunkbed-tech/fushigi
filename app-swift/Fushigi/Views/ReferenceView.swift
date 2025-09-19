@@ -19,9 +19,9 @@ struct ReferenceView: View {
     @EnvironmentObject var studyStore: StudyStore
     /// Controls currently displayed source of grammar (default, custom, in SRS, not in SRS, etc)
     @State private var selectedFilter: GrammarQuickFilter = .all
-    @State private var selectedGrammarPoint: GrammarPointLocal?
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
+    @Binding var selectedGrammarPoint: GrammarPointLocal?
 
     // MARK: Computed Properties
 
@@ -103,14 +103,6 @@ struct ReferenceView: View {
         }
         .toolbar {
             toolbarContent
-        }
-        .sheet(item: $selectedGrammarPoint) { grammarPoint in
-            PlatformSheet(
-                title: "Grammar Details",
-                onDismiss: { selectedGrammarPoint = nil }
-            ) {
-                GrammarInspector(selectedGrammarPoint: grammarPoint)
-            }
         }
     }
 
@@ -222,55 +214,82 @@ struct ReferenceView: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores()
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }
 
 #Preview("Degraded Operation Postgres") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(systemHealth: .pocketbaseError)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(systemHealth: .swiftDataError)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("With Search Results") {
-    ReferenceView(searchText: .constant("Hello"))
-        .withPreviewNavigation()
-        .withPreviewStores()
+    ReferenceView(
+        searchText: .constant("Hello"),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }
 
 #Preview("No Search Results") {
-    ReferenceView(searchText: .constant("nonexistent"))
-        .withPreviewNavigation()
-        .withPreviewStores()
+    ReferenceView(
+        searchText: .constant("nonexistent"),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }
 
 #Preview("Loading State") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .loading)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Empty Database") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Critical Error PocketBase") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Missing SRS") {
-    ReferenceView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(noSRS: true)
+    ReferenceView(
+        searchText: .constant(""),
+        selectedGrammarPoint: .constant(nil)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(noSRS: true)
 }

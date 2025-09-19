@@ -19,16 +19,14 @@ struct JournalView: View {
 
     @EnvironmentObject var journalStore: JournalStore
     @State private var errorMessage: String?
-    /// Set of expanded journal entry IDs for detail view since many can be "open" at once
-    @State private var expanded: Set<String> = []
     /// Control to set order in which journal entries are shown for the user
     @State private var journalSortKey: JournalSort = .newest
     /// Control to swap between all, private, and public journal entries in anticipation of potential social features
     @State private var selectedFilter: JournalQuickFilter = .all
-    /// Controls whether the sheet for writing a journal entry pops up
-    @State private var showNewJournalEntry: Bool = false
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
+    @Binding var selectedJournalEntry: JournalEntryLocal?
+    @Binding var showNewEntry: Bool
 
     // MARK: - Computed Properties
 
@@ -136,13 +134,10 @@ struct JournalView: View {
                 .padding(.top, 8)
             }
         }
-        .sheet(isPresented: $showNewJournalEntry){
-            PracticeView()
-        }
         .toolbar {
             ToolbarItem{
                 Button("Add Journal Entry", systemImage: "pencil.and.scribble"){
-                    showNewJournalEntry.toggle()
+                    showNewEntry.toggle()
                 }
             }
             if #available(iOS 26.0, macOS 26.0, *) {
@@ -203,7 +198,7 @@ struct JournalView: View {
         } else {
             List {
                 ForEach(journalEntries) { entry in
-                    journalItemDisclosure(for: entry)
+                    journalItemRow(for: entry)
                 }
             }
             .scrollDismissesKeyboard(.interactively)
@@ -214,14 +209,9 @@ struct JournalView: View {
         }
     }
 
-    /// Implement a list of journal items as a disclosure group (click and drop down) rather than a clickable list with
-    /// a pop up sheet or navigation. This was done mostly to experiment with disclure groups although I am a fan
-    /// of the UX. Potentially might want to move on from this method to something more standard based on feedback.
-    ///
-    /// TODO: Display tagged grammar points and feedback rather than hardcode them.
-    /// TODO: Include buttons for recomputing feedback.
+    /// Display journal entries as selectable list rows that update the selectedJournalEntry binding when tapped
     @ViewBuilder
-    func journalItemDisclosure(for entry: JournalEntryLocal) -> some View {
+    func journalItemRow(for entry: JournalEntryLocal) -> some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
             HStack {
                 VStack(alignment: .leading) {
@@ -232,38 +222,21 @@ struct JournalView: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-                Image(systemName: expanded.contains(entry.id) ?
-                    "chevron.down" : "chevron.right")
-                    .animation(.none, value: expanded.contains(entry.id))
-            }
-
-            if expanded.contains(entry.id) {
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
-                    Text(entry.content)
-
-                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                        Text("Grammar Points:")
-                            .font(.subheadline)
-                            .foregroundStyle(.mint)
-                        Text("• (placeholder) ～てしまう")
-                        Text("• (placeholder) ～わけではない")
-                    }
-
-                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
-                        Text("AI Feedback:")
-                            .font(.subheadline)
-                            .foregroundStyle(.purple)
-                        Text("(placeholder) Try to avoid passive constructions.")
-                    }
+                if entry.isPrivate {
+                    Image(systemName: "lock.fill")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-                .padding(.leading)
             }
+
+            Text(entry.content)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(2)
         }
         .contentShape(.rect)
-        .onTapGesture { // hilarious animation...
-            withAnimation(.bouncy(duration: 0.6, extraBounce: 0.3)) {
-                toggleExpanded(for: entry.id)
-            }
+        .onTapGesture {
+            selectedJournalEntry = entry
         }
         .listRowBackground(Color.clear)
         .swipeActions(edge: .trailing) {
@@ -277,16 +250,6 @@ struct JournalView: View {
     }
 
     // MARK: - Helper Methods
-
-    /// Toggles the expanded state for the currently clicked journal entry so it expands and show content. Toggling is
-    /// implemented via a Set of indexes storing whether the current index is open or closed.
-    private func toggleExpanded(for id: String) {
-        if expanded.contains(id) {
-            expanded.remove(id)
-        } else {
-            expanded.insert(id)
-        }
-    }
 
     /// Swipe to delete is provided on an index by the Swift SDK so remove the current journal entry at that offset
     /// when the user swipes.
@@ -303,49 +266,81 @@ struct JournalView: View {
 // MARK: - Previews
 
 #Preview("Normal State") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores()
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }
 
 #Preview("Data Missing") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .empty)
 }
 
 #Preview("Degraded Operation Postgres") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(systemHealth: .pocketbaseError)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemHealth: .pocketbaseError)
 }
 
 #Preview("Degraded Operation SwiftData") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(systemHealth: .swiftDataError)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(systemHealth: .swiftDataError)
 }
 
 #Preview("No Search Results") {
-    JournalView(searchText: .constant("nonexistent"))
-        .withPreviewNavigation()
-        .withPreviewStores()
+    JournalView(
+        searchText: .constant("nonexistent"),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores()
 }
 
 #Preview("Loading State") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .loading)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .loading)
 }
 
 #Preview("Critical Postgres Error") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
 }
 
 #Preview("Critical SwiftData Error") {
-    JournalView(searchText: .constant(""))
-        .withPreviewNavigation()
-        .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
+    JournalView(
+        searchText: .constant(""),
+        selectedJournalEntry: .constant(nil),
+        showNewEntry: .constant(false)
+    )
+    .withPreviewNavigation()
+    .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
 }

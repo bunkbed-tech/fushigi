@@ -27,25 +27,9 @@ struct PlatformSheet<Content: View>: View {
     var body: some View {
         #if os(macOS)
             NavigationStack {
-                VStack(spacing: 0) {
-                    // Header bar
-                    HStack {
-                        Text(title)
-                            .font(.headline)
-
-                        Spacer()
-
-                        Button("Done", action: onDismiss)
-                            .buttonStyle(.borderedProminent)
-                    }
-                    .padding()
-
-                    Divider()
-
-                    content
-                }
-                .frame(minWidth: UIConstants.Sizing.forcedFrameWidth, minHeight: UIConstants.Sizing.forcedFrameHeight)
+                content
             }
+            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth)
         #else
             NavigationStack {
                 content

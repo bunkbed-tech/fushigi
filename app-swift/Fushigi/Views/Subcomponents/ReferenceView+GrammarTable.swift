@@ -17,6 +17,7 @@ struct GrammarTable: View {
     // MARK: - Published State
 
     @Binding var selectedGrammarPoint: GrammarPointLocal?
+    @State private var selectedGrammarID: String?
 
     // MARK: - Init
 
@@ -78,7 +79,7 @@ struct GrammarTable: View {
 
     @ViewBuilder
     private var grammarAsTable: some View {
-        Table(grammarPoints) {
+        Table(grammarPoints, selection: $selectedGrammarID) {
             TableColumn("場合") { point in
                 Text(point.notes)
             }
@@ -95,6 +96,12 @@ struct GrammarTable: View {
                 coloredTagsText(tags: point.tags)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .onChange(of: selectedGrammarID) { _, newID in
+            if let newID = newID,
+               let selectedPoint = grammarPoints.first(where: { $0.id == newID }) {
+                selectedGrammarPoint = selectedPoint
             }
         }
         #if os(macOS)

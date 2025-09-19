@@ -19,6 +19,8 @@ struct SearchView: View {
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
     @Binding var selectedView: AppNavigatorView.MainView?
+    @Binding var selectedJournalEntry: JournalEntryLocal?
+    @Binding var selectedGrammarPoint: GrammarPointLocal?
 
     // MARK: - Main View
 
@@ -49,10 +51,17 @@ struct SearchView: View {
     private func showViewWithSearch(for tab: AppNavigatorView.MainView) -> some View {
         switch tab {
         case .journal:
-            JournalView(searchText: $searchText)
+            JournalView(
+                searchText: $searchText,
+                selectedJournalEntry: $selectedJournalEntry,
+                showNewEntry: .constant(false) // TODO: improve this so its not visable?
+            )
 
         case .reference:
-            ReferenceView(searchText: $searchText)
+            ReferenceView(
+                searchText: $searchText,
+                selectedGrammarPoint: $selectedGrammarPoint
+            )
 
         case .search:
             // Fallback should never happen

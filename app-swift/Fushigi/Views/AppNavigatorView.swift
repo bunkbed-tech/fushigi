@@ -22,6 +22,9 @@ struct AppNavigatorView: View {
         @Environment(\.openSettings) private var openSettings
     #endif
     @State private var selectedView: MainView? = .journal
+    @State private var selectedJournalEntry: JournalEntryLocal?
+    @State private var selectedGrammarPoint: GrammarPointLocal?
+    @State private var showNewEntry = false
     /// Search query text binding provided from parent view search toolbar
     @State private var searchText: String = ""
     /// Controls whether the users account pops up as a sheet  (iOS only)
@@ -61,35 +64,96 @@ struct AppNavigatorView: View {
             TabView(selection: $selectedView) {
                 Tab(MainView.journal.id, systemImage: MainView.journal.icon, value: .journal) {
                     NavigationStack {
-                        decoratedView(for: .journal)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .searchableIf(!isCompact, text: $searchText)
-                            .toolbar {
-                                profileToolbarButton
-                            }
+                        JournalView(
+                            searchText: $searchText,
+                            selectedJournalEntry: $selectedJournalEntry,
+                            showNewEntry: $showNewEntry
+                        )
+                        .navigationBarTitleDisplayMode(.inline)
+                        .searchableIf(!isCompact, text: $searchText)
+                        .toolbar {
+                            profileToolbarButton
+                        }
+                        .sheet(item: $selectedJournalEntry) { entry in
+                            JournalEntryDetailView(journalEntry: entry)
+                        }
+                        .sheet(isPresented: $showNewEntry) {
+                            PracticeView()
+                        }
+                        .background {
+                            LinearGradient(
+                                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing,
+                            )
+                            .ignoresSafeArea()
+                        }
                     }
                 }
 
                 Tab(MainView.reference.id, systemImage: MainView.reference.icon, value: .reference) {
                     NavigationStack {
-                        decoratedView(for: .reference)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .searchableIf(!isCompact, text: $searchText)
-                            .toolbar {
-                                profileToolbarButton
+                        ReferenceView(
+                            searchText: $searchText,
+                            selectedGrammarPoint: $selectedGrammarPoint
+                        )
+                        .navigationBarTitleDisplayMode(.inline)
+                        .searchableIf(!isCompact, text: $searchText)
+                        .toolbar {
+                            profileToolbarButton
+                        }
+                        .sheet(item: $selectedGrammarPoint) { grammarPoint in
+                            PlatformSheet(
+                                title: "Grammar Details",
+                                onDismiss: { selectedGrammarPoint = nil }
+                            ) {
+                                GrammarInspector(selectedGrammarPoint: grammarPoint)
                             }
+                        }
+                        .background {
+                            LinearGradient(
+                                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing,
+                            )
+                            .ignoresSafeArea()
+                        }
                     }
                 }
 
                 Tab(value: .search, role: .search) {
                     NavigationStack {
-                        decoratedView(for: .search)
-                            .navigationTitle(MainView.search.id + " Mode")
-                            .navigationBarTitleDisplayMode(.inline)
-                            .searchable(text: $searchText)
-                            .toolbar {
-                                profileToolbarButton
+                        SearchView(
+                            searchText: $searchText,
+                            selectedView: $selectedView,
+                            selectedJournalEntry: $selectedJournalEntry,
+                            selectedGrammarPoint: $selectedGrammarPoint
+                        )
+                        .navigationTitle(MainView.search.id + " Mode")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .searchable(text: $searchText)
+                        .toolbar {
+                            profileToolbarButton
+                        }
+                        .sheet(item: $selectedJournalEntry) { entry in
+                            JournalEntryDetailView(journalEntry: entry)
+                        }
+                        .sheet(item: $selectedGrammarPoint) { grammarPoint in
+                            PlatformSheet(
+                                title: "Grammar Details",
+                                onDismiss: { selectedGrammarPoint = nil }
+                            ) {
+                                GrammarInspector(selectedGrammarPoint: grammarPoint)
                             }
+                        }
+                        .background {
+                            LinearGradient(
+                                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing,
+                            )
+                            .ignoresSafeArea()
+                        }
                     }
                 }
             }
@@ -108,13 +172,55 @@ struct AppNavigatorView: View {
                     Label(MainView.reference.id, systemImage: MainView.reference.icon)
                 }
             }
-        }
-        detail: {
-            if let selectedView {
-                decoratedView(for: selectedView)
-                    .toolbar {
-                        profileToolbarButton
+        } content: {
+            Group {
+                if let selectedView {
+                    switch selectedView {
+                    case .journal:
+                        JournalView(
+                            searchText: $searchText,
+                            selectedJournalEntry: $selectedJournalEntry,
+                            showNewEntry: $showNewEntry
+                        )
+                    case .reference:
+                        ReferenceView(
+                            searchText: $searchText,
+                            selectedGrammarPoint: $selectedGrammarPoint
+                        )
+                    case .search:
+                        SearchView(
+                            searchText: $searchText,
+                            selectedView: $selectedView,
+                            selectedJournalEntry: $selectedJournalEntry,
+                            selectedGrammarPoint: $selectedGrammarPoint
+                        )
                     }
+                }
+            }
+            .toolbar {
+                profileToolbarButton
+            }
+            .background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
+            #if os(macOS)
+            .toolbarBackground(Visibility.hidden, for: .windowToolbar)
+            #endif
+        } detail: {
+            if let selectedView {
+                switch selectedView {
+                case .journal:
+                    journalDetailColumn
+                case .reference:
+                    referenceDetailColumn
+                case .search:
+                    searchDetailColumn
+                }
             } else {
                 ContentUnavailableView {
                     Label("Current tab state broken", systemImage: "error")
@@ -125,6 +231,55 @@ struct AppNavigatorView: View {
         }
         .searchable(text: $searchText, prompt: "Search")
         .navigationTitle(selectedView?.id ?? "Fushigi")
+        .navigationSplitViewStyle(.balanced)
+    }
+
+    @ViewBuilder
+    private var journalDetailColumn: some View {
+        if showNewEntry {
+            PracticeView()
+        } else if let selectedJournalEntry {
+            JournalEntryDetailView(journalEntry: selectedJournalEntry)
+        } else {
+            ContentUnavailableView {
+                Label("Select Journal Entry", systemImage: "book.closed")
+            } description: {
+                Text("Choose an entry from the list to view details, or create a new entry")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    @ViewBuilder
+    private var referenceDetailColumn: some View {
+        if let selectedGrammarPoint {
+            PlatformSheet(title: "", onDismiss: {}){
+                GrammarInspector(selectedGrammarPoint: selectedGrammarPoint)
+            }
+        } else {
+            ContentUnavailableView {
+                Label("Select Grammar Point", systemImage: "text.book.closed")
+            } description: {
+                Text("Choose a grammar point from the list to view details")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    @ViewBuilder
+    private var searchDetailColumn: some View {
+        if let selectedJournalEntry {
+            JournalEntryDetailView(journalEntry: selectedJournalEntry)
+        } else if let selectedGrammarPoint {
+            GrammarInspector(selectedGrammarPoint: selectedGrammarPoint)
+        } else {
+            ContentUnavailableView {
+                Label("Select Item", systemImage: "magnifyingglass")
+            } description: {
+                Text("Choose an item from search results to view details")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 
     /// Unified account/settings button for both platforms used in order to either open as a sheet or a
@@ -146,39 +301,6 @@ struct AppNavigatorView: View {
                 #endif
             }
         }
-    }
-
-    /// Call the exact view for the selected tab/navigation and add a nice mostly transparent linear gradient
-    /// as a background to make the app feel more friendly and modern for users. This also makes things
-    /// look nicer with Liquid Glass.
-    ///
-    /// Note that there is weird MacOS behavior requiring forcing the toolbar to be see through in order to
-    /// have the linear gradient show up behind the top nav toolbar (something that doesn't happen on iOS
-    /// already by default).
-    @ViewBuilder
-    private func decoratedView(for view: MainView) -> some View {
-        Group {
-            switch view {
-            case .journal:
-                JournalView(searchText: $searchText)
-            case .reference:
-                ReferenceView(searchText: $searchText)
-            case .search:
-                SearchView(searchText: $searchText, selectedView: $selectedView)
-            }
-        }
-        .background {
-            LinearGradient(
-                colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing,
-            )
-            .ignoresSafeArea()
-        }
-        #if os(macOS)
-        // Ensure the gradient fills under the titlebar (why doesnt it by default?)
-        .toolbarBackground(Visibility.hidden, for: .windowToolbar)
-        #endif
     }
 
     // MARK: - Helper Methods
