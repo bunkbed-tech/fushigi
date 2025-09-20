@@ -1,5 +1,5 @@
 //
-//  PlatformSheet.swift
+//  SubNavigatorView.swift
 //  Fushigi
 //
 //  Created by Tahoe Schrader on 2025/09/07.
@@ -7,19 +7,16 @@
 
 import SwiftUI
 
-// MARK: - Platform Sheet Helper
+// MARK: - Sub Navigator View
 
-/// Cross-platform sheet wrapper using native interaction patterns. This is done to keep MacOS from
-/// nesting too many navigation stacks which breaks a lot of toolbar and sheet logic. It also helps me
-/// have a separate place to dial in how I want MacOS popups to look which is still a work in progress.
-///
-/// TODO: Improve the MacOS UI since right now it's only okay.
-struct PlatformSheet<Content: View>: View {
+/// Sub navigation wrapper using native interaction patterns. This is done to allow a separate
+/// navigation framework outside of the main app. For example, for sheets and detail views.
+struct SubNavigatorView<Content: View>: View {
     // MARK: - Init
 
     let title: String
     let onDismiss: () -> Void
-    /// All sheet content is passed in as-is from the parent to keep things as generic as possible to styling
+
     @ViewBuilder let content: Content
 
     // MARK: - Main View

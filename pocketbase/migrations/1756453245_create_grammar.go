@@ -28,11 +28,6 @@ func init() {
 		})
 
 		collection.Fields.Add(&core.TextField{
-			Name:     "language",
-			Required: true,
-		})
-
-		collection.Fields.Add(&core.TextField{
 			Name:     "usage",
 			Required: true,
 		})

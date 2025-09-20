@@ -48,26 +48,27 @@ struct GrammarTable: View {
         List(grammarPoints, id: \.id) { point in
             VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
                 HStack {
-                    Text(point.usage)
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.mint)
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                        Text(point.usage)
+                            .font(.body)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.mint)
+
+                        Text(point.meaning)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
 
                     Spacer()
+                }
 
+                if !point.notes.isEmpty {
                     Text(point.notes)
-                        .font(.caption2)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.purple)
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                        .lineLimit(2)
                 }
-
-                Text(point.meaning)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-
-                if !point.tags.isEmpty {
-                    coloredTagsText(tags: point.tags)
-                }
+                coloredTagsText(tags: point.tags + [point.level] + point.context)
             }
             .padding(UIConstants.Sizing.defaultPadding)
             .contentShape(.rect)
@@ -80,20 +81,24 @@ struct GrammarTable: View {
     @ViewBuilder
     private var grammarAsTable: some View {
         Table(grammarPoints, selection: $selectedGrammarID) {
-            TableColumn("場合") { point in
+            TableColumn("Usage Pattern") { point in
+                Text(point.usage)
+                    .fontWeight(.medium)
+            }
+
+            TableColumn("Meaning") { point in
+                Text(point.meaning)
+                    .foregroundStyle(.secondary)
+            }
+
+            TableColumn("Notes") { point in
                 Text(point.notes)
+                    .font(.caption)
+                    .lineLimit(2)
             }
-            TableColumn("使い方") { point in
-                VStack(alignment: .leading) {
-                    Text(point.usage)
-                    Text(point.meaning)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                .lineLimit(nil)
-            }
-            TableColumn("タッグ") { point in
-                coloredTagsText(tags: point.tags)
+
+            TableColumn("Tags") { point in
+                coloredTagsText(tags: point.tags + [point.level] + point.context)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
             }

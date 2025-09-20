@@ -2,7 +2,6 @@
 	"completion": [
 		{
 			"id": "dgck789fd2pd3z6",
-			"language": "Japanese",
 			"usage": "〜しまいました",
 			"meaning": "regret/accidental",
 			"context": ["spoken", "written", "polite"],
@@ -25,7 +24,6 @@
 		},
 		{
 			"id": "qai4po3f9zzo8mm",
-			"language": "Japanese",
 			"usage": "〜おきます",
 			"meaning": "in advance",
 			"context": ["spoken", "written", "polite"],
@@ -52,7 +50,6 @@
 		},
 		{
 			"id": "onle9ogyecz741c",
-			"language": "Japanese",
 			"usage": "〜ばかりです",
 			"meaning": "just finished",
 			"context": ["spoken", "written", "polite"],
@@ -79,7 +76,6 @@
 		},
 		{
 			"id": "jyihqe8wvfcpp93",
-			"language": "Japanese",
 			"usage": "〜通りに",
 			"meaning": "exactly as",
 			"context": ["written", "business", "polite"],
@@ -106,7 +102,6 @@
 		},
 		{
 			"id": "p8x9rdk12ujgke2",
-			"language": "Japanese",
 			"usage": "〜かけだ・〜かけの「N」・〜かける",
 			"meaning": "half done",
 			"context": ["spoken", "written", "neutral"],
@@ -129,7 +124,6 @@
 		},
 		{
 			"id": "iooro5bx46296cy",
-			"language": "Japanese",
 			"usage": "〜のあとで",
 			"meaning": "after",
 			"context": ["spoken", "written", "neutral"],
@@ -148,7 +142,6 @@
 		},
 		{
 			"id": "lm9n25magsrauxn",
-			"language": "Japanese",
 			"usage": "〜あとで",
 			"meaning": "after",
 			"context": ["spoken", "written", "neutral"],
@@ -171,7 +164,6 @@
 		},
 		{
 			"id": "pn4bgcf2vgmtz4p",
-			"language": "Japanese",
 			"usage": "〜上で・〜の上で",
 			"meaning": "after doing",
 			"context": ["written", "business", "polite"],
@@ -190,7 +182,6 @@
 		},
 		{
 			"id": "yb7x557sq94ecyp",
-			"language": "Japanese",
 			"usage": "〜次第",
 			"meaning": "as soon as",
 			"context": ["written", "business", "polite"],
@@ -213,7 +204,6 @@
 		},
 		{
 			"id": "e3qcchzjyqelvvo",
-			"language": "Japanese",
 			"usage": "〜ところ（に・を）",
 			"meaning": "just as",
 			"context": ["spoken", "written", "neutral"],
@@ -236,7 +226,6 @@
 		},
 		{
 			"id": "ow9f31c696g3g9h",
-			"language": "Japanese",
 			"usage": "〜ところ",
 			"meaning": "just after",
 			"context": ["spoken", "written", "neutral"],
@@ -255,7 +244,6 @@
 		},
 		{
 			"id": "f1yet6d52ib0mwz",
-			"language": "Japanese",
 			"usage": "〜とたんに",
 			"meaning": "the instant",
 			"context": ["spoken", "written", "neutral"],
@@ -278,7 +266,6 @@
 		},
 		{
 			"id": "xxuc40uodj807ff",
-			"language": "Japanese",
 			"usage": "〜か〜かのうちに",
 			"meaning": "just as",
 			"context": ["spoken", "written", "neutral"],
@@ -301,7 +288,6 @@
 		},
 		{
 			"id": "o94dh1eiw9h0o04",
-			"language": "Japanese",
 			"usage": "〜初めて",
 			"meaning": "for the first time",
 			"context": ["spoken", "written", "neutral"],
@@ -324,7 +310,6 @@
 		},
 		{
 			"id": "unr7d3s384c75p4",
-			"language": "Japanese",
 			"usage": "〜上で",
 			"meaning": "upon",
 			"context": ["written", "business", "polite"],
@@ -347,7 +332,6 @@
 		},
 		{
 			"id": "mbm8m83zieth8nc",
-			"language": "Japanese",
 			"usage": "〜挙げ句",
 			"meaning": "after all",
 			"context": ["spoken", "written", "neutral"],
@@ -370,7 +354,6 @@
 		},
 		{
 			"id": "v6ucqr05vgq2orb",
-			"language": "Japanese",
 			"usage": "〜きり・〜っきり",
 			"meaning": "ever since",
 			"context": ["spoken", "informal", "neutral"],
@@ -393,7 +376,6 @@
 		},
 		{
 			"id": "aorch5joprjze92",
-			"language": "Japanese",
 			"usage": "〜までに",
 			"meaning": "by (deadline)",
 			"context": ["spoken", "written", "polite"],
@@ -416,7 +398,6 @@
 		},
 		{
 			"id": "1qb2sbodsgj1omk",
-			"language": "Japanese",
 			"usage": "〜うちに",
 			"meaning": "before",
 			"context": ["spoken", "written", "neutral"],
@@ -435,7 +416,6 @@
 		},
 		{
 			"id": "2nbd63uvrhs2g9r",
-			"language": "Japanese",
 			"usage": "〜ところだった",
 			"meaning": "almost",
 			"context": ["spoken", "informal", "neutral"],
@@ -454,7 +434,6 @@
 		},
 		{
 			"id": "ecyhb77ldkyszta",
-			"language": "Japanese",
 			"usage": "〜に先立って",
 			"meaning": "prior to",
 			"context": ["written", "business", "polite"],

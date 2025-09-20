@@ -83,12 +83,12 @@ struct AppNavigatorView: View {
                             profileToolbarButton
                         }
                         .sheet(item: $selectedJournalEntry) { entry in
-                            PlatformSheet(title: "", onDismiss: {}) {
+                            SubNavigatorView(title: "", onDismiss: {}) {
                                 JournalEntryDetailView(journalEntry: entry)
                             }
                         }
                         .sheet(isPresented: $showNewEntry) {
-                            PlatformSheet(title: "", onDismiss: {}) {
+                            SubNavigatorView(title: "", onDismiss: {}) {
                                 PracticeView()
                             }
                         }
@@ -115,7 +115,7 @@ struct AppNavigatorView: View {
                             profileToolbarButton
                         }
                         .sheet(item: $selectedGrammarPoint) { grammarPoint in
-                            PlatformSheet(
+                            SubNavigatorView(
                                 title: "Grammar Details",
                                 onDismiss: { selectedGrammarPoint = nil },
                             ) {
@@ -148,12 +148,12 @@ struct AppNavigatorView: View {
                             profileToolbarButton
                         }
                         .sheet(item: $selectedJournalEntry) { entry in
-                            PlatformSheet(title: "", onDismiss: {}) {
+                            SubNavigatorView(title: "", onDismiss: {}) {
                                 JournalEntryDetailView(journalEntry: entry)
                             }
                         }
                         .sheet(item: $selectedGrammarPoint) { grammarPoint in
-                            PlatformSheet(
+                            SubNavigatorView(
                                 title: "Grammar Details",
                                 onDismiss: { selectedGrammarPoint = nil },
                             ) {
@@ -222,7 +222,7 @@ struct AppNavigatorView: View {
             .toolbarBackground(Visibility.hidden, for: .windowToolbar)
             #endif
         } detail: {
-            PlatformSheet(title: "", onDismiss: {}) {
+            SubNavigatorView(title: "", onDismiss: {}) {
                 switch selectedView {
                 case .journal: journalDetailColumn
                 case .reference: referenceDetailColumn

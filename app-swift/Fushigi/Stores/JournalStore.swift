@@ -178,6 +178,11 @@ class JournalStore: ObservableObject {
         }
     }
 
+    /// Quickly search to grab journal entry object for a given tag in the sentence model
+    func getJournalEntry(for sentence: SentenceLocal) -> JournalEntryLocal? {
+        journalEntries.first { $0.id == sentence.journalEntry }
+    }
+
     // MARK: - Sync Boilerplate
 
     /// Loads journal entries from local SwiftData

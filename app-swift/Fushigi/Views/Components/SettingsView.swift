@@ -31,7 +31,6 @@ struct SettingsWindow: View {
 
             GeneralPreferences(
                 interfaceLanguage: $interfaceLanguage,
-                targetLanguage: $targetLanguage,
             )
             .tabItem {
                 Image(systemName: "gear")
@@ -63,14 +62,13 @@ struct SettingsSheet: View {
     // MARK: - App-wide Settings Storage
 
     @AppStorage("interfaceLanguage") private var interfaceLanguage = "en"
-    @AppStorage("targetLanguage") private var targetLanguage = "jp"
     @Binding var showProfile: Bool
 
     // MARK: - Main View
 
     var body: some View {
         #if os(iOS)
-            PlatformSheet(title: "Account", onDismiss: { showProfile = false }) {
+            SubNavigatorView(title: "Account", onDismiss: { showProfile = false }) {
                 List {
                     Section("Account") {
                         HStack {
@@ -95,7 +93,6 @@ struct SettingsSheet: View {
                     Section("Settings") {
                         NavigationLink("General", destination: GeneralPreferences(
                             interfaceLanguage: $interfaceLanguage,
-                            targetLanguage: $targetLanguage,
                         )
                         .navigationTitle("General")
                         .navigationBarTitleDisplayMode(.inline))
@@ -166,14 +163,10 @@ struct AccountPreferences: View {
 /// order to easily use a List for iOS vs a Form for MacOS to improve UX. So far, it only lets users
 /// choose different language settings although they don't do anything right now. Basically right now
 /// this is just a placeholder.
-///
-/// TODO: Actual have these choices do something (such as show different Grammar/SRS/Journal items
-/// TODO: Could try localizing the app to have the interface language actually change something
 struct GeneralPreferences: View {
     // MARK: - Published State
 
     @Binding var interfaceLanguage: String
-    @Binding var targetLanguage: String
 
     // MARK: - Main View
 
@@ -197,21 +190,15 @@ struct GeneralPreferences: View {
     // MARK: - Sub Views
 
     /// User selection for language settings should be a simple menu picker on both iOS and MacOS
-    /// platforms. Currently available languages are hardcoded, but could be made to come from the
-    /// PocketBase database instead.
+    /// platforms.
+    ///
+    /// TODO: Figure out how to make different localizations of an app
     @ViewBuilder
     private var languagePickers: some View {
         Section("Language") {
             Picker("Interface", selection: $interfaceLanguage) {
                 Text("English").tag("en")
                 Text("Japanese").tag("jp")
-            }
-            .pickerStyle(.menu)
-
-            Picker("Target", selection: $targetLanguage) {
-                Text("Japanese").tag("jp")
-                Text("German").tag("de")
-                Text("Portuguese").tag("pg")
             }
             .pickerStyle(.menu)
         }

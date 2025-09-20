@@ -2,7 +2,6 @@
 	"as-a-like-a": [
 		{
 			"id": "ko5rx8kp4asuj0s",
-			"language": "Japanese",
 			"usage": "〜を〜として",
 			"meaning": "using as",
 			"context": ["spoken", "written", "formal"],
@@ -25,7 +24,6 @@
 		},
 		{
 			"id": "kgdt553sze18hd5",
-			"language": "Japanese",
 			"usage": "〜のような",
 			"meaning": "like / similar to",
 			"context": ["spoken", "written"],
@@ -48,7 +46,6 @@
 		},
 		{
 			"id": "57pvdu7stk0ih9e",
-			"language": "Japanese",
 			"usage": "〜のような〜",
 			"meaning": "like / resembling",
 			"context": ["spoken", "written"],
@@ -67,7 +64,6 @@
 		},
 		{
 			"id": "zy3yl0enudtl2bq",
-			"language": "Japanese",
 			"usage": "〜として",
 			"meaning": "as",
 			"context": ["spoken", "written", "formal"],
@@ -86,7 +82,6 @@
 		},
 		{
 			"id": "lcree35f0ue5hq9",
-			"language": "Japanese",
 			"usage": "〜ように",
 			"meaning": "like / in the way of",
 			"context": ["spoken", "written", "formal"],
@@ -113,7 +108,6 @@
 		},
 		{
 			"id": "z8ka5pe935ypkn6",
-			"language": "Japanese",
 			"usage": "（こんな・そんな・あんな・どんな）N",
 			"meaning": "this / that / what kind of",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -132,7 +126,6 @@
 		},
 		{
 			"id": "vz800621mv4lotg",
-			"language": "Japanese",
 			"usage": "（こんな・そんな・あんな・どんな・こういう・そういう・ああいう・どういう）ふうに",
 			"meaning": "in this/that way",
 			"context": ["spoken", "written"],

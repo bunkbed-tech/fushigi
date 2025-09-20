@@ -25,13 +25,81 @@ struct GrammarInspector: View {
     // MARK: - Main View
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
-            Text("Usage: \(selectedGrammarPoint.usage)")
-            Text("Meaning: \(selectedGrammarPoint.meaning)")
-            Divider()
-            coloredTagsText(tags: selectedGrammarPoint.tags)
-            Spacer()
-            NavigationLink("Sentence Bank", destination: sentenceBank)
+        ScrollView {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.section) {
+                VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                    Text(selectedGrammarPoint.usage)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text(selectedGrammarPoint.meaning)
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                }
+
+                Divider()
+
+                if !selectedGrammarPoint.notes.isEmpty {
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        Text("Notes")
+                            .font(.headline)
+                        Text(selectedGrammarPoint.notes)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    Divider()
+                }
+
+                if !selectedGrammarPoint.forms.isEmpty {
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        Text("Forms")
+                            .font(.headline)
+                        ForEach(Array(selectedGrammarPoint.forms.keys.sorted()), id: \.self) { key in
+                            HStack {
+                                Text(key + ":")
+                                    .fontWeight(.medium)
+                                Text(selectedGrammarPoint.forms[key] ?? "")
+                            }
+                        }
+                    }
+
+                    Divider()
+                }
+
+                if !selectedGrammarPoint.examples.isEmpty {
+                    VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                        Text("Examples")
+                            .font(.headline)
+                        ForEach(selectedGrammarPoint.examples, id: \.japanese) { example in
+                            VStack(alignment: .leading, spacing: UIConstants.Spacing.tightRow) {
+                                Text(example.japanese)
+                                    .fontWeight(.medium)
+                                Text(example.english)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                            .background(.quaternary, in: RoundedRectangle(cornerRadius: UIConstants.Spacing.row))
+                        }
+                    }
+
+                    Divider()
+                }
+
+                coloredTagsText(tags: selectedGrammarPoint.tags + [selectedGrammarPoint.level] + selectedGrammarPoint
+                    .context)
+
+                Spacer()
+
+                NavigationLink(value: SentenceBankDestination(grammarPoint: selectedGrammarPoint)) {
+                    Text("Sentence Bank")
+                }
+            }
+            .padding()
+        }
+        .navigationDestination(for: SentenceBankDestination.self) { _ in
+            sentenceBank
+        }
+        .navigationDestination(for: JournalEntryDestination.self) { destination in
+            JournalEntryDetailView(journalEntry: destination.entry)
         }
         .padding()
         .toolbar {
@@ -94,18 +162,55 @@ struct GrammarInspector: View {
         let sentences = studyStore.getSentencesForGrammar(selectedGrammarPoint.id)
         Group {
             if !sentences.isEmpty {
-                List(sentences, id: \.self) { sentence in
-                    HStack {
-                        Text(sentence.content)
-                        Spacer()
-                        Button("Delete") {
-                            // TODO: Implement sentence delete
+                ScrollView {
+                    LazyVStack(spacing: UIConstants.Spacing.row) {
+                        ForEach(sentences, id: \.self) { sentence in
+                            VStack(alignment: .leading, spacing: UIConstants.Spacing.row) {
+                                Text(sentence.content)
+                                    .fontWeight(.medium)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                HStack {
+                                    if let journalEntry = studyStore.journalStore.getJournalEntry(for: sentence) {
+                                        NavigationLink(value: JournalEntryDestination(entry: journalEntry)) {
+                                            HStack(spacing: UIConstants.Spacing.tightRow) {
+                                                Image(systemName: "book.closed")
+                                                Text("View Entry")
+                                            }
+                                            .font(.caption)
+                                            .foregroundStyle(.blue)
+                                        }
+                                    }
+
+                                    Spacer()
+
+                                    Text(sentence.created.formatted(date: .abbreviated, time: .omitted))
+                                        .font(.caption2)
+                                        .foregroundStyle(.tertiary)
+
+                                    Button("Delete", systemImage: "trash") {
+                                        // TODO: Implement sentence delete
+                                    }
+                                    .font(.caption)
+                                    .foregroundStyle(.red)
+                                    .disabled(true)
+                                }
+                            }
+                            .padding()
+                            .background(
+                                .quaternary,
+                                in: RoundedRectangle(cornerRadius: UIConstants.Sizing.cornerRadius.width),
+                            )
                         }
-                        .disabled(true)
                     }
+                    .padding()
                 }
             } else {
-                Text("No sentences tagged with this grammar point.")
+                ContentUnavailableView {
+                    Label("No Sentences", systemImage: "text.bubble")
+                } description: {
+                    Text("Tag sentences in your journal entries to build your sentence bank.")
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -124,4 +229,12 @@ struct GrammarInspector: View {
             }
         #endif
     }
+}
+
+struct SentenceBankDestination: Hashable {
+    let grammarPoint: GrammarPointLocal
+}
+
+struct JournalEntryDestination: Hashable {
+    let entry: JournalEntryLocal
 }

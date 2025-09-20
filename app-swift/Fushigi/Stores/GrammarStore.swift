@@ -152,7 +152,6 @@ class GrammarStore: ObservableObject {
                 // Update existing if remote is newer
                 if remote.updated > existing.updated {
                     existing.user = remote.user
-                    existing.language = remote.language
                     existing.context = remote.context
                     existing.usage = remote.usage
                     existing.meaning = remote.meaning
@@ -170,7 +169,6 @@ class GrammarStore: ObservableObject {
                 let newItem = GrammarPointLocal(
                     id: remote.id,
                     user: remote.user,
-                    language: remote.language,
                     context: remote.context,
                     usage: remote.usage,
                     meaning: remote.meaning,

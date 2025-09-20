@@ -2,7 +2,6 @@
 	"advice-obligation": [
 		{
 			"id": "wsgsa6x1sps2d8l",
-			"language": "Japanese",
 			"usage": "〜といいです",
 			"meaning": "hope, suggestion",
 			"context": ["spoken"],
@@ -27,7 +26,6 @@
 		},
 		{
 			"id": "n3o6x0yl49dau5u",
-			"language": "Japanese",
 			"usage": "〜ければなりません",
 			"meaning": "must",
 			"context": ["written", "spoken", "polite"],
@@ -50,7 +48,6 @@
 		},
 		{
 			"id": "7qb7ecfsw0rv01b",
-			"language": "Japanese",
 			"usage": "〜ものだ",
 			"meaning": "should be",
 			"context": ["spoken", "written"],
@@ -73,7 +70,6 @@
 		},
 		{
 			"id": "q8l3u1m0jn76d90",
-			"language": "Japanese",
 			"usage": "〜こと",
 			"meaning": "must / do this",
 			"context": ["written", "formal"],
@@ -96,7 +92,6 @@
 		},
 		{
 			"id": "2zr2e7g7cw2jsvs",
-			"language": "Japanese",
 			"usage": "〜ことはない",
 			"meaning": "no need to",
 			"context": ["spoken", "informal"],
@@ -119,7 +114,6 @@
 		},
 		{
 			"id": "rpa3xyrhdu4da9x",
-			"language": "Japanese",
 			"usage": "〜ことだ",
 			"meaning": "should / ought",
 			"context": ["spoken", "written"],
@@ -142,7 +136,6 @@
 		},
 		{
 			"id": "63r6qrz8zaaagd8",
-			"language": "Japanese",
 			"usage": "〜べきだ・べきではない・べき「N」",
 			"meaning": "should / shouldn't",
 			"context": ["written", "formal"],
@@ -165,7 +158,6 @@
 		},
 		{
 			"id": "azab8y6qhiqeg4p",
-			"language": "Japanese",
 			"usage": "〜より他ない・〜より他しかたがない",
 			"meaning": "have no choice",
 			"context": ["written", "formal"],
@@ -188,7 +180,6 @@
 		},
 		{
 			"id": "2hfri2b9b3ctt7p",
-			"language": "Japanese",
 			"usage": "〜ざるを得ない",
 			"meaning": "have to",
 			"context": ["written", "formal"],
@@ -211,7 +202,6 @@
 		},
 		{
 			"id": "k98o8ljnwpu8e8v",
-			"language": "Japanese",
 			"usage": "〜ように、〜",
 			"meaning": "so that",
 			"context": ["spoken", "written", "formal"],
@@ -234,7 +224,6 @@
 		},
 		{
 			"id": "qqf875um3nojecm",
-			"language": "Japanese",
 			"usage": "〜ようにしてください",
 			"meaning": "please do / don’t do",
 			"context": ["spoken", "written", "formal"],
@@ -257,7 +246,6 @@
 		},
 		{
 			"id": "p1p4soaj72hlcys",
-			"language": "Japanese",
 			"usage": "〜で",
 			"meaning": "don’t do ...",
 			"context": ["spoken", "informal"],
@@ -276,7 +264,6 @@
 		},
 		{
 			"id": "4rd6q0fn6t6ojo8",
-			"language": "Japanese",
 			"usage": "〜たらどうですか",
 			"meaning": "how about …",
 			"context": ["spoken", "polite", "casual"],
@@ -295,7 +282,6 @@
 		},
 		{
 			"id": "9k84pxqpbzaw94p",
-			"language": "Japanese",
 			"usage": "〜のはどうですか",
 			"meaning": "how about …",
 			"context": ["spoken", "polite", "casual"],
@@ -314,7 +300,6 @@
 		},
 		{
 			"id": "plij6jiwwr25ut0",
-			"language": "Japanese",
 			"usage": "〜いいんじゃない",
 			"meaning": "isn’t it … / good idea …",
 			"context": ["spoken", "casual"],

@@ -2,7 +2,6 @@
 	"case-making": [
 		{
 			"id": "xl5tjzvqdvg0qci",
-			"language": "Japanese",
 			"usage": "〜なら",
 			"meaning": "if it's this",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -29,7 +28,6 @@
 		},
 		{
 			"id": "arq8d0eehqjxhud",
-			"language": "Japanese",
 			"usage": "〜たら",
 			"meaning": "once this happens",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -56,7 +54,6 @@
 		},
 		{
 			"id": "qk180g08gpukski",
-			"language": "Japanese",
 			"usage": "〜たら、〜",
 			"meaning": "once this happened",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -75,7 +72,6 @@
 		},
 		{
 			"id": "gix46pt586qnihl",
-			"language": "Japanese",
 			"usage": "条件形 〜ば",
 			"meaning": "if (general condition)",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -102,7 +98,6 @@
 		},
 		{
 			"id": "yacjzg8cqorljme",
-			"language": "Japanese",
 			"usage": "〜と言っていました",
 			"meaning": "quoting something said",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -125,7 +120,6 @@
 		},
 		{
 			"id": "ya98h3dlreg83kw",
-			"language": "Japanese",
 			"usage": "〜って何ですか",
 			"meaning": "what is this",
 			"context": ["spoken", "informal"],
@@ -144,7 +138,6 @@
 		},
 		{
 			"id": "f2a82322jg3g673",
-			"language": "Japanese",
 			"usage": "〜というのは〜です",
 			"meaning": "rephrasing",
 			"context": ["spoken", "written", "formal", "informal"],
@@ -163,7 +156,6 @@
 		},
 		{
 			"id": "ok1zkc3pp866g10",
-			"language": "Japanese",
 			"usage": "〜なんかどうですか",
 			"meaning": "how about this",
 			"context": ["spoken", "informal"],
@@ -182,7 +174,6 @@
 		},
 		{
 			"id": "igrcvkgo5nzxqsc",
-			"language": "Japanese",
 			"usage": "〜くないと、〜",
 			"meaning": "if not this, then",
 			"context": ["spoken", "written", "informal"],
@@ -201,7 +192,6 @@
 		},
 		{
 			"id": "x0xz6d0ev03gpwa",
-			"language": "Japanese",
 			"usage": "〜じゃないと、〜",
 			"meaning": "if not this, then",
 			"context": ["spoken", "informal"],
@@ -239,7 +229,6 @@
 		},
 		{
 			"id": "8bpapuzwaeu8iwm",
-			"language": "Japanese",
 			"usage": "〜と、〜",
 			"meaning": "certain result",
 			"context": ["spoken", "written", "neutral"],
@@ -258,7 +247,6 @@
 		},
 		{
 			"id": "yms4bxwe2s6678r",
-			"language": "Japanese",
 			"usage": "〜によって",
 			"meaning": "depending on",
 			"context": ["spoken", "written", "formal"],
@@ -277,7 +265,6 @@
 		},
 		{
 			"id": "tm54yz8l5fg18ve",
-			"language": "Japanese",
 			"usage": "〜わりに",
 			"meaning": "contrary to",
 			"context": ["spoken", "written", "neutral"],
@@ -296,7 +283,6 @@
 		},
 		{
 			"id": "7crgjjwpjvkee24",
-			"language": "Japanese",
 			"usage": "〜において / 〜における〜",
 			"meaning": "in / at",
 			"context": ["written", "formal", "business"],
@@ -319,7 +305,6 @@
 		},
 		{
 			"id": "5qoywsdmjnrje8o",
-			"language": "Japanese",
 			"usage": "〜にとって",
 			"meaning": "for / regarding",
 			"context": ["spoken", "written", "formal"],
@@ -338,7 +323,6 @@
 		},
 		{
 			"id": "umxs6lvzq2td87b",
-			"language": "Japanese",
 			"usage": "〜ほど",
 			"meaning": "the more … the more …",
 			"context": ["spoken", "written", "neutral"],
@@ -361,7 +345,6 @@
 		},
 		{
 			"id": "jlem1r4ablezewd",
-			"language": "Japanese",
 			"usage": "〜場合",
 			"meaning": "in case",
 			"context": ["written", "formal"],
@@ -380,7 +363,6 @@
 		},
 		{
 			"id": "nr0i7aiozfvltqw",
-			"language": "Japanese",
 			"usage": "〜ことには〜",
 			"meaning": "without ..., impossible",
 			"context": ["written", "formal", "spoken"],
@@ -399,7 +381,6 @@
 		},
 		{
 			"id": "vvjr9apvv8b0ki2",
-			"language": "Japanese",
 			"usage": "〜際に",
 			"meaning": "at the time of",
 			"context": ["written", "formal", "business"],
@@ -418,7 +399,6 @@
 		},
 		{
 			"id": "askpwi1rtj3id0y",
-			"language": "Japanese",
 			"usage": "（ば・なら・たら）〜たのに",
 			"meaning": "if only … then … (regret)",
 			"context": ["spoken", "written", "informal"],
@@ -437,7 +417,6 @@
 		},
 		{
 			"id": "vf9mrkwkw4smniz",
-			"language": "Japanese",
 			"usage": "〜からには",
 			"meaning": "since / as long as",
 			"context": ["written", "formal", "spoken"],
@@ -460,7 +439,6 @@
 		},
 		{
 			"id": "r62owf4wuf5z52o",
-			"language": "Japanese",
 			"usage": "〜（としたら・とすれば・とすると）",
 			"meaning": "if it were the case",
 			"context": ["spoken", "written", "formal"],
@@ -479,7 +457,6 @@
 		},
 		{
 			"id": "qxjmymcqc349dwj",
-			"language": "Japanese",
 			"usage": "〜にあたって",
 			"meaning": "when doing …",
 			"context": ["written", "formal", "business"],
@@ -502,7 +479,6 @@
 		},
 		{
 			"id": "crxackqli2c37u5",
-			"language": "Japanese",
 			"usage": "テ形 V",
 			"meaning": "sequential action",
 			"context": ["spoken", "written", "formal"],
@@ -521,7 +497,6 @@
 		},
 		{
 			"id": "5bfh0lzzakmu7h7",
-			"language": "Japanese",
 			"usage": "ナイ形 で V",
 			"meaning": "action with negative condition",
 			"context": ["spoken", "written", "formal"],

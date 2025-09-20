@@ -18,7 +18,6 @@ type Example struct {
 
 type Grammar struct {
 	ID       string            `json:"id"`
-	Language string            `json:"language"`
 	Usage    string            `json:"usage"`
 	Meaning  string            `json:"meaning"`
 	Context  []string          `json:"context"`
@@ -55,7 +54,6 @@ func init() {
 					for _, grammar := range grammars {
 						record := core.NewRecord(grammarCollection)
 						record.Set("id", grammar.ID)
-						record.Set("language", grammar.Language)
 						record.Set("usage", grammar.Usage)
 						record.Set("meaning", grammar.Meaning)
 						record.Set("context", grammar.Context)

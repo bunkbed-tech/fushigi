@@ -17,56 +17,56 @@ enum UIConstants {
     // MARK: - Spacing
 
     enum Spacing {
-        /// Value: 20.0
+        /// Spacing content. Value: 20.0
         static let content: CGFloat = 20
-        /// Value: 16.0
+        /// Spacing section. Value: 16.0
         static let section: CGFloat = 16
-        /// Value: 8.0
+        /// Spacing row. Value: 8.0
         static let row: CGFloat = 8
-        /// Value: 4.0
+        /// Spacing tight row. Value: 4.0
         static let tightRow: CGFloat = 4
-        /// Value: 20.0
+        /// Spacing default. Value: 20.0
         static let `default`: CGFloat = 20
     }
 
     // MARK: - Sizing
 
     enum Sizing {
-        /// Value: 150.0
+        /// Sizing content minimum height. Value: 150.0
         static let contentMinHeight: CGFloat = 150
-        /// Value: 10.0
+        /// Sizing default padding. Value: 10.0
         static let defaultPadding: CGFloat = 10
-        /// Value: 18.0
+        /// Sizing font size. Value: 18.0
         static let fontSize: CGFloat = 18
-        /// Value: 60.0
+        /// Sizing standard icons. Value: 60.0
         static let icons: CGFloat = 60
-        /// Value: 120.0
+        /// Sizing big icons. Value: 120.0
         static let bigIcons: CGFloat = 120
-        /// Value: Width = 8, Height = 8
+        /// Sizing corner radius. Value: Width = 8, Height = 8
         static let cornerRadius: CGSize = .init(width: 8, height: 8)
-        /// Value: 450
+        /// Sizing forced frame width. Value: 450
         static let forcedFrameWidth: CGFloat = 450
-        /// Value: 300
+        /// Sizing forced frame height. Value: 300
         static let forcedFrameHeight: CGFloat = 300
     }
 
     // MARK: - Border
 
     enum Border {
-        /// Value: 1.0
+        /// Border width. Value: 1.0
         static let width: CGFloat = 1
-        /// Value: 2.0
+        /// Bordered focused width. Value: 2.0
         static let focusedWidth: CGFloat = 2
     }
 
     // MARK: - Padding
 
     enum Padding {
-        /// Value: 8.0
+        /// Padding capsule width. Value: 8.0
         static let capsuleWidth: CGFloat = 8
-        /// Value: 2.0
+        /// Padding capsule height. Value: 2.0
         static let capsuleHeight: CGFloat = 2
-        /// Value: 32.0
+        /// Padding large indent. Value: 32.0
         static let largeIndent: CGFloat = 32
     }
 }

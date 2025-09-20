@@ -22,7 +22,6 @@ struct GrammarPointCreate: Codable {
     let forms: [String: String]
     let tags: [String]
     let user: String
-    let language: String
 }
 
 // MARK: - Grammar Point Remote
@@ -31,7 +30,6 @@ struct GrammarPointCreate: Codable {
 struct GrammarPointRemote: Codable {
     let id: String
     let user: String
-    let language: String
     let usage: String
     let meaning: String
     let context: [String]
@@ -44,12 +42,11 @@ struct GrammarPointRemote: Codable {
     let created: Date
     let updated: Date
 
-    // Optional expand field for when ?expand=user,language is used on the route
+    // Optional expand field for when ?expand=user is used on the route
     let expand: ExpandedRelations?
 
     struct ExpandedRelations: Codable {
         let user: UserRemote?
-        let language: ExpandedLanguage?
     }
 
     struct ExpandedLanguage: Codable {
@@ -63,7 +60,6 @@ struct GrammarPointRemote: Codable {
     init(from model: GrammarPointLocal) {
         id = model.id
         user = model.user
-        language = model.language
         usage = model.usage
         meaning = model.meaning
         context = model.context
@@ -86,7 +82,6 @@ struct GrammarPointRemote: Codable {
 final class GrammarPointLocal {
     @Attribute var id: String = UUID().uuidString
     var user: String = ""
-    var language: String = ""
     var context: [String] = []
     var usage: String = ""
     var meaning: String = ""
@@ -102,7 +97,6 @@ final class GrammarPointLocal {
     // Convenience init for when making an ID in SwiftDataland
     init(id: UUID = UUID(),
          user: String = "",
-         language: String = "",
          context: [String] = [],
          usage: String = "",
          meaning: String = "",
@@ -117,7 +111,6 @@ final class GrammarPointLocal {
     {
         self.id = id.uuidString
         self.user = user
-        self.language = language
         self.context = context
         self.usage = usage
         self.meaning = meaning
@@ -134,7 +127,6 @@ final class GrammarPointLocal {
     // Convenience init for ID coming from PocketBaseLand
     init(id: String = "",
          user: String = "",
-         language: String = "",
          context: [String] = [],
          usage: String = "",
          meaning: String = "",
@@ -149,7 +141,6 @@ final class GrammarPointLocal {
     {
         self.id = id
         self.user = user
-        self.language = language
         self.context = context
         self.usage = usage
         self.meaning = meaning
