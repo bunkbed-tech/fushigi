@@ -256,7 +256,9 @@ class SentenceStore: ObservableObject {
             return .success(())
 
         case let .failure(error):
-            print("ERROR: Failed to post sentence tags for journal \(journal): \(error)")
+            print(
+                "ERROR: Failed to post sentence tags for journal \(journal) and grammar \(bulkSentence.first!.grammar): \(error)",
+            )
             handleRemoteSyncFailure()
             return .failure(error)
         }

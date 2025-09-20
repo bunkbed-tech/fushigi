@@ -79,4 +79,10 @@ func configureAppSettings(app core.App) {
 	// Periodic backups
 	settings.Backups.Cron = "0 0 * * 0" // run every sunday at midnight
 	settings.Backups.CronMaxKeep = 3    // keep three weeks worth
+
+	// Batch settings
+	settings.Batch.Enabled = true
+	settings.Batch.MaxRequests = 500
+	settings.Batch.Timeout = 120
+	settings.Batch.MaxBodySize = 2 << 20
 }

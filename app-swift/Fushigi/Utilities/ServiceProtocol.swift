@@ -150,6 +150,11 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
 
     /// Bulk Item Post
     func postBulkItems(_ items: [Create]) async -> Result<[String], Error> {
+        guard !items.isEmpty else {
+            print("LOG: No items to post in bulk")
+            return .success([])
+        }
+
         // Convert items to dictionaries
         let itemDicts: [[String: Any]]
         do {
@@ -185,23 +190,56 @@ class ProdRemoteService<Item: Codable, Create: Encodable>: RemoteServiceProtocol
 
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
             request.httpBody = try JSONSerialization.data(withJSONObject: batchData)
 
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
 
-            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                  let responses = jsonObject["responses"] as? [[String: Any]]
+            // Add debugging for batch responses
+            if let httpResponse = response as? HTTPURLResponse {
+                print("LOG: Batch HTTP Status: \(httpResponse.statusCode)")
+            }
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("LOG: Batch Raw Response: \(responseString)")
+            }
+
+            // Parse response as direct array
+            guard let responses = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
             else {
+                print("ERROR: Failed to parse batch response as array")
                 return .failure(URLError(.cannotParseResponse))
             }
 
+            // Extract IDs from response.body.id
             let createdIDs = responses.compactMap { response -> String? in
-                return response["id"] as? String
+                // Check if the request was successful
+                if let status = response["status"] as? Int, status >= 200, status < 300 {
+                    if let body = response["body"] as? [String: Any],
+                       let id = body["id"] as? String
+                    {
+                        return id
+                    }
+                } else {
+                    // Log failed requests for debugging
+                    if let status = response["status"] as? Int {
+                        print("WARNING: Batch request failed with status \(status)")
+                        if let body = response["body"] as? [String: Any] {
+                            print("ERROR: Batch error body: \(body)")
+                        }
+                    }
+                }
+                return nil
+            }
+
+            print("LOG: Successfully created \(createdIDs.count) out of \(items.count) items via batch")
+
+            // Return success even if some requests failed, but log the issue
+            if createdIDs.count != items.count {
+                print("WARNING: Only \(createdIDs.count) out of \(items.count) batch requests succeeded")
             }
 
             return .success(createdIDs)
         } catch {
+            print("ERROR: Batch request failed: \(error)")
             return .failure(error)
         }
     }

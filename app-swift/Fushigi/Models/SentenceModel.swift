@@ -22,7 +22,8 @@ struct SentenceCreate: Codable, Identifiable {
 
     // Exclude id from API calls
     enum CodingKeys: String, CodingKey {
-        case content, user, journalEntry, grammar
+        case content, user, grammar
+        case journalEntry = "journal_entry"
     }
 }
 
