@@ -99,8 +99,9 @@ struct GrammarTable: View {
             }
         }
         .onChange(of: selectedGrammarID) { _, newID in
-            if let newID = newID,
-               let selectedPoint = grammarPoints.first(where: { $0.id == newID }) {
+            if let newID,
+               let selectedPoint = grammarPoints.first(where: { $0.id == newID })
+            {
                 selectedGrammarPoint = selectedPoint
             }
         }

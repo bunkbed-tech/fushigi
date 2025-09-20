@@ -36,11 +36,12 @@ struct GrammarInspector: View {
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Menu("Options", systemImage: "ellipsis.circle") {
+                Menu("Options", systemImage: "square.and.pencil") {
                     if studyStore.srsStore.isInSRS(selectedGrammarPoint.id) {
                         Button("Ignore in SRS", systemImage: "rectangle.on.rectangle.slash") {
                             print("TODO: Implement remove from SRS")
                         }
+                        .labelStyle(.titleAndIcon)
                         .disabled(true)
                     } else {
                         Button("Track in SRS", systemImage: "plus.rectangle.on.rectangle") {
@@ -48,16 +49,19 @@ struct GrammarInspector: View {
                                 await studyStore.srsStore.addToSRS(selectedGrammarPoint.id)
                             }
                         }
+                        .labelStyle(.titleAndIcon)
                     }
 
                     Button("Edit", systemImage: "square.and.arrow.up.fill") {
                         print("TODO: Implement editing user grammar point...")
                     }
+                    .labelStyle(.titleAndIcon)
                     .disabled(true)
 
                     Button("Delete", systemImage: "trash.slash") {
                         print("TODO: Implement removing user grammar point...")
                     }
+                    .labelStyle(.titleAndIcon)
                     .disabled(true)
                 }
                 .labelStyle(.iconOnly)
@@ -66,8 +70,17 @@ struct GrammarInspector: View {
         }
         .navigationTitle("Grammar Details")
         #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        .containerBackground(.clear, for: .navigation)
+            .navigationBarTitleDisplayMode(.inline)
+            .containerBackground(.clear, for: .navigation)
+        #else
+            .background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
         #endif
     }
 
@@ -95,10 +108,20 @@ struct GrammarInspector: View {
                 Text("No sentences tagged with this grammar point.")
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("Sentence Bank")
         #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+            .navigationBarTitleDisplayMode(.inline)
+            .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        #else
+            .background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
         #endif
     }
 }

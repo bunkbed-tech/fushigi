@@ -99,8 +99,17 @@ struct Tagger: View {
         .padding()
         .navigationTitle("Tagger")
         #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+            .navigationBarTitleDisplayMode(.inline)
+            .containerBackground(.clear, for: .navigation) // needed to get LiquidGlass
+        #else
+            .background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
         #endif
     }
 

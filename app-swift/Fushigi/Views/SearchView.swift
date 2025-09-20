@@ -18,7 +18,7 @@ struct SearchView: View {
     @State private var lastActiveView: AppNavigatorView.MainView = .journal
     /// Search query text binding provided from parent view search toolbar
     @Binding var searchText: String
-    @Binding var selectedView: AppNavigatorView.MainView?
+    @Binding var selectedView: AppNavigatorView.MainView
     @Binding var selectedJournalEntry: JournalEntryLocal?
     @Binding var selectedGrammarPoint: GrammarPointLocal?
 
@@ -29,12 +29,12 @@ struct SearchView: View {
             showViewWithSearch(for: lastActiveView)
         }
         .onAppear {
-            if let current = selectedView, current != .search {
-                lastActiveView = current
+            if selectedView != .search {
+                lastActiveView = selectedView
             }
         }
         .onChange(of: selectedView) { _, newValue in
-            if let newValue, newValue != .search {
+            if newValue != .search {
                 lastActiveView = newValue
             }
         }
@@ -54,13 +54,13 @@ struct SearchView: View {
             JournalView(
                 searchText: $searchText,
                 selectedJournalEntry: $selectedJournalEntry,
-                showNewEntry: .constant(false) // TODO: improve this so its not visable?
+                showNewEntry: .constant(false), // TODO: make not visible?
             )
 
         case .reference:
             ReferenceView(
                 searchText: $searchText,
-                selectedGrammarPoint: $selectedGrammarPoint
+                selectedGrammarPoint: $selectedGrammarPoint,
             )
 
         case .search:

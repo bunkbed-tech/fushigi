@@ -52,10 +52,18 @@ struct GrammarSettings: View {
             .scrollContentBackground(.hidden)
             .containerBackground(.clear, for: .navigation)
         #else
-        Form {
-            sourceAndFilters
-        }
-        .formStyle(.grouped)
+            Form {
+                sourceAndFilters
+            }
+            .formStyle(.grouped)
+            .background {
+                LinearGradient(
+                    colors: [.mint.opacity(0.2), .purple.opacity(0.2)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing,
+                )
+                .ignoresSafeArea()
+            }
         #endif
     }
 

@@ -115,7 +115,9 @@ struct JournalEntryDetailView: View {
                         .font(.subheadline)
                 } else {
                     ForEach(sentences, id: \.id) { sentence in
-                        if let grammarPoint = studyStore.grammarStore.grammarItems.first(where: { $0.id == sentence.grammar }) {
+                        if let grammarPoint = studyStore.grammarStore.grammarItems
+                            .first(where: { $0.id == sentence.grammar })
+                        {
                             HStack {
                                 Text("•")
                                 Text(grammarPoint.usage)
@@ -137,9 +139,11 @@ struct JournalEntryDetailView: View {
                     .font(.headline)
                     .foregroundStyle(.purple)
 
-                Text("(Placeholder) AI feedback functionality coming soon. This will analyze your writing and provide grammar suggestions.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                Text(
+                    "(Placeholder) AI feedback functionality coming soon. This will analyze your writing and provide grammar suggestions.",
+                )
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
             }
         }
     }
@@ -164,7 +168,7 @@ struct JournalEntryDetailView: View {
                     .padding(UIConstants.Spacing.row)
                     .overlay(
                         RoundedRectangle(cornerRadius: UIConstants.Sizing.cornerRadius.width)
-                            .stroke(.primary, lineWidth: 1)
+                            .stroke(.primary, lineWidth: 1),
                     )
             }
 

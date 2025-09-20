@@ -191,11 +191,21 @@ struct ReferenceView: View {
             }
             .disabled(effectiveSystemState.shouldDisableUI)
 
-            Menu("Options", systemImage: "ellipsis.circle") {
-                Button("Bulk Import", systemImage: "square.and.arrow.down") {}.disabled(true)
-                Button("Bulk Export", systemImage: "square.and.arrow.up") {}.disabled(true)
-                Divider()
-                Button("Create", systemImage: "rectangle.fill.badge.plus") {}.disabled(true)
+            Menu("Actions", systemImage: "ellipsis.circle") {
+                Button("Bulk Import", systemImage: "square.and.arrow.down") {
+                    // TODO: make bulk import route
+                }
+                .disabled(effectiveSystemState.shouldDisableUI)
+
+                Button("Bulk Export", systemImage: "square.and.arrow.up") {
+                    // TODO: make bulk export route
+                }
+                .disabled(effectiveSystemState.shouldDisableUI)
+
+                Button("Create", systemImage: "rectangle.fill.badge.plus") {
+                    // TODO: make create new grammar item route
+                }
+                .disabled(effectiveSystemState.shouldDisableUI)
 
                 if selectedFilter == .available {
                     Button("Generate From All", systemImage: "rectangle.stack.fill.badge.plus") {
@@ -203,10 +213,10 @@ struct ReferenceView: View {
                             await studyStore.srsStore.addBulkToSRS(studyStore.availableGrammarItems)
                         }
                     }
+                    .labelStyle(.iconOnly)
                     .disabled(studyStore.availableGrammarItems.isEmpty)
                 }
             }
-            .disabled(effectiveSystemState.shouldDisableUI)
         }
     }
 }
@@ -216,7 +226,7 @@ struct ReferenceView: View {
 #Preview("Normal State") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores()
@@ -225,7 +235,7 @@ struct ReferenceView: View {
 #Preview("Degraded Operation Postgres") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(systemHealth: .pocketbaseError)
@@ -234,7 +244,7 @@ struct ReferenceView: View {
 #Preview("Degraded Operation SwiftData") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(systemHealth: .swiftDataError)
@@ -243,7 +253,7 @@ struct ReferenceView: View {
 #Preview("With Search Results") {
     ReferenceView(
         searchText: .constant("Hello"),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores()
@@ -252,7 +262,7 @@ struct ReferenceView: View {
 #Preview("No Search Results") {
     ReferenceView(
         searchText: .constant("nonexistent"),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores()
@@ -261,7 +271,7 @@ struct ReferenceView: View {
 #Preview("Loading State") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .loading)
@@ -270,7 +280,7 @@ struct ReferenceView: View {
 #Preview("Empty Database") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .empty)
@@ -279,7 +289,7 @@ struct ReferenceView: View {
 #Preview("Critical Error PocketBase") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
@@ -288,7 +298,7 @@ struct ReferenceView: View {
 #Preview("Missing SRS") {
     ReferenceView(
         searchText: .constant(""),
-        selectedGrammarPoint: .constant(nil)
+        selectedGrammarPoint: .constant(nil),
     )
     .withPreviewNavigation()
     .withPreviewStores(noSRS: true)

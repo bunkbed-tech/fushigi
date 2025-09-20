@@ -90,50 +90,45 @@ struct PracticeView: View {
     // MARK: - Main View
 
     var body: some View {
-        PlatformSheet(title: "Daily Practice", onDismiss: {} ) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
-                    DailyGrammar(
-                        selectedSource: $selectedSource,
-                        currentGrammar: currentGrammar,
-                        selectedText: selectedText,
-                        systemState: systemState
-                    )
-                    entryForm
-                }
-                .padding()
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    EmptyView()
-                }
-                ToolbarItem {
-                    NavigationLink(destination: settingsView) {
-                        Label("Practice Settings", systemImage: "graduationcap")
-                    }
-                    .disabled(!entryContent.isEmpty)
-                }
-                ToolbarItem {
-                    Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
-                        .disabled(!entryContent.isEmpty)
-                }
-                // keyboardQuickTagger
-            }
-            .navigationDestination(for: GrammarInspectorDestination.self) { destination in
-                GrammarInspector(selectedGrammarPoint: destination.grammarPoint)
-            }
-            .navigationDestination(for: TaggerDestination.self) { destination in
-                Tagger(
-                    statusMessage: $statusMessage,
-                    grammarPoint: destination.grammarPoint,
-                    selectedText: destination.selectedText
+        ScrollView {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.default) {
+                DailyGrammar(
+                    selectedSource: $selectedSource,
+                    currentGrammar: currentGrammar,
+                    selectedText: selectedText,
+                    systemState: systemState,
                 )
+                entryForm
             }
+            .padding()
         }
-        #if os(macOS)
-        .frame(minWidth: UIConstants.Sizing.forcedFrameWidth)
-        #endif
+        .scrollDismissesKeyboard(.interactively)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                EmptyView()
+            }
+            ToolbarItem {
+                NavigationLink(destination: settingsView) {
+                    Label("Practice Settings", systemImage: "graduationcap")
+                }
+                .disabled(!entryContent.isEmpty)
+            }
+            ToolbarItem {
+                Button("Refresh", systemImage: "arrow.clockwise") { Task { await refreshGrammarPoints() } }
+                    .disabled(!entryContent.isEmpty)
+            }
+            // keyboardQuickTagger
+        }
+        .navigationDestination(for: GrammarInspectorDestination.self) { destination in
+            GrammarInspector(selectedGrammarPoint: destination.grammarPoint)
+        }
+        .navigationDestination(for: TaggerDestination.self) { destination in
+            Tagger(
+                statusMessage: $statusMessage,
+                grammarPoint: destination.grammarPoint,
+                selectedText: destination.selectedText,
+            )
+        }
     }
 
     // MARK: - Helper Methods
@@ -232,7 +227,7 @@ struct PracticeView: View {
         )
         .navigationTitle("Settings")
         #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.inline)
         #endif
     }
 

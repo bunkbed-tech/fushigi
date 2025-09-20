@@ -29,7 +29,6 @@ struct PlatformSheet<Content: View>: View {
             NavigationStack {
                 content
             }
-            .frame(minWidth: UIConstants.Sizing.forcedFrameWidth)
         #else
             NavigationStack {
                 content

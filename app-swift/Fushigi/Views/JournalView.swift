@@ -94,7 +94,9 @@ struct JournalView: View {
                 ContentUnavailableView {
                     Label("Empty", systemImage: "tray")
                 } description: {
-                    Text("No journal entries found or written yet. Submit an entry by clicking the pencil icon or refreshing the page.")
+                    Text(
+                        "No journal entries found or written yet. Submit an entry by clicking the pencil icon or refreshing the page.",
+                    )
                 } actions: {
                     Button("Refresh") {
                         Task { await journalStore.refresh() }
@@ -135,8 +137,8 @@ struct JournalView: View {
             }
         }
         .toolbar {
-            ToolbarItem{
-                Button("Add Journal Entry", systemImage: "pencil.and.scribble"){
+            ToolbarItem {
+                Button("Add Journal Entry", systemImage: "pencil.and.scribble") {
                     showNewEntry.toggle()
                 }
             }
@@ -147,7 +149,7 @@ struct JournalView: View {
                     EmptyView()
                 }
             }
-            ToolbarItem{
+            ToolbarItem {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
                     ForEach(JournalSort.allCases, id: \.self) { filter in
                         if journalSortKey == filter {
@@ -269,7 +271,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores()
@@ -279,7 +281,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .empty)
@@ -289,7 +291,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(systemHealth: .pocketbaseError)
@@ -299,7 +301,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(systemHealth: .swiftDataError)
@@ -309,7 +311,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant("nonexistent"),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores()
@@ -319,7 +321,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .loading)
@@ -329,7 +331,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .empty, systemHealth: .pocketbaseError)
@@ -339,7 +341,7 @@ struct JournalView: View {
     JournalView(
         searchText: .constant(""),
         selectedJournalEntry: .constant(nil),
-        showNewEntry: .constant(false)
+        showNewEntry: .constant(false),
     )
     .withPreviewNavigation()
     .withPreviewStores(dataAvailability: .empty, systemHealth: .swiftDataError)
